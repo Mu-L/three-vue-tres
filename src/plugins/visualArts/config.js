@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 08:18:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-13 10:31:26
+ * @LastEditTime: 2025-01-06 15:51:37
  */
 export default {
     name: 'visualArts',
@@ -76,6 +76,13 @@ export default {
             name: 'fragmentModel',
             title: '碎片模型',
             referenceSource: { title: 'honbingitee', url: 'https://gitee.com/honbingitee/three-template-next.js/commit/f34164073d37a1b23bf5cbfb2f21258b2416e92a' },
+        },
+        {
+            src: 'plugins/visualArts/preview/revealEffect.png',
+            type: 'img',
+            name: 'revealEffect',
+            title: '揭露动画效果',
+            referenceSource: { title: 'honbingitee', url: 'https://github.com/colindmg/r3f-image-reveal-effect' },
         },
     ],
 }
