@@ -4,15 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 15:54:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-27 12:38:20
+ * @LastEditTime: 2025-01-06 18:42:05
 -->
 <template>
     <TresCanvas clearColor="#666666" window-size>
         <TresPerspectiveCamera :position="[3, 3, 0]" :fov="45" :near="0.1" :far="10000" />
         <OrbitControls enableDamping autoRotate />
-        <Suspense>
-            <hexGridMesh v-bind="configState" :scale="9" />
-        </Suspense>
+        <hexGridMesh v-bind="configState" :scale="9" />
 
         <Suspense>
             <reflectorDUDV :position="[0, -0.06, 0]" v-bind="reflectorState" />
@@ -35,16 +33,16 @@ const reflectorState = reactive({
 })
 const configState = reactive({
     color: '#de62f2',
-    speed: 1.2,
-    gridWeight: 0.03,
-    raisedBottom: 0.05,
-    waveFrequency: 0.2,
-    wavePow: 4.0,
-    division: 32.0,
+    speed: 1.9,
+    gridWeight: 0.223,
+    raisedBottom: 0.66,
+    waveFrequency: 0.066,
+    wavePow: 19,
+    division: 46.0,
     divisionScaleX: 1.0,
     isReversed: false,
     direction: 4,
-    hasMaskTexture: false,
+    hasMaskTexture: true,
 })
 
 const paneControl = new Pane({

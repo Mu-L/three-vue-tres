@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 09:31:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-06 14:58:37
+ * @LastEditTime: 2025-01-06 18:45:22
 -->
 <template>
     <CustomShaderMaterial
@@ -58,7 +58,7 @@ const uniforms = {
     wavePow: { value: props.wavePow },
     direction: { value: props.direction },
     isReversed: { value: props.isReversed },
-    hasMaskTexture: { value: false },
+    hasMaskTexture: { value: props.hasMaskTexture },
     maskTexture: { value: null },
     division: { value: props.division },
     divisionScaleX: { value: props.divisionScaleX },
