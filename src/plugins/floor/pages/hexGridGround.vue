@@ -44,11 +44,15 @@ const configState = reactive({
     divisionScaleX: 1.0,
     isReversed: false,
     direction: 4,
+    hasMaskTexture: false,
 })
 
 const paneControl = new Pane({
     title: 'hexGridGround',
     expanded: true,
+})
+paneControl.addBinding(configState, 'hasMaskTexture', {
+    label: '图片纹理',
 })
 paneControl.addBinding(configState, 'color', { label: '颜色' })
 paneControl.addBinding(configState, 'speed', {
