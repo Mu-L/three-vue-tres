@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 08:18:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-06 15:51:37
+ * @LastEditTime: 2025-01-07 15:52:38
  */
 export default {
     name: 'visualArts',
@@ -83,6 +83,12 @@ export default {
             name: 'revealEffect',
             title: '揭露动画效果',
             referenceSource: { title: 'honbingitee', url: 'https://github.com/colindmg/r3f-image-reveal-effect' },
+        },
+        {
+            src: 'plugins/visualArts/preview/imgParticle.png',
+            type: 'img',
+            name: 'imgParticle',
+            title: '图片粒子化',
         },
     ],
 }
