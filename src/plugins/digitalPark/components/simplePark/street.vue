@@ -4,13 +4,9 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-08 10:57:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-08 21:25:57
+ * @LastEditTime: 2025-01-08 10:13:10
 -->
 <template>
-    <!-- <primitive :object="nodes.Sketchfab_model" cast-shadow receive-shadow :position="[0, 0, -500]" :scale="[0.5, 0.5, 0.5]" /> -->
-    <!-- <TresGroup :rotation="[0, Math.PI / 2, 0]" :position="[40.4, 0, 0]">
-        <primitive :object="group.clone()" />
-    </TresGroup> -->
     <TresGroup :position="[10, 0, 0]">
         <TresGroup :position="[-33 * 4, 0, 40.4]">
             <primitive :object="group.clone()" />
@@ -50,9 +46,6 @@
         <TresGroup :position="[0, 0, 33 * 3]">
             <primitive :object="group2.clone()" />
         </TresGroup>
-        <!-- <TresGroup :position="[0, 0, 33 * 4]">
-            <primitive :object="group2.clone()" />
-        </TresGroup> -->
         <TresGroup :position="[0, 0, 33 * 5 - 6]">
             <primitive :object="group2.clone()" />
         </TresGroup>
@@ -65,7 +58,7 @@
 import { useGLTF } from '@tresjs/cientos'
 import * as THREE from 'three'
 
-const { nodes } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/digitalPark/low_poly_street_v3.glb', {
+const { nodes } = await useGLTF('./plugins/digitalPark/model/low_poly_street.glb', {
     draco: true,
     decoderPath: './draco/',
 })

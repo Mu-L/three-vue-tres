@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 15:56:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-09 14:46:25
+ * @LastEditTime: 2025-01-08 10:49:00
 -->
 <template>
     <loading />
@@ -35,7 +35,7 @@
         <gridPlus :args="[100, 100]" v-bind="gridState" :position="[0, -10, 0]" />
 
         <Suspense>
-            <skyBoxDmesh :environment="false" texture="https://cdn.polyhaven.com/asset_img/primary/kloofendal_48d_partly_cloudy_puresky.png?width=1920" />
+            <skyBoxDmesh :environment="false" texture="./plugins/skyBox/image/kloofendal_48d_partly_cloudy_puresky.jpg" />
         </Suspense>
     </TresCanvas>
 </template>

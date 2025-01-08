@@ -21,8 +21,7 @@
 
 		<Suspense>
 			<skyBox
-				texture="https://cdn.polyhaven.com/asset_img/primary/kloofendal_48d_partly_cloudy_puresky.png?width=1920" />
-			<!-- ./plugins/skyBox/image/workshop_blur.jpg -->
+				texture="./plugins/skyBox/image/kloofendal_48d_partly_cloudy_puresky.jpg" />
 		</Suspense>
 	</TresCanvas>
 </template>

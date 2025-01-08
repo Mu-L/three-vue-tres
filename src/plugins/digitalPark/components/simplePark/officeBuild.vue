@@ -33,7 +33,7 @@ import * as THREE from 'three'
 import { gsap } from 'gsap'
 import { ref, watchEffect } from 'vue'
 
-const { scene: model } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/digitalPark/officeBuild.glb', {
+const { scene: model } = await useGLTF('./plugins/digitalPark/model/officeBuild/officeBuild.gltf', {
     draco: true,
     decoderPath: './draco/',
 })
