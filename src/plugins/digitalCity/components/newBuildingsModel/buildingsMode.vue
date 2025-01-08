@@ -29,7 +29,7 @@ import importantBuildings from './importantBuildings.vue'
 
 initMeshBvh()
 const { scene }
-	= await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/digitalCity/shanghaiDraco.gltf',
+	= await useGLTF('./plugins/digitalCity/model/shanghaiDraco/shanghaiDraco.gltf',
 		{ draco: true, decoderPath: './draco/' },
 	)
 // console.log(scene)
