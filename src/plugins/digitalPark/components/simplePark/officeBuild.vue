@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 16:35:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-08 21:26:17
+ * @LastEditTime: 2025-01-08 10:54:18
 -->
 <template>
     <primitive :object="model" cast-shadow receive-shadow :position="[13.5, 0, -45]" :scale="[0.2, 0.3, 0.2]" name="办公大厅" :rotation-y="Math.PI" />
@@ -28,15 +28,14 @@
 </template>
 <script lang="ts" setup>
 import { useTresContext } from '@tresjs/core'
-import { useGLTF, Html } from '@tresjs/cientos'
+import { Html } from '@tresjs/cientos'
 import * as THREE from 'three'
 import { gsap } from 'gsap'
 import { ref, watchEffect } from 'vue'
+import { Resource } from 'PLS/resourceManager'
 
-const { scene: model } = await useGLTF('./plugins/digitalPark/model/officeBuild/officeBuild.gltf', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const { scene: model } = Resource.getItem('officeBuild.gltf')
+
 const { scene, raycaster, camera } = useTresContext()
 model.traverse((child) => {
     if (child.isMesh) {
@@ -148,10 +147,8 @@ const tooltipMaterial = new THREE.MeshPhysicalMaterial({
     clearcoatRoughness: 0,
     clearcoat: 1,
 })
-const { scene: tooltips } = await useGLTF('./plugins/digitalPark/model/arctic_tooltip.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+
+const { scene: tooltips } = Resource.getItem('arctic_tooltip.glb')
 const tooltipRef = ref(null)
 watchEffect(() => {
     if (tooltipRef.value) {

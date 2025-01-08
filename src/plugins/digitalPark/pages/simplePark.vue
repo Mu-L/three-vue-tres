@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 15:56:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 10:49:00
+ * @LastEditTime: 2025-01-08 10:52:59
 -->
 <template>
-    <loading />
+    <loading useResourceManager />
     <TresCanvas v-bind="state" ref="tcRef">
         <TresPerspectiveCamera :position="[40, 30, 82]" :fov="45" :near="0.1" :far="10000" />
         <OrbitControls v-bind="controlsState" />
@@ -16,21 +16,11 @@
             <TresDirectionalLight ref="TDirectionalLight" :position="[80, 80, -8]" :intensity="3.0" :castShadow="true" />
         </Levioso>
 
-        <Suspense>
-            <officeBuild />
-        </Suspense>
-        <Suspense>
-            <laboratoryBuild />
-        </Suspense>
-        <Suspense>
-            <street />
-        </Suspense>
-        <Suspense>
-            <sculpture :darkModel="darkModel" />
-        </Suspense>
-        <Suspense>
-            <car :darkModel="darkModel" />
-        </Suspense>
+        <officeBuild v-if="Resource.hasAllFinished.value" />
+        <laboratoryBuild v-if="Resource.hasAllFinished.value" />
+        <street v-if="Resource.hasAllFinished.value" />
+        <sculpture v-if="Resource.hasAllFinished.value" :darkModel="darkModel" />
+        <car v-if="Resource.hasAllFinished.value" :darkModel="darkModel" />
 
         <gridPlus :args="[100, 100]" v-bind="gridState" :position="[0, -10, 0]" />
 
@@ -48,11 +38,21 @@ import { skyBoxDmesh } from 'PLS/skyBox'
 import * as THREE from 'three'
 import { gridPlus } from 'PLS/floor'
 import { Pane } from 'tweakpane'
+import { Resource } from 'PLS/resourceManager'
 import officeBuild from '../components/simplePark/officeBuild.vue'
 import laboratoryBuild from '../components/simplePark/laboratoryBuild.vue'
 import car from '../components/simplePark/car.vue'
 import sculpture from '../components/simplePark/sculpture.vue'
 import street from '../components/simplePark/street.vue'
+
+Resource.loadResources([
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/officeBuild/officeBuild.gltf' },
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/arctic_tooltip.glb' },
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/laboratoryBuild.gltf' },
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/low_poly_street.glb' },
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/vr_sculpture_park/scene.gltf' },
+    { functionName: 'GLTFLoader', url: './plugins/industry4/model/lambo.glb' },
+])
 
 const state = reactive({
     // clearColor: '#201919',

@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { useTresContext } from '@tresjs/core'
 import { watch } from 'vue'
-import { useGLTF } from '@tresjs/cientos'
+import { Resource } from 'PLS/resourceManager'
 
 const props = defineProps({
     darkModel: {
@@ -20,7 +20,7 @@ const props = defineProps({
         default: false,
     },
 })
-const { scene: model } = await useGLTF('./plugins/digitalPark/model/vr_sculpture_park/scene.gltf', { draco: true, decoderPath: './draco/' })
+const { scene: model } = Resource.getItem('scene.gltf')
 const { scene } = useTresContext()
 
 model.traverse(async (child) => {

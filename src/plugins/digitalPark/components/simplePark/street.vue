@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-08 10:57:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 10:13:10
+ * @LastEditTime: 2025-01-08 11:00:25
 -->
 <template>
     <TresGroup :position="[10, 0, 0]">
@@ -23,9 +23,6 @@
         <TresGroup :position="[0, 0, 40.4]">
             <primitive :object="group.clone()" />
         </TresGroup>
-        <!-- <TresGroup :position="[33, 0, 40.4]">
-            <primitive :object="group.clone()" />
-        </TresGroup> -->
         <TresGroup :position="[33 * 2 - 5.5, 0, 40.4]">
             <primitive :object="group.clone()" />
         </TresGroup>
@@ -55,14 +52,11 @@
     </TresGroup>
 </template>
 <script setup>
-import { useGLTF } from '@tresjs/cientos'
 import * as THREE from 'three'
+import { Resource } from 'PLS/resourceManager'
 
-const { nodes } = await useGLTF('./plugins/digitalPark/model/low_poly_street.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
-
+const curResource = Resource.getItem('low_poly_street.glb')
+const nodes = curResource.nodes
 const Cube497_530 = nodes.Sketchfab_model.getObjectByName('Cube497_530')
 Cube497_530.children[0].receiveShadow = true
 const Cube549_582 = nodes.Sketchfab_model.getObjectByName('Cube549_582')

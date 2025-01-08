@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 16:35:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-09 14:39:25
+ * @LastEditTime: 2025-01-08 10:56:46
 -->
 <template>
     <primitive :object="meshMerged" cast-shadow receive-shadow :position="[-33, 0, 7]" :scale="[0.7, 1.2, 0.7]" name="实验楼" :rotation-y="Math.PI / 2" />
@@ -23,13 +23,14 @@
 </template>
 <script setup>
 import { useTresContext } from '@tresjs/core'
-import { useGLTF, Html } from '@tresjs/cientos'
+import { Html } from '@tresjs/cientos'
 import * as THREE from 'three'
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 import { gsap } from 'gsap'
 import { ref, watchEffect } from 'vue'
+import { Resource } from 'PLS/resourceManager'
 
-const { scene: model } = await useGLTF('./plugins/digitalPark/model/laboratoryBuild.gltf', { draco: true, decoderPath: './draco/' })
+const { scene: model } = Resource.getItem('laboratoryBuild.gltf')
 const { scene } = useTresContext()
 
 const geometryArr = []
@@ -50,11 +51,7 @@ model.traverse((child) => {
 const geometryMerged = BufferGeometryUtils.mergeGeometries(geometryArr, true)
 const meshMerged = new THREE.Mesh(geometryMerged, materialArr)
 
-const { scene: tooltips } = await useGLTF('./plugins/digitalPark/model/arctic_tooltip.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
-
+const { scene: tooltips } = Resource.getItem('arctic_tooltip.glb')
 const tooltipMaterial = new THREE.MeshPhysicalMaterial({
     roughness: 0.3,
     metalness: 0.05,

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 15:56:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-06 16:00:59
+ * @LastEditTime: 2025-01-08 10:51:17
  */
 export default {
     name: 'digitalPark',
@@ -16,6 +16,6 @@ export default {
     state: 'active',
     creatTime: '2024-05-06',
     updateTime: '2024-05-06',
-    require: [],
+    require: ['resourceManager'],
     preview: [{ src: 'plugins/digitalPark/preview/simplePark.png', type: 'img', name: 'simplePark', title: '简单园区' }],
 }

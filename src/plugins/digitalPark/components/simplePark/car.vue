@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-08 14:23:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-09 14:14:40
+ * @LastEditTime: 2025-01-08 11:08:10
 -->
 <template>
     <primitive :object="model" />
@@ -25,11 +25,12 @@
 </template>
 <script setup>
 import { useTresContext, useRenderLoop } from '@tresjs/core'
-import { useGLTF, Html } from '@tresjs/cientos'
+import { Html } from '@tresjs/cientos'
 import * as THREE from 'three'
 import { ref, watch } from 'vue'
 import { gsap } from 'gsap'
 import { TransmissionMaterial } from 'PLS/basic'
+import { Resource } from 'PLS/resourceManager'
 
 const props = defineProps({
     darkModel: {
@@ -55,14 +56,16 @@ const materialState = {
 
 const { scene } = useTresContext()
 
-const {
-    scene: model,
-    nodes,
-    materials,
-} = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/lambo.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+// const {
+//     scene: model,
+//     nodes,
+//     materials,
+// } = await useGLTF('./plugins/industry4/model/lambo.glb', {
+//     draco: true,
+//     decoderPath: './draco/',
+// })
+const { scene: model, nodes, materials } = Resource.getItem('lambo.glb')
+
 model.children[0].scale.setScalar(0.02)
 nodes.glass_003.scale.setScalar(2.7)
 materials.FrameBlack.roughness = 0
@@ -120,10 +123,7 @@ spotLight.shadow.camera.far = 1000
 spotLight.shadow.camera.bias = 0.005 // 去除摩尔纹、伪影
 spotLight.visible = true
 
-const { scene: tooltips } = await useGLTF('./plugins/digitalPark/model/arctic_tooltip.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const { scene: tooltips } = Resource.getItem('arctic_tooltip.glb')
 
 const curve = new THREE.CatmullRomCurve3([
     new THREE.Vector3(10, 1.5, 35),
