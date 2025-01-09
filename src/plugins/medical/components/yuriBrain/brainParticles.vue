@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-09 10:29:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-09 11:37:54
+ * @LastEditTime: 2025-01-09 15:00:05
 -->
 <template>
     <TresPoints :scale="10">
@@ -14,13 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import * as THREE from 'three'
 import { useRenderLoop } from '@tresjs/core'
 import { randomRange } from './makeData'
 
 const props = defineProps({
     brainCurves: { default: null, type: Array },
+    color: { default: '#194ED8', type: String },
+    speed: { default: 1, type: Number },
 })
 
 const density = 10
@@ -53,6 +55,9 @@ for (let i = 0; i < props.brainCurves.length; i++) {
 const tbRef = ref<THREE.BufferGeometry | null>(null)
 
 const uniforms = {
+    uniforms: {
+        color: { value: new THREE.Color(props.color) },
+    },
     vertexShader: `
 			varying vec2 vUv;
 			attribute float randoms;
@@ -64,11 +69,13 @@ const uniforms = {
 			}
 		`,
     fragmentShader: `
-    void main() {
-			float disc = length(gl_PointCoord.xy - vec2(0.5));
-			float opacity = 0.3*smoothstep(0.5,0.4,disc);
-			gl_FragColor = vec4(vec3(opacity),1.);
-    }
+			uniform vec3 color;
+			void main() {
+				float disc = length(gl_PointCoord.xy - vec2(0.5));
+				float opacity = 0.3*smoothstep(0.5,0.4,disc);
+				vec3 finalColor = color*opacity;
+				gl_FragColor = vec4(finalColor,1.);
+			}
 		`,
     transparent: true,
     depthTest: false,
@@ -81,7 +88,7 @@ onLoop(() => {
     if (tbRef.value) {
         let curpositions = tbRef.value.attributes.position.array
         for (let i = 0; i < myPoints.length; i++) {
-            myPoints[i].curPosition += myPoints[i].speed
+            myPoints[i].curPosition += myPoints[i].speed * props.speed
             myPoints[i].curPosition = myPoints[i].curPosition % 1
 
             let curPoint = myPoints[i].curve.getPointAt(myPoints[i].curPosition)
@@ -93,4 +100,10 @@ onLoop(() => {
         tbRef.value.attributes.position.needsUpdate = true
     }
 })
+watch(
+    () => props.color,
+    () => {
+        uniforms.uniforms.color.value.set(props.color)
+    },
+)
 </script>

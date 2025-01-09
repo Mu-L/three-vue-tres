@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-09 11:13:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-09 12:26:23
+ * @LastEditTime: 2025-01-09 14:51:09
 -->
 <template>
     <TresGroup :scale="10">
@@ -16,17 +16,19 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
 import * as THREE from 'three'
 import { useRenderLoop } from '@tresjs/core'
 
 const props = defineProps({
-    brainCurves: { default: null, type: Array },
+	brainCurves: { default: null, type: Array },
+	color: { default: '#194ED8', type: String },
 }) as any
 
 const tsmConfig = {
     uniforms: {
         time: { value: 0 },
-        color: { value: new THREE.Color(0.1, 0.3, 0.6) },
+        color: { value: new THREE.Color(props.color) },
         mouse: { value: new THREE.Vector3(0, 0, 0) },
     },
 
@@ -79,5 +81,9 @@ window.addEventListener('mousemove', (event) => {
     tsmConfig.uniforms.mouse.value.x = event.clientX / window.innerWidth - 0.5
     tsmConfig.uniforms.mouse.value.y = -(event.clientY / window.innerHeight - 0.5)
     // console.log(tsmConfig.uniforms.mouse.value)
+})
+
+watch(() => props.color, () => {
+		tsmConfig.uniforms.color.value.set(props.color)
 })
 </script>
