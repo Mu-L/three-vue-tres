@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 08:18:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-07 15:52:38
+ * @LastEditTime: 2025-01-10 11:28:57
  */
 export default {
     name: 'visualArts',
@@ -89,6 +89,13 @@ export default {
             type: 'img',
             name: 'imgParticle',
             title: '图片粒子化',
+        },
+        {
+            src: 'plugins/visualArts/preview/voxelizedShader.png',
+            type: 'img',
+            name: 'voxelizedShader',
+            title: '物体体素化',
+            referenceSource: { title: 'YuriArtiukh', url: 'https://www.youtube.com/watch?v=fTskqZZRO1Q' },
         },
     ],
 }
