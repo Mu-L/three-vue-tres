@@ -16,7 +16,10 @@
 		</a>
 </p>
 
-![preview](./preview/demo-index.png)
+<a href="https://opensource.icegl.cn"><img src="./preview/p1.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p4.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
 
 # Ecosystem: `@ThreeJS @Vue3.x @TresJS`
 

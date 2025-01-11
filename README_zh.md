@@ -65,15 +65,10 @@
 ```shell
 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
 ```
-
-![展示](./public/plugins/simpleGIS/preview/mapBuildings.gif)
-![展示](./preview/数字城市3.gif)
-![展示](./preview/models.gif)
-![展示](./preview/incar.gif)
-![展示](./preview/工业2.gif)
-![展示](./preview/艺术效果.gif)
-![展示](./preview/shadertoyMaterial.gif)
-![展示](./preview/specialEffects2408.gif)
+<a href="https://opensource.icegl.cn"><img src="./preview/p1.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
+<a href="https://opensource.icegl.cn"><img src="./preview/p4.gif" style="max-width:1024px;" alt="three.js tres.js webgl tvt.js"></a>
 
 更多演示请进入预览页面
 
