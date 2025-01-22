@@ -33,7 +33,7 @@ public/plugins/tvtSubstation
 src/plugins/networkLinkTopology
 public/plugins/networkLinkTopology
 
-# 排除resourceManager、 tvtCharts、showCabinet、tvtVolumeRendering、dxf2mesh、useViewportGizmo、metaHuman 等插件 <但可演示> 可通过插件中心下载
+# 排除resourceManager、 tvtCharts、showCabinet、tvtVolumeRendering、dxf2mesh、useViewportGizmo、metaHuman、freeDigitalHome 等插件 <但可演示> 可通过插件中心下载
 src/plugins/tvtViewHelper
 public/plugins/tvtViewHelper
 src/plugins/tvtSceneCreator
@@ -51,6 +51,8 @@ src/plugins/useViewportGizmo
 public/plugins/useViewportGizmo
 src/plugins/metaHuman
 public/plugins/metaHuman
+src/plugins/freeDigitalHome
+public/plugins/freeDigitalHome
 
 # 排除安装插件包
 !pluginMaker/install/请把下载的插件包放在这里。
