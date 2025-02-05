@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-12 17:54:36
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-12 18:06:46
+ * @LastEditTime: 2025-02-05 11:38:30
 -->
 <template>
     <TresCanvas window-size clearColor="#000000">
@@ -20,7 +20,7 @@
 
         <EffectComposer>
             <UnrealBloom :radius="0.8" :strength="2.5" :threshold="0.8" />
-						<Glitch />
+            <Glitch />
             <SMAA :width="1920" :height="1080" />
             <Output />
         </EffectComposer>
@@ -29,5 +29,5 @@
 
 <script setup lang="ts">
 import { OrbitControls, Box } from '@tresjs/cientos'
-import { EffectComposer, UnrealBloom, Output, SMAA, Glitch } from '@tresjs/post-processing/three'
+import { EffectComposer, UnrealBloom, Glitch, Output, SMAA } from '@tresjs/post-processing'
 </script>

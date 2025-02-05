@@ -132,7 +132,6 @@ function onEnd() {
 </script>
 
 <template>
-  <TresLeches />
   <TresCanvas v-bind="gl" window-size>
     <TresPerspectiveCamera :position="[3, 3, 3]" />
     <OrbitControls v-bind="controlsState" @change="onChange" @start="onStart" @end="onEnd" />

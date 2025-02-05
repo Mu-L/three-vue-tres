@@ -4,7 +4,7 @@
  * @Autor: Hawk
  * @Date: 2023-10-12 11:41:10
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-20 09:22:20
+ * @LastEditTime: 2025-02-05 11:35:33
 -->
 <template>
 	<TresCanvas v-bind="gl" window-size>
@@ -18,7 +18,7 @@
 			<TresMeshLambertMaterial :color="typeState.color" />
 		</TresMesh>
 		<TresSprite :position="[0, 1, 0]" :scale="[typeState.scale, typeState.scale, 1.0]">
-			<SpriteMaterial :color="typeState.color" :blending="AdditiveBlending" :map="pTexture" />
+			<TresSpriteMaterial :color="typeState.color" :blending="AdditiveBlending" :map="pTexture" />
 		</TresSprite>
 	</TresCanvas>
 </template>
@@ -27,8 +27,9 @@
 import { useTexture } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { AdditiveBlending } from 'three'
-import { reactive } from 'vue';
-import { Pane } from 'tweakpane';
+import { reactive } from 'vue'
+import { Pane } from 'tweakpane'
+
 const gl = {
 	clearColor: '#222',
 }
@@ -41,7 +42,7 @@ const { map: pTexture } = await useTexture({ map: './plugins/basic/shine/image/r
 const paneControl = new Pane({
 	title: '参数',
 	expanded: true
-});
+})
 paneControl.addBinding(typeState, 'color', {
 	label: '颜色'
 })
@@ -55,5 +56,5 @@ paneControl.addBlade({
 	label: '问题',
 	parse: (v) => String(v),
 	value: 'Mesh移动到摄像头偏远处 物体产生变形，而本身精灵不会。 解决方法 Mesh也换成 Sprite 后 用shader画圆可解决',
-});
+})
 </script>
