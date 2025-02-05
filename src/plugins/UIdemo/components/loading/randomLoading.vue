@@ -22,12 +22,12 @@ console.log(paneState.styleNum, paneState.showProgress)
 
 <template>
     <Suspense>
-        <loading1 v-if="paneState.styleNum < 10" :styleNum="paneState.styleNum" :showProgress="paneState.showProgress" />
-        <loading2 v-else-if="paneState.styleNum < 20" :styleNum="paneState.styleNum - 10" :showProgress="paneState.showProgress" />
-        <bubbleLoading v-else-if="paneState.styleNum === 20" :showProgress="paneState.showProgress" />
-        <vnyoonLoading v-else-if="paneState.styleNum === 21" :showProgress="paneState.showProgress" />
-        <yangyangLoading v-else-if="paneState.styleNum === 22" :showProgress="paneState.showProgress" />
-        <starLoading v-else-if="paneState.styleNum === 23" :showProgress="paneState.showProgress" />
+        <loading1 v-if="paneState.styleNum < 10" :styleNum="paneState.styleNum" :showProgress="paneState.showProgress" v-bind="$attrs" />
+        <loading2 v-else-if="paneState.styleNum < 20" :styleNum="paneState.styleNum - 10" :showProgress="paneState.showProgress" v-bind="$attrs" />
+        <bubbleLoading v-else-if="paneState.styleNum === 20" :showProgress="paneState.showProgress" v-bind="$attrs" />
+        <vnyoonLoading v-else-if="paneState.styleNum === 21" :showProgress="paneState.showProgress" v-bind="$attrs" />
+        <yangyangLoading v-else-if="paneState.styleNum === 22" :showProgress="paneState.showProgress" v-bind="$attrs" />
+        <starLoading v-else-if="paneState.styleNum === 23" :showProgress="paneState.showProgress" v-bind="$attrs" />
     </Suspense>
 </template>
 
