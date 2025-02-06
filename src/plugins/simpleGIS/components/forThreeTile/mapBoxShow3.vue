@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-18 15:14:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-20 10:28:54
+ * @LastEditTime: 2025-02-06 10:43:28
 -->
 <template>
 	<TresDirectionalLight ref="tdLight" :position="[0, 2e3, 1e3]" :intensity="1" />
@@ -60,7 +60,7 @@ const mapBoxDemSource = new tt.plugin.MapBoxSource({
 // 创建地图对象
 const map = new tt.TileMap({
 	// 影像数据源
-	imgSource: mapBoxImgSource,
+	imgSource: [new tt.plugin.GDSource({ style: '6' }), new tt.plugin.GDSource({ style: '8' })],
 	// 高程数据源
 	demSource: mapBoxDemSource,
 	// 地图投影中央经线经度
