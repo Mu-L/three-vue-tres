@@ -19,8 +19,8 @@
 		</TresMesh>
 
 		<TresMesh :position="[0, 0, 0]">
-			<TorusKnotGeometry :args="[3, 1, 64, 8, 2, 3]" />
-			<MeshStandardMaterial color="0xffffff" :metalness="1" :roughness="0.14" />
+			<TresTorusKnotGeometry :args="[3, 1, 64, 8, 2, 3]" />
+			<TresMeshStandardMaterial :color="0xffffff" :metalness="1" :roughness="0.14" />
 		</TresMesh>
 
 		<Suspense>

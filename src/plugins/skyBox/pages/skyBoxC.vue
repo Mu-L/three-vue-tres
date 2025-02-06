@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-26 14:55:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-01-26 15:19:26
+ * @LastEditTime: 2025-02-06 10:45:52
 -->
 
 <template>
@@ -19,8 +19,8 @@
 		</TresMesh>
 
 		<TresMesh :position="[0, 0, 0]">
-			<TorusKnotGeometry :args="[3, 1, 64, 8, 2, 3]" />
-			<MeshStandardMaterial color="0xffffff" :metalness="1" :roughness="0.14" />
+			<TresTorusKnotGeometry :args="[3, 1, 64, 8, 2, 3]" />
+			<TresMeshStandardMaterial :color="0xffffff" :metalness="1" :roughness="0.14" />
 		</TresMesh>
 
 		<Suspense>
