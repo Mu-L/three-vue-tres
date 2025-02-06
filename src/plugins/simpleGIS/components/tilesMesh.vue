@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 10:02:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 12:08:53
+ * @LastEditTime: 2025-02-06 10:28:28
 -->
 <template>
     <TresGroup>
@@ -20,15 +20,14 @@ import * as THREE from 'three'
 
 const tiles = new TilesRenderer('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/3Dtiles/simpleGIS/data/tileset.json')
 tiles.errorTarget = 0
-const onLoadModel = (scene: any ) => {
-    scene.scene.traverse((c) => {
+const onLoadModel = ({ scene }) => {
+    scene.traverse((c) => {
         if (c.isMesh) {
             c.material.side = 2
             c.receiveShadow = false
             c.castShadow = false
         }
     })
-
     // 对齐 tiles center
     const box = new THREE.Box3()
     const sphere = new THREE.Sphere()
@@ -40,7 +39,9 @@ const onLoadModel = (scene: any ) => {
         tiles.group.position.multiplyScalar(-1)
     }
 }
-tiles.onLoadModel = onLoadModel
+
+tiles.addEventListener('load-model', onLoadModel)
+// tiles.onLoadModel = onLoadModel
 
 const { camera, renderer, sizes } = useTresContext()
 watchEffect(() => {

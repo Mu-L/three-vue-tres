@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-28 14:45:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 12:04:38
+ * @LastEditTime: 2025-02-06 10:35:38
 -->
 <template>
     <TresGroup>
-        <primitive :object="tiles.group" />
+        <primitive :object="tiles.group" :rotation="[-Math.PI / 2, 0, 0]" />
     </TresGroup>
 </template>
 
@@ -87,8 +87,10 @@ const setEffectMaterial = (mesh: any) => {
 
 const tiles = new TilesRenderer('https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/titleset/sz_ns/no.json') //tileset 如果使用cesium 的tilies带tranfrom的 请把root的tranfrom去除  gltfUpAxis
 tiles.errorTarget = 2
-tiles.onLoadModel = (scene: any) => {
-    scene.scene.traverse((c) => {
+
+tiles.addEventListener('load-model', ({ scene }) => {
+    // tiles.onLoadModel = (scene: any) => {
+    scene.traverse((c) => {
         if (c.isMesh) {
             setEffectMaterial(c)
             c.receiveShadow = false
@@ -114,16 +116,16 @@ tiles.onLoadModel = (scene: any) => {
     })
 
     // 对齐 tiles center
-    // const box = new THREE.Box3()
-    // const sphere = new THREE.Sphere()
-    // if (tiles.getBoundingBox(box)) {
-    // 	box.getCenter(tiles.group.position)
-    // 	tiles.group.position.multiplyScalar(- 1)
-    // } else if (tiles.getBoundingSphere(sphere)) {
-    // 	tiles.group.position.copy(sphere.center)
-    // 	tiles.group.position.multiplyScalar(- 1)
-    // }
-}
+    const box = new THREE.Box3()
+    const sphere = new THREE.Sphere()
+    if (tiles.getBoundingBox(box)) {
+    	box.getCenter(tiles.group.position)
+    	tiles.group.position.multiplyScalar(- 1)
+    } else if (tiles.getBoundingSphere(sphere)) {
+    	tiles.group.position.copy(sphere.center)
+    	tiles.group.position.multiplyScalar(- 1)
+    }
+})
 onLoadTileSetForCesium3Dtitles(tiles)
 
 const { renderer, sizes } = useTresContext()
