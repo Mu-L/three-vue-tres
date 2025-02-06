@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-18 14:32:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-27 10:16:09
+ * @LastEditTime: 2025-02-06 08:43:31
 -->
 <template>
     <TresGroup>
@@ -45,10 +45,15 @@ const loader = new TQK.QuarksLoader()
 loader.setCrossOrigin('')
 
 const emitters = new THREE.Group()
-loader.load('./plugins/floor/json/CartoonMagicZone.json', (obj) => {
+loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj) => {
     obj.traverse((child) => {
         if (child.type === 'ParticleEmitter') {
             // child.scale.setScalar(0.5)
+            if (child.name === 'BasicZoneRedEmitter') {
+                // 针对最新更新的three.quarks 特殊处理
+                child.rotation.set(Math.PI / 2, 0, 0)
+            }
+
             //@ts-ignore
             const childSystem = child.system
             if (childSystem.startSpeed.value === -0.25) {

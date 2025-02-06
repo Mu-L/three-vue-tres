@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-14 17:59:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-16 16:11:44
+ * @LastEditTime: 2025-02-06 09:17:46
 -->
 <template>
     <primitive :object="scene" :rotation-y="Math.PI" />
@@ -13,7 +13,8 @@
 <script setup lang="ts">
 import { defineProps, withDefaults, watch } from 'vue'
 import { useTexture, useRenderLoop } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+// import { useGLTF } from '@tresjs/cientos'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 import { flatModel } from './utils'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
@@ -30,10 +31,32 @@ const props = withDefaults(
         run: false,
     },
 )
-const { scene, materials } = await useGLTF('./plugins/industry4/model/su7_car/sm_car.gltf', { draco: false }, (gltfLoader) => {
-    gltfLoader.setMeshoptDecoder(MeshoptDecoder)
-})
-
+// const { scene, materials } = await useGLTF('./plugins/industry4/model/su7_car/sm_car.gltf', { draco: false }, (gltfLoader) => {
+//     gltfLoader.setMeshoptDecoder(MeshoptDecoder)
+// })
+const loader = new GLTFLoader()
+loader.setMeshoptDecoder(MeshoptDecoder)
+const { scene } = await loader.loadAsync('./plugins/industry4/model/su7_car/sm_car.gltf')
+function getAllMaterials(object) {
+    let materialsMap = new Map()
+    object.traverse((child) => {
+        if (child.isMesh) {
+            if (Array.isArray(child.material)) {
+                child.material.forEach((material) => {
+                    if (material.name) {
+                        materialsMap.set(material.name, material)
+                    }
+                })
+            } else {
+                if (child.material.name) {
+                    materialsMap.set(child.material.name, child.material)
+                }
+            }
+        }
+    })
+    return Object.fromEntries(materialsMap)
+}
+const materials = getAllMaterials(scene)
 const pTexture = await useTexture([
     './plugins/industry4/texture/t_car_body_AO.raw.jpg',
     './plugins/industry4/texture/t_cat_car_body_bc.webp',

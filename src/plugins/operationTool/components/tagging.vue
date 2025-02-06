@@ -53,7 +53,8 @@ const addOutBox = function (size:any, boxCenter:any) {
 const createLabel = (text:any, position:any, targetNormal:any) => {
     const textGeometry = new TextGeometry(text, {
         font,
-        size: 1,
+        size: 3,
+        depth: 1,
         height: 0.2,
         curveSegments: 12,
         bevelEnabled: false,
