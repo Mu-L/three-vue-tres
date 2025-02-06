@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-26 10:11:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-27 11:59:34
+ * @LastEditTime: 2025-02-06 12:43:53
 -->
 <template>
     <primitive :object="emitters" />
@@ -45,6 +45,10 @@ const emitters = new THREE.Group()
 const obj = Resource.getItem('CartoonMagicZone.json').clone(true)
 obj.traverse((child: any) => {
     if (child.type === 'ParticleEmitter') {
+        if (child.name === 'BasicZoneRedEmitter') {
+            // 针对最新更新的three.quarks 特殊处理
+            child.rotation.set(Math.PI / 2, 0, 0)
+        }
         const childSystem = child.system
         childSystem.startColor = getPropsColor(childSystem.startColor.color.w)
         batchSystem.addSystem(childSystem)
