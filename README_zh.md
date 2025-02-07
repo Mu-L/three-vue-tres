@@ -210,9 +210,7 @@
 			</a>
 		</td>
 		<td style="padding:10px;font-size:1.2em;">
-			<a href="https://qm.qq.com/q/34V4hTtvbq">
 				公众号: ICE图形学社区
-			</a>
 		</td>
   </tr>
   <tr>
