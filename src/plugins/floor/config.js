@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-26 15:54:22
+ * @LastEditTime: 2025-02-07 16:15:30
  */
 export default {
     name: 'floor',
@@ -28,6 +28,7 @@ export default {
         { src: 'plugins/floor/preview/hexGridGround.png', type: 'img', name: 'hexGridGround', title: '网格动态底座' },
         { src: 'plugins/floor/preview/whiteFloor.png', type: 'img', name: 'whiteFloor', title: '白色边缘模糊' },
         { src: 'plugins/floor/preview/gridPlus.png', type: 'img', name: 'gridPlus', title: '网格扩展' },
+        { src: 'plugins/floor/preview/gridFloor.png', type: 'img', name: 'gridFloor', title: '网格地板' },
         {
             src: 'plugins/floor/preview/grass.png',
             type: 'img',
