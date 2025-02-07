@@ -209,17 +209,27 @@
 				QQ群: 795714357
 			</a>
 		</td>
+		<td style="padding:10px;font-size:1.2em;">
+			<a href="https://qm.qq.com/q/34V4hTtvbq">
+				公众号: ICE图形学社区
+			</a>
+		</td>
   </tr>
   <tr>
     <td style="padding: 10px;">
 			<p style="display:block;max-width:100%;">
-				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230731/17d59bab46815cce1f4f1e09dcbb6ccc.png" alt="tres.js webgl">
+				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230731/17d59bab46815cce1f4f1e09dcbb6ccc.png?imageMogr2/thumbnail/350x" alt="tres.js webgl">
 			</p>
 		</td>
     <td style="padding: 10px;">
 			<a href="https://qm.qq.com/q/34V4hTtvbq" style="display:block;max-width:100%;">
 				<img src="./preview/qqq.png" alt="tres.js webgl">
 			</a>
+		</td>
+		<td style="padding: 10px;">
+			<p style="display:block;max-width:100%;">
+				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240619/de51c5e66dd5a8647100cc3b61171223.jpg?imageMogr2/thumbnail/350x" alt="tres.js webgl">
+			</p>
 		</td>
   </tr>
 </table>
@@ -238,11 +248,6 @@
 -   允许进行商用，但是不允许二次开源出来并进行收费
 
 本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-关注我们的公众号获得最新讯息
-<p align = "left">    
-<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240619/de51c5e66dd5a8647100cc3b61171223.jpg" width="300" />
-</p>
 
 版权所有 Copyright © 2022-2026 by 🧊icegl (https://www.icegl.cn)
 
