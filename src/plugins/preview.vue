@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 11:52:27
+ * @LastEditTime: 2025-02-08 08:52:49
 -->
 <template>
     <div class="absolute menuSelf">
@@ -111,7 +111,7 @@
                                 <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px">
                                     <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE'" />
                                 </div>
-                                <div class="flex absolute" style="top: 3px;right: 30px;">
+                                <div class="flex absolute" style="top: 3px; right: 30px">
                                     <f-badge :value="onePlugin.version" class="tag-fbdge" type="primary" size="small" />
                                 </div>
                                 <span class="left-m-text">{{ onePlugin.title }}</span>
@@ -179,7 +179,9 @@ const menuGoto = (value: any) => {
 const tabListRef = ref([])
 const pluginsConfig = ref({})
 pluginsConfig.value = getPluginsConfig() as any
-getOnlinePluginConfig(pluginsConfig)
+if (process.env.NODE_ENV === 'development') {
+    getOnlinePluginConfig(pluginsConfig)
+}
 const goto = (value: string) => {
     if (value.value === 'tvtPluginUrl') {
         window.open('https://www.icegl.cn/tvtstore', '_blank')

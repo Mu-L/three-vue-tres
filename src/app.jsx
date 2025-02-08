@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-11 18:02:39
+ * @LastEditTime: 2025-02-08 08:50:30
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -33,7 +33,7 @@ export default defineRuntimeConfig({
         action () {
             const { signin, getMenu } = useModel('forPreview')
             signin()
-            if (process.env.FES_APP_PLUGINS === 'true') {
+            if (process.env.FES_APP_PLUGINS === 'true' && process.env.NODE_ENV === 'development') {
                 getMenu()
             }
             // return new Promise((resolve) => {
