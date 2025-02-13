@@ -17,5 +17,7 @@ export default {
         "title": "现代 UI 设计官网",
         disableFPSGraph: false,
         disableSrcBtn: false
-    }, ]
+    },
+    { src: 'plugins/heroSection/preview/pointsEarth.png', type: 'img', name: 'pointsEarth', title: '粒子球' },
+ ]
 }
