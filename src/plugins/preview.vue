@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-08 08:52:49
+ * @LastEditTime: 2025-02-13 18:49:25
 -->
 <template>
     <div class="absolute menuSelf">
@@ -179,7 +179,7 @@ const menuGoto = (value: any) => {
 const tabListRef = ref([])
 const pluginsConfig = ref({})
 pluginsConfig.value = getPluginsConfig() as any
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.FES_APP_ONLINE_API) {
     getOnlinePluginConfig(pluginsConfig)
 }
 const goto = (value: string) => {
