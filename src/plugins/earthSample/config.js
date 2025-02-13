@@ -4,15 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-01 09:49:28
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-24 22:58:36
+ * @LastEditTime: 2025-02-13 18:24:05
  */
 export default {
     name: 'earthSample',
     title: '地球的简单例子',
     intro: '基于threeJS简单地球的例子',
     version: '1.0.1',
-    author: '地虎降天龙&何贤',
-    website: 'https://hexianweb.github.io',
+    author: '地虎降天龙',
+    website: 'https://gitee.com/hawk86104',
     state: 'active',
     require: [],
     preview: [
