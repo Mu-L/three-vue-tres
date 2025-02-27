@@ -196,7 +196,11 @@
 ### 问答社区: [图形学社区 icegl.cn](https://www.icegl.cn/ask)
 
 <a href="https://www.icegl.cn/ask" style="display:block;width:800px;max-width:100%;">
-<img src="./preview/ask.png" alt="图形学问答社区"></a>
+<img src="./preview/ask01.png" alt="图形学问答社区"></a>
+
+#### 社区贡献者以及达人: [向他们提问](https://icegl.cn/ask/experts)
+<a href="https://icegl.cn/ask/experts.html" style="display:block;width:800px;max-width:100%;">
+<img src="./preview/ask02.png" alt="图形学问答社区"></a>
 
 ### 欢迎大家也加入微信群，QQ群，已有几个群已满，一起学习讨论 webgl。加微信我拉进群
 <table style="border: none; width: 60%; text-align: center;">
