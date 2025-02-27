@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-07-11 15:11:57
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-02-27 09:54:05
+-->
 <template>
     <TresCanvas v-bind="state" window-size>
         <TresPerspectiveCamera :position="[10, 10, 10]" :fov="45" :near="1" :far="1000" />
@@ -16,6 +24,10 @@
             <TresMeshStandardMaterial :color="0x33ffff" :roughness="0" :metalness="0" />
             <outlineCom />
         </TresMesh>
+
+        <Suspense>
+            <outlineModel v-bind="outlineModelState" />
+        </Suspense>
     </TresCanvas>
 </template>
 
@@ -26,6 +38,7 @@ import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { Pane } from 'tweakpane'
 import outlineCom from '../../components/outlineCom.vue'
+import outlineModel from '../../components/outlineModel.vue'
 
 const state = reactive({
     alpha: true,
@@ -43,7 +56,6 @@ const outlineState = reactive({
     thickness: 0.1,
     screenspace: false,
 })
-
 const paneControl = new Pane()
 paneControl.addBinding(outlineState, 'color', {
     label: '颜色',
@@ -56,5 +68,23 @@ paneControl.addBinding(outlineState, 'thickness', {
 })
 paneControl.addBinding(outlineState, 'screenspace', {
     label: 'space',
+})
+
+const outlineModelState = reactive({
+    color: '#ffffff',
+    thickness: 0.026,
+    screenspace: false,
+})
+paneControl.addBinding(outlineModelState, 'color', {
+    label: '模型边框颜色',
+})
+paneControl.addBinding(outlineModelState, 'thickness', {
+    label: '模型边框粗细',
+    min: 0,
+    max: 0.2,
+    step: 0.001,
+})
+paneControl.addBinding(outlineModelState, 'screenspace', {
+    label: '模型边框类型',
 })
 </script>
