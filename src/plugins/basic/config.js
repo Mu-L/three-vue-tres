@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 15:07:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-26 09:32:36
+ * @LastEditTime: 2025-03-02 09:49:07
  */
 export default {
     name: 'basic',
@@ -110,13 +110,6 @@ export default {
                     referenceSource: { title: 'FakeGlow', url: 'https://r3f-fake-glow-material.vercel.app/' },
                 },
                 { src: 'plugins/basic/shine/preview/bloomPass.png', type: 'img', name: 'bloomPass', title: '后期处理-效果叠加' },
-                {
-                    src: 'plugins/basic/shine/preview/tresProcessing.png',
-                    type: 'img',
-                    name: 'tresProcessing',
-                    title: 'Tres的后期处理',
-                    referenceSource: { title: 'post-processing.tresjs', url: 'https://post-processing.tresjs.org/guide/' },
-                },
                 { src: 'plugins/basic/shine/preview/MaskPass.png', type: 'img', name: 'MaskPass', title: '后期处理-掩膜通道' },
                 { src: 'plugins/basic/shine/preview/effectComposerLayers.png', type: 'img', name: 'effectComposerLayers', title: '后期处理-图层叠加' },
                 {
@@ -129,5 +122,27 @@ export default {
                 { src: 'plugins/basic/shine/preview/effectComposerMultiple.png', type: 'img', name: 'effectComposerMultiple', title: '后期处理-多个叠加' },
             ],
         },
+        {
+            name: 'tresProcessing',
+            title: 'tresProcessing库',
+            intro: '直接使用tres的后期处理库实例',
+            pNode: 'basic',
+            preview: [
+                {
+                    src: 'plugins/basic/tresProcessing/preview/fusion.png',
+                    type: 'img',
+                    name: 'fusion',
+                    title: '融合多个后期效果',
+                    referenceSource: { title: 'post-processing.tresjs', url: 'https://post-processing.tresjs.org/guide/' },
+                },
+                {
+                    src: 'plugins/basic/tresProcessing/preview/outlinePass.png',
+                    type: 'img',
+                    name: 'outlinePass',
+                    title: '外边框处理',
+                    referenceSource: { title: 'post-processing.tresjs', url: 'https://post-processing.tresjs.org/guide/' },
+                },
+            ]
+        }
     ],
 }
