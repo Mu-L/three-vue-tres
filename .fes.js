@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-11 18:22:40
+ * @LastEditTime: 2025-03-02 08:57:12
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -53,27 +53,27 @@ export default defineBuildConfig({
             }),
             glsl(),
             process.env.NODE_ENV === 'production' &&
-            obfuscatorPlugin({
-                debugger: false,
-                // include: ['src/plugins/'],
-                // exclude: ['/node_modules/', '/src/.fes/', '/src/app.jsx', /index.jsx$/],
-                // apply: 'build',
-                options: {
-                    // 配置项，根据需要进行调整
-                    optionsPreset: 'default',
-                    // identifierNamesGenerator: 'mangled',
-                    debugProtection: true,
-                    disableConsoleOutput: true,
-                    reservedStrings: ['suspenseLayout.vue', '/plugins'],
-                    // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
-                },
-            }),
+                obfuscatorPlugin({
+                    debugger: false,
+                    // include: ['src/plugins/'],
+                    // exclude: ['/node_modules/', '/src/.fes/', '/src/app.jsx', /index.jsx$/],
+                    // apply: 'build',
+                    options: {
+                        // 配置项，根据需要进行调整
+                        optionsPreset: 'default',
+                        // identifierNamesGenerator: 'mangled',
+                        debugProtection: true,
+                        disableConsoleOutput: true,
+                        reservedStrings: ['suspenseLayout.vue', '/plugins'],
+                        // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
+                    },
+                }),
         ],
         build: {
             chunkSizeWarningLimit: 1000, // 单位为KB
             rollupOptions: {
                 output: {
-                    manualChunks (id) {
+                    manualChunks(id) {
                         // 自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
                         if (id.includes('node_modules')) {
                             return id.toString().split('node_modules/')[1].split('/')[0]
@@ -95,8 +95,15 @@ export default defineBuildConfig({
                 },
             },
         },
-        server: {
+        server: { 
             host: '0.0.0.0',
+            // proxy: { // 开发代理服务器配置
+            //     '/api': {
+            //         target: 'https://www.icegl.cn/',
+            //         changeOrigin: true,
+            //         rewrite: (path) => path.replace(/^\/api/, ''),
+            //     },
+            // },
         },
     },
     alias: { PLS: join(__dirname, './src/plugins') },
