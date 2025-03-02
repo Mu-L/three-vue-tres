@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-14 10:58:20
+ * @LastEditTime: 2025-03-02 09:12:55
  */
 import { defineBuildConfig } from '@fesjs/fes'
 import addExtraScriptPlugin from './src/common/addExtraScriptPlugin'
@@ -88,5 +88,14 @@ export default defineBuildConfig({
     },
     viteOption: {
         plugins: [addExtraScriptPlugin()],
+        server: { 
+            proxy: { // 开发代理服务器配置
+                '/api': {
+                    target: 'https://www.icegl.cn/',
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/api/, ''),
+                },
+            },
+        },
     },
 })

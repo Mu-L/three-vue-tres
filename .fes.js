@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 08:57:12
+ * @LastEditTime: 2025-03-02 09:11:47
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -97,13 +97,6 @@ export default defineBuildConfig({
         },
         server: { 
             host: '0.0.0.0',
-            // proxy: { // 开发代理服务器配置
-            //     '/api': {
-            //         target: 'https://www.icegl.cn/',
-            //         changeOrigin: true,
-            //         rewrite: (path) => path.replace(/^\/api/, ''),
-            //     },
-            // },
         },
     },
     alias: { PLS: join(__dirname, './src/plugins') },

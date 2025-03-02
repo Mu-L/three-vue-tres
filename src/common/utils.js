@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-15 11:14:40
+ * @LastEditTime: 2025-03-02 09:19:51
  */
 // 放工具函数
 import { request } from '@fesjs/fes'
@@ -57,7 +57,7 @@ export const getPluginsConfig = () => {
 }
 
 // 警告函数
-function showWarning () {
+function showWarning() {
     FMessage.warning?.({
         content: '官网已经更新的插件功能，请git 更新代码!',
         colorful: true,
@@ -100,7 +100,7 @@ const formatMenu = (online, local) => {
 
 export const getOnlinePluginConfig = (plConfig) => {
     request(
-        'https://www.icegl.cn/addons/tvt/index/getRelaseMenuList',
+        `${process.env.NODE_ENV === 'development' ? 'api' : 'https://www.icegl.cn'}/addons/tvt/index/getRelaseMenuList`,
         {},
         {
             method: 'get',
@@ -116,11 +116,11 @@ export const getOnlinePluginConfig = (plConfig) => {
 }
 
 // 通过名称查找预览配置
-function findPreviewByName (previews, name) {
+function findPreviewByName(previews, name) {
     return previews.find((preview) => preview.name === name)
 }
 // 在子配置中查找预览配置
-function findChildPreviewByName (children, childName, previewName) {
+function findChildPreviewByName(children, childName, previewName) {
     const child = children.find((chi) => chi.name === childName)
     if (child && child.preview) {
         return child.preview.find((preview) => preview.name === previewName)

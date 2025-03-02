@@ -4,54 +4,54 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-21 15:34:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-14 09:41:19
+ * @LastEditTime: 2025-03-02 09:20:26
  */
 import { reactive } from 'vue'
 import { access, request } from '@fesjs/fes'
 
-export default function userModel () {
-	const user = reactive({ userName: '' })
+export default function userModel() {
+    const user = reactive({ userName: '' })
 
-	const signin = () => {
-		const { setRole } = access
-		user.userName = ''
-		setRole('admin')
-	}
+    const signin = () => {
+        const { setRole } = access
+        user.userName = ''
+        setRole('admin')
+    }
 
-	const signout = () => {
-	}
+    const signout = () => {}
 
-	const menuSetup = reactive([])
+    const menuSetup = reactive([])
 
-	const getMenu = () => {
-		request(
-			'https://www.icegl.cn/addons/tvt/index/getMenuSetup', {},
-			{
-				method: 'get',
-			},
-		)
-			.then((res) => {
-				const arrObject = {}
-				res.code.menuSetup.forEach(item => {
-					const { m1text, m2text } = item
-					if (!arrObject[m1text]) {
-						arrObject[m1text] = {}
-					}
-					arrObject[m1text][m2text] = item
-				})
-				menuSetup.value = arrObject
-			})
-			.catch((err) => {
-				// 处理异常
-				console.log(err, '请连接网络，获得样例的更新')
-			})
-	}
+    const getMenu = () => {
+        request(
+            `${process.env.NODE_ENV === 'development' ? 'api' : 'https://www.icegl.cn'}/addons/tvt/index/getMenuSetup`,
+            {},
+            {
+                method: 'get',
+            },
+        )
+            .then((res) => {
+                const arrObject = {}
+                res.code.menuSetup.forEach((item) => {
+                    const { m1text, m2text } = item
+                    if (!arrObject[m1text]) {
+                        arrObject[m1text] = {}
+                    }
+                    arrObject[m1text][m2text] = item
+                })
+                menuSetup.value = arrObject
+            })
+            .catch((err) => {
+                // 处理异常
+                console.log(err, '请连接网络，获得样例的更新')
+            })
+    }
 
-	return {
-		user,
-		signin,
-		signout,
-		menuSetup,
-		getMenu
-	}
+    return {
+        user,
+        signin,
+        signout,
+        menuSetup,
+        getMenu,
+    }
 }
