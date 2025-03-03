@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-31 16:19:18
+ * @LastEditTime: 2025-03-03 21:14:58
  */
 
 export default {
@@ -56,6 +56,13 @@ export default {
             type: 'img',
             name: 'dissolveEffect',
             title: '溶解特效',
+        },
+        {
+            src: 'plugins/industry4/preview/dissolveEffectPlus.png',
+            type: 'img',
+            name: 'dissolveEffectPlus',
+            title: '高级溶解特效',
+            referenceSource: { title: 'JatinChopra', url: 'https://github.com/JatinChopra/emissive-dissolve-effect' },
         },
         {
             src: 'plugins/industry4/preview/alternator.png',
