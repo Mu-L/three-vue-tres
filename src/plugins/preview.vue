@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-13 18:49:25
+ * @LastEditTime: 2025-03-09 11:18:33
 -->
 <template>
     <div class="absolute menuSelf">
@@ -50,7 +50,7 @@
                     <template v-for="(bP, pkey) in filteredData">
                         <f-menu-item v-if="pkey === 'basic'" v-for="(onePlugin, okey) in bP.child" :value="onePlugin.name">
                             <template #label>
-                                <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px">
+                                <div class="flex absolute badge-group">
                                     <template v-for="(lbItem, lbKey) in getleftMenuBadge(onePlugin.name)">
                                         <f-badge v-if="lbItem.show" :value="lbItem.text" class="tag-fbdge" type="primary" size="small" />
                                     </template>
@@ -74,7 +74,7 @@
                     <template v-for="(onePlugin, pkey) in filteredData">
                         <f-menu-item v-if="pkey !== 'basic' && !isTvtstore(onePlugin)" :value="pkey">
                             <template #label>
-                                <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px">
+                                <div class="flex absolute badge-group">
                                     <template v-for="(lbItem, lbKey) in getleftMenuBadge(onePlugin.name)">
                                         <f-badge v-if="lbItem.show" :value="lbItem.text" class="tag-fbdge" type="primary" size="small" />
                                     </template>
@@ -94,7 +94,7 @@
                     /></template>
                     <f-menu-item value="tvtPluginUrl">
                         <template #label>
-                            <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px">
+                            <div class="flex absolute badge-group">
                                 <f-badge value="tvtstore" class="tag-fbdge" type="danger" size="small" />
                             </div>
                             <span class="left-m-text">插件应用市场</span>
@@ -108,7 +108,7 @@
                                         <f-badge v-if="lbItem.show" :value="lbItem.text" class="tag-fbdge" type="primary" size="small" />
                                     </template>
                                 </div> -->
-                                <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px">
+                                <div class="flex absolute badge-group">
                                     <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE'" />
                                 </div>
                                 <div class="flex absolute" style="top: 3px; right: 30px">
@@ -281,7 +281,6 @@ provide('menuSetupFilter', menuSetupFilter)
 watch(menuSetupFilter, (newValue: any) => {
     filteredData.value = filterMenuSetup(newValue)
 })
-
 const getleftMenuBadge = (name: string) => {
     const tagOne = {
         recommend: { show: false, text: '荐' },
@@ -400,6 +399,9 @@ const openTopMune = () => {
     }
     .fes-popper-wrapper {
         z-index: 9999 !important;
+        overflow: scroll;
+        scrollbar-width: thin;
+        height: 100vh;
     }
 }
 .layout-logo {
@@ -500,5 +502,21 @@ const openTopMune = () => {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+.badge-group {
+    left: 1px;
+    flex-direction: column;
+    top: 2px;
+}
+@media (max-width: 900px) {
+    .badge-group {
+        left: -3px;
+        top: -4px;
+    }
+    .tag-fbdge[data-v-470f55ee] {
+        scale: 0.8;
+        margin-bottom: -5px;
+        margin-top:0px;
+    }
 }
 </style>
