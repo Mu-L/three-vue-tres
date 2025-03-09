@@ -4,9 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 09:12:55
+ * @LastEditTime: 2025-03-09 11:43:03
  */
 import { defineBuildConfig } from '@fesjs/fes'
+// import viteCompression from 'vite-plugin-compression'
 import addExtraScriptPlugin from './src/common/addExtraScriptPlugin'
 
 export default defineBuildConfig({
@@ -87,9 +88,24 @@ export default defineBuildConfig({
         ],
     },
     viteOption: {
-        plugins: [addExtraScriptPlugin()],
-        server: { 
-            proxy: { // 开发代理服务器配置
+        plugins: [
+            addExtraScriptPlugin(),
+            // viteCompression({
+            //     // 压缩配置选项
+            //     verbose: true, // 默认即可，是否在控制台显示压缩信息
+            //     disable: false, // 默认即可，是否禁用插件
+            //     threshold: 10240, // 默认10240字节（10KB），只有大小超过此阈值的资源才会被处理。注意这里指的是资源原始大小，不是gzip后的体积。
+            //     algorithm: 'gzip', // 使用gzip压缩
+            //     ext: '.gz', // 生成的压缩包后缀
+            //     deleteOriginFile: false, // 是否删除原始文件
+            //     compressionOptions: {
+            //         level: 9, // 压缩级别，范围为 1-9，9 为最高压缩率
+            //     },
+            // }),
+        ],
+        server: {
+            proxy: {
+                // 开发代理服务器配置
                 '/api': {
                     target: 'https://www.icegl.cn/',
                     changeOrigin: true,
