@@ -1,6 +1,6 @@
 <template>
     <div v-if="hasPreview">
-        <FTooltip mode="popover" :offset="-208" placement="bottom" :getContainer="getContainer">
+        <FTooltip mode="popover" :offset="-208" placement="bottom" :getContainer="getContainer" :disabled="detectDeviceType() !== 'PC'">
             <FImage class="w-full max-h-70 h-14em" style="cursor: pointer" fit="contain" :src="publicPath + onePreview.src" lazy />
             <template #content>
                 <div style="width: 280px; height: 180px; display: flex; justify-content: center; align-items: center">
@@ -35,6 +35,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { FImage, FTooltip } from '@fesjs/fes-design'
+import { detectDeviceType } from '../../common/utils'
 
 const props = defineProps({
     onePreview: {

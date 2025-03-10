@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 09:19:51
+ * @LastEditTime: 2025-03-10 16:13:53
  */
 // 放工具函数
 import { request } from '@fesjs/fes'
@@ -163,4 +163,25 @@ export const hasPlugin = (ename, cname) => {
         window.open(`https://icegl.cn/tvtstore/${ename}`, '_blank')
     }
     return re
+}
+
+export const detectDeviceType = () => {
+    const ua = navigator.userAgent
+    const width = window.innerWidth
+
+    // 基于用户代理字符串的初步判断
+    const isMobileUA = /Mobi|Android|iPhone/i.test(ua)
+    const isTabletUA = /iPad|Tablet|Nexus 7|Nexus 10|KFAPWI/i.test(ua)
+
+    if (isMobileUA) {
+        return isTabletUA ? 'Tablet' : 'Mobile'
+    }
+    // 基于屏幕尺寸的进一步判断
+    if (width <= 480) {
+        return 'Mobile'
+    }
+    if (width <= 900) {
+        return 'Tablet'
+    }
+    return 'PC'
 }

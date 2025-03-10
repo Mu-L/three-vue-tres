@@ -156,7 +156,7 @@ import { ref, provide, watch } from 'vue'
 import { defineRouteMeta, useModel } from '@fesjs/fes'
 import { FBadge, FDrawer, FMenu, FSubMenu, FMenuItem } from '@fesjs/fes-design'
 import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined } from '@fesjs/fes-design/icon'
-import { getPluginsConfig, getOnlinePluginConfig } from '../common/utils'
+import { getPluginsConfig, getOnlinePluginConfig, detectDeviceType } from '../common/utils'
 import cardList from '../components/forPreview/cardList.vue'
 import filterComFixed from '../components/forPreview/filterComFixed.vue'
 
@@ -297,28 +297,6 @@ const getleftMenuBadge = (name: string) => {
     return tagOne
 }
 
-//获取设备类型
-function detectDeviceType() {
-    const ua = navigator.userAgent
-    const width = window.innerWidth
-
-    // 基于用户代理字符串的初步判断
-    const isMobileUA = /Mobi|Android|iPhone/i.test(ua)
-    const isTabletUA = /iPad|Tablet|Nexus 7|Nexus 10|KFAPWI/i.test(ua)
-
-    if (isMobileUA) {
-        return isTabletUA ? 'Tablet' : 'Mobile'
-    } else {
-        // 基于屏幕尺寸的进一步判断
-        if (width <= 480) {
-            return 'Mobile'
-        } else if (width <= 900) {
-            return 'Tablet'
-        } else {
-            return 'PC'
-        }
-    }
-}
 // 区分是否是案例中心的 还是 插件市场的
 const isTvtstore = (onePlugin: any) => {
     return typeof onePlugin.tvtstore !== 'undefined'
@@ -517,7 +495,7 @@ const openTopMune = () => {
     .tag-fbdge[data-v-470f55ee] {
         scale: 0.8;
         margin-bottom: -5px;
-        margin-top:0px;
+        margin-top: 0px;
     }
 }
 </style>
