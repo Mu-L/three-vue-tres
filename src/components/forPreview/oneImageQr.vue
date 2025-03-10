@@ -1,6 +1,6 @@
 <template>
     <div v-if="hasPreview">
-        <FTooltip mode="popover" :offset="-208">
+        <FTooltip mode="popover" :offset="-208" placement="bottom" :getContainer="getContainer">
             <FImage class="w-full max-h-70 h-14em" style="cursor: pointer" fit="contain" :src="publicPath + onePreview.src" lazy />
             <template #content>
                 <div style="width: 280px; height: 180px; display: flex; justify-content: center; align-items: center">
@@ -110,6 +110,11 @@ const errMiNiImg = (e: any) => {
                 console.error('Error fetching volume data:', error)
             })
     })
+}
+
+const getContainer = (container: any) => {
+    debugger
+    return document.querySelector('#right-page-list-id')
 }
 </script>
 <style lang="less">

@@ -123,6 +123,7 @@
             </FMenu>
         </div>
         <div
+            id="right-page-list-id"
             class="overflow-scroll relative right-page-list"
             :class="{ 'mt-10': detectDeviceType() === 'PC' }"
             style="height: calc(100vh - 42px - 52px); width: 100%"
