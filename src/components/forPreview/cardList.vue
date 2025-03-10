@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 19:10:41
+ * @LastEditTime: 2025-03-10 10:36:53
 -->
 <template>
     <FDivider titlePlacement="left">{{ props.onePlugin.title + ' - ' + props.onePlugin.name }}</FDivider>
@@ -31,7 +31,7 @@
                         <div class="p-2">官网已经更新样例功能，请git 更新代码!</div>
                     </div>
                     <div class="cursor-pointer text-right" style="margin-top: 6px; margin-bottom: -8px" @click="toPage(props.onePlugin, onePreview, true)">
-                        点击查看演示
+                        点击web端演示
                     </div>
                 </FCard>
             </template>
@@ -43,7 +43,7 @@
                     <video controls class="w-full max-h-70 h-14em" v-if="onePreview.type === 'video'">
                         <source :src="publicPath + onePreview.src" type="video/mp4" autoplay="true" loop="true" />
                     </video>
-                    <FImage class="w-full max-h-70 h-14em" fit="contain" v-else-if="onePreview.type === 'img'" :src="publicPath + onePreview.src" lazy />
+                    <oneImageQr v-else-if="onePreview.type === 'img'" :onePreview="onePreview" :onePlugin="onePlugin" />
                     <div
                         class="w-full h-48 text-3 text-left mb-2"
                         style="background-color: rgb(55 56 61); overflow: hidden; border-radius: 10px"
@@ -52,7 +52,7 @@
                         <div class="p-2" style="color: white" v-html="onePreview.src"></div>
                     </div>
                     <div class="cursor-pointer text-right" style="margin-top: 6px; margin-bottom: -8px" @click="toPage(props.onePlugin, onePreview)">
-                        点击查看演示
+                        点击web端演示
                     </div>
                 </FCard>
             </template>
@@ -63,6 +63,7 @@
 import { FCard, FDivider, FSpace, FText, FImage } from '@fesjs/fes-design'
 import { useRouter, useModel } from '@fesjs/fes' //fesJS的路由被他自己封装了
 import { UserOutlined } from '@fesjs/fes-design/icon'
+import oneImageQr from './oneImageQr.vue'
 const props = withDefaults(
     defineProps<{
         onePlugin: any
