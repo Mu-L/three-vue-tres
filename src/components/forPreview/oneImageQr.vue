@@ -55,12 +55,25 @@ const publicPath = process.env.BASE_URL
 // console.log(props.onePreview)
 // console.log(props.onePlugin)
 
+function sanitizeFilename(filename:string) {
+    const invalidChars = /[\\\/:\*\?"<>\|]/g;
+    const controlChars = /[\x00-\x1F\x7F]/g; // 控制字符
+    let sanitized = filename.replace(invalidChars, '');
+    if (sanitized.startsWith('.')) {
+        sanitized = 'f' + sanitized; // 或者你可以选择其他前缀
+    }
+    sanitized = sanitized.replace(controlChars, '');
+    if (sanitized.length > 255) {
+        sanitized = sanitized.substring(0, 255);
+    }
+    return sanitized;
+}
 let hasPreview = true
 let comUrl = 'https://opensource.icegl.cn/#/plugins/'
 let imgName = ''
 if (props.onePreview.url) {
     comUrl = props.onePreview.url
-    imgName = encodeURIComponent(comUrl.slice(-16))
+    imgName = encodeURIComponent(sanitizeFilename(comUrl).slice(-16))
     if (props.onePreview.url.startsWith('https://www.icegl.cn/tvtstore/') || props.onePreview.url.startsWith('https://www.bilibili.com/')) {
         hasPreview = false
     }
@@ -77,12 +90,6 @@ let miniPre = `https://www.icegl.cn/addons/tvt/mini/onePreview?urlPath=${comUrl}
 miniPre = encodeURIComponent(miniPre)
 const urlMobile = ref('https://www.icegl.cn/uploads/qrcode/b-' + imgName + '.png')
 const urlmini = ref('https://www.icegl.cn/uploads/qrcode/m-' + imgName + '.png')
-// const urlMobile = ref(
-//     `https://icegl.cn/addons/qrcode/index/show?text=${comUrl}&logo=1&labelalignment=center&foreground=%23333333&background=%23ffffff&size=180&padding=1&logosize=30&errorcorrection=quartile`,
-// )
-// const urlmini = ref(
-//     `https://icegl.cn/addons/qrcode/index/show?text=${miniPre}&logo=1&labelalignment=center&foreground=%2300367b&background=%23ffffff&size=160&padding=1&logosize=30&errorcorrection=quartile`,
-// )
 const errH5Img = (e: any) => {
     fetch(
         `https://icegl.cn/addons/qrcode/index/show?text=${comUrl}&logo=1&labelalignment=center&foreground=%23333333&background=%23ffffff&size=180&padding=1&logosize=30&errorcorrection=quartile&imgName=b-${imgName}`,
@@ -113,7 +120,6 @@ const errMiNiImg = (e: any) => {
 }
 
 const getContainer = (container: any) => {
-    debugger
     return document.querySelector('#right-page-list-id')
 }
 </script>
