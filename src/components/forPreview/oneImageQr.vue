@@ -5,7 +5,7 @@
             <template #content>
                 <div style="width: 280px; height: 180px; display: flex; justify-content: center; align-items: center">
                     <div class="one-item-qrcode">
-                        <FImage :src="urlMobile">
+                        <FImage :src="urlMobile" @error="errH5Img">
                             <template #placeholder>
                                 <div class="image-slot">
                                     <div class="image-slot">生成中<span class="dot">...</span></div>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="one-item-qrcode" style="border-left: 2px #a2a2a2 dashed">
                         <span>微信小程序</span>
-                        <FImage :src="urlmini">
+                        <FImage :src="urlmini" @error="errMiNiImg">
                             <template #placeholder>
                                 <div class="image-slot">
                                     <div class="image-slot">生成中<span class="dot">...</span></div>
@@ -33,6 +33,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
 import { FImage, FTooltip } from '@fesjs/fes-design'
 
 const props = defineProps({
@@ -56,8 +57,10 @@ const publicPath = process.env.BASE_URL
 
 let hasPreview = true
 let comUrl = 'https://opensource.icegl.cn/#/plugins/'
+let imgName = ''
 if (props.onePreview.url) {
     comUrl = props.onePreview.url
+    imgName = encodeURIComponent(comUrl.slice(-16))
     if (props.onePreview.url.startsWith('https://www.icegl.cn/tvtstore/') || props.onePreview.url.startsWith('https://www.bilibili.com/')) {
         hasPreview = false
     }
@@ -67,12 +70,47 @@ if (props.onePreview.url) {
     }
     comUrl += props.onePlugin.name + '/'
     comUrl += props.onePreview.name + '/'
+    imgName = encodeURIComponent((props.onePlugin.name + props.onePreview.name).slice(-16))
 }
 comUrl = encodeURIComponent(comUrl)
 let miniPre = `https://www.icegl.cn/addons/tvt/mini/onePreview?urlPath=${comUrl}`
 miniPre = encodeURIComponent(miniPre)
-const urlMobile = `https://icegl.cn/qrcode/build?text=${comUrl}&logo=1&labelalignment=center&foreground=%23333333&background=%23ffffff&size=180&padding=1&logosize=30&errorcorrection=quartile`
-const urlmini = `https://icegl.cn/qrcode/build?text=${miniPre}&logo=1&labelalignment=center&foreground=%2300367b&background=%23ffffff&size=160&padding=1&logosize=30&errorcorrection=quartile`
+const urlMobile = ref('https://www.icegl.cn/uploads/qrcode/b-' + imgName + '.png')
+const urlmini = ref('https://www.icegl.cn/uploads/qrcode/m-' + imgName + '.png')
+// const urlMobile = ref(
+//     `https://icegl.cn/addons/qrcode/index/show?text=${comUrl}&logo=1&labelalignment=center&foreground=%23333333&background=%23ffffff&size=180&padding=1&logosize=30&errorcorrection=quartile`,
+// )
+// const urlmini = ref(
+//     `https://icegl.cn/addons/qrcode/index/show?text=${miniPre}&logo=1&labelalignment=center&foreground=%2300367b&background=%23ffffff&size=160&padding=1&logosize=30&errorcorrection=quartile`,
+// )
+const errH5Img = (e: any) => {
+    fetch(
+        `https://icegl.cn/addons/qrcode/index/show?text=${comUrl}&logo=1&labelalignment=center&foreground=%23333333&background=%23ffffff&size=180&padding=1&logosize=30&errorcorrection=quartile&imgName=b-${imgName}`,
+    ).then((response) => {
+        response
+            .text()
+					.then((data) => {
+                urlMobile.value = data
+            })
+            .catch((error) => {
+                console.error('Error fetching volume data:', error)
+            })
+    })
+}
+const errMiNiImg = (e: any) => {
+    fetch(
+        `https://icegl.cn/addons/qrcode/index/show?text=${miniPre}&logo=1&labelalignment=center&foreground=%2300367b&background=%23ffffff&size=160&padding=1&logosize=30&errorcorrection=quartile&imgName=m-${imgName}`,
+    ).then((response) => {
+        response
+            .text()
+            .then((data) => {
+                urlmini.value = data
+            })
+            .catch((error) => {
+                console.error('Error fetching volume data:', error)
+            })
+    })
+}
 </script>
 <style lang="less">
 .fes-tooltip-confirm,
