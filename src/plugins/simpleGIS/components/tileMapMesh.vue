@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-26 18:58:32
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-18 09:36:50
+ * @LastEditTime: 2025-03-11 16:48:26
 -->
 <template>
     <primitive :object="map" :rotation="[-Math.PI / 2, 0, 0]" />
@@ -61,7 +61,7 @@ mapProvider.source = 'https://webrd04.is.autonavi.com/appmaptile?lang=zh_cn&size
 mapProvider.showTileNo = false
 mapProvider.useWorker = true
 
-const meshProvider = new TerrainMeshProvider(martiniProvider, mapProvider)
+const meshProvider = new TerrainMeshProvider(planProvider, mapProvider)
 meshProvider.showBoundingBox = false
 meshProvider.wireframe = false
 meshProvider.flatShading = false

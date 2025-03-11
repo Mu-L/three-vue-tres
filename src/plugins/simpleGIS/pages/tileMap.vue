@@ -4,13 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-24 10:03:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-19 17:25:58
+ * @LastEditTime: 2025-03-11 16:52:58
 -->
 <template>
 	<TresCanvas v-bind="state" window-size>
-		<Suspense>
 			<tileMapMesh v-bind="tileMapState" ref="tileMapMeshRef" :bbox="[80, 16, 128, 50]" />
-		</Suspense>
 	</TresCanvas>
 	<raycasterEvent :tileMapRef="tileMapMeshRef" />
 </template>
