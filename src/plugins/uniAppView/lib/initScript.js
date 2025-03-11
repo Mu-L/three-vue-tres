@@ -13,7 +13,7 @@ export function loadJweixin () {
 			return
 		}
 		const script = document.createElement('script')
-		script.src = 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js' // 适当更换版本
+		script.src = 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/lib/jweixin-1.6.0.js'//'https://res.wx.qq.com/open/js/jweixin-1.6.0.js' // 适当更换版本
 		script.onload = () => resolve(window.wx)
 		script.onerror = reject
 		document.body.appendChild(script)
@@ -27,7 +27,7 @@ export function loadWebView () {
 			return
 		}
 		const script = document.createElement('script')
-		script.src = 'https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js' // 适当更换版本
+		script.src = 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/lib/uni.webview.0.1.52.js'//'https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js' // 适当更换版本
 		script.onload = () => resolve(window.wx)
 		script.onerror = reject
 		document.body.appendChild(script)

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-10 10:36:53
+ * @LastEditTime: 2025-03-11 09:11:45
 -->
 <template>
     <FDivider titlePlacement="left">{{ props.onePlugin.title + ' - ' + props.onePlugin.name }}</FDivider>
@@ -60,10 +60,12 @@
     </div>
 </template>
 <script setup lang="ts">
-import { FCard, FDivider, FSpace, FText, FImage } from '@fesjs/fes-design'
+import { FCard, FDivider, FSpace, FText } from '@fesjs/fes-design'
 import { useRouter, useModel } from '@fesjs/fes' //fesJS的路由被他自己封装了
 import { UserOutlined } from '@fesjs/fes-design/icon'
 import oneImageQr from './oneImageQr.vue'
+import { loadJweixin, loadWebView } from 'PLS/uniAppView/lib/initScript'
+
 const props = withDefaults(
     defineProps<{
         onePlugin: any
@@ -73,10 +75,26 @@ const props = withDefaults(
 const { menuSetup } = useModel('forPreview')
 let publicPath = process.env.BASE_URL
 
+loadJweixin()
+loadWebView()
+declare const uni: any
+
 const router = useRouter()
-const toPage = (plugin: any, value: any, isOnline: boolean) => {
+
+// 小程序 uniapp端的跳转，若自己调试请更换地址  https://opensource.icegl.cn
+const jumpType = (url: string, addPreUrl: boolean) => {
+    if (!uni.getEnv) {
+        window.open(url, '_blank')
+    } else {
+        const u = addPreUrl ? 'https://opensource.icegl.cn' + url : url
+        uni.redirectTo({
+            url: '/pages/debugDemo/onePreview/onePreview?urlPath=' + u,
+        })
+    }
+}
+const toPage = (plugin: any, value: any, isOnline = false) => {
     if (value.url) {
-        return window.open(value.url, '_blank')
+        return jumpType(value.url, false)
     }
     let path = `/plugins/${plugin.name}/${value.name}`
     if (plugin.pNode) {
@@ -84,13 +102,12 @@ const toPage = (plugin: any, value: any, isOnline: boolean) => {
     }
     if (isOnline) {
         path = 'https://opensource.icegl.cn/#' + path
-        window.open(path, '_blank')
-    } else {
-        let routeUrl = router.resolve({
-            path: path,
-        })
-        window.open(routeUrl.href, '_blank')
+        return jumpType(path, false)
     }
+    let routeUrl = router.resolve({
+        path: path,
+    })
+    return jumpType(routeUrl.href, true)
 }
 
 const hasStyle = (plugin: any, value: any) => {
