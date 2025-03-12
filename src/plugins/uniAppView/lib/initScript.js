@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-05 11:49:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-05 11:52:28
+ * @LastEditTime: 2025-03-12 08:14:29
  */
 export function loadJweixin () {
 	return new Promise((resolve, reject) => {
@@ -13,7 +13,7 @@ export function loadJweixin () {
 			return
 		}
 		const script = document.createElement('script')
-		script.src = 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/lib/jweixin-1.6.0.js'//'https://res.wx.qq.com/open/js/jweixin-1.6.0.js' // 适当更换版本
+		script.src = '/plugins/uniAppView/lib/jweixin-1.6.0.js'//'https://res.wx.qq.com/open/js/jweixin-1.6.0.js' // 适当更换版本
 		script.onload = () => resolve(window.wx)
 		script.onerror = reject
 		document.body.appendChild(script)
@@ -27,7 +27,7 @@ export function loadWebView () {
 			return
 		}
 		const script = document.createElement('script')
-		script.src = 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/lib/uni.webview.0.1.52.js'//'https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js' // 适当更换版本
+		script.src = '/plugins/uniAppView/lib/uni.webview.0.1.52.js'//'https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js' // 适当更换版本
 		script.onload = () => resolve(window.wx)
 		script.onerror = reject
 		document.body.appendChild(script)

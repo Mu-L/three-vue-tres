@@ -1,7 +1,7 @@
 <template>
     <div v-if="hasPreview">
         <FTooltip mode="popover" :offset="-208" placement="bottom" :getContainer="getContainer" :disabled="detectDeviceType() !== 'PC'">
-            <FImage class="w-full max-h-70 h-14em" style="cursor: pointer" fit="contain" :src="publicPath + onePreview.src" lazy />
+            <FImage class="w-full max-h-70 h-14em" fit="contain" :src="publicPath + onePreview.src" lazy />
             <template #content>
                 <div style="width: 280px; height: 180px; display: flex; justify-content: center; align-items: center">
                     <div class="one-item-qrcode">
@@ -29,7 +29,7 @@
         </FTooltip>
     </div>
     <div v-else>
-        <FImage class="w-full max-h-70 h-14em" style="cursor: pointer" fit="contain" :src="publicPath + onePreview.src" lazy />
+        <FImage class="w-full max-h-70 h-14em" fit="contain" :src="publicPath + onePreview.src" lazy />
     </div>
 </template>
 <script setup lang="ts">
@@ -56,18 +56,18 @@ const publicPath = process.env.BASE_URL
 // console.log(props.onePreview)
 // console.log(props.onePlugin)
 
-function sanitizeFilename(filename:string) {
-    const invalidChars = /[\\\/:\*\?"<>\|]/g;
-    const controlChars = /[\x00-\x1F\x7F]/g; // 控制字符
-    let sanitized = filename.replace(invalidChars, '');
+function sanitizeFilename(filename: string) {
+    const invalidChars = /[\\\/:\*\?"<>\|]/g
+    const controlChars = /[\x00-\x1F\x7F]/g // 控制字符
+    let sanitized = filename.replace(invalidChars, '')
     if (sanitized.startsWith('.')) {
-        sanitized = 'f' + sanitized; // 或者你可以选择其他前缀
+        sanitized = 'f' + sanitized // 或者你可以选择其他前缀
     }
-    sanitized = sanitized.replace(controlChars, '');
+    sanitized = sanitized.replace(controlChars, '')
     if (sanitized.length > 255) {
-        sanitized = sanitized.substring(0, 255);
+        sanitized = sanitized.substring(0, 255)
     }
-    return sanitized;
+    return sanitized
 }
 let hasPreview = true
 let comUrl = 'https://opensource.icegl.cn/#/plugins/'
@@ -86,6 +86,9 @@ if (props.onePreview.url) {
     comUrl += props.onePreview.name + '/'
     imgName = encodeURIComponent((props.onePlugin.name + props.onePreview.name).slice(-16))
 }
+if (!process.env.FES_APP_ONLINE_API) {
+    hasPreview = false
+}
 comUrl = encodeURIComponent(comUrl)
 let miniPre = `https://www.icegl.cn/addons/tvt/mini/onePreview?urlPath=${comUrl}`
 miniPre = encodeURIComponent(miniPre)
@@ -97,7 +100,7 @@ const errH5Img = (e: any) => {
     ).then((response) => {
         response
             .text()
-					.then((data) => {
+            .then((data) => {
                 urlMobile.value = data
             })
             .catch((error) => {
