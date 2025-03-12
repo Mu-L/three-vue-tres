@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-07 08:12:28
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-07 08:53:45
+ * @LastEditTime: 2025-03-12 10:08:07
 -->
 <template>
     <loading />
@@ -14,7 +14,7 @@
         </Suspense>
         <otherObject />
     </TresCanvas>
-		<h2 class="text-center text-white w-full absolute" >点击车辆消失后回传信息且跳转</h2>
+		<h2 class="text-center text-white w-full absolute" >双击车辆消失后回传信息且跳转</h2>
 </template>
 
 <script setup lang="ts">
