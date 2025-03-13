@@ -60,6 +60,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { FCard, FDivider, FSpace, FText } from '@fesjs/fes-design'
 import { useRouter, useModel } from '@fesjs/fes' //fesJS的路由被他自己封装了
 import { UserOutlined } from '@fesjs/fes-design/icon'
@@ -75,8 +76,11 @@ const props = withDefaults(
 const { menuSetup } = useModel('forPreview')
 let publicPath = process.env.BASE_URL
 
-loadJweixin()
-loadWebView()
+onMounted(async () => {
+    await loadJweixin()
+    await loadWebView()
+})
+
 declare const uni: any
 
 const router = useRouter()

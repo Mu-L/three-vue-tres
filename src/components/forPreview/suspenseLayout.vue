@@ -4,21 +4,23 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-21 17:24:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-27 18:45:28
+ * @LastEditTime: 2025-03-13 12:08:53
 -->
 <template>
     <Suspense>
         <router-view />
     </Suspense>
-    <showSrcBtn :parts="parts" v-if="!config?.preview?.disableSrcBtn" />
+    <showSrcBtn v-if="!config?.preview?.disableSrcBtn" :parts="parts" />
     <referenceSource :referenceSourceConfig="referenceSourceConfig" />
     <FPSGraph v-if="!config?.preview?.disableFPSGraph" />
+    <miniBts v-if="detectDeviceType() === 'Mobile'" />
 </template>
 <script setup lang="ts">
+import { getOnePluginConfig, detectDeviceType } from '../../common/utils'
 import showSrcBtn from './showSrcBtn.vue'
 import referenceSource from './referenceSource.vue'
 import FPSGraph from './FPSGraph.vue'
-import { getOnePluginConfig } from '../../common/utils'
+import miniBts from './miniBts.vue'
 
 const originalUrl = window.location.href
 const hashPart = originalUrl.split('#')[1] || ''

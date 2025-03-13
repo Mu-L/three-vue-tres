@@ -4,19 +4,22 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-15 09:11:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-30 08:16:23
+ * @LastEditTime: 2025-03-13 11:57:00
 -->
 <template>
-    <FButton type="info" class="absolute home-btn" size="small" @click="tohome()">
-        <template #icon> <HomeOutlined />首页 </template>
-    </FButton>
-    <FButton type="info" class="absolute" size="small" style="right: 10px; bottom: 10px" @click="jump()">
-        <template #icon> <ProductOutlined /> </template>源码Src
-    </FButton>
+    <template v-if="detectDeviceType() !== 'Mobile'">
+        <FButton type="info" class="absolute home-btn" size="small" @click="tohome()">
+            <template #icon> <HomeOutlined />首页 </template>
+        </FButton>
+        <FButton type="info" class="absolute" size="small" style="right: 10px; bottom: 10px" @click="jump()">
+            <template #icon> <ProductOutlined /> </template>源码Src
+        </FButton>
+    </template>
 </template>
 <script setup lang="ts">
 import { ProductOutlined, HomeOutlined } from '@fesjs/fes-design/icon'
 import { FButton } from '@fesjs/fes-design'
+import { detectDeviceType } from '../../common/utils'
 
 const props = withDefaults(
     defineProps<{

@@ -4,11 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 08:47:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-29 08:06:31
+ * @LastEditTime: 2025-03-13 11:56:25
 -->
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useFps, useRafFn } from '@vueuse/core'
+import { detectDeviceType } from '../../common/utils'
 
 const width = 58
 const height = 30
@@ -45,7 +46,7 @@ useRafFn(({ timestamp }) => {
 </script>
 
 <template>
-	<div class="fpsStats">
+	<div class="fpsStats" v-show="detectDeviceType() !== 'Mobile'">
 		<div class="number">
 			{{ Math.round(fps) }} <br /> FPS
 		</div>
