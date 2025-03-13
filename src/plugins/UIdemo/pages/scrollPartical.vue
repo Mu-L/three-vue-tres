@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-08 15:06:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 10:45:33
+ * @LastEditTime: 2025-03-13 18:15:16
 -->
 <script setup lang="ts">
 import { bubbleLoading as loading } from 'PLS/UIdemo'
@@ -34,7 +34,7 @@ const gl = {
     physicallyCorrectLights: true,
 }
 const paneState = reactive({
-    pass: true,
+    pass: false,
     color: '#ffaa00',
 })
 const paneControl = new Pane({
