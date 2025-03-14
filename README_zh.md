@@ -61,6 +61,8 @@
 -   如果访问太慢，请访问镜像站点1：[🌏 oss.icegl.cn](http://oss.icegl.cn/)
 -   如果访问太慢，请访问镜像站点2：[🌏 myhome.217dan.com:8899](http://myhome.217dan.com:8899/)
 -   如果有条件翻墙，也可直接访问 github 的镜像站:[🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
+-   新增微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
+-   微信扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
 ```shell
 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
@@ -205,6 +207,9 @@
 ### 欢迎大家也加入微信群，QQ群，已有几个群已满，一起学习讨论 webgl。加微信我拉进群
 <table style="border: none; width: 60%; text-align: center;">
   <tr>
+		<td style="padding:10px;font-size:1.2em;">
+				微信小程序生态
+		</td>
     <td style="padding:10px;font-size:1.2em;">
 				微信群
 		</td>
@@ -218,6 +223,11 @@
 		</td>
   </tr>
   <tr>
+	  <td style="padding: 10px;">
+			<p style="display:block;max-width:100%;">
+				<img src="./preview/miniqr.jpg" alt="tres.js webgl">
+			</p>
+		</td>
     <td style="padding: 10px;">
 			<p style="display:block;max-width:100%;">
 				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230731/17d59bab46815cce1f4f1e09dcbb6ccc.png?imageMogr2/thumbnail/350x" alt="tres.js webgl">
