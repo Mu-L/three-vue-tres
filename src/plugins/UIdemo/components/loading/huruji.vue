@@ -81,6 +81,7 @@
 <script setup lang="ts">
 import { hasPlugin } from '@/common/utils'
 import { useProgress } from '@tresjs/cientos'
+import { Resource } from 'PLS/resourceManager'
 
 const props = withDefaults(
     defineProps<{
@@ -101,8 +102,8 @@ let hasFinishLoading = null as any
 
 if (props.useResourceManager) {
     if (hasPlugin('resourceManager', '资源管理器插件')) {
-        const modules = import.meta.glob('/src/plugins/resourceManager/index.js')
-        const { Resource } = await modules['/src/plugins/resourceManager/index.js']()
+        // const modules = import.meta.glob('/src/plugins/resourceManager/index.js')
+        // const { Resource } = await modules['/src/plugins/resourceManager/index.js']()
         progress = Resource.progress
         hasFinishLoading = Resource.hasAllFinished
     }

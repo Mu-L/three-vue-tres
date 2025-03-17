@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 17:14:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-12 11:06:13
+ * @LastEditTime: 2025-03-17 09:38:10
 -->
 <template>
     <div v-if="!hasFinishLoading" class="absolute bg-grey-600 t-0 l-0 w-full h-full z-99999999 flex justify-center items-center text-black font-mono bg-black">
@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { hasPlugin } from '@/common/utils'
 import { useProgress } from '@tresjs/cientos'
+import { Resource } from 'PLS/resourceManager'
 
 const props = withDefaults(
     defineProps<{
@@ -49,8 +50,8 @@ let hasFinishLoading = null as any
 
 if (props.useResourceManager) {
     if (hasPlugin('resourceManager', '资源管理器插件')) {
-        const modules = import.meta.glob('/src/plugins/resourceManager/index.js')
-        const { Resource } = await modules['/src/plugins/resourceManager/index.js']()
+        // const modules = import.meta.glob('/src/plugins/resourceManager/index.js')
+        // const { Resource } = await modules['/src/plugins/resourceManager/index.js']()
         progress = Resource.progress
         hasFinishLoading = Resource.hasAllFinished
     }
