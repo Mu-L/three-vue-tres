@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 13:55:33
+ * @LastEditTime: 2025-03-17 17:52:19
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -57,7 +57,7 @@ export default defineBuildConfig({
                 title: '🧩 插件市场',
             },
             {
-                path: 'https://icegl.cn/',
+                path: 'https://www.icegl.cn/',
                 title: '🧊 ICEGL官网',
             },
             {
@@ -78,11 +78,19 @@ export default defineBuildConfig({
                 ],
             },
             {
-                path: 'https://icegl.cn/ask',
+                path: 'https://www.icegl.cn/ask',
                 title: '🙋‍♀️ 社区问答',
             },
             {
-                path: 'https://icegl.cn/p/aboutus',
+                path: 'https://www.icegl.cn/tvtstore/uniAppView',
+                title: '🪅 小程序生态',
+            },
+            {
+                path: 'https://www.icegl.cn/d/demand/post',
+                title: '🪢 定制开发',
+            },
+            {
+                path: 'https://www.icegl.cn/p/aboutus',
                 title: '💫 关于我们',
             },
         ],
