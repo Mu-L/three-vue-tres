@@ -6,7 +6,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-10 10:32:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-28 11:54:39
+ * @LastEditTime: 2025-03-17 14:50:31
  */
 import { request } from '@fesjs/fes'
 import JSZip from 'jszip'
@@ -26,6 +26,17 @@ export async function loadJsonFile(url) {
             (error) => reject(error), // 错误回调
         )
     })
+}
+export class JsonLoader extends THREE.Loader {
+    constructor(manager) {
+        super(manager)
+    }
+
+    load(url, onLoad, onProgress, onError) {
+        const loader = new THREE.FileLoader(this.manager)
+        loader.setResponseType('json') // 直接解析 JSON，避免手动解析
+        loader.load(url, (data) => onLoad && onLoad(data), onProgress, onError)
+    }
 }
 function getMimeTypeFromUrl(url) {
     const extension = url.split('.').pop().toLowerCase()
@@ -76,6 +87,30 @@ export const loadRemoteZip = (url) => {
             (error) => reject(error),
         )
     })
+}
+export class ZipLoader extends THREE.Loader {
+    constructor(manager) {
+        super(manager)
+    }
+
+    load(url, onLoad, onProgress, onError) {
+        const loader = new THREE.FileLoader(this.manager)
+        loader.setResponseType('blob') // 确保加载为 Blob
+
+        loader.load(
+            url,
+            async (data) => {
+                try {
+                    const zip = await JSZip.loadAsync(data)
+                    onLoad && onLoad(zip)
+                } catch (error) {
+                    onError && onError(error)
+                }
+            },
+            onProgress,
+            onError,
+        )
+    }
 }
 
 export const loadJson = (filepath) =>

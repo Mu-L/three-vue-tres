@@ -4,13 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-04 16:02:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-04 17:28:05
+ * @LastEditTime: 2025-03-17 14:07:54
 -->
 <template>
 	<TresMesh name="front-face" :position="[0, 0, 0.5]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0xf77007" stencil-write :stencil-ref="1" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<Levioso :speed="2">
 		<primitive :rotation-z="-Math.PI / 2" :object="nodes.Sketchfab_model" :position="[0, -0.35, 0]" :scale="0.5">
@@ -21,7 +22,8 @@
 	<TresMesh name="bottom-face" :rotation-x="Math.PI * 0.5" :position="[0, -0.5, 0]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0xf7f7f7" stencil-write :stencil-ref="2" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<TresMesh name="bottom-face-object" :scale="0.5">
 		<TresBoxGeometry :args="[1, 1, 1]" />
@@ -32,7 +34,8 @@
 	<TresMesh name="top-face" :rotation-x="Math.PI * -0.5" :position="[0, 0.5, 0]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0xf7f7f7" stencil-write :stencil-ref="3" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<TresMesh name="top-face-object" :scale="0.05">
 		<TresConeGeometry :args="[5, 10]" />
@@ -43,7 +46,8 @@
 	<TresMesh name="left-face" :rotation-y="Math.PI * -0.5" :position="[-0.5, 0, 0]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0x241a1a" stencil-write :stencil-ref="4" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<Levioso :speed="2">
 		<primitive :object="macBook" :rotation-y="-Math.PI / 2" :position="[-0.1, -0.2, 0]" :scale="0.02">
@@ -54,7 +58,8 @@
 	<TresMesh name="right-face" :rotation-y="Math.PI * 0.5" :position="[0.5, 0, 0]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0xf7f7f7" stencil-write :stencil-ref="5" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<TresMesh name="right-face-object" :scale="0.05">
 		<TresTorusGeometry :args="[5, 2]" />
@@ -65,7 +70,8 @@
 	<TresMesh name="back-face" :rotation-y="Math.PI" :position="[0, 0, -0.5]">
 		<TresPlaneGeometry :args="[1, 1]" />
 		<TresMeshPhongMaterial :color="0xf7f7f7" stencil-write :stencil-ref="6" :stencil-func="AlwaysStencilFunc"
-			:stencil-z-pass="ReplaceStencilOp" :depth-write="false" />
+			:stencil-z-pass="ReplaceStencilOp" :depth-write="false"
+/>
 	</TresMesh>
 	<TresMesh name="back-face-object" :scale="0.05">
 		<TresDodecahedronGeometry :args="[5, 0]" />
@@ -77,7 +83,7 @@
 import { AlwaysStencilFunc, EqualStencilFunc, ReplaceStencilOp, Mesh } from 'three'
 import { useGLTF, useAnimations, Levioso } from "@tresjs/cientos"
 
-const { nodes, materials, animations } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/eCommerce/eFan/nFan.gltf')
+const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/eCommerce/eFan/nFan.gltf`)
 
 //电风扇的动画
 const { actions } = useAnimations(animations, nodes.Sketchfab_model)

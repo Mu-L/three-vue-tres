@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-19 11:34:24 
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-20 10:27:58
+ * @LastEditTime: 2025-03-17 15:04:27
 -->
 <template>
     <TresGroup :position="[...pos]">
@@ -65,10 +65,14 @@ pos.applyMatrix4(props.map.matrix)
 const scale = util.scaleImg(props.map, { x: 67, y: 11 }, { x: 140, y: 57 }, props.height) // 这里计算卫星云图的位置
 
 const imgList = [
-    'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171300.HDF.png',
-    'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171400.HDF.png',
-    'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171500.HDF.png',
-    'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171600.HDF.png',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171300.HDF.png',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171400.HDF.png',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171500.HDF.png',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171600.HDF.png',
 ]
 let curImgIndex = 0
 const pTexture = await useTexture(imgList)

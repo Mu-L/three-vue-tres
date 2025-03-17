@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 08:56:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-07 10:42:40
+ * @LastEditTime: 2025-03-17 15:21:35
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -19,7 +19,7 @@
         <Suspense>
             <Environment
                 :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-                path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+                :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
             />
         </Suspense>
     </TresCanvas>
@@ -28,12 +28,13 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { reactive } from 'vue'
-import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { Environment } from 'PLS/basic'
 import { gridPlus } from 'PLS/floor'
 import customWaterMesh from '../components/customWaterMesh.vue'
 import { Pane } from 'tweakpane'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const state = reactive({
     alpha: true,

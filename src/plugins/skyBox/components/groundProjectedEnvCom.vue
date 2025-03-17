@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-22 14:42:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-22 14:58:16
+ * @LastEditTime: 2025-03-17 15:08:50
 -->
 <template>
     <primitive :object="groundProjection" :scale="props.size" />
@@ -22,7 +22,9 @@ const props = withDefaults(
         size?: number
     }>(),
     {
-        texture: 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/round_platform_1k.exr',
+        texture:
+            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+            '/images/skyBox/round_platform_1k.exr',
         size: 100,
     },
 )

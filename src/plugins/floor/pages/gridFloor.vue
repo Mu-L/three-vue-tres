@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-02-07 16:14:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-07 16:58:15
+ * @LastEditTime: 2025-03-17 14:14:13
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -23,7 +23,7 @@
         <Suspense>
             <Environment
                 :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-                path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+                :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
             />
         </Suspense>
     </TresCanvas>
@@ -32,10 +32,11 @@
 <script setup lang="ts">
 import { ACESFilmicToneMapping } from 'three'
 import { reactive } from 'vue'
-import { TresCanvas } from '@tresjs/core'
 import { OrbitControls, Environment } from '@tresjs/cientos'
 import { Pane } from 'tweakpane'
 import gridFloor from '../components/gridFloor.vue'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const state = reactive({
     alpha: true,

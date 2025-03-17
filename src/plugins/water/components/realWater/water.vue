@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-18 11:08:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-19 10:43:09
+ * @LastEditTime: 2025-03-17 15:21:04
 -->
 <template>
     <pool :tiles="pTexture" :light="light" :waterTexture="waterTexture" :causticsTexture="causticsTexture" ref="pooRef" />
@@ -28,7 +28,7 @@ const geometry = props.geometry //new THREE.PlaneGeometry(2, 2, 200, 200)
 
 const cubetextureloader = new THREE.CubeTextureLoader()
 const textureCube = cubetextureloader
-    .setPath('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/')
+    .setPath((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/')
     .load(['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg'])
 
 const pTexture = await useTexture(['./plugins/water/images/tiles.jpg'])

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 09:11:47
+ * @LastEditTime: 2025-03-17 13:57:12
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -97,6 +97,13 @@ export default defineBuildConfig({
         },
         server: { 
             host: '0.0.0.0',
+            proxy: {
+                '/resource.cos': {
+                    target: 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com',
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/resource.cos/, ''),
+                },
+            },
         },
     },
     alias: { PLS: join(__dirname, './src/plugins') },

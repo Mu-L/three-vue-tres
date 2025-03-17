@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-26 08:13:26
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-26 10:37:39
+ * @LastEditTime: 2025-03-17 14:08:18
 -->
 <template>
     <Suspense>
@@ -14,7 +14,7 @@
             background
             :blur="0.8"
             :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-            path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+            :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
         >
             <Lightformer :intensity="4" :rotation-x="Math.PI / 2" :position="[0, 5, -9]" :scale="[10, 10, 1]" />
             <Lightformer :intensity="4" :rotation-x="Math.PI / 2" :position="[0, 5, -9]" :scale="[10, 10, 1]" />
@@ -36,6 +36,8 @@
 import { ref } from 'vue'
 import { Environment, Lightformer } from 'PLS/basic'
 import { useRenderLoop } from '@tresjs/core'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const refgroup = ref(null)
 const { onLoop } = useRenderLoop()

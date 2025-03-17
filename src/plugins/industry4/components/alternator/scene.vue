@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 09:23:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-03 12:31:27
+ * @LastEditTime: 2025-03-17 14:52:27
 -->
 <template>
     <!-- name:AmbientLight uuid:4a88f8db-06d0-47b4-ad5f-aad9885c3b29 type:AmbientLight -->
@@ -26,7 +26,6 @@
 import { onMounted, reactive, watch } from 'vue'
 // import { useAnimations } from '@tresjs/cientos'
 import * as THREE from 'three'
-import { loadJsonFile, loadRemoteZip } from 'PLS/tresEditor'
 import { useTresContext, useRenderLoop } from '@tresjs/core'
 import player from './eventScript'
 import firstLevel86e5869a71b5 from './childComponent/firstLevel-86e5869a71b5.vue'
@@ -34,6 +33,7 @@ import firstLevelda662feb67b1 from './childComponent/firstLevel-da662feb67b1.vue
 import { adjustGroupCenter } from 'PLS/digitalCity'
 import { Pane } from 'tweakpane'
 import gsap from 'gsap'
+import { Resource } from 'PLS/resourceManager'
 
 const paneControl = new Pane({
     title: '操作',
@@ -48,10 +48,10 @@ const { scene: tresScene, renderer, camera, sizes } = useTresContext()
 player.init(tresScene, renderer, camera, sizes)
 
 const loader = new THREE.ObjectLoader()
-const scene = await loadJsonFile('./plugins/industry4/alternator/json/scene.json')
+const scene = Resource.getItem('scene.json')
 
 if (scene.geometries) {
-    const geometriesZip = await loadRemoteZip('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/alternator/geometries.zip')
+    const geometriesZip = Resource.getItem('geometries.zip')
     for (const geometry of scene.geometries) {
         if (geometry.data && geometry.data.startsWith('url:')) {
             let url = geometry.data.slice(4)
@@ -60,7 +60,7 @@ if (scene.geometries) {
     }
 }
 if (scene.images) {
-    const imagesZip = await loadRemoteZip('./plugins/industry4/alternator/images.zip')
+    const imagesZip = Resource.getItem('images.zip')
     for (const image of scene.images) {
         if (image.url && image.url.startsWith('url:')) {
             let url = image.url.slice(4)

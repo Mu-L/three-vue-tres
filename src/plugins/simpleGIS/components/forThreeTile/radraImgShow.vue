@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-19 11:34:24 
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-20 10:31:20
+ * @LastEditTime: 2025-03-17 15:08:25
 -->
 <template>
     <TresGroup :position="[...pos]">
@@ -57,7 +57,11 @@ const scale = util.scaleImg(props.map, { x: 67, y: 11 }, { x: 140, y: 57 }, prop
 
 const imgList = []
 for (let index = 0; index < 9; index++) {
-    imgList.push(`https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/simpleGIS/QPFRef_202405311${index}40.png`)
+    imgList.push(
+        `${
+            process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+        }/images/simpleGIS/QPFRef_202405311${index}40.png`,
+    )
 }
 
 let curImgIndex = 0

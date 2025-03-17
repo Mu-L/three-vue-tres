@@ -9,7 +9,8 @@
 <script setup lang="ts">
 import { watch, ref, provide } from "vue"
 import { Levioso, ContactShadows, useGLTF, useAnimations } from "@tresjs/cientos"
-import svgCom from "../components/svg.vue"
+import svgCom from "./svg.vue"
+
 const props = defineProps({
 	color: {
 		type: String,
@@ -17,9 +18,9 @@ const props = defineProps({
 	},
 })
 
-const { nodes, materials, animations } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/eCommerce/eFan/nFan.gltf')
+const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/eCommerce/eFan/nFan.gltf`)
 
-const modelAttUVarr = (name) => { return nodes.Sketchfab_model.getObjectByName(name).geometry.attributes.uv.array }
+const modelAttUVarr = (name) => nodes.Sketchfab_model.getObjectByName(name).geometry.attributes.uv.array
 //备份原始UV值
 const srcUVslist = {
 	'Object_4': new Float32Array(modelAttUVarr('Object_4')),
@@ -35,7 +36,7 @@ const setColorUV = (color) => {
 		'#ffbec4': -0.06,
 		'#d0d5c6': 0.55
 	}
-	for (let [key, value] of Object.entries(srcUVslist)) {
+	for (const [key, value] of Object.entries(srcUVslist)) {
 		for (let i = 0; i < modelAttUVarr(key).length; i++) {
 			modelAttUVarr(key)[i] = value[i] + colorList[color]
 		}
@@ -46,7 +47,7 @@ const setColorUV = (color) => {
 
 const switcherModel = nodes.Sketchfab_model.getObjectByName('Object_6001')
 const { actions } = useAnimations(animations, nodes.Sketchfab_model)
-let currentAction = actions.Animation
+const currentAction = actions.Animation
 // currentAction.play()
 const animationPlay = ref(true)
 provide('animationPlay', animationPlay)

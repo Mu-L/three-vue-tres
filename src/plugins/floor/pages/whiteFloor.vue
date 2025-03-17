@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-25 10:20:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 10:45:57
+ * @LastEditTime: 2025-03-17 14:20:52
 -->
 
 <template>
@@ -24,7 +24,7 @@
         </Suspense>
 
         <Suspense>
-            <skyBox texture="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/workshop_blur.jpg" />
+            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'" />
         </Suspense>
     </TresCanvas>
 </template>
@@ -37,6 +37,8 @@ import skyBox from 'PLS/skyBox/components/skyBoxAmesh.vue'
 import { shallowRef, watchEffect, reactive } from 'vue'
 import { Pane } from 'tweakpane'
 import whiteFloorMesh from '../components/whiteFloorMesh.vue'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const tcConfig = {
     clearColor: '#201919',

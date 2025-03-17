@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-25 10:20:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-13 20:50:31
+ * @LastEditTime: 2025-03-17 14:10:28
 -->
 
 <template>
@@ -20,30 +20,30 @@
 		<Suspense>
 			<!-- <ssrtGlassMesh modelPath="./plugins/basic/htmls/model/model.gltf" modelName="Macbook" -->
 			<ssrtGlassMesh :scale="2" v-bind="glassConfig"
-				modelPath="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/eCommerce/guanYu.glb"
+				:modelPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/eCommerce/guanYu.glb'"
 				modelName="statue"
-				skyBoxTexture="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/workshop_blur.jpg" />
+				:skyBoxTexture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'"
+/>
 		</Suspense>
 
 		<Suspense>
-			<skyBox texture="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/workshop_blur.jpg" />
+			<skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'" />
 		</Suspense>
 	</TresCanvas>
 </template>
 
 
 <script setup lang="ts">
-
 import { randomLoading as loading } from 'PLS/UIdemo'
 import * as THREE from "three"
-
 import { OrbitControls } from '@tresjs/cientos'
 import whiteFloorMesh from 'PLS/floor/components/whiteFloorMesh.vue'
 import skyBox from 'PLS/skyBox/components/skyBoxAmesh.vue'
 import { reactive } from 'vue'
 import { Pane } from 'tweakpane'
-
 import ssrtGlassMesh from "../components/ssrtGlassMesh.vue"
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const tcConfig = {
 	clearColor: "#201919",
@@ -69,7 +69,7 @@ const glassConfig = reactive({
 	extintionCol1Random: false,
 	extintionCol2Random: false
 })
-const paneControl = new Pane({ title: '参数', });
+const paneControl = new Pane({ title: '参数', })
 paneControl.addBinding(glassConfig, 'extintionFactor', {
 	label: '消光系数', min: 0,
 	max: 10,

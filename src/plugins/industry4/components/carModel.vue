@@ -22,10 +22,15 @@ import * as THREE from 'three'
 // const contactShadowsRef = shallowRef(null)
 // import { loadHDR } from 'PLS/skyBox/common/utils'
 
-const { scene, nodes, materials } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/911-transformed.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const { scene, nodes, materials } = await useGLTF(
+    `${
+        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+    }/model/industry4/911-transformed.glb`,
+    {
+        draco: true,
+        decoderPath: './draco/',
+    },
+)
 Object.values(nodes).forEach((node) => {
     if (node.isMesh) {
         node.receiveShadow = node.castShadow = true

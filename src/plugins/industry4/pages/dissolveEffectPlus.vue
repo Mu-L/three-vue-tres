@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-03 15:58:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-03 21:14:08
+ * @LastEditTime: 2025-03-17 15:01:52
 -->
 <template>
     <TresCanvas v-bind="tcConfig">
@@ -13,9 +13,11 @@
 
         <torusKnot v-bind="torusKnotConfigState" :color="meshConfig.torusKnotColor" />
         <Suspense>
-            <skyBoxDmesh texture="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/workshop_blur.jpg" />
+            <skyBoxDmesh
+                :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'"
+            />
         </Suspense>
-				<bloomPass />
+        <bloomPass />
     </TresCanvas>
 </template>
 
@@ -28,6 +30,7 @@ import { Pane } from 'tweakpane'
 import torusKnot from '../components/dissolveEffectPlus/torusKnot.vue'
 import bloomPass from '../components/dissolveEffectPlus/bloomPass.vue'
 
+const isDev = process.env.NODE_ENV === 'development'
 const tcConfig = {
     clearColor: '#201919',
     windowSize: true,

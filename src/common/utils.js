@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-13 11:56:12
+ * @LastEditTime: 2025-03-17 13:55:58
  */
 // 放工具函数
 import { request } from '@fesjs/fes'
@@ -100,7 +100,7 @@ const formatMenu = (online, local) => {
 
 export const getOnlinePluginConfig = (plConfig) => {
     request(
-        `${process.env.NODE_ENV === 'development' ? 'api' : 'https://www.icegl.cn'}/addons/tvt/index/getRelaseMenuList`,
+        `${process.env.NODE_ENV === 'development' ? 'api.icegl' : 'https://www.icegl.cn'}/addons/tvt/index/getRelaseMenuList`,
         {},
         {
             method: 'get',

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 10:02:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 10:28:28
+ * @LastEditTime: 2025-03-17 15:04:09
 -->
 <template>
     <TresGroup>
@@ -18,7 +18,11 @@ import { watchEffect } from 'vue'
 import { TilesRenderer } from '3d-tiles-renderer'
 import * as THREE from 'three'
 
-const tiles = new TilesRenderer('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/3Dtiles/simpleGIS/data/tileset.json')
+const tiles = new TilesRenderer(
+    `${
+        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+    }/3Dtiles/simpleGIS/data/tileset.json`,
+)
 tiles.errorTarget = 0
 const onLoadModel = ({ scene }) => {
     scene.traverse((c) => {

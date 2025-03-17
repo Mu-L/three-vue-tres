@@ -4,31 +4,31 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 09:22:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-15 11:48:15
+ * @LastEditTime: 2025-03-17 14:51:28
 -->
 
 <template>
     <Suspense>
-        <loading ref="loadingRef" />
+        <loading useResourceManager />
     </Suspense>
     <TresCanvas v-bind="state">
         <OrbitControls />
         <TresPerspectiveCamera ref="cameraRef" uuid="1c22773e-eb46-4708-b3bd-2baf29ac5cb3" name="Camera" />
         <Suspense>
-            <sceneCom />
+            <sceneCom v-if="Resource.hasAllFinished.value" />
         </Suspense>
-
         <effectCom />
     </TresCanvas>
-    <viewChart :dataJson="dataJson" :showAllCom="loadingRef?.hasFinishLoading" :delay="1600" :maskWidth="560" />
+    <viewChart :dataJson="dataJson" :showAllCom="Resource.hasAllFinished.value" :delay="600" :maskWidth="560" />
 </template>
 <script setup lang="ts">
 import * as THREE from 'three'
-import { reactive, watch, ref } from 'vue'
-import { TresCanvas } from '@tresjs/core'
+import { reactive, watch, ref, Suspense } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { loading2 as loading } from 'PLS/UIdemo'
 import { viewChart } from 'PLS/goView'
+import { Resource } from 'PLS/resourceManager'
+import { JsonLoader, ZipLoader } from 'PLS/tresEditor'
 import sceneCom from '../components/alternator/scene.vue'
 import effectCom from '../components/alternator/effect.vue'
 import dataJson from '../components/alternator/alternatorGoView.json'
@@ -68,11 +68,22 @@ const cameraConfig = {
 const loader = new THREE.ObjectLoader()
 const cameraObject = loader.parse(cameraConfig)
 const cameraRef = ref(null) as any
-const loadingRef = ref(null)
 watch(
     () => cameraRef.value,
     (val) => {
-        val&&val.copy(cameraObject)
+        val && val.copy(cameraObject)
     },
 )
+Resource.loaderMapping.JsonLoader = JsonLoader
+Resource.loaderMapping.ZipLoader = ZipLoader
+Resource.loadResources([
+    { functionName: 'JsonLoader', url: './plugins/industry4/alternator/json/scene.json' },
+    {
+        functionName: 'ZipLoader',
+        url:
+            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+            '/model/industry4/alternator/geometries.zip',
+    },
+    { functionName: 'ZipLoader', url: './plugins/industry4/alternator/images.zip' },
+])
 </script>

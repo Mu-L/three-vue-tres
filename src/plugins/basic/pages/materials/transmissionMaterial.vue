@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-25 10:54:10
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 09:36:29
+ * @LastEditTime: 2025-03-17 14:03:16
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -30,7 +30,7 @@
                 :blur="0.3"
                 background
                 :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-                path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+                :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
             />
         </Suspense>
     </TresCanvas>
@@ -44,6 +44,8 @@ import { OrbitControls, Environment } from '@tresjs/cientos'
 import { TransmissionMaterial } from 'PLS/basic'
 import { gridPlus } from 'PLS/floor'
 import { Pane } from 'tweakpane'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const state = reactive({
     alpha: true,

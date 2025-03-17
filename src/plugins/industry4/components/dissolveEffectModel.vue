@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-23 08:36:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-23 17:52:54
+ * @LastEditTime: 2025-03-17 14:24:30
 -->
 <template>
     <primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
@@ -31,10 +31,13 @@ const props = defineProps({
     },
 })
 
-const { scene, nodes, materials } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/lambo.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const { scene, nodes, materials } = await useGLTF(
+    `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/industry4/lambo.glb`,
+    {
+        draco: true,
+        decoderPath: './draco/',
+    },
+)
 Object.values(nodes).forEach((node) => {
     if (node.isMesh) {
         if (node.name.startsWith('glass')) node.geometry.computeVertexNormals()
@@ -45,41 +48,39 @@ Object.values(nodes).forEach((node) => {
     }
 })
 
-{
-    nodes.glass_003.scale.setScalar(2.7)
-    materials.FrameBlack.color = new THREE.Color('black')
-    materials.FrameBlack.roughness = 0
-    materials.FrameBlack.metalness = 0.75
+nodes.glass_003.scale.setScalar(2.7)
+materials.FrameBlack.color = new THREE.Color('black')
+materials.FrameBlack.roughness = 0
+materials.FrameBlack.metalness = 0.75
 
-    materials.Chrome.color = new THREE.Color('#333')
-    materials.Chrome.metalness = 1
-    materials.Chrome.roughness = 0
+materials.Chrome.color = new THREE.Color('#333')
+materials.Chrome.metalness = 1
+materials.Chrome.roughness = 0
 
-    materials.BreakDiscs.color = new THREE.Color('#555')
-    materials.BreakDiscs.metalness = 0.2
-    materials.BreakDiscs.roughness = 0.2
+materials.BreakDiscs.color = new THREE.Color('#555')
+materials.BreakDiscs.metalness = 0.2
+materials.BreakDiscs.roughness = 0.2
 
-    materials.TiresGum.color = new THREE.Color('#181818')
-    materials.TiresGum.metalness = 0
-    materials.TiresGum.roughness = 0.4
+materials.TiresGum.color = new THREE.Color('#181818')
+materials.TiresGum.metalness = 0
+materials.TiresGum.roughness = 0.4
 
-    materials.GreyElements.color = new THREE.Color('#292929')
-    materials.GreyElements.metalness = 0
+materials.GreyElements.color = new THREE.Color('#292929')
+materials.GreyElements.metalness = 0
 
-    nodes.yellow_WhiteCar_0.material = new THREE.MeshPhysicalMaterial({
-        roughness: 0.3,
-        metalness: 0.05,
-        color: '#111',
-        envMapIntensity: 0.75,
-        clearcoatRoughness: 0,
-        clearcoat: 1,
-    })
-}
+nodes.yellow_WhiteCar_0.material = new THREE.MeshPhysicalMaterial({
+    roughness: 0.3,
+    metalness: 0.05,
+    color: '#111',
+    envMapIntensity: 0.75,
+    clearcoatRoughness: 0,
+    clearcoat: 1,
+})
 
 const pTexture = await useTexture(['./plugins/digitalCity/image/smokeparticle.png', './plugins/industry4/image/dissolve.jpg'])
-let shaders = []
+const shaders = []
 let isDissolving = false
-let params = {
+const params = {
     dissolveProgress: 0,
     noiseTexture: pTexture[0],
     edgeColorTexture: pTexture[1],
@@ -90,7 +91,7 @@ const appear = () => {
     isDissolving = true
     signedDissolveSpeed = props.dissolveSpeed
 
-    for (let shader of shaders) {
+    for (const shader of shaders) {
         shader.uniforms.dissolveSpeed = { value: signedDissolveSpeed }
         shader.uniforms.dissolveProgress = { value: 0 }
     }
@@ -99,7 +100,7 @@ const disappear = () => {
     if (isDissolving) return
     isDissolving = true
     signedDissolveSpeed = -props.dissolveSpeed
-    for (let shader of shaders) {
+    for (const shader of shaders) {
         shader.uniforms.dissolveSpeed = { value: signedDissolveSpeed }
         shader.uniforms.dissolveProgress = { value: 1 }
     }
@@ -159,8 +160,8 @@ Object.values(nodes).forEach((node) => {
 const { onLoop } = useRenderLoop()
 onLoop(({ dt }) => {
     if (isDissolving) {
-        for (let shader of shaders) {
-            let { dissolveProgress, dissolveSpeed } = shader.uniforms
+        for (const shader of shaders) {
+            const { dissolveProgress, dissolveSpeed } = shader.uniforms
             dissolveProgress.value += dissolveSpeed.value
             if (dissolveProgress.value < 0) {
                 isDissolving = false
@@ -174,17 +175,17 @@ onLoop(({ dt }) => {
 
 watchEffect(() => {
     if (props.dissolveSpeed) {
-        for (let shader of shaders) {
+        for (const shader of shaders) {
             shader.uniforms.dissolveSpeed.value = props.dissolveSpeed
         }
     }
     if (props.edgeColor) {
-        for (let shader of shaders) {
+        for (const shader of shaders) {
             shader.uniforms.edgeColor.value = new THREE.Color(props.edgeColor)
         }
     }
     if (props.edgeWidth) {
-        for (let shader of shaders) {
+        for (const shader of shaders) {
             shader.uniforms.edgeWidth.value = props.edgeWidth
         }
     }

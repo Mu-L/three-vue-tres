@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-07 08:32:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-07 08:50:55
+ * @LastEditTime: 2025-03-17 15:20:38
 -->
 <template>
     <primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
@@ -31,10 +31,13 @@ const props = defineProps({
     },
 })
 
-const { scene, nodes, materials } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/lambo.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const { scene, nodes, materials } = await useGLTF(
+    `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/industry4/lambo.glb`,
+    {
+        draco: true,
+        decoderPath: './draco/',
+    },
+)
 Object.values(nodes).forEach((node) => {
     if (node.isMesh) {
         if (node.name.startsWith('glass')) node.geometry.computeVertexNormals()

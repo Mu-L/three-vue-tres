@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 15:38:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-10 15:04:10
+ * @LastEditTime: 2025-03-17 14:24:55
 -->
 <template></template>
 
@@ -21,43 +21,46 @@ import { LUTCubeLoader } from 'three/examples/jsm/loaders/LUTCubeLoader.js'
 
 const { camera, renderer, scene, sizes } = useTresContext()
 const params = {
-	threshold: 0.666,
-	strength: 0.366,    // 强度
-	radius: 0.33,       // 半径
+    threshold: 0.666,
+    strength: 0.366, // 强度
+    radius: 0.33, // 半径
 }
 let effectComposer = null as any
 let lutPass = null as any
 const Effect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, width: number, height: number) => {
-	const renderScene = new RenderPass(scene, camera)
-	const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), params.strength, params.radius, params.threshold)
-	effectComposer = new EffectComposer(renderer)
-	// effectComposer.renderToScreen = false
-	// 将渲染器和场景结合到合成器中
-	effectComposer.addPass(renderScene)
-	effectComposer.addPass(bloomPass)
-	effectComposer.addPass(new OutputPass())
+    const renderScene = new RenderPass(scene, camera)
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), params.strength, params.radius, params.threshold)
+    effectComposer = new EffectComposer(renderer)
+    // effectComposer.renderToScreen = false
+    // 将渲染器和场景结合到合成器中
+    effectComposer.addPass(renderScene)
+    effectComposer.addPass(bloomPass)
+    effectComposer.addPass(new OutputPass())
 
-	lutPass = new LUTPass({
-		intensity: 1.0,
-	})
-	effectComposer.addPass(lutPass)
+    lutPass = new LUTPass({
+        intensity: 1.0,
+    })
+    effectComposer.addPass(lutPass)
 }
 
-new LUTCubeLoader()
-	.load('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/F-6800-STD.cube', function (result) {
-		lutPass.lut = result.texture3D
-	})
+new LUTCubeLoader().load(
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/model/industry4/F-6800-STD.cube',
+    function (result) {
+        lutPass.lut = result.texture3D
+    },
+)
 
 watchEffect(() => {
-	if (sizes.width.value) {
-		Effect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
-	}
+    if (sizes.width.value) {
+        Effect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+    }
 })
 
 const { onLoop } = useRenderLoop()
 onLoop(() => {
-	if (effectComposer) {
-		effectComposer.render()
-	}
+    if (effectComposer) {
+        effectComposer.render()
+    }
 })
 </script>

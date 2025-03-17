@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-04 14:31:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-13 20:51:44
+ * @LastEditTime: 2025-03-17 14:11:09
 -->
 <script setup>
 import { OrbitControls } from '@tresjs/cientos'
@@ -12,6 +12,8 @@ import skyBox from 'PLS/skyBox/components/skyBoxDmesh.vue'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import stencilMaskMesh from '../components/stencilMaskBox.vue'
 import stencilMaskModels from '../components/stencilMaskModels.vue'
+
+const isDev = process.env.NODE_ENV === 'development'
 </script>
 <template>
     <loading />
@@ -20,7 +22,7 @@ import stencilMaskModels from '../components/stencilMaskModels.vue'
         <OrbitControls auto-rotate />
 
         <Suspense>
-            <skyBox texture="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/workshop_blur.jpg" />
+            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'" />
         </Suspense>
 
         <Suspense>

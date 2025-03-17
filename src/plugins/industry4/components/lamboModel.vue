@@ -4,28 +4,29 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 14:36:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-09 15:08:27
+ * @LastEditTime: 2025-03-17 14:25:43
 -->
 <template>
-	<TresGroup ref="contactShadowsRef">
-		<primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
-	</TresGroup>
+    <TresGroup ref="contactShadowsRef">
+        <primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
+    </TresGroup>
 </template>
 <script setup>
 import { useGLTF } from '@tresjs/cientos' //ContactShadows
 import * as THREE from 'three'
 
 const { scene, nodes, materials } = await useGLTF(
-	'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/industry4/lambo.glb',
-	{ draco: true, decoderPath: './draco/' })
+    `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/industry4/lambo.glb`,
+    { draco: true, decoderPath: './draco/' },
+)
 Object.values(nodes).forEach((node) => {
-	if (node.isMesh) {
-		if (node.name.startsWith('glass')) node.geometry.computeVertexNormals()
-		if (node.name === 'silver_001_BreakDiscs_0') {
-			node.material = materials.BreakDiscs.clone()
-			node.material.color = new THREE.Color('#ddd')
-		}
-	}
+    if (node.isMesh) {
+        if (node.name.startsWith('glass')) node.geometry.computeVertexNormals()
+        if (node.name === 'silver_001_BreakDiscs_0') {
+            node.material = materials.BreakDiscs.clone()
+            node.material.color = new THREE.Color('#ddd')
+        }
+    }
 })
 
 nodes.glass_003.scale.setScalar(2.7)
@@ -49,12 +50,11 @@ materials.GreyElements.color = new THREE.Color('#292929')
 materials.GreyElements.metalness = 0
 
 nodes.yellow_WhiteCar_0.material = new THREE.MeshPhysicalMaterial({
-	roughness: 0.3,
-	metalness: 0.05,
-	color: '#111',
-	envMapIntensity: 0.75,
-	clearcoatRoughness: 0,
-	clearcoat: 1
+    roughness: 0.3,
+    metalness: 0.05,
+    color: '#111',
+    envMapIntensity: 0.75,
+    clearcoatRoughness: 0,
+    clearcoat: 1,
 })
-
 </script>

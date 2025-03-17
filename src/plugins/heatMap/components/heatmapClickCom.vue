@@ -19,7 +19,10 @@ const props = withDefaults(
     },
 )
 
-const { nodes } = await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/heatmap/test.glb', { draco: true, decoderPath: './draco/' })
+const { nodes } = await useGLTF(
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/heatmap/test.glb',
+    { draco: true, decoderPath: './draco/' },
+)
 
 nodes.mesh_0.position.set(-5088.96, -3.08, 39374.7)
 nodes.mesh_0.scale.setScalar(0.01)

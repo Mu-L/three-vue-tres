@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-09 11:43:03
+ * @LastEditTime: 2025-03-17 13:55:33
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -106,10 +106,10 @@ export default defineBuildConfig({
         server: {
             proxy: {
                 // 开发代理服务器配置
-                '/api': {
+                '/api.icegl': {
                     target: 'https://www.icegl.cn/',
                     changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/api/, ''),
+                    rewrite: (path) => path.replace(/^\/api.icegl/, ''),
                 },
             },
         },

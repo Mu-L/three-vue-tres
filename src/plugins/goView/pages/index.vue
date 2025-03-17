@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-27 11:22:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-10-08 10:30:24
+ * @LastEditTime: 2025-03-17 14:21:35
 -->
 <template>
     <TresCanvas window-size>
@@ -22,7 +22,7 @@
         <Suspense>
             <Environment
                 :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-                path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+                :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
             />
         </Suspense>
     </TresCanvas>
@@ -37,4 +37,6 @@ import { gridPlus } from 'PLS/floor'
 import { viewChart } from 'PLS/goView'
 import dataJson from '../common/1716877101106.json'
 // import dataJson from '../common/test.json'
+
+const isDev = process.env.NODE_ENV === 'development'
 </script>

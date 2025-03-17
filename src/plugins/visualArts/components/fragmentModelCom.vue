@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-13 09:05:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-13 10:30:08
+ * @LastEditTime: 2025-03-17 15:20:49
 -->
 <template>
     <TresMesh :geometry="geometry">
@@ -37,7 +37,10 @@ const mergeGeometriesForMesh = (model: THREE.Object3D) => {
 }
 
 const guanyuModel = (
-    await useGLTF('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/model/eCommerce/guanYu.glb', { draco: true, decoderPath: './draco/' })
+    await useGLTF(
+        (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/eCommerce/guanYu.glb',
+        { draco: true, decoderPath: './draco/' },
+    )
 ).scene
 const guanyuGeometries = mergeGeometriesForMesh(guanyuModel.children[0])
 guanyuGeometries.rotateX(Math.PI / 2)

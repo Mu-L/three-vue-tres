@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-18 10:22:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-19 11:26:28
+ * @LastEditTime: 2025-03-17 15:03:44
 -->
 <template>
     <TresCanvas v-bind="state" ref="tcRef" window-size>
@@ -32,7 +32,7 @@
         <Suspense>
             <Environment
                 :files="['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg']"
-                path="https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/6jpg/"
+                :path="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'"
             />
         </Suspense>
     </TresCanvas>
@@ -47,6 +47,7 @@ import { Environment } from 'PLS/basic'
 import { Pane } from 'tweakpane'
 import accumulativeShadowsCom from '../components/accumulativeShadowsCom.vue'
 
+const isDev = process.env.NODE_ENV === 'development'
 const state = reactive({
     alpha: true,
     shadows: true,

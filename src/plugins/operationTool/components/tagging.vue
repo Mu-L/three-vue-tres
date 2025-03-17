@@ -8,7 +8,7 @@
         <TresMeshNormalMaterial />
     </TresMesh>
 </template>
- 
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import * as THREE from 'three'
@@ -20,7 +20,7 @@ const { scene } = useTresContext()
 const torusref = ref()
 const boxref = ref()
 let boundingBox = null as any
-function loadFont(fontUrl :string) {
+function loadFont(fontUrl: string) {
     return new Promise((resolve, reject) => {
         const loader = new FontLoader()
         loader.load(
@@ -31,8 +31,11 @@ function loadFont(fontUrl :string) {
         )
     })
 }
-const font = await loadFont('https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/fonts/FZLanTingHeiS-UL-GB_Regular.json')
-const getOutBox = function (myMesh : any) {
+const font = await loadFont(
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+        '/fonts/FZLanTingHeiS-UL-GB_Regular.json',
+)
+const getOutBox = function (myMesh: any) {
     boundingBox = new THREE.Box3().setFromObject(myMesh)
     const size = new THREE.Vector3()
     boundingBox.getSize(size)
@@ -41,7 +44,7 @@ const getOutBox = function (myMesh : any) {
     // console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`)
     return { size, boxCenter }
 }
-const addOutBox = function (size:any, boxCenter:any) {
+const addOutBox = function (size: any, boxCenter: any) {
     const boxGeometry = new THREE.BoxGeometry(size.x, size.y, size.z)
     const edges = new THREE.EdgesGeometry(boxGeometry)
     const lineMaterial = new THREE.LineBasicMaterial({ color: 'red' })
@@ -50,7 +53,7 @@ const addOutBox = function (size:any, boxCenter:any) {
     lineSegments.position.copy(boxCenter)
     scene.value.add(lineSegments)
 }
-const createLabel = (text:any, position:any, targetNormal:any) => {
+const createLabel = (text: any, position: any, targetNormal: any) => {
     const textGeometry = new TextGeometry(text, {
         font,
         size: 3,
@@ -81,7 +84,7 @@ const createLabel = (text:any, position:any, targetNormal:any) => {
 
     return textMesh
 }
-const createLine = (start:any, end:any, targetNormal:any) => {
+const createLine = (start: any, end: any, targetNormal: any) => {
     const group = new THREE.Group()
     const lineGeometry = new THREE.BufferGeometry().setFromPoints([start, end])
     const line = new THREE.Line(lineGeometry, new THREE.LineBasicMaterial({ color: 'green' }))
@@ -125,7 +128,7 @@ const createLine = (start:any, end:any, targetNormal:any) => {
     return group
 }
 // 添加标注线和文本
-const addDimensionLabel = function (start:any, end:any, text:any) {
+const addDimensionLabel = function (start: any, end: any, text: any) {
     const midPoint = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5)
     const direction = new THREE.Vector3().subVectors(end, start).normalize()
     const lineGroup = createLine(start, end, direction)
@@ -134,7 +137,7 @@ const addDimensionLabel = function (start:any, end:any, text:any) {
     scene.value.add(label)
 }
 
-const changeObject = function (params:any) {
+const changeObject = function (params: any) {
     const { size, boxCenter } = getOutBox(params)
     addOutBox(size, boxCenter)
     const min = boundingBox.min
@@ -151,5 +154,4 @@ const changeObject = function (params:any) {
 }
 </script>
 
-<style>
-</style>
+<style></style>
