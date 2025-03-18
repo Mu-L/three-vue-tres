@@ -4,17 +4,23 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 08:44:36
+ * @LastEditTime: 2025-03-18 09:14:35
 -->
 <template>
-    <FDivider titlePlacement="left">{{ props.onePlugin.title + ' - ' + props.onePlugin.name }}</FDivider>
+    <FDivider titlePlacement="left">{{ onePlugin.title + ' - ' + onePlugin.name }}</FDivider>
     <FSpace vertical>
-        <a target="_blank" :href="props.onePlugin.website" style="text-decoration: none; color: black">
-            <FText v-if="props.onePlugin.author" class="text-right ml-[10px] w-95/100 mt-[-24px] block position-relative" style="color: #0f1222" size="small">
+        <span style="text-decoration: none; color: black">
+            <FText
+                v-if="props.onePlugin.author"
+                class="mt-[-24px] position-absolute right-[12px]"
+                @click="toAuthorPage(onePlugin.website)"
+                style="color: #0f1222;cursor: pointer"
+                size="small"
+            >
                 <UserOutlined class="position-relative top-[2px]" /> 作者：
                 {{ props.onePlugin.author }}
             </FText>
-        </a>
+        </span>
         <div class="p-2 ml-13" style="" v-html="props.onePlugin.intro"></div>
     </FSpace>
     <div class="flex flex-wrap flex-justify-start content-start mt-6 pl-6">
@@ -75,6 +81,10 @@ const props = withDefaults(
 )
 const { menuSetup } = useModel('forPreview')
 let publicPath = process.env.BASE_URL
+
+const toAuthorPage = (url: string) => {
+    window.open(url, '_blank')
+}
 
 onMounted(async () => {
     await loadJweixin()

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-09 11:18:33
+ * @LastEditTime: 2025-03-18 09:04:16
 -->
 <template>
     <div class="absolute menuSelf">
@@ -187,7 +187,7 @@ const goto = (value: string) => {
     if (value.value === 'tvtPluginUrl') {
         window.open('https://www.icegl.cn/tvtstore', '_blank')
     } else {
-        tabListRef.value[value.value]?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+        tabListRef.value[value.value]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 }
 
