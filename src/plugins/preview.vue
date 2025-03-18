@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 10:22:20
+ * @LastEditTime: 2025-03-18 10:58:57
 -->
 <template>
     <div class="absolute menuSelf">
@@ -153,7 +153,7 @@
 
 <script setup lang="ts">
 import { ref, provide, watch, onMounted, nextTick } from 'vue'
-import { defineRouteMeta, useModel, useRoute,useRouter } from '@fesjs/fes'
+import { defineRouteMeta, useModel, useRoute, useRouter } from '@fesjs/fes'
 import { FBadge, FDrawer, FMenu, FSubMenu, FMenuItem } from '@fesjs/fes-design'
 import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined } from '@fesjs/fes-design/icon'
 import { getPluginsConfig, getOnlinePluginConfig, detectDeviceType } from '../common/utils'
@@ -180,7 +180,7 @@ const menuGoto = (value: any) => {
 const tabListRef = ref([]) as any
 const pluginsConfig = ref({})
 pluginsConfig.value = getPluginsConfig() as any
-if (process.env.NODE_ENV === 'development' || process.env.FES_APP_ONLINE_API) {
+if ((process.env.NODE_ENV === 'development' && process.env.FES_APP_PLSNAME === undefined) || process.env.FES_APP_ONLINE_API) {
     getOnlinePluginConfig(pluginsConfig)
 }
 const router = useRouter()
@@ -197,7 +197,7 @@ const route = useRoute()
 onMounted(() => {
     nextTick(() => {
         const hash = route.hash
-        const tabdom = hash.startsWith('#') ? hash.slice(1) : hash as any
+        const tabdom = hash.startsWith('#') ? hash.slice(1) : (hash as any)
         if (tabdom) {
             tabListRef.value[tabdom]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }

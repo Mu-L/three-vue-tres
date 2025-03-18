@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-14 09:02:35
+ * @LastEditTime: 2025-03-18 10:49:19
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -99,7 +99,13 @@ export function patchRoutes ({ routes }) {
     }
 
     // 自动读取plugins目录下所有插件的pages的目录下的*.vue 并加入路由
-    const viteModules = import.meta.glob('./plugins/**/pages/**/*.vue')
+    let viteModules = import.meta.glob('./plugins/**/pages/**/*.vue')
+    if (process.env.FES_APP_PLSNAME !== undefined) {
+        const filteredModules = Object.fromEntries(
+            Object.entries(viteModules).filter(([path]) => path.startsWith(`./plugins/${process.env.FES_APP_PLSNAME}/pages/`))
+        )
+        viteModules = filteredModules
+    }
     const needAddRouter = {
         path: '/plugins',
         component: () => import("./components/forPreview/suspenseLayout.vue"),
