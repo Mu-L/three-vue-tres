@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 09:04:16
+ * @LastEditTime: 2025-03-18 10:22:20
 -->
 <template>
     <div class="absolute menuSelf">
@@ -152,8 +152,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, watch } from 'vue'
-import { defineRouteMeta, useModel } from '@fesjs/fes'
+import { ref, provide, watch, onMounted, nextTick } from 'vue'
+import { defineRouteMeta, useModel, useRoute,useRouter } from '@fesjs/fes'
 import { FBadge, FDrawer, FMenu, FSubMenu, FMenuItem } from '@fesjs/fes-design'
 import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined } from '@fesjs/fes-design/icon'
 import { getPluginsConfig, getOnlinePluginConfig, detectDeviceType } from '../common/utils'
@@ -177,19 +177,32 @@ const menuGoto = (value: any) => {
     }
 }
 
-const tabListRef = ref([])
+const tabListRef = ref([]) as any
 const pluginsConfig = ref({})
 pluginsConfig.value = getPluginsConfig() as any
 if (process.env.NODE_ENV === 'development' || process.env.FES_APP_ONLINE_API) {
     getOnlinePluginConfig(pluginsConfig)
 }
-const goto = (value: string) => {
+const router = useRouter()
+const goto = (value: any) => {
     if (value.value === 'tvtPluginUrl') {
         window.open('https://www.icegl.cn/tvtstore', '_blank')
     } else {
         tabListRef.value[value.value]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        router.replace({ hash: `#${value.value}` })
     }
 }
+
+const route = useRoute()
+onMounted(() => {
+    nextTick(() => {
+        const hash = route.hash
+        const tabdom = hash.startsWith('#') ? hash.slice(1) : hash as any
+        if (tabdom) {
+            tabListRef.value[tabdom]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+    })
+})
 
 const scrollToTop = () => {
     document.querySelector('.right-page-list')?.scrollTo({ top: 0, behavior: 'smooth' })
