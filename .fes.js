@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 13:57:12
+ * @LastEditTime: 2025-03-18 19:03:02
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -51,7 +51,9 @@ export default defineBuildConfig({
             UnoCSS({
                 /* options */
             }),
-            glsl(),
+            glsl({
+                warnDuplicatedImports: false, // 禁用重复导入警告
+            }),
             process.env.NODE_ENV === 'production' &&
                 obfuscatorPlugin({
                     debugger: false,

@@ -112,7 +112,7 @@
 
 # ✅ 快速开始
 
-```
+```js
 1、git clone 或者 直接下载 本项目
 
 2、cd 到项目根目录
@@ -127,7 +127,11 @@
 
 7、yarn build	// 自己项目 下的编译打包
 
-8、yarn both  // 同时启动 dev 和 pre.dev 可以边调试自己得项目，边对照移植样例和插件
+8、yarn pre.dev.one	// 只展示某一个案例/插件
+
+9、yarn pre.build.one // 针对某一个案例/插件打包，会根据配置下的依赖插件项保留资源，其余资源删除
+
+10、yarn both  // 同时启动 dev 和 pre.dev 可以边调试自己得项目，边对照移植样例和插件
 ```
 
 ![展示](./preview/compileMode.png)
