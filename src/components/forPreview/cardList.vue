@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-11 10:25:28
+ * @LastEditTime: 2025-03-18 08:44:36
 -->
 <template>
     <FDivider titlePlacement="left">{{ props.onePlugin.title + ' - ' + props.onePlugin.name }}</FDivider>
@@ -90,9 +90,15 @@ const jumpType = (url: string, addPreUrl: boolean) => {
     if (!uni.getEnv) {
         window.open(url, '_blank')
     } else {
-        const u = addPreUrl ? 'https://opensource.icegl.cn' + url : url
-        uni.navigateTo({
-            url: '/pages/debugDemo/onePreview/onePreview?urlPath=' + u,
+        uni.getEnv((res: any) => {
+            if (res.miniprogram) {
+                const u = addPreUrl ? 'https://opensource.icegl.cn' + url : url
+                uni.navigateTo({
+                    url: '/pages/debugDemo/onePreview/onePreview?urlPath=' + u,
+                })
+            } else {
+                window.open(url, '_blank')
+            }
         })
     }
 }

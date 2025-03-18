@@ -39,8 +39,8 @@
                         <template #description> <sapn style="color: #2d76d5">关于</sapn> </template>
                     </n-float-button>
                 </div>
-								<div style="display: flex" v-show="!showb">
-									<n-float-button shape="square" @click="toHomeRouter">
+                <div style="display: flex" v-show="!showb">
+                    <n-float-button shape="square" @click="toHomeRouter">
                         <n-icon color="#2D76D5">
                             <Home />
                         </n-icon>
@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { Home, Aperture, DiceOutline, SparklesOutline, ArrowBackCircleOutline } from '@vicons/ionicons5'
 import { NIcon, NFloatButton } from 'naive-ui'
-import { onMounted,ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { loadJweixin, loadWebView } from 'PLS/uniAppView/lib/initScript'
 
 declare const uni: any
@@ -64,13 +64,17 @@ const showb = ref(false)
 onMounted(async () => {
     await loadJweixin()
     await loadWebView()
-		if (uni.getEnv) {
-			showb.value = true
+    if (uni.getEnv) {
+        uni.getEnv((res: any) => {
+            if (res.miniprogram) {
+                showb.value = true
+            }
+        })
     }
 })
 
 const toHomeRouter = () => {
-	window.open('https://oss.icegl.cn/', '_blank')
+    window.open('https://oss.icegl.cn/', '_blank')
 }
 const toBack = () => {
     uni.navigateBack()
