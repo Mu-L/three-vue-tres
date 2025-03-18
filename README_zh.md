@@ -61,8 +61,8 @@
 -   如果访问太慢，请访问镜像站点1：[🌏 oss.icegl.cn](http://oss.icegl.cn/)
 -   如果访问太慢，请访问镜像站点2：[🌏 myhome.217dan.com:8899](http://myhome.217dan.com:8899/)
 -   如果有条件翻墙，也可直接访问 github 的镜像站:[🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
--   新增微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
--   微信扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
+-   全案例微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
+-   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
 ```shell
 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
