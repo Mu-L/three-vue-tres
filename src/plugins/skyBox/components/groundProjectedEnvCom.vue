@@ -23,7 +23,7 @@ const props = withDefaults(
     }>(),
     {
         texture:
-            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
             '/images/skyBox/round_platform_1k.exr',
         size: 100,
     },

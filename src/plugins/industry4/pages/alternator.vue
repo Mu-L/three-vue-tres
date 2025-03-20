@@ -81,7 +81,7 @@ Resource.loadResources([
     {
         functionName: 'ZipLoader',
         url:
-            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+            (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
             '/model/industry4/alternator/geometries.zip',
     },
     { functionName: 'ZipLoader', url: './plugins/industry4/alternator/images.zip' },

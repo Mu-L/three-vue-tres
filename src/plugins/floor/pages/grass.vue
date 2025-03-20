@@ -14,7 +14,7 @@
             <grass />
         </Suspense>
         <Suspense>
-            <skyBoxBmesh :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/desert_1k.hdr'" />
+            <skyBoxBmesh :texture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/desert_1k.hdr'" />
         </Suspense>
     </TresCanvas>
 </template>

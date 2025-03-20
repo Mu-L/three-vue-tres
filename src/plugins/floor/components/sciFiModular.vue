@@ -30,7 +30,7 @@ const props = withDefaults(
 )
 const { scene } = useTresContext()
 const { nodes } = await useGLTF(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/floor/modelDraco.glb',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/floor/modelDraco.glb',
     { draco: true, decoderPath: './draco/' },
 )
 const ob = nodes.Cube016__0

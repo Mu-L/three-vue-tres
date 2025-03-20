@@ -44,7 +44,7 @@ const Effect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: T
 }
 
 new LUTCubeLoader().load(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/model/industry4/F-6800-STD.cube',
     function (result) {
         lutPass.lut = result.texture3D

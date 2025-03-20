@@ -20,14 +20,14 @@
 		<Suspense>
 			<!-- <ssrtGlassMesh modelPath="./plugins/basic/htmls/model/model.gltf" modelName="Macbook" -->
 			<ssrtGlassMesh :scale="2" v-bind="glassConfig"
-				:modelPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/eCommerce/guanYu.glb'"
+				:modelPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/guanYu.glb'"
 				modelName="statue"
-				:skyBoxTexture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'"
+				:skyBoxTexture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/workshop_blur.jpg'"
 />
 		</Suspense>
 
 		<Suspense>
-			<skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'" />
+			<skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/workshop_blur.jpg'" />
 		</Suspense>
 	</TresCanvas>
 </template>

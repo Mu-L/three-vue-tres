@@ -101,7 +101,7 @@ export default defineBuildConfig({
             host: '0.0.0.0',
             proxy: {
                 '/resource.cos': {
-                    target: 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com',
+                    target: 'https://opensource.cdn.icegl.cn',
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/resource.cos/, ''),
                 },

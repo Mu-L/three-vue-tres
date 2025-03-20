@@ -83,7 +83,7 @@
 import { AlwaysStencilFunc, EqualStencilFunc, ReplaceStencilOp, Mesh } from 'three'
 import { useGLTF, useAnimations, Levioso } from "@tresjs/cientos"
 
-const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/eCommerce/eFan/nFan.gltf`)
+const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/eFan/nFan.gltf`)
 
 //电风扇的动画
 const { actions } = useAnimations(animations, nodes.Sketchfab_model)

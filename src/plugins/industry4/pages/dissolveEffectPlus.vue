@@ -14,7 +14,7 @@
         <torusKnot v-bind="torusKnotConfigState" :color="meshConfig.torusKnotColor" />
         <Suspense>
             <skyBoxDmesh
-                :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'"
+                :texture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/workshop_blur.jpg'"
             />
         </Suspense>
         <bloomPass />

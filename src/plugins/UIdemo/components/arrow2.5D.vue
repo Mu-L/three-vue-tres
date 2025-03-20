@@ -18,7 +18,7 @@
                 v-bind="t3dConfig"
                 cast-shadow
                 :rotation="props.textRotation"
-                :font="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/fonts/FZLanTingHeiS-UL-GB_Regular.json'"
+                :font="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/fonts/FZLanTingHeiS-UL-GB_Regular.json'"
                 center
             >
                 <TresMeshStandardMaterial :color="props.color" :emissive="props.color" />

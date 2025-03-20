@@ -24,7 +24,7 @@
         </TresMesh>
 
         <Suspense>
-            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/'" />
+            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/6jpg/'" />
         </Suspense>
     </TresCanvas>
 </template>

@@ -65,13 +65,13 @@ pos.applyMatrix4(props.map.matrix)
 const scale = util.scaleImg(props.map, { x: 67, y: 11 }, { x: 140, y: 57 }, props.height) // 这里计算卫星云图的位置
 
 const imgList = [
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171300.HDF.png',
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171400.HDF.png',
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171500.HDF.png',
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171600.HDF.png',
 ]
 let curImgIndex = 0

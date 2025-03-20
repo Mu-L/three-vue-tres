@@ -38,7 +38,7 @@ const mergeGeometriesForMesh = (model: THREE.Object3D) => {
 
 const guanyuModel = (
     await useGLTF(
-        (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/eCommerce/guanYu.glb',
+        (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/guanYu.glb',
         { draco: true, decoderPath: './draco/' },
     )
 ).scene

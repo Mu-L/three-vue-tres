@@ -32,7 +32,7 @@ function loadFont(fontUrl: string) {
     })
 }
 const font = await loadFont(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
         '/fonts/FZLanTingHeiS-UL-GB_Regular.json',
 )
 const getOutBox = function (myMesh: any) {

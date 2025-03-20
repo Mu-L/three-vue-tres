@@ -32,7 +32,7 @@ const props = defineProps({
 })
 
 const { scene, nodes, materials } = await useGLTF(
-    `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/industry4/lambo.glb`,
+    `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/lambo.glb`,
     {
         draco: true,
         decoderPath: './draco/',

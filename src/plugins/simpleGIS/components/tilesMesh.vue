@@ -20,7 +20,7 @@ import * as THREE from 'three'
 
 const tiles = new TilesRenderer(
     `${
-        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'
     }/3Dtiles/simpleGIS/data/tileset.json`,
 )
 tiles.errorTarget = 0

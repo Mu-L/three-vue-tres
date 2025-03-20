@@ -48,7 +48,7 @@
 		{
 			"uuid": "1a051587-b9c6-44a5-baf2-d2621a113a4b",
 			"type": "BufferGeometry",
-			"data": "url:https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/json/tresEditor/svelteMachine/1a051587-b9c6-44a5-baf2-d2621a113a4b.json"
+			"data": "url:https://opensource.cdn.icegl.cn/json/tresEditor/svelteMachine/1a051587-b9c6-44a5-baf2-d2621a113a4b.json"
 		}
 	],
 	"materials": [

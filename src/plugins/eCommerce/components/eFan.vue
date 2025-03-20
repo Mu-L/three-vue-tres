@@ -18,7 +18,7 @@ const props = defineProps({
 	},
 })
 
-const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'}/model/eCommerce/eFan/nFan.gltf`)
+const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/eFan/nFan.gltf`)
 
 const modelAttUVarr = (name) => nodes.Sketchfab_model.getObjectByName(name).geometry.attributes.uv.array
 //备份原始UV值

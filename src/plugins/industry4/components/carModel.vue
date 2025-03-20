@@ -24,7 +24,7 @@ import * as THREE from 'three'
 
 const { scene, nodes, materials } = await useGLTF(
     `${
-        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+        process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'
     }/model/industry4/911-transformed.glb`,
     {
         draco: true,
@@ -57,7 +57,7 @@ materials.paint.reflectivity = 1
 materials.paint.diffuse = new THREE.Color(0xffffff)
 materials.paint.specular = new THREE.Color(0xffffff)
 
-// const pTexture = await loadHDR("https://opensource-1314935952.cos.ap-nanjing.myqcloud.com/images/skyBox/desert_1k.hdr")
+// const pTexture = await loadHDR("https://opensource.cdn.icegl.cn/images/skyBox/desert_1k.hdr")
 // Object.values(materials).forEach((ma) => {
 // 	console.log(ma)
 // 	ma.envMap = pTexture

@@ -26,7 +26,7 @@
         <Suspense>
             <skyBox
                 :texture="
-                    (isDev === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') +
+                    (isDev === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
                     '/images/skyBox/workshop_blur.jpg'
                 "
             />

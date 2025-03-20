@@ -24,7 +24,7 @@
         </Suspense>
 
         <Suspense>
-            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/workshop_blur.jpg'" />
+            <skyBox :texture="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/workshop_blur.jpg'" />
         </Suspense>
     </TresCanvas>
 </template>

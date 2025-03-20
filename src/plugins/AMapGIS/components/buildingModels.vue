@@ -61,7 +61,7 @@ const transP3 = (arr: Array<number>) => {
 
 const meshList = reactive([] as any)
 const markBuildingsPrimary = async () => {
-	const buildingsPrimary = await loadGeojson((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com')+'/json/AMapGIS/latlngbuildings.geojson', 'buildings')
+	const buildingsPrimary = await loadGeojson((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn')+'/json/AMapGIS/latlngbuildings.geojson', 'buildings')
 	for (let index = 0; index < buildingsPrimary.length; index++) {
 		const element = buildingsPrimary[index]
 		transP3(element.geometry)

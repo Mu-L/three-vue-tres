@@ -28,7 +28,7 @@ const geometry = props.geometry //new THREE.PlaneGeometry(2, 2, 200, 200)
 
 const cubetextureloader = new THREE.CubeTextureLoader()
 const textureCube = cubetextureloader
-    .setPath((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/6jpg/')
+    .setPath((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/6jpg/')
     .load(['pos-x.jpg', 'neg-x.jpg', 'pos-y.jpg', 'neg-y.jpg', 'pos-z.jpg', 'neg-z.jpg'])
 
 const pTexture = await useTexture(['./plugins/water/images/tiles.jpg'])

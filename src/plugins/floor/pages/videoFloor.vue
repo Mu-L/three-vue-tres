@@ -15,13 +15,13 @@
             v-bind="configState"
             :position="[0, 0, 10]"
             :size="[10, 10]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + 'video/floor/floorV1.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + 'video/floor/floorV1.mp4'"
         />
         <videoFloorCom
             color="#02a7ff"
             :position="[0, -1, 10]"
             :size="[13, 13]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/video/floor/floorV2.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV2.mp4'"
         />
 
         <videoFloorCom
@@ -29,14 +29,14 @@
             :opacity="0.6"
             :position="[0, 0, -10]"
             :size="[10, 10]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/video/floor/floorV3.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV3.mp4'"
         />
         <videoFloorCom
             color="#f605ff"
             :rotationZ="-0.01"
             :position="[0, -1, -10]"
             :size="[13, 13]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/video/floor/floorV3.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV3.mp4'"
         />
 
         <videoFloorCom
@@ -46,7 +46,7 @@
             :opacity="0.06"
             :textureRepeat="[3, 2]"
             :size="[40, 40]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/video/floor/grid.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/grid.mp4'"
         />
 
         <Suspense>

@@ -25,7 +25,7 @@ const props = withDefaults(
 )
 
 const { scene, materials } = await useGLTF(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/model/industry4/MRBike.glb',
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/MRBike.glb',
     {
         draco: true,
         decoderPath: './draco/',

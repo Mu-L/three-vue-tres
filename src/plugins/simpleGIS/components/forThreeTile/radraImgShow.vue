@@ -59,7 +59,7 @@ const imgList = []
 for (let index = 0; index < 9; index++) {
     imgList.push(
         `${
-            process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com'
+            process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'
         }/images/simpleGIS/QPFRef_202405311${index}40.png`,
     )
 }

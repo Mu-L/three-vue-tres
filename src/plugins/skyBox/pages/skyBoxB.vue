@@ -27,7 +27,7 @@
         <Suspense>
             <skyBox
                 :texture="
-                    (isDev === 'development' ? 'resource.cos' : 'https://opensource-1314935952.cos.ap-nanjing.myqcloud.com') + '/images/skyBox/desert_1k.hdr'
+                    (isDev === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/images/skyBox/desert_1k.hdr'
                 "
             />
         </Suspense>
