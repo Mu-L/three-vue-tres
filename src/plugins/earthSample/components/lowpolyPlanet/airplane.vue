@@ -4,7 +4,7 @@
  * @Autor: Hawk
  * @Date: 2023-10-13 09:05:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-03 12:24:00
+ * @LastEditTime: 2025-03-20 09:25:00
 -->
 <script setup lang="ts">
 import type { Object3D } from 'three'
@@ -16,7 +16,7 @@ const props = defineProps<{
 }>()
 
 const { scene } = await useGLTF(
-  './plugins/earthSample/model/lowpolyPlanet/airplane.gltf', // https://icegl-1314935952.cos.ap-beijing.myqcloud.com/assets/model/
+  './plugins/earthSample/model/lowpolyPlanet/airplane.gltf',
 )
 
 const airplane = scene

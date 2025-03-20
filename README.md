@@ -120,11 +120,11 @@ If you encounter any problems while using the project, please contact us through
 -   Q&A Community: [Graphics Community icegl.cn](https://www.icegl.cn/ask)
 
 <a href="https://www.icegl.cn/ask">
-<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230421/QQ20230421-121209.png" style="width:800px;max-width:100%;" alt="Graphics Community"></a>
+<img src="./preview/ask.png" style="width:800px;max-width:100%;" alt="Graphics Community"></a>
 
 -   We also welcome you to join our WeChat groups. Several groups are already full, so feel free to add me on WeChat, and I’ll invite you to join for learning and discussing WebGL together.
 <p align = "left">    
-<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230731/17d59bab46815cce1f4f1e09dcbb6ccc.png" width="300" />
+<img src="./preview/wx.png" width="300" />
 </p>
 
 # ⭐ Star History
@@ -144,7 +144,7 @@ The copyright information of third-party source code and binary files included i
 
 Follow our official WeChat account to receive the latest updates.
 <p align = "left">    
-<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240619/de51c5e66dd5a8647100cc3b61171223.jpg" width="300" />
+<img src="./preview/wxgzh.jpg" width="300" />
 </p>
 
 Copyright © 2022-2026 by 🧊icegl (https://www.icegl.cn)

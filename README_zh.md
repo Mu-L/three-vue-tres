@@ -184,12 +184,12 @@
   <tr>
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore" style="display:block;max-width:100%;">
-				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240814/5b370fdeb9e9817c4b78cd919da74d8a.png" alt="tres.js webgl">
+				<img src="./preview/tvtstore.png" alt="tres.js webgl">
 			</a>
 		</td>
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/p/tvtdeveloper" style="display:block;max-width:100%;">
-				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240712/bd350b8cb5bc46d4b7a05b903cf787b4.png" alt="tres.js webgl">
+				<img src="./preview/findyou.png" alt="tres.js webgl">
 			</a>
 		</td>
   </tr>
@@ -234,7 +234,7 @@
 		</td>
     <td style="padding: 10px;">
 			<p style="display:block;max-width:100%;">
-				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20230731/17d59bab46815cce1f4f1e09dcbb6ccc.png?imageMogr2/thumbnail/350x" alt="tres.js webgl">
+				<img src="./preview/wx.png" alt="tres.js webgl">
 			</p>
 		</td>
     <td style="padding: 10px;">
@@ -244,7 +244,7 @@
 		</td>
 		<td style="padding: 10px;">
 			<p style="display:block;max-width:100%;">
-				<img src="https://icegl-1314935952.cos.ap-beijing.myqcloud.com/uploads/20240619/de51c5e66dd5a8647100cc3b61171223.jpg?imageMogr2/thumbnail/350x" alt="tres.js webgl">
+				<img src="./preview/wxgzh.jpg" alt="tres.js webgl">
 			</p>
 		</td>
   </tr>
