@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 09:14:35
+ * @LastEditTime: 2025-03-25 18:01:44
 -->
 <template>
     <FDivider titlePlacement="left">{{ onePlugin.title + ' - ' + onePlugin.name }}</FDivider>
@@ -95,14 +95,14 @@ declare const uni: any
 
 const router = useRouter()
 
-// 小程序 uniapp端的跳转，若自己调试请更换地址  https://opensource.icegl.cn
+// 小程序 uniapp端的跳转，若自己调试请更换地址  https://oss.icegl.cn
 const jumpType = (url: string, addPreUrl: boolean) => {
     if (!uni.getEnv) {
         window.open(url, '_blank')
     } else {
         uni.getEnv((res: any) => {
             if (res.miniprogram) {
-                const u = addPreUrl ? 'https://opensource.icegl.cn' + url : url
+                const u = addPreUrl ? 'https://oss.icegl.cn' + url : url
                 uni.navigateTo({
                     url: '/pages/debugDemo/onePreview/onePreview?urlPath=' + u,
                 })
@@ -121,7 +121,7 @@ const toPage = (plugin: any, value: any, isOnline = false) => {
         path = `/plugins/${plugin.pNode}/${plugin.name}/${value.name}`
     }
     if (isOnline) {
-        path = 'https://opensource.icegl.cn/#' + path
+        path = 'https://oss.icegl.cn/#' + path
         return jumpType(path, false)
     }
     let routeUrl = router.resolve({
