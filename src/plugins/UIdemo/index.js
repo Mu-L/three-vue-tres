@@ -15,5 +15,5 @@ import starLoading from 'PLS/UIdemo/components/loading/starLoading.vue'
 import randomLoading from 'PLS/UIdemo/components/loading/randomLoading.vue'
 import defaultLoading from 'PLS/UIdemo/components/loading/default.vue'
 import * as ThreeMeshUI from 'PLS/UIdemo/lib/three-mesh-ui.module.js'
-
-export { loading1, loading2, bubbleLoading, vnyoonLoading, yangyangLoading, starLoading, randomLoading, defaultLoading, ThreeMeshUI }
+import reactor from 'PLS/UIdemo/components/loading/reactor.vue'
+export {reactor, loading1, loading2, bubbleLoading, vnyoonLoading, yangyangLoading, starLoading, randomLoading, defaultLoading, ThreeMeshUI }
