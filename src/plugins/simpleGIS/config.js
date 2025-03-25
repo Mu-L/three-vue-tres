@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-23 16:40:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 10:16:43
+ * @LastEditTime: 2025-03-25 09:46:31
  */
 
 export default {
@@ -46,6 +46,18 @@ export default {
             name: 'renderer3DTiles',
             title: '3DTiles展示',
             referenceSource: { title: 'nasa-ammos', url: 'https://github.com/NASA-AMMOS/3DTilesRendererJS' },
+        },
+        {
+            src: 'plugins/simpleGIS/preview/cesiumIon.png',
+            type: 'img',
+            name: 'cesiumIon',
+            title: 'cesiumIon倾斜摄影'
+        },
+        {
+            src: 'plugins/simpleGIS/preview/googleMapsExample.png',
+            type: 'img',
+            name: 'googleMapsExample',
+            title: 'googleMaps演示'
         },
         { src: 'plugins/simpleGIS/preview/mapBuildings.gif', type: 'img', name: 'mapBuildings', title: '地图和3DTiles结合' },
         {
