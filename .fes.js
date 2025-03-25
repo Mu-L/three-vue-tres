@@ -72,6 +72,7 @@ export default defineBuildConfig({
                 }),
         ],
         build: {
+            target: 'esnext', // 或者 'es2020' 以支持 BigInt
             chunkSizeWarningLimit: 1000, // 单位为KB
             rollupOptions: {
                 output: {

@@ -70,7 +70,7 @@ function sanitizeFilename(filename: string) {
     return sanitized
 }
 let hasPreview = true
-let comUrl = 'https://opensource.icegl.cn/#/plugins/'
+let comUrl = 'https://oss.icegl.cn/#/plugins/'
 let imgName = ''
 if (props.onePreview.url) {
     comUrl = props.onePreview.url
