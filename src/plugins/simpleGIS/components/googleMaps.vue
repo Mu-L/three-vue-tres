@@ -56,7 +56,7 @@ reinstantiateTiles()
 tiles.setCamera(camera.value)
 tiles.setResolutionFromRenderer(camera.value, renderer.value)
 transition = new CameraTransitionManager(camera.value, null)
-transition.perspectiveCamera.position.set(4800000, 2570000, 14720000)
+transition.perspectiveCamera.position.set(-3960140, 3689031, -3364162)
 transition.perspectiveCamera.lookAt(0, 0, 0)
 transition.autoSync = false
 transition.orthographicPositionalZoom = false
