@@ -58,6 +58,10 @@ src/plugins/humanMedicine
 public/plugins/humanMedicine
 src/plugins/indoorMap
 public/plugins/indoorMap
+src/plugins/topoEditor
+public/plugins/topoEditor
+src/plugins/topoProject
+public/plugins/topoProject
 
 
 # 排除安装插件包
