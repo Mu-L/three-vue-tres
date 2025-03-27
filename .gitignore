@@ -62,6 +62,9 @@ src/plugins/topoEditor
 public/plugins/topoEditor
 src/plugins/topoProject
 public/plugins/topoProject
+src/plugins/communityMetaverse
+public/plugins/communityMetaverse
+
 
 
 # 排除安装插件包
