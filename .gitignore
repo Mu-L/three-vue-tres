@@ -66,6 +66,8 @@ src/plugins/communityMetaverse
 public/plugins/communityMetaverse
 src/plugins/singleLayerEarth
 public/plugins/singleLayerEarth
+src/plugins/useThreeGeospatial
+public/plugins/useThreeGeospatial
 
 
 
