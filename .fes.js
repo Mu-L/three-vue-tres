@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 19:03:02
+ * @LastEditTime: 2025-04-01 15:43:12
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -20,6 +20,7 @@ const timeStamp = new Date().getTime()
 const combinedIsCustomElement = (tag) => tag.startsWith('iconify-icon') || templateCompilerOptions.template.compilerOptions.isCustomElement(tag)
 
 export default defineBuildConfig({
+    mountElementId: 'tvt-app',
     title: 'TvT.js',
     publicPath: './',
     access: {
@@ -37,6 +38,11 @@ export default defineBuildConfig({
             ['1', '有效的'],
         ],
     },
+    qiankun: {
+        micro: {
+            useDevMode: true,
+        },
+    },
     //add by 地虎降天龙
     viteVuePlugin: {
         template: {
@@ -46,7 +52,7 @@ export default defineBuildConfig({
         },
     },
     viteOption: {
-        base: './', //     ./     /icegl-three-vue-tres/
+        base: './',
         plugins: [
             UnoCSS({
                 /* options */

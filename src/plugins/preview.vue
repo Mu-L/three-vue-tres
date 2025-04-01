@@ -347,7 +347,7 @@ const openTopMune = () => {
 
 <style lang="less">
 @media (max-width: 900px) {
-    #app > section > div > header > div.fes-menu.is-horizontal.is-inverted.layout-menu {
+    #tvt-app > section > div > header > div.fes-menu.is-horizontal.is-inverted.layout-menu {
         display: none;
     }
     .fes-layout-container {

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 10:49:19
+ * @LastEditTime: 2025-04-01 10:43:48
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -36,20 +36,8 @@ export default defineRuntimeConfig({
             if ((process.env.FES_APP_PLUGINS === 'true' && process.env.NODE_ENV === 'development') || process.env.FES_APP_ONLINE_API) {
                 getMenu()
             }
-            // return new Promise((resolve) => {
-            //     setTimeout(() => {
-            //         setRole('admin');
-            //         // 初始化应用的全局状态，可以通过 useModel('@@initialState') 获取，具体用法看@/components/UserCenter 文件
-            //         resolve({
-            //             userName: '李雷',
-            //         });
-            //     }, 1000);
-            // });
         },
     },
-    // layout: {
-    //     renderCustom: () => <UserCenter />,
-    // },
 })
 
 export function layout (layoutConfig) {
@@ -162,4 +150,23 @@ export function modifyRoute (memo) {
             ...memo.routes
         ]
     }
+}
+
+export const qiankun = {
+    // 应用加载之前
+    async bootstrap (props) {
+        console.log('son TvT.js bootstrap', props)
+    },
+    // 应用 render 之前触发
+    async mount (props) {
+        console.log('son TvT.js mount', props)
+    },
+    // 当 props 更新时触发
+    async update (props) {
+        console.log('son TvT.js update', props)
+    },
+    // 应用卸载之后触发
+    async unmount (props) {
+        console.log('son TvT.js unmount', props)
+    },
 }

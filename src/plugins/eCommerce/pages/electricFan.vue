@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-16 08:58:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 11:15:02
+ * @LastEditTime: 2025-04-01 11:13:52
 -->
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
@@ -39,13 +39,16 @@ const onClick = (color) => {
 	<div class="landingpage-bg w-full inset-0 h-full" />
 	<div class="absolute p-8 md:p-0 w-full inset-0 h-full
     flex flex-col md:flex-row md:justify-center md:items-center"
-		:style="{ backgroundColor: state.selectedColor + '80' }">
+		:style="{ backgroundColor: state.selectedColor + '80' }"
+>
 		<div class="w-full h-full pos-absolute md:w-2/3 md:h-1/2 shadow-lg rounded flex flex-col md:flex-row opacity-66"
-			:style="{ backgroundColor: oldColor }">
+			:style="{ backgroundColor: oldColor }"
+>
 			<div class="w-full h-full overflow-hidden pos-absolute">
 				<div ref="circleScaleRef" class="circleScale"
 					:class="{ circleScaleAnimationOld: circleScaleAnimation, circleScaleAnimationNew: !circleScaleAnimation }"
-					:style="{ backgroundColor: state.selectedColor }">
+					:style="{ backgroundColor: state.selectedColor }"
+>
 				</div>
 			</div>
 			<div class="h-1/2 w-full md:w-1/2" />
@@ -64,7 +67,8 @@ const onClick = (color) => {
 				<ul class="flex gap-8">
 					<li v-for="color in state.colors" :key="color">
 						<button class="w-10 h-10 rounded-full border-2 border-solid border-white mr-2 cursor-pointer"
-							:style="{ backgroundColor: color }" @click="onClick(color)" />
+							:style="{ backgroundColor: color }" @click="onClick(color)"
+/>
 					</li>
 				</ul>
 			</div>
@@ -87,7 +91,7 @@ const onClick = (color) => {
 </template>
 
 <style>
-#app {
+#tvt-app {
 	width: 100%;
 	height: 100vh;
 }
