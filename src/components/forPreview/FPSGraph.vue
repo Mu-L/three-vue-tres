@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 08:47:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-13 11:56:25
+ * @LastEditTime: 2025-04-01 16:00:37
 -->
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -59,7 +59,7 @@ useRafFn(({ timestamp }) => {
 <style lang="less" scoped>
 .fpsStats {
 	z-index: 99999;
-	position: fixed;
+	position: absolute;
 	display: flex;
 	align-items: center;
 	background-color: white;

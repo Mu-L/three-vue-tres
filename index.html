@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-07 09:46:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-20 09:06:18
+ * @LastEditTime: 2025-04-01 16:14:04
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +21,13 @@
     <script>
         var _hmt = _hmt || [];
         (function () {
-            const hm = document.createElement("script")
-    hm.src = "https://hm.baidu.com/hm.js?3c442b1ada04ec23771dfc94ea581c10"
-    const s = document.getElementsByTagName("script")[0]
-    s.parentNode.insertBefore(hm, s)
-})()
+            if (!window.__POWERED_BY_QIANKUN__) {
+                const hm = document.createElement("script")
+                hm.src = "https://hm.baidu.com/hm.js?3c442b1ada04ec23771dfc94ea581c10"
+                const s = document.getElementsByTagName("script")[0]
+                s.parentNode.insertBefore(hm, s)
+            }
+        })()
     </script>
 
     <script src="./lib/jweixin-1.6.0.js"></script>
