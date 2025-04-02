@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-01 15:43:12
+ * @LastEditTime: 2025-04-02 09:30:39
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -104,7 +104,12 @@ export default defineBuildConfig({
                 },
             },
         },
-        server: { 
+        server: {
+            server: {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
+            },
             host: '0.0.0.0',
             proxy: {
                 '/resource.cos': {

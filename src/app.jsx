@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-01 10:43:48
+ * @LastEditTime: 2025-04-02 11:00:19
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -20,17 +20,24 @@ import { addCollection } from 'iconify-icon'
 import uimIcons from '@iconify/json/json/uim.json'
 import lineMdIcons from '@iconify/json/json/line-md.json'
 import wiIcons from '@iconify/json/json/wi.json'
+import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
+import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import UserCenter from '@/components/forPreview/userCenter.vue'
 import PageLoading from '@/components/pageLoading.vue'
+
 
 addCollection(uimIcons)
 addCollection(lineMdIcons)
 addCollection(wiIcons)
 
+let qiankunTvtStore = null
 export default defineRuntimeConfig({
     beforeRender: {
         loading: <PageLoading />,
         action () {
+            if (qiankunWindow.__POWERED_BY_QIANKUN__) {
+                qiankunTvtStore = useQiankunTvtStore()
+            }
             const { signin, getMenu } = useModel('forPreview')
             signin()
             if ((process.env.FES_APP_PLUGINS === 'true' && process.env.NODE_ENV === 'development') || process.env.FES_APP_ONLINE_API) {
@@ -51,11 +58,13 @@ export function layout (layoutConfig) {
     }
 }
 
+
 export function onAppCreated ({ app }) {
     app.use(FMenu)
     app.use(Tres)
 
     window.$vue = app
+
     // if (process.env.FES_APP_PLUGINS === 'true') { 
     console.log(chalk.hex('#1c86e5')(`
      ░▒▓████████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓████████▓▒░                 ░▒▓█▓▒░  ░▒▓███████▓▒░ 
@@ -152,14 +161,21 @@ export function modifyRoute (memo) {
     }
 }
 
-export const qiankun = {
+export const qiankun = { 
     // 应用加载之前
     async bootstrap (props) {
         console.log('son TvT.js bootstrap', props)
     },
     // 应用 render 之前触发
     async mount (props) {
+
         console.log('son TvT.js mount', props)
+        if (props) {
+            props.onGlobalStateChange((state, prev) => {
+                qiankunTvtStore.setGlobalState(state)
+            })
+            window.qiankunProps = props
+        }
     },
     // 当 props 更新时触发
     async update (props) {

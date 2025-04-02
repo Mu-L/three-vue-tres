@@ -9,11 +9,6 @@
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
 
-        <TresMesh ref="sphereRef2" :position="[4, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
-            <TresSphereGeometry :args="[2, 32, 32]" />
-            <TresMeshToonMaterial color="#006060" />
-        </TresMesh>
-
         <TresMesh :rotation="[-Math.PI / 2, 0, 0]" receive-shadow>
             <TresPlaneGeometry :args="[20, 20, 20, 20]" />
             <TresMeshToonMaterial />
@@ -33,6 +28,7 @@ import { reactive, ref, onMounted, shallowRef, watchEffect } from 'vue'
 import { TresCanvas, useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
+import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
 
 const state = reactive({
     clearColor: '#201919',
@@ -65,27 +61,32 @@ const controlsState = reactive({
 })
 
 const sphereRef = ref()
-const sphereRef2 = ref()
 const TDirectionalLight = shallowRef()
 
-// const { onLoop, pause, resume } = useRenderLoop()
 const { onLoop } = useRenderLoop()
-
-onLoop(({ elapsed }) => {
+const qiankunTvtStore = useQiankunTvtStore() as any
+let timeplay = 0
+onLoop(() => {
     if (!sphereRef.value) return
-    sphereRef.value.position.y += Math.sin(elapsed) * 0.01
-    sphereRef2.value.position.y += Math.sin(elapsed) * 0.01
+    if (qiankunTvtStore.floatMove) {
+        timeplay++
+        sphereRef.value.position.y = 4 + Math.sin(timeplay / 60) * 3
+    }
 })
-
 function onPointerEnter(ev: any) {
     if (ev) {
-        ev.object.material.color.set('#DFFF45')
-        // pause()
+        if (ev.object.material.color.getHexString() !== 'ffff40') {
+            window.qiankunProps?.setGlobalState({ mouseInState: true, curType: 'mouseIn' })
+            ev.object.material.color.set('#ffFF40')
+        }
     }
 }
 function onPointerLeave(ev: any) {
     if (ev) {
-        ev.eventObject.material.color.set('#006060')
+        if (ev.object.material.color.getHexString() !== '006060') {
+            window.qiankunProps?.setGlobalState({ mouseInState: false, curType: 'mouseIn' })
+            ev.eventObject.material.color.set('#006060')
+        }
     }
 }
 
@@ -103,6 +104,7 @@ watchEffect(() => {
 
 const height = ref('auto')
 onMounted(() => {
+    sphereRef.value.position.y = 4
     const parentElement = document.querySelector('.app-main')
     if (parentElement) {
         height.value = `${parentElement.clientHeight}px`
