@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-02 09:30:39
+ * @LastEditTime: 2025-04-02 18:44:16
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -14,7 +14,7 @@ import { templateCompilerOptions } from '@tresjs/core'
 import UnoCSS from 'unocss/vite'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import glsl from 'vite-plugin-glsl'
-import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator'
+import javascriptObfuscator from 'vite-plugin-javascript-obfuscator'
 
 const timeStamp = new Date().getTime()
 const combinedIsCustomElement = (tag) => tag.startsWith('iconify-icon') || templateCompilerOptions.template.compilerOptions.isCustomElement(tag)
@@ -52,7 +52,7 @@ export default defineBuildConfig({
         },
     },
     viteOption: {
-        base: './',
+        base: 'http://192.168.18.170:8899/', // './' 若在线部署用于生产环境 且 是使用qiankun微前端时，需要配置base为主应用地址
         plugins: [
             UnoCSS({
                 /* options */
@@ -61,17 +61,16 @@ export default defineBuildConfig({
                 warnDuplicatedImports: false, // 禁用重复导入警告
             }),
             process.env.NODE_ENV === 'production' &&
-                obfuscatorPlugin({
-                    debugger: false,
-                    // include: ['src/plugins/'],
-                    // exclude: ['/node_modules/', '/src/.fes/', '/src/app.jsx', /index.jsx$/],
-                    // apply: 'build',
+                javascriptObfuscator({
+                    apply: 'build',
+                    include: [/src\/.*\.js$/],
+                    exclude: ['node_modules/**'],
                     options: {
-                        // 配置项，根据需要进行调整
                         optionsPreset: 'default',
-                        // identifierNamesGenerator: 'mangled',
-                        debugProtection: true,
+                        debugProtection: true,               
                         disableConsoleOutput: true,
+                        controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
+                        identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
                         reservedStrings: ['suspenseLayout.vue', '/plugins'],
                         // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
                     },
@@ -88,11 +87,13 @@ export default defineBuildConfig({
                             return id.toString().split('node_modules/')[1].split('/')[0]
                         }
                     },
+                    format: 'es',
                     chunkFileNames: `js/[name].[hash]${timeStamp}.js`,
                     entryFileNames: `js/[name].[hash]${timeStamp}.js`,
                     assetFileNames: `[ext]/[name].[hash]${timeStamp}.[ext]`,
                 },
             },
+            sourcemap: false,
             minify: process.env.NODE_ENV === 'production' ? 'terser' : false,
         },
         // 全局 css 注册
