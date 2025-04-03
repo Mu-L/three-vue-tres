@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 10:13:40
+ * @LastEditTime: 2025-04-03 11:03:20
 -->
 <template>
     <TresGroup :scale="props.scale">
@@ -45,7 +45,7 @@ const gridHelp = new GridHelper(props.size[0] - 0.5, props.size[1])
 gridHelp.visible = props.showGridHelper
 
 let mapurl = props.mapUrl
-debugger
+
 if (qiankunWindow.__POWERED_BY_QIANKUN__) {
     mapurl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + mapurl
 }
