@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-02 11:00:19
+ * @LastEditTime: 2025-04-03 09:57:29
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -25,7 +25,6 @@ import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import UserCenter from '@/components/forPreview/userCenter.vue'
 import PageLoading from '@/components/pageLoading.vue'
 
-
 addCollection(uimIcons)
 addCollection(lineMdIcons)
 addCollection(wiIcons)
@@ -37,6 +36,13 @@ export default defineRuntimeConfig({
         action () {
             if (qiankunWindow.__POWERED_BY_QIANKUN__) {
                 qiankunTvtStore = useQiankunTvtStore()
+                // debugger
+                // const purl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+                // globalThis.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
+                // window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
+                // window.__webpack_public_path__ = purl
+                // qiankunWindow.__webpack_public_path__ = purl
+                // Object.defineProperty(import.meta, 'url', { get: () => purl })
             }
             const { signin, getMenu } = useModel('forPreview')
             signin()
@@ -168,7 +174,6 @@ export const qiankun = {
     },
     // 应用 render 之前触发
     async mount (props) {
-
         console.log('son TvT.js mount', props)
         if (props) {
             props.onGlobalStateChange((state, prev) => {

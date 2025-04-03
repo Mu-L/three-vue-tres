@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-04-01 15:50:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-02 11:25:25
+ * @LastEditTime: 2025-04-03 09:14:57
  */
 export default {
     name: 'qiankunTvt',
@@ -31,6 +31,14 @@ export default {
             type: 'img',
             name: 'events',
             title: '通讯实例',
+            disableFPSGraph: false,
+            disableSrcBtn: true,
+        },
+        {
+            src: 'plugins/medical/preview/yuriBrain.png',
+            type: 'img',
+            name: 'other',
+            title: '其他场景移植',
             disableFPSGraph: false,
             disableSrcBtn: true,
         },

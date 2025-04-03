@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-02 18:44:16
+ * @LastEditTime: 2025-04-03 09:09:30
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -52,7 +52,7 @@ export default defineBuildConfig({
         },
     },
     viteOption: {
-        base: 'http://192.168.18.170:8899/', // './' 若在线部署用于生产环境 且 是使用qiankun微前端时，需要配置base为主应用地址
+        base: './', // './' 若在线部署用于生产环境 且 是使用qiankun微前端时，需要配置base为主应用地址
         plugins: [
             UnoCSS({
                 /* options */
@@ -91,6 +91,7 @@ export default defineBuildConfig({
                     chunkFileNames: `js/[name].[hash]${timeStamp}.js`,
                     entryFileNames: `js/[name].[hash]${timeStamp}.js`,
                     assetFileNames: `[ext]/[name].[hash]${timeStamp}.[ext]`,
+                    name: 'TvT.js',
                 },
             },
             sourcemap: false,
