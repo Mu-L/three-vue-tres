@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-04-01 15:50:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 13:47:35
+ * @LastEditTime: 2025-04-03 14:12:22
  */
 export default {
     name: 'qiankunTvt',
@@ -18,6 +18,19 @@ export default {
     updateTime: '2025-04-01',
     require: ['floor','medical'],
     preview: [
+        {
+            src: `
+            1、这里演示了在vue2的后台站点中，快速引用tvt.js框架，落地项目。</br>
+            2、此站点作为qiankun的主应用,tvt.js作为子应用</br>
+            3、展示三维场景以及事件信息的最佳实践</br>
+            整体文档详见：<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/qiankunTvt" target="_blank">详细教程</a></br>
+            注：若无法访问，因为刚上线，这段时间会上线教程，先看演示地址：</br>
+            <a style="color: #ff00ff;" href="https://demo.icegl.cn" target="_blank">demo.icegl.cn</a></br>`,
+            type: 'text',
+            name: 'other',
+            title: '嵌入后台演示版本',
+            url: 'https://demo.icegl.cn',
+        },
         {
             src: 'plugins/qiankunTvt/preview/theBasic.png',
             type: 'img',
