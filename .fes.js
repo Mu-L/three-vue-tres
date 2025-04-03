@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 14:00:38
+ * @LastEditTime: 2025-04-03 21:14:05
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -22,7 +22,7 @@ const combinedIsCustomElement = (tag) => tag.startsWith('iconify-icon') || templ
 export default defineBuildConfig({
     mountElementId: 'tvt-app',
     title: 'TvT.js',
-    publicPath: './', // './' 若在线部署用于生产环境 且 是使用qiankun微前端时，需要配置base为主应用地址 https://demo.icegl.cn/tvt/
+    publicPath: './', // './' 若在线部署用于生产环境 且 是使用qiankun微前端时，需要配置base为主应用地址 https://micro.icegl.cn/tvt/
     access: {
         roles: {
             admin: ['*'],
