@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 11:03:20
+ * @LastEditTime: 2025-04-03 19:37:26
 -->
 <template>
     <TresGroup :scale="props.scale">
@@ -45,9 +45,8 @@ const gridHelp = new GridHelper(props.size[0] - 0.5, props.size[1])
 gridHelp.visible = props.showGridHelper
 
 let mapurl = props.mapUrl
-
 if (qiankunWindow.__POWERED_BY_QIANKUN__) {
-    mapurl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + mapurl
+    mapurl = process.env.BASE_URL + mapurl
 }
 const { map } = await useTexture({ map: mapurl })
 map.wrapS = RepeatWrapping
