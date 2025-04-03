@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-04-01 15:50:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 09:14:57
+ * @LastEditTime: 2025-04-03 13:47:35
  */
 export default {
     name: 'qiankunTvt',
@@ -16,7 +16,7 @@ export default {
     state: 'active',
     creatTime: '2025-04-01',
     updateTime: '2025-04-01',
-    require: [],
+    require: ['floor','medical'],
     preview: [
         {
             src: 'plugins/qiankunTvt/preview/theBasic.png',
