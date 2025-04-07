@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 09:57:29
+ * @LastEditTime: 2025-04-07 09:51:13
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -36,10 +36,10 @@ export default defineRuntimeConfig({
         action () {
             if (qiankunWindow.__POWERED_BY_QIANKUN__) {
                 qiankunTvtStore = useQiankunTvtStore()
-                // debugger
-                // const purl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
-                // globalThis.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
-                // window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
+                const purl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+                globalThis.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
+                window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = purl
+                console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
                 // window.__webpack_public_path__ = purl
                 // qiankunWindow.__webpack_public_path__ = purl
                 // Object.defineProperty(import.meta, 'url', { get: () => purl })

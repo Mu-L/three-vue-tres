@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-03 21:14:33
+ * @LastEditTime: 2025-04-07 09:50:40
 -->
 <template>
     <TresGroup :scale="props.scale">
@@ -46,10 +46,14 @@ gridHelp.visible = props.showGridHelper
 
 let mapurl = props.mapUrl
 if (qiankunWindow.__POWERED_BY_QIANKUN__) {
-    mapurl = process.env.BASE_URL + mapurl
-    // mapurl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + mapurl
-    // console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
-    // console.log('mapurl', mapurl)
+    mapurl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + mapurl
+    // if (process.env.NODE_ENV === 'development') {
+    //     mapurl = qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + mapurl
+    // } else {
+    //     mapurl = process.env.BASE_URL + mapurl
+    // }
+    console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
+    console.log('process.env.BASE_URL', process.env.BASE_URL)
 }
 const { map } = await useTexture({ map: mapurl })
 map.wrapS = RepeatWrapping
