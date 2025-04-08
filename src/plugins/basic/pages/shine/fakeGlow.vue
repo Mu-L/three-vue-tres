@@ -1,5 +1,5 @@
 <template>
-    <TresCanvas window-size>
+    <TresCanvas window-size :clearColor="0x0000001" >
         <TresPerspectiveCamera :position="[0, 25, 25]" :near="0.1" :fov="65" />
         <TresAmbientLight :intensity="1.5" />
         <TresDirectionalLight :position="[100, 100, 60]" :intensity="20" />

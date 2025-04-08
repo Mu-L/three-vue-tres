@@ -38,7 +38,7 @@ const state = reactive({
     alpha: true,
     toneMapping: ACESFilmicToneMapping,
     windowSize: true,
-    clearColor: 0x000000,
+    clearColor: '#000000',
 })
 const controlsState = reactive({
     enableDamping: true,

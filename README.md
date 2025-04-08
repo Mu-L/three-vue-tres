@@ -47,8 +47,7 @@ This project integrates into three major ecosystems:
 
 ## 🏕 Click to preview：[🌏 opensource.icegl.cn](https://opensource.icegl.cn)
 
--   If access is too slow, try Mirror Site 1：[🌏 oss.icegl.cn](http://oss.icegl.cn/)
--   If access is too slow, try Mirror Site 2：[🌏 myhome.217dan.com:8899](http://myhome.217dan.com:8899/)
+-   If access is too slow, try Mirror Site：[🌏 oss.icegl.cn](http://oss.icegl.cn/)
 -   github Mirror Site：[🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
 
 ```shell

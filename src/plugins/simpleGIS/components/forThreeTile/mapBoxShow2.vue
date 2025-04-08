@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-18 15:14:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-19 17:39:57
+ * @LastEditTime: 2025-04-08 09:11:46
 -->
 <template>
     <TresDirectionalLight ref="tdLight" :position="[0, 2e3, 1e3]" :intensity="1" />
@@ -54,19 +54,19 @@ const MAPBOXKEY = 'pk.eyJ1IjoiaGF3azg2MTA0IiwiYSI6ImNrbTQ3cWtyeTAxejEzMHBtcW42bm
 // })
 
 // mapbox 高程数据源
-const mapBoxDemSource = new tt.plugin.MapBoxSource({
-    token: MAPBOXKEY,
-    dataType: 'terrain-rgb',
-    style: 'mapbox.terrain-rgb',
-    maxLevel: 15,
-})
+// const mapBoxDemSource = new tt.plugin.MapBoxSource({
+//     token: MAPBOXKEY,
+//     dataType: 'terrain-rgb',
+//     style: 'mapbox.terrain-rgb',
+//     maxLevel: 15,
+// })
 
 // 创建地图对象
 const map = new tt.TileMap({
     // 影像数据源
     imgSource: [new tt.plugin.GDSource({ style: '6' }), new tt.plugin.GDSource({ style: '8' })],
     // 高程数据源
-    demSource: mapBoxDemSource,
+    // demSource: mapBoxDemSource,
     // 地图投影中央经线经度
     lon0: 90,
     // 最小缩放级别

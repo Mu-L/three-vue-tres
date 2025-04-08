@@ -4,15 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-08 15:06:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-13 18:15:16
+ * @LastEditTime: 2025-04-08 08:49:08
 -->
 <script setup lang="ts">
 import { bubbleLoading as loading } from 'PLS/UIdemo'
 import { ref, watchEffect, reactive } from 'vue'
 
-import { ScrollControls } from '@tresjs/cientos'
+// import { ScrollControls } from '@tresjs/cientos'
 import { SRGBColorSpace } from 'three'
 import { Pane } from 'tweakpane'
+import ScrollControls from '../components/ScrollControls.vue'
 import particalFBO from '../components/particalFBO.vue'
 import particalPass from '../components/particalPass.vue'
 
@@ -55,7 +56,7 @@ paneControl.addBinding(paneState, 'color', {
         <TresPerspectiveCamera :position="[0, 0, -4]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
 
         <particalPass :use="paneState.pass" />
-        <ScrollControls v-model="progress" :distance="10" :smooth-scroll="0.1" html-scroll>
+        <ScrollControls v-model="progress" :distance="10" :smooth-scroll="0.1" htmlScroll>
             <Suspense>
                 <particalFBO :progress="progress" :color="paneState.color" />
             </Suspense>

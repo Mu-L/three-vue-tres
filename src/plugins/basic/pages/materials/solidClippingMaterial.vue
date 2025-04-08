@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 09:31:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-26 12:08:17
+ * @LastEditTime: 2025-04-08 08:25:38
 -->
 <script setup lang="ts">
 import { ref, watchEffect, reactive } from 'vue'
@@ -56,7 +56,7 @@ paneControl.addBinding(clipPlanes[2], 'constant', {
 </script>
 
 <template>
-    <TresCanvas ref="tcRef" window-size>
+    <TresCanvas ref="tcRef" window-size :clearColor="0x0000001">
         <TresPerspectiveCamera :fov="40" :near="0.1" :far="200" :position="[-1.5, 2.5, 3.0]" />
         <TresGridHelper :args="[2, 10]" :position="[0, -1, 0]" />
         <TresHemisphereLight :args="[0xffffff, 0x080808, 4.5]" :position="[-1.25, 1, 1.25]" />

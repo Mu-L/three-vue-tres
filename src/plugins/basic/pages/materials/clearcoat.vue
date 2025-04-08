@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-24 17:08:56
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-24 18:21:47
+ * @LastEditTime: 2025-04-08 08:24:21
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -38,15 +38,14 @@ import { ACESFilmicToneMapping } from 'three'
 import { reactive } from 'vue'
 import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
-import { Environment, Lightformer } from 'PLS/basic'
-import { ClearcoatMaterial } from 'PLS/basic'
+import { Environment, Lightformer , ClearcoatMaterial } from 'PLS/basic'
 import { Pane } from 'tweakpane'
 
 const state = reactive({
     alpha: true,
     toneMapping: ACESFilmicToneMapping,
     windowSize: true,
-    clearColor: 0x000000,
+    clearColor: '#000000',
 })
 const controlsState = reactive({
     enableDamping: true,

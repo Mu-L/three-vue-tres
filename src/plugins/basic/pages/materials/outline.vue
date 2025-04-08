@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-11 15:11:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-27 09:54:05
+ * @LastEditTime: 2025-04-08 08:20:06
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -44,7 +44,7 @@ const state = reactive({
     alpha: true,
     toneMapping: ACESFilmicToneMapping,
     windowSize: true,
-    clearColor: 0x000000,
+    clearColor: '#000000',
 })
 const controlsState = reactive({
     enableDamping: true,
