@@ -163,6 +163,30 @@
 			</a>
 		</td>
   </tr>
+	  <tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://docs.icegl.cn/docs/three-vue-tres/frontend/uniapp.html">
+				uniapp小程序生态：[ 一码全端覆盖-解决方案 ]
+			</a>
+		</td>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://docs.icegl.cn/docs/three-vue-tres/qiankun/introduction.html">
+				qiankun微前端：[ 快速接入您现有项目中 ]
+			</a>
+		</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">
+			<a href="https://docs.icegl.cn/docs/three-vue-tres/frontend/uniapp.html" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20250416/e4d22f7669b1525f5c927270865c8373.jpg?imageMogr2/thumbnail/350x" alt="tres.js webgl">
+			</a>
+		</td>
+    <td style="padding: 10px;">
+			<a href="https://docs.icegl.cn/docs/three-vue-tres/qiankun/introduction.html" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20250416/0fe9fccaaffd82c2e6baba319a2a1ea0.jpg?imageMogr2/thumbnail/350x" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 # 🧩 丰富的[插件应用市场🌏tvtstore](https://www.icegl.cn/tvtstore)
