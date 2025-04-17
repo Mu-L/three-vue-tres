@@ -1,12 +1,28 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-04-16 16:18:32
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-04-17 08:27:23
+-->
 <template>
-    <primitive :object="controller1" />
-    <primitive :object="controller2" />
+    <primitive :object="controller0">
+        <slot name="controller0">
+            <TresLine :scale="[1, 1, 5]" :geometry="geometry" />
+        </slot>
+    </primitive>
+    <primitive :object="controller1">
+        <slot name="controller1">
+            <TresLine :scale="[1, 1, 5]" :geometry="geometry" />
+        </slot>
+    </primitive>
+
+    <primitive :object="controllerGrip0" />
+    <primitive :object="hand0" />
 
     <primitive :object="controllerGrip1" />
     <primitive :object="hand1" />
-
-    <primitive :object="controllerGrip2" />
-    <primitive :object="hand2" />
 </template>
 
 <script setup lang="ts">
@@ -14,7 +30,7 @@ import * as THREE from 'three'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton'
 import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerModelFactory'
 import { XRHandModelFactory } from 'three/examples/jsm/webxr/XRHandModelFactory'
-import { useTresContext, useRenderLoop, useLoop } from '@tresjs/core'
+import { useTresContext } from '@tresjs/core'
 
 const { renderer, camera, scene } = useTresContext() as any
 renderer.value.xr.enabled = true
@@ -23,56 +39,30 @@ const sessionInit = {
     requiredFeatures: ['hand-tracking'],
 }
 const vrButtonDom = VRButton.createButton(renderer.value, sessionInit)
+vrButtonDom.style.zIndex = '999999'
 document.body.appendChild(vrButtonDom)
 
 // controllers
-const controller1 = renderer.value.xr.getController(0)
-const controller2 = renderer.value.xr.getController(1)
+const controller0 = renderer.value.xr.getController(0)
+const controller1 = renderer.value.xr.getController(1)
 
 // hand models
 const controllerModelFactory = new XRControllerModelFactory()
 const handModelFactory = new XRHandModelFactory()
 
+// Hand 0
+const controllerGrip0 = renderer.value.xr.getControllerGrip(0)
+controllerGrip0.add(controllerModelFactory.createControllerModel(controllerGrip0))
+const hand0 = renderer.value.xr.getHand(0)
+hand0.add(handModelFactory.createHandModel(hand0))
+
 // Hand 1
-const controllerGrip1 = renderer.value.xr.getControllerGrip(0)
+const controllerGrip1 = renderer.value.xr.getControllerGrip(1)
 controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1))
-const hand1 = renderer.value.xr.getHand(0)
+const hand1 = renderer.value.xr.getHand(1)
 hand1.add(handModelFactory.createHandModel(hand1))
 
-// Hand 2
-const controllerGrip2 = renderer.value.xr.getControllerGrip(1)
-controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2))
-const hand2 = renderer.value.xr.getHand(1)
-hand2.add(handModelFactory.createHandModel(hand2))
-
 const geometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -1)])
-const line = new THREE.Line(geometry)
-line.name = 'line'
-line.scale.z = 5
-controller1.add(line.clone())
-controller2.add(line.clone())
-
-// const { onLoop } = useRenderLoop()
-
-// onLoop(({ delta }) => {
-// 	console.log('onLoop delta', delta)
-// 	renderer.value.render(scene.value, camera.value)
-// })
-
-// const { render } = useLoop()
-// render(({ renderer: rrrr, scene:sss, camera: ccc }) => {
-//     console.log('render ...')
-//     rrrr.render(sss, ccc)
-// })
-function onWindowResize() {
-    if (camera.value) {
-        camera.value.aspect = window.innerWidth / window.innerHeight
-        camera.value.updateProjectionMatrix()
-    }
-    renderer.value.setSize(window.innerWidth, window.innerHeight)
-}
-window.addEventListener('resize', onWindowResize)
-onWindowResize()
 
 renderer.value.setAnimationLoop(() => {
     renderer.value.render(scene.value, camera.value)
