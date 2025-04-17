@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-01-02 11:04:43
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-04-17 18:17:42
+ */
 module.exports = {
     // parser: 'babel-eslint',
     extends: ['@webank/eslint-config-webank/vue.js'],
@@ -25,7 +33,7 @@ module.exports = {
         'prettier/prettier': 'off',
         'vue/space-unary-ops': 'off',
         'vue/comma-dangle': 'off',
-        'no-debugger': 'off',
+        'no-debugger': 'error', // 重新开启 no-debugger 规则，防止调试语句被提交到生产环境
         'guard-for-in': 'off',
         semi: ['error', 'never'],
         // "init-declarations": "off",

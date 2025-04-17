@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-07 18:03:28
+ * @LastEditTime: 2025-04-17 18:19:25
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -60,20 +60,28 @@ export default defineBuildConfig({
                 warnDuplicatedImports: false, // 禁用重复导入警告
             }),
             process.env.NODE_ENV === 'production' &&
-                javascriptObfuscator({
-                    apply: 'build',
-                    include: [/src\/.*\.js$/],
-                    exclude: ['node_modules/**'],
-                    options: {
-                        optionsPreset: 'default',
-                        debugProtection: true,               
-                        disableConsoleOutput: true,
-                        controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
-                        identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
-                        reservedStrings: ['suspenseLayout.vue', '/plugins'],
-                        // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
-                    },
-                }),
+            javascriptObfuscator({
+                apply: 'build',
+                include: [/src\/.*\.js$/],
+                exclude: ['node_modules/**', '!node_modules/three/**', '!node_modules/@tresjs/core/**', '!node_modules/@tresjs/cientos/**',
+                    /[\\/]@alienkitty[\\/]/,
+                ],
+                options: {
+                    optionsPreset: 'high-obfuscation', //'default',
+                    debugProtection: true,
+                    disableConsoleOutput: true,
+                    controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
+                    identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
+                    reservedStrings: ['suspenseLayout.vue'],
+                    compact: true,
+                    stringArray: true,
+                    stringArrayThreshold: 0.75,
+                    stringArrayEncoding: ['rc4'],
+                    splitStrings: false,
+                    transformObjectKeys: false,
+                    // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
+                },
+            }),
         ],
         build: {
             target: 'esnext', // 或者 'es2020' 以支持 BigInt
@@ -106,10 +114,8 @@ export default defineBuildConfig({
             },
         },
         server: {
-            server: {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },
+            headers: {
+                'Access-Control-Allow-Origin': '*',
             },
             host: '0.0.0.0',
             proxy: {
