@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-04-16 16:08:15
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-17 08:14:38
+ * @LastEditTime: 2025-04-17 11:14:51
 -->
 <template>
     <TresCanvas v-bind="state">
@@ -28,7 +28,7 @@ const state = reactive({
     clearColor: '#444444',
     shadows: true,
     antialias: true,
-    renderMode: 'on-demand',
+    renderMode: 'demand',
     windowSize: true,
 })
 </script>
