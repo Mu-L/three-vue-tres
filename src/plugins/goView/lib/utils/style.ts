@@ -58,7 +58,7 @@ export const getEditCanvasConfigStyle = (canvas: EditCanvasConfigType) => {
 }
 
 export const animationsClass = (animations: string[]) => {
-  if (animations.length) {
+  if (animations?.length) {
     return `animate__animated  animate__${animations[0]}`
   }
   return ''
