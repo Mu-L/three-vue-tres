@@ -4,14 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-15 22:00:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-17 15:53:19
+ * @LastEditTime: 2025-05-07 10:09:11
  */
 import radraA from './components/radras/radraA.vue'
 import radraB from './components/radras/radraB.vue'
 import diffuseCircle from './components/radras/diffuseCircle.vue'
 import depthBufferDiffuse from './components/radras/depthBufferDiffuse.vue'
 import precipitation from './components/weather/precipitation.vue'
+import precipitationForEditor from './components/weather/precipitationForEditor.vue'
 import cloudMesh from './components/weather/cloudMesh.vue'
+import clouds from './components/weather/clouds.vue'
 import markA from './components/buildings/buildingsMarkA.vue'
 import fireA from './components/fire/fireA.vue'
 import fireB from './components/fire/fireB.vue'
@@ -30,7 +32,9 @@ export {
     diffuseCircle,
     depthBufferDiffuse,
     precipitation,
+    precipitationForEditor,
     cloudMesh,
+    clouds,
     markA,
     fireA,
     fireB,
