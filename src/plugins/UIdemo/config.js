@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-12 11:16:41
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-31 09:18:20
+ * @LastEditTime: 2025-05-14 11:34:31
  */
 export default {
     name: 'UIdemo',
@@ -34,5 +34,6 @@ export default {
         },
         { src: 'plugins/UIdemo/preview/loadingManagerStyle.png', type: 'img', name: 'loadingManagerStyle', title: '资源加载器Loading' },
         { src: 'plugins/UIdemo/preview/threeMeshUIstyle.png', type: 'img', name: 'threeMeshUIstyle', title: 'MeshUI简单样式' },
+        { src: 'plugins/UIdemo/preview/bannerLabel.png', type: 'img', name: 'bannerLabel', title: '精灵图文字' },
     ],
 }
