@@ -4,24 +4,26 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 19:07:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-19 20:12:32
+ * @LastEditTime: 2025-05-14 17:52:11
 -->
 <template>
-    <TresGroup :rotateX="-Math.PI / 2" ref="coneGroup">
-        <primitive :object="scene" />
-        <TresMesh :renderOrder="999999">
-            <TresCircleGeometry :args="[floorSize, 32]" />
-            <TresMeshStandardMaterial
-                :color="floorColor"
-                :metalness="0.0"
-                :roughness="0.6"
-                transparent
-                :opacity="0.8"
-                :depthTest="props.depthTest"
-                :depthWrite="false"
-                :map="pTexture"
-            />
-        </TresMesh>
+    <TresGroup>
+        <TresGroup :rotateX="-Math.PI / 2" ref="coneGroup">
+            <primitive :object="scene" />
+            <TresMesh :renderOrder="999999">
+                <TresCircleGeometry :args="[floorSize, 32]" />
+                <TresMeshStandardMaterial
+                    :color="floorColor"
+                    :metalness="0.0"
+                    :roughness="0.6"
+                    transparent
+                    :opacity="0.8"
+                    :depthTest="props.depthTest"
+                    :depthWrite="false"
+                    :map="pTexture"
+                />
+            </TresMesh>
+        </TresGroup>
     </TresGroup>
 </template>
 
