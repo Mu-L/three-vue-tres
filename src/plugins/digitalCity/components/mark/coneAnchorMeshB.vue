@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 19:07:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-15 14:19:58
+ * @LastEditTime: 2025-05-15 17:28:34
 -->
 <template>
     <TresGroup>
         <TresGroup :rotateX="-Math.PI / 2" ref="coneGroup">
             <primitive :object="modelScene" />
-            <TresMesh :renderOrder="999999">
+            <TresMesh>
                 <TresCircleGeometry :args="[floorSize, 32]" />
                 <TresMeshStandardMaterial
                     :color="floorColor"
@@ -62,7 +62,7 @@ modelMaterial.roughness = 0.5
 modelMaterial.transparent = true
 modelMaterial.opacity = 1
 modelMaterial.depthTest = props.depthTest
-modelScene.children[0].renderOrder = 999999
+modelScene.children[0].renderOrder = 0
 modelScene.children[0].material = modelMaterial
 
 const { map: pTexture } = await useTexture({

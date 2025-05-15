@@ -1,6 +1,6 @@
 <template>
     <TresSprite :scale="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor, 1]" :center="center[align] || [0.5, 0.5]">
-        <TresSpriteMaterial :map="texture" transparent depthTest :depthWrite="false" :blending="THREE.NormalBlending" />
+        <TresSpriteMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" />
     </TresSprite>
 </template>
 
@@ -132,7 +132,6 @@ makeTexture(gCtx)
 watch(
     () => props,
 	() => {
-			console.log(props)
         if (gCtx) {
             gCtx = makeCanvas()
             makeTexture(gCtx)
