@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 19:07:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-14 17:52:11
+ * @LastEditTime: 2025-05-15 14:19:58
 -->
 <template>
     <TresGroup>
         <TresGroup :rotateX="-Math.PI / 2" ref="coneGroup">
-            <primitive :object="scene" />
+            <primitive :object="modelScene" />
             <TresMesh :renderOrder="999999">
                 <TresCircleGeometry :args="[floorSize, 32]" />
                 <TresMeshStandardMaterial
@@ -52,14 +52,18 @@ const props = withDefaults(
     },
 )
 
-const { scene, materials } = await useGLTF('./plugins/digitalCity/model/coneAnchorB.glb', { draco: true, decoderPath: './draco/' })
-materials[''].color.set(props.anchorColor)
-materials[''].metalness = 0.0
-materials[''].roughness = 0.5
-materials[''].transparent = true
-materials[''].opacity = 1
-materials[''].depthTest = props.depthTest
-scene.children[0].renderOrder = 999999
+const { scene } = await useGLTF('./plugins/digitalCity/model/coneAnchorB.glb', { draco: true, decoderPath: './draco/' })
+
+const modelScene = scene.clone()
+const modelMaterial = modelScene.children[0].material.clone()
+modelMaterial.color.set(props.anchorColor)
+modelMaterial.metalness = 0.0
+modelMaterial.roughness = 0.5
+modelMaterial.transparent = true
+modelMaterial.opacity = 1
+modelMaterial.depthTest = props.depthTest
+modelScene.children[0].renderOrder = 999999
+modelScene.children[0].material = modelMaterial
 
 const { map: pTexture } = await useTexture({
     map: './plugins/digitalCity/image/waveCircle.png',
@@ -71,8 +75,8 @@ pTexture.repeat.set(1 / (width / height), 1)
 watch(
     () => [props.anchorColor, props.depthTest],
     ([color, depthTest]) => {
-        materials[''].color.set(color)
-        materials[''].depthTest = depthTest
+        modelMaterial.color.set(color)
+        modelMaterial.depthTest = depthTest
     },
 )
 
