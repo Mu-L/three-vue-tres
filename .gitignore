@@ -68,6 +68,8 @@ src/plugins/useThreeGeospatial
 public/plugins/useThreeGeospatial
 src/plugins/smartPark
 public/plugins/smartPark
+src/plugins/zoneMachinRoom
+public/plugins/zoneMachinRoom
 
 
 # 排除安装插件包
