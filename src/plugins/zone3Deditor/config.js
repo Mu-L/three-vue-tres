@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-05-14 15:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-19 16:59:17
+ * @LastEditTime: 2025-05-25 11:25:25
  */
 export default {
     name: 'zone3Deditor',
@@ -16,12 +16,12 @@ export default {
     3、测试用编辑器goview的配置 : <a style="color: #5384ff;" href="https://oss.icegl.cn/p/zone3Deditor/plugins/zone3Deditor/GoView.json" target="_blank">GoView.json</a><br>
     整体文档教程和插件下载详见：<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/zone3Deditor" target="_blank">区域场景编辑器</a><br>
     此插件会和tvt.js生态持续协同，不断加入组件，用于您项目的快速落地<br>`,
-    version: '1.0.0',
+    version: '1.0.1',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
     creatTime: '2025-04-18',
-    updateTime: '2025-05-16',
+    updateTime: '2025-05-26',
     require: ['basic','digitalCity','floor','UIdemo'],
     tvtstore: 'LICENSE',
     preview: [

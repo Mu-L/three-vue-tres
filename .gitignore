@@ -70,6 +70,8 @@ src/plugins/smartPark
 public/plugins/smartPark
 src/plugins/zoneMachinRoom
 public/plugins/zoneMachinRoom
+src/plugins/geoKit
+public/plugins/geoKit
 
 
 # 排除安装插件包
