@@ -72,7 +72,8 @@ src/plugins/zoneMachinRoom
 public/plugins/zoneMachinRoom
 src/plugins/geoKit
 public/plugins/geoKit
-
+src/plugins/geojson23dtiles
+public/plugins/geojson23dtiles
 
 # 排除安装插件包
 !pluginMaker/install/请把下载的插件包放在这里。

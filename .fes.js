@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-16 18:02:14
+ * @LastEditTime: 2025-05-25 20:16:03
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -68,6 +68,7 @@ export default defineBuildConfig({
                         '!node_modules/three/**',
                         '!node_modules/@tresjs/core/**',
                         '!node_modules/@tresjs/cientos/**',
+                        'src/plugins/geojson23dtiles/lib/**',
                         /[\\/]@alienkitty[\\/]/,
                     ],
                     options: {
