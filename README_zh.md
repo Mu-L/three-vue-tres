@@ -85,7 +85,7 @@
 		</td>
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;max-width:100%;">
-				<img src="./public/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
+				<img src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
 			</a>
 		</td>
   </tr>
