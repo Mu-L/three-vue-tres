@@ -63,6 +63,33 @@
 -   全案例微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
 -   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
+
+<table style="border: none; width: 100%; text-align: center;">
+  <tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index">
+				在线三维场景编辑器：[🪅免费导出源码+二次开发 ]
+			</a>
+		</td>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom">
+				智慧机房：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index" style="display:block;max-width:100%;">
+				<img src="./public/plugins/zone3Deditor/preview/index.png" alt="tres.js webgl">
+			</a>
+		</td>
+    <td style="padding: 10px;">
+			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;max-width:100%;">
+				<img src="./public/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
+</table>
 ```shell
 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
 ```
