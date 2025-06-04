@@ -20,6 +20,7 @@ import { addCollection } from 'iconify-icon'
 import uimIcons from '@iconify/json/json/uim.json'
 import lineMdIcons from '@iconify/json/json/line-md.json'
 import wiIcons from '@iconify/json/json/wi.json'
+import DisableDevtool from 'disable-devtool'
 import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import UserCenter from '@/components/forPreview/userCenter.vue'
@@ -68,6 +69,8 @@ export function layout (layoutConfig) {
 export function onAppCreated ({ app }) {
     app.use(FMenu)
     app.use(Tres)
+
+    process.env.NODE_ENV === 'production' && DisableDevtool()
 
     window.$vue = app
 

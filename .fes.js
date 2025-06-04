@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-25 20:16:03
+ * @LastEditTime: 2025-06-04 17:37:06
  */
 // import { resolve } from 'path';
 import { join } from 'path'
@@ -73,7 +73,7 @@ export default defineBuildConfig({
                     ],
                     options: {
                         optionsPreset: 'high-obfuscation', //'default',
-                        debugProtection: true,
+                        debugProtection: false,
                         disableConsoleOutput: true,
                         controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
                         identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
