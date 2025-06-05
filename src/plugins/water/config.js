@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-18 10:04:00
+ * @LastEditTime: 2025-06-05 08:42:02
  */
 
 export default {
@@ -17,6 +17,7 @@ export default {
     state: 'active',
     require: [],
     preview: [
+        { src: 'plugins/water/preview/staticWaterPage.png', type: 'img', name: 'staticWaterPage', title: '静态水' },
         { src: 'plugins/water/preview/tilingCaustics.png', type: 'img', name: 'tilingCaustics', title: '波纹A' },
         { src: 'plugins/water/preview/waterGlass.png', type: 'img', name: 'waterGlass', title: '波浪B' },
         { src: 'plugins/water/preview/waveC.png', type: 'img', name: 'waveC', title: '波浪C' },
