@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-07 17:01:07
+ * @LastEditTime: 2025-06-05 09:50:25
  */
 export default {
     name: 'floor',
@@ -16,6 +16,7 @@ export default {
     state: 'active',
     require: [],
     preview: [
+        { src: 'plugins/floor/preview/rubberTilesPage.png', type: 'img', name: 'rubberTilesPage', title: '橡胶地板' },
         { src: 'plugins/floor/preview/simpleReflector.png', type: 'img', name: 'simpleReflector', title: '简单镜面' },
         { src: 'plugins/floor/preview/reflectorShader.png', type: 'img', name: 'reflectorShader', title: '镜面材质着色器' },
         { src: 'plugins/floor/preview/reflectorDiffuse.png', type: 'img', name: 'reflectorDiffuse', title: 'fiber镜面' },

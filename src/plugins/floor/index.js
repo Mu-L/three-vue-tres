@@ -15,5 +15,6 @@ import gridPlus from './components/gridPlusCom.vue'
 import videoFloor from './components/videoFloor.vue'
 import digitalGround from './components/digitalGround.vue'
 import imgFloor from './components/imgFloor.vue'
+import rubberTiles from './components/rubberTiles.vue'
 
-export { reflectorDiffuse, reflectorDUDV, reflectorShaderMesh, reflectorMipMap, whiteFloorMesh, gridPlus, videoFloor, digitalGround, imgFloor }
+export { reflectorDiffuse, reflectorDUDV, reflectorShaderMesh, reflectorMipMap, whiteFloorMesh, gridPlus, videoFloor, digitalGround, imgFloor, rubberTiles }
