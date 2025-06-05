@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-05 09:50:25
+ * @LastEditTime: 2025-06-05 10:57:04
  */
 export default {
     name: 'floor',
@@ -21,6 +21,7 @@ export default {
         { src: 'plugins/floor/preview/reflectorShader.png', type: 'img', name: 'reflectorShader', title: '镜面材质着色器' },
         { src: 'plugins/floor/preview/reflectorDiffuse.png', type: 'img', name: 'reflectorDiffuse', title: 'fiber镜面' },
         { src: 'plugins/floor/preview/reflectorDUDV.png', type: 'img', name: 'reflectorDUDV', title: 'dudv镜面' },
+        { src: 'plugins/floor/preview/reflectorRoundedBoxPage.png', type: 'img', name: 'reflectorRoundedBoxPage', title: 'RoundedBox镜面' },
         { src: 'plugins/floor/preview/showFloor.png', type: 'img', name: 'showFloor', title: '地板模型拼接+镜面' },
         { src: 'plugins/floor/preview/videoFloor.png', type: 'img', name: 'videoFloor', title: 'video动态底座' },
         { src: 'plugins/floor/preview/imgFloor.png', type: 'img', name: 'imgFloor', title: '图片动态底座' },
