@@ -11,12 +11,12 @@ export default {
 	"title": "资源管理器插件",
 	"intro": `适用于TvT.js的资源管理器插件，结合loading管理器，预加载模型和材质等资源。使用方法详情请见：
 	<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/resourceManager" target="_blank">资源管理器插件</a>`,
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"author": '地虎降天龙',
 	"website": 'https://gitee.com/hawk86104',
 	"state": 'active',
 	"creatTime": '2024-08-09',
-	"updateTime": '2024-09-10',
+	"updateTime": '2025-06-05',
 	"tvtstore": 'FREE',
 	"require": [],
 	"preview": [

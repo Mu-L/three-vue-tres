@@ -1,11 +1,11 @@
 <template>
     <TresGroup>
-        <primitive :object="scene" />
+        <primitive v-if="modelScene" :object="toRaw(modelScene)" />
     </TresGroup>
 </template>
 <script lang="ts" setup>
-import { watch } from 'vue'
-import { useGLTF } from '@tresjs/cientos'
+import { watch, ref, toRaw } from 'vue'
+import { Resource } from 'PLS/resourceManager'
 
 const props = withDefaults(
     defineProps<{
@@ -19,16 +19,28 @@ const props = withDefaults(
         roughness: 0,
     },
 )
-
-const { scene } = await useGLTF('./plugins/water/model/staticWater.glb', { draco: true, decoderPath: './draco/' })
-scene.scale.set(0.2, 0.2, 0.2)
+Resource.getResource('GLTFLoader', './plugins/water/model/staticWater.glb', 'staticWater.glb')
+const modelR = Resource.getReactiveItem('staticWater.glb') as any
+const modelScene = ref(null)
+watch(
+    modelR,
+    (model) => {
+        if (model) {
+            modelScene.value = toRaw(model.scene).clone()
+            modelScene.value.scale.set(0.2, 0.2, 0.2)
+        }
+    },
+    { immediate: true },
+)
 
 watch(
     () => [props.waterColor, props.metalness, props.roughness],
     ([waterColor, metalness, roughness]) => {
-        ;(scene.children[1] as any).material.color.set(waterColor)
-        ;(scene.children[1] as any).material.metalness = metalness
-        ;(scene.children[1] as any).material.roughness = roughness
+        if (modelScene.value) {
+            ;(modelScene.value.children[1] as any).material.color.set(waterColor)
+            ;(modelScene.value.children[1] as any).material.metalness = metalness
+            ;(modelScene.value.children[1] as any).material.roughness = roughness
+        }
     },
     { immediate: true },
 )

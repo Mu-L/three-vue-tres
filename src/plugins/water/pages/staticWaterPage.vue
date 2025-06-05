@@ -6,9 +6,7 @@
         <Suspense>
             <Environment :background="true" files="./plugins/water/images/belfast_sunset_puresky_1k.hdr" />
         </Suspense>
-        <Suspense>
-            <staticWater v-bind="waterState" />
-        </Suspense>
+        <staticWater v-bind="waterState" />
     </TresCanvas>
 </template>
 
