@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-03 21:14:58
+ * @LastEditTime: 2025-06-06 14:47:20
  */
 
 export default {
@@ -70,6 +70,12 @@ export default {
             name: 'alternator',
             title: '发电机展示',
             disableFPSGraph: true,
+        },
+        {
+            src: 'plugins/industry4/preview/flexiblePipePage.png',
+            type: 'img',
+            name: 'flexiblePipePage',
+            title: '伸缩管线',
         },
         // { "src": "plugins/industry4/preview/deviceLight.png", "type": "img", "name": "deviceLightByComposerTres", "title": "发光后期useTres" },
     ],
