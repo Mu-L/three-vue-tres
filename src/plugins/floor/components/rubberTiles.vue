@@ -1,6 +1,14 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-06-05 09:50:35
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-06-07 09:47:09
+-->
 <template>
     <TresGroup>
-        <TresMesh :rotateX="-Math.PI / 2">
+        <TresMesh :rotateX="-Math.PI / 2" :receiveShadow="receiveShadow">
             <TresPlaneGeometry :args="[10, 10]" />
             <TresMeshStandardMaterial
                 :color="props.color"
@@ -29,6 +37,7 @@ const props = withDefaults(
         metalness?: number
         roughness?: number
         normalScale?: number
+        receiveShadow?: boolean
     }>(),
     {
         color: '#FFFFFF',
@@ -36,6 +45,7 @@ const props = withDefaults(
         metalness: 1,
         roughness: 0.66,
         normalScale: 1,
+        receiveShadow:false
     },
 )
 
