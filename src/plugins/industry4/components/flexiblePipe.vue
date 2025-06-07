@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-06 18:43:13
+ * @LastEditTime: 2025-06-07 08:39:07
 -->
 <template>
     <TresMesh>
@@ -76,7 +76,7 @@ Resource.getResource('TextureLoader', './plugins/digitalCity/image/line.png', 'l
 const getResourceTexture = Resource.getReactiveItem('line.png') as any
 const pTexture = ref(null) as any
 watch(getResourceTexture, (getResourceTexture) => {
-    if (getResourceTexture.isTexture) {
+    if (getResourceTexture?.isTexture) {
         pTexture.value = getResourceTexture
         pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
     }
