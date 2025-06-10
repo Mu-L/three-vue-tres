@@ -89,6 +89,20 @@
 			</a>
 		</td>
   </tr>
+	  <tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index">
+				炼化智能工厂可视化：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+		<tr>
+    <td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;max-width:100%;">
+				<img src="./public/plugins/zoneRefiningIndustry/preview/index.png" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 ```shell
