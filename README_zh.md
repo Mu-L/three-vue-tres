@@ -91,7 +91,7 @@
   </tr>
 	  <tr>
     <td style="padding:10px;font-size:1.2em;">
-			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index">
+			<a href="https://www.icegl.cn/tvtstore/zoneRefiningIndustry">
 				炼化智能工厂可视化：[ 编辑器直接落地项目 ]
 			</a>
 		</td>
