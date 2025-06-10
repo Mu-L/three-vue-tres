@@ -99,7 +99,7 @@
 		<tr>
     <td style="padding: 10px;">
 			<a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;max-width:100%;">
-				<img src="./public/plugins/zoneRefiningIndustry/preview/index.png" alt="tres.js webgl">
+				<img src="https://opensource.icegl.cn/plugins/zoneRefiningIndustry/preview/index.png" alt="tres.js webgl">
 			</a>
 		</td>
   </tr>
