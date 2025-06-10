@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-06-05 08:42:12
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-06-10 11:43:36
+-->
 <template>
     <TresGroup>
         <primitive v-if="modelScene" :object="toRaw(modelScene)" />
@@ -19,6 +27,14 @@ const props = withDefaults(
         roughness: 0,
     },
 )
+const lateWatchProp = () => {
+    if (modelScene.value) {
+        ;(modelScene.value.children[1] as any).material.color.set(props.waterColor)
+        ;(modelScene.value.children[1] as any).material.metalness = props.metalness
+        ;(modelScene.value.children[1] as any).material.roughness = props.roughness
+    }
+}
+
 Resource.getResource('GLTFLoader', './plugins/water/model/staticWater.glb', 'staticWater.glb')
 const modelR = Resource.getReactiveItem('staticWater.glb') as any
 const modelScene = ref(null)
@@ -27,7 +43,11 @@ watch(
     (model) => {
         if (model) {
             modelScene.value = toRaw(model.scene).clone()
-            modelScene.value.scale.set(0.2, 0.2, 0.2)
+            if (modelScene.value) {
+                modelScene.value.children[1].material = modelScene.value.children[1].material.clone()
+                modelScene.value.scale.set(0.2, 0.2, 0.2)
+                lateWatchProp()
+            }
         }
     },
     { immediate: true },
@@ -35,12 +55,8 @@ watch(
 
 watch(
     () => [props.waterColor, props.metalness, props.roughness],
-    ([waterColor, metalness, roughness]) => {
-        if (modelScene.value) {
-            ;(modelScene.value.children[1] as any).material.color.set(waterColor)
-            ;(modelScene.value.children[1] as any).material.metalness = metalness
-            ;(modelScene.value.children[1] as any).material.roughness = roughness
-        }
+    () => {
+        lateWatchProp()
     },
     { immediate: true },
 )
