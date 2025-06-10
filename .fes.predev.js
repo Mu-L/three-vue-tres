@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-10 15:33:02
+ * @LastEditTime: 2025-06-10 16:16:18
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -58,8 +58,21 @@ export default defineBuildConfig({
                 title: '🧩 插件市场',
             },
             {
-                path: 'https://www.icegl.cn/',
-                title: '🧊 ICEGL官网',
+                path: 'https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index',
+                title: '🆓 区域场景编辑器',
+            },
+            {
+                title: '🧊 ICEGL官网社区',
+                children: [
+                    {
+                        path: 'https://www.icegl.cn/',
+                        title: '🧊 ICEGL官网',
+                    },
+                    {
+                        path: 'https://www.icegl.cn/ask',
+                        title: '🙋‍♀️ 社区问答',
+                    },
+                ],
             },
             {
                 title: '👨‍🏫 课程中心',
@@ -77,10 +90,6 @@ export default defineBuildConfig({
                         title: '🌇 WebGL Shader中级教程',
                     },
                 ],
-            },
-            {
-                path: 'https://www.icegl.cn/ask',
-                title: '🙋‍♀️ 社区问答',
             },
             {
                 path: 'https://www.icegl.cn/tvtstore/uniAppView',

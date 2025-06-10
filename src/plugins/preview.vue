@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 10:58:57
+ * @LastEditTime: 2025-06-10 16:09:03
 -->
 <template>
     <div class="absolute menuSelf">
@@ -72,7 +72,7 @@
                         样例中心 <FBadge :max="999" :value="getMenusCount().case" class="count-fbdge big-cf" type="primary" size="small"
                     /></template>
                     <template v-for="(onePlugin, pkey) in filteredData">
-                        <f-menu-item v-if="pkey !== 'basic' && !isTvtstore(onePlugin)" :value="pkey">
+                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'caseCenter'" :value="pkey">
                             <template #label>
                                 <div class="flex absolute badge-group">
                                     <template v-for="(lbItem, lbKey) in getleftMenuBadge(onePlugin.name)">
@@ -101,15 +101,40 @@
                         </template>
                     </f-menu-item>
                     <template v-for="(onePlugin, pkey) in filteredData">
-                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin)" :value="pkey">
+                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'Tvtstore'" :value="pkey">
                             <template #label>
-                                <!-- <div class="flex absolute" style="left: 1px; flex-direction: column; top: 2px"> 插件市场中无 新、推荐、热门
-                                    <template v-for="(lbItem, lbKey) in getleftMenuBadge(onePlugin.name)">
-                                        <f-badge v-if="lbItem.show" :value="lbItem.text" class="tag-fbdge" type="primary" size="small" />
-                                    </template>
-                                </div> -->
                                 <div class="flex absolute badge-group">
                                     <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE'" />
+                                </div>
+                                <div class="flex absolute" style="top: 3px; right: 30px">
+                                    <f-badge :value="onePlugin.version" class="tag-fbdge" type="primary" size="small" />
+                                </div>
+                                <span class="left-m-text">{{ onePlugin.title }}</span>
+                                <FBadge :value="onePlugin.preview.length" class="count-fbdge" type="primary" size="small" />
+                            </template>
+                        </f-menu-item>
+                    </template>
+                </f-sub-menu>
+                <f-sub-menu value="4">
+                    <template #icon>
+                        <EditOutlined />
+                    </template>
+                    <template #label
+                        >区域场景编辑器 <FBadge :max="999" :value="getMenusCount().zoneEditor" class="count-fbdge big-cf" type="primary" size="small"
+                    /></template>
+                    <f-menu-item value="zoneEditorUrl">
+                        <template #label>
+                            <div class="flex absolute badge-group">
+                                <f-badge value="zoneEditor" class="tag-fbdge" type="danger" size="small" />
+                            </div>
+                            <span class="left-m-text">编辑器介绍</span>
+                        </template>
+                    </f-menu-item>
+                    <template v-for="(onePlugin, pkey) in filteredData">
+                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'zoneEditor'" :value="pkey">
+                            <template #label>
+                                <div class="flex absolute badge-group">
+                                    <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE' || onePlugin.name === 'zone3Deditor'" />
                                 </div>
                                 <div class="flex absolute" style="top: 3px; right: 30px">
                                     <f-badge :value="onePlugin.version" class="tag-fbdge" type="primary" size="small" />
@@ -137,12 +162,17 @@
                 </template>
             </template>
             <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
-                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && !isTvtstore(onePlugin)" :ref="(el) => (tabListRef[pkey] = el)">
+                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'caseCenter'" :ref="(el) => (tabListRef[pkey] = el)">
                     <cardList :onePlugin="onePlugin" />
                 </div>
             </template>
             <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
-                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin)" :ref="(el) => (tabListRef[pkey] = el)">
+                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'Tvtstore'" :ref="(el) => (tabListRef[pkey] = el)">
+                    <cardList :onePlugin="onePlugin" />
+                </div>
+            </template>
+            <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
+                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'zoneEditor'" :ref="(el) => (tabListRef[pkey] = el)">
                     <cardList :onePlugin="onePlugin" />
                 </div>
             </template>
@@ -155,7 +185,7 @@
 import { ref, provide, watch, onMounted, nextTick } from 'vue'
 import { defineRouteMeta, useModel, useRoute, useRouter } from '@fesjs/fes'
 import { FBadge, FDrawer, FMenu, FSubMenu, FMenuItem } from '@fesjs/fes-design'
-import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined } from '@fesjs/fes-design/icon'
+import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined, EditOutlined } from '@fesjs/fes-design/icon'
 import { getPluginsConfig, getOnlinePluginConfig, detectDeviceType } from '../common/utils'
 import cardList from '../components/forPreview/cardList.vue'
 import filterComFixed from '../components/forPreview/filterComFixed.vue'
@@ -187,6 +217,8 @@ const router = useRouter()
 const goto = (value: any) => {
     if (value.value === 'tvtPluginUrl') {
         window.open('https://www.icegl.cn/tvtstore', '_blank')
+    } else if (value.value === 'zoneEditorUrl') {
+        window.open('https://www.icegl.cn/tvtstore/zone3Deditor', '_blank')
     } else {
         tabListRef.value[value.value]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         router.replace({ hash: `#${value.value}` })
@@ -312,13 +344,22 @@ const getleftMenuBadge = (name: string) => {
 
 // 区分是否是案例中心的 还是 插件市场的
 const isTvtstore = (onePlugin: any) => {
-    return typeof onePlugin.tvtstore !== 'undefined'
+    if (typeof onePlugin.tvtstore !== 'undefined') {
+        if (onePlugin.name.startsWith('zone')) {
+            return 'zoneEditor'
+        } else {
+            return 'Tvtstore'
+        }
+    } else {
+        return 'caseCenter'
+    }
 }
 const getMenusCount = () => {
     const reCount = {
         basic: 0,
         case: 0,
         tvtstore: 0,
+        zoneEditor: 0,
     }
     for (const key in filteredData.value) {
         if (filteredData.value.hasOwnProperty(key)) {
@@ -329,10 +370,12 @@ const getMenusCount = () => {
                     }
                 }
             } else {
-                if (isTvtstore(filteredData.value[key])) {
+                if (isTvtstore(filteredData.value[key]) === 'Tvtstore') {
                     reCount.tvtstore += filteredData.value[key].preview.length
-                } else {
+                } else if (isTvtstore(filteredData.value[key]) === 'caseCenter') {
                     reCount.case += filteredData.value[key].preview.length
+                } else if (isTvtstore(filteredData.value[key]) === 'zoneEditor') {
+                    reCount.zoneEditor += filteredData.value[key].preview.length
                 }
             }
         }
