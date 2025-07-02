@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-05-14 15:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-10 15:47:14
+ * @LastEditTime: 2025-07-02 11:03:51
  */
 export default {
     name: 'zone3Deditor',
@@ -15,6 +15,8 @@ export default {
     2、测试用编辑器案例配置(最佳实践) : <a style="color: #5384ff;" href="https://oss.icegl.cn/p/zone3Deditor/plugins/zone3Deditor/TvTzone3Deditor.json" target="_blank">TvTzone3Deditor.json</a><br>
     3、测试用编辑器goview的配置 : <a style="color: #5384ff;" href="https://oss.icegl.cn/p/zone3Deditor/plugins/zone3Deditor/GoView.json" target="_blank">GoView.json</a><br>
     整体文档教程和插件下载详见：<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/zone3Deditor" target="_blank">区域场景编辑器</a><br>
+    QA:<br>
+    1、导出插件包安装后，需要再安装下免费插件依赖： <a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/useViewportGizmo" target="_blank">ViewportGizmo插件</a><br>
     此插件会和tvt.js生态持续协同，不断加入组件，用于您项目的快速落地<br>`,
     version: '1.1.0',
     author: '地虎降天龙',
