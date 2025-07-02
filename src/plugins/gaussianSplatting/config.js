@@ -12,7 +12,9 @@ export default {
     intro: `关于高斯泼渐的最佳实践<br/>
     1、读取展示ply的点云文件<br/>
     2、读取展示splat的泼渐文件<br/>
-    3、场景一是把高斯泼渐的格式 splat 转成 glb 再减面压缩后，适用于web场景的高效展示<br/>`,
+    3、场景一是把高斯泼渐的格式 splat 转成 glb 再减面压缩后，适用于web场景的高效展示<br/>
+    QA详情请见：<br/>
+    <a style="color: #5384ff;" href="https://www.icegl.cn/ask/article/22762.html" target="_blank">高斯溅射的最佳实践[链接与教程]</a>`,
     version: '1.0.0',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
