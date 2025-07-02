@@ -17,7 +17,6 @@
 #因为这两个库从npm包很难下载，且有的下架了
 #!/node_modules/@alienkitty/
 #!/node_modules/oimophysics/
-yarn.lock
 yarn-error.log
 package-lock.json
 
