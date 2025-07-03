@@ -40,28 +40,30 @@ const tsm = {
     },
     transparent: true,
     vertexShader: `
-									varying vec2 vUv;
-									void main(){
-										vUv=uv;
-										gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-									}`,
+varying vec2 vUv;
+
+void main(){
+    vUv=uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}`,
     fragmentShader: `
-									float PI = acos(-1.0);
-                  uniform vec3 uColor;
-									uniform float uOpacity;
-                  uniform float uTime;
-                  varying vec2 vUv;
-                  void main(){
-										vec2 uv = vUv+ vec2(0.0, uTime);
-										float current = abs(sin(uv.y * PI));
-										gl_FragColor.rgb=uColor;
-										gl_FragColor.a = mix(1.0, 0.0, current);
-										gl_FragColor.a = gl_FragColor.a*uOpacity;
-									}`,
+float PI = acos(-1.0);
+uniform vec3 uColor;
+uniform float uOpacity;
+uniform float uTime;
+varying vec2 vUv;
+
+void main(){
+    vec2 uv = vUv+ vec2(0.0, uTime);
+    float current = abs(sin(uv.y * PI));
+    gl_FragColor.rgb = uColor;
+    gl_FragColor.a = mix(1.0, 0.0, current);
+    gl_FragColor.a = gl_FragColor.a * uOpacity;
+}`,
 }
 
 watch(
-    () => [props.color, props.opacity],
+    () => [props.color, props.opacity] as const,
     ([color, opacity]) => {
         tsm.uniforms.uColor.value = new THREE.Color(color)
         // @ts-ignore
