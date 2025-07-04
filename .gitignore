@@ -77,6 +77,8 @@ src/plugins/zoneRefiningIndustry
 public/plugins/zoneRefiningIndustry
 src/plugins/smartFactory
 public/plugins/smartFactory
+src/plugins/zoneOfficeFloor
+public/plugins/zoneOfficeFloor
 
 # 排除安装插件包
 !pluginMaker/install/请把下载的插件包放在这里。
