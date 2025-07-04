@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 07:30:25
+ * @LastEditTime: 2025-07-04 10:49:56
 -->
 <template>
 	<TresGroup>
@@ -89,7 +89,7 @@ const lineGeometry = new LineGeometry()
 lineGeometry.setPositions(linePoints.flatMap(p => [p.x, p.y, 0]))
 
 var lineMaterial = new LineMaterial({
-	color: new THREE.Color(props.color), linewidth: 0.002
+	color: new THREE.Color(props.color), linewidth: 2
 })
 const line2Mesh = new Line2(lineGeometry, lineMaterial)
 

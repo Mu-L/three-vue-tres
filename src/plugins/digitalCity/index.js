@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-15 22:00:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-07 10:09:11
+ * @LastEditTime: 2025-07-04 09:12:24
  */
 import radraA from './components/radras/radraA.vue'
 import radraB from './components/radras/radraB.vue'
@@ -20,6 +20,7 @@ import fireB from './components/fire/fireB.vue'
 import smokeA from './components/smoke/smokeA.vue'
 import rippleMesh from './components/fence/rippleMesh.vue'
 import regionGlow from './components/fence/regionGlow.vue'
+import rectangleGlow from './components/fence/rectangleGlow.vue'
 import wave from './components/fence/wave.vue'
 import roadLightByLonLat from './components/roads/roadLightByLonLat.vue'
 import coneAnchorMeshA from './components/mark/coneAnchorMeshA.vue'
@@ -41,6 +42,7 @@ export {
     smokeA,
     rippleMesh,
     regionGlow,
+    rectangleGlow,
     wave,
     roadLightByLonLat,
     coneAnchorMeshA,

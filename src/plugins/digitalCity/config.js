@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 20:24:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 15:24:40
+ * @LastEditTime: 2025-07-04 08:48:32
  */
 export default {
     name: 'digitalCity',
@@ -52,6 +52,7 @@ export default {
         { src: 'plugins/digitalCity/preview/fence.png', type: 'img', name: 'fence', title: '围栏' },
         { src: 'plugins/digitalCity/preview/fenceWave.png', type: 'img', name: 'fenceWave', title: '波浪围栏' },
         { src: 'plugins/digitalCity/preview/regionGlow.png', type: 'img', name: 'regionGlow', title: '区域内发光' },
+        { src: 'plugins/digitalCity/preview/rectangleGlowPage.png', type: 'img', name: 'rectangleGlowPage', title: '矩形渐变区域' },
         { src: 'plugins/digitalCity/preview/coneAnchorA.png', type: 'img', name: 'coneAnchorA', title: '浮锚标识A' },
         { src: 'plugins/digitalCity/preview/coneAnchorB.png', type: 'img', name: 'coneAnchorB', title: '浮锚标识B' },
         { src: 'plugins/digitalCity/preview/particleFirefly.png', type: 'img', name: 'particleFirefly', title: '粒子萤火虫' },
