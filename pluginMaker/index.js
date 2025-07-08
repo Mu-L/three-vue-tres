@@ -4,11 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-08 09:01:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-14 15:56:00
+ * @LastEditTime: 2025-07-08 09:25:26
  */
 const compressing = require('compressing')
 const fs = require('fs')
 var path = require('path')
+const readline = require('readline')
 
 // 示例代码
 const args = process.argv // 包含了所有的命令行参数，第一个元素为 node 路径，第二个元素为脚本文件名
@@ -149,6 +150,42 @@ const createPlugins = (pluginName) => {
         })
 }
 
+const removePlugins = (pluginName) => {
+    if (!pluginName) {
+        console.error('删除插件_:【插件名错误】 ')
+        return
+    }
+
+    const pluginPath = './src/plugins/' + pluginName
+    const publicPath = './public/plugins/' + pluginName
+
+    if (!fileExistsWithCaseSync(pluginPath) && !fileExistsWithCaseSync(publicPath)) {
+        console.error(`删除插件_:未找到名为:【 ${pluginName} 】的插件目录`)
+        return
+    }
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    })
+
+    rl.question(`⚠️ 删除插件_:您确认要删除插件 【${pluginName}】 吗？（代码请确保已妥善保存）输入 yes 确认：`, (answer) => {
+        if (answer.trim().toLowerCase() === 'yes') {
+            if (fs.existsSync(pluginPath)) {
+                fs.rmSync(pluginPath, { recursive: true, force: true })
+                console.log(`✅ 插件代码目录已删除: ${pluginPath}`)
+            }
+            if (fs.existsSync(publicPath)) {
+                fs.rmSync(publicPath, { recursive: true, force: true })
+                console.log(`✅ 插件资源目录已删除: ${publicPath}`)
+            }
+        } else {
+            console.log('取消删除操作')
+        }
+        rl.close()
+    })
+}
+
 let type = args[2]
 if (type === 'create') {
     createPlugins(args[3])
@@ -156,4 +193,6 @@ if (type === 'create') {
     packagePlugins(args[3])
 } else if (type === 'install') {
     installPlugins(args[3])
+} else if (type === 'remove') {
+    removePlugins(args[3])
 }
