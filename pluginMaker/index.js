@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-08 09:01:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-08 09:25:26
+ * @LastEditTime: 2025-07-08 09:44:23
  */
 const compressing = require('compressing')
 const fs = require('fs')
@@ -76,7 +76,7 @@ const installPlugins = (pluginName) => {
     const pluginPath = './src/plugins/' + pluginName
     // 检查是否存在此插件目录
     if (fileExistsWithCaseSync(pluginPath)) {
-        console.error(`安装插件_:已经存在名为:【 ${pluginName} 】的插件。目录地址为：${pluginPath}。 如若需要安装请备份和删除目录`)
+        console.error(`安装插件_:已经存在名为:【 ${pluginName} 】的插件。目录地址为：${pluginPath}。 如若需要安装请备份和删除该插件`)
         return
     }
     // 解压插件 到 目录
