@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-07 09:51:13
+ * @LastEditTime: 2025-07-08 09:31:29
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
 import { FMenu } from '@fesjs/fes-design'
@@ -20,7 +20,6 @@ import { addCollection } from 'iconify-icon'
 import uimIcons from '@iconify/json/json/uim.json'
 import lineMdIcons from '@iconify/json/json/line-md.json'
 import wiIcons from '@iconify/json/json/wi.json'
-import DisableDevtool from 'disable-devtool'
 import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import UserCenter from '@/components/forPreview/userCenter.vue'
@@ -69,8 +68,6 @@ export function layout (layoutConfig) {
 export function onAppCreated ({ app }) {
     app.use(FMenu)
     app.use(Tres)
-
-    process.env.NODE_ENV === 'production' && DisableDevtool()
 
     window.$vue = app
 

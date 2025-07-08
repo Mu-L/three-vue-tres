@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-07 09:17:43
+ * @LastEditTime: 2025-07-08 17:03:40
 -->
 <template>
     <TresMesh>
@@ -80,7 +80,7 @@ watch(getResourceTexture, (getResourceTexture) => {
         pTexture.value = getResourceTexture.clone()
         pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
     }
-})
+}, { immediate: true })
 
 const tmsmRef = ref(null) as any
 const { onLoop } = useRenderLoop()

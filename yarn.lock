@@ -5375,11 +5375,6 @@ detect-libc@^1.0.3:
   resolved "https://registry.npmmirror.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==
 
-disable-devtool@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.npmmirror.com/disable-devtool/-/disable-devtool-0.3.8.tgz#fcf0189fc03bf88d5585a8b4bac9f8f28e269f6d"
-  integrity sha512-spwifiBbcgDTVEdzoWyH3NjZ1he/OgJmUNXvMgEffJ8Fh2B6mEJjCCEV25wlJSyNXEdGyzKFFRXh4kVDRK/wCg==
-
 doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"

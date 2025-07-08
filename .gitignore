@@ -69,10 +69,6 @@ src/plugins/smartPark
 public/plugins/smartPark
 src/plugins/zoneMachinRoom
 public/plugins/zoneMachinRoom
-src/plugins/geoKit
-public/plugins/geoKit
-src/plugins/geojson23dtiles
-public/plugins/geojson23dtiles
 src/plugins/zoneRefiningIndustry
 public/plugins/zoneRefiningIndustry
 src/plugins/smartFactory
