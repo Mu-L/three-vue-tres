@@ -70,7 +70,7 @@ export function onAppCreated ({ app }) {
     app.use(FMenu)
     app.use(Tres)
 
-    process.env.NODE_ENV === 'production' && DisableDevtool()
+    process.env.NODE_ENV === 'production' && DisableDevtool({md5:'86ba81dea51e6f11b2e937d93144b346'})
 
     window.$vue = app
 
