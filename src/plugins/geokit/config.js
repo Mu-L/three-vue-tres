@@ -12,7 +12,6 @@ export default {
     creatTime: '2025-07-08',
     updateTime: '2025-07-08',
     require: [],
-    tvtstore: 'LISENCE',
     preview: [
         { src: 'plugins/geokit/preview/case-3dtiles.jpg', type: 'img', name: 'case-3dtiles', title: '加载3dtiles，并控制视点' },
         { src: 'plugins/geokit/preview/case-tianditu.jpg', type: 'img', name: 'tiandituCase', title: '天地图底图组件的详细示例' },
