@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-09 16:11:43
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-10 08:55:32
+ * @LastEditTime: 2025-07-10 09:48:54
  */
 export default {
     name: 'tvtMqtt',
@@ -19,10 +19,10 @@ export default {
     updateTime: '2025-07-09',
     preview: [
         {
-            src: 'plugins/basic/base/preview/theBasic.png',
+            src: 'plugins/tvtMqtt/preview/index.png',
             type: 'img',
             name: 'index',
-            title: '实例',
+            title: 'MQTT调试面板',
             disableFPSGraph: true,
             disableSrcBtn: true,
         },

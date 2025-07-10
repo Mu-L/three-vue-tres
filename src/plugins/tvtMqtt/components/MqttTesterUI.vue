@@ -6,7 +6,7 @@
                     <n-input v-model:value="form.host" placeholder="例如: broker.hivemq.com" />
                 </n-form-item>
                 <n-form-item label="端口">
-                    <n-input-number v-model:value="form.port" :min="1" />
+                    <n-input-number v-model:value="form.port" :min="1" /><n-tag :style="{'margin-left': '10px'}" type="info">浏览器端只支持：wws方式 的 mqtt</n-tag>
                 </n-form-item>
                 <n-form-item label="Client ID">
                     <n-input v-model:value="form.clientId" placeholder="随机生成也可" />
@@ -27,13 +27,13 @@
                     <n-button type="success" :disabled="!connected" @click="handleSubscribe">订阅</n-button>
                 </n-space>
             </n-form>
-            <n-divider>已订阅频道</n-divider>
+            <n-divider>已订阅主题</n-divider>
             <n-space>
                 <n-tag v-for="topic in Array.from(subscribedTopics)" :key="topic" type="info" round>
                     {{ topic }}
                 </n-tag>
             </n-space>
-            <n-divider>发送消息</n-divider>
+            <n-divider>发送消息 [主题/json消息]</n-divider>
             <n-input v-model:value="sendTopic" placeholder="主题" class="mb-2" />
             <n-input v-model:value="sendMessage" type="textarea" placeholder="{ &quot;key&quot;: &quot;value&quot; }" :rows="4" />
             <n-button type="info" class="mt-2" :disabled="!connected" @click="handlePublish">发送</n-button>
