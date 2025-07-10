@@ -58,10 +58,10 @@ const form = reactive({
     clientId: `tvt-test-client-${Math.random().toString(16).slice(2, 8)}`,
     username: 'tvt.js',
     password: 'test',
-    topic: 'tvt/demo',
+    topic: 'tvtDevices/#',
 })
 
-const sendTopic = ref('tvt/demo')
+const sendTopic = ref('tvtDevices/uiDemo')
 const sendMessage = ref('{ "hello": "world" }')
 
 const mqtt = ref(null)
