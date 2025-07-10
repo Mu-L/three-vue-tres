@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-07-09 16:11:43
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-07-10 08:55:32
+ */
 export default {
     name: 'tvtMqtt',
     title: '接入mtqq最佳实践',
@@ -15,8 +23,8 @@ export default {
             type: 'img',
             name: 'index',
             title: '实例',
-            disableFPSGraph: false,
-            disableSrcBtn: false,
+            disableFPSGraph: true,
+            disableSrcBtn: true,
         },
     ],
 }
