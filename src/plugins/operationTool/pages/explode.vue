@@ -15,7 +15,7 @@ import { OrbitControls, useGLTF } from '@tresjs/cientos'
 import { useRenderLoop } from '@tresjs/core'
 import { Pane } from 'tweakpane'
 import * as TWEEN from '@tweenjs/tween.js'
-import _ from 'Lodash'
+import _ from 'lodash'
 import * as THREE from 'three'
 
 const { scene: model } = await useGLTF('/plugins/operationTool/model/湖中小亭/湖中小亭.gltf')
