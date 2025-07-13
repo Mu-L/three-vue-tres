@@ -5,7 +5,7 @@ export default {
 <br/>🚀高性能, 🚀高易用, 🚀高可扩展性, 还有最最重要的<strong>低复杂度!</strong>
 <br/>仅需掌握几个核心组件的参数，即可进行可靠的3D地理渲染的开发
 <br/>是否在为cesium复杂的sdk烦恼? 是否在为地图api融合threejs头疼? 是否在为threejs加载模型对不齐难受? 这个工具就是你的不二之选`,
-    version: '0.0.1',
+    version: '1.0.0',
     author: '石头web',
     website: 'https://github.com/a876691666',
     state: 'active',
@@ -20,5 +20,8 @@ export default {
         { src: 'plugins/geokit/preview/case-css2d.jpg', type: 'img', name: 'case-css2d', title: 'css2d组件' },
         { src: 'plugins/geokit/preview/case-position.jpg', type: 'img', name: 'case-position', title: '位置组件与3d模型的复合使用' },
         { src: 'plugins/geokit/preview/case-flyline.jpg', type: 'img', name: 'case-flyline', title: '飞线组件的详细示例' },
+        { src: 'plugins/geokit/preview/case-line.jpg', type: 'img', name: 'case-line', title: '线组件的详细示例' },
+        { src: 'plugins/geokit/preview/case-building.jpg', type: 'img', name: 'case-building', title: '建筑组件' },
+        { src: 'plugins/geokit/preview/case-face.jpg', type: 'img', name: 'case-face', title: '多边形面与围墙组件' },
     ],
 }
