@@ -60,7 +60,7 @@
     "@fesjs/plugin-request": "^4.0.1",
     "@fesjs/plugin-sass": "^3.0.0",
     "@here/quantized-mesh-decoder": "^1.2.8",
-    "@icegl/geokit": "^0.0.9",
+    "@icegl/geokit": "^0.0.14",
     "@iconify/json": "2.2.302",
     "@mapbox/tilebelt": "^2.0.2",
     "@pmndrs/vanilla": "^1.20.4",

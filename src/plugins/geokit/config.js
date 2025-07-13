@@ -1,5 +1,5 @@
 export default {
-    name: '@icegl/geokit',
+    name: 'geokit',
     title: '地理渲染开发工具',
     intro: `由TvT团队推出的 @icegl/geokit 地理渲染开发工具的使用案例
 <br/>🚀高性能, 🚀高易用, 🚀高可扩展性, 还有最最重要的<strong>低复杂度!</strong>
@@ -13,7 +13,12 @@ export default {
     updateTime: '2025-07-08',
     require: [],
     preview: [
-        { src: 'plugins/geokit/preview/case-3dtiles.jpg', type: 'img', name: 'case-3dtiles', title: '加载3dtiles，并控制视点' },
-        { src: 'plugins/geokit/preview/case-tianditu.jpg', type: 'img', name: 'tiandituCase', title: '天地图底图组件的详细示例' },
+        { src: 'plugins/geokit/preview/case-3dtiles.jpg', type: 'img', name: 'case-3dtiles', title: '加载3dtiles与控制视点' },
+        { src: 'plugins/geokit/preview/case-tianditu.jpg', type: 'img', name: 'case-tianditu', title: '天地图底图组件' },
+        { src: 'plugins/geokit/preview/case-icon.jpg', type: 'img', name: 'case-icon', title: '图标组件与文字组件' },
+        { src: 'plugins/geokit/preview/case-particle-icon.jpg', type: 'img', name: 'case-particle-icon', title: '海量图标与点击交互' },
+        { src: 'plugins/geokit/preview/case-css2d.jpg', type: 'img', name: 'case-css2d', title: 'css2d组件' },
+        { src: 'plugins/geokit/preview/case-position.jpg', type: 'img', name: 'case-position', title: '位置组件与3d模型的复合使用' },
+        { src: 'plugins/geokit/preview/case-flyline.jpg', type: 'img', name: 'case-flyline', title: '飞线组件的详细示例' },
     ],
 }
