@@ -52,7 +52,7 @@ import { MqttClientWrapper } from '../lib/mqttTvt'
 const message = useMessage()
 
 const form = reactive({
-    host: 'z9ffb570.ala.us-east-1.emqxsl.com',
+    host: 'oc276716.ala.asia-southeast1.emqxsl.com',
     port: 8084,
     protocol: 'wss',
     clientId: `tvt-test-client-${Math.random().toString(16).slice(2, 8)}`,
