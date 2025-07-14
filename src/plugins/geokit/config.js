@@ -4,7 +4,9 @@ export default {
     intro: `由TvT团队推出的 @icegl/geokit 地理渲染开发工具的使用案例
 <br/>🚀高性能, 🚀高易用, 🚀高可扩展性, 还有最最重要的<strong>低复杂度!</strong>
 <br/>仅需掌握几个核心组件的参数，即可进行可靠的3D地理渲染的开发
-<br/>是否在为cesium复杂的sdk烦恼? 是否在为地图api融合threejs头疼? 是否在为threejs加载模型对不齐难受? 这个工具就是你的不二之选`,
+<br/>是否在为cesium复杂的sdk烦恼? 是否在为地图api融合threejs头疼? 是否在为threejs加载模型对不齐难受? 这个工具就是你的不二之选
+<br/>开源地址: <a href="https://gitee.com/ice-gl/geokit" target="_blank">Gitee</a>
+`,
     version: '1.0.0',
     author: '石头web',
     website: 'https://github.com/a876691666',
