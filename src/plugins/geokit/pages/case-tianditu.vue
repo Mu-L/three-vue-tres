@@ -35,7 +35,7 @@
             <button class="control-btn" @click="boxPosition = { ...boxPosition, lat: boxPosition.lat - 0.001 }">纬度 - 0.001°</button>
         </div>
     </div>
-    <GeoCanvas v-model:position="position">
+    <GeoCanvas>
         <GeoControls v-model:position="position" />
         <GeoScene :sceneConfig="sceneConfig" />
         <TDTTiles :tk="tdtTk" />

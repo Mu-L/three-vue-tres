@@ -1,5 +1,5 @@
 <template>
-    <GeoCanvas v-model:position="position">
+    <GeoCanvas>
         <GeoControls v-model:position="position" />
         <GeoScene :sceneConfig="sceneConfig" />
         <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
