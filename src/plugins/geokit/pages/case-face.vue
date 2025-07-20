@@ -107,7 +107,7 @@
         <!-- 地理多边形 -->
         <GeoPolygon :geometry="currentGeometry" :subdivisions="currentSubdivisions" :height="currentFaceHeight">
             <Suspense fallback="">
-                <UseTexture v-slot="{ textures }" map="/public/plugins/digitalCity/image/rain.png">
+                <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/rain.png">
                     <GeoTextureProps :texture="textures.map" :rotation="time * 0.1" :center="[0.5, 0.5]" />
                     <TresMeshStandardMaterial
                         :color="currentColor"
@@ -124,7 +124,7 @@
         <!-- 地理墙体 -->
         <GeoWall :geometry="currentGeometry" :height="50" :baseHeight="0">
             <Suspense>
-                <UseTexture v-slot="{ textures }" map="/public/plugins/digitalCity/image/line2.png">
+                <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/line2.png">
                     <GeoTextureProps :texture="textures.map" :rotation="time * 0.1" :center="[0.5, 0.5]" />
                     <TresMeshStandardMaterial
                         :color="currentColor"
