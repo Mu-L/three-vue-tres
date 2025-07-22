@@ -26,5 +26,6 @@ export default {
         { src: 'plugins/geokit/preview/case-building.jpg', type: 'img', name: 'case-building', title: '建筑组件' },
         { src: 'plugins/geokit/preview/case-face.jpg', type: 'img', name: 'case-face', title: '多边形面与围墙组件' },
         { src: 'plugins/geokit/preview/case-tres-canvas.jpg', type: 'img', name: 'case-tres-canvas', title: '使用原始TresCanvas搭配geokit' },
+        { src: 'plugins/geokit/preview/case-real-1.png', type: 'img', name: 'case-real-1', title: '实战案例1' },
     ],
 }
