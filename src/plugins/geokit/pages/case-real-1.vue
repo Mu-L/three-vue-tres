@@ -3,7 +3,7 @@
         v-bind="state"
         window-size
         :class="{
-            'hover-main-building': hoverMainBuilding,
+            'hover-main-building': hoverMainBuilding || hoverSchool,
         }"
     >
         <TresPerspectiveCamera :fov="29" :near="50" :far="1000000" />
@@ -113,7 +113,7 @@ import {
 } from '@icegl/geokit'
 
 const jumpToBuilding = () => {
-    window.open(`https://www.baidu.com/s?wd=tvt`)
+    window.open(`https://www.baidu.com/s?wd=tvt.js`)
 }
 
 const state = reactive({
