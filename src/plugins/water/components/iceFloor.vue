@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-22 10:03:17
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-22 11:27:19
+ * @LastEditTime: 2025-07-22 12:28:59
 -->
 <template>
     <TresGroup>
@@ -16,23 +16,54 @@
 </template>
 <script setup lang="ts">
 import * as THREE from 'three'
+import { watch } from 'vue'
 import { useTexture } from '@tresjs/core'
 import iceVertex from '../shaders/ice/vertex.glsl'
 import iceFragment from '../shaders/ice/fragment.glsl'
 
-const pTexture = await useTexture(['./plugins/water/images/textures/cracks-3.png', './plugins/water/images/textures/super-perlin-2.png'])
+const props = defineProps({
+    uParallaxDistance: {
+        default: 1.0, // 视觉差强度
+    },
+    uTintColor: {
+        default: '#666666', // 偏色，默认白色
+    },
+    uTintStrength: {
+        default: 0.1, // 偏色强度
+    },
+    uStyle: {
+        default: 1,
+    },
+})
 
-pTexture[0].wrapS = THREE.RepeatWrapping
-pTexture[0].wrapT = THREE.RepeatWrapping
-pTexture[1].wrapS = THREE.RepeatWrapping
-pTexture[1].wrapT = THREE.RepeatWrapping
+const imgList = Array.from({ length: 7 }, (_, i) => `./plugins/water/images/textures/${i + 1}.png`)
+imgList.push('./plugins/water/images/textures/super-perlin.png')
+
+const pTexture = await useTexture(imgList)
+pTexture.forEach((texture: THREE.Texture) => {
+    texture.colorSpace = THREE.LinearSRGBColorSpace
+    texture.wrapS = THREE.RepeatWrapping
+    texture.wrapT = THREE.RepeatWrapping
+    texture.magFilter = THREE.LinearFilter
+    texture.minFilter = THREE.LinearMipmapLinearFilter
+})
 
 const uniforms = {
     uTrailMap: { value: null },
-    uCracksMap: new THREE.Uniform(pTexture[0]),
-    uPerlin: new THREE.Uniform(pTexture[1]),
-    uParallaxDistance: { value: 1 },
-    uTintColor: new THREE.Uniform(new THREE.Color(0.0, 1.0, 0.0)), // 偏色，默认白色
-    uTintStrength: { value: 0 }, // 偏色强
+    uCracksMap: new THREE.Uniform(pTexture[props.uStyle]),
+    uPerlin: new THREE.Uniform(pTexture[7]),
+    uParallaxDistance: { value: props.uParallaxDistance }, //  视觉差
+    uTintColor: { value: new THREE.Color(props.uTintColor) }, // 偏色，默认白色
+    uTintStrength: { value: props.uTintStrength }, // 偏色强
 }
+
+watch(
+    () => [props.uParallaxDistance, props.uTintColor, props.uTintStrength, props.uStyle],
+    ([newParallaxDistance, newTintColor, newTintStrength, newStyle]: any) => {
+        uniforms.uParallaxDistance.value = newParallaxDistance
+        uniforms.uTintColor.value.set(newTintColor)
+        uniforms.uTintStrength.value = newTintStrength
+        uniforms.uCracksMap.value = pTexture[newStyle]
+    },
+)
 </script>
