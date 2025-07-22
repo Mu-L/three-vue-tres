@@ -10,8 +10,8 @@
         <GeoCSS2DRenderer />
         <GeoControls v-model:position="cameraPosition" :min-distance="1" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <!-- <TDTTiles tk="" /> -->
+        <!-- <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" /> -->
+        <TDTTiles tk="60e749f74ee948da9887c8a82fc20e09" />
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
 
         <GeoBuilding
@@ -105,7 +105,7 @@ import {
     GeoTextureProps,
     GeoPolygon,
     GeoFlyline,
-    XYZTiles,
+    TDTTiles,
     GeoControls,
     GeoCSS2DRenderer,
     GeoScene,
