@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-05 08:42:02
+ * @LastEditTime: 2025-07-22 09:54:51
  */
 
 export default {
@@ -35,6 +35,13 @@ export default {
             name: 'realWater',
             title: '真实水',
             referenceSource: { title: 'realWater', url: 'https://github.com/martinRenou/threejs-water' },
+        },
+        {
+            src: 'plugins/water/preview/iceFloor.png',
+            type: 'img',
+            name: 'iceFloor',
+            title: '冰面',
+            referenceSource: { title: 'ice-trails', url: 'https://github.com/rock-biter/ice-trails' },
         },
     ],
 }
