@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-21 17:24:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-13 12:08:53
+ * @LastEditTime: 2025-07-24 09:53:00
 -->
 <template>
     <Suspense>
@@ -22,7 +22,7 @@ import referenceSource from './referenceSource.vue'
 import FPSGraph from './FPSGraph.vue'
 import miniBts from './miniBts.vue'
 
-const originalUrl = window.location.href
+const originalUrl = window.location.href.split('?')[0]
 const hashPart = originalUrl.split('#')[1] || ''
 const parts = hashPart.split('/')
 let config = null
