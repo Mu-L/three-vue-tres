@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 12:43:07
+ * @LastEditTime: 2025-07-25 18:10:33
  */
 import { defineBuildConfig } from '@fesjs/fes'
 import copyPublicWithPluginExclusion from './src/common/copySelectedPublicDirsPlugin'
@@ -109,6 +109,16 @@ export default defineBuildConfig({
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api.icegl/, ''),
                 },
+                // 天地图本地代理
+                '/tianditu.map': {
+                    target: 'https://t0.tianditu.gov.cn/',
+                    changeOrigin: true,
+                    headers: {
+                        Origin: 'oss.icegl.cn',
+                        Referer: 'http://oss.icegl.cn',
+                    },
+                    rewrite: (path) => path.replace(/^\/tianditu.map/, ''),
+                }
             },
         },
     },

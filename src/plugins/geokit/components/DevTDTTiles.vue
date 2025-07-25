@@ -6,5 +6,5 @@ import { TDTTiles } from '@icegl/geokit'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const url = isDev ? 'http://localhost:8000' : 'https://t0.tianditu.gov.cn'
+const url = isDev ? '/tianditu.map' : 'https://t0.tianditu.gov.cn'
 </script>
