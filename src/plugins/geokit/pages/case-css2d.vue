@@ -77,7 +77,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- 基础信息标签 -->
         <GeoCSS2D :point="markerPosition" :height="markerPosition.height" ref="basicLabelRef">
@@ -151,8 +151,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoCSS2D, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoCSS2D, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

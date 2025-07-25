@@ -2,7 +2,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- GeoParticle 粒子 -->
         <GeoParticle @point-click="handlePointClick" :points="points" icon="https://img.icons8.com/?size=80&id=TQ3X81dkG8Q1&format=png" color="red" :size="20" />
@@ -10,8 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoParticle, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoParticle, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const randomColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16)

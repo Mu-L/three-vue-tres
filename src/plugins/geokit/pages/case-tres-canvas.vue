@@ -4,7 +4,7 @@
         <GeoCSS2DRenderer />
         <GeoControls v-model:position="cameraPosition" :min-distance="1" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <GeoTubeline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints1" color="#ff0000" :width="50" :duration="2" />
 
@@ -15,8 +15,9 @@
 <script setup lang="ts">
 import { TresCanvas } from '@tresjs/core'
 import { SRGBColorSpace, NoToneMapping } from 'three'
-import { GeoControls, GeoCSS2DRenderer, XYZTiles, GeoTubeline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoControls, GeoCSS2DRenderer, GeoTubeline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

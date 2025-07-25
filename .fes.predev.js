@@ -121,43 +121,43 @@ export default defineBuildConfig({
             //     },
             // }),
             process.env.NODE_ENV === 'production' &&
-                javascriptObfuscator({
-                    apply: 'build',
-                    include: [/src\/.*\.js$/],
-                    exclude: [
-                        'node_modules/**',
-                        '!node_modules/three/**',
-                        '!node_modules/@tresjs/core/**',
-                        '!node_modules/@tresjs/cientos/**',
-                        'src/plugins/geojson23dtiles/lib/**',
-                        /[\\/]@alienkitty[\\/]/,
+            javascriptObfuscator({
+                apply: 'build',
+                include: [/src\/.*\.js$/],
+                exclude: [
+                    'node_modules/**',
+                    '!node_modules/three/**',
+                    '!node_modules/@tresjs/core/**',
+                    '!node_modules/@tresjs/cientos/**',
+                    'src/plugins/geojson23dtiles/lib/**',
+                    /[\\/]@alienkitty[\\/]/,
+                ],
+                options: {
+                    optionsPreset: 'high-obfuscation', //'default',
+                    debugProtection: false,
+                    disableConsoleOutput: true,
+                    controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
+                    identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
+                    reservedStrings: [
+                        'suspenseLayout.vue',
+                        /* 排除编辑器需要的引用的组件 start */
+                        'coneAnchorMeshB.vue',
+                        'bannerLabel.vue',
+                        'staticWater.vue',
+                        'reflectorRoundedBox.vue',
+                        'flexiblePipe.vue',
+                        'utils.js',
+                        /* 排除编辑器需要的引用的组件 end */
                     ],
-                    options: {
-                        optionsPreset: 'high-obfuscation', //'default',
-                        debugProtection: false,
-                        disableConsoleOutput: true,
-                        controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
-                        identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
-                        reservedStrings: [
-                            'suspenseLayout.vue',
-                            /* 排除编辑器需要的引用的组件 start */
-                            'coneAnchorMeshB.vue',
-                            'bannerLabel.vue',
-                            'staticWater.vue',
-                            'reflectorRoundedBox.vue',
-                            'flexiblePipe.vue',
-                            'utils.js',
-                            /* 排除编辑器需要的引用的组件 end */
-                        ],
-                        compact: true,
-                        stringArray: true,
-                        stringArrayThreshold: 0.75,
-                        stringArrayEncoding: ['rc4'],
-                        splitStrings: false,
-                        transformObjectKeys: false,
-                        // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
-                    },
-                }),
+                    compact: true,
+                    stringArray: true,
+                    stringArrayThreshold: 0.75,
+                    stringArrayEncoding: ['rc4'],
+                    splitStrings: false,
+                    transformObjectKeys: false,
+                    // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
+                },
+            }),
         ],
         server: {
             proxy: {
@@ -167,6 +167,15 @@ export default defineBuildConfig({
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api.icegl/, ''),
                 },
+                '/vec_w': {
+                    target: 'https://t0.tianditu.gov.cn/',
+                    changeOrigin: true,
+                    headers: {
+                        Origin: 'oss.icegl.cn',
+                        Referer: 'http://oss.icegl.cn',
+                    },
+                    rewrite: (path) => path.replace(/^\/vec_w/, '/vec_w'),
+                }
             },
         },
     },

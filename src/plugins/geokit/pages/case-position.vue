@@ -2,7 +2,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- 3D对象标记 -->
         <GeoPosition :point="{ lon: 118.778677, lat: 32.043848, height: 25 }" :height="0">
@@ -19,7 +19,7 @@
             </TresMesh>
         </GeoPosition>
         <GeoPosition :point="{ lon: 118.7786, lat: 32.0438, height: 0 }">
-            <TresGroup :rotation="[-Math.PI , 0, 0]">
+            <TresGroup :rotation="[-Math.PI, 0, 0]">
                 <GeoGLTF url="plugins/basic/htmls/model/model.gltf" draco />
             </TresGroup>
         </GeoPosition>
@@ -27,8 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoPosition, GeoScene, GeoPositionConfig, GeoGLTF } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoPosition, GeoScene, GeoPositionConfig, GeoGLTF } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

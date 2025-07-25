@@ -2,7 +2,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- 基础飞线 -->
         <GeoFlyline
@@ -98,8 +98,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoFlyline, GeoScene, GeoPositionConfig, GeoText } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoFlyline, GeoScene, GeoPositionConfig, GeoText } from '@icegl/geokit'
 import { ref, computed } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

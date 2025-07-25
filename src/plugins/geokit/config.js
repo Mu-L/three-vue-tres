@@ -16,7 +16,6 @@ export default {
     require: [],
     preview: [
         { src: 'plugins/geokit/preview/case-3dtiles.jpg', type: 'img', name: 'case-3dtiles', title: '加载3dtiles与控制视点' },
-        { src: 'plugins/geokit/preview/case-tianditu.jpg', type: 'img', name: 'case-tianditu', title: '天地图底图组件' },
         { src: 'plugins/geokit/preview/case-icon.jpg', type: 'img', name: 'case-icon', title: '图标组件与文字组件' },
         { src: 'plugins/geokit/preview/case-particle-icon.jpg', type: 'img', name: 'case-particle-icon', title: '海量图标与点击交互' },
         { src: 'plugins/geokit/preview/case-css2d.jpg', type: 'img', name: 'case-css2d', title: 'css2d组件' },

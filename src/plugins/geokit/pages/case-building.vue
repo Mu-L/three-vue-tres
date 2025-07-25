@@ -2,7 +2,7 @@
     <GeoCanvas>
         <GeoControls v-model:position="position" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
         <GeoCSS2D :point="textPosition" ref="geoCSS2D">
             <div>{{ text }}</div>
         </GeoCSS2D>
@@ -32,8 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoCSS2D, GeoPosition, GeoScene, GeoBuilding, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoCSS2D, GeoPosition, GeoScene, GeoBuilding, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 import { DoubleSide } from 'three'
 
 const sceneConfig = ref({

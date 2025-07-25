@@ -102,7 +102,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <TDTTiles tk="60e749f74ee948da9887c8a82fc20e09" />
+        <DevTDTTiles />
 
         <!-- 地理多边形 -->
         <GeoPolygon :geometry="currentGeometry" :subdivisions="currentSubdivisions" :height="currentFaceHeight">
@@ -141,10 +141,11 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, TDTTiles, GeoPolygon, GeoWall, GeoScene, GeoTextureProps, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoPolygon, GeoWall, GeoScene, GeoTextureProps, GeoPositionConfig } from '@icegl/geokit'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { DoubleSide } from 'three'
 import { UseTexture } from '@tresjs/core'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 // 相机位置
 const cameraPosition = ref<GeoPositionConfig>({

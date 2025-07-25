@@ -27,7 +27,7 @@
     <GeoCanvas>
         <GeoControls v-model:position="position" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
         <Tileset url="/plugins/geokit/tiles/tileset.json" />
         <GeoPosition name="GeoPosition" :point="boxPosition">
             <TresMesh>
@@ -39,8 +39,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, Tileset, GeoPosition, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, Tileset, GeoPosition, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

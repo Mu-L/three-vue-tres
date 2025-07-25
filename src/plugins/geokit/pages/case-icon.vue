@@ -2,7 +2,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- GeoText 文字 -->
         <GeoText text="GeoIcon 远近相同" color="#000" align="center" :point="{ lon: 118.778677, lat: 32.043848, height: 42 }" :fontSize="14" />
@@ -17,8 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoText, GeoIcon, GeoPoint, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoText, GeoIcon, GeoPoint, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

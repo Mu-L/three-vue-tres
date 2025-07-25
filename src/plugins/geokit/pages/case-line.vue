@@ -2,7 +2,7 @@
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <DevTDTTiles />
 
         <!-- MeshLine线条 -->
         <GeoMeshline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints1" color="#ff0000" :width="50" :duration="2" />
@@ -13,8 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, XYZTiles, GeoTubeline, GeoMeshline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoTubeline, GeoMeshline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
 import { ref } from 'vue'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
     effectProps: {

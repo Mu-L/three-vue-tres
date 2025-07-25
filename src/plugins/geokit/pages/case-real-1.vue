@@ -10,9 +10,7 @@
         <GeoCSS2DRenderer />
         <GeoControls v-model:position="cameraPosition" :min-distance="1" />
         <GeoScene :sceneConfig="sceneConfig" />
-        <!-- <XYZTiles url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" /> -->
-        <!-- 这个tk只允许icegl.cn域访问，本地开发请替换为自己的tk -->
-        <TDTTiles tk="60e749f74ee948da9887c8a82fc20e09" />
+        <DevTDTTiles />
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
 
         <GeoBuilding
@@ -106,12 +104,12 @@ import {
     GeoTextureProps,
     GeoPolygon,
     GeoFlyline,
-    TDTTiles,
     GeoControls,
     GeoCSS2DRenderer,
     GeoScene,
     GeoPositionConfig,
 } from '@icegl/geokit'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const jumpToBuilding = () => {
     window.open(`https://www.baidu.com/s?wd=tvt.js`)
