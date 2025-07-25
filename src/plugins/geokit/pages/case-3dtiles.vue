@@ -7,10 +7,6 @@
             <div>视点经度：{{ position.longitude.toFixed(2) }}°</div>
             <div>视点纬度：{{ position.latitude.toFixed(2) }}°</div>
         </div>
-        <div class="tip-panel">
-            <span class="tip-text">若无法访问OSM瓦片，请</span>
-            <router-link to="/plugins/geokit/case-tianditu" class="tip-link">跳转到天地图案例</router-link>
-        </div>
         <div class="control-panel">
             <button class="control-btn" @click="position = { ...position, distance: position.distance + 100 }">距离 + 100米</button>
             <button class="control-btn" @click="position = { ...position, distance: position.distance - 100 }">距离 - 100米</button>
