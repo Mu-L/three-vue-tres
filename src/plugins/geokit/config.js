@@ -15,6 +15,7 @@ export default {
     updateTime: '2025-07-08',
     require: [],
     preview: [
+        { src: 'plugins/geokit/preview/case-base.jpg', type: 'img', name: 'case-base', title: '干净的模板' },
         { src: 'plugins/geokit/preview/case-3dtiles.jpg', type: 'img', name: 'case-3dtiles', title: '加载3dtiles与控制视点' },
         { src: 'plugins/geokit/preview/case-icon.jpg', type: 'img', name: 'case-icon', title: '图标组件与文字组件' },
         { src: 'plugins/geokit/preview/case-particle-icon.jpg', type: 'img', name: 'case-particle-icon', title: '海量图标与点击交互' },
@@ -25,6 +26,6 @@ export default {
         { src: 'plugins/geokit/preview/case-building.jpg', type: 'img', name: 'case-building', title: '建筑组件' },
         { src: 'plugins/geokit/preview/case-face.jpg', type: 'img', name: 'case-face', title: '多边形面与围墙组件' },
         { src: 'plugins/geokit/preview/case-tres-canvas.jpg', type: 'img', name: 'case-tres-canvas', title: '使用原始TresCanvas搭配geokit' },
-        { src: 'plugins/geokit/preview/case-real-1.png', type: 'img', name: 'case-real-1', title: '实战案例1' },
+        { src: 'plugins/geokit/preview/case-real-1.jpg', type: 'img', name: 'case-real-1', title: '实战案例1' },
     ],
 }

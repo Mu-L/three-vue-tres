@@ -11,7 +11,6 @@
         <GeoControls v-model:position="cameraPosition" :min-distance="1" />
         <GeoScene :sceneConfig="sceneConfig" />
         <DevTDTTiles />
-        <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
 
         <GeoBuilding
             v-for="(building, index) in buildings"
