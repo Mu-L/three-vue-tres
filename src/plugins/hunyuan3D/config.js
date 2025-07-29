@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 15:11:28
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-28 15:19:07
+ * @LastEditTime: 2025-07-29 11:11:07
  */
 export default {
     name: 'hunyuan3D',
@@ -21,10 +21,10 @@ export default {
     require: [],
     preview: [
         {
-            src: 'plugins/basic/base/preview/theBasic.png',
+            src: 'plugins/hunyuan3D/preview/index.png',
             type: 'img',
             name: 'index',
-            title: '实例',
+            title: '导入混元模型',
             disableFPSGraph: false,
             disableSrcBtn: false,
         },
