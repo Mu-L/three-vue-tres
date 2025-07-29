@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 15:31:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 10:55:03
+ * @LastEditTime: 2025-07-29 17:39:13
 -->
 <template>
-    <TresGroup>
+    <TresGroup v-if="model">
         <TresMesh :position="model.position" :rotation="model.rotation" :scale="model.scale" :geometry="model.geometry" cast-shadow>
             <materialDiy />
         </TresMesh>
@@ -15,13 +15,37 @@
 </template>
 
 <script setup lang="ts">
-import { useGLTF } from '@tresjs/cientos'
+import { ref, watch } from 'vue'
+// import { useGLTF } from '@tresjs/cientos'
+import { useMaterialDiyStore } from 'PLS/hunyuan3D/stores/index'
 import materialDiy from './materialDiy.vue'
+import { loadGLTFBufferIntoScene } from 'PLS/hunyuan3D/common/util'
 
-const { scene } = await useGLTF('./plugins/hunyuan3D/model/icegl-bm.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+const model = ref(null as any)
+const materialDiyStore = useMaterialDiyStore()
 
-const model = scene.children[0].children[0] as any
+watch(
+    () => materialDiyStore.curModelArrayBuffer,
+    async (ab) => {
+        if (ab) {
+            const gltfModel = await loadGLTFBufferIntoScene(ab)
+            model.value = gltfModel.scene.children[0].children[0] as any
+        } else {
+            model.value = null
+        }
+    },
+    { immediate: true },
+)
+
+// const arrayBuffer = await loadArrayBufferFromRelativePath('./plugins/hunyuan3D/model/icegl-bm.glb')
+// if (arrayBuffer) {
+//     const gltfModel = await loadGLTFBufferIntoScene(arrayBuffer)
+//     model.value = gltfModel.scene.children[0].children[0] as any
+// }
+
+// const { scene } = await useGLTF('./plugins/hunyuan3D/model/icegl-bm.glb', {
+//     draco: true,
+//     decoderPath: './draco/',
+// })
+// const model = scene.children[0].children[0] as any
 </script>

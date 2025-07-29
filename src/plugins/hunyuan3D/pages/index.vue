@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 15:11:28
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 11:11:53
+ * @LastEditTime: 2025-07-29 17:40:32
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -12,11 +12,9 @@
         <OrbitControls />
         <TresAmbientLight :intensity="2" />
 
-        <Suspense>
-            <Levioso>
-                <model />
-            </Levioso>
-        </Suspense>
+        <Levioso>
+            <model />
+        </Levioso>
 
         <Backdrop :floor="1" :segments="20" :position="[-0.1, -0.8, -0.5]" :scale="[4, 2, 2]" receive-shadow>
             <TresMeshPhysicalMaterial color="orange" :roughness="1" receiveShadow />
@@ -25,15 +23,22 @@
         <TresDirectionalLight :position="[1, 1, 2]" :intensity="6" cast-shadow ref="tdl" />
     </TresCanvas>
     <setupUI />
+    <n-dialog-provider>
+        <n-message-provider>
+            <leftImg />
+        </n-message-provider>
+    </n-dialog-provider>
 </template>
 
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
 import { reactive, ref, watchEffect } from 'vue'
+import { NMessageProvider, NDialogProvider } from 'naive-ui'
 import { TresCanvas } from '@tresjs/core'
 import { OrbitControls, Backdrop, Levioso } from '@tresjs/cientos'
 import model from '../components/model.vue'
 import setupUI from '../components/setupUI.vue'
+import leftImg from '../components/leftImg.vue'
 
 const state = reactive({
     clearColor: '#201919',

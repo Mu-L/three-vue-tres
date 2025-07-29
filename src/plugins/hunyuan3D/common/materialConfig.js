@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-29 09:33:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 10:49:58
+ * @LastEditTime: 2025-07-29 11:19:17
  */
 const mConfig = {
     MeshBasicMaterial: {
         default: {
-            color: '#ffff00',
+            color: '#161cff',
             wireframe: false,
             opacity: 1,
         },
