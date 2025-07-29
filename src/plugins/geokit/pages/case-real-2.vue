@@ -1,4 +1,5 @@
 <template>
+    <p class="video-link"><a href="https://www.bilibili.com/video/BV11C8GziEiH" target="_blank">视频教学</a></p>
     <TresCanvas v-bind="state" window-size>
         <TresPerspectiveCamera :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
         <GeoCSS2DRenderer />
@@ -191,5 +192,31 @@ const goToArea = (areaName: string | undefined) => {
     border: 1px solid #fff;
     pointer-events: none;
     transition: background 0.3s;
+}
+.video-link {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+    z-index: 1000;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(0, 87, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px 18px;
+    box-shadow: 0 2px 8px rgba(0, 87, 255, 0.12);
+}
+
+.video-link a {
+    color: #0057ff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.video-link a:hover {
+    color: #00cfff;
+    text-decoration: underline;
 }
 </style>
