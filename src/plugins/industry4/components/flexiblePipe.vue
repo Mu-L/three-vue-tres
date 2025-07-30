@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-08 17:03:40
+ * @LastEditTime: 2025-07-30 13:17:21
 -->
 <template>
-    <TresMesh>
+    <TresMesh :renderOrder="9999">
         <TresTubeGeometry :args="[path, 64, radius, radialSegments, false]" />
         <TresMeshStandardMaterial
             ref="tmsmRef"
@@ -79,6 +79,7 @@ watch(getResourceTexture, (getResourceTexture) => {
     if (getResourceTexture?.isTexture) {
         pTexture.value = getResourceTexture.clone()
         pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
+        pTexture.value.needsUpdate = true
     }
 }, { immediate: true })
 
