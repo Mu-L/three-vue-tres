@@ -64,7 +64,7 @@ import { loadArrayBufferFromRelativePath } from 'PLS/hunyuan3D/common/util'
 import { download } from 'naive-ui/es/_utils'
 
 const materialDiyStore = useMaterialDiyStore()
-materialDiyStore.curModelArrayBuffer = await loadArrayBufferFromRelativePath('./plugins/hunyuan3D/model/icegl-bm.glb')
+materialDiyStore.curModelArrayBuffer = await loadArrayBufferFromRelativePath('./plugins/hunyuan3D/model/icegl-bm.glb') // icegl-bm
 
 const message = useMessage()
 
@@ -73,7 +73,7 @@ const previewUrl = ref('https://cdn.index.icegl.cn/uploads/20221122/9ed6756107c4
 const uploaded = ref(true)
 const uploading = ref(false)
 const dialog = useDialog()
-const urlConfig = ref('http://localhost:8080/generate')
+const urlConfig = ref('http://localhost:8081/generate')
 
 function handleFileChange({ file }) {
     selectedFile.value = file.file

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-29 09:33:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 11:19:17
+ * @LastEditTime: 2025-07-30 10:58:11
  */
 const mConfig = {
     MeshBasicMaterial: {
@@ -64,7 +64,6 @@ const mConfig = {
             reflectivity: 0.5,
             ior: 1.5,
             opacity: 1,
-            wireframe: false,
         },
         config: {
             color: {
@@ -112,10 +111,6 @@ const mConfig = {
                 min: 0,
                 max: 1,
                 step: 0.01,
-            },
-            wireframe: {
-                name: '线框',
-                com: 'Switch',
             },
         },
     },

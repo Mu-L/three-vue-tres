@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 15:31:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 17:39:13
+ * @LastEditTime: 2025-07-30 10:35:07
 -->
 <template>
-    <TresGroup v-if="model">
+    <TresGroup v-if="model" :scale="0.5">
         <TresMesh :position="model.position" :rotation="model.rotation" :scale="model.scale" :geometry="model.geometry" cast-shadow>
             <materialDiy />
         </TresMesh>

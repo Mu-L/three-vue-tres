@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 16:41:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-29 09:53:05
+ * @LastEditTime: 2025-07-30 10:26:06
 -->
 <template>
-    <component :is="materialMap" v-bind="materialDiyStore.curState" transparent />
+    <component :is="materialMap" v-bind="materialDiyStore.curState" transparent flatShading />
 </template>
 
 <script setup lang="ts">
