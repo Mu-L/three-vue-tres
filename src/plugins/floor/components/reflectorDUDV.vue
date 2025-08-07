@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-07 09:50:40
+ * @LastEditTime: 2025-08-06 14:48:14
 -->
 <template>
-    <TresGroup :scale="props.scale">
+    <TresGroup :scale="[scale, 1, scale]">
         <primitive :object="mirror" :position-y="-0.01" />
         <primitive :object="gridHelp" />
     </TresGroup>
@@ -23,19 +23,19 @@ import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import { watchEffect, watch } from 'vue'
 const props = withDefaults(
     defineProps<{
-        reflectivity?: Number
+        reflectivity?: number
         showGridHelper?: boolean
-        scale?: Number
+        scale?: number
         ignoreObjects?: THREE.Object3D[]
-        size?: Array<number>
+        size?: number[]
         mapUrl?: string
     }>(),
     {
         reflectivity: 0.8,
         scale: 1.0,
         showGridHelper: true,
-        ignoreObjects: [],
-        size: [10, 10],
+        ignoreObjects: () => [],
+        size: () => [10, 10],
         mapUrl: './plugins/floor/image/waterdudv.jpg',
     },
 )
