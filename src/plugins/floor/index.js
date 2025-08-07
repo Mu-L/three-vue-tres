@@ -17,6 +17,7 @@ import digitalGround from './components/digitalGround.vue'
 import imgFloor from './components/imgFloor.vue'
 import rubberTiles from './components/rubberTiles.vue'
 import reflectorRoundedBox from './components/reflectorRoundedBox.vue'
+import particleBase from './components/particleBase.vue'
 
 export {
     reflectorDiffuse,
@@ -30,4 +31,5 @@ export {
     imgFloor,
     rubberTiles,
     reflectorRoundedBox,
+    particleBase,
 }

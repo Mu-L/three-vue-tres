@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 16:07:51
+ * @LastEditTime: 2025-08-07 16:22:08
 -->
 <template>
     <TresMesh :renderOrder="2200" :geometry="geometriesMesh">
@@ -77,8 +77,8 @@ const rippleShader = {
 					vec4 wcolor = vec4(mix(color, vec3(1., 1., 1.), 0.9),1.0);
 
 					vec3 fade = mix(color, vec3(1., 1., 1.), vUv.y);
-          fragColor = mix(fragColor, vec4(fade, 1.), 0.85);
-          gl_FragColor = vec4(fragColor.rgb, fragColor.a * opacity * (1. - vUv.y));
+                    fragColor = mix(fragColor, vec4(fade, 1.), 0.85);
+                    gl_FragColor = vec4(fragColor.rgb, fragColor.a * opacity * (1. - vUv.y));
 
 					if(vUv.y < room){
 						float alpha = smoothstep(1.0 - thickness - 0.1, 1.0 - thickness, sinnum);

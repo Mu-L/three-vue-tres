@@ -20,6 +20,7 @@ import fireB from './components/fire/fireB.vue'
 import smokeA from './components/smoke/smokeA.vue'
 import rippleMesh from './components/fence/rippleMesh.vue'
 import regionGlow from './components/fence/regionGlow.vue'
+import fencePlus from './components/fence/fencePlus.vue'
 import rectangleGlow from './components/fence/rectangleGlow.vue'
 import wave from './components/fence/wave.vue'
 import roadLightByLonLat from './components/roads/roadLightByLonLat.vue'
@@ -51,4 +52,5 @@ export {
     toMeshSceneCenter,
     objectToSceneCenter,
     adjustGroupCenter,
+    fencePlus,
 }
