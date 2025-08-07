@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 20:24:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 09:04:39
+ * @LastEditTime: 2025-08-07 16:19:35
  */
 export default {
     name: 'digitalCity',
@@ -50,7 +50,7 @@ export default {
         { src: 'plugins/digitalCity/preview/roadLines.png', type: 'img', name: 'roadLines', title: '道路飞线' },
         { src: 'plugins/digitalCity/preview/flyLines.png', type: 'img', name: 'flyLines', title: '飞线' },
         { src: 'plugins/digitalCity/preview/fence.png', type: 'img', name: 'fence', title: '围栏' },
-        { src: 'plugins/digitalCity/preview/fencePlus.png', type: 'img', name: 'fencePlusPage', title: '高级围栏' },
+        { src: 'plugins/digitalCity/preview/fencePlusPage.png', type: 'img', name: 'fencePlusPage', title: '高级围栏' },
         { src: 'plugins/digitalCity/preview/fenceWave.png', type: 'img', name: 'fenceWave', title: '波浪围栏' },
         { src: 'plugins/digitalCity/preview/regionGlow.png', type: 'img', name: 'regionGlow', title: '区域内发光' },
         { src: 'plugins/digitalCity/preview/rectangleGlowPage.png', type: 'img', name: 'rectangleGlowPage', title: '矩形渐变区域' },
