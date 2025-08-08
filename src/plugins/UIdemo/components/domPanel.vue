@@ -43,14 +43,25 @@ watch(
         }
     },
 )
+let isFirstRun = true
 watch(
     () => mustReBuildContent.value,
     (mrbc) => {
         if (mrbc) {
             nextTick(() => {
-                const dom = document.getElementById(domID)
-                if (dom) {
-                    dom.innerHTML = props.domContent
+                const setDomContent = () => {
+                    const dom = document.getElementById(domID)
+                    if (dom) {
+                        dom.innerHTML = props.domContent
+                    }
+                }
+                if (isFirstRun) {
+                    setTimeout(() => {
+                        setDomContent()
+                    }, 800)
+                    isFirstRun = false
+                } else {
+                    setDomContent()
                 }
                 mustReBuildContent.value = false
             })
@@ -60,7 +71,14 @@ watch(
 )
 </script>
 <template>
-    <Html wrapperClass="tvtDomPanelClass" v-if="!mustReBuildDom" :transform="transform" :sprite="sprite" :center="center" :distanceFactor="distanceFactor">
+    <Html
+        wrapperClass="tvtDomPanelClass"
+        v-if="!mustReBuildDom"
+        :transform="transform"
+        :sprite="sprite"
+        :center="center"
+        :distanceFactor="transform ? distanceFactor : undefined"
+    >
         <!-- <div class="childWrapper" v-html="domContent" @click="(event) => clickFun()" /> -->
         <!-- <div class="childWrapper" v-html="domContent" /> -->
         <div :id="domID" class="childWrapper" />

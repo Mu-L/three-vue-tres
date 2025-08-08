@@ -21,7 +21,7 @@
     <n-modal v-model:show="showModal" title="HTML编辑器" preset="dialog" :mask-closable="false" :z-index="99999999" style="width: 900px">
         <n-input v-model:value="htmlContent"
             type="textarea"
-            placeholder="在这里输入HTML代码,支持：原子化CSS引擎unocss"
+            placeholder="在这里输入HTML代码"
             :autosize="{ minRows: 10, maxRows: 38 }"
         />
 

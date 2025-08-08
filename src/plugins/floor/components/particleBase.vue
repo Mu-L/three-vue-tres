@@ -37,7 +37,7 @@ const props = withDefaults(
                     :color="color"
                     :area="[areaX, areaY, areaZ]"
                     :count="count"
-                    :depthWrite="true"
+                    :depthWrite="false"
                     :randomness="randomness"
                     :size="size"
                     transparent
