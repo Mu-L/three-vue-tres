@@ -31,7 +31,7 @@ const props = withDefaults(
     <TresGroup>
         <Suspense>
             <UseTexture v-slot="{ textures }" map="./plugins/digitalCity/image/cilcle.png">
-                <Precipitation
+                <Precipitation :renderOrder="2001"
                     :position="[0, areaY / 2, 0]"
                     :speed="speed"
                     :color="color"

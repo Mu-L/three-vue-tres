@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 16:22:08
+ * @LastEditTime: 2025-08-08 16:57:14
 -->
 <template>
-    <TresMesh :renderOrder="2200" :geometry="geometriesMesh">
+    <TresMesh :renderOrder="2000" :geometry="geometriesMesh">
         <TresShaderMaterial v-bind="rippleShader" />
     </TresMesh>
 </template>
