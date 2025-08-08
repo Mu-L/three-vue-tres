@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 21:01:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-31 15:11:54
+ * @LastEditTime: 2025-08-08 13:51:45
  */
 import loading1 from 'PLS/UIdemo/components/loading/huruji.vue'
 import loading2 from 'PLS/UIdemo/components/loading/cssLoaders.vue'
@@ -15,7 +15,21 @@ import starLoading from 'PLS/UIdemo/components/loading/starLoading.vue'
 import randomLoading from 'PLS/UIdemo/components/loading/randomLoading.vue'
 import defaultLoading from 'PLS/UIdemo/components/loading/default.vue'
 import bannerLabel from 'PLS/UIdemo/components/bannerLabel.vue'
-import * as ThreeMeshUI from 'PLS/UIdemo/lib/three-mesh-ui.module.js'
+import * as ThreeMeshUI from 'PLS/UIdemo/lib/three-mesh-ui.module'
 import reactor from 'PLS/UIdemo/components/loading/reactor.vue'
+import domPanel from 'PLS/UIdemo/components/domPanel.vue'
 
-export {reactor, loading1, loading2, bubbleLoading, vnyoonLoading, yangyangLoading, starLoading, randomLoading, defaultLoading, ThreeMeshUI, bannerLabel }
+export {
+    reactor,
+    loading1,
+    loading2,
+    bubbleLoading,
+    vnyoonLoading,
+    yangyangLoading,
+    starLoading,
+    randomLoading,
+    defaultLoading,
+    ThreeMeshUI,
+    bannerLabel,
+    domPanel,
+}

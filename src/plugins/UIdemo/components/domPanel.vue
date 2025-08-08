@@ -1,0 +1,82 @@
+<script setup lang="ts">
+import { watch, ref, nextTick } from 'vue'
+import { Html } from '@tresjs/cientos'
+
+const props = withDefaults(
+    defineProps<{
+        center?: boolean
+        transform?: boolean
+        sprite?: boolean
+        distanceFactor?: number
+        domContent?: string
+        // canClick?: boolean
+        // clickFun?: () => void
+    }>(),
+    {
+        center: false, // 无法实时更新 故
+        transform: false, // 无法实时更新 故
+        sprite: false,
+        distanceFactor: 1,
+        domContent: `
+                <div class="boxStyle1 pos-relative left-20 top--30 text-white" style="padding: 10px;border-left: 10px solid #336699;background-image: linear-gradient(132deg, #00336680, #00336610);">
+                    这是正方形 📦
+                </div>
+            `,
+        // canClick: true,
+        // clickFun: () => {
+        //     console.log('domPanel点击事件', event)
+        // },
+    },
+)
+const mustReBuildDom = ref(false)
+const mustReBuildContent = ref(true)
+watch(
+    () => [props.transform, props.center, props.distanceFactor, props.domContent],
+    ([transform, center, distanceFactor, domContent]) => {
+        if (!mustReBuildDom.value) {
+            mustReBuildDom.value = true
+            nextTick(() => {
+                mustReBuildDom.value = false
+                mustReBuildContent.value = true
+            })
+        }
+    },
+)
+watch(
+    () => mustReBuildContent.value,
+    (mrbc) => {
+        if (mrbc) {
+            nextTick(() => {
+                document.getElementById('dsadsad-gslyj').innerHTML = props.domContent
+                mustReBuildContent.value = false
+            })
+        }
+    },
+    { immediate: true },
+)
+</script>
+<template>
+    <Html wrapperClass="tvtDomPanelClass" v-if="!mustReBuildDom" :transform="transform" :sprite="sprite" :center="center" :distanceFactor="distanceFactor">
+        <!-- <div class="childWrapper" v-html="domContent" @click="(event) => clickFun()" /> -->
+        <!-- <div class="childWrapper" v-html="domContent" /> -->
+        <div id="dsadsad-gslyj" class="childWrapper" />
+    </Html>
+</template>
+
+<style lang="less">
+.tvtDomPanelClass > div:first-of-type {
+    position: relative !important;
+}
+.tvtDomPanelClass {
+    user-select: none;
+    pointer-events: none !important;
+    #inner,
+    .childWrapper {
+        user-select: none;
+        pointer-events: none !important;
+        // div {
+        //     pointer-events: all !important;
+        // }
+    }
+}
+</style>
