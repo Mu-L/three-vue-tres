@@ -28,6 +28,7 @@ const props = withDefaults(
         // },
     },
 )
+const domID = crypto.randomUUID()
 const mustReBuildDom = ref(false)
 const mustReBuildContent = ref(true)
 watch(
@@ -47,7 +48,10 @@ watch(
     (mrbc) => {
         if (mrbc) {
             nextTick(() => {
-                document.getElementById('dsadsad-gslyj').innerHTML = props.domContent
+                const dom = document.getElementById(domID)
+                if (dom) {
+                    dom.innerHTML = props.domContent
+                }
                 mustReBuildContent.value = false
             })
         }
@@ -59,7 +63,7 @@ watch(
     <Html wrapperClass="tvtDomPanelClass" v-if="!mustReBuildDom" :transform="transform" :sprite="sprite" :center="center" :distanceFactor="distanceFactor">
         <!-- <div class="childWrapper" v-html="domContent" @click="(event) => clickFun()" /> -->
         <!-- <div class="childWrapper" v-html="domContent" /> -->
-        <div id="dsadsad-gslyj" class="childWrapper" />
+        <div :id="domID" class="childWrapper" />
     </Html>
 </template>
 
