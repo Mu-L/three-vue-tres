@@ -19,9 +19,7 @@
             </TresMesh>
         </GeoPosition>
         <GeoPosition :point="{ lon: 118.7786, lat: 32.0438, height: 0 }">
-            <TresGroup :rotation="[-Math.PI, 0, 0]">
-                <GeoGLTF url="plugins/basic/htmls/model/model.gltf" draco />
-            </TresGroup>
+            <GeoGLTF url="plugins/basic/htmls/model/model.gltf" draco />
         </GeoPosition>
     </GeoCanvas>
 </template>

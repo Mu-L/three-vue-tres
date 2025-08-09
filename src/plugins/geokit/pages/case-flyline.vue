@@ -5,32 +5,44 @@
         <DevTDTTiles />
 
         <!-- 基础飞线 -->
-        <GeoFlyline
-            texture="plugins/digitalCity/image/flyLine1.png"
-            :start="flylineStart1"
-            :end="flylineEnd"
-            type="mesh"
-            color="#ff6b6b"
-            :width="20"
-            :arcHeight="30"
-            :segments="15"
-        />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine1.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoFlyline
+                    :map="textures.map"
+                    :start="flylineStart1"
+                    :end="flylineEnd"
+                    type="mesh"
+                    color="#ff6b6b"
+                    :width="20"
+                    :duration="2000"
+                    :arcHeight="30"
+                    :segments="15"
+                />
+            </UseTexture>
+        </Suspense>
         <!-- 基础飞线文字说明 -->
         <GeoText text="基础飞线 - 红色 #ff6b6b - 宽度: 20 - 弧度: 30 - 分段: 15" color="#ff6b6b" align="center" :point="flylineTextPosition1" :fontSize="12" />
 
         <!-- 虚线飞线 -->
-        <GeoFlyline
-            :start="flylineStart2"
-            :end="flylineEnd"
-            type="mesh"
-            color="#4ecdc4"
-            :width="20"
-            texture="plugins/digitalCity/image/flyLine2.png"
-            :arcHeight="50"
-            :segments="20"
-            :dashArray="0.3"
-            :dashRatio="0.6"
-        />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine2.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoFlyline
+                    :map="textures.map"
+                    :start="flylineStart2"
+                    :end="flylineEnd"
+                    type="mesh"
+                    color="#4ecdc4"
+                    :width="20"
+                    :duration="2000"
+                    :arcHeight="50"
+                    :segments="20"
+                    :dashArray="0.3"
+                    :dashRatio="0.6"
+                />
+            </UseTexture>
+        </Suspense>
         <!-- 虚线飞线文字说明 -->
         <GeoText
             text="虚线飞线 - 青色 #4ecdc4 - 宽度: 20 - 弧度: 50 - 分段: 20 - 虚线: 0.3/0.6"
@@ -41,16 +53,22 @@
         />
 
         <!-- 高弧度飞线 -->
-        <GeoFlyline
-            texture="plugins/digitalCity/image/flyLine3.png"
-            :start="flylineStart3"
-            :end="flylineEnd"
-            type="mesh"
-            color="#45b7d1"
-            :width="20"
-            :arcHeight="80"
-            :segments="25"
-        />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine3.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoFlyline
+                    :map="textures.map"
+                    :start="flylineStart3"
+                    :end="flylineEnd"
+                    type="mesh"
+                    color="#45b7d1"
+                    :duration="2000"
+                    :width="20"
+                    :arcHeight="80"
+                    :segments="25"
+                />
+            </UseTexture>
+        </Suspense>
         <!-- 高弧度飞线文字说明 -->
         <GeoText
             text="高弧度飞线 - 蓝色 #45b7d1 - 宽度: 20 - 弧度: 80 - 分段: 25"
@@ -61,31 +79,41 @@
         />
 
         <!-- 细线飞线 -->
-        <GeoFlyline
-            texture="plugins/digitalCity/image/flyLine4.png"
-            :start="flylineStart4"
-            :end="flylineEnd"
-            type="mesh"
-            color="#96ceb4"
-            :width="20"
-            :arcHeight="20"
-            :segments="10"
-        />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine4.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoFlyline
+                    :map="textures.map"
+                    :start="flylineStart4"
+                    :end="flylineEnd"
+                    type="mesh"
+                    color="#96ceb4"
+                    :duration="2000"
+                    :width="20"
+                    :arcHeight="20"
+                    :segments="10"
+                />
+            </UseTexture>
+        </Suspense>
         <!-- 细线飞线文字说明 -->
         <GeoText text="细线飞线 - 绿色 #96ceb4 - 宽度: 20 - 弧度: 20 - 分段: 10" color="#96ceb4" align="center" :point="flylineTextPosition4" :fontSize="12" />
 
         <!-- 长距离飞线 -->
-        <GeoFlyline
-            :start="flylineStart5"
-            :end="flylineEnd"
-            type="tube"
-            color="#fff"
-            texture="plugins/digitalCity/image/flyLine5.png"
-            :width="20"
-            :arcHeight="300"
-            :segments="30"
-            :duration="2"
-        />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine5.png">
+                <GeoFlyline
+                    :map="textures.map"
+                    :start="flylineStart5"
+                    :end="flylineEnd"
+                    type="tube"
+                    color="#fff"
+                    :duration="2000"
+                    :width="20"
+                    :arcHeight="300"
+                    :segments="30"
+                />
+            </UseTexture>
+        </Suspense>
         <!-- 长距离飞线文字说明 -->
         <GeoText
             text="长距离飞线 - 白色 #fff - 类型: tube - 宽度: 20 - 弧度: 300 - 分段: 30 - 时长: 2s"
@@ -98,8 +126,10 @@
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, GeoFlyline, GeoScene, GeoPositionConfig, GeoText } from '@icegl/geokit'
+import { GeoCanvas, GeoControls, GeoFlyline, GeoScene, GeoPositionConfig, GeoText, GeoTextureProps } from '@icegl/geokit'
 import { ref, computed } from 'vue'
+import { UseTexture } from '@tresjs/core'
+import { RepeatWrapping } from 'three'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const sceneConfig = ref({
@@ -115,7 +145,7 @@ const sceneConfig = ref({
     directionalLight: {
         color: '#fff',
         intensity: 2,
-        position: [-1500, 500, 500] as [number, number, number],
+        position: [-1500, 500, 500],
     },
     background: '/plugins/topoProject/image/farm_field_puresky_2k.jpg',
 })

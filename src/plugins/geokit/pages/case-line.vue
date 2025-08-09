@@ -4,18 +4,47 @@
         <GeoScene :sceneConfig="sceneConfig" />
         <DevTDTTiles />
 
-        <!-- MeshLine线条 -->
-        <GeoMeshline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints1" color="#ff0000" :width="50" :duration="2" />
+        <Suspense>
+            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :reverse="isReverse" :duration="1500">
+                    <!-- MeshLine线条 - 使用统一的颜色、宽度、贴图和动画 -->
+                    <GeoMeshline :points="linePoints1" color="#ff0000" :width="currentWidth" :map="textures.map" />
+                </GeoLineAnimation>
 
-        <!-- 管道线条 -->
-        <GeoTubeline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints2" color="#00ff00" :width="30" :duration="2" />
+                <GeoTextureClone :="textures" v-slot="{ textures }">
+                    <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                    <GeoLineAnimation :reverse="isReverse" :duration="1500">
+                        <!-- 管道线条 - 使用统一的颜色、宽度、贴图和动画 -->
+                        <GeoTubeline :points="linePoints2" color="#00ff00" :width="currentWidth" :map="textures.map" />
+                    </GeoLineAnimation>
+                </GeoTextureClone>
+            </UseTexture>
+        </Suspense>
     </GeoCanvas>
 </template>
 
 <script setup lang="ts">
-import { GeoCanvas, GeoControls, GeoTubeline, GeoMeshline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import {
+    GeoCanvas,
+    GeoControls,
+    GeoTubeline,
+    GeoMeshline,
+    GeoScene,
+    GeoPositionConfig,
+    GeoTextureProps,
+    GeoTextureClone,
+    GeoLineAnimation,
+} from '@icegl/geokit'
+import { RepeatWrapping } from 'three'
 import { ref } from 'vue'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
+import { UseTexture } from '@tresjs/core'
+
+// 需要添加这些响应式变量
+const textures = ref({})
+const isReverse = ref(false)
+const currentWidth = ref(50)
 
 const sceneConfig = ref({
     effectProps: {
