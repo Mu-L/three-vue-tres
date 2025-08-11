@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, nextTick } from 'vue'
+import { watch, ref, nextTick, useAttrs } from 'vue'
 import { Html } from '@tresjs/cientos'
 
 const props = withDefaults(
@@ -43,6 +43,20 @@ watch(
         }
     },
 )
+const updateVisible = () => {
+   const dom = document.getElementById(domID)
+   if (dom) {
+       dom.style.display = attrs.visible ? '' : 'none'
+   }
+}
+const attrs = useAttrs()
+watch(
+    () => attrs.visible,
+    () => {
+        updateVisible()
+    }
+)
+
 let isFirstRun = true
 watch(
     () => mustReBuildContent.value,
@@ -54,6 +68,7 @@ watch(
                     if (dom) {
                         dom.innerHTML = props.domContent
                     }
+                    updateVisible()
                 }
                 if (isFirstRun) {
                     setTimeout(() => {
