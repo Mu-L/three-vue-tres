@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-05-14 15:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-05 16:48:37
+ * @LastEditTime: 2025-08-11 17:28:08
  */
 export default {
     name: 'zone3Deditor',
@@ -18,7 +18,7 @@ export default {
     QA:<br>
     1、导出插件包安装后，需要再安装下免费插件依赖： <a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/useViewportGizmo" target="_blank">ViewportGizmo插件</a><br>
     此插件会和tvt.js生态持续协同，不断加入组件，用于您项目的快速落地<br>`,
-    version: '1.4.0',
+    version: '1.5.0',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
