@@ -10,7 +10,7 @@
         <Suspense>
             <UseTexture v-slot="{ textures }" map="/plugins/geokit/image/110000.bg.jpg">
                 <GeoTextureProps :texture="textures.map" />
-                <GeoPolygon :geometry="beijingGeojson.features[0].geometry" v-if="beijingGeojson" :height="5000" :renderOrder="10">
+                <GeoPolygon v-if="beijingGeojson" :geometry="beijingGeojson.features[0].geometry" :height="5000" :renderOrder="10">
                     <TresMeshStandardMaterial :map="textures.map" :side="DoubleSide" transparent :depth-write="false" />
                 </GeoPolygon>
             </UseTexture>
@@ -18,28 +18,34 @@
         <Suspense>
             <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/line2.png">
                 <GeoTextureProps :texture="textures.map" :rotation="-Math.PI / 2" :center="[0.2, 0.5]" />
-                <GeoWall :geometry="beijingGeojson.features[0].geometry" v-if="beijingGeojson" :height="5000" :renderOrder="10">
+                <GeoWall v-if="beijingGeojson" :geometry="beijingGeojson.features[0].geometry" :height="5000" :renderOrder="10">
                     <TresMeshStandardMaterial :map="textures.map" :side="DoubleSide" transparent :depth-write="false" />
                 </GeoWall>
             </UseTexture>
         </Suspense>
-        <GeoMeshline
-            texture="/plugins/digitalCity/image/flyLine4.png"
-            :duration="2"
-            :points="beijingBorder"
-            :width="500"
-            :renderOrder="50"
-            color="#0057ff"
-            v-if="beijingBorder.length"
-        />
+        
+        <Suspense v-if="beijingBorder.length">
+            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine4.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :duration="2000">
+                    <GeoMeshline
+                        :points="beijingBorder"
+                        :width="500"
+                        :renderOrder="50"
+                        color="#0057ff"
+                        :map="textures.map"
+                    />
+                </GeoLineAnimation>
+            </UseTexture>
+        </Suspense>
 
         <Suspense v-if="beijingChidlrenGeojson">
             <UseTexture v-slot="{ textures }" map="/plugins/floor/image/concrete_wet_floor_basecolor.jpg">
                 <GeoTextureProps :texture="textures.map" />
-                <template v-for="feature in beijingChidlrenGeojson.features">
+                <template v-for="(feature, index) in beijingChidlrenGeojson.features" :key="index">
                     <GeoPolygon
-                        :geometry="feature.geometry"
                         v-if="feature"
+                        :geometry="feature.geometry"
                         :height="5000"
                         :renderOrder="20"
                         @pointer-enter="hoverAreaName = feature.properties?.name"
@@ -56,12 +62,12 @@
                     </GeoPolygon>
 
                     <GeoCSS2D
+                        v-if="highlightAreaName ? highlightAreaName === feature.properties?.name : cameraPosition.distance < 600000"
                         :point="{
                             lon: feature.properties?.centroid[0],
                             lat: feature.properties?.centroid[1],
                             height: 9000,
                         }"
-                        v-if="highlightAreaName ? highlightAreaName === feature.properties?.name : cameraPosition.distance < 600000"
                     >
                         <div class="css2d-label">
                             {{ feature.properties?.name }}
@@ -74,28 +80,26 @@
 </template>
 
 <script setup lang="ts">
-import { SRGBColorSpace, BasicShadowMap, NoToneMapping, DoubleSide } from 'three'
+import { SRGBColorSpace, BasicShadowMap, NoToneMapping, DoubleSide, RepeatWrapping } from 'three'
 import { onMounted, reactive, ref, shallowRef, computed } from 'vue'
 import {
     GeoControls,
     GeoCSS2DRenderer,
     GeoScene,
-    GeoPositionConfig,
     GeoPolygon,
     GeoWall,
     GeoTextureProps,
     GeoMeshline,
     GeoCSS2D,
-    Line as GeoLineType,
+    GeoLineAnimation,
 } from '@icegl/geokit'
-import DevTDTTiles from '../components/DevTDTTiles.vue'
 import { UseTexture } from '@tresjs/core'
+import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const state = reactive({
     clearColor: '#201919',
     shadows: true,
     alpha: false,
-
     shadowMapType: BasicShadowMap,
     outputColorSpace: SRGBColorSpace,
     toneMapping: NoToneMapping,
@@ -114,13 +118,13 @@ const sceneConfig = ref({
     directionalLight: {
         color: '#fff',
         intensity: 2,
-        position: [-1500, 500, 500] as [number, number, number],
+        position: [-1500, 500, 500],
     },
     background: '/plugins/earthSample/image/menuA/bg-img.png',
 })
 
 // 相机位置
-const cameraPosition = ref<GeoPositionConfig>({
+const cameraPosition = ref({
     heading: 90,
     pitch: -45,
     distance: 270000,
@@ -128,28 +132,24 @@ const cameraPosition = ref<GeoPositionConfig>({
     latitude: 40.125336671652086,
 })
 
-const hoverAreaName = ref<string>('')
-const focusAreaName = ref<string>('')
-const highlightAreaName = computed(() => {
-    return focusAreaName.value || hoverAreaName.value
-})
+const hoverAreaName = ref('')
+const focusAreaName = ref('')
+const highlightAreaName = computed(() => focusAreaName.value || hoverAreaName.value)
 
-const beijingChidlrenGeojson = shallowRef<GeoJSON.FeatureCollection<GeoJSON.MultiPolygon>>()
-const beijingGeojson = shallowRef<GeoJSON.FeatureCollection<GeoJSON.MultiPolygon>>()
-const beijingBorder = shallowRef<GeoLineType>([])
+const beijingChidlrenGeojson = shallowRef()
+const beijingGeojson = shallowRef()
+const beijingBorder = shallowRef([])
 
 onMounted(() => {
     fetch('/plugins/geokit/json/110000.json')
         .then((response) => response.json())
-        .then((data: GeoJSON.FeatureCollection<GeoJSON.MultiPolygon>) => {
+        .then((data) => {
             beijingGeojson.value = data
-            beijingBorder.value = data.features[0].geometry.coordinates[0][0].map((point) => {
-                return {
-                    lon: point[0],
-                    lat: point[1],
-                    height: 5100,
-                }
-            })
+            beijingBorder.value = data.features[0].geometry.coordinates[0][0].map((point) => ({
+                lon: point[0],
+                lat: point[1],
+                height: 5100,
+            }))
         })
         .catch((error) => {
             console.error('Error loading Beijing GeoJSON:', error)
@@ -157,7 +157,7 @@ onMounted(() => {
 
     fetch('/plugins/geokit/json/110000.children.json')
         .then((response) => response.json())
-        .then((data: GeoJSON.FeatureCollection<GeoJSON.MultiPolygon>) => {
+        .then((data) => {
             beijingChidlrenGeojson.value = data
         })
         .catch((error) => {
@@ -165,7 +165,7 @@ onMounted(() => {
         })
 })
 
-const goToArea = (areaName: string | undefined) => {
+const goToArea = (areaName) => {
     if (!areaName) return
 
     if (focusAreaName.value === areaName) {

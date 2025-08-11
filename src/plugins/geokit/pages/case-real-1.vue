@@ -72,22 +72,36 @@
             <TresMeshStandardMaterial color="#00cb91" transparent :opacity="0.6" :side="DoubleSide" />
         </GeoPolygon>
 
-        <GeoFlyline
-            v-if="hoverSchool"
-            texture="/plugins/digitalCity/image/flyLine1.png"
-            :start="{ lon: 116.40463917407055, lat: 39.889897530319814, height: 0 }"
-            :end="{ lon: 116.40036727754858, lat: 39.88920339523989, height: 0 }"
-            type="mesh"
-            color="#ff6b6b"
-            :width="20"
-            :arcHeight="60"
-            :segments="15"
-        />
+        <Suspense v-if="hoverSchool">
+            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine1.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :duration="2000">
+                    <GeoFlyline
+                        :map="textures.map"
+                        :start="{ lon: 116.40463917407055, lat: 39.889897530319814, height: 0 }"
+                        :end="{ lon: 116.40036727754858, lat: 39.88920339523989, height: 0 }"
+                        type="mesh"
+                        color="#ff6b6b"
+                        :width="20"
+                        :arcHeight="60"
+                        :segments="15"
+                    />
+                </GeoLineAnimation>
+            </UseTexture>
+        </Suspense>
 
         <GeoCSS2D :point="{ lon: 116.40463917407055, lat: 39.889897530319814, height: 80 }">
             <div class="building-label">金台书院小学</div>
         </GeoCSS2D>
-        <GeoMeshline v-if="hoverMainBuilding" texture="/plugins/digitalCity/image/flyLine5.png" :points="moveLine" color="#00cb91" :width="6" :duration="4" />
+        
+        <Suspense v-if="hoverMainBuilding">
+            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :duration="4000">
+                    <GeoMeshline :points="moveLine" color="#00cb91" :width="6" :map="textures.map" />
+                </GeoLineAnimation>
+            </UseTexture>
+        </Suspense>
     </TresCanvas>
 </template>
 
@@ -107,6 +121,7 @@ import {
     GeoCSS2DRenderer,
     GeoScene,
     GeoPositionConfig,
+    GeoLineAnimation,
 } from '@icegl/geokit'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 
