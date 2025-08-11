@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-25 18:10:50
+ * @LastEditTime: 2025-08-11 16:22:47
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -120,44 +120,44 @@ export default defineBuildConfig({
             //         level: 9, // 压缩级别，范围为 1-9，9 为最高压缩率
             //     },
             // }),
-            process.env.NODE_ENV === 'production' &&
-            javascriptObfuscator({
-                apply: 'build',
-                include: [/src\/.*\.js$/],
-                exclude: [
-                    'node_modules/**',
-                    '!node_modules/three/**',
-                    '!node_modules/@tresjs/core/**',
-                    '!node_modules/@tresjs/cientos/**',
-                    'src/plugins/geojson23dtiles/lib/**',
-                    /[\\/]@alienkitty[\\/]/,
-                ],
-                options: {
-                    optionsPreset: 'high-obfuscation', //'default',
-                    debugProtection: false,
-                    disableConsoleOutput: true,
-                    controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
-                    identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
-                    reservedStrings: [
-                        'suspenseLayout.vue',
-                        /* 排除编辑器需要的引用的组件 start */
-                        'coneAnchorMeshB.vue',
-                        'bannerLabel.vue',
-                        'staticWater.vue',
-                        'reflectorRoundedBox.vue',
-                        'flexiblePipe.vue',
-                        'utils.js',
-                        /* 排除编辑器需要的引用的组件 end */
-                    ],
-                    compact: true,
-                    stringArray: true,
-                    stringArrayThreshold: 0.75,
-                    stringArrayEncoding: ['rc4'],
-                    splitStrings: false,
-                    transformObjectKeys: false,
-                    // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
-                },
-            }),
+            // process.env.NODE_ENV === 'production' &&
+            // javascriptObfuscator({
+            //     apply: 'build',
+            //     include: [/src\/.*\.js$/],
+            //     exclude: [
+            //         'node_modules/**',
+            //         '!node_modules/three/**',
+            //         '!node_modules/@tresjs/core/**',
+            //         '!node_modules/@tresjs/cientos/**',
+            //         'src/plugins/geojson23dtiles/lib/**',
+            //         /[\\/]@alienkitty[\\/]/,
+            //     ],
+            //     options: {
+            //         optionsPreset: 'high-obfuscation', //'default',
+            //         debugProtection: false,
+            //         disableConsoleOutput: true,
+            //         controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
+            //         identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
+            //         reservedStrings: [
+            //             'suspenseLayout.vue',
+            //             /* 排除编辑器需要的引用的组件 start */
+            //             'coneAnchorMeshB.vue',
+            //             'bannerLabel.vue',
+            //             'staticWater.vue',
+            //             'reflectorRoundedBox.vue',
+            //             'flexiblePipe.vue',
+            //             'utils.js',
+            //             /* 排除编辑器需要的引用的组件 end */
+            //         ],
+            //         compact: true,
+            //         stringArray: true,
+            //         stringArrayThreshold: 0.75,
+            //         stringArrayEncoding: ['rc4'],
+            //         splitStrings: false,
+            //         transformObjectKeys: false,
+            //         // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
+            //     },
+            // }),
         ],
         server: {
             proxy: {
