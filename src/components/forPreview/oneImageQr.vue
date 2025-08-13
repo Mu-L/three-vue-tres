@@ -1,7 +1,7 @@
 <template>
     <div v-if="hasPreview">
         <FTooltip mode="popover" :offset="-208" placement="bottom" :getContainer="getContainer" :disabled="detectDeviceType() !== 'PC'">
-            <FImage class="w-full max-h-70 h-14em" fit="contain" :src="publicPath + onePreview.src" lazy />
+            <FImage class="w-full max-h-70 h-14em" fit="contain" :src="imgSrc()" lazy />
             <template #content>
                 <div style="width: 280px; height: 180px; display: flex; justify-content: center; align-items: center">
                     <div class="one-item-qrcode">
@@ -29,7 +29,7 @@
         </FTooltip>
     </div>
     <div v-else>
-        <FImage class="w-full max-h-70 h-14em" fit="contain" :src="publicPath + onePreview.src" lazy />
+        <FImage class="w-full max-h-70 h-14em" fit="contain" :src="imgSrc()" lazy />
     </div>
 </template>
 <script setup lang="ts">
@@ -52,6 +52,13 @@ const props = defineProps({
 })
 
 const publicPath = process.env.BASE_URL
+const imgSrc = () => {
+    let url = props.onePreview.src
+    if (!url.startsWith('http')) {
+        url = publicPath + url
+    }
+    return url
+}
 
 // console.log(props.onePreview)
 // console.log(props.onePlugin)

@@ -77,6 +77,7 @@ src/plugins/zoneOfficeFloor
 public/plugins/zoneOfficeFloor
 src/plugins/smartOilDepot
 public/plugins/smartOilDepot
+src/plugins/zoneLowAltitudeUAV
 
 
 # 排除安装插件包
