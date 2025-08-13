@@ -9,6 +9,7 @@ const props = withDefaults(
         sprite?: boolean
         distanceFactor?: number
         domContent?: string
+        domID?: string
         // canClick?: boolean
         // clickFun?: () => void
     }>(),
@@ -28,7 +29,7 @@ const props = withDefaults(
         // },
     },
 )
-const domID = crypto.randomUUID()
+const domID = props.domID ?? crypto.randomUUID()
 const mustReBuildDom = ref(false)
 const mustReBuildContent = ref(true)
 watch(
