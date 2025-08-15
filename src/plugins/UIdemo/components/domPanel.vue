@@ -45,17 +45,27 @@ watch(
     },
 )
 const updateVisible = () => {
-   const dom = document.getElementById(domID)
-   if (dom) {
-       dom.style.display = attrs.visible ? '' : 'none'
-   }
+    let visible = true
+    if (attrs.visible === undefined) {
+        visible = true
+    } else {
+        if (attrs.visible === '' || attrs.visible) {
+            visible = true
+        } else {
+            visible = false
+        }
+    }
+    const dom = document.getElementById(domID)
+    if (dom) {
+        dom.style.display = visible ? '' : 'none'
+    }
 }
 const attrs = useAttrs()
 watch(
     () => attrs.visible,
     () => {
         updateVisible()
-    }
+    },
 )
 
 let isFirstRun = true
