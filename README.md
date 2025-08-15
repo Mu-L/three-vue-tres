@@ -1,4 +1,5 @@
-## 🧳🧳🧳 TvT.js 🧳🧳🧳
+# Three-Vue-Tres 🧳🧳🧳 TvT.js 🧳🧳🧳
+A Vue 3 wrapper for Three.js using TresJS for building interactive 3D scenes.
 
 文档说明(语言)：[简体中文](./README_zh.md) | English
 
