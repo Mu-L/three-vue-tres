@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-13 16:23:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-15 10:23:23
+ * @LastEditTime: 2025-08-18 15:52:00
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -12,7 +12,7 @@
         <OrbitControls />
         <TresAmbientLight :intensity="3" />
         <Suspense>
-            <GLTFModel path="./plugins/gaussianSplatting/model/BurntCar-v1.glb" draco decoderPath="./draco/" :position="[0, 1, 0]" />
+            <GLTFModel :path="modepath" draco decoderPath="./draco/" :position="[0, 1, 0]" />
         </Suspense>
 
         <TresDirectionalLight :position="[6, 2, 4]" :intensity="2" />
@@ -35,4 +35,6 @@ const state = reactive({
     outputColorSpace: SRGBColorSpace,
     toneMapping: NoToneMapping,
 })
+
+const modepath = `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/gaussianSplatting/BurntCar-v1.glb`
 </script>

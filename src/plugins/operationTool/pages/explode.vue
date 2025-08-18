@@ -18,7 +18,7 @@ import * as TWEEN from '@tweenjs/tween.js'
 import _ from 'lodash'
 import * as THREE from 'three'
 
-const { scene: model } = await useGLTF('/plugins/operationTool/model/湖中小亭/湖中小亭.gltf')
+const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
 model.updateMatrixWorld(true) // 强制更新
 const state = reactive({
     alpha: true,

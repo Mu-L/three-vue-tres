@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-04-15 21:03:54
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-08-18 16:03:00
+-->
 <template>
     <primitive :object="scene" />
 </template>
@@ -12,12 +20,9 @@ import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 import vertexShader from '../../shaders/speedup.vert'
 import fragmentShader from '../../shaders/speedup.frag'
 
-// const { scene } = await useGLTF('./plugins/industry4/model/su7_car/sm_speedup.gltf', { draco: false }, (gltfLoader) => {
-// 	gltfLoader.setMeshoptDecoder(MeshoptDecoder)
-// })
 const gltfLoader = new GLTFLoader()
 gltfLoader.setMeshoptDecoder(MeshoptDecoder)
-const { scene } = await gltfLoader.loadAsync('./plugins/industry4/model/su7_car/sm_speedup.gltf')
+const { scene } = await gltfLoader.loadAsync(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/su7_car/sm_speedup.gltf`)
 
 const uniforms = {
     uTime: { value: 0 },

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-13 09:05:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 15:20:49
+ * @LastEditTime: 2025-08-18 16:09:04
 -->
 <template>
     <TresMesh :geometry="geometry">
@@ -47,7 +47,7 @@ guanyuGeometries.rotateX(Math.PI / 2)
 guanyuGeometries.translate(0, -0.9, 0)
 const geometry = guanyuGeometries.clone().toNonIndexed()
 
-const planeModel = (await useGLTF('./plugins/industry4/model/modelDraco.glb', { draco: true, decoderPath: './draco/' })).scene
+const planeModel = (await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb', { draco: true, decoderPath: './draco/' })).scene
 const planeGeometries = mergeGeometriesForMesh(planeModel.children[0])
 planeGeometries.rotateX(-Math.PI / 2)
 planeGeometries.rotateY(Math.PI / 3)

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-14 17:59:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 09:17:46
+ * @LastEditTime: 2025-08-18 15:55:00
 -->
 <template>
     <primitive :object="scene" :rotation-y="Math.PI" />
@@ -31,12 +31,10 @@ const props = withDefaults(
         run: false,
     },
 )
-// const { scene, materials } = await useGLTF('./plugins/industry4/model/su7_car/sm_car.gltf', { draco: false }, (gltfLoader) => {
-//     gltfLoader.setMeshoptDecoder(MeshoptDecoder)
-// })
+
 const loader = new GLTFLoader()
 loader.setMeshoptDecoder(MeshoptDecoder)
-const { scene } = await loader.loadAsync('./plugins/industry4/model/su7_car/sm_car.gltf')
+const { scene } = await loader.loadAsync(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/su7_car/sm_car.gltf`)
 function getAllMaterials(object) {
     let materialsMap = new Map()
     object.traverse((child) => {

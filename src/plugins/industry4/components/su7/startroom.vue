@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-27 10:38:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 16:55:49
+ * @LastEditTime: 2025-08-18 16:01:29
 -->
 <template>
     <primitive :object="scene" ref="tresMesh" />
@@ -29,7 +29,7 @@ const props = withDefaults(
     },
 )
 
-const { scene } = await useGLTF('./plugins/industry4/model/su7_car/su7_startroom.raw.glb', { draco: true, decoderPath: './draco/' })
+const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/su7_car/su7_startroom.raw.glb`, { draco: true, decoderPath: './draco/' })
 
 const pTexture = await useTexture([
     './plugins/industry4/texture/t_startroom_light.raw.jpg',

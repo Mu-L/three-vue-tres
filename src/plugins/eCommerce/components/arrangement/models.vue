@@ -25,7 +25,7 @@ const innerMaterial = new THREE.MeshStandardMaterial({
     polygonOffsetFactor: 1,
     envMapIntensity: 0.6,
 })
-const { nodes, materials } = await useGLTF('./plugins/eCommerce/model/glass-transformed.glb', { draco: true, decoderPath: './draco/' })
+const { nodes, materials } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'  }/model/eCommerce/glass-transformed.glb`, { draco: true, decoderPath: './draco/' })
 
 const shadowState = {
     opacity: 0.8,

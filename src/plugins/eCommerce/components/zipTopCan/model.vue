@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 11:24:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-30 12:07:28
+ * @LastEditTime: 2025-08-18 15:41:02
 -->
 <template>
     <TresMesh :visible="false" @click="onClick">
@@ -29,7 +29,7 @@ const { sizes } = useTresContext()
 import { ref } from 'vue'
 
 // @ts-ignore
-const { nodes, materials } = await useGLTF('./plugins/eCommerce/model/energy-can.glb', {
+const { nodes, materials } = await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/energy-can.glb', {
     draco: true,
     decoderPath: './draco/',
 })

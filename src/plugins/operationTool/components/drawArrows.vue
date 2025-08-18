@@ -3,25 +3,21 @@
 <script setup lang="ts">
 import { onMounted, watchEffect, ref } from 'vue'
 import * as THREE from 'three'
-import { SelectionBox } from 'three/examples/jsm/interactive/SelectionBox.js'
-import { SelectionHelper } from 'three/examples/jsm/interactive/SelectionHelper'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import { useTresContext } from '@tresjs/core'
 import { Pane } from 'tweakpane'
 
-// const { scene: model, nodes } = await useGLTF('/plugins/operationTool/model/湖中小亭/湖中小亭.gltf')
-const { camera, renderer, scene, sizes, raycaster, controls } = useTresContext()
+const { camera, scene, raycaster } = useTresContext()
 
-let mouse = new THREE.Vector2()
-let points = []
-let MeshRef = ref(null)
+const mouse = new THREE.Vector2()
+const points = [] as any
+const MeshRef = ref(null)
 const planeGeometry = new THREE.PlaneGeometry(200, 200)
 const planeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
 const plane = new THREE.Mesh(planeGeometry, planeMaterial)
 plane.rotation.set(0, 0, Math.PI / 2)
 scene.value.add(plane)
 let type = ''
-let initLine = function () {
+const initLine = function () {
     window.addEventListener('click', onMouseClick, false)
 }
 
@@ -46,7 +42,7 @@ let onMouseClick = function (event) {
         }
     }
 }
-let updatePolygonFace = function (normal) {
+const updatePolygonFace = function (normal) {
     if (points.length == 2) {
         const distance = points[0].distanceTo(points[1])
         let geometry = null
@@ -87,12 +83,12 @@ let updatePolygonLine = function (normal) {
         const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
         const tube = new THREE.Mesh(tubeGeometry, material)
         scene.value.add(tube)
-        let dir = normal
-        let group1 = cloneTube(path, dir, Math.PI / 5)
+        const dir = normal
+        const group1 = cloneTube(path, dir, Math.PI / 5)
         scene.value.add(group1)
-        let group2 = cloneTube(path, dir, -Math.PI / 5)
+        const group2 = cloneTube(path, dir, -Math.PI / 5)
         scene.value.add(group2)
-        let sphere = drawSphere(points[1])
+        const sphere = drawSphere(points[1])
         scene.value.add(sphere)
         points.length = 0
     }
@@ -134,7 +130,7 @@ let cloneTube = function (path, dir, angle) {
     // 将组添加到场景中
     return group
 }
-let drawTriangle = function (pointA, pointB, pointC) {
+const drawTriangle = function (pointA, pointB, pointC) {
     const vertices = new Float32Array([pointA.x, pointA.y, pointA.z, pointB.x, pointB.y, pointB.z, pointC.x, pointC.y, pointC.z])
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
@@ -142,7 +138,7 @@ let drawTriangle = function (pointA, pointB, pointC) {
     const triangle = new THREE.Mesh(geometry, material)
     return triangle
 }
-let initUI = function () {
+const initUI = function () {
     const paneControl = new Pane({
         title: '箭头',
         expanded: true,

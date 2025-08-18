@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-23 16:40:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-25 09:46:31
+ * @LastEditTime: 2025-08-18 16:23:09
  */
 
 export default {
@@ -59,7 +59,7 @@ export default {
             name: 'googleMapsExample',
             title: 'googleMaps演示'
         },
-        { src: 'plugins/simpleGIS/preview/mapBuildings.gif', type: 'img', name: 'mapBuildings', title: '地图和3DTiles结合' },
+        { src: 'plugins/simpleGIS/preview/mapBuildings.png', type: 'img', name: 'mapBuildings', title: '地图和3DTiles结合' },
         {
             src: 'plugins/simpleGIS/preview/threeTileEx.png',
             type: 'img',

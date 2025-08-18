@@ -1,20 +1,21 @@
 <template>
-   <primitive :object="model"  />
+   <primitive :object="model" />
 </template>
 
 <script setup lang="ts">
 import { onMounted, watchEffect } from 'vue'
 import * as THREE from 'three'
-import { SelectionBox } from 'three/examples/jsm/interactive/SelectionBox.js'
+import { SelectionBox } from 'three/examples/jsm/interactive/SelectionBox'
 import { SelectionHelper } from 'three/examples/jsm/interactive/SelectionHelper'
-import { useTresContext, useRenderLoop} from '@tresjs/core'
+import { useTresContext} from '@tresjs/core'
 import {  useGLTF} from '@tresjs/cientos'
-const { scene: model, nodes } = await useGLTF('/plugins/operationTool/model/湖中小亭/湖中小亭.gltf')
-const { camera, renderer, scene, sizes, raycaster, controls } = useTresContext()
 
-let selectionBox = new SelectionBox(camera.value, scene.value)
-let helper = new SelectionHelper(renderer.value, 'selectBox')
-let init = function () {
+const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
+const { camera, renderer, scene, sizes, controls } = useTresContext()
+
+const selectionBox = new SelectionBox(camera.value, scene.value)
+const helper = new SelectionHelper(renderer.value, 'selectBox')
+const init = function () {
     document.addEventListener('mousedown', onMouseDown, false)
     document.addEventListener('mousemove', onMouseMove, false)
     document.addEventListener('mouseup', onMouseUp, false)
@@ -22,7 +23,7 @@ let init = function () {
 
 let onMouseDown = function (event) {
 
-    console.log(controls.value);
+    console.log(controls.value)
     
     for (const item of selectionBox.collection) {
         if (item instanceof THREE.Mesh) {
@@ -38,10 +39,10 @@ let onMouseMove = function (event) {
        
         selectionBox.endPoint.set((event.clientX / sizes.width.value) * 2 - 1, -(event.clientY / sizes.height.value) * 2 + 1, 0.5)
         const allSelected = selectionBox.select()
-        console.log("allSelected",allSelected);
+        console.log("allSelected",allSelected)
         
         for (let i = 0; i < allSelected.length; i++) {
-            let item = allSelected[i]
+            const item = allSelected[i]
             if (item instanceof THREE.Mesh) {
                 item.material.emissive.set(0xf80000)
             }
@@ -53,7 +54,7 @@ let onMouseUp = function (event) {
     const allSelected = selectionBox.select()
     selectionBox.endPoint.set((event.clientX / sizes.width.value) * 2 - 1, -(event.clientY / sizes.height.value) * 2 + 1, 0.5)
     for (let i = 0; i < allSelected.length; i++) {
-        let item = allSelected[i]
+        const item = allSelected[i]
         if (item instanceof THREE.Mesh) {
             item.material.emissive.set(0x000000)
         }

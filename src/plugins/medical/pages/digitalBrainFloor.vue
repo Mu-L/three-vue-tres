@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:13:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-13 20:58:06
+ * @LastEditTime: 2025-08-18 16:14:10
 -->
 <template>
 	<loading />
@@ -31,7 +31,7 @@ import { reactive } from 'vue'
 
 import { OrbitControls } from '@tresjs/cientos'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
-import { Pane } from 'tweakpane';
+import { Pane } from 'tweakpane'
 import reflectorMesh from 'PLS/floor/components/reflectorMesh.vue'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import { loadOBJ } from '../common/util'
@@ -53,7 +53,7 @@ const cloudPointsState = reactive({
 	show: true,
 	opacity: 1.0
 })
-const paneControl = new Pane({ title: '参数', });
+const paneControl = new Pane({ title: '参数', })
 paneControl.addBinding(cloudPointsState, 'show', { label: '点云显示' })
 paneControl.addBinding(cloudPointsState, 'color', { label: '点云颜色' })
 paneControl.addBinding(cloudPointsState, 'opacity', {
@@ -87,7 +87,7 @@ paneControl.addBinding(bubblesState, 'opacity', {
 	step: 0.1,
 })
 
-const path = './plugins/medical/model/brainparts.OBJ';
+const path = `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'  }/model/medical/brainparts.OBJ`
 const loader = new OBJLoader()
 const model = await loadOBJ(path, loader)
 const state = reactive({

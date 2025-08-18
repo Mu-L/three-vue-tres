@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 20:24:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 16:19:35
+ * @LastEditTime: 2025-08-18 15:03:33
  */
 export default {
     name: 'digitalCity',
@@ -57,6 +57,6 @@ export default {
         { src: 'plugins/digitalCity/preview/coneAnchorA.png', type: 'img', name: 'coneAnchorA', title: '浮锚标识A' },
         { src: 'plugins/digitalCity/preview/coneAnchorB.png', type: 'img', name: 'coneAnchorB', title: '浮锚标识B' },
         { src: 'plugins/digitalCity/preview/particleFirefly.png', type: 'img', name: 'particleFirefly', title: '粒子萤火虫' },
-        { src: 'plugins/digitalCity/preview/city2.gif', type: 'img', name: 'city2', title: '城市新模型' },
+        { src: 'plugins/digitalCity/preview/city2.png', type: 'img', name: 'city2', title: '城市新模型' },
     ],
 }

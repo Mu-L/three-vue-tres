@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-27 10:38:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 10:57:09
+ * @LastEditTime: 2025-08-18 16:05:05
 -->
 <template>
     <TresMesh ref="targetMesh" :geometry="geometry" :scale="0.005" :material="material" />
@@ -50,7 +50,7 @@ const initMeshBvh = () => {
 }
 initMeshBvh()
 
-const geometry = await useLoader(STLLoader, './plugins/industry4/model/TR12J_OCC.stl')
+const geometry = await useLoader(STLLoader, `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/TR12J_OCC.stl`)
 
 const material = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.2, metalness: 1, vertexColors: true })
 const colorArray = new Uint8Array(geometry.attributes.position.count * 3)

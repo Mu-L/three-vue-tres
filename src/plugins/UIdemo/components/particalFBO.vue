@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-11 15:02:07
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-08 08:49:38
+ * @LastEditTime: 2025-08-18 16:13:48
 -->
 <script setup lang="ts">
 import * as THREE from 'three'
@@ -58,7 +58,7 @@ const mergeGeometriesForMesh = (model: THREE.Object3D) => {
     return BufferGeometryUtils.mergeGeometries(gList)
 }
 
-const brainpartsPath = './plugins/medical/model/brainparts.OBJ'
+const brainpartsPath = (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/medical/brainparts.OBJ'
 const objLoader = new OBJLoader()
 const brainpartsModel = await loadOBJ(brainpartsPath, objLoader)
 const brainpartsGeometries = mergeGeometriesForMesh(brainpartsModel)
@@ -76,7 +76,7 @@ guanyuGeometries.rotateX(Math.PI / 2)
 guanyuGeometries.translate(0, -0.9, 0)
 const guanyuTexture = makeTexture(guanyuGeometries)
 
-const planeModel = (await useGLTF('./plugins/industry4/model/modelDraco.glb', { draco: true, decoderPath: './draco/' })).scene
+const planeModel = (await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb', { draco: true, decoderPath: './draco/' })).scene
 const planeGeometries = mergeGeometriesForMesh(planeModel.children[0])
 planeGeometries.rotateX(-Math.PI / 2)
 planeGeometries.rotateY(Math.PI / 3)

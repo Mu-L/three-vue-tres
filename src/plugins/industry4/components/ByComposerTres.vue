@@ -24,7 +24,7 @@ const props = withDefaults(
 );
 
 const { nodes } = await useGLTF(
-	'./plugins/industry4/model/modelDraco.glb',
+	(process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb',
 	{ draco: true, decoderPath: './draco/' })
 const lineGroup = reduceModelLine(nodes.Sketchfab_model)
 

@@ -1,16 +1,20 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-09-02 08:21:13
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-08-18 16:17:23
+-->
 <template>
     <primitive :object="model" />
 </template>
 
 <script setup lang="ts">
 import { onMounted, watchEffect } from 'vue'
-import * as THREE from 'three'
-import { SelectionBox } from 'three/examples/jsm/interactive/SelectionBox.js'
-import { SelectionHelper } from 'three/examples/jsm/interactive/SelectionHelper'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
 import { useGLTF } from '@tresjs/cientos'
-const { scene: model, nodes } = await useGLTF('/plugins/operationTool/model/湖中小亭/湖中小亭.gltf')
-const { camera, renderer, scene, sizes, raycaster, controls } = useTresContext()
+
+const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
 
 onMounted(() => {})
 watchEffect(() => {})
