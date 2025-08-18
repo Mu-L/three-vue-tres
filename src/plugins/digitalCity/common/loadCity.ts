@@ -9,7 +9,7 @@
 import { useFBX } from '@tresjs/cientos'
 
 export const loadCityFBX = async () => {
-	const path = './plugins/digitalCity/model/shanghai.FBX'
+	const path = (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/digitalCity/shanghai.FBX'
 	const model = await useFBX(path)
 	let CITY_UNTRIANGULATED = null
 	let LANDMASS = null

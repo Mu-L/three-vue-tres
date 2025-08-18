@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-02 10:55:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-14 21:11:29
+ * @LastEditTime: 2025-08-18 11:25:43
 -->
 <template>
 	<Suspense>
@@ -29,10 +29,11 @@ import importantBuildings from './importantBuildings.vue'
 
 initMeshBvh()
 const { scene }
-	= await useGLTF('./plugins/digitalCity/model/shanghaiDraco/shanghaiDraco.gltf',
-		{ draco: true, decoderPath: './draco/' },
-	)
-// console.log(scene)
+	= await useGLTF(
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/digitalCity/shanghaiDraco/shanghaiDraco.gltf',
+    { draco: true, decoderPath: './draco/' },
+)
+
 const group = scene.clone() as Group
 const timeDelta = ref(0)
 const setEffectMaterial = (mesh) => {
