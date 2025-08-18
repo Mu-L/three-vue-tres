@@ -114,6 +114,20 @@
 			</a>
 		</td>
   </tr>
+		<tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html">
+				无人机组可视化：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20250813/023197a1cef7ce7b948af903160ee01e.png" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 ```shell

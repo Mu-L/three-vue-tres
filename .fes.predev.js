@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-11 16:22:47
+ * @LastEditTime: 2025-08-15 15:57:39
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -100,8 +100,8 @@ export default defineBuildConfig({
                 title: '🪢 定制开发',
             },
             {
-                path: 'https://www.icegl.cn/p/aboutus',
-                title: '💫 关于我们',
+                path: 'https://www.icegl.cn/p/tvtdeveloper.html',
+                title: '💫 加入我们',
             },
         ],
     },

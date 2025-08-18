@@ -89,8 +89,8 @@ export default defineBuildConfig({
                 title: '🪢 定制开发',
             },
             {
-                path: 'https://www.icegl.cn/p/aboutus',
-                title: '💫 关于我们',
+                path: 'https://www.icegl.cn/p/tvtdeveloper.html',
+                title: '💫 加入我们',
             },
         ],
     },
