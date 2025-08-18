@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 15:56:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 10:52:59
+ * @LastEditTime: 2025-08-18 11:53:32
 -->
 <template>
     <loading useResourceManager />
@@ -46,11 +46,11 @@ import sculpture from '../components/simplePark/sculpture.vue'
 import street from '../components/simplePark/street.vue'
 
 Resource.loadResources([
-    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/officeBuild/officeBuild.gltf' },
+    { functionName: 'GLTFLoader', url: `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'  }/model/digitalPark/officeBuild.glb`},
     { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/arctic_tooltip.glb' },
-    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/laboratoryBuild.gltf' },
-    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/low_poly_street.glb' },
-    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/vr_sculpture_park/scene.gltf' },
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/laboratoryBuild.glb' },
+    { functionName: 'GLTFLoader', url: `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'  }/model/digitalPark/low_poly_street.glb`},
+    { functionName: 'GLTFLoader', url: './plugins/digitalPark/model/vr_sculpture_park.glb' },
     { functionName: 'GLTFLoader', url: './plugins/industry4/model/lambo.glb' },
 ])
 

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 16:35:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 10:56:46
+ * @LastEditTime: 2025-08-18 11:55:09
 -->
 <template>
     <primitive :object="meshMerged" cast-shadow receive-shadow :position="[-33, 0, 7]" :scale="[0.7, 1.2, 0.7]" name="实验楼" :rotation-y="Math.PI / 2" />
@@ -30,7 +30,7 @@ import { gsap } from 'gsap'
 import { ref, watchEffect } from 'vue'
 import { Resource } from 'PLS/resourceManager'
 
-const { scene: model } = Resource.getItem('laboratoryBuild.gltf')
+const { scene: model } = Resource.getItem('laboratoryBuild.glb')
 const { scene } = useTresContext()
 
 const geometryArr = []

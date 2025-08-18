@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-07 15:53:08
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-09 14:33:17
+ * @LastEditTime: 2025-08-18 11:51:43
 -->
 <template>
     <primitive cast-shadow receive-shadow :object="model" name="主场景" />
@@ -20,7 +20,7 @@ const props = defineProps({
         default: false,
     },
 })
-const { scene: model } = Resource.getItem('scene.gltf')
+const { scene: model } = Resource.getItem('vr_sculpture_park.glb')
 const { scene } = useTresContext()
 
 model.traverse(async (child) => {

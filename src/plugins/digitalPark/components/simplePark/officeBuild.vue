@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 16:35:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 10:54:18
+ * @LastEditTime: 2025-08-18 11:49:06
 -->
 <template>
     <primitive :object="model" cast-shadow receive-shadow :position="[13.5, 0, -45]" :scale="[0.2, 0.3, 0.2]" name="办公大厅" :rotation-y="Math.PI" />
@@ -34,7 +34,7 @@ import { gsap } from 'gsap'
 import { ref, watchEffect } from 'vue'
 import { Resource } from 'PLS/resourceManager'
 
-const { scene: model } = Resource.getItem('officeBuild.gltf')
+const { scene: model } = Resource.getItem('officeBuild.glb')
 
 const { scene, raycaster, camera } = useTresContext()
 model.traverse((child) => {
