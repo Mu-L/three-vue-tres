@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-26 11:23:40
+ * @LastEditTime: 2025-08-19 15:28:15
 -->
 <template>
 	<div class="filterFixed">
-		<FInput v-model="inputValue" class="FInput-input" placeholder="查找的功能，如：城市" clearable>
+		<FInput v-model="inputValue" class="FInput-input" placeholder="筛选关键字，如：城市" clearable>
 			<template #prepend> 检索 </template>
 			<template #suffix>
 				<SearchOutlined />
@@ -24,6 +24,9 @@
 			</FCheckbox>
 			<FCheckbox value="recommend">
 				荐
+			</FCheckbox>
+			<FCheckbox value="editor">
+				编辑器
 			</FCheckbox>
 		</FCheckboxGroup>
 
