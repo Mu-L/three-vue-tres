@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-10 16:09:03
+ * @LastEditTime: 2025-08-19 10:53:40
 -->
 <template>
     <div class="absolute menuSelf">
@@ -332,11 +332,16 @@ const getleftMenuBadge = (name: string) => {
         recommend: { show: false, text: '荐' },
         new: { show: false, text: '新' },
         hot: { show: false, text: '热' },
+        editor: { show: false, text: '热' },
     } as any
     if (menuSetup.value && menuSetup.value[name]) {
         const tmpOne = menuSetup.value[name]
         for (const key in tmpOne) {
             tagOne[tmpOne[key].taglist].show = true
+            if (tmpOne[key].taglist === 'editor') {
+                // 编辑器标识 特殊处理
+                tagOne[tmpOne[key].taglist].show = false
+            } 
         }
     }
     return tagOne

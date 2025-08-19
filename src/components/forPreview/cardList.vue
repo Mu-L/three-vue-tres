@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-25 18:01:44
+ * @LastEditTime: 2025-08-19 11:39:52
 -->
 <template>
     <FDivider titlePlacement="left">{{ onePlugin.title + ' - ' + onePlugin.name }}</FDivider>
@@ -14,7 +14,7 @@
                 v-if="props.onePlugin.author"
                 class="mt-[-24px] position-absolute right-[12px]"
                 @click="toAuthorPage(onePlugin.website)"
-                style="color: #0f1222;cursor: pointer"
+                style="color: #0f1222; cursor: pointer"
                 size="small"
             >
                 <UserOutlined class="position-relative top-[2px]" /> 作者：
@@ -24,7 +24,7 @@
         <div class="p-2 ml-13" style="" v-html="props.onePlugin.intro"></div>
     </FSpace>
     <div class="flex flex-wrap flex-justify-start content-start mt-6 pl-6">
-        <div class="w-80 mr-10 mb-10 overflow-hidden relative" v-for="(onePreview, okey) in onePlugin.preview" :key="okey">
+        <div class="w-80 mr-10 mb-10 relative" :class="{'overflow-hidden':!isEditor(props.onePlugin, onePreview.name)}" v-for="(onePreview, okey) in onePlugin.preview" :key="okey">
             <template v-if="onePlugin.waitForGit || onePreview.waitForGit">
                 <div v-if="hasStyle(props.onePlugin, onePreview.name)" class="tag-sheared" :class="classText(props.onePlugin, onePreview.name)">
                     {{ hasStyle(props.onePlugin, onePreview.name) }}
@@ -61,6 +61,25 @@
                         点击web端演示
                     </div>
                 </FCard>
+                <n-tooltip v-if="isEditor(props.onePlugin, onePreview.name)" trigger="hover">
+                    <template #trigger>
+                        <a
+                            href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index"
+                            target="_blank"
+                            class="absolute bottom-11 right--3 no-underline z-99999"
+                        >
+                            <div
+                                class="flex items-center gap-1 px-1 py-1 rounded-1 cursor-pointer text-xs font-medium text-blue shadow-lg bg-white/100 backdrop-blur-md border border-white/30 transition-all hover:bg-white/50"
+                            >
+                                <n-icon size="16" class="text-blue-500">
+                                    <LogoXbox />
+                                </n-icon>
+                                <span>编辑器</span>
+                            </div>
+                        </a>
+                    </template>
+                    <span>此组件已规范封装，供给于场景编辑器中，灵活使用，点击跳转直接编辑，导出源码包</span>
+                </n-tooltip>
             </template>
         </div>
     </div>
@@ -72,6 +91,8 @@ import { useRouter, useModel } from '@fesjs/fes' //fesJS的路由被他自己封
 import { UserOutlined } from '@fesjs/fes-design/icon'
 import oneImageQr from './oneImageQr.vue'
 import { loadJweixin, loadWebView } from 'PLS/uniAppView/lib/initScript'
+import { NTooltip, NIcon } from 'naive-ui'
+import { LogoXbox } from '@vicons/ionicons5'
 
 const props = withDefaults(
     defineProps<{
@@ -133,6 +154,10 @@ const toPage = (plugin: any, value: any, isOnline = false) => {
 const hasStyle = (plugin: any, value: any) => {
     if (menuSetup.value) {
         if (menuSetup.value[plugin.name] && menuSetup.value[plugin.name][value]) {
+            if (menuSetup.value[plugin.name][value].taglist === 'editor') {
+                // 编辑器标识 特殊处理
+                return ''
+            }
             return menuSetup.value[plugin.name][value].taglist_text
         }
     }
@@ -145,6 +170,14 @@ const classText = (plugin: any, value: any) => {
         }
     }
     return ''
+}
+const isEditor = (plugin: any, value: any) => {
+    if (menuSetup.value) {
+        if (menuSetup.value[plugin.name] && menuSetup.value[plugin.name][value]) {
+            return menuSetup.value[plugin.name][value].taglist === 'editor'
+        }
+    }
+    return false
 }
 </script>
 
