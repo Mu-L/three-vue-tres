@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-23 16:40:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:23:09
+ * @LastEditTime: 2025-08-28 09:23:01
  */
 
 export default {
@@ -46,6 +46,12 @@ export default {
             name: 'renderer3DTiles',
             title: '3DTiles展示',
             referenceSource: { title: 'nasa-ammos', url: 'https://github.com/NASA-AMMOS/3DTilesRendererJS' },
+        },
+        {
+            src: 'plugins/simpleGIS/preview/3DTilesComPage.png',
+            type: 'img',
+            name: '3DTilesComPage',
+            title: '3DTiles组件化',
         },
         {
             src: 'plugins/simpleGIS/preview/cesiumIon.png',
