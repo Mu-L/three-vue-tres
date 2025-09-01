@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-07-29 17:49:37
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-01 15:45:22
+ */
 export default {
     name: 'geokit',
     title: '地理渲染开发工具',
@@ -28,5 +36,6 @@ export default {
         { src: 'plugins/geokit/preview/case-tres-canvas.jpg', type: 'img', name: 'case-tres-canvas', title: '使用原始TresCanvas搭配geokit' },
         { src: 'plugins/geokit/preview/case-real-1.jpg', type: 'img', name: 'case-real-1', title: '实战案例1' },
         { src: 'plugins/geokit/preview/case-real-2.jpg', type: 'img', name: 'case-real-2', title: '实战案例2' },
+        { src: 'plugins/geokit/preview/case-tvt-3dtilesBuildings.png', type: 'img', name: 'case-tvt-3dtilesBuildings', title: '加载tvt建筑白膜组件' },
     ],
 }

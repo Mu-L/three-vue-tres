@@ -1,5 +1,5 @@
 <template>
-    <TresGroup :rotation-x="-Math.PI / 2">
+    <TresGroup :rotation-x="isRotation ? -Math.PI / 2 : 0">
         <primitive :object="tiles.group" />
     </TresGroup>
 </template>
@@ -8,7 +8,7 @@
 import { useTresContext, useRenderLoop } from '@tresjs/core'
 import { watch } from 'vue'
 import { TilesRenderer } from '3d-tiles-renderer'
-import { alignmentCenter } from '../common/utils'
+import { alignmentCenter, applyTransform } from '../common/utils'
 import * as THREE from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 import vertexShader from '../shaders/buildingsShaderMaterial.vert'
@@ -20,6 +20,8 @@ import { LineSegmentsGeometry } from 'three/examples/jsm/lines/LineSegmentsGeome
 const props = withDefaults(
     defineProps<{
         tilesUrl?: string
+        isRotation?: boolean
+        isRranslation?: boolean
         bulidingsColor?: string
         topColor?: string
         lightColor?: string
@@ -33,6 +35,8 @@ const props = withDefaults(
     }>(),
     {
         tilesUrl: './plugins/geokit/tiles/tileset.json',
+        isRotation: true,
+        isRranslation: true,
         bulidingsColor: '#e523ff',
         topColor: '#ffff00',
         lightColor: '#ffffff',
@@ -132,7 +136,7 @@ const makeNewTiles = () => {
 
     newTiles.addEventListener('load-model', onLoadModel)
     newTiles.addEventListener('load-tile-set', () => {
-        alignmentCenter(newTiles)
+        alignmentCenter(newTiles, props.isRotation, props.isRranslation)
     })
     newTiles.addEventListener('dispose-model', ({ scene }) => {
         scene.traverse((c: any) => {
@@ -200,6 +204,14 @@ watch(
         if (tilesUrl !== tiles.rootURL) {
             tiles.dispose()
             tiles = makeNewTiles()
+        }
+    },
+)
+watch(
+    () => [props.isRotation, props.isRranslation],
+    () => {
+        if (tiles.group) {
+            applyTransform(tiles.group, props.isRotation, props.isRranslation)
         }
     },
 )
