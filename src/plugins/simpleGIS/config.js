@@ -1,10 +1,10 @@
 /*
- * @Description:
+ * @Description: 
  * @Version: 1.668
  * @Autor: 地虎降天龙
- * @Date: 2024-02-23 16:40:14
+ * @Date: 2024-06-19 16:59:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-28 09:23:01
+ * @LastEditTime: 2025-09-01 09:15:29
  */
 
 export default {
@@ -46,6 +46,12 @@ export default {
             name: 'renderer3DTiles',
             title: '3DTiles展示',
             referenceSource: { title: 'nasa-ammos', url: 'https://github.com/NASA-AMMOS/3DTilesRendererJS' },
+        },
+        {
+            src: 'plugins/simpleGIS/preview/obliquePhotoPage.png',
+            type: 'img',
+            name: 'obliquePhotoPage',
+            title: '倾斜摄影组件化',
         },
         {
             src: 'plugins/simpleGIS/preview/3DTilesComPage.png',
