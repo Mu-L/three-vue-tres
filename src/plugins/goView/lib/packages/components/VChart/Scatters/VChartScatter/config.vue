@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { VChartGlobalSetting, Axis } from '@/components/Pages/VChartItemSetting'
-import { vChartGlobalThemeJsonType } from '@/settings/vchartThemes/index'
+import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
 
 defineProps({
   optionData: {

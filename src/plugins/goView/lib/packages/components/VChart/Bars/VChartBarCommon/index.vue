@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
+import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
 import { GoVChart } from '@/components/GoVChart'
 import { useChartDataFetch } from '@/hooks'
 import config from './config'

@@ -20,7 +20,7 @@ export const mergeTheme = <T, U>(option: T, themeSetting: U, includes: string[])
  * @param option
  * @return option
  */
-export const echartOptionProfixHandle = (option: any, includes: string[]) => {
+export const echartOptionProfixHandle = (option: any, includes: string[] = []) => {
   option['backgroundColor'] = 'rgba(0,0,0,0)'
   return mergeTheme(option, globalThemeJson, includes)
 }

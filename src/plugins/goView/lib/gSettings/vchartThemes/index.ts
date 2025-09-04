@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-09-04 09:19:38
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 11:40:02
+ */
 import themeJson from './global.theme.json'
 
 type ThemeJsonType = typeof themeJson

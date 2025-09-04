@@ -1,6 +1,9 @@
 {
   "name": "TvT.js",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=18.18"
+  },
   "description": "An open-source framework for rapid implementation of 3D visualization projects",
   "scripts": {
     "dev": "fes dev",

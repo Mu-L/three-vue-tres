@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { vChartGlobalThemeJsonType } from '@/settings/vchartThemes/index'
+import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
 import Legends from './Legends.vue'
 import Tooltip from './Tooltip.vue'
 const props = defineProps({

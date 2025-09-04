@@ -26,7 +26,7 @@
 import { PropType, toRefs } from 'vue'
 import { legendsConfig } from '@/packages/chartConfiguration/vcharts/index'
 import FontStyle from './common/FontStyle.vue'
-import { vChartGlobalThemeJsonType } from '@/settings/vchartThemes/index'
+import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
 import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 
 defineProps({

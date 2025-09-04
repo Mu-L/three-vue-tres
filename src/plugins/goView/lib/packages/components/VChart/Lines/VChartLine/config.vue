@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { VChartGlobalSetting, Axis, Label, Line, Point } from '@/components/Pages/VChartItemSetting'
-import { vChartGlobalThemeJsonType } from '@/settings/vchartThemes/index'
+import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
 import { CollapseItem, SettingItemBox } from '@/components/Pages/ChartItemSetting'
 import { labelConfig } from '@/packages/chartConfiguration/vcharts/index'
 
