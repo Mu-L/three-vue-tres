@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-30 19:13:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-04 10:10:26
+ * @LastEditTime: 2025-09-04 14:43:25
  */
 import { echartOptionProfixHandle, PublicConfigClass } from 'PLS/goView/lib/packages/public'
 import { PieCommonConfig } from './index'
@@ -69,7 +69,7 @@ const option = {
             emphasis: {
                 label: {
                     show: true,
-                    fontSize: '40',
+                    fontSize: 40,
                     fontWeight: 'bold',
                 },
             },

@@ -4293,36 +4293,30 @@
   resolved "https://registry.npmmirror.com/@visactor/vchart-theme/-/vchart-theme-1.12.2.tgz#2b4dd84500258b841ff0d41012d0fafa5f977acf"
   integrity sha512-r298TUdK+CKbHGVYWgQnNSEB5uqpFvF2/aMNZ/2POQnd2CovAPJOx2nTE6hAcOn8rra2FwJ2xF8AyP1O5OhrTw==
 
-"@visactor/vchart@^1.12.12":
-  version "1.13.19"
-  resolved "https://registry.npmmirror.com/@visactor/vchart/-/vchart-1.13.19.tgz#0ae3ce6db032ca236d8c94c5d781ee03138c2bdc"
-  integrity sha512-Fx6VffSR4+OjrKESRc8QoeG0ndMs+Jga/mFMDRuhiGReJoRheeHFrVNcSBFH3jBJcDTz+hVhriFLS9iEBSQvfg==
+"@visactor/vchart@^2.0.0":
+  version "2.0.4"
+  resolved "https://registry.npmmirror.com/@visactor/vchart/-/vchart-2.0.4.tgz#36770240ae6ffd84fa285b7610192f2e06a56299"
+  integrity sha512-/NWBQFYd5A52I8Bkp+iod2LAhBo4cQcxt+xazrmJ/5L17Gk/LdUqCRpnF5dk3XncHb4ls+SRNGkH4kf0rNH2Mg==
   dependencies:
-    "@visactor/vdataset" "~0.19.7"
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-hierarchy" "0.16.13"
-    "@visactor/vgrammar-projection" "0.16.13"
-    "@visactor/vgrammar-sankey" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vgrammar-venn" "0.16.13"
-    "@visactor/vgrammar-wordcloud" "0.16.13"
-    "@visactor/vgrammar-wordcloud-shape" "0.16.13"
-    "@visactor/vrender-components" "0.22.17"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vscale" "~0.19.7"
-    "@visactor/vutils" "~0.19.7"
-    "@visactor/vutils-extension" "1.13.19"
+    "@visactor/vdataset" "~1.0.6"
+    "@visactor/vlayouts" "~1.0.6"
+    "@visactor/vrender-animate" "1.0.13"
+    "@visactor/vrender-components" "1.0.13"
+    "@visactor/vrender-core" "1.0.13"
+    "@visactor/vrender-kits" "1.0.13"
+    "@visactor/vscale" "~1.0.6"
+    "@visactor/vutils" "~1.0.6"
+    "@visactor/vutils-extension" "2.0.4"
 
-"@visactor/vdataset@~0.19.5", "@visactor/vdataset@~0.19.7":
-  version "0.19.7"
-  resolved "https://registry.npmmirror.com/@visactor/vdataset/-/vdataset-0.19.7.tgz#6f2da919a72713b023d3bea726b8bc9cbb672147"
-  integrity sha512-M73x54v/BwOX3knnESVTk4+vpMUng13a4uxDNqBkJVIbcShp/cQxYvGb81mSxHFiIM3S9kn3LRQMYP/PuGlBOA==
+"@visactor/vdataset@~1.0.6":
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/@visactor/vdataset/-/vdataset-1.0.9.tgz#f6a7ecbf0822d44830e1eccdba134f27ef9fdeca"
+  integrity sha512-8OJWm8rZ1ss46r7BgO7L7se0qb28Ygk1yd999tV5SsN7R06sgB08l6ZP8dbvAXlYW08FWLYXc5RmCTRVG8mL2Q==
   dependencies:
     "@turf/flatten" "^6.5.0"
     "@turf/helpers" "^6.5.0"
     "@turf/rewind" "^6.5.0"
-    "@visactor/vutils" "0.19.7"
+    "@visactor/vutils" "1.0.9"
     d3-dsv "^2.0.0"
     d3-geo "^1.12.1"
     d3-hexbin "^0.2.2"
@@ -4337,151 +4331,91 @@
     simplify-geojson "^1.0.4"
     topojson-client "^3.1.0"
 
-"@visactor/vgrammar-coordinate@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-coordinate/-/vgrammar-coordinate-0.16.13.tgz#91aaa5e3ec4099d4e00ea93651b215baf0ba1943"
-  integrity sha512-XwsWdCZ+sg4XAzgQUhm4dSA+m6FTY09SjFEuUEvPdB+CJh911wDGfqMwZIzzxjdBXDf7mgon+pQ6/fNzAcf8yA==
+"@visactor/vlayouts@~1.0.6":
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/@visactor/vlayouts/-/vlayouts-1.0.9.tgz#a037f7e0ed81251100e3c0b3760c8ad08ec8adbe"
+  integrity sha512-85oR9zRfxidq2TCScSAfPWUYeqxIcH4LSKNQPKBmXc1f+nqw7SV3NKT/oiYfrqrbdNxF29jn06R2eaGlo3LaDg==
   dependencies:
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vutils" "~0.19.5"
+    "@turf/helpers" "^6.5.0"
+    "@turf/invariant" "^6.5.0"
+    "@visactor/vscale" "1.0.9"
+    "@visactor/vutils" "1.0.9"
+    eventemitter3 "^4.0.7"
 
-"@visactor/vgrammar-core@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-core/-/vgrammar-core-0.16.13.tgz#6450a8dae4ec9e70cc2c6ec8abdc42cc98ff7acf"
-  integrity sha512-pyNut0weSUImfeOoRJKHZCwetGfRAoQdrktjZX5wull1BU0Df9cOg5OeJTwFU/WH6LXutJZ7xkRNfWbB8y5Kmg==
+"@visactor/vrender-animate@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.npmmirror.com/@visactor/vrender-animate/-/vrender-animate-1.0.13.tgz#a255a21498e4babbde6983da2b906b618c396e07"
+  integrity sha512-UDCa/ZYHIATukkHHxYdVIPhPnNsWE/mBvRatnUGdTKoIW+gtWZkQ5SsjhSWLXWeZ5lzwXf5afjsg6Vc8Y7HqIg==
   dependencies:
-    "@visactor/vdataset" "~0.19.5"
-    "@visactor/vgrammar-coordinate" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-components" "0.22.17"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vscale" "~0.19.5"
-    "@visactor/vutils" "~0.19.5"
+    "@visactor/vrender-core" "1.0.13"
+    "@visactor/vutils" "1.0.6"
 
-"@visactor/vgrammar-hierarchy@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-hierarchy/-/vgrammar-hierarchy-0.16.13.tgz#d2dcd23438177ff2a247b2b7d6a93ffd0aac810e"
-  integrity sha512-UYcofERyquB+KvOJyERP3CCdukE28tTshcxO6bjcIF7g+FzK5xZn8WyGw+2zomJwI6d7XL+ymggF9Jrvixl3fQ==
+"@visactor/vrender-components@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.npmmirror.com/@visactor/vrender-components/-/vrender-components-1.0.13.tgz#f63bdf7e322570a7be9e1f792731962fafd28d8b"
+  integrity sha512-lclrDROH1FRnPhT05NStch759MtllVhGj/59R9rqSbflSt7FKKJ4bMhvwi6Ugh2HBsHVo9HjYUFCiW1oGNFG9w==
   dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
+    "@visactor/vrender-animate" "1.0.13"
+    "@visactor/vrender-core" "1.0.13"
+    "@visactor/vrender-kits" "1.0.13"
+    "@visactor/vscale" "1.0.6"
+    "@visactor/vutils" "1.0.6"
 
-"@visactor/vgrammar-projection@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-projection/-/vgrammar-projection-0.16.13.tgz#44409a4a07ae3cf89a759f6b859c293d5f7d21f8"
-  integrity sha512-mOCl1rUUizDs/vHlJh2eqhKl9A8+2HdDu2jqzyjEpX/q1QnSbaJefHPCZonhkuKgkh7nji/S/P2Kmc//N81Ukw==
+"@visactor/vrender-core@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.npmmirror.com/@visactor/vrender-core/-/vrender-core-1.0.13.tgz#83b2c080434403625a6ced435a9e012659e59ecb"
+  integrity sha512-YMEUc1zuleTgyUJoMovUFeb4HK0mEMEdvkH+n8/+oexcB+0KCIHXfM/wtOhnMoJ08HAOOXcB+gGMZRig7TrE1Q==
   dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vutils" "~0.19.5"
-    d3-geo "^1.12.1"
-
-"@visactor/vgrammar-sankey@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-sankey/-/vgrammar-sankey-0.16.13.tgz#3934a331a1c9f365d7f7744835ed424bdb6f5eff"
-  integrity sha512-ZEZrXeE35KC/9ZX4ntoA+loGAyNGbMHKUMV+k6LZHAk8CuCUOFaXZSequYMExw2u811ErLh5W1wDUCdSa9O5mQ==
-  dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vgrammar-util@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-util/-/vgrammar-util-0.16.13.tgz#55bae021dcd0365f9aa081763efe71a1ea7586cb"
-  integrity sha512-UUhssyrr1glSQCLWtkhs4LZKh0JzjXX808ScDkllHpQknGGHfI2T3dfiENIvoH+cz1t+FxWzkMgY6FgjfWh1zA==
-  dependencies:
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vgrammar-venn@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-venn/-/vgrammar-venn-0.16.13.tgz#b50fe64c53ec8622f40608ca0d9aeed38d4f4bd9"
-  integrity sha512-3VAIvDXjcoVf0jTJiSic5Irh+1HB6CuBGD/s3396z/Pf+OLkNfXh1n28J2YP/fG6yJ+yagtpAeVUUytUL6pqyQ==
-  dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vgrammar-wordcloud-shape@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-wordcloud-shape/-/vgrammar-wordcloud-shape-0.16.13.tgz#1e8b9ebeefdc0c7b95c02a5c60ab07468979ce47"
-  integrity sha512-tIit5DdNjZCIveLpearQQ2ZHrdedbZ2eWmWVyNi4dI7Xn9XDFRf7CcDSWfrmqOfbGRkwITOwWpPDjSCb8bsOYA==
-  dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vscale" "~0.19.5"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vgrammar-wordcloud@0.16.13":
-  version "0.16.13"
-  resolved "https://registry.npmmirror.com/@visactor/vgrammar-wordcloud/-/vgrammar-wordcloud-0.16.13.tgz#97b38ce4741f087d9ef01e8080e9c84b6ada8241"
-  integrity sha512-3z4AMJpOGhhjxBJgaMiwqOTW/Y80RI/oNwhrnazLGWrz3wOYG8nzyqPRPaCMpKAMbAqdEF43HedylZEvU7HLTg==
-  dependencies:
-    "@visactor/vgrammar-core" "0.16.13"
-    "@visactor/vgrammar-util" "0.16.13"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vrender-components@0.22.17":
-  version "0.22.17"
-  resolved "https://registry.npmmirror.com/@visactor/vrender-components/-/vrender-components-0.22.17.tgz#128b5590bb6a15b381481c636fa68a4c615e9cff"
-  integrity sha512-3DtKFxG4uQIDDuhghwJFgW29jiDRwDaDdADHsJqzilw5gc6XKqEs6Gzb+fCooyFQl7MMCGw/hJlbrr//gKvJrQ==
-  dependencies:
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vrender-kits" "0.22.17"
-    "@visactor/vscale" "~0.19.5"
-    "@visactor/vutils" "~0.19.5"
-
-"@visactor/vrender-core@0.22.17":
-  version "0.22.17"
-  resolved "https://registry.npmmirror.com/@visactor/vrender-core/-/vrender-core-0.22.17.tgz#e40b24d65965dc8a8e16ca846a915757c5bda86a"
-  integrity sha512-RfnYcd3vztF/7ZCyjKa3uEDJ4jmQeelhMNZL/hDlBerX6FtANP8RW6mXVIaf1YVM14VpVM2Mj1WZq9JxJbRT8A==
-  dependencies:
-    "@visactor/vutils" "~0.19.5"
+    "@visactor/vutils" "1.0.6"
     color-convert "2.0.1"
 
-"@visactor/vrender-kits@0.22.17":
-  version "0.22.17"
-  resolved "https://registry.npmmirror.com/@visactor/vrender-kits/-/vrender-kits-0.22.17.tgz#fd6e0180fc6f7cac9397e6328009e25f1edc0d7a"
-  integrity sha512-8K15UAuf3vB3I4RPYFr6zhyTZZ36Ux+mIEiiN31OFUAtZMQRRCQgtDFyy9vTrHcm5PPgBqA8oxWHWfYeRMZUiw==
+"@visactor/vrender-kits@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.npmmirror.com/@visactor/vrender-kits/-/vrender-kits-1.0.13.tgz#4cadb7682378137d0f5c3ed4b9de308e6962265f"
+  integrity sha512-qvekmEb8s7oarV5TEXX9Soy71crpi/YkECnRy9ELds21BqHUGi1XLl21Bc50Lsss183c9Bry/bBChw/KjxA9qA==
   dependencies:
     "@resvg/resvg-js" "2.4.1"
-    "@visactor/vrender-core" "0.22.17"
-    "@visactor/vutils" "~0.19.5"
+    "@visactor/vrender-core" "1.0.13"
+    "@visactor/vutils" "1.0.6"
     gifuct-js "2.1.2"
     lottie-web "^5.12.2"
     roughjs "4.5.2"
 
-"@visactor/vscale@~0.19.5", "@visactor/vscale@~0.19.7":
-  version "0.19.7"
-  resolved "https://registry.npmmirror.com/@visactor/vscale/-/vscale-0.19.7.tgz#3a2c1015a4fd6338ed2f285d2fd34ef20614a22f"
-  integrity sha512-hgRB/kUINR0Weq9bJ7kSXV+RBEiL1qVG2hYbIGNIAYBN/dXfr0p6YME7l86CYgYW5CMPQl5aTbr24qhj9vC51Q==
+"@visactor/vscale@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/@visactor/vscale/-/vscale-1.0.6.tgz#f7f135117b574ae4d511b84968a9d8d7fad1db81"
+  integrity sha512-E6ySrzOIyL85luy5dKPpKzaCjf/hkLFF/mAn37Lv8XJWhyxWjYO29GM7cIlqDNCKAY0qsONPnfmgdGX+Hoe5vg==
   dependencies:
-    "@visactor/vutils" "0.19.7"
+    "@visactor/vutils" "1.0.6"
 
-"@visactor/vutils-extension@1.13.19":
-  version "1.13.19"
-  resolved "https://registry.npmmirror.com/@visactor/vutils-extension/-/vutils-extension-1.13.19.tgz#d2b8cb13631f1af4b20717ca3594db02b688701b"
-  integrity sha512-Opwg6tzMpUUg0bi7KN3x2vUfATwlXA+Aj6Of5aSuk80hJu74nHDJP2phsdyu5eoPIRyOUtuoluNwAia5KatQrw==
+"@visactor/vscale@1.0.9", "@visactor/vscale@~1.0.6":
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/@visactor/vscale/-/vscale-1.0.9.tgz#47206219d1dbf2d92dd7cb9296ff425d0b1e7a75"
+  integrity sha512-8u7ousY+Yo9smgcPyFePYl45sD4VXciQf9JOAc2jncNFIyZch7/2Li2CvqL3HPrdenjrl1twAVc5C5IPbyEUyQ==
   dependencies:
-    "@visactor/vdataset" "~0.19.7"
-    "@visactor/vutils" "~0.19.7"
+    "@visactor/vutils" "1.0.9"
 
-"@visactor/vutils@0.19.7", "@visactor/vutils@~0.19.5", "@visactor/vutils@~0.19.7":
-  version "0.19.7"
-  resolved "https://registry.npmmirror.com/@visactor/vutils/-/vutils-0.19.7.tgz#1d45d4eeceeb1d404fa10e3acf41263384683323"
-  integrity sha512-1SSnkZgX1p/rSVIFEibrpN6rDdLfdETSI6lJI5JwV8I2paluM1mqz3jEeT3McmWygd/wyUVKAyoRxGXFKAsKEw==
+"@visactor/vutils-extension@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.npmmirror.com/@visactor/vutils-extension/-/vutils-extension-2.0.4.tgz#a369192d0ca5dd9748a21a5f1f6eb3ea094cac6c"
+  integrity sha512-Q0nDVTCLeCbAi8AAj8wAZfzfZDDsYF7xXhuLjjGPrPTuItPG/fHuw/rw6yDFvdhb4XGaPwv0MaUYNPFoOl60GQ==
+  dependencies:
+    "@visactor/vdataset" "~1.0.6"
+    "@visactor/vutils" "~1.0.6"
+
+"@visactor/vutils@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/@visactor/vutils/-/vutils-1.0.6.tgz#81fb62adf534a48f0af07e2cd546eee8a84c25db"
+  integrity sha512-87/AYLrjY1rtvIT0N/9S+sESialMQUKYv7MDjLjUo37u0hmeL/AwRSGBSvjxdxayKHOmdwUK1BLpQrDIrssKLg==
+  dependencies:
+    "@turf/helpers" "^6.5.0"
+    "@turf/invariant" "^6.5.0"
+    eventemitter3 "^4.0.7"
+
+"@visactor/vutils@1.0.9", "@visactor/vutils@~1.0.6":
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/@visactor/vutils/-/vutils-1.0.9.tgz#aa935c25b05d49d95c9036412c84208390759f25"
+  integrity sha512-78Y7ZbpViscZuGIfsUAahilBHnMpAjIhbTvS4g04H4DOu/a5kNyvF6J2a4u4JFGMbazdzY9L1lDQ9koNdpviGQ==
   dependencies:
     "@turf/helpers" "^6.5.0"
     "@turf/invariant" "^6.5.0"

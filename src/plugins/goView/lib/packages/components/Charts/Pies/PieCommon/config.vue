@@ -62,14 +62,14 @@
             <SettingItem name="文字加粗" v-if="optionData.series[0].label.fontWeight">
                 <n-select v-model:value="optionData.series[0].label.fontWeight" size="small" :options="labelConfig.fontWeight" />
             </SettingItem>
-            <setting-item name="文字边框大小" v-if="optionData.series[0].label.textBorderWidth">
+            <setting-item name="文字边框大小" v-if="optionData.series[0].label.textBorderWidth > -1">
                 <n-input-number v-model:value="optionData.series[0].label.textBorderWidth" size="small" :min="0"></n-input-number>
             </setting-item>
             <setting-item name="文字边框色" v-if="optionData.series[0].label.textBorderColor">
                 <n-color-picker size="small" :modes="['hex']" v-model:value="optionData.series[0].label.textBorderColor"></n-color-picker>
             </setting-item>
         </setting-item-box>
-        <setting-item-box name="圆角">
+        <setting-item-box name="分段样式">
             <setting-item name="圆角大小">
                 <n-input-number v-model:value="optionData.series[0].itemStyle.borderRadius" size="small" :min="0"></n-input-number>
             </setting-item>

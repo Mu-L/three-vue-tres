@@ -104,6 +104,7 @@ import {
     FilterEdit as FilterEditIcon,
     Laptop as LaptopIcon,
     ChartPie as ChartPieIcon,
+    Edit as EditIcon,
 } from '@vicons/carbon'
 
 const ionicons5 = {
@@ -304,6 +305,8 @@ const carbon = {
     LaptopIcon,
     // 柱状图
     ChartPieIcon,
+    // 编辑
+    EditIcon,
 }
 
 // https://www.xicons.org/#/ 还有很多

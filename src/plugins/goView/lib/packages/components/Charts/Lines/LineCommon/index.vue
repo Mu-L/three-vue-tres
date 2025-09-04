@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-30 19:13:32
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-04 10:00:11
+ * @LastEditTime: 2025-09-04 14:44:00
 -->
 <template>
     <v-chart
@@ -34,6 +34,8 @@ import { useChartDataFetch } from 'PLS/goView/lib/gHooks/'
 // import { isPreview } from 'PLS/goView/lib/utils/global'
 import { DatasetComponent, GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import isObject from 'lodash/isObject'
+import { cloneDeep } from 'lodash'
+
 
 const props = defineProps({
     themeSetting: {
@@ -69,7 +71,7 @@ watch(
             if (Array.isArray(newData?.dimensions)) {
                 const seriesArr = []
                 for (let i = 0; i < newData.dimensions.length - 1; i++) {
-                    seriesArr.push(seriesItem)
+                    seriesArr.push(cloneDeep(seriesItem))
                 }
                 replaceMergeArr.value = ['series']
                 props.chartConfig.option.series = seriesArr

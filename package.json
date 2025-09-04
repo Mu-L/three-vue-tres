@@ -75,7 +75,7 @@
     "@tweenjs/tween.js": "^25.0.0",
     "@vicons/carbon": "^0.13.0",
     "@vicons/ionicons5": "^0.13.0",
-    "@visactor/vchart": "^1.12.12",
+    "@visactor/vchart": "^2.0.0",
     "@visactor/vchart-theme": "^1.12.2",
     "animate.css": "^4.1.1",
     "axios": "^1.7.9",
