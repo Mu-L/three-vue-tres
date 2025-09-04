@@ -40,9 +40,11 @@ export const setData = (option: any, data: EchartsDataType) => {
  * @param instance
  * @param data
  */
-export const setOption = <T extends typeof VChart | undefined, D>(instance: T, data: D) => {
+export const setOption = <T extends typeof VChart | undefined, D>(instance: T, data: D, notMerge = true) => {
   if (!instance) return
   const option = instance.getOption()
   option.dataset = null
-  instance.setOption(data)
+  instance.setOption(data, {
+    notMerge: notMerge
+  })
 }

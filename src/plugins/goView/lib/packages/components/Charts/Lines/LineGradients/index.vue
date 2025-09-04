@@ -1,5 +1,5 @@
 <template>
-    <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" :manual-update="isPreview()" autoresize></v-chart>
+    <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" autoresize></v-chart>
 </template>
 
 <script setup lang="ts">
@@ -80,5 +80,8 @@ watch(
         option.value = props.chartConfig.option
     },
 )
-const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore)
+const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore, (newData: any) => {
+  props.chartConfig.option.dataset = newData
+})
+
 </script>
