@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 12:11:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-03 12:41:53
+ * @LastEditTime: 2025-09-04 15:06:11
  */
 export default {
     name: 'goView',
@@ -36,6 +36,14 @@ export default {
             disableFPSGraph: true,
             disableSrcBtn: true,
             title: '简单场景读取json配置',
+        },
+        {
+            src: 'plugins/goView/preview/goViewComPage.png',
+            type: 'img',
+            name: 'goViewComPage',
+            disableFPSGraph: false,
+            disableSrcBtn: true,
+            title: '配置组件化',
         },
     ],
 }
