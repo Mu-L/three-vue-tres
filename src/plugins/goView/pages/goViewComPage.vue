@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-04 15:06:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-04 16:06:57
+ * @LastEditTime: 2025-09-04 16:15:25
 -->
 <template>
     <TresCanvas window-size clear-color="#ffffff">
@@ -24,8 +24,9 @@ import { goViewCom } from 'PLS/goView'
 import { onMounted, reactive, ref, nextTick } from 'vue'
 
 // v-bind="gvConfig"
-import dataJson from '../common/1716877101106.json'
+// import dataJson from '../common/1716877101106.json'
 // import dataJson from '../common/test.json'
+import dataJson from '../common/vChart.json'
 
 const gvConfig = reactive({
     dataJson: dataJson,
