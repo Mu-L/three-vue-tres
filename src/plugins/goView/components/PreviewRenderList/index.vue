@@ -8,10 +8,11 @@
 -->
 <template>
     <div
-        class="chart-item"
         v-for="(item, index) in chartEditStore.componentList"
-        :class="animationsClass(item.styles.animations)"
+        :id="item.id"
         :key="item.id"
+        class="chart-item"
+        :class="animationsClass(item.styles.animations)"
         :style="{
       ...getComponentAttrStyle(item.attr, index),
       ...getTransformStyle(item.styles),
@@ -32,8 +33,8 @@
 
         <!-- 单组件 -->
         <component
-            v-else
             :is="item.chartConfig.chartKey"
+            v-else
             :id="item.id"
             :chartConfig="item"
             :themeSetting="themeSetting"
@@ -50,10 +51,9 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useChartDataPondFetch, useLifeHandler } from 'PLS/goView/lib/gHooks'
-import { PreviewRenderGroup } from '../PreviewRenderGroup/index'
 import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
-import { animationsClass, getFilterStyle, getTransformStyle, getBlendModeStyle, colorCustomMerge } from 'PLS/goView/lib/utils'
-import { getSizeStyle, getComponentAttrStyle, getStatusStyle, getPreviewConfigStyle } from 'PLS/goView/lib/utils'
+import { animationsClass, getFilterStyle, getTransformStyle, getBlendModeStyle, colorCustomMerge , getSizeStyle, getComponentAttrStyle, getStatusStyle, getPreviewConfigStyle } from 'PLS/goView/lib/utils'
+import { PreviewRenderGroup } from '../PreviewRenderGroup/index'
 
 // 初始化数据池
 const { initDataPond, clearMittDataPondMap } = useChartDataPondFetch()
