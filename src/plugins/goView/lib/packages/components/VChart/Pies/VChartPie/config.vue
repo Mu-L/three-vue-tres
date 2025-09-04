@@ -88,11 +88,11 @@
 
 <script setup lang="ts">
 import { PropType, ref, toRefs } from 'vue'
-import { VChartGlobalSetting } from '@/components/Pages/VChartItemSetting'
-import FontStyle from '@/components/Pages/VChartItemSetting/common/FontStyle.vue'
+import { VChartGlobalSetting } from 'PLS/goView/lib/gPages/VChartItemSetting'
+import FontStyle from 'PLS/goView/lib/gPages/VChartItemSetting/common/FontStyle.vue'
 import type { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
-import { labelConfig, styleConfig } from '@/packages/chartConfiguration/vcharts/index'
+import { CollapseItem, SettingItemBox, SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
+import { labelConfig, styleConfig } from 'PLS/goView/lib/packages/chartConfiguration/vcharts/index'
 
 const props = defineProps({
   optionData: {

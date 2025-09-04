@@ -38,10 +38,10 @@
 
 <script setup lang="ts">
 import { PropType, toRefs } from 'vue'
-import { styleConfig } from '@/packages/chartConfiguration/vcharts/index'
+import { styleConfig } from 'PLS/goView/lib/packages/chartConfiguration/vcharts/index'
 import FontStyle from './common/FontStyle.vue'
 import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
+import { CollapseItem, SettingItemBox, SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
 
 defineProps({
   optionData: {

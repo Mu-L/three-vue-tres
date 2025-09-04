@@ -36,7 +36,7 @@
 import { PropType, toRefs } from 'vue'
 import FontStyle from './common/FontStyle.vue'
 import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
+import { CollapseItem, SettingItemBox, SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
 
 defineProps({
   optionData: {

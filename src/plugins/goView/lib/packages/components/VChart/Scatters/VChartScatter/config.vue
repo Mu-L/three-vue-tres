@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { VChartGlobalSetting, Axis } from '@/components/Pages/VChartItemSetting'
+import { VChartGlobalSetting, Axis } from 'PLS/goView/lib/gPages/VChartItemSetting'
 import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
 
 defineProps({

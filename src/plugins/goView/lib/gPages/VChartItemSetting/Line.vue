@@ -21,8 +21,8 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
-import { styleConfig } from '@/packages/chartConfiguration/vcharts/index'
+import { CollapseItem, SettingItemBox, SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
+import { styleConfig } from 'PLS/goView/lib/packages/chartConfiguration/vcharts/index'
 
 defineProps({
   optionData: {

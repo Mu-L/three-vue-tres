@@ -19,10 +19,10 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { VChartGlobalSetting, Axis, Label, Line, Point } from '@/components/Pages/VChartItemSetting'
+import { VChartGlobalSetting, Axis, Label, Line, Point } from 'PLS/goView/lib/gPages/VChartItemSetting'
 import { vChartGlobalThemeJsonType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { CollapseItem, SettingItemBox } from '@/components/Pages/ChartItemSetting'
-import { labelConfig } from '@/packages/chartConfiguration/vcharts/index'
+import { CollapseItem, SettingItemBox } from 'PLS/goView/lib/gPages/ChartItemSetting'
+import { labelConfig } from 'PLS/goView/lib/packages/chartConfiguration/vcharts/index'
 
 defineProps({
   optionData: {

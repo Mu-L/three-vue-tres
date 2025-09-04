@@ -27,9 +27,9 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { fontStyleConfig } from '@/packages/chartConfiguration/vcharts/index'
+import { fontStyleConfig } from 'PLS/goView/lib/packages/chartConfiguration/vcharts/index'
 import { FontType } from 'PLS/goView/lib/gSettings/vchartThemes/index'
-import { SettingItem } from '@/components/Pages/ChartItemSetting'
+import { SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
 
 defineProps({
   style: {

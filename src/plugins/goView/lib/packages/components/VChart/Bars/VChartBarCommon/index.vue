@@ -5,8 +5,8 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
-import { GoVChart } from '@/components/GoVChart'
-import { useChartDataFetch } from '@/hooks'
+import { GoVChart } from 'PLS/goView/lib/gComponents/GoVChart'
+import { useChartDataFetch } from 'PLS/goView/lib/gHooks'
 import config from './config'
 
 const props = defineProps({

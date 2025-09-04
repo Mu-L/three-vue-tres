@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { ICartesianTitle } from '@visactor/vchart/esm/component/axis'
 import { forEach, isNumber } from 'lodash'
-import { SettingItem } from '@/components/Pages/ChartItemSetting'
+import { SettingItem } from 'PLS/goView/lib/gPages/ChartItemSetting'
 import { PropType, ref } from 'vue'
 
 const props = defineProps({
