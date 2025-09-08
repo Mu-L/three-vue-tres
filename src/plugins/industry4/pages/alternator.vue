@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 09:22:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:51:28
+ * @LastEditTime: 2025-09-08 09:21:48
 -->
 
 <template>
@@ -19,14 +19,14 @@
         </Suspense>
         <effectCom />
     </TresCanvas>
-    <viewChart :dataJson="dataJson" :showAllCom="Resource.hasAllFinished.value" :delay="600" :maskWidth="560" />
+    <goViewCom :dataJson="dataJson" :showAllCom="Resource.hasAllFinished.value" :delay="600" :maskWidth="560" />
 </template>
 <script setup lang="ts">
 import * as THREE from 'three'
 import { reactive, watch, ref, Suspense } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { loading2 as loading } from 'PLS/UIdemo'
-import { viewChart } from 'PLS/goView'
+import { goViewCom } from 'PLS/goView'
 import { Resource } from 'PLS/resourceManager'
 import { JsonLoader, ZipLoader } from 'PLS/tresEditor'
 import sceneCom from '../components/alternator/scene.vue'

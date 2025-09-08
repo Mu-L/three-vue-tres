@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-27 11:22:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:21:35
+ * @LastEditTime: 2025-09-08 09:19:02
 -->
 <template>
     <TresCanvas window-size>
@@ -26,7 +26,7 @@
             />
         </Suspense>
     </TresCanvas>
-    <viewChart :dataJson="dataJson" />
+    <goViewCom :dataJson="dataJson" />
 </template>
 
 <script setup lang="ts">
@@ -34,7 +34,7 @@ import { TresCanvas } from '@tresjs/core'
 import { OrbitControls, Environment } from '@tresjs/cientos'
 import { gridPlus } from 'PLS/floor'
 
-import { viewChart } from 'PLS/goView'
+import { goViewCom } from 'PLS/goView'
 import dataJson from '../common/1716877101106.json'
 // import dataJson from '../common/test.json'
 
