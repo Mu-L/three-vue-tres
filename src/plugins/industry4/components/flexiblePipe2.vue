@@ -4,19 +4,23 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-06 09:45:46
+ * @LastEditTime: 2025-09-09 15:40:56
 -->
 <template>
     <TresMesh :renderOrder="9999">
         <TresTubeGeometry :args="[path, 64, radius, radialSegments, false]" />
-        <TresMeshBasicMaterial
-            ref="tmsmRef"
+        <CustomShaderMaterial
+            :baseMaterial="THREE.MeshPhysicalMaterial"
             :color="color"
-            :metalness="0.3"
-            :roughness="0.5"
+            :metalness="metalness"
+            :roughness="roughness"
+            :reflectivity="reflectivity"
+            :ior="ior"
             :side="THREE.DoubleSide"
             transparent
-            :map="pTexture ? pTexture : null"
+            :vertexShader="vertexShader"
+            :fragmentShader="fragmentShader"
+            :uniforms="uniformData"
         />
     </TresMesh>
 </template>
@@ -24,12 +28,13 @@
 import { watch, ref } from 'vue'
 import * as THREE from 'three'
 import { useRenderLoop } from '@tresjs/core'
-import { Resource } from 'PLS/resourceManager'
+import { CustomShaderMaterial } from '@tresjs/cientos'
 import { buildRoundedPath } from '../common/buildFlexiblePipe'
 
 const props = withDefaults(
     defineProps<{
         color?: string
+        uGapColor?: string
         radius?: number
         bodyLength?: number
         headLength?: number
@@ -39,9 +44,15 @@ const props = withDefaults(
         tailLength?: number
         filletRadius?: number
         speed?: number
+        uStripeScale?: number
+        metalness?: number
+        roughness?: number
+        reflectivity?: number
+        ior?: number
     }>(),
     {
         color: '0xff0000',
+        uGapColor: '#ffffff',
         radius: 0.1,
         bodyLength: 2,
         headLength: 1,
@@ -51,6 +62,11 @@ const props = withDefaults(
         tailLength: 0.5,
         filletRadius: 0.3,
         speed: 0.01,
+        uStripeScale: 10,
+        metalness: 0.3,
+        roughness: 0.5,
+        reflectivity: 0.5,
+        ior: 1.5,
     },
 )
 
@@ -73,26 +89,50 @@ watch(
     { immediate: true },
 )
 
-Resource.getResource('TextureLoader', './plugins/digitalCity/image/line.png', 'line.png')
-const getResourceTexture = Resource.getReactiveItem('line.png') as any
-const pTexture = ref(null) as any
-watch(
-    getResourceTexture,
-    (getResourceTexture) => {
-        if (getResourceTexture?.isTexture) {
-            pTexture.value = getResourceTexture.clone()
-            pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
-            pTexture.value.needsUpdate = true
-        }
+const vertexShader = `
+	varying vec2 vUv;
+	void main() {
+		vUv = vec3( uv, 1 ).xy; 
+	}
+`
+const fragmentShader = `
+  uniform float uTime;
+  varying vec2 vUv;
+  uniform vec3 uGapColor;
+	uniform float uStripeScale;
+
+	void main() {
+		vec2 vUV;  
+		vUV=vUv;
+		vUV.x+=uTime/uStripeScale;
+
+		float ssColor = smoothstep(.31,.49,fract(vUV.x*uStripeScale));
+		vec3 finalColor = mix(uGapColor, csm_DiffuseColor.xyz, ssColor);
+    csm_DiffuseColor=vec4(finalColor,1.0);
+	}
+`
+const uniformData = {
+    uTime: {
+        value: 0,
     },
-    { immediate: true },
+    uStripeScale: {
+        value: 10,
+    },
+    uGapColor: {
+        value: new THREE.Color(props.uGapColor),
+    },
+} as any
+
+watch(
+    () => [props.uGapColor, props.uStripeScale],
+    ([uGapColor, uStripeScale]) => {
+        uniformData.uStripeScale.value = uStripeScale
+        uniformData.uGapColor.value.setStyle(uGapColor)
+    },
 )
 
-const tmsmRef = ref(null) as any
 const { onLoop } = useRenderLoop()
 onLoop(() => {
-    if (pTexture.value) {
-        pTexture.value.offset.x -= props.speed
-    }
+    uniformData.uTime.value += props.speed
 })
 </script>
