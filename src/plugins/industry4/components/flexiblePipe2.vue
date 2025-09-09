@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-09 15:40:56
+ * @LastEditTime: 2025-09-09 16:17:02
 -->
 <template>
     <TresMesh :renderOrder="9999">
@@ -129,6 +129,7 @@ watch(
         uniformData.uStripeScale.value = uStripeScale
         uniformData.uGapColor.value.setStyle(uGapColor)
     },
+    { immediate: true },
 )
 
 const { onLoop } = useRenderLoop()
