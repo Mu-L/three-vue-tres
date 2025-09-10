@@ -7,6 +7,8 @@
                 :roughness="roughness"
                 :metalness="metalness"
                 :reflectorOffset="reflectorOffset"
+                :mix="mix"
+                :sharpMix="sharpMix"
             />
         </TresMesh>
     </TresGroup>
@@ -30,6 +32,8 @@ const props = withDefaults(
         roughness?: number
         metalness?: number
         reflectorOffset?: number
+        mix?: number
+        sharpMix?: number
     }>(),
     {
         color: '#FFFFFF',
@@ -40,6 +44,8 @@ const props = withDefaults(
         roughness: 0.5,
         metalness: 0.6,
         reflectorOffset: 0.1,
+        mix: 0.1,
+        sharpMix: 1,
     },
 )
 extend({ RoundedBoxGeometry })
@@ -76,8 +82,6 @@ watch(
 const reflectionMaterialConfig = {
     resolution: 1024,
     mix: 0.1,
-    sharpMix: 1,
-    blurDepthScale: 0.1,
     // map: pTexture[0],
     // normalMap: pTexture[1],
     // normalScale: new THREE.Vector2(0.6, 0.6),
