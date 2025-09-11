@@ -81,7 +81,7 @@ watch(
 
 const reflectionMaterialConfig = {
     resolution: 1024,
-    mix: 0.1,
+    blurDepthScale: 0.1,
     // map: pTexture[0],
     // normalMap: pTexture[1],
     // normalScale: new THREE.Vector2(0.6, 0.6),
