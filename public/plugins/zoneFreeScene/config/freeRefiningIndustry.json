@@ -1,0 +1,3729 @@
+{
+  "history": [
+    {
+      "mlist": {
+        "576b1cc5-d02e-4b25-86f1-876392c10e8f": {
+          "uuid": "576b1cc5-d02e-4b25-86f1-876392c10e8f",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 8.787,
+            "y": 0.019,
+            "z": -1.437
+          },
+          "scale": {
+            "x": 4,
+            "y": 1,
+            "z": 8
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "29b4e0f2-6e7b-4ba8-8dfc-895cc0028994": {
+          "uuid": "29b4e0f2-6e7b-4ba8-8dfc-895cc0028994",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 7.79605991910698,
+            "y": 0,
+            "z": 0.251
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "18b2a5bb-e90f-4457-bb23-b1525e69dbaa": {
+          "uuid": "18b2a5bb-e90f-4457-bb23-b1525e69dbaa",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 7.79605991910698,
+            "y": 0,
+            "z": -1.354
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "77ce8987-c084-46b5-b85d-98ae345e0801": {
+          "uuid": "77ce8987-c084-46b5-b85d-98ae345e0801",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 7.79605991910698,
+            "y": 0,
+            "z": 1.722
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "67da04f6-a95a-4f9b-8adb-67a8d01738db": {
+          "uuid": "67da04f6-a95a-4f9b-8adb-67a8d01738db",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 7.79605991910698,
+            "y": 0,
+            "z": -2.984
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "ec9c2d8c-38dd-4e56-a97e-3daf5a697554": {
+          "uuid": "ec9c2d8c-38dd-4e56-a97e-3daf5a697554",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 7.79605991910698,
+            "y": 0,
+            "z": -4.449
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e8d675b4-fd69-4cdd-80fb-d8a93be56dea": {
+          "uuid": "e8d675b4-fd69-4cdd-80fb-d8a93be56dea",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.789,
+            "y": 0.045,
+            "z": 1.722
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "b4d8c0ae-2df7-4fb7-910e-8971a5dddc14": {
+          "uuid": "b4d8c0ae-2df7-4fb7-910e-8971a5dddc14",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.783,
+            "y": 0,
+            "z": 0.251
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "d033e173-df6d-4e75-9c7f-a3c8e371ce4c": {
+          "uuid": "d033e173-df6d-4e75-9c7f-a3c8e371ce4c",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.792,
+            "y": 0,
+            "z": -1.354
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "3f8c943b-aa8e-4c80-b71c-41e79d8e0b29": {
+          "uuid": "3f8c943b-aa8e-4c80-b71c-41e79d8e0b29",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.796,
+            "y": 0,
+            "z": -2.984
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "cebfed3a-c0e1-4b88-9e26-21dd4095d9f5": {
+          "uuid": "cebfed3a-c0e1-4b88-9e26-21dd4095d9f5",
+          "rotation": {
+            "x": 0,
+            "y": 1.4900000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.841000000000001,
+            "y": 0,
+            "z": -4.449
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "26706a27-6570-489c-81f0-b3fa430ab947": {
+          "uuid": "26706a27-6570-489c-81f0-b3fa430ab947",
+          "rotation": {
+            "x": 3.141592653589793,
+            "y": -1.5615926535897844,
+            "z": 3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 11.32,
+            "y": 0.122,
+            "z": 1.25
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilTruck",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilTruck.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "1b039658-4780-46b9-8d13-a0077581aa04": {
+          "uuid": "1b039658-4780-46b9-8d13-a0077581aa04",
+          "rotation": {
+            "x": 3.141592653589793,
+            "y": -1.5615926535897844,
+            "z": 3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 11.332,
+            "y": 0.138,
+            "z": -1.32
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilTruck",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilTruck.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e64bc3f2-b46e-4fa0-a3fd-14a0df53bbf0": {
+          "uuid": "e64bc3f2-b46e-4fa0-a3fd-14a0df53bbf0",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.28,
+            "y": 0.02,
+            "z": 2.61
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 1,
+            "z": 2
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "72ba200e-284d-4d95-9b8f-705614a7c149": {
+          "uuid": "72ba200e-284d-4d95-9b8f-705614a7c149",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 1.545906008118207,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 4.369,
+            "y": 0.036000000000000004,
+            "z": 2.6601508132022422
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "cCringUnit",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/cCringUnit.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "85b5bae1-8803-4ad8-902c-df31537030c0": {
+          "uuid": "85b5bae1-8803-4ad8-902c-df31537030c0",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 1.5615926535898086,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -1.449,
+            "y": 0.091,
+            "z": 2.003
+          },
+          "scale": {
+            "x": 2,
+            "y": 2,
+            "z": 2
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "house",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/house.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "bd279b01-83bc-420f-83bb-928faadebbd5": {
+          "uuid": "bd279b01-83bc-420f-83bb-928faadebbd5",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -1.672,
+            "y": 0.02,
+            "z": 2.61
+          },
+          "scale": {
+            "x": 3,
+            "y": 1,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "d0433574-5a31-481c-b500-1652601535fe": {
+          "uuid": "d0433574-5a31-481c-b500-1652601535fe",
+          "rotation": {
+            "x": 0,
+            "y": 1.4500000000000006,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -1.673,
+            "y": 0.017,
+            "z": 3.528
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gasTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gasTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "9e4abbd0-b245-4a83-b96b-81ce55bebb66": {
+          "uuid": "9e4abbd0-b245-4a83-b96b-81ce55bebb66",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.285,
+            "y": 0.914,
+            "z": 2.274
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3,
+            "z": 0.3
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "ccUnit",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/ccUnit.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e4128341-fa43-4652-80eb-90f397e1316d": {
+          "uuid": "e4128341-fa43-4652-80eb-90f397e1316d",
+          "rotation": {
+            "x": 3.141592653589793,
+            "y": -1.5615926535897844,
+            "z": 3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 11.339,
+            "y": 0.088,
+            "z": -3.8930000000000002
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilTruck",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilTruck.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "88d36d98-d9d2-4de1-ac88-372f54809ce4": {
+          "uuid": "88d36d98-d9d2-4de1-ac88-372f54809ce4",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.073,
+            "y": 0.02,
+            "z": -1.597
+          },
+          "scale": {
+            "x": 3,
+            "y": 1,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "a79ce505-e268-4d34-bfc4-3a516f3efe5d": {
+          "uuid": "a79ce505-e268-4d34-bfc4-3a516f3efe5d",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.088834118311226,
+            "y": 0.055,
+            "z": -1.4384752323294805
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilHeater",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilHeater.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "0bae698e-3dd7-49d0-8da4-77795f689986": {
+          "uuid": "0bae698e-3dd7-49d0-8da4-77795f689986",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.025,
+            "y": 0.02,
+            "z": -1.44
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "bdb80b7c-76db-42e4-b368-b6a214d786cc": {
+          "uuid": "bdb80b7c-76db-42e4-b368-b6a214d786cc",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.0600000000000005,
+            "y": 0,
+            "z": -1.391
+          },
+          "scale": {
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.8
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "tower",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/tower.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "cc5994a9-4ba9-4ce2-a71c-f41802919d80": {
+          "uuid": "cc5994a9-4ba9-4ce2-a71c-f41802919d80",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -2.351,
+            "y": 0.02,
+            "z": -5.746
+          },
+          "scale": {
+            "x": 6,
+            "y": 1,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e9ff16a4-27a6-4f44-9b53-3e4da147d9d8": {
+          "uuid": "e9ff16a4-27a6-4f44-9b53-3e4da147d9d8",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -3.709,
+            "y": 0.064,
+            "z": -5.523
+          },
+          "scale": {
+            "x": 3,
+            "y": 3,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "2bf85ed6-a4ea-4ffb-b64c-5c5633d3fe34": {
+          "uuid": "2bf85ed6-a4ea-4ffb-b64c-5c5633d3fe34",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.904,
+            "y": 0.043000000000000003,
+            "z": -5.523
+          },
+          "scale": {
+            "x": 3,
+            "y": 3,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "oilTank",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/oilTank.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f8db597e-298e-4adc-9125-2b6a6b835103": {
+          "uuid": "f8db597e-298e-4adc-9125-2b6a6b835103",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.788,
+            "y": 0.02,
+            "z": -6.354
+          },
+          "scale": {
+            "x": 4,
+            "y": 1,
+            "z": 3
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": true,
+          "name": "floor",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/floor.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "c77534fe-5b7d-4183-b79f-5bc19e23328d": {
+          "uuid": "c77534fe-5b7d-4183-b79f-5bc19e23328d",
+          "rotation": {
+            "x": 3.141592653589793,
+            "y": -1.5315926535897928,
+            "z": 3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 3.93,
+            "y": 0,
+            "z": -6.9670000000000005
+          },
+          "scale": {
+            "x": 1.8,
+            "y": 1.8,
+            "z": 1.8
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "fc93bb6b-b3cd-4cc3-ba49-4f3549c71a53": {
+          "uuid": "fc93bb6b-b3cd-4cc3-ba49-4f3549c71a53",
+          "rotation": {
+            "x": 0,
+            "y": -0.23000000000000012,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 5.85508464374394,
+            "y": 0,
+            "z": -6.939710421081546
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "srUnit",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/srUnit.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "04a1ac61-18c3-4406-808c-e867b18df1b8": {
+          "uuid": "04a1ac61-18c3-4406-808c-e867b18df1b8",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 5.809887141081189,
+            "y": 0,
+            "z": -5.567
+          },
+          "scale": {
+            "x": 1.5,
+            "y": 1.5,
+            "z": 1.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "tank2",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/tank2.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f3b12e77-c792-47dd-ab80-68bc3ab83d7c": {
+          "uuid": "f3b12e77-c792-47dd-ab80-68bc3ab83d7c",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 3.295,
+            "y": 0,
+            "z": -5.45
+          },
+          "scale": {
+            "x": 0.5,
+            "y": 0.5,
+            "z": 0.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gtUnit",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gtUnit.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "2856dbbc-e196-4cea-b56e-d56df961fc7a": {
+          "uuid": "2856dbbc-e196-4cea-b56e-d56df961fc7a",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.188,
+            "y": 0,
+            "z": -5.45
+          },
+          "scale": {
+            "x": 0.5,
+            "y": 0.5,
+            "z": 0.5
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gtUnit",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/gtUnit.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "5bcd1a21-20c2-4a1f-b7e3-78c24d53a57b": {
+          "uuid": "5bcd1a21-20c2-4a1f-b7e3-78c24d53a57b",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.02159265358979313,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 5.635,
+            "y": 0.079,
+            "z": -2.734
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "flaringDevice",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/2低像素炼油/models/flaringDevice.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        }
+      },
+      "selectedMeshUUID": null,
+      "emxlist": {
+        "6bec83bd-ef17-4fe7-8397-16985c460c51": {
+          "object3D": {
+            "uuid": "6bec83bd-ef17-4fe7-8397-16985c460c51",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -4.582,
+              "y": 0,
+              "z": -1.401
+            },
+            "scale": {
+              "x": 0.5,
+              "y": 1.5,
+              "z": 0.6
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "静态水",
+            "type": "staticWater"
+          },
+          "extendProperties": {
+            "name": "静态水",
+            "type": "staticWater",
+            "pluginPath": "PLS/water",
+            "previewPath": "./plugins/water/preview/staticWaterPage.png",
+            "default": {
+              "waterColor": "#2CC2E8",
+              "metalness": 0.64,
+              "roughness": 0
+            },
+            "config": {
+              "waterColor": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "waterColor": "#A6A6A6",
+              "metalness": 0.64,
+              "roughness": 0
+            }
+          }
+        },
+        "c5b757d4-6f0d-4669-baee-dd989f6b7d21": {
+          "object3D": {
+            "uuid": "c5b757d4-6f0d-4669-baee-dd989f6b7d21",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -0.065,
+              "y": 0,
+              "z": -1.555
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "围墙高级",
+            "type": "fencePlus"
+          },
+          "extendProperties": {
+            "name": "围墙高级",
+            "type": "fencePlus",
+            "pluginPath": "PLS/digitalCity",
+            "previewPath": "./plugins/digitalCity/preview/fencePlusPage.png",
+            "default": {
+              "width": 2,
+              "height": 2,
+              "depth": 2,
+              "color": "#00ffdd",
+              "opacity": 1,
+              "num": 6,
+              "thickness": 0.01,
+              "speed": 0.2,
+              "room": 0.7
+            },
+            "config": {
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.001
+              },
+              "height": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.001
+              },
+              "depth": {
+                "name": "长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.001
+              },
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "opacity": {
+                "name": "透明度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1,
+                "step": 0.1
+              },
+              "speed": {
+                "name": "滚动速度",
+                "com": "Slider",
+                "min": -0.5,
+                "max": 0.5,
+                "step": 0.01
+              },
+              "thickness": {
+                "name": "粗细",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "num": {
+                "name": "条纹数",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              },
+              "room": {
+                "name": "条纹空间占比",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "width": 2.909,
+              "height": 1.223,
+              "depth": 2.698,
+              "color": "#4F4F4F",
+              "opacity": 0.9,
+              "num": 4,
+              "thickness": 0.09,
+              "speed": 0.08,
+              "room": 0.44
+            }
+          }
+        },
+        "c0a948d8-f775-497d-bd4f-de5bcb7b78c3": {
+          "object3D": {
+            "uuid": "c0a948d8-f775-497d-bd4f-de5bcb7b78c3",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -4.623,
+              "y": 0,
+              "z": -1.368
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 9999,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "粒子底座",
+            "type": "particleBase"
+          },
+          "extendProperties": {
+            "name": "粒子底座",
+            "type": "particleBase",
+            "pluginPath": "PLS/floor",
+            "previewPath": "./plugins/floor/preview/particleBasePage.png",
+            "default": {
+              "speed": -0.03,
+              "randomness": 0.5,
+              "count": 100,
+              "size": 0.1,
+              "color": "#ff0",
+              "areaX": 1,
+              "areaY": 1,
+              "areaZ": 1,
+              "opacity": 1
+            },
+            "defaultObject3D": {
+              "renderOrder": 9999
+            },
+            "config": {
+              "areaX": {
+                "name": "区域宽",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 5,
+                "step": 0.1
+              },
+              "areaY": {
+                "name": "区域高",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 5,
+                "step": 0.1
+              },
+              "areaZ": {
+                "name": "区域长",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 5,
+                "step": 0.1
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.5,
+                "max": 0.5,
+                "step": 0.01
+              },
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "size": {
+                "name": "大小",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "count": {
+                "name": "数量",
+                "com": "Slider",
+                "min": 1,
+                "max": 200,
+                "step": 1
+              },
+              "randomness": {
+                "name": "随机性",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "opacity": {
+                "name": "透明度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "speed": -0.04,
+              "randomness": 0.45,
+              "count": 124,
+              "size": 0.08,
+              "color": "#FFFFFF",
+              "areaX": 2.4,
+              "areaY": 0.9,
+              "areaZ": 2.6,
+              "opacity": 0.88
+            }
+          }
+        },
+        "fa8e4041-ab68-467f-94e0-083417229540": {
+          "object3D": {
+            "uuid": "fa8e4041-ab68-467f-94e0-083417229540",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -1.356,
+              "y": 2.116,
+              "z": 2.606
+            },
+            "scale": {
+              "x": 2,
+              "y": 0.8,
+              "z": 2
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "isSprite": true,
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "isSprite": {
+                "name": "是否精灵图",
+                "com": "Switch"
+              },
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐-只作用于精灵",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "isSprite": true,
+              "text": "废水再利用",
+              "fontSize": 48,
+              "fontColor": "#000000",
+              "backgroundColor": "#EAE9E9B8",
+              "padding": {
+                "y": 35,
+                "x": 26
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.022,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 3.4
+            }
+          }
+        },
+        "1e55fb48-dab3-43a4-9f6a-19bc45d0ef3b": {
+          "object3D": {
+            "uuid": "1e55fb48-dab3-43a4-9f6a-19bc45d0ef3b",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 8.773,
+              "y": 0.122,
+              "z": -1.478
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 9999,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "矩形渐变区域",
+            "type": "rectangleGlow"
+          },
+          "extendProperties": {
+            "name": "矩形渐变区域",
+            "type": "rectangleGlow",
+            "pluginPath": "PLS/digitalCity",
+            "previewPath": "./plugins/digitalCity/preview/rectangleGlowPage.png",
+            "default": {
+              "w": 2,
+              "h": 2,
+              "pColor": "#ffff00",
+              "gradientWidth": 0.99,
+              "glowWidth": 0.99,
+              "nNumber": 8,
+              "lineWidth": 0.1,
+              "lColor": "#ff00D9"
+            },
+            "defaultObject3D": {
+              "renderOrder": 9999
+            },
+            "config": {
+              "w": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.001
+              },
+              "h": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.001
+              },
+              "pColor": {
+                "name": "渐变颜色",
+                "com": "ColorPicker"
+              },
+              "gradientWidth": {
+                "name": "渐变宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "glowWidth": {
+                "name": "发光宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "nNumber": {
+                "name": "平滑度",
+                "com": "Slider",
+                "min": 2,
+                "max": 20,
+                "step": 1
+              },
+              "lineWidth": {
+                "name": "边框宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "lColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              }
+            },
+            "curValue": {
+              "w": 3.821,
+              "h": 7.753,
+              "pColor": "#DEDEDE",
+              "gradientWidth": 0.69,
+              "glowWidth": 0.82,
+              "nNumber": 11,
+              "lineWidth": 0.03,
+              "lColor": "#090909"
+            }
+          }
+        },
+        "d8741f1c-933a-40ef-b92c-ca8e916378a8": {
+          "object3D": {
+            "uuid": "d8741f1c-933a-40ef-b92c-ca8e916378a8",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 4.773,
+              "y": 2.116,
+              "z": -6.151
+            },
+            "scale": {
+              "x": 2,
+              "y": 0.8,
+              "z": 2
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "isSprite": true,
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "isSprite": {
+                "name": "是否精灵图",
+                "com": "Switch"
+              },
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐-只作用于精灵",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "isSprite": true,
+              "text": "混合油处理",
+              "fontSize": 48,
+              "fontColor": "#000000",
+              "backgroundColor": "#F1EFEFC7",
+              "padding": {
+                "y": 35,
+                "x": 26
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.022,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 3.4
+            }
+          }
+        },
+        "26b3d5dd-2ac5-414c-9178-4dd88a1f1751": {
+          "object3D": {
+            "uuid": "26b3d5dd-2ac5-414c-9178-4dd88a1f1751",
+            "rotation": {
+              "x": 1.6000000000000003,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 5.6080000000000005,
+              "y": 2.124,
+              "z": -2.622
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": true,
+            "receiveShadow": false,
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2"
+          },
+          "extendProperties": {
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2",
+            "pluginPath": "PLS/industry4",
+            "previewPath": "./plugins/industry4/preview/flexiblePipe2Page.png",
+            "default": {
+              "color": "#ff0000",
+              "uGapColor": "#ffffff",
+              "radius": 0.1,
+              "bodyLength": 2,
+              "headLength": 1,
+              "tailLength": 0.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 10
+            },
+            "config": {
+              "color": {
+                "name": "管体颜色",
+                "com": "ColorPicker"
+              },
+              "uGapColor": {
+                "name": "间隔颜色",
+                "com": "ColorPicker"
+              },
+              "uStripeScale": {
+                "name": "条纹数量",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "radius": {
+                "name": "管道粗细",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 1,
+                "step": 0.001
+              },
+              "bodyLength": {
+                "name": "中间长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 18,
+                "step": 0.1
+              },
+              "headLength": {
+                "name": "前段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "tailLength": {
+                "name": "后段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "headAngle": {
+                "name": "前段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "tailAngle": {
+                "name": "后段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "radialSegments": {
+                "name": "管平滑",
+                "com": "Slider",
+                "min": 2,
+                "max": 16,
+                "step": 1
+              },
+              "filletRadius": {
+                "name": "转角平滑",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1.2,
+                "step": 0.01
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.099,
+                "max": 0.1,
+                "step": 0.001
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectivity": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "ior": {
+                "name": "折射率",
+                "com": "Slider",
+                "min": 1,
+                "max": 2.33,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#000000",
+              "uGapColor": "#666666",
+              "radius": 0.044,
+              "bodyLength": 2,
+              "headLength": 0,
+              "tailLength": 0,
+              "headAngle": 0,
+              "radialSegments": 13,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.22,
+              "roughness": 0.94,
+              "reflectivity": 0.38,
+              "ior": 1.38,
+              "uStripeScale": 0
+            }
+          }
+        },
+        "89632a2f-47f2-4990-a4fd-2e6d61abce4d": {
+          "object3D": {
+            "uuid": "89632a2f-47f2-4990-a4fd-2e6d61abce4d",
+            "rotation": {
+              "x": 3.141592653589793,
+              "y": 0.008407346410215549,
+              "z": -3.141592653589793
+            },
+            "visible": true,
+            "position": {
+              "x": 4.105,
+              "y": 0.31,
+              "z": -1.183
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": true,
+            "receiveShadow": false,
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2"
+          },
+          "extendProperties": {
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2",
+            "pluginPath": "PLS/industry4",
+            "previewPath": "./plugins/industry4/preview/flexiblePipe2Page.png",
+            "default": {
+              "color": "#ff0000",
+              "uGapColor": "#ffffff",
+              "radius": 0.1,
+              "bodyLength": 2,
+              "headLength": 1,
+              "tailLength": 0.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 10
+            },
+            "config": {
+              "color": {
+                "name": "管体颜色",
+                "com": "ColorPicker"
+              },
+              "uGapColor": {
+                "name": "间隔颜色",
+                "com": "ColorPicker"
+              },
+              "uStripeScale": {
+                "name": "条纹数量",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "radius": {
+                "name": "管道粗细",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 1,
+                "step": 0.001
+              },
+              "bodyLength": {
+                "name": "中间长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 18,
+                "step": 0.1
+              },
+              "headLength": {
+                "name": "前段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "tailLength": {
+                "name": "后段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "headAngle": {
+                "name": "前段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "tailAngle": {
+                "name": "后段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "radialSegments": {
+                "name": "管平滑",
+                "com": "Slider",
+                "min": 2,
+                "max": 16,
+                "step": 1
+              },
+              "filletRadius": {
+                "name": "转角平滑",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1.2,
+                "step": 0.01
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.099,
+                "max": 0.1,
+                "step": 0.001
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectivity": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "ior": {
+                "name": "折射率",
+                "com": "Slider",
+                "min": 1,
+                "max": 2.33,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#3759E1",
+              "uGapColor": "#FFF3F3",
+              "radius": 0.058,
+              "bodyLength": 7.6,
+              "headLength": 0,
+              "tailLength": 0,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": -0.013,
+              "metalness": 0.33,
+              "roughness": 0.39,
+              "reflectivity": 0.95,
+              "ior": 2.33,
+              "uStripeScale": 13.8
+            }
+          }
+        },
+        "2f18637b-35cf-4ba1-8c81-fa1cdc7d9153": {
+          "object3D": {
+            "uuid": "2f18637b-35cf-4ba1-8c81-fa1cdc7d9153",
+            "rotation": {
+              "x": 0,
+              "y": -1.570000000000127,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -1.192,
+              "y": 0.32,
+              "z": 0.603
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": true,
+            "receiveShadow": false,
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2"
+          },
+          "extendProperties": {
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2",
+            "pluginPath": "PLS/industry4",
+            "previewPath": "./plugins/industry4/preview/flexiblePipe2Page.png",
+            "default": {
+              "color": "#ff0000",
+              "uGapColor": "#ffffff",
+              "radius": 0.1,
+              "bodyLength": 2,
+              "headLength": 1,
+              "tailLength": 0.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 10
+            },
+            "config": {
+              "color": {
+                "name": "管体颜色",
+                "com": "ColorPicker"
+              },
+              "uGapColor": {
+                "name": "间隔颜色",
+                "com": "ColorPicker"
+              },
+              "uStripeScale": {
+                "name": "条纹数量",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "radius": {
+                "name": "管道粗细",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 1,
+                "step": 0.001
+              },
+              "bodyLength": {
+                "name": "中间长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 18,
+                "step": 0.1
+              },
+              "headLength": {
+                "name": "前段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "tailLength": {
+                "name": "后段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "headAngle": {
+                "name": "前段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "tailAngle": {
+                "name": "后段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "radialSegments": {
+                "name": "管平滑",
+                "com": "Slider",
+                "min": 2,
+                "max": 16,
+                "step": 1
+              },
+              "filletRadius": {
+                "name": "转角平滑",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1.2,
+                "step": 0.01
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.099,
+                "max": 0.1,
+                "step": 0.001
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectivity": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "ior": {
+                "name": "折射率",
+                "com": "Slider",
+                "min": 1,
+                "max": 2.33,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#FEFEFE",
+              "uGapColor": "#767676",
+              "radius": 0.058,
+              "bodyLength": 1,
+              "headLength": 1,
+              "tailLength": 5.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 181,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 9.9
+            }
+          }
+        },
+        "ed6ab873-03b7-49f8-a95b-d83f98e2f28b": {
+          "object3D": {
+            "uuid": "ed6ab873-03b7-49f8-a95b-d83f98e2f28b",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -2.133,
+              "y": 0.32,
+              "z": 0.299
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": true,
+            "receiveShadow": false,
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2"
+          },
+          "extendProperties": {
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2",
+            "pluginPath": "PLS/industry4",
+            "previewPath": "./plugins/industry4/preview/flexiblePipe2Page.png",
+            "default": {
+              "color": "#ff0000",
+              "uGapColor": "#ffffff",
+              "radius": 0.1,
+              "bodyLength": 2,
+              "headLength": 1,
+              "tailLength": 0.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 10
+            },
+            "config": {
+              "color": {
+                "name": "管体颜色",
+                "com": "ColorPicker"
+              },
+              "uGapColor": {
+                "name": "间隔颜色",
+                "com": "ColorPicker"
+              },
+              "uStripeScale": {
+                "name": "条纹数量",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "radius": {
+                "name": "管道粗细",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 1,
+                "step": 0.001
+              },
+              "bodyLength": {
+                "name": "中间长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 18,
+                "step": 0.1
+              },
+              "headLength": {
+                "name": "前段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "tailLength": {
+                "name": "后段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "headAngle": {
+                "name": "前段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "tailAngle": {
+                "name": "后段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "radialSegments": {
+                "name": "管平滑",
+                "com": "Slider",
+                "min": 2,
+                "max": 16,
+                "step": 1
+              },
+              "filletRadius": {
+                "name": "转角平滑",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1.2,
+                "step": 0.01
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.099,
+                "max": 0.1,
+                "step": 0.001
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectivity": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "ior": {
+                "name": "折射率",
+                "com": "Slider",
+                "min": 1,
+                "max": 2.33,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#FFFFFF",
+              "uGapColor": "#767676",
+              "radius": 0.058,
+              "bodyLength": 2.4,
+              "headLength": 0,
+              "tailLength": 2.9,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 181,
+              "filletRadius": 0.3,
+              "speed": -0.011,
+              "metalness": 0.3,
+              "roughness": 0.52,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 6.2
+            }
+          }
+        },
+        "623e74ce-36ef-4532-b7f0-95e0a5480081": {
+          "object3D": {
+            "uuid": "623e74ce-36ef-4532-b7f0-95e0a5480081",
+            "rotation": {
+              "x": 3.141592653589793,
+              "y": -1.5615926535897844,
+              "z": 3.141592653589793
+            },
+            "visible": true,
+            "position": {
+              "x": 1.877,
+              "y": 0.31,
+              "z": -1.379
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": true,
+            "receiveShadow": false,
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2"
+          },
+          "extendProperties": {
+            "name": "伸缩管线2",
+            "type": "flexiblePipe2",
+            "pluginPath": "PLS/industry4",
+            "previewPath": "./plugins/industry4/preview/flexiblePipe2Page.png",
+            "default": {
+              "color": "#ff0000",
+              "uGapColor": "#ffffff",
+              "radius": 0.1,
+              "bodyLength": 2,
+              "headLength": 1,
+              "tailLength": 0.5,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": 0.01,
+              "metalness": 0.3,
+              "roughness": 0.5,
+              "reflectivity": 0.5,
+              "ior": 1.5,
+              "uStripeScale": 10
+            },
+            "config": {
+              "color": {
+                "name": "管体颜色",
+                "com": "ColorPicker"
+              },
+              "uGapColor": {
+                "name": "间隔颜色",
+                "com": "ColorPicker"
+              },
+              "uStripeScale": {
+                "name": "条纹数量",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "radius": {
+                "name": "管道粗细",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 1,
+                "step": 0.001
+              },
+              "bodyLength": {
+                "name": "中间长度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 18,
+                "step": 0.1
+              },
+              "headLength": {
+                "name": "前段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "tailLength": {
+                "name": "后段长度",
+                "com": "Slider",
+                "min": 0,
+                "max": 18,
+                "step": 0.1
+              },
+              "headAngle": {
+                "name": "前段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "tailAngle": {
+                "name": "后段角度",
+                "com": "Slider",
+                "min": 0,
+                "max": 359,
+                "step": 1
+              },
+              "radialSegments": {
+                "name": "管平滑",
+                "com": "Slider",
+                "min": 2,
+                "max": 16,
+                "step": 1
+              },
+              "filletRadius": {
+                "name": "转角平滑",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 1.2,
+                "step": 0.01
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -0.099,
+                "max": 0.1,
+                "step": 0.001
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectivity": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "ior": {
+                "name": "折射率",
+                "com": "Slider",
+                "min": 1,
+                "max": 2.33,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#3759E1",
+              "uGapColor": "#FFF3F3",
+              "radius": 0.058,
+              "bodyLength": 10.3,
+              "headLength": 0,
+              "tailLength": 0,
+              "headAngle": 0,
+              "radialSegments": 16,
+              "tailAngle": 0,
+              "filletRadius": 0.3,
+              "speed": -0.013,
+              "metalness": 0.23,
+              "roughness": 0.43,
+              "reflectivity": 0.95,
+              "ior": 2.33,
+              "uStripeScale": 13.8
+            }
+          }
+        },
+        "34ef78a4-0d6a-498a-984c-34022b48709e": {
+          "object3D": {
+            "uuid": "34ef78a4-0d6a-498a-984c-34022b48709e",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 8.895,
+              "y": 2.116,
+              "z": -1.2770000000000001
+            },
+            "scale": {
+              "x": 2,
+              "y": 0.8,
+              "z": 2
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "isSprite": true,
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "isSprite": {
+                "name": "是否精灵图",
+                "com": "Switch"
+              },
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐-只作用于精灵",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "isSprite": true,
+              "text": "原油储罐区",
+              "fontSize": 48,
+              "fontColor": "#000000",
+              "backgroundColor": "#F1EFEFC7",
+              "padding": {
+                "y": 35,
+                "x": 26
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.022,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 3.4
+            }
+          }
+        },
+        "dcf10a77-fcfd-4beb-8b1b-6819adba6fa4": {
+          "object3D": {
+            "uuid": "dcf10a77-fcfd-4beb-8b1b-6819adba6fa4",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -4.793,
+              "y": 2.116,
+              "z": -1.2770000000000001
+            },
+            "scale": {
+              "x": 2,
+              "y": 0.8,
+              "z": 2
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "isSprite": true,
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "isSprite": {
+                "name": "是否精灵图",
+                "com": "Switch"
+              },
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐-只作用于精灵",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "isSprite": true,
+              "text": "污水处理区",
+              "fontSize": 48,
+              "fontColor": "#000000",
+              "backgroundColor": "#EAE9E9B8",
+              "padding": {
+                "y": 35,
+                "x": 26
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.022,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 3.4
+            }
+          }
+        },
+        "e00355b5-9633-4f6a-8ffb-0d18d6bfce99": {
+          "object3D": {
+            "uuid": "e00355b5-9633-4f6a-8ffb-0d18d6bfce99",
+            "rotation": {
+              "x": 0,
+              "y": 1.5600000000000211,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -3.1790000000000003,
+              "y": 0.271,
+              "z": -1.154
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox"
+          },
+          "extendProperties": {
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox",
+            "pluginPath": "PLS/floor",
+            "previewPath": "./plugins/floor/preview/reflectorRoundedBoxPage.png",
+            "default": {
+              "color": "#898989",
+              "width": 2,
+              "height": 0.6,
+              "depth": 2,
+              "radius": 0.28,
+              "roughness": 0.5,
+              "metalness": 0.6,
+              "reflectorOffset": 0.1,
+              "mix": 0.1,
+              "sharpMix": 1
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "height": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "depth": {
+                "name": "深度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "radius": {
+                "name": "圆角半径",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectorOffset": {
+                "name": "偏移量",
+                "com": "Slider",
+                "min": -1,
+                "max": 1,
+                "step": 0.01
+              },
+              "mix": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "sharpMix": {
+                "name": "锐利度",
+                "com": "Slider",
+                "min": 0,
+                "max": 5,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#5E5E5E",
+              "width": 0.93,
+              "height": 0.44,
+              "depth": 0.22,
+              "radius": 0.03,
+              "roughness": 0.8,
+              "metalness": 0.35,
+              "reflectorOffset": -1,
+              "mix": 0,
+              "sharpMix": 0
+            }
+          }
+        },
+        "4e288fca-4920-430a-9dc6-ee8e37246f98": {
+          "object3D": {
+            "uuid": "4e288fca-4920-430a-9dc6-ee8e37246f98",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 6.982,
+              "y": 0.271,
+              "z": -1.316
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox"
+          },
+          "extendProperties": {
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox",
+            "pluginPath": "PLS/floor",
+            "previewPath": "./plugins/floor/preview/reflectorRoundedBoxPage.png",
+            "default": {
+              "color": "#898989",
+              "width": 2,
+              "height": 0.6,
+              "depth": 2,
+              "radius": 0.28,
+              "roughness": 0.5,
+              "metalness": 0.6,
+              "reflectorOffset": 0.1,
+              "mix": 0.1,
+              "sharpMix": 1
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "height": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "depth": {
+                "name": "深度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "radius": {
+                "name": "圆角半径",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectorOffset": {
+                "name": "偏移量",
+                "com": "Slider",
+                "min": -1,
+                "max": 1,
+                "step": 0.01
+              },
+              "mix": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "sharpMix": {
+                "name": "锐利度",
+                "com": "Slider",
+                "min": 0,
+                "max": 5,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#5E5E5E",
+              "width": 0.22,
+              "height": 0.36,
+              "depth": 0.44,
+              "radius": 0.03,
+              "roughness": 0.8,
+              "metalness": 0.35,
+              "reflectorOffset": -1,
+              "mix": 0,
+              "sharpMix": 0
+            }
+          }
+        },
+        "be8588c3-4cc0-4f90-b644-96289e313577": {
+          "object3D": {
+            "uuid": "be8588c3-4cc0-4f90-b644-96289e313577",
+            "rotation": {
+              "x": 0,
+              "y": 1.5600000000000211,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 4.15,
+              "y": 0.271,
+              "z": -4.9350000000000005
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox"
+          },
+          "extendProperties": {
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox",
+            "pluginPath": "PLS/floor",
+            "previewPath": "./plugins/floor/preview/reflectorRoundedBoxPage.png",
+            "default": {
+              "color": "#898989",
+              "width": 2,
+              "height": 0.6,
+              "depth": 2,
+              "radius": 0.28,
+              "roughness": 0.5,
+              "metalness": 0.6,
+              "reflectorOffset": 0.1,
+              "mix": 0.1,
+              "sharpMix": 1
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "height": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "depth": {
+                "name": "深度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "radius": {
+                "name": "圆角半径",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectorOffset": {
+                "name": "偏移量",
+                "com": "Slider",
+                "min": -1,
+                "max": 1,
+                "step": 0.01
+              },
+              "mix": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "sharpMix": {
+                "name": "锐利度",
+                "com": "Slider",
+                "min": 0,
+                "max": 5,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#5E5E5E",
+              "width": 0.22,
+              "height": 0.36,
+              "depth": 0.44,
+              "radius": 0.03,
+              "roughness": 0.8,
+              "metalness": 0.35,
+              "reflectorOffset": -1,
+              "mix": 0,
+              "sharpMix": 0
+            }
+          }
+        },
+        "ebb24af5-7c7c-4f8d-b09d-8ac04296026c": {
+          "object3D": {
+            "uuid": "ebb24af5-7c7c-4f8d-b09d-8ac04296026c",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 11.318,
+              "y": 0.029,
+              "z": -1.369
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox"
+          },
+          "extendProperties": {
+            "name": "RoundedBox镜面",
+            "type": "reflectorRoundedBox",
+            "pluginPath": "PLS/floor",
+            "previewPath": "./plugins/floor/preview/reflectorRoundedBoxPage.png",
+            "default": {
+              "color": "#898989",
+              "width": 2,
+              "height": 0.6,
+              "depth": 2,
+              "radius": 0.28,
+              "roughness": 0.5,
+              "metalness": 0.6,
+              "reflectorOffset": 0.1,
+              "mix": 0.1,
+              "sharpMix": 1
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "height": {
+                "name": "高度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "depth": {
+                "name": "深度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01
+              },
+              "radius": {
+                "name": "圆角半径",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "reflectorOffset": {
+                "name": "偏移量",
+                "com": "Slider",
+                "min": -1,
+                "max": 1,
+                "step": 0.01
+              },
+              "mix": {
+                "name": "反射率",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "sharpMix": {
+                "name": "锐利度",
+                "com": "Slider",
+                "min": 0,
+                "max": 5,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#585555",
+              "width": 1,
+              "height": 0.08,
+              "depth": 7.95,
+              "radius": 0.01,
+              "roughness": 0.95,
+              "metalness": 0.21,
+              "reflectorOffset": -1,
+              "mix": 0,
+              "sharpMix": 0
+            }
+          }
+        }
+      },
+      "selectedExtendMeshUUID": null,
+      "camera": {
+        "type": "orthographic",
+        "position": {
+          "x": 8.59,
+          "y": 4.89,
+          "z": 11.78
+        },
+        "target": {
+          "x": 3.59,
+          "y": -0.32,
+          "z": -1.37
+        },
+        "fov": 75,
+        "near": -10,
+        "left": -5,
+        "right": 5,
+        "top": 5,
+        "bottom": -5,
+        "zoom": 108.8,
+        "aspect": 1,
+        "far": 100000
+      },
+      "weather": {
+        "curTime": 14.2,
+        "direct": 0.5,
+        "shadowIntensity": 0.78,
+        "intensity": 1,
+        "isRain": false,
+        "rainConfig": {
+          "type": "rain",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isSnow": false,
+        "snowConfig": {
+          "type": "snow",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isCloud": false,
+        "cloudConfig": {
+          "color": "#ffffff",
+          "segments": 56,
+          "volume": 0.1,
+          "opacity": 0.8,
+          "seed": 0,
+          "fade": 10,
+          "growth": 10,
+          "speed": 0.06,
+          "bounds": {
+            "x": 15.8,
+            "y": 0,
+            "z": 15.8
+          },
+          "position-y": 6
+        }
+      },
+      "floor": {
+        "showGrid": true,
+        "gridState": {
+          "cellSize": 0.59,
+          "cellThickness": 1,
+          "cellColor": "#404040",
+          "sectionColor": "#2F2F2F",
+          "sectionSize": 3.1,
+          "sectionThickness": 2.38,
+          "fadeDistance": 22,
+          "fadeStrength": 1,
+          "infiniteGrid": true
+        },
+        "floorType": "whiteFloor",
+        "fState": {
+          "color": "#C2C2C2",
+          "shadowColor": "#8C8C8C",
+          "receiveShadow": true,
+          "edge": 0.35,
+          "scale": 2.93
+        },
+        "comConfig": {
+          "color": {
+            "name": "面颜色",
+            "com": "ColorPicker"
+          },
+          "shadowColor": {
+            "name": "阴影颜色",
+            "com": "ColorPicker"
+          },
+          "receiveShadow": {
+            "name": "显示阴影",
+            "com": "Switch"
+          },
+          "edge": {
+            "name": "边缘模糊",
+            "com": "Slider",
+            "min": 0.2,
+            "max": 0.36,
+            "step": 0.01
+          }
+        }
+      },
+      "postProcessing": {
+        "isOpenList": {
+          "Bloom": false,
+          "chromaticAberration": false
+        },
+        "configList": {
+          "Bloom": {
+            "radius": 0.85,
+            "intensity": 4,
+            "luminance-threshold": 0.1,
+            "luminance-smoothing": 0.3,
+            "mipmap-blur": false
+          },
+          "chromaticAberration": {
+            "offsetX": 0.07,
+            "offsetY": 0.07,
+            "radialModulation": true,
+            "modulationOffset": 0
+          }
+        }
+      },
+      "label": "配置导入",
+      "timestamp": 1757495537794,
+      "otherParams": {
+        "isCollision": false
+      }
+    }
+  ],
+  "currentIndex": 0
+}
