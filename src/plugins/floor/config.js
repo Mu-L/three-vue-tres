@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 16:27:48
+ * @LastEditTime: 2025-09-12 08:35:12
  */
 export default {
     name: 'floor',
@@ -45,5 +45,6 @@ export default {
         { src: 'plugins/floor/preview/cartoonMagicZone.png', type: 'img', name: 'cartoonMagicZone', title: '卡通能量圈' },
         { src: 'plugins/floor/preview/lineMagicZone.png', type: 'img', name: 'lineMagicZone', title: '线条能量圈' },
         { src: 'plugins/floor/preview/particleBasePage.png', type: 'img', name: 'particleBasePage', title: '粒子底座' },
+        { src: 'plugins/floor/preview/topoBasePage.png', type: 'img', name: 'topoBasePage', title: '拓扑底座' },
     ],
 }

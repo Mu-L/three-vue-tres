@@ -32,7 +32,7 @@ const eFanState = ref(false) // 电风扇状态
 const eFanStateLoading = ref(false)
 
 const config = {
-    host: 'oc276716.ala.asia-southeast1.emqxsl.com',
+    host: 'a5183db3.ala.asia-southeast1.emqxsl.com',
     port: 8084,
     protocol: 'wss',
     clientId: `tvt-test-client-${Math.random().toString(16).slice(2, 8)}`,
