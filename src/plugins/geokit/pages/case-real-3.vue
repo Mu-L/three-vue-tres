@@ -52,6 +52,22 @@
         <GeoIcon icon="/plugins/geokit/case-real-3/icons/ship.svg" :size="16" :point="ship1Position"></GeoIcon>
         <GeoIcon icon="/plugins/geokit/case-real-3/icons/ship.svg" :size="16" :point="ship2Position"></GeoIcon>
     </TresCanvas>
+    
+    <!-- 控制面板 -->
+    <div class="control-panel">
+        <button @click="focusOnSatellite" class="focus-btn satellite-btn">
+            聚焦卫星
+        </button>
+        <button @click="focusOnShip1" class="focus-btn ship-btn">
+            聚焦船只1
+        </button>
+        <button @click="focusOnShip2" class="focus-btn ship-btn">
+            聚焦船只2
+        </button>
+        <button @click="resetCamera" class="reset-btn">
+            还原镜头
+        </button>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -259,5 +275,116 @@ const road1 = curve.getSpacedPoints(1000).map((point) => ({
 }))
 
 const focusTarget = ref(false)
+
+// 保存初始相机位置，用于还原
+const initialCameraPosition = ref<GeoPositionConfig>({
+    heading: 90,
+    pitch: -60,
+    distance: 6000000,
+    longitude: 117.85013382539205,
+    latitude: 38.95151356092132,
+})
+
+// 聚焦到卫星
+function focusOnSatellite() {
+    cameraPosition.value = {
+        heading: 0,
+        pitch: -45,
+        distance: 100000,
+        longitude: weiXingPosition.value.lon,
+        latitude: weiXingPosition.value.lat,
+    }
+    focusTarget.value = true
+}
+
+// 聚焦到船只1
+function focusOnShip1() {
+    cameraPosition.value = {
+        heading: 0,
+        pitch: -45,
+        distance: 500,
+        longitude: ship1Position.value.lon,
+        latitude: ship1Position.value.lat,
+    }
+    focusTarget.value = false
+}
+
+// 聚焦到船只2
+function focusOnShip2() {
+    cameraPosition.value = {
+        heading: 0,
+        pitch: -45,
+        distance: 500,
+        longitude: ship2Position.value.lon,
+        latitude: ship2Position.value.lat,
+    }
+    focusTarget.value = false
+}
+
+// 还原镜头到初始位置
+function resetCamera() {
+    cameraPosition.value = { ...initialCameraPosition.value }
+    focusTarget.value = false
+}
 </script>
-<style scoped></style>
+<style scoped>
+.control-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.focus-btn, .reset-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.satellite-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.satellite-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.ship-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.ship-btn:hover {
+    background: linear-gradient(135deg, #e888f0 0%, #e04c5f 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #3d8bfe 0%, #00d9fe 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+}
+
+.focus-btn:active, .reset-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+</style>
