@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 21:01:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-08 13:51:45
+ * @LastEditTime: 2025-09-12 16:16:24
  */
 import loading1 from 'PLS/UIdemo/components/loading/huruji.vue'
 import loading2 from 'PLS/UIdemo/components/loading/cssLoaders.vue'
@@ -18,6 +18,7 @@ import bannerLabel from 'PLS/UIdemo/components/bannerLabel.vue'
 import * as ThreeMeshUI from 'PLS/UIdemo/lib/three-mesh-ui.module'
 import reactor from 'PLS/UIdemo/components/loading/reactor.vue'
 import domPanel from 'PLS/UIdemo/components/domPanel.vue'
+import spriteImg from 'PLS/UIdemo/components/spriteImg.vue'
 
 export {
     reactor,
@@ -32,4 +33,5 @@ export {
     ThreeMeshUI,
     bannerLabel,
     domPanel,
+    spriteImg
 }

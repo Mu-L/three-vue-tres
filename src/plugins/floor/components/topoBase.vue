@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-12 08:36:00
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-12 12:25:12
+ * @LastEditTime: 2025-09-12 15:41:09
 -->
 <template>
     <TresGroup>
@@ -72,7 +72,7 @@ const cloneMaterials = (scene: any) => {
         }
     })
     setMaterialsColors(props.colorlist)
-    console.log(curMaterials)
+    // console.log(curMaterials)
 }
 
 const setMaterialsColors = (colorlist: any) => {
