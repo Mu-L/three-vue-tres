@@ -1419,10 +1419,10 @@
   resolved "https://registry.npmmirror.com/@humanwhocodes/retry/-/retry-0.4.3.tgz#c2b9d2e374ee62c586d3adbea87199b1d7a7a6ba"
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
-"@icegl/geokit@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.npmmirror.com/@icegl/geokit/-/geokit-1.3.6.tgz#5c91c92f418bfae9dbe0670d5a23588961dfa41c"
-  integrity sha512-wOOv4JgAw8m+v0eTejCNWSemS/7fA6FYqmJ3A7SFDrOVmkZ+RxoxbdLv2xt5AJvaO8YEEIPbMwM5ca4FDLJTBw==
+"@icegl/geokit@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.npmmirror.com/@icegl/geokit/-/geokit-1.4.5.tgz#d6812cfc92720c9473cb048a5f3095501a8379f4"
+  integrity sha512-FkxNgA87S9g0MsXk6/9gqBMUzqgCg5SAoy8lXYiInP00dwSbatfrQ1GF0uTQMlcDpkltzT+Tj5Ugj9hfuurzPw==
   dependencies:
     "3d-tiles-renderer" "^0.4.11"
     "@tresjs/core" "^4.3.6"
