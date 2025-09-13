@@ -28,5 +28,6 @@ export default {
         { src: 'plugins/geokit/preview/case-tres-canvas.jpg', type: 'img', name: 'case-tres-canvas', title: '使用原始TresCanvas搭配geokit' },
         { src: 'plugins/geokit/preview/case-real-1.jpg', type: 'img', name: 'case-real-1', title: '实战案例1' },
         { src: 'plugins/geokit/preview/case-real-2.jpg', type: 'img', name: 'case-real-2', title: '实战案例2' },
+        { src: 'plugins/geokit/preview/case-real-3.jpg', type: 'img', name: 'case-real-3', title: '实战案例3' },
     ],
 }
