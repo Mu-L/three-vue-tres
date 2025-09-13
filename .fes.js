@@ -100,6 +100,16 @@ export default defineBuildConfig({
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/resource.cos/, ''),
                 },
+                // 天地图本地代理
+                '/tianditu.map': {
+                    target: 'https://t0.tianditu.gov.cn/',
+                    changeOrigin: true,
+                    headers: {
+                        Origin: 'oss.icegl.cn',
+                        Referer: 'http://oss.icegl.cn',
+                    },
+                    rewrite: (path) => path.replace(/^\/tianditu.map/, ''),
+                }
             },
         },
     },
