@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-03 09:50:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-07 11:21:47
+ * @LastEditTime: 2025-09-12 08:55:55
  */
 import reflectorDiffuse from './components/reflectorDiffuse.vue'
 import reflectorDUDV from './components/reflectorDUDV.vue'
@@ -18,6 +18,7 @@ import imgFloor from './components/imgFloor.vue'
 import rubberTiles from './components/rubberTiles.vue'
 import reflectorRoundedBox from './components/reflectorRoundedBox.vue'
 import particleBase from './components/particleBase.vue'
+import topoBase from './components/topoBase.vue'
 
 export {
     reflectorDiffuse,
@@ -32,4 +33,5 @@ export {
     rubberTiles,
     reflectorRoundedBox,
     particleBase,
+    topoBase
 }

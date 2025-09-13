@@ -20,7 +20,7 @@ export const mergeTheme = <T, U>(option: T, themeSetting: U, includes: string[])
  * @param option
  * @return option
  */
-export const echartOptionProfixHandle = (option: any, includes: string[]) => {
+export const echartOptionProfixHandle = (option: any, includes: string[] = []) => {
   option['backgroundColor'] = 'rgba(0,0,0,0)'
   return mergeTheme(option, globalThemeJson, includes)
 }
@@ -40,9 +40,11 @@ export const setData = (option: any, data: EchartsDataType) => {
  * @param instance
  * @param data
  */
-export const setOption = <T extends typeof VChart | undefined, D>(instance: T, data: D) => {
+export const setOption = <T extends typeof VChart | undefined, D>(instance: T, data: D, notMerge = true) => {
   if (!instance) return
   const option = instance.getOption()
   option.dataset = null
-  instance.setOption(data)
+  instance.setOption(data, {
+    notMerge: notMerge
+  })
 }

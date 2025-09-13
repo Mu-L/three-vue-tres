@@ -1,6 +1,9 @@
 {
   "name": "TvT.js",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=18.18"
+  },
   "description": "An open-source framework for rapid implementation of 3D visualization projects",
   "scripts": {
     "dev": "fes dev",
@@ -37,9 +40,12 @@
     "@types/mapbox__tilebelt": "^1.0.4",
     "@types/offscreencanvas": "^2019.7.3",
     "@types/three": "0.174.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
     "@webank/eslint-config-webank": "1.3.1",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
+    "eslint": "^9.35.0",
     "esm": "^3.2.25",
     "sass": "1.71.1",
     "typescript": "5.7.3",
@@ -72,6 +78,8 @@
     "@tweenjs/tween.js": "^25.0.0",
     "@vicons/carbon": "^0.13.0",
     "@vicons/ionicons5": "^0.13.0",
+    "@visactor/vchart": "^2.0.0",
+    "@visactor/vchart-theme": "^1.12.2",
     "animate.css": "^4.1.1",
     "axios": "^1.7.9",
     "cannon-es": "^0.20.0",

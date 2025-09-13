@@ -102,10 +102,15 @@ This project integrates with three major ecosystems:
 			</a>
 		</td>
   </tr>
-  		<tr>
+		<tr>
     <td style="padding:10px;font-size:1.2em;">
 			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html">
 				无人机组可视化：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+		<td style="padding:10px;font-size:1.2em;">
+			<a href="https://opensource.icegl.cn/#/#zoneFreeScene">
+				低像素炼油厂：[ 免费 ]
 			</a>
 		</td>
   </tr>
@@ -113,6 +118,11 @@ This project integrates with three major ecosystems:
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
 				<img src="https://cdn.index.icegl.cn/uploads/20250813/023197a1cef7ce7b948af903160ee01e.png" alt="tres.js webgl">
+			</a>
+		</td>
+		<td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index?sceneConfig=freeRefiningIndustry" style="display:block;max-width:100%;">
+				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeRefiningIndustry.png" alt="tres.js webgl">
 			</a>
 		</td>
   </tr>

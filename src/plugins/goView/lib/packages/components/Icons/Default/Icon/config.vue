@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-30 19:13:33
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 10:19:10
+-->
 <template>
     <collapse-item name="属性" :expanded="true">
         <setting-item-box name="样式">
@@ -8,8 +16,8 @@
                 <n-input-number v-model:value="optionData.size" size="small" :min="0" placeholder="尺寸"></n-input-number>
             </setting-item>
         </setting-item-box>
-        <setting-item-box name="旋转">
-            <setting-item name="旋转">
+        <setting-item-box name="快捷旋转">
+            <setting-item name="也可使用通用的【变换】来旋转">
                 <n-select v-model:value="optionData.rotate" size="small" :options="rotateMode"></n-select>
             </setting-item>
         </setting-item-box>
@@ -35,15 +43,15 @@ const rotateMode = [
         label: '0°',
     },
     {
-        value: 1,
+        value: 90,
         label: '90°',
     },
     {
-        value: 2,
+        value: 180,
         label: '180°',
     },
     {
-        value: 3,
+        value: 270,
         label: '270°',
     },
 ]

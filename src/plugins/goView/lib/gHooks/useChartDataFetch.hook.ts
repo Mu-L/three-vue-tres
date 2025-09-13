@@ -36,7 +36,7 @@ export const useChartDataFetch = (
   const echartsUpdateHandle = (dataset: any) => {
     if (chartFrame === ChartFrameEnum.ECHARTS) {
       if (vChartRef.value) {
-        setOption(vChartRef.value, { dataset: dataset })
+        setOption(vChartRef.value, { dataset: dataset }, false)
       }
     }
   }

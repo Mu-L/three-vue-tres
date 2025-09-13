@@ -1,6 +1,7 @@
 import tilesBuildings from './components/tilesBuildings.vue'
 import tileMapBuildingsMesh from './components/tileMapBuildingsMesh.vue'
 import tilesCom from './components/tilesCom.vue'
+import obliquePhoto from './components/obliquePhoto.vue'
 
 import mapBoxShow from './components/forThreeTile/mapBoxShow.vue'
 import informationDiv from './components/forThreeTile/informationDiv.vue'
@@ -23,5 +24,6 @@ export {
     controlsEvents,
     getMatrixFromBounds,
     scaleImg,
-    tilesCom
+    tilesCom,
+    obliquePhoto
 }

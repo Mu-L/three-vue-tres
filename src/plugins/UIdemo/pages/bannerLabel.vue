@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-05-14 11:35:06
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-14 13:28:37
+ * @LastEditTime: 2025-09-05 09:34:19
 -->
 <template>
     <TresCanvas clearColor="#999" window-size>
@@ -38,10 +38,16 @@ const paneState = reactive({
     borderWidth: 1,
     borderRadius: 2,
     dpi: 2,
+    isSprite: true,
 })
 const paneControl = new Pane({
     title: '参数',
     expanded: true,
+})
+paneControl.addBinding(paneState, 'isSprite', {
+    label: '是否精灵图',
+}).on('change', (ev: any) => {
+    listBlade.disabled = !ev.value
 })
 paneControl.addBinding(paneState, 'text', {
     label: '文字内容',
@@ -70,6 +76,7 @@ const listBlade = paneControl.addBlade({
     label: '定位',
     options,
     value: paneState.align,
+    disabled:paneState.isSprite===false
 })
 listBlade.on('change', (ev: any) => {
     paneState.align = ev.value

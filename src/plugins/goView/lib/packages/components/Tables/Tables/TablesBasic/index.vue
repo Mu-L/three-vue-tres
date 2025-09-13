@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-30 19:13:33
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 10:20:36
+-->
 <template>
     <div class="go-tables-basic">
         <n-input v-model:value="inputData" placeholder="请输入信息" :style="`display: ${inputShow}`" style="margin-bottom: 5px; float: right; width: 240px">
@@ -31,6 +39,9 @@
 import { computed, PropType, toRefs, watch, reactive, ref } from 'vue'
 import { CreateComponentType } from 'PLS/goView/lib/packages/index.d'
 import { icon } from 'PLS/goView/lib/gPlugins/'
+import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
+import { useChartDataFetch } from 'PLS/goView/lib/gHooks/'
+
 
 const props = defineProps({
     chartConfig: {
@@ -78,6 +89,12 @@ watch(
         deep: true,
     },
 )
+
+// setdata 数据监听与更改
+useChartDataFetch(props.chartConfig, useChartEditStore, (newData: any) => {
+  props.chartConfig.option.dataset = newData
+})
+
 </script>
 
 <style lang="scss" scoped>

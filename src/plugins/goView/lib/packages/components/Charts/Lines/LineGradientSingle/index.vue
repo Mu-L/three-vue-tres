@@ -1,5 +1,13 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-30 19:13:32
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 10:01:30
+-->
 <template>
-    <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" :manual-update="isPreview()" autoresize> </v-chart>
+      <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" />
 </template>
 
 <script setup lang="ts">
@@ -81,5 +89,8 @@ watch(
     },
 )
 
-const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore)
+const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore, (newData: any) => {
+  props.chartConfig.option.dataset = newData
+})
+
 </script>

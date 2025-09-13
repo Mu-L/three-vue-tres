@@ -1,12 +1,18 @@
 <template>
-    <TresSprite :scale="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor, 1]" :center="center[align] || [0.5, 0.5]">
+    <TresSprite v-if="isSprite" :scale="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor, 1]" :center="center[align] || [0.5, 0.5]">
         <TresSpriteMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" />
     </TresSprite>
+    <TresGroup v-else :rotation="[Math.PI / 2, 0, 0]">
+        <Plane :args="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor]">
+            <TresMeshBasicMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" :side="THREE.DoubleSide" />
+        </Plane>
+    </TresGroup>
 </template>
 
 <script setup lang="ts">
 import { watch, ref } from 'vue'
 import * as THREE from 'three'
+import { Plane } from '@tresjs/cientos'
 
 const center = {
     'left-top': [0, 1],
@@ -33,6 +39,7 @@ const props = defineProps({
     borderWidth: { default: 1 },
     borderRadius: { default: 2 },
     dpi: { default: 2 }, // 清晰度
+    isSprite: { default: true },
 })
 
 // 背景 + 边框
@@ -102,13 +109,13 @@ const makeCanvas = () => {
     let y = innerY
 
     if (props.align.includes('center')) {
-        x =  (totalWidth - textWidth) / 2
+        x = (totalWidth - textWidth) / 2
     } else if (props.align.includes('right')) {
         x = totalWidth - textWidth - props.borderWidth - padX
     }
 
     if (props.align.includes('middle') || props.align.includes('center')) {
-        y =  (totalHeight - textHeight) / 2
+        y = (totalHeight - textHeight) / 2
     } else if (props.align.includes('bottom')) {
         y = totalHeight - textHeight - props.borderWidth - padY
     }
@@ -131,7 +138,7 @@ makeTexture(gCtx)
 
 watch(
     () => props,
-	() => {
+    () => {
         if (gCtx) {
             gCtx = makeCanvas()
             makeTexture(gCtx)

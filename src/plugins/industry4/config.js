@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-06 14:47:20
+ * @LastEditTime: 2025-09-09 15:46:48
  */
 
 export default {
@@ -76,6 +76,12 @@ export default {
             type: 'img',
             name: 'flexiblePipePage',
             title: '伸缩管线',
+        },
+        {
+            src: 'plugins/industry4/preview/flexiblePipe2Page.png',
+            type: 'img',
+            name: 'flexiblePipe2Page',
+            title: '伸缩管线2',
         },
         // { "src": "plugins/industry4/preview/deviceLight.png", "type": "img", "name": "deviceLightByComposerTres", "title": "发光后期useTres" },
     ],

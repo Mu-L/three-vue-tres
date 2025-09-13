@@ -1,4 +1,5 @@
 import { ChartList } from 'PLS/goView/lib/packages/components/Charts/index'
+import { VChartList } from 'PLS/goView/lib/packages/components/VChart/index'
 import { DecorateList } from 'PLS/goView/lib/packages/components/Decorates/index'
 import { InformationList } from 'PLS/goView/lib/packages/components/Informations/index'
 import { TableList } from 'PLS/goView/lib/packages/components/Tables/index'
@@ -19,6 +20,7 @@ const imagesModules: Record<string, { default: string }> = import.meta.glob('../
 // * 所有图表
 export let packagesList: PackagesType = {
   [PackagesCategoryEnum.CHARTS]: ChartList,
+  [PackagesCategoryEnum.VCHART]: VChartList,
   [PackagesCategoryEnum.INFORMATIONS]: InformationList,
   [PackagesCategoryEnum.TABLES]: TableList,
   [PackagesCategoryEnum.DECORATES]: DecorateList,

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-05-14 15:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-29 10:27:24
+ * @LastEditTime: 2025-09-11 09:58:09
  */
 export default {
     name: 'zone3Deditor',
@@ -14,16 +14,18 @@ export default {
     1、测试用模型服务的管理器源码git库（内附说明）: <a style="color: #5384ff;" href="https://gitee.com/ice-gl/tvt-model-manager-serve" target="_blank">gitee.com/ice-gl/tvt-model-manager-serve</a><br>
     2、测试用编辑器案例配置(最佳实践) : <a style="color: #5384ff;" href="https://oss.icegl.cn/p/zone3Deditor/plugins/zone3Deditor/TvTzone3Deditor.json" target="_blank">TvTzone3Deditor.json</a><br>
     3、测试用编辑器goview的配置 : <a style="color: #5384ff;" href="https://oss.icegl.cn/p/zone3Deditor/plugins/zone3Deditor/GoView.json" target="_blank">GoView.json</a><br>
-    整体文档教程和插件下载详见：<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/zone3Deditor" target="_blank">区域场景编辑器</a><br>
-    QA:<br>
+    4、文档教程详见：<a style="color: #5384ff;" href="https://docs.icegl.cn/docs/three-vue-tres/zoneeditor/introduction.html" target="_blank">docs.icegl.cn/docs/three-vue-tres/zoneeditor/introduction.html</a><br>
+    5、插件下载详见：<a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/zone3Deditor" target="_blank">icegl.cn/tvtstore/zone3Deditor</a><br>
+    6、视频教程详见：<a style="color: #5384ff;" href="https://www.bilibili.com/video/BV1USaczSEaS/" target="_blank">bilibili.com/video/BV1USaczSEaS</a><br>
+    QA问答:<br>
     1、导出插件包安装后，需要再安装下免费插件依赖： <a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/useViewportGizmo" target="_blank">ViewportGizmo插件</a><br>
     此插件会和tvt.js生态持续协同，不断加入组件，用于您项目的快速落地<br>`,
-    version: '1.5.5',
+    version: '1.6.0',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
     creatTime: '2025-04-18',
-    updateTime: '2025-08-29',
+    updateTime: '2025-09-11',
     require: ['basic','digitalCity','floor','UIdemo','industry4','water'],
     tvtstore: 'LICENSE',
     preview: [

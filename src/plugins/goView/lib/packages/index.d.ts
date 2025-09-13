@@ -1,10 +1,14 @@
 import { BaseEvent, EventLife, InteractEvents, InteractEventOn, InteractActionsType } from 'PLS/goView/lib/enums/eventEnum'
 import type { GlobalThemeJsonType } from 'PLS/goView/lib/gSettings/chartThemes/index'
-import type { RequestConfigType } from 'PLS/goView/stores/chartEditStore.d'
+// import type { RequestConfigType } from 'PLS/goView/stores/chartEditStore.d'
+import type { ChatCategoryEnum, ChatCategoryEnumName } from 'PLS/goView/lib/packages/components/VChart/index.d'
+
 
 export enum ChartFrameEnum {
   // 支持 dataset 的 echarts 框架
   ECHARTS = 'echarts',
+  // VChart 框架
+  VCHART = 'VChart',
   // UI 组件框架
   NAIVE_UI = 'naiveUI',
   // 自定义带数据组件
@@ -28,7 +32,7 @@ export type ConfigType = {
   // 分类名称
   categoryName: string
   // 所属包
-  package: string
+  package: PackagesCategoryEnum
   // 归类
   chartFrame?: ChartFrameEnum
   // 预览图
@@ -47,7 +51,7 @@ export type ConfigType = {
 
 // 数据请求
 interface requestConfig {
-  request: RequestConfigType
+  request: any
 }
 
 // Echarts 数据类型
@@ -173,6 +177,7 @@ export type PickCreateComponentType<T extends keyof CreateComponentType> = Pick<
 // 包分类枚举
 export enum PackagesCategoryEnum {
   CHARTS = 'Charts',
+  VCHART = 'VChart',
   TABLES = 'Tables',
   INFORMATIONS = 'Informations',
   PHOTOS = 'Photos',
@@ -183,6 +188,7 @@ export enum PackagesCategoryEnum {
 // 包分类名称
 export enum PackagesCategoryName {
   CHARTS = '图表',
+  VCHART = 'VChart',
   TABLES = '列表',
   INFORMATIONS = '信息',
   PHOTOS = '图片',
@@ -199,6 +205,7 @@ export enum FetchComFlagType {
 // 图表包类型
 export type PackagesType = {
   [PackagesCategoryEnum.CHARTS]: ConfigType[]
+  [PackagesCategoryEnum.VCHART]: ConfigType[]
   [PackagesCategoryEnum.INFORMATIONS]: ConfigType[]
   [PackagesCategoryEnum.TABLES]: ConfigType[]
   [PackagesCategoryEnum.PHOTOS]: ConfigType[]

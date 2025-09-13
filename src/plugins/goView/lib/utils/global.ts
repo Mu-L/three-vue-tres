@@ -28,7 +28,7 @@ export const getFilterStyle = (styles?: any) => {
  * @param { Number } randomLength
  */
 export const getUUID = (randomLength = 10) => {
-  return Number(Math.random().toString().substring(2, randomLength) + Date.now()).toString(36)
+    return 'id_' + Number(Math.random().toString().substring(2, randomLength) + Date.now()).toString(36)
 }
 
 export const renderIcon = (icon: any, set = {}) => {
@@ -61,13 +61,17 @@ export const evalFn = (fn: string) => {
   return new Fun('return ' + fn)()
 }
 export const JSONParse = (data: string) => {
+  if (data.trim() === '') return
   return JSON.parse(data, (k, v) => {
-    // 过滤函数字符串
-    if (excludeParseEventKeyList.includes(k)) return v
-    // 过滤函数值表达式
-    if (typeof v === 'string') {
-      const someValue = excludeParseEventValueList.some(excludeValue => v.indexOf(excludeValue) > -1)
-      if (someValue) return v
+    // // 过滤函数字符串
+    // if (excludeParseEventKeyList.includes(k)) return v
+    // // 过滤函数值表达式
+    // if (typeof v === 'string') {
+    //   const someValue = excludeParseEventValueList.some(excludeValue => v.indexOf(excludeValue) > -1)
+    //   if (someValue) return v
+    // }
+    if (k !== 'formatter') {
+      return v
     }
     // 还原函数值
     if (typeof v === 'string' && v.indexOf && (v.indexOf('function') > -1 || v.indexOf('=>') > -1)) {

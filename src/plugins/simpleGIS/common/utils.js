@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-31 13:37:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-28 16:45:32
+ * @LastEditTime: 2025-09-01 11:02:12
  */
 import * as TWEEN from '@tweenjs/tween.js'
 import { loadGeojson } from 'PLS/digitalCity/common/utils'
@@ -138,8 +138,31 @@ export const getENUAxesFromCartesian = (cartesian) => {
     return { east, north, up }
 }
 
+export const applyTransform = (object, isRotation = true, isRranslation = true) => {
+    if (isRotation || isRranslation) {
+        const transform = new THREE.Matrix4()
+        if (isRotation) {
+            transform.multiply(object.userData.tilesData.rotationMatrix)
+        }
+
+        if (isRranslation) {
+            transform.multiply(object.userData.tilesData.translationMatrix)
+        }
+        object.matrixAutoUpdate = false
+        object.matrix.identity()
+        object.matrix.copy(transform)
+    } else {
+        object.matrix.copy(object.userData.tilesData.initialMatrix)
+    }
+
+    object.updateMatrixWorld(true)
+}
 // 对齐 tiles center
-export const alignmentCenter = (tiles) => {
+export const alignmentCenter = (tiles, isRotation = true, isRranslation = true) => {
+    tiles.group.userData.tilesData = {
+        initialMatrix: tiles.group.matrix.clone(),
+    }
+
     const box = new THREE.Box3()
     const sphere = new THREE.Sphere()
     const center = new THREE.Vector3()
@@ -154,8 +177,6 @@ export const alignmentCenter = (tiles) => {
         return
     }
 
-    console.log('tiles center (ECEF?)', center, 'len=', center.length())
-
     // 2) 计算 ENU 轴
     const { east, north, up } = getENUAxesFromCartesian(center)
 
@@ -163,18 +184,12 @@ export const alignmentCenter = (tiles) => {
     //    我们需要把 ECEF 坐标转换到 ENU（也就是做 R_transpose * (p - center)），所以需要转置
     const basis = new THREE.Matrix4().makeBasis(east, north, up) // columns = east,north,up
     const rotation = basis.clone().transpose() // ECEF -> ENU
+    tiles.group.userData.tilesData.rotationMatrix = rotation.clone()
 
     // 4) 平移矩阵（把 center 移到原点）
     const translation = new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z)
-
-    // 5) 最终变换：先平移（T），再旋转（R）。注意矩阵乘法顺序：M = R * T
-    const transform = new THREE.Matrix4().multiplyMatrices(rotation, translation)
-
-    // 6) 把变换“设置”为 tiles.group 的矩阵（覆盖原有变换），避免重复平移
-    tiles.group.matrixAutoUpdate = false
-    tiles.group.matrix.identity() // 清除原变换
-    tiles.group.applyMatrix4(transform) // 应用绝对变换
-    tiles.group.updateMatrixWorld(true)
+    tiles.group.userData.tilesData.translationMatrix = translation.clone()
+    applyTransform(tiles.group, isRotation, isRranslation)
 }
 
 export const is3DTilesetJson = async (url) => {

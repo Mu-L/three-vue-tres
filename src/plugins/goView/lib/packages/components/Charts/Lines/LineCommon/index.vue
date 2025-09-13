@@ -1,10 +1,17 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-30 19:13:32
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 14:44:00
+-->
 <template>
     <v-chart
         ref="vChartRef"
         :init-options="initOptions"
         :theme="themeColor"
         :option="option"
-        :manual-update="isPreview()"
         :update-options="{
             replaceMerge: replaceMergeArr,
         }"
@@ -24,9 +31,11 @@ import config, { includes, seriesItem } from './config'
 import { mergeTheme } from 'PLS/goView/lib/packages/public/chart'
 import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
 import { useChartDataFetch } from 'PLS/goView/lib/gHooks/'
-import { isPreview } from 'PLS/goView/lib/utils/global'
+// import { isPreview } from 'PLS/goView/lib/utils/global'
 import { DatasetComponent, GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import isObject from 'lodash/isObject'
+import { cloneDeep } from 'lodash'
+
 
 const props = defineProps({
     themeSetting: {
@@ -62,7 +71,7 @@ watch(
             if (Array.isArray(newData?.dimensions)) {
                 const seriesArr = []
                 for (let i = 0; i < newData.dimensions.length - 1; i++) {
-                    seriesArr.push(seriesItem)
+                    seriesArr.push(cloneDeep(seriesItem))
                 }
                 replaceMergeArr.value = ['series']
                 props.chartConfig.option.series = seriesArr
@@ -79,5 +88,8 @@ watch(
     },
 )
 
-const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore)
+const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore, (newData: any) => {
+  props.chartConfig.option.dataset = newData
+})
+
 </script>

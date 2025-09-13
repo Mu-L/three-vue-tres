@@ -1,4 +1,5 @@
 import test from './test.mock'
+import vchart from './vchart.mock'
 import { MockMethod } from 'vite-plugin-mock'
 import { RequestHttpEnum } from 'PLS/goView/lib/enums/httpEnum'
 
@@ -21,100 +22,106 @@ export const treemapUrl = '/mock/treemap'
 export const threeEarth01Url = '/mock/threeEarth01Data'
 export const sankeyUrl = '/mock/sankey'
 export const graphUrl = '/mock/graphData'
+export const vchartBarDataUrl = '/mock/vchart/barDataUrl'
 
 const mockObject: MockMethod[] = [
-  {
-    // 正则
-    // url: /\/mock\/mockData(|\?\S*)$/,
-    url: chartDataUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchMockData
-  },
-  {
-    url: chartSingleDataUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchMockSingleData
-  },
-  {
-    url: numberFloatUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchNumberFloat
-  },
-  {
-    url: numberIntUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchNumberInt
-  },
-  {
-    url: textUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchText
-  },
-  {
-    url: imageUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchImage(Math.round(Math.random() * 10))
-  },
-  {
-    url: rankListUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchRankList
-  },
-  {
-    url: scrollBoardUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchScrollBoard
-  },
-  {
-    url: radarUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchRadar
-  },
-  {
-    url: heatMapUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchHeatmap
-  },
-  {
-    url: scatterBasicUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchScatterBasic
-  },
-  {
-    url: mapUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchMap
-  },
-  {
-    url: capsuleUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchCapsule
-  },
-  {
-    url: wordCloudUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchWordCloud
-  },
-  {
-    url: treemapUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchTreemap
-  },
-  {
-    url: threeEarth01Url,
-    method: RequestHttpEnum.GET,
-    response: () => test.threeEarth01Data
-  },
-  {
-    url: sankeyUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.fetchSankey
-  },
-  {
-    url: graphUrl,
-    method: RequestHttpEnum.GET,
-    response: () => test.graphData
-  },
+    {
+        // 正则
+        // url: /\/mock\/mockData(|\?\S*)$/,
+        url: chartDataUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchMockData,
+    },
+    {
+        url: chartSingleDataUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchMockSingleData,
+    },
+    {
+        url: numberFloatUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchNumberFloat,
+    },
+    {
+        url: numberIntUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchNumberInt,
+    },
+    {
+        url: textUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchText,
+    },
+    {
+        url: imageUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchImage(Math.round(Math.random() * 10)),
+    },
+    {
+        url: rankListUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchRankList,
+    },
+    {
+        url: scrollBoardUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchScrollBoard,
+    },
+    {
+        url: radarUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchRadar,
+    },
+    {
+        url: heatMapUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchHeatmap,
+    },
+    {
+        url: scatterBasicUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchScatterBasic,
+    },
+    {
+        url: mapUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchMap,
+    },
+    {
+        url: capsuleUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchCapsule,
+    },
+    {
+        url: wordCloudUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchWordCloud,
+    },
+    {
+        url: treemapUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchTreemap,
+    },
+    {
+        url: threeEarth01Url,
+        method: RequestHttpEnum.GET,
+        response: () => test.threeEarth01Data,
+    },
+    {
+        url: sankeyUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.fetchSankey,
+    },
+    {
+        url: graphUrl,
+        method: RequestHttpEnum.GET,
+        response: () => test.graphData,
+    },
+    {
+        url: vchartBarDataUrl,
+        method: RequestHttpEnum.GET,
+        response: () => vchart.bar,
+    },
 ]
 
 export default mockObject

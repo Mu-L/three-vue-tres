@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-30 13:17:21
+ * @LastEditTime: 2025-08-06 09:45:46
 -->
 <template>
     <TresMesh :renderOrder="9999">
         <TresTubeGeometry :args="[path, 64, radius, radialSegments, false]" />
-        <TresMeshStandardMaterial
+        <TresMeshBasicMaterial
             ref="tmsmRef"
             :color="color"
             :metalness="0.3"
@@ -25,6 +25,7 @@ import { watch, ref } from 'vue'
 import * as THREE from 'three'
 import { useRenderLoop } from '@tresjs/core'
 import { Resource } from 'PLS/resourceManager'
+import { buildRoundedPath } from '../common/buildFlexiblePipe'
 
 const props = withDefaults(
     defineProps<{
@@ -35,8 +36,9 @@ const props = withDefaults(
         headAngle?: number
         radialSegments?: number
         tailAngle?: number
-			tailLength?: number
-				speed?:number
+        tailLength?: number
+        filletRadius?: number
+        speed?: number
     }>(),
     {
         color: '0xff0000',
@@ -46,15 +48,16 @@ const props = withDefaults(
         headAngle: 0,
         radialSegments: 16,
         tailAngle: 0,
-			tailLength: 0.5,
-				speed:0.01
+        tailLength: 0.5,
+        filletRadius: 0.3,
+        speed: 0.01,
     },
 )
 
 const path = ref(new THREE.CurvePath()) as any
 watch(
-    () => [props.bodyLength, props.headLength, props.headAngle, props.tailAngle, props.tailLength],
-    ([bodyLength, headLength, headAngle, tailAngle, tailLength]) => {
+    () => [props.bodyLength, props.headLength, props.headAngle, props.tailAngle, props.tailLength, props.filletRadius, props.radialSegments],
+    ([bodyLength, headLength, headAngle, tailAngle, tailLength, filletRadius, radialSegments]) => {
         const halfMid = bodyLength / 2
         const midStart = new THREE.Vector3(0, 0, -halfMid)
         const midEnd = new THREE.Vector3(0, 0, halfMid)
@@ -64,10 +67,8 @@ watch(
         const tailRad = THREE.MathUtils.degToRad(tailAngle)
         const tailDir = new THREE.Vector3(Math.cos(tailRad), Math.sin(tailRad), 0)
         const tailPoint = midStart.clone().add(tailDir.multiplyScalar(tailLength))
-        path.value = new THREE.CurvePath()
-        path.value.add(new THREE.LineCurve3(tailPoint, midStart))
-        path.value.add(new THREE.LineCurve3(midStart, midEnd))
-        path.value.add(new THREE.LineCurve3(midEnd, headPoint))
+        const pts = [tailPoint, midStart, midEnd, headPoint]
+        path.value = buildRoundedPath(pts, filletRadius, radialSegments)
     },
     { immediate: true },
 )
@@ -75,13 +76,17 @@ watch(
 Resource.getResource('TextureLoader', './plugins/digitalCity/image/line.png', 'line.png')
 const getResourceTexture = Resource.getReactiveItem('line.png') as any
 const pTexture = ref(null) as any
-watch(getResourceTexture, (getResourceTexture) => {
-    if (getResourceTexture?.isTexture) {
-        pTexture.value = getResourceTexture.clone()
-        pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
-        pTexture.value.needsUpdate = true
-    }
-}, { immediate: true })
+watch(
+    getResourceTexture,
+    (getResourceTexture) => {
+        if (getResourceTexture?.isTexture) {
+            pTexture.value = getResourceTexture.clone()
+            pTexture.value.wrapS = pTexture.value.wrapT = THREE.RepeatWrapping
+            pTexture.value.needsUpdate = true
+        }
+    },
+    { immediate: true },
+)
 
 const tmsmRef = ref(null) as any
 const { onLoop } = useRenderLoop()

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="vChartRef">
         <n-countdown ref="countdownRef" :duration="totalDuration" :render="renderCountdown" :active="countdownActive" v-show="false" />
         <n-space class="go-decorates-more-countdown" :size="flipperGap" align="center" justify="center">
             <template v-if="showDay">
@@ -73,6 +73,9 @@ import { CreateComponentType } from 'PLS/goView/lib/packages/index.d'
 import { Flipper } from 'PLS/goView/lib/gPages/Flipper'
 import { OptionType } from './config'
 import { CountdownInst, CountdownProps } from 'naive-ui/es/countdown/src/Countdown'
+import { useChartDataFetch } from 'PLS/goView/lib/gHooks/'
+import { useChartEditStore } from 'PLS/goView/stores/chartEditStore'
+
 
 const props = defineProps({
     chartConfig: {
@@ -168,6 +171,10 @@ watch(
 onMounted(() => {
     updateTotalDuration()
 })
+const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore, (newData: any) => {
+  props.chartConfig.option.dataset = newData
+})
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,21 +1,30 @@
 <template>
-    <div class="go-tables-rank" :style="`color: ${textColor}`">
-        <div class="row-item" v-for="(item, i) in status.rows" :key="item.toString() + item.scroll" :style="`height: ${status.heights[i]}px;`">
-            <div class="ranking-info">
-                <div class="rank" :style="`color: ${color};font-size: ${indexFontSize}px`">No.{{ item.ranking }}</div>
-                <div class="info-name" :style="`font-size: ${leftFontSize}px`" v-html="item.name" />
-                <div class="ranking-value" :style="`color: ${textColor};font-size: ${rightFontSize}px`">
-                    {{ status.mergedConfig.valueFormatter ? status.mergedConfig.valueFormatter(item) : item.value }}
-                    {{ unit }}
-                </div>
-            </div>
-            <div class="ranking-column" :style="`border-color: ${borderColor}`">
-                <div class="inside-column" :style="`width: ${item.percent}%;background-color: ${color}`">
-                    <div class="shine" />
-                </div>
-            </div>
+  <div class="go-tables-rank" :style="`color: ${textColor}`">
+    <div
+      class="row-item"
+      v-for="(item, i) in status.rows"
+      :key="item.toString() + item.scroll"
+      :style="`height: ${status.heights[i]}px;`"
+    >
+      <div class="ranking-info">
+        <div class="rank" :style="`color: ${color};font-size: ${indexFontSize}px`">No.{{ item.ranking }}</div>
+        <div class="info-name" :style="`font-size: ${leftFontSize}px`" v-html="item.name" />
+        <div class="ranking-value" :style="`color: ${textColor};font-size: ${rightFontSize}px`">
+          {{
+            typeof status.mergedConfig.valueFormatter === 'function'
+              ? status.mergedConfig.valueFormatter(item)
+              : item.value
+          }}
+          {{ unit }}
         </div>
+      </div>
+      <div class="ranking-column" :style="`border-color: ${borderColor}`">
+        <div class="inside-column" :style="`width: ${item.percent}%;background-color: ${color}`">
+          <div class="shine" />
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">

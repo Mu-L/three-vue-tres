@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-27 11:22:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-12 10:24:01
+ * @LastEditTime: 2025-09-04 11:58:21
 -->
 <template>
     <n-config-provider :theme="darkTheme" :hljs="hljsTheme" :locale="locale" :date-locale="dateLocale" :theme-overrides="overridesTheme">
@@ -58,7 +58,7 @@ import { getFilterStyle } from '../lib/utils/global'
 import { PreviewScaleEnum } from 'PLS/goView/lib/enums/styleEnum'
 import { PreviewRenderList } from '../components/PreviewRenderList'
 import { NConfigProvider } from 'naive-ui'
-import { useDarkThemeHook, useThemeOverridesHook, useCode, useLang } from 'PLS/goView/lib/gHooks/'
+import { useDarkThemeHook, useThemeOverridesHook, useCode, useLang, useInitVChartsTheme } from 'PLS/goView/lib/gHooks/'
 // 暗黑主题
 const darkTheme = useDarkThemeHook()
 // 主题配置
@@ -107,6 +107,8 @@ const showEntity = computed(() => {
 })
 
 useStore(chartEditStore)
+// 处理全局的 vChart 主题
+useInitVChartsTheme(chartEditStore)
 
 const { entityRef, previewRef } = useScale(chartEditStore)
 const { show } = useComInstall(chartEditStore)

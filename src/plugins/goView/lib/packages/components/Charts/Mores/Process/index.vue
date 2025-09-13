@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-30 19:13:33
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-04 10:24:18
+-->
 <template>
     <n-progress
         :type="type"
@@ -40,16 +48,13 @@ const { type, unit, color, processing, railColor, indicatorTextColor, indicatorP
     props.chartConfig.option,
 )
 
-const option = shallowReactive({
-    dataset: configOption.dataset,
-})
 
 // 手动更新
 watch(
     () => props.chartConfig.option.dataset,
     (newData: any) => {
         try {
-            option.dataset = toNumber(newData, 2)
+            dataset.value = toNumber(newData, 2)
         } catch (error) {
             console.log(error)
         }
@@ -60,6 +65,6 @@ watch(
 )
 // 预览更新
 useChartDataFetch(props.chartConfig, useChartEditStore, (newData: number) => {
-    option.dataset = toNumber(newData, 2)
+    dataset.value = toNumber(newData, 2)
 })
 </script>

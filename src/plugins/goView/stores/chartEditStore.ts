@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-27 11:39:08
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-28 14:39:29
+ * @LastEditTime: 2025-09-04 11:55:40
  */
 import { defineStore } from 'pinia'
 import { globalThemeJson } from '../lib/settings'
@@ -55,6 +55,8 @@ export const useChartEditStore = defineStore({
             chartCustomThemeColorInfo: undefined,
             // 全局配置
             chartThemeSetting: globalThemeJson,
+            // vChart 主题
+            vChartThemeName: 'vScreenVolcanoBlue',
             // 适配方式
             previewScaleType: PreviewScaleEnum.FIT,
         },
@@ -80,28 +82,28 @@ export const useChartEditStore = defineStore({
     }),
     getters: {
         getMousePosition(): any {
-          return this.mousePosition
+            return this.mousePosition
         },
         getRightMenuShow(): boolean {
-          return this.rightMenuShow
+            return this.rightMenuShow
         },
         getEditCanvas(): any {
-          return this.editCanvas
+            return this.editCanvas
         },
         getEditCanvasConfig(): any {
-          return this.editCanvasConfig
+            return this.editCanvasConfig
         },
         getTargetChart(): any {
-          return this.targetChart
+            return this.targetChart
         },
         getRecordChart(): any | undefined {
-          return this.recordChart
+            return this.recordChart
         },
         getRequestGlobalConfig(): any {
-          return this.requestGlobalConfig
+            return this.requestGlobalConfig
         },
         getComponentList(): any {
-          return this.componentList
-        }
-      },
+            return this.componentList
+        },
+    },
 })
