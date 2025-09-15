@@ -47,6 +47,7 @@ const configState = reactive({
 
 const lineArrowConfig = reactive({
     color: '#00ff97',
+    hasArrow:true,
     radius: 0.1,
     length: 10,
     cutoffRatio: 0.9,
@@ -58,6 +59,7 @@ const pane = new Pane({
     expanded: true,
 })
 pane.addBinding(lineArrowConfig, 'color', { label: '颜色' })
+pane.addBinding(lineArrowConfig, 'hasArrow', { label: '箭头' })
 pane.addBinding(lineArrowConfig, 'radius', { label: '粗细', step: 0.01, min: 0.01, max: 0.2 })
 pane.addBinding(lineArrowConfig, 'length', { label: '长度', step: 0.1, min: 0.1, max: 10 })
 pane.addBinding(lineArrowConfig, 'cutoffRatio', { label: '箭头延展', step: 0.01, min: 0.01, max: 0.99 })
