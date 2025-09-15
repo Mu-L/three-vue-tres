@@ -21,6 +21,7 @@ import domPanel from 'PLS/UIdemo/components/domPanel.vue'
 import spriteImg from 'PLS/UIdemo/components/spriteImg.vue'
 import svgCom from 'PLS/UIdemo/components/svgCom.vue'
 import line2RoundedRect from 'PLS/UIdemo/components/line2RoundedRect.vue'
+import lineArrow from 'PLS/UIdemo/components/lineArrow.vue'
 
 export {
     reactor,
@@ -37,5 +38,6 @@ export {
     domPanel,
     spriteImg,
     svgCom,
-    line2RoundedRect
+    line2RoundedRect,
+    lineArrow
 }
