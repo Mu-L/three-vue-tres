@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 21:01:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-13 15:25:31
+ * @LastEditTime: 2025-09-15 09:54:49
  */
 import loading1 from 'PLS/UIdemo/components/loading/huruji.vue'
 import loading2 from 'PLS/UIdemo/components/loading/cssLoaders.vue'
@@ -20,6 +20,7 @@ import reactor from 'PLS/UIdemo/components/loading/reactor.vue'
 import domPanel from 'PLS/UIdemo/components/domPanel.vue'
 import spriteImg from 'PLS/UIdemo/components/spriteImg.vue'
 import svgCom from 'PLS/UIdemo/components/svgCom.vue'
+import line2RoundedRect from 'PLS/UIdemo/components/line2RoundedRect.vue'
 
 export {
     reactor,
@@ -35,5 +36,6 @@ export {
     bannerLabel,
     domPanel,
     spriteImg,
-    svgCom
+    svgCom,
+    line2RoundedRect
 }

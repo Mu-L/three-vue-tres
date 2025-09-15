@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-12 11:16:41
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-13 15:16:05
+ * @LastEditTime: 2025-09-15 09:52:07
  */
 export default {
     name: 'UIdemo',
@@ -38,5 +38,6 @@ export default {
         { src: 'plugins/UIdemo/preview/domPanelPage.png', type: 'img', name: 'domPanelPage', title: 'dom面板' },
         { src: 'plugins/UIdemo/preview/spriteImgPage.png', type: 'img', name: 'spriteImgPage', title: '精灵图片' },
         { src: 'plugins/UIdemo/preview/svgComPage.png', type: 'img', name: 'svgComPage', title: 'svg组件' },
+        { src: 'plugins/UIdemo/preview/line2RoundedRectPage.png', type: 'img', name: 'line2RoundedRectPage', title: '矩形线边框' },
     ],
 }
