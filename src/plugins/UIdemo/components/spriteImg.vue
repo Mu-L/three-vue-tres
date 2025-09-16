@@ -4,16 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-12 15:54:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-13 14:53:40
+ * @LastEditTime: 2025-09-15 16:15:51
 -->
 <template>
     <TresGroup>
         <TresSprite v-if="isSprite" :scale-y="fixedHeight">
-            <TresSpriteMaterial :map="texture" />
+            <TresSpriteMaterial :map="texture" :alphaTest="0.2" />
         </TresSprite>
         <TresMesh v-else :scale-y="fixedHeight">
             <TresPlaneGeometry />
-            <TresMeshBasicMaterial :map="texture" :side="THREE.DoubleSide" transparent />
+            <TresMeshBasicMaterial :map="texture" :side="THREE.DoubleSide" transparent :alphaTest="0.2" />
         </TresMesh>
     </TresGroup>
 </template>

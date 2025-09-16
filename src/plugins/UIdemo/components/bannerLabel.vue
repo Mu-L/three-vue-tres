@@ -1,10 +1,10 @@
 <template>
     <TresSprite v-if="isSprite" :scale="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor, 1]" :center="center[align] || [0.5, 0.5]">
-        <TresSpriteMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" />
+        <TresSpriteMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" :alphaTest="0.06" />
     </TresSprite>
     <TresGroup v-else :rotation="[Math.PI / 2, 0, 0]">
         <Plane :args="[totalWidth * props.scaleFactor, totalHeight * props.scaleFactor]">
-            <TresMeshBasicMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" :side="THREE.DoubleSide" />
+            <TresMeshBasicMaterial :map="texture" transparent depthTest :blending="THREE.NormalBlending" :side="THREE.DoubleSide" :alphaTest="0.06" />
         </Plane>
     </TresGroup>
 </template>
