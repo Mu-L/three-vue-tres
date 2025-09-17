@@ -4,15 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-02 21:09:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-08 13:09:46
+ * @LastEditTime: 2025-09-17 16:57:17
 -->
 <script setup lang="ts">
 import { defineProps, ref, watchEffect } from 'vue'
 import { useTresContext } from '@tresjs/core'
-import { DepthProps } from 'lamina/types'
 import { Depth } from './material'
 
-const props = defineProps<DepthProps>()
+const props = defineProps<{ [key: string]: any }>()
 const { extend } = useTresContext()
 extend({ Depth })
 

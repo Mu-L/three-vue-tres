@@ -4,21 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-03 16:58:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 10:31:00
+ * @LastEditTime: 2025-09-17 16:55:03
  */
 import { LayerMaterial, Depth, Color, Fresnel, Gradient, Noise, Matcap, Texture, Displace, Normal } from 'lamina/vanilla'
-import {
-    LayerMaterialParameters,
-    ColorProps,
-    DepthProps,
-    FresnelProps,
-    GradientProps,
-    NoiseProps,
-    MatcapProps,
-    TextureProps,
-    DisplaceProps,
-    NormalProps,
-} from 'lamina/types'
+
+type LayerMaterialParameters = any
+type ColorProps = any
+type DepthProps = any
+type FresnelProps = any
+type GradientProps = any
+type NoiseProps = any
+type MatcapProps = any
+type TextureProps = any
+type DisplaceProps = any
+type NormalProps = any
 
 class LayerMaterialCom extends LayerMaterial {
     constructor(parameters: LayerMaterialParameters = {}) {

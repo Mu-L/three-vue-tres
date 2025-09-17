@@ -4,14 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-02 18:51:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 10:29:25
+ * @LastEditTime: 2025-09-17 16:57:51
 -->
 <script setup lang="ts">
 import { defineProps, watchEffect, ref } from 'vue'
 import { useTresContext } from '@tresjs/core'
-import { ColorProps } from 'lamina/types'
 import { Color } from './material'
-const props = defineProps<ColorProps>()
+const props = defineProps<{ [key: string]: any }>()
 const { extend } = useTresContext()
 extend({ Color })
 

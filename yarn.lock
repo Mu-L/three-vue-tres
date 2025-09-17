@@ -8262,18 +8262,17 @@ kolorist@^1.8.0:
   resolved "https://registry.npmmirror.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
   integrity sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==
 
-lamina@^1.1.22, lamina@^1.1.23:
-  version "1.1.23"
-  resolved "https://registry.npmmirror.com/lamina/-/lamina-1.1.23.tgz#0f9e64e8901bedd39d490325fb331d46605f2aa8"
-  integrity sha512-sxcoOyws9fK73tHJFsXgZlIJho++nf+FwWzpbvAheUvayl30DyJmPd0U0Q6v/ECcJuuujb7Txcr4SLOZrdDPJA==
+lamina@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmmirror.com/lamina/-/lamina-1.2.2.tgz#ade7927e8fa4d1367eb67f276362a5e472c952e4"
+  integrity sha512-F81fSK0G2TowZuAi8R126t/C519+ZeiCUKr3TMQaGp5uCGhqKD0qO8rBo7677OMC4eY59oFswqqHF5pT9GkbEA==
   dependencies:
     glsl-token-descope "^1.0.2"
     glsl-token-functions "^1.0.1"
     glsl-token-string "^1.0.1"
     glsl-tokenizer "^2.1.5"
-    lamina "^1.1.22"
-    leva "^0.9.20"
-    three-custom-shader-material "^4.0.0"
+    leva "^0.10.0"
+    three-custom-shader-material "^6.3.7"
 
 less@^4.2.0:
   version "4.3.0"
@@ -8292,10 +8291,10 @@ less@^4.2.0:
     needle "^3.1.0"
     source-map "~0.6.0"
 
-leva@^0.9.20:
-  version "0.9.36"
-  resolved "https://registry.npmmirror.com/leva/-/leva-0.9.36.tgz#a6b98843fec0fd1428de3d58d961874def2c6c7d"
-  integrity sha512-mzzxZzpPdN1bugl6LXCLgK5PS4rU1NdRX7CWnXjVelK49OP8bdoMHhDDweo/uWIk4UHgwpO1sj9CD5Dai+Pvrg==
+leva@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.npmmirror.com/leva/-/leva-0.10.0.tgz#9b426e0b44bcee2617dbc378530389ca902af737"
+  integrity sha512-RiNJWmeqQdKIeHuVXgshmxIHu144a2AMYtLxKf8Nm1j93pisDPexuQDHKNdQlbo37wdyDQibLjY9JKGIiD7gaw==
   dependencies:
     "@radix-ui/react-portal" "1.0.2"
     "@radix-ui/react-tooltip" "1.0.5"
@@ -10570,16 +10569,6 @@ three-custom-shader-material@6.3.1:
   resolved "https://registry.npmmirror.com/three-custom-shader-material/-/three-custom-shader-material-6.3.1.tgz#2af7c251bb401b71baef49de1e6d37dea266ff12"
   integrity sha512-lgKvFiDTKBW5C6iHXKAiEOPUUlwoW+Ywt4T3C3ZkT4x+eDE+XJJT9rl9J8zFA1/k2NeKx95dqDgkPzN/UK3Hfg==
 
-three-custom-shader-material@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/three-custom-shader-material/-/three-custom-shader-material-4.0.0.tgz#d4f1abab7199caf110c0a94aa0df8f3cccb8a1f5"
-  integrity sha512-oMlHSANeKJdpXiLnQTQILF0tY6p2q6tgzQiR5UzMtC9oCa+EQgMXh28dvzsnqtWVnnv6FGwXRfNFgqcv+mHW7Q==
-  dependencies:
-    glsl-token-functions "^1.0.1"
-    glsl-token-string "^1.0.1"
-    glsl-tokenizer "^2.1.5"
-    object-hash "^3.0.0"
-
 three-custom-shader-material@^5.4.0:
   version "5.4.0"
   resolved "https://registry.npmmirror.com/three-custom-shader-material/-/three-custom-shader-material-5.4.0.tgz#ee571c335a028a9b75c703b2ba83199176000847"
@@ -10589,6 +10578,11 @@ three-custom-shader-material@^5.4.0:
     glsl-token-string "^1.0.1"
     glsl-tokenizer "^2.1.5"
     object-hash "^3.0.0"
+
+three-custom-shader-material@^6.3.7:
+  version "6.3.7"
+  resolved "https://registry.npmmirror.com/three-custom-shader-material/-/three-custom-shader-material-6.3.7.tgz#4ae4d3b394950be229d5f7d8178161be9499778d"
+  integrity sha512-u+REZFLqjCTFgKrBu9nFomwcmLwGkuz//Hk8NezXBnC1rVb+0knyxsoFisoltQRJLg4CoB0pJda9iYItlX4IuQ==
 
 three-loader-3dtiles@1.2.7:
   version "1.2.7"

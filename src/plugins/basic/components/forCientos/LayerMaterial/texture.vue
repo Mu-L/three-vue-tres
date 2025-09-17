@@ -4,14 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-02 21:09:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-02 21:36:18
+ * @LastEditTime: 2025-09-17 16:56:52
 -->
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { useTresContext } from '@tresjs/core'
-import { TextureProps } from 'lamina/types'
 import { Texture } from './material'
-const props = defineProps<TextureProps>()
+const props = defineProps<{ [key: string]: any }>()
 const { extend } = useTresContext()
 extend({ Texture })
 </script>
