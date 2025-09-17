@@ -34,7 +34,7 @@ public/plugins/networkLinkTopology
 src/plugins/AIModels
 public/plugins/AIModels
 
-# 排除tvtCharts、showCabinet、tvtVolumeRendering、dxf2mesh、useViewportGizmo、metaHuman、freeDigitalHome、humanMedicine、indoorMap 等插件 <但可演示> 可通过插件中心下载
+# 排除tvtCharts、showCabinet、tvtVolumeRendering、dxf2mesh、metaHuman、freeDigitalHome、humanMedicine、indoorMap 等插件 <但可演示> 可通过插件中心下载
 src/plugins/tvtViewHelper
 public/plugins/tvtViewHelper
 src/plugins/tvtCharts
@@ -45,8 +45,6 @@ src/plugins/tvtVolumeRendering
 public/plugins/tvtVolumeRendering
 src/plugins/dxf2mesh
 public/plugins/dxf2mesh
-src/plugins/useViewportGizmo
-public/plugins/useViewportGizmo
 src/plugins/metaHuman
 public/plugins/metaHuman
 src/plugins/freeDigitalHome
