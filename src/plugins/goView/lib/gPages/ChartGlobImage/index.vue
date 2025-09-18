@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ref, PropType, watch } from 'vue'
-import { fetchImages } from '@/packages'
+import { fetchImages } from '../../packages'
 import { ConfigType } from 'PLS/goView/lib/packages/index.d'
 
 const props = defineProps({
