@@ -117,7 +117,7 @@ This project integrates with three major ecosystems:
 	<tr>
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20250813/023197a1cef7ce7b948af903160ee01e.png" alt="tres.js webgl">
+								<img src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
 			</a>
 		</td>
 		<td style="padding: 10px;">

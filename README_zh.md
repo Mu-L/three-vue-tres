@@ -63,6 +63,13 @@
 -   全案例微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
 -   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
+> 相关技术栈拓扑图 【包含全套项目源码】: 
+<a href="./blob/master/src/plugins/zoneFreeScene/pages/freeTvtStack.vue">git项目源码地址</a>
+
+在线编辑器再次编辑后免费导出源码项目二开 :
+<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack">zone3Deditor页面跳转</a>
+
+<a style="display:block;width:800px;max-width:100%;" href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl three.js"></a>
 
 <table style="border: none; width: 100%; text-align: center;">
   <tr>
@@ -129,7 +136,7 @@
 	<tr>
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20250813/023197a1cef7ce7b948af903160ee01e.png" alt="tres.js webgl">
+				<img src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
 			</a>
 		</td>
 		<td style="padding: 10px;">
