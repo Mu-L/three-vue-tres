@@ -64,7 +64,7 @@
 -   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
 > 相关技术栈拓扑图 【包含全套项目源码】: 
-<a href="./blob/master/src/plugins/zoneFreeScene/pages/freeTvtStack.vue">git项目源码地址</a>
+<a href="./src/plugins/zoneFreeScene/pages/freeTvtStack.vue">git项目源码地址</a>
 
 在线编辑器再次编辑后免费导出源码项目二开 :
 <a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack">zone3Deditor页面跳转</a>
