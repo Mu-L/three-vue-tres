@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-13 16:23:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-16 08:42:54
+ * @LastEditTime: 2025-09-19 12:54:09
  */
 export default {
     name: 'gaussianSplatting',
@@ -35,7 +35,7 @@ export default {
             src: 'plugins/gaussianSplatting/preview/splatPage.png',
             type: 'img',
             name: 'splatPage',
-            title: 'splat实例',
+            title: 'splat组件',
             disableFPSGraph: false,
             disableSrcBtn: false,
         },
@@ -44,6 +44,14 @@ export default {
             type: 'img',
             name: 'glb',
             title: '转glb',
+            disableFPSGraph: false,
+            disableSrcBtn: false,
+        },
+        {
+            src: 'plugins/gaussianSplatting/preview/splatPage.png',
+            type: 'img',
+            name: 'gs3DcomPage',
+            title: '通用格式的高斯',
             disableFPSGraph: false,
             disableSrcBtn: false,
         },

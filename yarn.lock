@@ -1819,6 +1819,11 @@
   resolved "https://registry.npmmirror.com/@mapbox/tilebelt/-/tilebelt-2.0.2.tgz#8176d82a05541acee8104fe1d280981ebd8d4b7a"
   integrity sha512-pzFgrmsCUjOAAeYns1MKJ1dJICYdEC+sYwtWLdxO7iJwmDlepGrEXDqP9ejApO/YUVctA/SYKDS4Oc0mBNNLZw==
 
+"@mkkellogg/gaussian-splats-3d@^0.4.7":
+  version "0.4.7"
+  resolved "https://registry.npmmirror.com/@mkkellogg/gaussian-splats-3d/-/gaussian-splats-3d-0.4.7.tgz#1e1d7d81ae57d2746cbfb9de692bcd69e47f2d13"
+  integrity sha512-0vy9/i9sJLFH/v3WJZ4axCsqjkToe8UsV3xY7bvK5EUC0akiRsWZODoCiSzpxhTLNyzSKTsyQKozIFeNA5RWRA==
+
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.npmmirror.com/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz#dbf733a965ca47b1973177dc0bb6c889edcfb129"

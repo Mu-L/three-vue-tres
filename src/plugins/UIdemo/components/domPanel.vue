@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { watch, ref, nextTick, useAttrs } from 'vue'
 import { Html } from '@tresjs/cientos'
+import { getUUID } from 'PLS/goView/lib/utils/global'
 
 const props = withDefaults(
     defineProps<{
@@ -29,7 +30,7 @@ const props = withDefaults(
         // },
     },
 )
-const domID = props.domID ?? crypto.randomUUID()
+const domID = props.domID ?? getUUID() // crypto.randomUUID()
 const mustReBuildDom = ref(false)
 const mustReBuildContent = ref(true)
 watch(

@@ -69,6 +69,7 @@
     "@icegl/geokit": "^1.4.5",
     "@iconify/json": "2.2.302",
     "@mapbox/tilebelt": "^2.0.2",
+    "@mkkellogg/gaussian-splats-3d": "^0.4.7",
     "@pmndrs/vanilla": "^1.20.4",
     "@tresjs/cientos": "4.3.0",
     "@tresjs/core": "4.3.3",

@@ -4,19 +4,53 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-16 08:31:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-16 08:41:20
+ * @LastEditTime: 2025-09-19 12:49:49
 -->
 <template>
-    <primitive :object="modelSplat" :rotate-x="-Math.PI"/>
+    <primitive :object="toRaw(modelSplat)" />
 </template>
 
 <script setup lang="ts">
+import { watch, onUnmounted, ref, toRaw } from 'vue'
 import { useTresContext } from '@tresjs/core'
 import { Splat, SplatLoader } from '@pmndrs/vanilla'
+
+const props = defineProps({
+    url: {
+        type: String,
+        default: './plugins/gaussianSplatting/model/luigi.splat',
+    },
+})
 
 const { camera, renderer } = useTresContext() as any
 
 const loader = new SplatLoader(renderer.value)
-const oneSplat = await loader.loadAsync('./plugins/gaussianSplatting/model/luigi.splat')
-const modelSplat = new Splat(oneSplat, camera.value, { alphaTest: 0.1 })
+
+let oneSplat = await loader.loadAsync(props.url)
+
+const modelSplat = ref(null) as any
+
+modelSplat.value = new Splat(oneSplat, camera.value, { alphaTest: 0.1 })
+watch(
+    () => props.url,
+    async (url) => {
+        url && (oneSplat = await loader.loadAsync(url))
+        if (modelSplat.value) {
+            modelSplat.value.geometry.dispose()
+            if (modelSplat.value.material) {
+                ;(modelSplat.value.material as any).dispose()
+            }
+        }
+        modelSplat.value = new Splat(oneSplat, camera.value, { alphaTest: 0.1 })
+    },
+)
+
+onUnmounted(() => {
+    if (modelSplat) {
+        modelSplat.geometry.dispose()
+        if (modelSplat.material) {
+            ;(modelSplat.material as any).dispose()
+        }
+    }
+})
 </script>
