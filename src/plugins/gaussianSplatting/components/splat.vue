@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-16 08:31:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-19 12:49:49
+ * @LastEditTime: 2025-09-19 13:20:47
 -->
 <template>
     <primitive :object="toRaw(modelSplat)" />
@@ -35,22 +35,20 @@ watch(
     () => props.url,
     async (url) => {
         url && (oneSplat = await loader.loadAsync(url))
-        if (modelSplat.value) {
-            modelSplat.value.geometry.dispose()
-            if (modelSplat.value.material) {
-                ;(modelSplat.value.material as any).dispose()
-            }
-        }
+        disposeThis()
         modelSplat.value = new Splat(oneSplat, camera.value, { alphaTest: 0.1 })
     },
 )
 
-onUnmounted(() => {
-    if (modelSplat) {
-        modelSplat.geometry.dispose()
-        if (modelSplat.material) {
-            ;(modelSplat.material as any).dispose()
+const disposeThis = () => {
+    if (modelSplat.value) {
+        modelSplat.value.geometry.dispose()
+        if (modelSplat.value.material) {
+            ;(modelSplat.value.material as any).dispose()
         }
     }
+}   
+onUnmounted(() => {
+    disposeThis()
 })
 </script>
