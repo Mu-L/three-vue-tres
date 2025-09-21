@@ -1,0 +1,142 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: Jsonco
+ * @Date: 2025-06-05 09:50:35
+ * @LastEditors: Jsonco
+ * @LastEditTime: 2025-09-21 10:00:00
+-->
+<template>
+    <primitive :object="scene" :position-y="0.01" />
+    <primitive :object="scenedizuo" :position-y="0.1" />
+    <primitive :object="scenejixie" :position-y="0.1" />
+</template>
+
+<script setup lang="ts">
+import { onMounted, watch } from 'vue'
+import * as THREE from 'three'
+import { useGLTF,useAnimations } from '@tresjs/cientos'
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
+const { renderer, scene: sceneValue, camera, sizes } = useTresContext()
+const props = withDefaults(
+    defineProps<{
+        color?: string
+
+    }>(),
+    {
+        color: '#ffed00',
+
+    },
+)
+let effectComposer: EffectComposer | null = null
+
+
+const ContrastShader = {
+    uniforms: {
+        'tDiffuse': { value: null },
+        'contrast': { value: 1.8 }
+    },
+    vertexShader: `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float contrast;
+        varying vec2 vUv;
+        void main() {
+            vec4 color = texture2D(tDiffuse, vUv);
+            color.rgb = (color.rgb - 0.5) * contrast + 0.8;
+            gl_FragColor = color;
+        }
+    `
+}
+
+const { scene } = await useGLTF('plugins/floor/models/topoBase/baseModelJ.glb')
+const { scene: scenedizuo } = await useGLTF('plugins/floor/models/topoBase/baseModelL.glb')
+const { scene: scenejixie,animations } = await useGLTF('plugins/floor/models/topoBase/baseModelK.glb')
+//电风扇的动画
+const { actions } = useAnimations(animations, scenejixie)
+const currentAction = actions.Scene
+currentAction.play()
+
+scene.traverse((child) => {
+    if (child instanceof THREE.Mesh) {
+        // 简化发光设置，避免过度发光
+        child.material.emissive = new THREE.Color('#ffed00')
+        child.material.emissiveIntensity = 20.5
+        // 保持色调映射
+        child.material.toneMapped = true
+        child.material.needsUpdate = true
+    }
+})
+
+const setupBloomEffect = () => {
+    if (!renderer.value || !camera.value || !sizes.width.value) return
+    effectComposer = new EffectComposer(renderer.value)
+    const renderPass = new RenderPass(sceneValue.value, camera.value as THREE.Camera)
+    effectComposer.addPass(renderPass)
+    const bloomPass = new UnrealBloomPass(
+        new THREE.Vector2(sizes.width.value, sizes.height.value),
+        0.1,
+        0.1,
+        0.1
+    )
+    effectComposer.addPass(bloomPass)
+    const contrastPass = new ShaderPass(ContrastShader)
+    contrastPass.uniforms.contrast.value = 1.1
+    effectComposer.addPass(contrastPass)
+}
+
+const setupEnvironment = () => {
+    const pmremGenerator = new THREE.PMREMGenerator(renderer.value);
+    const environment = new RoomEnvironment();
+    const envMap = pmremGenerator.fromScene(environment).texture;
+    sceneValue.value.environment = envMap;
+
+    scene.traverse((child) => {
+        if (child instanceof THREE.Mesh && child.material) {
+            child.material.envMap = envMap;
+            child.material.needsUpdate = true;
+        }
+    });
+
+    environment.dispose();
+};
+const { onLoop } = useRenderLoop()
+onLoop(() => {
+    if (effectComposer) {
+        effectComposer.render()
+    }
+})
+
+onMounted(() => {
+    setupEnvironment();
+    setTimeout(() => {
+        setupBloomEffect();
+    }, 200);
+});
+
+// 添加bloom参数调试功能
+watch(
+    () => [props.color],
+    ([color]) => {
+        scene.traverse((child) => {
+            if (child instanceof THREE.Mesh && child.material) {
+                child.material.emissive = new THREE.Color(color)
+            }
+        })
+    },
+)
+
+
+
+</script>

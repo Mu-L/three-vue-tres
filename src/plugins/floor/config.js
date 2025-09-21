@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-12 08:35:12
+ * @LastEditTime: 2025-09-21 16:35:12
  */
 export default {
     name: 'floor',
@@ -16,6 +16,9 @@ export default {
     state: 'active',
     require: [],
     preview: [
+        { src: 'plugins/floor/preview/ripperfloor.png', type: 'img', name: 'rippleFloor', title: '波纹地板' },
+        { src: 'plugins/floor/preview/mechaFloor.png', type: 'img', name: 'mechaFloor', title: '机甲地板' },
+        { src: 'plugins/floor/preview/sixface.png', type: 'img', name: 'hexagonalWall', title: '六面柱地板' },
         { src: 'plugins/floor/preview/rubberTilesPage.png', type: 'img', name: 'rubberTilesPage', title: '橡胶地板' },
         { src: 'plugins/floor/preview/simpleReflector.png', type: 'img', name: 'simpleReflector', title: '简单镜面' },
         { src: 'plugins/floor/preview/reflectorShader.png', type: 'img', name: 'reflectorShader', title: '镜面材质着色器' },
