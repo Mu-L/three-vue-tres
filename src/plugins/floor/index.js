@@ -22,6 +22,7 @@ import topoBase from './components/topoBase.vue'
 import hexagonalWall from './components/hexagonalWall.vue'
 import mechaFloor from './components/mechaFloor.vue'
 import rippleFloor from './components/rippleFloor.vue'
+import hexagonalFloor from './components/hexagonalFloor.vue'
 export {
     reflectorDiffuse,
     reflectorDUDV,
@@ -39,4 +40,5 @@ export {
     hexagonalWall,  
     mechaFloor,
     rippleFloor,
+    hexagonalFloor
 }
