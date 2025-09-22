@@ -4,7 +4,7 @@
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: Jsonco
- * @LastEditTime: 2025-09-21 10:00:00
+ * @LastEditTime: 2025-09-22 10:40:15
 -->
 <template>
     <primitive :object="scene" :position-y="0.01" />
@@ -40,7 +40,9 @@ const textures = await useTexture({
 
 })
 
-const { scene, nodes } = await useGLTF('plugins/floor/models/topoBase/baseModelI.glb')
+
+const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelI.glb`, { draco: true, decoderPath: './draco/' })
+
 
 const meshData: Array<{
     mesh: THREE.Mesh,

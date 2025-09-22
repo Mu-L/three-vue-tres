@@ -3,8 +3,8 @@
  * @Version: 1.668
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
- * @LastEditors: Jsonco
- * @LastEditTime: 2025-09-21 10:00:00
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-22 10:42:52
 -->
 <template>
     <primitive :object="scene" :position-y="0.01" />
@@ -60,9 +60,18 @@ const ContrastShader = {
     `
 }
 
-const { scene } = await useGLTF('plugins/floor/models/topoBase/baseModelJ.glb')
-const { scene: scenedizuo } = await useGLTF('plugins/floor/models/topoBase/baseModelL.glb')
-const { scene: scenejixie,animations } = await useGLTF('plugins/floor/models/topoBase/baseModelK.glb')
+const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelJ.glb`, {
+    draco: true,
+    decoderPath: './draco/',
+})
+const { scene: scenedizuo } = await useGLTF('plugins/floor/models/topoBase/baseModelL.glb', {
+    draco: true,
+    decoderPath: './draco/',
+})
+const { scene: scenejixie,animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelK.glb`, {
+    draco: true,
+    decoderPath: './draco/',
+})
 //电风扇的动画
 const { actions } = useAnimations(animations, scenejixie)
 const currentAction = actions.Scene
