@@ -1,11 +1,3 @@
-<!--
- * @Description: 
- * @Version: 1.668
- * @Autor: 地虎降天龙
- * @Date: 2025-06-05 09:49:40
- * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-05 10:33:42
--->
 <template>
     <TresCanvas clearColor="#282828" window-size>
         <TresPerspectiveCamera :position="[0, 50, 150]" :fov="50" :near="0.1" :far="2000" />
@@ -23,7 +15,7 @@
         
         <!-- 飞线网格地板 -->
         <Suspense>
-            <rippleFloor v-bind="floorState" />
+            <rippleFloor v-bind="floorState" :scale="20" />
         </Suspense>
         
     </TresCanvas>

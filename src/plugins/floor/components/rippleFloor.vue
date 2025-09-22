@@ -9,7 +9,7 @@
 <template>
     <!-- 飞线网格地板 -->
     <TresMesh :rotation-x="-Math.PI / 2" :position="[0, 0, 0]">
-        <TresPlaneGeometry :args="[2000, 2000]" />
+        <TresPlaneGeometry :args="[100, 100]" />
         <TresShaderMaterial
             :uniforms="shaderUniforms"
             :vertex-shader="vertexShader"
