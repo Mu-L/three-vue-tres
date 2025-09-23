@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-30 14:29:07
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 09:50:51
+ * @LastEditTime: 2025-09-23 16:27:40
 -->
 <template>
     <TresCanvas v-bind="state" ref="tcRef">
@@ -55,7 +55,7 @@ const tcRef = ref()
 
 watchEffect(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.value
+        const renderer = tcRef.value.context.renderer.instance
         renderer.autoClear = false
     }
 })

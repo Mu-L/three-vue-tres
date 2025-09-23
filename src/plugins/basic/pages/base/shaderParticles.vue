@@ -4,26 +4,25 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-05 08:36:47
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-05 08:37:59
+ * @LastEditTime: 2025-09-23 15:49:32
 -->
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
 import { AdditiveBlending } from 'three'
 import { reactive } from 'vue'
 
 const gl = reactive({
-  clearColor: 'black',
-  shadows: true,
-  alpha: false,
+    clearColor: 'black',
+    shadows: true,
+    alpha: false,
 })
 
 const shader = {
-  transparent: true,
-  blending: AdditiveBlending,
-  depthWrite: false,
+    transparent: true,
+    blending: AdditiveBlending,
+    depthWrite: false,
 
-  vertexShader: `
+    vertexShader: `
   uniform float uPixelRatio;
   uniform float uSize;
   uniform float uTime;
@@ -41,7 +40,7 @@ const shader = {
       gl_PointSize *= (1.0 / - viewPosition.z);
   }
   `,
-  fragmentShader: `
+    fragmentShader: `
   void main()
     {
       float distanceToCenter = distance(gl_PointCoord, vec2(0.5));
@@ -50,11 +49,11 @@ const shader = {
       gl_FragColor = vec4(1.0, 1.0, 1.0, strength);
     }
   `,
-  uniforms: {
-    uSize: { value: 100 },
-    uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-    uTime: { value: 0 },
-  },
+    uniforms: {
+        uSize: { value: 100 },
+        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+        uTime: { value: 0 },
+    },
 }
 
 const firefliesCount = 3000
@@ -62,30 +61,28 @@ const positionArray = new Float32Array(firefliesCount * 3)
 const scaleArray = new Float32Array(firefliesCount)
 
 for (let i = 0; i < firefliesCount; i++) {
-  positionArray[i * 3 + 0] = Math.random() * 4
-  positionArray[i * 3 + 1] = Math.random() * 4
-  positionArray[i * 3 + 2] = Math.random() * 4
-  scaleArray[i] = Math.random()
+    positionArray[i * 3 + 0] = Math.random() * 4
+    positionArray[i * 3 + 1] = Math.random() * 4
+    positionArray[i * 3 + 2] = Math.random() * 4
+    scaleArray[i] = Math.random()
 }
 
-const { onLoop } = useRenderLoop()
-
-onLoop(({ elapsed }) => {
-  shader.uniforms.uTime.value = elapsed
-})
+const onLoop = ({ elapsed }: any) => {
+    shader.uniforms.uTime.value = elapsed
+}
 </script>
 
 <template>
-  <TresCanvas v-bind="gl" window-size>
-    <TresPerspectiveCamera :position="[5, 5, 5]" :fov="45" :near="0.1" :far="1000" :look-at="[-8, 3, -3]" />
-    <OrbitControls />
-    <TresAmbientLight :intensity="0.5" />
-    <TresPoints :position="[-2, -2, -2]">
-      <TresBufferGeometry :position="[positionArray, 3]" :a-scale="[scaleArray, 1]" />
-      <TresShaderMaterial v-bind="shader" />
-    </TresPoints>
-    <TresDirectionalLight :position="[0, 2, 4]" :intensity="1" cast-shadow />
+    <TresCanvas v-bind="gl" window-size @loop="onLoop">
+        <TresPerspectiveCamera :position="[5, 5, 5]" :fov="45" :near="0.1" :far="1000" :look-at="[-8, 3, -3]" />
+        <OrbitControls />
+        <TresAmbientLight :intensity="0.5" />
+        <TresPoints :position="[-2, -2, -2]">
+            <TresBufferGeometry :position="[positionArray, 3]" :a-scale="[scaleArray, 1]" />
+            <TresShaderMaterial v-bind="shader" />
+        </TresPoints>
+        <TresDirectionalLight :position="[0, 2, 4]" :intensity="1" cast-shadow />
 
-    <TresGridHelper />
-  </TresCanvas>
+        <TresGridHelper />
+    </TresCanvas>
 </template>

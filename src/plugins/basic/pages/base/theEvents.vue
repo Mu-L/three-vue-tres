@@ -56,9 +56,9 @@ function onPointerMove(ev) {
                     :key="`${[x, y, z]}`"
                     :position="[x, y, z]"
                     @click="onClick"
-                    @pointer-enter="onPointerEnter"
-                    @pointer-leave="onPointerLeave"
-                    @pointer-move="onPointerMove"
+                    @pointerenter="onPointerEnter"
+                    @pointerleave="onPointerLeave"
+                    @pointermove="onPointerMove"
                 >
                     <TresBoxGeometry :args="[1, 1, 1]" />
                     <TresMeshToonMaterial color="#efefef" />

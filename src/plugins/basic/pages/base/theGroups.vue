@@ -4,25 +4,22 @@
  * @Autor: Hawk
  * @Date: 2023-09-22 10:56:32
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-03 16:35:27
+ * @LastEditTime: 2025-09-23 15:45:12
 -->
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
 import { ref } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 
-const { onLoop } = useRenderLoop()
-
 const groupRef = ref()
-onLoop(() => {
+const onLoop = () => {
 	if (groupRef.value) {
 		groupRef.value.rotation.y += 0.01
 	}
-})
+}
 </script>
 
 <template>
-	<TresCanvas clearColor="#000000" window-size>
+	<TresCanvas clearColor="#000000" window-size @loop="onLoop">
 		<TresPerspectiveCamera :position="[5, 5, 5]" :fov="75" :aspect="1" :near="0.1" :far="1000" />
 		<OrbitControls />
 		<TresAmbientLight :color="0xffffff" :intensity="0.5" />
