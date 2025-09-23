@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-22 10:48:23
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-22 11:51:52
+ * @LastEditTime: 2025-09-23 09:15:10
 -->
 <template>
     <TresCanvas clearColor="#000000" window-size>
@@ -12,7 +12,7 @@
         <OrbitControls enableDamping />
 
         <Suspense>
-            <hexagonalFloor v-bind="rtState" :scale="2" :position="[0, 0.3, 0]"/>
+            <hexagonalFloor v-bind="rtState" :scale="2" :position="[0, 0.5, 0]"/>
         </Suspense>
         <Suspense>
             <reflectorDUDV :reflectivity="1.0" :showGridHelper="false" :scale="2" />
@@ -32,8 +32,9 @@ const rtState = reactive({
     floorMetalness: 0.8,
     floorRoughness: 0.2,
     floorEnvMapIntensity: 2.5,
-    sideColor: '#424242',
-    sideOpacity: 0.38,
+    sideColor: '#000000',
+    sideOpacity: 0.56,
+    speed: 0.1,
 })
 const paneControl = new Pane({
     expanded: true,
@@ -44,4 +45,5 @@ paneControl.addBinding(rtState, 'floorRoughness', { label: '地板粗糙度', mi
 paneControl.addBinding(rtState, 'floorEnvMapIntensity', { label: '地板环境光强度', min: 0, max: 10 })
 paneControl.addBinding(rtState, 'sideColor', { label: '侧面颜色' })
 paneControl.addBinding(rtState, 'sideOpacity', { label: '侧面透明度', min: 0, max: 1 })
+paneControl.addBinding(rtState, 'speed', { label: '动画速度', min: 0, max: 1, step: 0.01 })
 </script>

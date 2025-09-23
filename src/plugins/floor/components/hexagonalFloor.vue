@@ -10,6 +10,7 @@ import * as THREE from 'three'
 import { useGLTF } from '@tresjs/cientos'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import { useTresContext, useTexture } from '@tresjs/core'
+import gsap from 'gsap'
 
 const { renderer, scene: sceneValue } = useTresContext()
 
@@ -20,6 +21,7 @@ const props = defineProps({
     floorEnvMapIntensity: { default: 2.5 },
     sideColor: { default: '#ffffff' },
     sideOpacity: { default: 0.9 },
+    speed: { default: 0.3 },
 })
 
 const textures = await useTexture({
@@ -37,29 +39,43 @@ const meshData: Array<{
     mesh: THREE.Mesh
     originalPosition: THREE.Vector3
     scatteredPosition: THREE.Vector3
+    originalRotation: THREE.Euler
+    scatteredRotation: THREE.Euler
 }> = []
 
 scene.traverse((child) => {
     if (child instanceof THREE.Mesh) {
         const originalPosition = child.position.clone()
+        const originalRotation = child.rotation.clone()
 
-        const scatterRadius = 20 + Math.random() * 30
-        const scatterAngle = Math.random() * Math.PI * 2
-        const scatterHeight = (Math.random() - 0.5) * 20
-
+        // 垂直方向散开
+        const verticalOffset = (Math.random() - 0.5)
         const scatteredPosition = new THREE.Vector3(
-            originalPosition.x + Math.cos(scatterAngle) * scatterRadius,
-            originalPosition.y + scatterHeight,
-            originalPosition.z + Math.sin(scatterAngle) * scatterRadius,
+            originalPosition.x,
+            originalPosition.y + verticalOffset, // 只沿 Y 散开
+            originalPosition.z,
         )
+
+        // 随机倾斜（旋转）
+        const maxTilt = Math.PI / 12 // 最大 15°
+        const scatteredRotation = new THREE.Euler(
+            originalRotation.x+(Math.random() - 0.5) * maxTilt,
+            originalRotation.y+(Math.random() - 0.5) * maxTilt,
+            originalRotation.z,
+        )
+        // const scatteredPosition = new THREE.Vector3(
+        //     originalPosition.x + Math.cos(scatterAngle) * scatterRadius,
+        //     originalPosition.y + scatterHeight,
+        //     originalPosition.z + Math.sin(scatterAngle) * scatterRadius,
+        // )
 
         meshData.push({
             mesh: child,
-            originalPosition: originalPosition,
-            scatteredPosition: scatteredPosition,
+            originalPosition,
+            scatteredPosition,
+            originalRotation,
+            scatteredRotation,
         })
-
-        child.position.copy(scatteredPosition)
 
         if (child.name.includes('_')) {
             // 侧面材质
@@ -73,6 +89,33 @@ scene.traverse((child) => {
         }
         child.material.needsUpdate = true
     }
+})
+const tl = gsap.timeline()
+meshData.forEach(({ mesh, scatteredPosition ,scatteredRotation}, i) => {
+    tl.to(
+        mesh.position,
+        {
+            x: scatteredPosition.x,
+            y: scatteredPosition.y,
+            z: scatteredPosition.z,
+            ease: 'power1.inOut',
+            repeat: -1,
+            yoyo: true,
+        },
+        0,
+    )
+    tl.to(
+        mesh.rotation,
+        {
+            x: scatteredRotation.x,
+            y: scatteredRotation.y,
+            z: scatteredRotation.z,
+            ease: 'power1.inOut',
+            repeat: -1,
+            yoyo: true,
+        },
+        0,
+    )
 })
 
 const setupEnvironment = () => {
@@ -113,6 +156,13 @@ watch(
                 }
             }
         })
+    },
+    { immediate: true },
+)
+watch(
+    () => [props.speed],
+    ([speed]) => {
+        tl.timeScale(speed)
     },
     { immediate: true },
 )
