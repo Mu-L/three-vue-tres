@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-19 10:53:40
+ * @LastEditTime: 2025-09-23 11:47:56
 -->
 <template>
     <div class="absolute menuSelf">
@@ -183,10 +183,11 @@
 
 <script setup lang="ts">
 import { ref, provide, watch, onMounted, nextTick } from 'vue'
-import { defineRouteMeta, useModel, useRoute, useRouter } from '@fesjs/fes'
+import { defineRouteMeta, useRoute, useRouter } from '@fesjs/fes'
 import { FBadge, FDrawer, FMenu, FSubMenu, FMenuItem } from '@fesjs/fes-design'
 import { AppstoreOutlined, PictureOutlined, UpCircleOutlined, MoreCircleOutlined, ClusterOutlined, EditOutlined } from '@fesjs/fes-design/icon'
 import { getPluginsConfig, getOnlinePluginConfig, detectDeviceType } from '../common/utils'
+import { useForPreviewStore } from '@/stores/forPreview'
 import cardList from '../components/forPreview/cardList.vue'
 import filterComFixed from '../components/forPreview/filterComFixed.vue'
 
@@ -288,7 +289,7 @@ watch(filterFixedInputValue, (newValue: any) => {
     filteredData.value = filterObjects(pluginsConfig.value, newValue.toLocaleLowerCase())
 })
 
-const { menuSetup } = useModel('forPreview')
+const { menuSetup } = useForPreviewStore()
 
 function filterMenuSetup(msFilter: any) {
     if (msFilter.length === 0) {

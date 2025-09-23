@@ -7,16 +7,16 @@
  * @LastEditTime: 2023-10-23 09:53:01
 -->
 <template>
-    <div class="right">{{ userModel.user.userName }}</div>
+    <div class="right">{{ user.userName }}</div>
 </template>
 <script>
-import { useModel } from '@fesjs/fes'
+import { useForPreviewStore } from '@/stores/forPreview'
 
 export default {
     setup () {
-        const userModel = useModel('forPreview')
+        const { user } = useForPreviewStore()
         return {
-            userModel,
+            user,
         };
     },
 };

@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-15 15:57:39
+ * @LastEditTime: 2025-09-23 11:44:32
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
 import javascriptObfuscator from 'vite-plugin-javascript-obfuscator'
-import addExtraScriptPlugin from './src/common/addExtraScriptPlugin'
+import addExtraScriptPlugin from './src/common/addExtraScriptPlugin.js'
 
 export default defineBuildConfig({
     layout: {
@@ -107,57 +107,8 @@ export default defineBuildConfig({
     },
     viteOption: {
         plugins: [
+            console.log('正在加载 TvT.js...'),
             addExtraScriptPlugin(),
-            // viteCompression({
-            //     // 压缩配置选项
-            //     verbose: true, // 默认即可，是否在控制台显示压缩信息
-            //     disable: false, // 默认即可，是否禁用插件
-            //     threshold: 10240, // 默认10240字节（10KB），只有大小超过此阈值的资源才会被处理。注意这里指的是资源原始大小，不是gzip后的体积。
-            //     algorithm: 'gzip', // 使用gzip压缩
-            //     ext: '.gz', // 生成的压缩包后缀
-            //     deleteOriginFile: false, // 是否删除原始文件
-            //     compressionOptions: {
-            //         level: 9, // 压缩级别，范围为 1-9，9 为最高压缩率
-            //     },
-            // }),
-            // process.env.NODE_ENV === 'production' &&
-            // javascriptObfuscator({
-            //     apply: 'build',
-            //     include: [/src\/.*\.js$/],
-            //     exclude: [
-            //         'node_modules/**',
-            //         '!node_modules/three/**',
-            //         '!node_modules/@tresjs/core/**',
-            //         '!node_modules/@tresjs/cientos/**',
-            //         'src/plugins/geojson23dtiles/lib/**',
-            //         /[\\/]@alienkitty[\\/]/,
-            //     ],
-            //     options: {
-            //         optionsPreset: 'high-obfuscation', //'default',
-            //         debugProtection: false,
-            //         disableConsoleOutput: true,
-            //         controlFlowFlattening: false, // 🚀 关闭控制流混淆，避免 Babel 解析错误
-            //         identifierNamesGenerator: 'hexadecimal', // 仅修改变量名，不影响语法结构
-            //         reservedStrings: [
-            //             'suspenseLayout.vue',
-            //             /* 排除编辑器需要的引用的组件 start */
-            //             'coneAnchorMeshB.vue',
-            //             'bannerLabel.vue',
-            //             'staticWater.vue',
-            //             'reflectorRoundedBox.vue',
-            //             'flexiblePipe.vue',
-            //             'utils.js',
-            //             /* 排除编辑器需要的引用的组件 end */
-            //         ],
-            //         compact: true,
-            //         stringArray: true,
-            //         stringArrayThreshold: 0.75,
-            //         stringArrayEncoding: ['rc4'],
-            //         splitStrings: false,
-            //         transformObjectKeys: false,
-            //         // ...  [See more options](https://github.com/javascript-obfuscator/javascript-obfuscator)
-            //     },
-            // }),
         ],
         server: {
             proxy: {

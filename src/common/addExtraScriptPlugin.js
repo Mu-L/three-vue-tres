@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-25 15:39:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-15 08:10:03
+ * @LastEditTime: 2025-09-23 11:45:14
  */
-const path = require('path')
-const fs = require('fs').promises
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 const glob = require('glob')
 
 const getPluginsConfig = () => {

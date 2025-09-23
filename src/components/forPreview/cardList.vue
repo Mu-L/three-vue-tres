@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 16:02:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-19 11:39:52
+ * @LastEditTime: 2025-09-23 11:47:33
 -->
 <template>
     <FDivider titlePlacement="left">{{ onePlugin.title + ' - ' + onePlugin.name }}</FDivider>
@@ -87,7 +87,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { FCard, FDivider, FSpace, FText } from '@fesjs/fes-design'
-import { useRouter, useModel } from '@fesjs/fes' //fesJS的路由被他自己封装了
+import { useRouter } from '@fesjs/fes' //fesJS的路由被他自己封装了
+import { useForPreviewStore } from '@/stores/forPreview'
 import { UserOutlined } from '@fesjs/fes-design/icon'
 import oneImageQr from './oneImageQr.vue'
 import { loadJweixin, loadWebView } from 'PLS/uniAppView/lib/initScript'
@@ -100,7 +101,7 @@ const props = withDefaults(
     }>(),
     {},
 )
-const { menuSetup } = useModel('forPreview')
+const { menuSetup } = useForPreviewStore()
 let publicPath = process.env.BASE_URL
 
 const toAuthorPage = (url: string) => {
