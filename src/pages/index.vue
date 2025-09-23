@@ -1,15 +1,15 @@
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @loop="onLoop">
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="0.5" />
 
-        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
+        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointerenter="onPointerEnter" @pointerleave="onPointerLeave">
             <TresSphereGeometry :args="[2, 32, 32]" />
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
 
-        <TresMesh ref="sphereRef2" :position="[4, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
+        <TresMesh ref="sphereRef2" :position="[4, 4, 0]" cast-shadow @pointerenter="onPointerEnter" @pointerleave="onPointerLeave">
             <TresSphereGeometry :args="[2, 32, 32]" />
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
@@ -30,7 +30,6 @@
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
 import { reactive, ref, onMounted, shallowRef, watchEffect } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 
 const state = reactive({
@@ -68,14 +67,12 @@ const sphereRef = ref()
 const sphereRef2 = ref()
 const TDirectionalLight = shallowRef()
 
-// const { onLoop, pause, resume } = useRenderLoop()
-const { onLoop } = useRenderLoop()
 
-onLoop(({ elapsed }) => {
+const onLoop = ({ elapsed }:any) => {
     if (!sphereRef.value) return
     sphereRef.value.position.y += Math.sin(elapsed) * 0.01
     sphereRef2.value.position.y += Math.sin(elapsed) * 0.01
-})
+}
 
 function onPointerEnter(ev: any) {
     if (ev) {

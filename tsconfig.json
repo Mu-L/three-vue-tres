@@ -40,7 +40,7 @@
     "src/**/*",
     "typings/**/*",
     "config/**/*"
-  ],
+, ".fes.js"  ],
   "exclude": [
     "build",
     "dist",

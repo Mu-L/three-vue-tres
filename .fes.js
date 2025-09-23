@@ -4,16 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-04 17:37:06
+ * @LastEditTime: 2025-09-23 11:07:52
  */
 // import { resolve } from 'path';
-import { join } from 'path'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { defineBuildConfig } from '@fesjs/fes'
 import { templateCompilerOptions } from '@tresjs/core'
 // eslint-disable-next-line import/no-unresolved
 import UnoCSS from 'unocss/vite'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import glsl from 'vite-plugin-glsl'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const timeStamp = new Date().getTime()
 const combinedIsCustomElement = (tag) => tag.startsWith('iconify-icon') || templateCompilerOptions.template.compilerOptions.isCustomElement(tag)

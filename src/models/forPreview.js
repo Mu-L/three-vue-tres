@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-21 15:34:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 13:56:22
+ * @LastEditTime: 2025-09-23 11:27:45
  */
 import { reactive } from 'vue'
 import { access, request } from '@fesjs/fes'
@@ -14,7 +14,7 @@ export default function userModel() {
 
     const signin = () => {
         const { setRole } = access
-        user.userName = ''
+        user.userName = 'tvt.js'
         setRole('admin')
     }
 

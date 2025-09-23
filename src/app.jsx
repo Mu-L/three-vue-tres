@@ -2,16 +2,16 @@
  * @Description: 
  * @Version: 1.668
  * @Autor: 地虎降天龙
- * @Date: 2023-10-16 10:53:09
+ * @Date: 2025-04-02 18:59:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-08 09:31:29
+ * @LastEditTime: 2025-09-23 11:34:44
  */
 import { defineRuntimeConfig, useModel } from '@fesjs/fes'
+import { reactive } from 'vue'
 import { FMenu } from '@fesjs/fes-design'
 import Tres from '@tresjs/core'
 import chalk from 'chalk'
 
-// add by 地虎降天龙
 import 'uno.css'
 import 'animate.css/animate.min.css'
 
@@ -20,10 +20,11 @@ import { addCollection } from 'iconify-icon'
 import uimIcons from '@iconify/json/json/uim.json'
 import lineMdIcons from '@iconify/json/json/line-md.json'
 import wiIcons from '@iconify/json/json/wi.json'
-import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
+import { useQiankunTvtStore } from '@/plugins/qiankunTvt/stores/index'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import UserCenter from '@/components/forPreview/userCenter.vue'
 import PageLoading from '@/components/pageLoading.vue'
+import { useForPreviewStore } from '@/stores/forPreview'
 
 addCollection(uimIcons)
 addCollection(lineMdIcons)
@@ -44,7 +45,8 @@ export default defineRuntimeConfig({
                 // qiankunWindow.__webpack_public_path__ = purl
                 // Object.defineProperty(import.meta, 'url', { get: () => purl })
             }
-            const { signin, getMenu } = useModel('forPreview')
+            const { signin, getMenu } = useForPreviewStore()
+            // const { signin, getMenu } = useModel('useAuthModel')
             signin()
             if ((process.env.FES_APP_PLUGINS === 'true' && process.env.NODE_ENV === 'development') || process.env.FES_APP_ONLINE_API) {
                 getMenu()
