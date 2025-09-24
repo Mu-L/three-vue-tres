@@ -29,7 +29,6 @@ const gl = {
 }
 
 const onLoop = () => {
-  debugger
   if (boxRef.value) {
     boxRef.value.instance.rotation.x = progress.value * 10
     boxRef.value.instance.rotation.y = progress.value * 2

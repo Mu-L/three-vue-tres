@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-09 09:33:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-15 18:42:44
+ * @LastEditTime: 2025-09-24 18:46:05
  */
 import {
     BufferAttribute,
@@ -26,7 +26,7 @@ import { request } from '@fesjs/fes'
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh'
 
 //水面
-import { useTexture } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
 import { Water } from 'three/addons/objects/Water2'
 
 //重置UV 是否从中点 还是左上角的点
@@ -141,7 +141,7 @@ export const initMeshBvh = () => {
     Mesh.prototype.raycast = acceleratedRaycast
 }
 export const setThreeWater2 = async (mesh) => {
-    const pTexture = await useTexture(['./plugins/water/images/Water_1_M_Normal.jpg', './plugins/water/images/Water_2_M_Normal.jpg'])
+    const { textures } = useTextures(['./plugins/water/images/Water_1_M_Normal.jpg', './plugins/water/images/Water_2_M_Normal.jpg'])
     const waterGeometry = mesh.geometry.clone()
     resetUV(waterGeometry)
     waterGeometry.computeBoundsTree()
@@ -151,8 +151,8 @@ export const setThreeWater2 = async (mesh) => {
         flowDirection: new Vector2(1, 1),
         textureWidth: 1024,
         textureHeight: 1024,
-        normalMap0: pTexture[0],
-        normalMap1: pTexture[1],
+        normalMap0: textures.value[0],
+        normalMap1: textures.value[1],
     })
     tsWater.material.transparent = true
     tsWater.material.depthWrite = true

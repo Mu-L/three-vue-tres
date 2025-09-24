@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-21 13:38:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 07:42:01
+ * @LastEditTime: 2025-09-24 18:49:44
 -->
 <template>
 	<mapContainer :center="mapCenter" :zoom="19" :pitch="65.59312320916906" mapStyle="darkblue" />
@@ -34,7 +34,7 @@ const state = reactive({
 	// windowSize: true,
 	alpha: true,
 	antialias: true,
-	autoClear: false,
+	clearAlpha: 0,
 	renderMode: 'manual'
 })
 

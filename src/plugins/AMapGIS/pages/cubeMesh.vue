@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-21 13:38:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-13 10:15:17
+ * @LastEditTime: 2025-09-24 18:40:07
 -->
 <template>
 	<mapContainer :center="mapCenter" />
-	<TresCanvas id="tresCanvas" ref="tcRef" v-bind="state">
+	<TresCanvas id="tresCanvas" v-bind="state">
 		<TresPerspectiveCamera :fov="60" :near="0.1" :far="1000" />
 		<TresAmbientLight :intensity="0.5" />
 
@@ -38,7 +38,7 @@ const state = reactive({
 	// windowSize: true,
 	alpha: true,
 	antialias: true,
-	autoClear: false,
+	clearAlpha: 0,
 	renderMode: 'manual'
 })
 

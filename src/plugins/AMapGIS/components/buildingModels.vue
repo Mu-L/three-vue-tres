@@ -12,10 +12,10 @@
 <script lang="ts" setup>
 import { loadGeojson } from 'PLS/digitalCity/common/utils'
 import { watchEffect, reactive } from 'vue'
-import vertexShader from '../shaders/buildingModels.vert?raw'
-import fragmentShader from '../shaders/buildingModels.frag?raw'
+import vertexShader from '../shaders/buildingModels.vert'
+import fragmentShader from '../shaders/buildingModels.frag'
 import { useMapStore } from '../stores/mapStore'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 const mapStore = useMapStore()
 
 const mercatorTolonlat = (mercatorX: number, mercatorY: number) => {
@@ -91,8 +91,8 @@ watchEffect(() => {
 		markBuildingsPrimary()
 	}
 })
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (mapStore.cameraState) {
 		tsMaterialConfig.uniforms.u_zoom.value = mapStore.mapHandle.getZoom()
 		tsMaterialConfig.uniforms.u_near.value = mapStore.cameraState.near
