@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-29 10:11:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 10:18:22
+ * @LastEditTime: 2025-09-24 17:31:37
 -->
 <template>
     <TresMesh ref="TSGref" :scale="props.scale">
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import * as THREE from 'three'
 import { ref, watchEffect, watch } from 'vue'
 import { LoopSubdivision } from 'three-subdivide'
@@ -121,9 +121,9 @@ watch(
         TSGref.value.material.blending = newVal
     },
 )
-const { onLoop } = useRenderLoop()
-const { camera } = useTresContext()
-onLoop(() => {
+const { onRender } = useLoop()
+const { camera } = useTres()
+onRender(() => {
     if (camera.value && TSGref.value) {
         smState.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.value.position, TSGref.value.position)
     }

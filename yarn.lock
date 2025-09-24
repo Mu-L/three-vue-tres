@@ -2430,6 +2430,14 @@
     "@unocss/core" "^65.4.0"
     "@vueuse/components" "^12.4.0"
 
+"@tresjs/post-processing@3.0.0-next.0":
+  version "3.0.0-next.0"
+  resolved "https://registry.npmmirror.com/@tresjs/post-processing/-/post-processing-3.0.0-next.0.tgz#ab829a06bca365fc4fab1dfff14d49309200b132"
+  integrity sha512-EK2W+h9UxzzpBXiE7EowjZngw7k97TonIGhp5b6jshyrRrhsq4EPi92l6yF7zyWaXjVHKcse+Jf6OCNwK5EJwg==
+  dependencies:
+    "@vueuse/core" "^12.5.0"
+    postprocessing "^6.37.2"
+
 "@tresjs/post-processing@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npmmirror.com/@tresjs/post-processing/-/post-processing-2.4.0.tgz#89af427ce34f4a51b01c4958d49cd1642cd2b03f"

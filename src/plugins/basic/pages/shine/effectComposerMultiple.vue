@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-09 15:02:26
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 10:38:37
+ * @LastEditTime: 2025-09-24 18:12:35
 -->
 
 <template>
@@ -25,7 +25,7 @@ import { watchEffect, ref } from 'vue'
 const tcRef = ref()
 watchEffect(() => {
     if (tcRef.value) {
-        let renderer = tcRef.value.context.renderer.value
+        let renderer = tcRef.value.context.renderer.instance
         renderer.autoClear = false
     }
 })

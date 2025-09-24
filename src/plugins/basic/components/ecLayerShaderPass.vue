@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-11 08:12:17
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-01 17:59:36
+ * @LastEditTime: 2025-09-24 18:11:25
 -->
 <template>
 	<TresMesh ref="normalBox" :position="[3, 2, 1]">
@@ -28,13 +28,13 @@ const shineBox = ref()
 // const filmBox = ref()
 
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js"
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
 	strength: 0.572,    // 强度
 	radius: 0.51,       // 半径
@@ -97,20 +97,20 @@ watchEffect(() => {
 	// 	filmBox.value.layers.set(2)
 	// }
 	if (sizes.width.value) {
-		bloomPassEffect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
-		makeFinalComposer(renderer.value)
+		bloomPassEffect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
+		makeFinalComposer(renderer)
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (effectComposer && finalComposer && camera.value) {
-		renderer.value.clear()
+		renderer.clear()
 
 		camera.value.layers.set(1)
 		effectComposer.render()
 
-		renderer.value.clearDepth() // 清除深度缓存
+		renderer.clearDepth() // 清除深度缓存
 
 		camera.value.layers.set(0)
 		finalComposer.render(scene.value, camera.value)

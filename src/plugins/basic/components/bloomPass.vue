@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-11 08:12:17
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-01 17:44:37
+ * @LastEditTime: 2025-09-24 18:04:13
 -->
 <template>
 	<Box :args="[1, 1, 1]" color="orange" :position="[3, 2, 1]" />
@@ -18,7 +18,7 @@
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
 import { Box } from '@tresjs/cientos'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -27,7 +27,7 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js'
 // import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass'
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
 	threshold: 0,
 	strength: 0.972,    // 强度
@@ -71,13 +71,13 @@ const filmPassEffect = (scene2: THREE.Scene, camera: THREE.PerspectiveCamera, re
 
 watchEffect(() => {
 	if (sizes.width.value) {
-		bloomPassEffect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
-		filmPassEffect(new THREE.Scene(), camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+		bloomPassEffect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
+		filmPassEffect(new THREE.Scene(), camera.value as any, renderer, sizes.width.value, sizes.height.value)
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (effectComposer) {
 		effectComposer.render()
 	}

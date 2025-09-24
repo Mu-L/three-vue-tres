@@ -4,7 +4,7 @@
  * @Autor: Hawk
  * @Date: 2023-10-12 11:41:10
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-17 16:01:46
+ * @LastEditTime: 2025-09-24 17:34:31
 -->
 <template>
     <TresCanvas v-bind="gl" window-size>
@@ -13,15 +13,19 @@
         <OrbitControls />
         <TresGridHelper :args="[10, 10]" />
 
-        <TresMesh ref="TresMeshRefA" :position="[-2, 1, 0]">
-            <TresSphereGeometry :args="[1, 32, 16]" />
-            <TresMeshBasicMaterial :map="pTexture[0]" />
-        </TresMesh>
+        <UseTexture v-slot="{ state: texture }" path="./plugins/earthSample/image/earthA/earth.jpg">
+            <TresMesh ref="TresMeshRefA" :position="[-2, 1, 0]">
+                <TresSphereGeometry :args="[1, 32, 16]" />
+                <TresMeshBasicMaterial :map="texture" />
+            </TresMesh>
+        </UseTexture>
         <shineShader :srcMesh="TresMeshRefA" v-bind="shineState" />
 
-        <Box ref="TreBoxRef" :args="[1, 1, 1]" :position="[2, 1, 0]">
-            <TresMeshBasicMaterial :map="pTexture[1]" />
-        </Box>
+        <UseTexture v-slot="{ state: texture }" path="./logo.png">
+            <Box ref="TreBoxRef" :args="[1, 1, 1]" :position="[2, 1, 0]">
+                <TresMeshBasicMaterial :map="texture" />
+            </Box>
+        </UseTexture>
         <shineShader v-if="TreBoxRef && TreBoxRef.instance" :srcMesh="TreBoxRef.instance" v-bind="shineState" />
 
         <TresMesh ref="TresMeshRefB" :position="[0, 1, -2]">
@@ -33,8 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTexture } from '@tresjs/core'
-import { OrbitControls, Box } from '@tresjs/cientos'
+import { OrbitControls, Box, UseTexture } from '@tresjs/cientos'
 import * as THREE from 'three'
 import { reactive, ref } from 'vue'
 import { Pane } from 'tweakpane'
@@ -46,8 +49,6 @@ const gl = {
 const TresMeshRefA = ref()
 const TresMeshRefB = ref()
 const TreBoxRef = ref()
-// const { map: pTexture } = await useTexture({ map: './plugins/earthSample/image/earthA/earth.jpg' })
-const pTexture = await useTexture(['./plugins/earthSample/image/earthA/earth.jpg', 'logo.png'])
 const shineState = reactive({
     scale: 1.6,
     color: '#00dfff',

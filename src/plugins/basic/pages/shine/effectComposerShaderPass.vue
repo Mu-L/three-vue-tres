@@ -25,7 +25,7 @@ import { watchEffect, ref } from 'vue'
 const tcRef = ref()
 watchEffect(() => {
     if (tcRef.value) {
-        let renderer = tcRef.value.context.renderer.value
+        let renderer = tcRef.value.context.renderer.instance
         renderer.autoClear = false
     }
 })

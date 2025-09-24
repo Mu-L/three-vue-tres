@@ -26,7 +26,7 @@ import ecLayers from '../../components/ecLayers.vue'
 const tcRef = ref()
 watchEffect(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.value
+        const renderer = tcRef.value.context.renderer.instance
         renderer.autoClear = false
     }
 })

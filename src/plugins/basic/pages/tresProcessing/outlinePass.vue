@@ -4,11 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-02 09:49:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 10:36:33
+ * @LastEditTime: 2025-09-24 18:20:54
 -->
 <script setup lang="ts">
-import { BasicShadowMap, NoToneMapping } from 'three'
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { TresCanvas } from '@tresjs/core'
 import { EffectComposerPmndrs, OutlinePmndrs } from '@tresjs/post-processing'

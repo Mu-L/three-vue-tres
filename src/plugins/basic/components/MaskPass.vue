@@ -4,37 +4,30 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-09 17:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-01 17:52:32
+ * @LastEditTime: 2025-09-24 18:05:51
 -->
 <template>
 	<Box :args="[1, 1, 1]" color="orange" :position="[3, 2, 1]" />
-	<!-- <TresMesh :position="[0, 2, -4]">
-		<TresBoxGeometry :args="[1, 1, 1]" />
-		<TresMeshNormalMaterial />
-	</TresMesh> -->
 </template>
 
 <script setup lang="ts">
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
 import { Box } from '@tresjs/cientos'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass.js"
-// import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js'
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js'
-// import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass'
 import { CopyShader } from 'three/examples/jsm/shaders/CopyShader.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { MaskPass, ClearMaskPass } from 'three/examples/jsm/postprocessing/MaskPass.js'
-// import { ClearPass } from 'three/addons/postprocessing/ClearPass.js'
 
 //清除掩膜通道
 const clearMask = new ClearMaskPass()
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 let effectComposer = null as any
 const params = {
 	threshold: 0,
@@ -44,8 +37,6 @@ const params = {
 const bloomPassEffect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, width: number, height: number) => {
 	// 渲染器通道，将场景全部加入渲染器
 	const renderScene = new RenderPass(scene, camera)
-	// const clearPass = new ClearPass()
-	// effectComposer.addPass(clearPass)
 	// 将渲染器和场景结合到合成器中
 	effectComposer.addPass(renderScene)
 
@@ -53,10 +44,6 @@ const bloomPassEffect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, re
 	const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), params.strength, params.radius, params.threshold)
 	effectComposer.addPass(bloomPass)
 }
-
-// const Tcamera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000)
-// Tcamera.position.set(-15, 30, 40) // 设置相机位置
-// Tcamera.lookAt(new THREE.Vector3(0, 0, 0))
 
 const MaskPassEffect = (scene2: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, width: number, height: number) => {
 	let meshCurve = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial())
@@ -119,21 +106,21 @@ const endEffectCopy = () => {
 
 watchEffect(() => {
 	if (sizes.width.value && !effectComposer) {
-		effectComposer = new EffectComposer(renderer.value)
+		effectComposer = new EffectComposer(renderer)
 		effectComposer.renderTarget1.stencilBuffer = true
 		effectComposer.renderTarget2.stencilBuffer = true
 
-		bloomPassEffect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+		bloomPassEffect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
 		// MaskPassEffect(new THREE.Scene(), camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
-		glitchPassEffect(new THREE.Scene(), camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+		glitchPassEffect(new THREE.Scene(), camera.value as any, renderer, sizes.width.value, sizes.height.value)
 		endEffectCopy()
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (effectComposer) {
-		renderer.value.autoClear = false
+		renderer.autoClear = false
 		effectComposer.render()
 	}
 })
