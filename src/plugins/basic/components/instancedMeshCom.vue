@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-05 16:39:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-05 17:35:47
+ * @LastEditTime: 2025-09-24 16:09:19
 -->
 <template>
     <TresInstancedMesh ref="tmRef" :args="[null!, null!,88]">
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { CustomShaderMaterial } from '@tresjs/cientos'
 import * as THREE from 'three'
 
@@ -110,8 +110,8 @@ const uniforms = {
 }
 const dummy = new THREE.Object3D()
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onRender } = useLoop()
+onRender(({ elapsed }) => {
     uniforms.uTime.value = elapsed
 })
 watch(

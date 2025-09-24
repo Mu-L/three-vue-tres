@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-10-10 09:25:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-10-10 09:54:40
+ * @LastEditTime: 2025-09-24 16:11:28
 -->
 <template>
-    <primitive :object="scene" :scale="5" :position="[0, -2, 0]" />
+    <primitive v-if="pState" :object="pState?.scene" :scale="5" :position="[0, -2, 0]" />
 </template>
 
 <script setup lang="ts">
@@ -24,7 +24,7 @@ const props = withDefaults(
     },
 )
 
-const { scene, materials } = await useGLTF(
+const { state: pState, materials } = useGLTF(
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/MRBike.glb',
     {
         draco: true,
@@ -33,9 +33,15 @@ const { scene, materials } = await useGLTF(
 )
 
 const resolutionList = [] as any
-Object.values(materials).forEach((material: any) => {
-    resolutionList.push(transToVertexSnappingMaterial(material, props.uSnappingResolution))
-})
+watch(
+    () => pState.value,
+    (state) => {
+        if (!state?.scene) return
+        Object.values(materials.value).forEach((material: any) => {
+            resolutionList.push(transToVertexSnappingMaterial(material, props.uSnappingResolution))
+        })
+    },
+)
 
 watch(
     () => props.uSnappingResolution,

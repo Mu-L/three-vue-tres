@@ -1,5 +1,5 @@
 <template>
-    <primitive :object="scene" :scale="1" :position="[3, -1, -3]">
+    <primitive v-if="pState" :object="pState?.scene" :scale="1" :position="[3, -1, -3]">
         <TresMesh :geometry="MeshGeometries">
             <TresMeshBasicMaterial color="#000000" transparent :opacity="0" />
             <outlineCom :thickness="thickness" :screenspace="screenspace" :color="color" />
@@ -7,10 +7,11 @@
     </primitive>
 </template>
 <script setup lang="ts">
+import { watch } from 'vue'
 import * as THREE from 'three'
 import { useGLTF } from '@tresjs/cientos'
 import outlineCom from './outlineCom.vue'
-import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import { SimplifyModifier } from 'three/examples/jsm/modifiers/SimplifyModifier.js'
 
 const props = withDefaults(
@@ -26,10 +27,10 @@ const props = withDefaults(
     },
 )
 
-const { scene } = await useGLTF('./plugins/basic/htmls/model/model.gltf', {
+const { state: pState } = useGLTF('./plugins/basic/htmls/model/model.gltf', {
     draco: true,
     decoderPath: './draco/',
-})
+}) as any
 function simplifyGeometry(geometry: any, factor = 0.1) {
     const modifier = new SimplifyModifier()
     const simplifiedGeometry = modifier.modify(geometry, Math.floor(geometry.attributes.position.count * factor))
@@ -57,5 +58,13 @@ function createGeometries(model: any) {
     const mergedGeometry = BufferGeometryUtils.mergeGeometries(geometries)
     return mergedGeometry
 }
-const MeshGeometries = createGeometries(scene)
+
+let MeshGeometries = null as any
+watch(
+    () => pState.value,
+    (state) => {
+        if (!state.scene) return
+        MeshGeometries = createGeometries(state.scene)
+    },
+)
 </script>

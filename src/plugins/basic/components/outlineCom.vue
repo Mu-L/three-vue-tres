@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { Outlines } from '@pmndrs/vanilla'
 import { onMounted, watchEffect } from 'vue'
 
@@ -29,12 +29,12 @@ const props = withDefaults(
     },
 )
 
-const { renderer } = useTresContext()
+const { renderer } = useTres()
 const ol = Outlines({
     color: new THREE.Color(props.color),
     thickness: props.thickness,
     screenspace: props.screenspace,
-    gl: renderer.value,
+    gl: renderer,
 })
 
 onMounted(() => {
