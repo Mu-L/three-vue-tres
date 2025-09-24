@@ -1,18 +1,18 @@
 <template>
     <TresGroup>
-        <primitive :object="scene" :position="[0, -0.1, 0]" />
+        <primitive v-if="pState" :object="pState?.scene" :position="[0, -0.1, 0]" />
     </TresGroup>
 </template>
 
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
 import * as THREE from 'three'
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF, useTexture } from '@tresjs/cientos'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
-import { useTresContext, useTexture } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import gsap from 'gsap'
 
-const { renderer, scene: sceneValue } = useTresContext()
+const { renderer, scene: sceneValue } = useTres()
 
 const props = defineProps({
     floorColor: { default: '#ff0000' },
@@ -24,13 +24,19 @@ const props = defineProps({
     speed: { default: 0.3 },
 })
 
-const textures = await useTexture({
-    normalMap: './plugins/floor/image/concrete_wet_floor_basecolor.jpg',
-})
-textures.normalMap.wrapS = THREE.RepeatWrapping
-textures.normalMap.wrapT = THREE.RepeatWrapping
-textures.normalMap.repeat.set(10, 10)
-const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelI.glb`, {
+const { state: texture } = useTexture('./plugins/floor/image/concrete_wet_floor_basecolor.jpg')
+watch(
+    () => texture,
+    (texture) => {
+        if (texture.value) {
+            texture.value.wrapS = THREE.RepeatWrapping
+            texture.value.wrapT = THREE.RepeatWrapping
+            texture.value.repeat.set(10, 10)
+        }
+    },
+)
+
+const { state: pState } = useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelI.glb`, {
     draco: true,
     decoderPath: './draco/',
 })
@@ -43,89 +49,92 @@ const meshData: Array<{
     scatteredRotation: THREE.Euler
 }> = []
 
-scene.traverse((child) => {
-    if (child instanceof THREE.Mesh) {
-        const originalPosition = child.position.clone()
-        const originalRotation = child.rotation.clone()
+const tl = gsap.timeline()
+watch(
+    () => pState,
+    () => {
+        if (!pState.scene) return
+        const scene = pState.scene
+        scene.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                const originalPosition = child.position.clone()
+                const originalRotation = child.rotation.clone()
 
-        // 垂直方向散开
-        const verticalOffset = (Math.random() - 0.5)
-        const scatteredPosition = new THREE.Vector3(
-            originalPosition.x,
-            originalPosition.y + verticalOffset, // 只沿 Y 散开
-            originalPosition.z,
-        )
+                // 垂直方向散开
+                const verticalOffset = Math.random() - 0.5
+                const scatteredPosition = new THREE.Vector3(
+                    originalPosition.x,
+                    originalPosition.y + verticalOffset, // 只沿 Y 散开
+                    originalPosition.z,
+                )
 
-        // 随机倾斜（旋转）
-        const maxTilt = Math.PI / 12 // 最大 15°
-        const scatteredRotation = new THREE.Euler(
-            originalRotation.x+(Math.random() - 0.5) * maxTilt,
-            originalRotation.y+(Math.random() - 0.5) * maxTilt,
-            originalRotation.z,
-        )
-        // const scatteredPosition = new THREE.Vector3(
-        //     originalPosition.x + Math.cos(scatterAngle) * scatterRadius,
-        //     originalPosition.y + scatterHeight,
-        //     originalPosition.z + Math.sin(scatterAngle) * scatterRadius,
-        // )
+                // 随机倾斜（旋转）
+                const maxTilt = Math.PI / 12 // 最大 15°
+                const scatteredRotation = new THREE.Euler(
+                    originalRotation.x + (Math.random() - 0.5) * maxTilt,
+                    originalRotation.y + (Math.random() - 0.5) * maxTilt,
+                    originalRotation.z,
+                )
 
-        meshData.push({
-            mesh: child,
-            originalPosition,
-            scatteredPosition,
-            originalRotation,
-            scatteredRotation,
+                meshData.push({
+                    mesh: child,
+                    originalPosition,
+                    scatteredPosition,
+                    originalRotation,
+                    scatteredRotation,
+                })
+
+                if (child.name.includes('_')) {
+                    // 侧面材质
+                    child.material.emissiveIntensity = 2
+                    child.material.metalness = 1
+                    child.material.roughness = 0
+                    child.material.transparent = true
+                } else {
+                    // 底板面材质
+                    child.material.map = texture.value
+                }
+                child.material.needsUpdate = true
+            }
         })
 
-        if (child.name.includes('_')) {
-            // 侧面材质
-            child.material.emissiveIntensity = 2
-            child.material.metalness = 1
-            child.material.roughness = 0
-            child.material.transparent = true
-        } else {
-            // 底板面材质
-            child.material.map = textures.normalMap
-        }
-        child.material.needsUpdate = true
-    }
-})
-const tl = gsap.timeline()
-meshData.forEach(({ mesh, scatteredPosition ,scatteredRotation}, i) => {
-    tl.to(
-        mesh.position,
-        {
-            x: scatteredPosition.x,
-            y: scatteredPosition.y,
-            z: scatteredPosition.z,
-            ease: 'power1.inOut',
-            repeat: -1,
-            yoyo: true,
-        },
-        0,
-    )
-    tl.to(
-        mesh.rotation,
-        {
-            x: scatteredRotation.x,
-            y: scatteredRotation.y,
-            z: scatteredRotation.z,
-            ease: 'power1.inOut',
-            repeat: -1,
-            yoyo: true,
-        },
-        0,
-    )
-})
+        meshData.forEach(({ mesh, scatteredPosition, scatteredRotation }, i) => {
+            tl.to(
+                mesh.position,
+                {
+                    x: scatteredPosition.x,
+                    y: scatteredPosition.y,
+                    z: scatteredPosition.z,
+                    ease: 'power1.inOut',
+                    repeat: -1,
+                    yoyo: true,
+                },
+                0,
+            )
+            tl.to(
+                mesh.rotation,
+                {
+                    x: scatteredRotation.x,
+                    y: scatteredRotation.y,
+                    z: scatteredRotation.z,
+                    ease: 'power1.inOut',
+                    repeat: -1,
+                    yoyo: true,
+                },
+                0,
+            )
+        })
+    },
+)
 
 const setupEnvironment = () => {
-    const pmremGenerator = new THREE.PMREMGenerator(renderer.value)
+    const pmremGenerator = new THREE.PMREMGenerator(renderer)
     const environment = new RoomEnvironment()
     const envMap = pmremGenerator.fromScene(environment).texture
 
     sceneValue.value.environment = envMap
 
-    scene.traverse((child) => {
+    pState.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.material) {
             child.material.envMap = envMap
             child.material.needsUpdate = true
@@ -141,7 +150,7 @@ onMounted(() => {
 watch(
     () => [props.sideColor, props.floorColor, props.sideOpacity, props.floorMetalness, props.floorRoughness, props.floorEnvMapIntensity],
     ([sideColor, floorColor, sideOpacity, floorMetalness, floorRoughness, floorEnvMapIntensity]) => {
-        scene.traverse((child) => {
+        pState.scene.traverse((child) => {
             if (child instanceof THREE.Mesh && child.material) {
                 if (child.name.includes('_')) {
                     // 侧面材质

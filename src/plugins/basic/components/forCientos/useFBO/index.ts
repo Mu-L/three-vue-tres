@@ -6,7 +6,7 @@
  * @LastEditors: 地虎降天龙
  * @LastEditTime: 2024-09-12 18:13:42
  */
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import type { Camera, WebGLRenderTargetOptions } from 'three'
 import { DepthTexture, DepthFormat, UnsignedShortType, HalfFloatType, LinearFilter, WebGLRenderTarget } from 'three'
 import type { Ref } from 'vue'
@@ -56,8 +56,8 @@ export function useFBO(options: FboOptions) {
 
     const { height, width, settings, depth, isLoop } = isReactive(options) ? toRefs(options) : toRefs(reactive(options))
 
-    const { onLoop } = useRenderLoop()
-    const { camera, renderer, scene, sizes } = useTresContext()
+    const { onRender } = useLoop()
+    const { camera, renderer, scene, sizes } = useTres()
 
     watchEffect(() => {
         target.value?.dispose()
@@ -79,13 +79,13 @@ export function useFBO(options: FboOptions) {
         }
     })
 
-    onLoop(() => {
+    onRender(() => {
         if (isLoop?.value) {
-            renderer.value.setRenderTarget(toRaw(target.value))
-            renderer.value.clear()
-            renderer.value.render(toRaw(scene.value), toRaw(camera.value) as Camera)
+            renderer.setRenderTarget(toRaw(target.value))
+            renderer.clear()
+            renderer.render(toRaw(scene.value), toRaw(camera.value) as Camera)
 
-            renderer.value.setRenderTarget(null)
+            renderer.setRenderTarget(null)
         }
     })
 

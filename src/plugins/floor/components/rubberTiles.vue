@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-07 09:47:09
+ * @LastEditTime: 2025-09-24 08:04:19
 -->
 <template>
     <TresGroup>
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTexture } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{
@@ -49,26 +49,29 @@ const props = withDefaults(
     },
 )
 
-const pTexture = await useTexture([
+const { textures: pTexture } = await useTextures([
     './plugins/floor/image/rubber_tiles_diff_1k.jpg',
     './plugins/floor/image/rubber_tiles_nor_gl_1k.jpg',
     './plugins/floor/image/rubber_tiles_arm_1k.jpg',
 ])
-
-for (let i = 0; i < pTexture.length; i++) {
-    pTexture[i].colorSpace = THREE.LinearSRGBColorSpace
-    pTexture[i].wrapS = THREE.RepeatWrapping
-    pTexture[i].wrapT = THREE.RepeatWrapping
-    pTexture[i].magFilter = THREE.LinearFilter
-    pTexture[i].minFilter = THREE.LinearMipmapLinearFilter
-    pTexture[i].repeat.set(props.repeat.x, props.repeat.y)
-}
+watch([pTexture], ([pTexture]) => {
+    if (pTexture && pTexture.length) {
+        for (let i = 0; i < pTexture.length; i++) {
+            pTexture[i].colorSpace = THREE.LinearSRGBColorSpace
+            pTexture[i].wrapS = THREE.RepeatWrapping
+            pTexture[i].wrapT = THREE.RepeatWrapping
+            pTexture[i].magFilter = THREE.LinearFilter
+            pTexture[i].minFilter = THREE.LinearMipmapLinearFilter
+            pTexture[i].repeat.set(props.repeat.x, props.repeat.y)
+        }
+    }
+})
 
 watch(
     () => props.repeat,
     (repeat) => {
-        for (let i = 0; i < pTexture.length; i++) {
-            pTexture[i].repeat.set(repeat.x, repeat.y)
+        for (let i = 0; i < pTexture.value.length; i++) {
+            pTexture.value[i].repeat.set(repeat.x, repeat.y)
         }
     },
     { deep: true },

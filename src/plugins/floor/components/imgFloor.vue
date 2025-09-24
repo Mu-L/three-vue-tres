@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-12 17:42:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-10-15 11:32:36
+ * @LastEditTime: 2025-09-23 17:10:35
 -->
 <template>
     <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2">
@@ -16,10 +16,11 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { watch, reactive, ref } from 'vue'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 const tmRef = ref()
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     if (tmRef.value) {
         tmRef.value.rotation.z += props.rotationZ
     }
@@ -43,15 +44,9 @@ const props = withDefaults(
     },
 )
 
-const pTexture = await useTexture([props.imgSrcPath])
-pTexture.colorSpace = THREE.SRGBColorSpace
-pTexture.wrapS = THREE.RepeatWrapping
-pTexture.wrapT = THREE.RepeatWrapping
-pTexture.repeat.set(props.textureRepeat[0], props.textureRepeat[1])
-
 const tmsMaterial = reactive({
     color: props.color,
-    map: pTexture,
+    map: null as THREE.Texture | null,
     side: THREE.DoubleSide,
     transparent: true,
     opacity: props.opacity,
@@ -59,6 +54,19 @@ const tmsMaterial = reactive({
     depthTest: true,
     depthWrite: false,
 })
+const { state: pTexture } = useTexture(props.imgSrcPath)
+watch(
+    () => pTexture,
+    (pTexture) => {
+        if (pTexture.value) {
+            pTexture.value.colorSpace = THREE.SRGBColorSpace
+            pTexture.value.wrapS = THREE.RepeatWrapping
+            pTexture.value.wrapT = THREE.RepeatWrapping
+            pTexture.value.repeat.set(props.textureRepeat[0], props.textureRepeat[1])
+            tmsMaterial.map = pTexture.value
+        }
+    },
+)
 watch(
     () => props.color,
     (newVal) => {

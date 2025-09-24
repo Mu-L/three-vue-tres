@@ -1,5 +1,13 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-08-07 16:27:18
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-23 17:15:18
+-->
 <script setup lang="ts">
-import { UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 import { Precipitation } from '@tresjs/cientos'
 
 const props = withDefaults(
@@ -30,7 +38,7 @@ const props = withDefaults(
 <template>
     <TresGroup>
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="./plugins/digitalCity/image/cilcle.png">
+            <UseTexture v-slot="{ state: texture }" path="./plugins/digitalCity/image/cilcle.png">
                 <Precipitation :renderOrder="2001"
                     :position="[0, areaY / 2, 0]"
                     :speed="speed"
@@ -42,7 +50,7 @@ const props = withDefaults(
                     :size="size"
                     transparent
                     :opacity="opacity"
-                    :map="textures.map"
+                    :map="texture"
                 />
             </UseTexture>
         </Suspense>

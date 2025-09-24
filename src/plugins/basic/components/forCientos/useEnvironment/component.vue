@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { ref, useSlots, onUnmounted, watch, toRaw } from 'vue'
 import { WebGLCubeRenderTarget, CubeCamera, HalfFloatType, UnsignedByteType, NearestFilter } from 'three'
 import type { CubeTexture, Texture } from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import type { EnvironmentOptions } from './const'
 import EnvSence from './envSence'
 import { useEnvironment } from '.'
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<EnvironmentOptions>(), {
 const texture: Ref<Texture | CubeTexture | null> = ref(null)
 defineExpose({ texture })
 
-const { extend, renderer, scene } = useTresContext()
+const { extend, renderer, scene } = useTres()
 let slots = null as any
 let fbo = ref(null as null | WebGLCubeRenderTarget)
 let cubeCamera = null as null | CubeCamera
@@ -34,15 +34,15 @@ onUnmounted(() => {
     envSence.value?.destructor()
     fbo.value?.dispose()
 })
-const { onBeforeLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 let count = 1
-onBeforeLoop(() => {
+onBeforeRender(() => {
     if (cubeCamera && envSence.value && fbo.value) {
         if (props.frames === Infinity || count < props.frames) {
             if (props.useDefaultScene) {
-                cubeCamera.update(renderer.value, scene.value)
+                cubeCamera.update(renderer, scene.value)
             } else {
-                cubeCamera.update(renderer.value, toRaw(envSence.value.virtualScene))
+                cubeCamera.update(renderer, toRaw(envSence.value.virtualScene))
             }
             count++
         }

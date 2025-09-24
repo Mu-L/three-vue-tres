@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-06 14:48:14
+ * @LastEditTime: 2025-09-23 16:59:56
 -->
 <template>
     <TresGroup :scale="[scale, 1, scale]">
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { Mesh, PlaneGeometry, RepeatWrapping, GridHelper } from 'three'
-import { useTexture } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { Reflector, ReflectorDudvMaterial } from '../lib/alienJS/all.three.js'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
@@ -55,10 +55,18 @@ if (qiankunWindow.__POWERED_BY_QIANKUN__) {
     console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
     console.log('process.env.BASE_URL', process.env.BASE_URL)
 }
-const { map } = await useTexture({ map: mapurl })
-map.wrapS = RepeatWrapping
-map.wrapT = RepeatWrapping
-map.repeat.set(6, 3)
+const { state: map } = useTexture(mapurl)
+watch(
+    () => map,
+    (map) => {
+        if (map.value) {
+            map.value.wrapS = RepeatWrapping
+            map.value.wrapT = RepeatWrapping
+            map.value.repeat.set(6, 3)
+        }
+    },
+)
+
 const material = new ReflectorDudvMaterial({
     map: map as any,
     reflectivity: props.reflectivity as any,

@@ -1,6 +1,14 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-04-26 11:34:11
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-23 16:34:32
+-->
 <script setup lang="ts">
 import { shallowRef, watch, watchEffect } from 'vue'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import { Caustics } from '@pmndrs/vanilla'
 import * as THREE from 'three'
 
@@ -29,8 +37,8 @@ const props = withDefaults(
     },
 )
 
-const { renderer } = useTresContext()
-const caustics = Caustics(renderer.value, { frames: Infinity, resolution: props.resolution, worldRadius: props.worldRadius })
+const { renderer } = useTres()
+const caustics = Caustics(renderer, { frames: Infinity, resolution: props.resolution, worldRadius: props.worldRadius })
 caustics.params.backside = true
 
 const group = shallowRef(null)
@@ -39,8 +47,8 @@ watch(group, (newVal) => {
         caustics.scene.add(newVal)
     }
 })
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     caustics.update()
 })
 

@@ -4,14 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-15 09:59:36
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 16:54:43
+ * @LastEditTime: 2025-09-23 16:57:58
 -->
 <template>
 </template>
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { useFBO } from 'PLS/basic'
 import { PackedMipMapGenerator } from "../common/csmMipmap/PackedMipMapGenerator"
 
@@ -39,7 +39,7 @@ const renderTargetMipMap = useFBO({
 		type: THREE.UnsignedByteType,
 	}
 })
-const { camera: baseCamera, renderer, scene } = useTresContext()
+const { camera: baseCamera, renderer, scene } = useTres()
 
 const beforeRender = () => {
 	if (!baseCamera.value) {
@@ -95,22 +95,22 @@ const beforeRender = () => {
 	X.elements[6] = k.y
 	X.elements[10] = k.z + 1
 	X.elements[14] = k.w
-	const Z = renderer.value.getRenderTarget()
-	renderer.value.setRenderTarget(renderTarget.value)
-	renderer.value.state.buffers.depth.setMask(true)
-	renderer.value.autoClear === false && renderer.value.clear()
+	const Z = renderer.getRenderTarget()
+	renderer.setRenderTarget(renderTarget.value)
+	renderer.state.buffers.depth.setMask(true)
+	renderer.autoClear === false && renderer.clear()
 	props.ignoreObjects.forEach((be) => (be.visible = false))
-	renderer.value.render(scene.value, camera)
+	renderer.render(scene.value, camera)
 	props.ignoreObjects.forEach((be) => (be.visible = true))
-	renderer.value.setRenderTarget(Z)
+	renderer.setRenderTarget(Z)
 }
 
-const { onBeforeLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onBeforeLoop(() => {
+onBeforeRender(() => {
 	beforeRender()
-	if (renderTarget.value && renderTargetMipMap.value && renderer.value) {
-		mipMaper.update(renderTarget.value.texture, renderTargetMipMap.value, renderer.value)
+	if (renderTarget.value && renderTargetMipMap.value && renderer) {
+		mipMaper.update(renderTarget.value.texture, renderTargetMipMap.value, renderer)
 	}
 })
 

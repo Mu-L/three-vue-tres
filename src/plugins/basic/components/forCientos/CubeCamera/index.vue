@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 10:04:22
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-30 10:40:39
+ * @LastEditTime: 2025-09-23 16:42:21
 -->
 <template>
     <TresGroup>
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { useCubeCamera } from './useCubeCamera.ts'
 import { ref, defineExpose } from 'vue'
 const props = withDefaults(
@@ -44,10 +44,10 @@ const { fbo, camera, update } = useCubeCamera({
     fog: props.fog,
 })
 
-const { onBeforeLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 let count = 0
 const rgRef = ref(null)
-onBeforeLoop(() => {
+onBeforeRender(() => {
     if (rgRef.value && (props.frames === Infinity || count < props.frames)) {
         rgRef.value.visible = false
         update()

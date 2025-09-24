@@ -3,8 +3,8 @@
  * @Version: 1.668
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
- * @LastEditors: Jsonco
- * @LastEditTime: 2025-09-21 10:00:00
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-24 08:26:08
 -->
 <template>
     <!-- 飞线网格地板 -->
@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { onMounted, watch, reactive } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = withDefaults(
     defineProps<{
@@ -177,10 +177,10 @@ const fragmentShader = `
 
 
 
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 let elapsedTime = 0
 
-onLoop(({ delta }) => {
+onRender(({ delta }) => {
     // 飞线网格地板动画
     if (!props.paused) {
         elapsedTime += delta

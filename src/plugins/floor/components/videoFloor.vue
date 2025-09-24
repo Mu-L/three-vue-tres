@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-12 10:34:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-25 12:36:09
+ * @LastEditTime: 2025-09-23 17:03:23
 -->
 <template>
     <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2">
@@ -16,10 +16,10 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { watch, reactive, ref } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 const tmRef = ref()
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     if (tmRef.value) {
         tmRef.value.rotation.z += props.rotationZ
     }

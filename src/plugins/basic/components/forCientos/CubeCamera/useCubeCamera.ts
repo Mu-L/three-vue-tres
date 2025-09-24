@@ -4,9 +4,9 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 09:23:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-30 10:39:45
+ * @LastEditTime: 2025-09-23 16:43:28
  */
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import * as THREE from 'three'
 import { HalfFloatType, Fog, FogExp2, WebGLCubeRenderTarget } from 'three'
 import type { Ref } from 'vue'
@@ -26,7 +26,7 @@ export type CubeCameraOptions = {
 }
 
 export function useCubeCamera({ resolution = 256, near = 0.1, far = 1000, envMap, fog }: CubeCameraOptions = {}) {
-	const { renderer, scene } = useTresContext()
+	const { renderer, scene } = useTres()
 	
 	const fbo: Ref<WebGLCubeRenderTarget | null> = ref(null)
 	const resolutionR = ref(resolution)
@@ -57,7 +57,7 @@ export function useCubeCamera({ resolution = 256, near = 0.1, far = 1000, envMap
     originalBackground = scene.value.background
     scene.value.background = envMap || originalBackground
     scene.value.fog = fog || originalFog
-    camera.value?.update(renderer.value, scene.value)
+    camera.value?.update(renderer, scene.value)
     scene.value.fog = originalFog
     scene.value.background = originalBackground
 	}

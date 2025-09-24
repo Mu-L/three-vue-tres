@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-25 08:31:01
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-09 15:27:00
+ * @LastEditTime: 2025-09-23 17:06:01
 -->
 <template>
     <TresGroup>
@@ -18,7 +18,8 @@
 <script lang="ts" setup>
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{
@@ -33,20 +34,12 @@ const props = withDefaults(
     },
 )
 
-const pTexture = await useTexture([
+const { textures: pTexture } = await useTextures([
     './plugins/floor/image/digitalGround1.png',
     './plugins/floor/image/digitalGround2.png',
     './plugins/floor/image/digitalGround3.png',
     './plugins/floor/image/digitalGround4.png',
 ])
-for (let i = 0; i < pTexture.length; i++) {
-    pTexture[i].colorSpace = THREE.LinearSRGBColorSpace
-    pTexture[i].wrapS = THREE.RepeatWrapping
-    pTexture[i].wrapT = THREE.RepeatWrapping
-    pTexture[i].magFilter = THREE.LinearFilter
-    pTexture[i].minFilter = THREE.LinearMipmapLinearFilter
-}
-
 const tsmConfig = {
     uniforms: {
         time: {
@@ -56,19 +49,7 @@ const tsmConfig = {
             value: props.size,
         },
         uColor: {
-			value: new THREE.Color(props.color)
-		},
-        texture0: {
-            value: pTexture[0],
-        },
-        texture1: {
-            value: pTexture[1],
-        },
-        texture2: {
-            value: pTexture[2],
-        },
-        texture3: {
-            value: pTexture[3],
+            value: new THREE.Color(props.color),
         },
     },
     vertexShader: `
@@ -126,7 +107,22 @@ const tsmConfig = {
     `,
     side: THREE.DoubleSide,
     transparent: true,
-}
+} as any
+watch([pTexture], ([pTexture]) => {
+    if (pTexture && pTexture.length === pTexture.length) {
+        for (let i = 0; i < pTexture.length; i++) {
+            pTexture[i].colorSpace = THREE.LinearSRGBColorSpace
+            pTexture[i].wrapS = THREE.RepeatWrapping
+            pTexture[i].wrapT = THREE.RepeatWrapping
+            pTexture[i].magFilter = THREE.LinearFilter
+            pTexture[i].minFilter = THREE.LinearMipmapLinearFilter
+        }
+        tsmConfig.uniforms.texture0.value = pTexture[0]
+        tsmConfig.uniforms.texture1.value = pTexture[1]
+        tsmConfig.uniforms.texture2.value = pTexture[2]
+        tsmConfig.uniforms.texture3.value = pTexture[3]
+    }
+})
 
 watch(
     () => props.color,
@@ -135,8 +131,8 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
-    tsmConfig.uniforms.time.value = elapsed / 10 * props.speed
+const { onRender } = useLoop()
+onRender(({ elapsed }) => {
+    tsmConfig.uniforms.time.value = (elapsed / 10) * props.speed
 })
 </script>

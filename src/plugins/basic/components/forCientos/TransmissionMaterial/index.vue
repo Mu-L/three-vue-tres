@@ -1,14 +1,22 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-04-25 18:19:18
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-23 16:33:19
+-->
 <script setup lang="ts">
 import { shallowRef, nextTick, onMounted, Ref } from 'vue'
 import { MeshTransmissionMaterial, MeshDiscardMaterial } from '@pmndrs/vanilla'
 import { useFBO } from 'PLS/basic'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import { BackSide, DoubleSide } from 'three'
 import type { TresObject } from '@tresjs/core'
 import type { Camera, Texture, WebGLRenderTarget } from 'three'
 
 const MeshTransmissionMaterialClass = shallowRef()
-const { extend, scene, renderer, camera } = useTresContext()
+const { extend, scene, renderer, camera } = useTres()
 const parent = shallowRef<TresObject>()
 
 const props = withDefaults(
@@ -40,7 +48,7 @@ function findMeshByMaterialUuid(scene: TresObject, materialUuid: string): TresOb
     return foundMesh as unknown as TresObject
 }
 const discardMaterial = new MeshDiscardMaterial()
-const { onBeforeLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
 const fboBack = useFBO({ width: props.fboResolution, height: props.fboResolution, isLoop: false }) as unknown as Ref<WebGLRenderTarget<Texture>>
 const fboMain = useFBO({ width: props.fboResolution, height: props.fboResolution, isLoop: false }) as unknown as Ref<WebGLRenderTarget<Texture>>
@@ -52,11 +60,11 @@ let oldBg
 let oldEnvMapIntensity
 let oldTone
 let oldSide
-onBeforeLoop(({ elapsed }) => {
+onBeforeRender(({ elapsed }) => {
     MeshTransmissionMaterialClass.value.time = elapsed
     if (MeshTransmissionMaterialClass.value.buffer === fboMain.value.texture) {
         if (parent.value) {
-            oldTone = renderer.value.toneMapping
+            oldTone = renderer.toneMapping
             oldBg = scene.value.background
             oldEnvMapIntensity = MeshTransmissionMaterialClass.value.envMapIntensity
             oldSide = parent.value.material.side
@@ -64,16 +72,16 @@ onBeforeLoop(({ elapsed }) => {
             parent.value.material = discardMaterial
 
             if (props.backside) {
-                renderer.value.setRenderTarget(fboBack.value)
-                renderer.value.render(scene.value, camera.value as Camera)
+                renderer.setRenderTarget(fboBack.value)
+                renderer.render(scene.value, camera.value as Camera)
                 parent.value.material = MeshTransmissionMaterialClass.value
                 parent.value.material.thickness = props.backsideThickness
                 parent.value.material.buffer = fboBack.value.texture
                 parent.value.material.side = BackSide
                 parent.value.material.envMapIntensity = backsideEnvMapIntensity
             }
-            renderer.value.setRenderTarget(fboMain.value)
-            renderer.value.render(scene.value, camera.value as Camera)
+            renderer.setRenderTarget(fboMain.value)
+            renderer.render(scene.value, camera.value as Camera)
             parent.value.material.buffer = fboMain.value.texture
             parent.value.material = MeshTransmissionMaterialClass.value
             parent.value.material.thickness = props.thickness
@@ -81,8 +89,8 @@ onBeforeLoop(({ elapsed }) => {
             parent.value.material.envMapIntensity = oldEnvMapIntensity
 
             scene.value.background = oldBg
-            renderer.value.setRenderTarget(null)
-            renderer.value.toneMapping = oldTone
+            renderer.setRenderTarget(null)
+            renderer.toneMapping = oldTone
         }
     }
 })
