@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-05 09:23:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 16:22:55
+ * @LastEditTime: 2025-09-24 08:49:44
 -->
 
 <script setup lang="ts">
@@ -30,7 +30,7 @@ const params = {
 
 watchEffect(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.value
+        const renderer = tcRef.value.context.renderer.instance
         renderer.localClippingEnabled = true
     }
 })

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-25 18:19:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 16:33:19
+ * @LastEditTime: 2025-09-24 08:43:51
 -->
 <script setup lang="ts">
 import { shallowRef, nextTick, onMounted, Ref } from 'vue'
@@ -99,9 +99,5 @@ defineExpose({ root: MeshTransmissionMaterialClass, constructor: MeshTransmissio
 </script>
 
 <template>
-    <TresMeshTransmissionMaterial
-        ref="MeshTransmissionMaterialClass"
-        :buffer="fboMain.texture"
-        :side="DoubleSide"
-    />
+    <TresMeshTransmissionMaterial ref="MeshTransmissionMaterialClass" :buffer="fboMain.texture" :side="DoubleSide" />
 </template>

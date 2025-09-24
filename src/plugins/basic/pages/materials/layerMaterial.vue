@@ -48,7 +48,7 @@ const state = reactive({
     pixelRatio: window.devicePixelRatio,
     shadowMapType: THREE.BasicShadowMap,
     outputColorSpace: THREE.SRGBColorSpace,
-    toneMapping: THREE.ACESFilmic,
+    toneMapping: THREE.NoToneMapping,
     useLegacyLights: true,
 })
 const controlsState = reactive({

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 16:59:56
+ * @LastEditTime: 2025-09-24 15:27:04
 -->
 <template>
     <TresGroup :scale="[scale, 1, scale]">
@@ -55,22 +55,24 @@ if (qiankunWindow.__POWERED_BY_QIANKUN__) {
     console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
     console.log('process.env.BASE_URL', process.env.BASE_URL)
 }
-const { state: map } = useTexture(mapurl)
-watch(
-    () => map,
-    (map) => {
-        if (map.value) {
-            map.value.wrapS = RepeatWrapping
-            map.value.wrapT = RepeatWrapping
-            map.value.repeat.set(6, 3)
-        }
-    },
-)
-
 const material = new ReflectorDudvMaterial({
-    map: map as any,
+    map: null,
     reflectivity: props.reflectivity as any,
 })
+const { state: map } = useTexture(mapurl)
+watch(
+    () => map.value,
+    (mapv) => {
+        if (mapv) {
+            mapv.wrapS = RepeatWrapping
+            mapv.wrapT = RepeatWrapping
+            mapv.colorSpace = THREE.SRGBColorSpace
+            mapv.repeat.set(6, 3)
+            material.uniforms.tMap.value = mapv
+        }
+    },
+    { deep: true },
+)
 material.uniforms.tReflect = { value: reflector.renderTarget.texture }
 material.uniforms.tReflectBlur = reflector.renderTargetUniform
 material.uniforms.uMatrix = reflector.textureMatrixUniform

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 09:31:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-08 08:25:38
+ * @LastEditTime: 2025-09-24 08:50:54
 -->
 <script setup lang="ts">
 import { ref, watchEffect, reactive } from 'vue'
@@ -23,7 +23,7 @@ const params = reactive({
 
 watchEffect(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.value
+        const renderer = tcRef.value.context.renderer.instance
         renderer.localClippingEnabled = true
     }
 })

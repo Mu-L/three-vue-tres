@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-15 11:08:17
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 18:13:42
+ * @LastEditTime: 2025-09-24 08:44:16
  */
 import { useLoop, useTres } from '@tresjs/core'
-import type { Camera, WebGLRenderTargetOptions } from 'three'
+import type { Camera, RenderTargetOptions } from 'three'
 import { DepthTexture, DepthFormat, UnsignedShortType, HalfFloatType, LinearFilter, WebGLRenderTarget } from 'three'
 import type { Ref } from 'vue'
 import { isReactive, onBeforeUnmount, reactive, ref, toRefs, watchEffect, toRaw } from 'vue'
@@ -43,10 +43,10 @@ export interface FboOptions {
      * See https://threejs.org/docs/#api/en/renderers/WebGLRenderTarget for more information.
      *
      * @default {}
-     * @type {WebGLRenderTargetOptions}
+     * @type {RenderTargetOptions}
      * @memberof FboProps
      */
-    settings?: WebGLRenderTargetOptions
+    settings?: RenderTargetOptions
 
     isLoop?: boolean
 }
