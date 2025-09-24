@@ -4,11 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-06 08:56:43
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-06 10:44:06
+ * @LastEditTime: 2025-09-24 16:36:45
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
 import { ScrollControls, Stars, Sphere, Box } from '@tresjs/cientos'
 import { SRGBColorSpace, NoToneMapping } from 'three'
 
@@ -29,23 +28,22 @@ const gl = {
   toneMapping: NoToneMapping,
 }
 
-
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const onLoop = () => {
+  debugger
   if (boxRef.value) {
     boxRef.value.instance.rotation.x = progress.value * 10
     boxRef.value.instance.rotation.y = progress.value * 2
   }
-})
+}
 </script>
 
 <template>
-  <TresCanvas v-bind="gl" window-size class="canvas-class">
+  <TresCanvas v-bind="gl" window-size class="canvas-class" @loop="onLoop">
     <TresPerspectiveCamera :position="[0, 2, 5]" />
     <Stars :radius="1" />
     <TresGridHelper :args="[10, 10]" />
 
-    <ScrollControls ref="scRef" v-model="progress" :distance="10" :smooth-scroll="0.1" html-scroll>
+    <ScrollControls ref="scRef" v-model="progress" :distance="10" :smooth-scroll="0.1" htmlScroll>
       <Sphere ref="sphereRef" :scale="0.1" :position="[1, 2, 0]" />
       <Box ref="boxRef" :scale="0.5" :color="0xff00ff" :position="[-1, 1, 0]" />
     </ScrollControls>
