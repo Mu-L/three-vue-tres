@@ -1,4 +1,7 @@
 <template>
+</template>
+
+<!-- <template>
     <TresGroup>
         <Suspense>
             <SVG :scale="0.05" :position="[-1.5, 2, 0]" :src="src" :skipStrokes="skipStrokes" :skipFills="skipFills"  />
@@ -20,4 +23,4 @@ const props = defineProps({
         default: false,
     },
 })
-</script>
+</script> -->
