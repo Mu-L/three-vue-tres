@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-18 08:56:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-19 11:25:39
+ * @LastEditTime: 2025-09-25 18:31:24
 -->
 <template>
     <TresCanvas v-bind="state">
@@ -25,7 +25,7 @@ const state = reactive({
     alpha: true,
     antialias: true,
     windowSize: true,
-    autoClear: false, // 有些版本 无效 需要自行设置 renderer.value.autoClear = false
+    clearAlpha: 0, // 有些版本 无效 需要自行设置 renderer.value.autoClear = false
     renderMode: 'manual',
 })
 const light = [0.7559289460184544, 0.7559289460184544, -0.3779644730092272]

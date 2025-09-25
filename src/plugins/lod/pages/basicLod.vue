@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-12-15 13:16:57
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-25 18:34:03
+-->
 <template>
     <TresCanvas clearColor="#201919" v-bind="state">
         <TresPerspectiveCamera :fov="60" :near="0.1" :far="2000" :position="[0, 0, 200]" :look-at="[0, 0, 0]" />
@@ -25,7 +33,7 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    autoClear: false,
+    clearAlpha: 0,
     disableRender: true,
 })
 

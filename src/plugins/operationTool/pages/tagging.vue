@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-09-13 10:17:04
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-25 18:31:43
+-->
 
 <template>
     <TresCanvas clearColor="#201919" window-size v-bind="state">
@@ -21,7 +29,7 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    autoClear: false,
+clearAlpha: 0,
     disableRender: true,
 })
 const controlsState = reactive({

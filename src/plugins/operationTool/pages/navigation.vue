@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-09-13 10:17:00
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-25 18:33:05
+-->
 
 <template>
     <div>
@@ -14,10 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref } from 'vue'
-import { OrbitControls, useGLTF } from '@tresjs/cientos'
-import { useRenderLoop, useTexture } from '@tresjs/core'
-import { Pane } from 'tweakpane'
+import { reactive, ref } from 'vue'
+import { OrbitControls } from '@tresjs/cientos'
 import navigation from '../components/navigation.vue'
 import navScene from '../components/navScene.vue'
 const navSceneCamera = ref(null)
@@ -25,8 +31,8 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    autoClear: false,
-    disableRender: true,
+    clearAlpha: 0,
+    renderMode: 'manual',
 })
 const controlsState = reactive({
     enableDamping: true,
