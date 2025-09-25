@@ -23,7 +23,7 @@ model.updateMatrixWorld(true) // 强制更新
 const state = reactive({
     alpha: true,
     antialias: true,
-    autoClear: false,
+    clearAlpha: 0,
     disableRender: true,
 })
 const twGroup = new TWEEN.Group()
