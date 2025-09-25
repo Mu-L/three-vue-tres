@@ -163,7 +163,7 @@ onBeforeRender(({ elapsed }) => {
         const plTex = planeTexture.value || null
 
         const progress =THREE.MathUtils.clamp(-props.progress / 2, 0, 1)
-console.log('progress', progress)
+
         if (progress < 1 / 2) {
             // 当 guanyuTexture 还未就绪时，gTex 将为 null；你可以按需 fallback
             simMesh.material.uniforms.uTextureA.value = gTex ?? bTex

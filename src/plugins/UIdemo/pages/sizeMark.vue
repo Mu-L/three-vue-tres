@@ -8,6 +8,7 @@
 -->
 
 <script setup lang="ts">
+import * as THREE from 'three'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import { shallowRef, watchEffect } from 'vue'
 
@@ -36,11 +37,24 @@ const controlsState = {
 	autoRotate: true,
 	autoRotateSpeed: 2,
 }
+
+const gl = {
+    clearColor: '#999',
+    outputColorSpace: THREE.SRGBColorSpace,
+    toneMapping: THREE.ACESFilmicToneMapping,
+    toneMappingExposure: 1.8,
+    windowSize: true,
+    powerPreference: 'high-performance',
+    // antialias: true,
+    shadows: true,
+    // useLegacyLights: false,
+    // physicallyCorrectLights: true,
+}
 </script>
 
 <template>
 	<loading />
-	<TresCanvas clearColor="#999" window-size shadows>
+	<TresCanvas v-bind="gl">
 		<TresPerspectiveCamera :position="[-100, 800, 500]" :fov="50" :near="0.1" :far="10000" />
 		<OrbitControls v-bind="controlsState" />
 		<TresAmbientLight color="#ffffff" :intensity="2" />

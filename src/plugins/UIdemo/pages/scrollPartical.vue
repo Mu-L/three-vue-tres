@@ -11,7 +11,7 @@ import { bubbleLoading as loading } from 'PLS/UIdemo'
 import { ref, watchEffect, reactive } from 'vue'
 
 // import { ScrollControls } from '@tresjs/cientos'
-import { SRGBColorSpace } from 'three'
+import * as THREE from 'three'
 import { Pane } from 'tweakpane'
 import ScrollControls from '../components/ScrollControls.vue'
 import particalFBO from '../components/particalFBO.vue'
@@ -25,18 +25,20 @@ watchEffect(() => {
 
 const gl = {
     clearColor: '#000',
-    outputColorSpace: SRGBColorSpace,
+    outputColorSpace: THREE.LinearSRGBColorSpace,
+    toneMapping: THREE.NoToneMapping,
+    toneMappingExposure: 1.,
     windowSize: true,
     renderMode: 'manual',
     powerPreference: 'high-performance',
-    antialias: false,
+    antialias: true,
     alpha: false,
     useLegacyLights: false,
     physicallyCorrectLights: true,
 }
 const paneState = reactive({
-    pass: false,
-    color: '#ffaa00',
+    pass: true,
+    color: '#6aff00',
 })
 const paneControl = new Pane({
     title: '参数',
@@ -48,6 +50,7 @@ paneControl.addBinding(paneState, 'pass', {
 paneControl.addBinding(paneState, 'color', {
     label: '颜色',
 })
+
 </script>
 
 <template>
