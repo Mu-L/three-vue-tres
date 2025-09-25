@@ -11,9 +11,7 @@
         <TresPerspectiveCamera :position="[5, 10, 5]" :fov="30" :near="1" :far="1000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" :intensity="2" />
-        <Suspense>
-            <reflectorDUDV :reflectivity="2.6" showGridHelper :position="[0, -0.6, 0]" />
-        </Suspense>
+        <reflectorDUDV :reflectivity="2.6" showGridHelper :position="[0, -0.6, 0]" />
 
         <TresMesh :position="[0, 0.5, 0]">
             <TresSphereGeometry :args="[1, 500, 500]" />

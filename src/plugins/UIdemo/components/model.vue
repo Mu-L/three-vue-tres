@@ -8,22 +8,28 @@
 -->
 
 <template>
-    <primitive :object="nodes.Sketchfab_model" />
+    <primitive v-if="pState" :object="pState?.scene" />
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
 import { useGLTF } from '@tresjs/cientos'
 
-const { nodes } = await useGLTF(
+const { state: pState } = useGLTF(
     `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/plane/scene.gltf`,
     { draco: true, decoderPath: './draco/' },
 )
 
-//移除地板
-const floor = nodes.Sketchfab_model.getObjectByName('Floor')
-floor.removeFromParent()
-//增加阴影产生
-const cubeAvion = nodes.Sketchfab_model.getObjectByName('Cube006_Avion_0')
+watch(
+    () => pState.value,
+    (state) => {
+        if (!state?.scene) return
+        //移除地板
+        const floor = state.scene.getObjectByName('Floor').removeFromParent()
 
-cubeAvion.castShadow = true
+        //增加阴影产生
+        const cubeAvion = state.scene.getObjectByName('Cube006_Avion_0')
+        cubeAvion.castShadow = true
+    },
+)
 </script>

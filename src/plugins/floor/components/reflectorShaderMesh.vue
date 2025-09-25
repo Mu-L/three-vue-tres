@@ -8,19 +8,18 @@
 -->
 
 <template>
-    <TresGroup :position="props.position" :scale="props.scale">
+    <TresGroup v-if="!isLoading">
         <primitive :object="meshOB" />
-        <primitive :object="gridHelp" />
-        <!-- <TresGridHelper v-if="props.showGridHelper" :args="[9.5, 10]" /> -->
+        <primitive :object="gridHelp" :position="[0, 0.01, 0]"/>
     </TresGroup>
 </template>
 
 <script lang="ts" setup>
 import { Vector2, PlaneGeometry, Mesh, RepeatWrapping, Color, GridHelper } from 'three'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { useTextures } from '@tresjs/cientos'
 import { Reflector, ReflectorMaterial } from '../lib/alienJS/all.three.js'
-import { watchEffect, watch } from 'vue'
+import { watchEffect, watch, ref } from 'vue'
 const props = withDefaults(
     defineProps<{
         reflectivity?: Number // 反射率
@@ -28,8 +27,6 @@ const props = withDefaults(
         mixStrength?: Number //混合
         showGridHelper?: boolean
         color?: string
-        position?: Array<number>
-        scale?: Number // 大小
     }>(),
     {
         reflectivity: 0.2,
@@ -37,20 +34,21 @@ const props = withDefaults(
         mixStrength: 9,
         showGridHelper: true,
         color: '#ffffff',
-        position: [0, -1, 0],
-        scale: 1.0,
     },
 )
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 
-const { textures: pTexture } = await useTextures([
+const { textures: pTexture, isLoading } = useTextures([
     './plugins/floor/image/concrete_wet_floor_basecolor.jpg',
     './plugins/floor/image/concrete_wet_floor_normal.jpg',
 ])
 
-watch([pTexture], ([pTexture]) => {
-    if (pTexture && pTexture.length === pTexture.length) {
+let material = null as any
+let meshOB = null as any
+let gridHelp = null as any
+watch([pTexture, isLoading], ([pTexture, isLoading]) => {
+    if (pTexture && pTexture.length === 2 && !isLoading) {
         pTexture[0].wrapS = RepeatWrapping
         pTexture[0].wrapT = RepeatWrapping
         pTexture[1].wrapS = RepeatWrapping
@@ -58,7 +56,7 @@ watch([pTexture], ([pTexture]) => {
 
         const reflector = new Reflector()
 
-        const material = new ReflectorMaterial({
+        material = new ReflectorMaterial({
             reflectivity: props.reflectivity, //反射率
             mirror: props.mirror,
             mixStrength: props.mixStrength,
@@ -69,37 +67,38 @@ watch([pTexture], ([pTexture]) => {
             fog: scene.value.fog,
             dithering: true,
         })
+
         material.uniforms.tReflect = reflector.renderTargetUniform
         material.uniforms.uMatrix = reflector.textureMatrixUniform
 
         const geometry = new PlaneGeometry(10, 10)
-        const meshOB = new Mesh(geometry, material)
+        meshOB = new Mesh(geometry, material)
         meshOB.name = 'reflectorShaderMesh'
         meshOB.position.y = -0.01
         meshOB.rotation.x = -Math.PI / 2
+
         meshOB.add(reflector)
         meshOB.onBeforeRender = (rendererSelf, sceneSelf, cameraSelf) => {
             meshOB.visible = false
             reflector.update(rendererSelf, sceneSelf, cameraSelf)
             meshOB.visible = true
         }
-
-        const gridHelp = new GridHelper(9.5, 10)
+        gridHelp = new GridHelper(9.5, 10)
         gridHelp.visible = props.showGridHelper
     }
 })
 
 watchEffect(() => {
-    if (props.reflectivity) {
+    if (props.reflectivity && material) {
         material.uniforms.uReflectivity.value = props.reflectivity
     }
-    if (props.mirror) {
+    if (props.mirror && material) {
         material.uniforms.uMirror.value = props.mirror
     }
-    if (props.mixStrength) {
+    if (props.mixStrength && material) {
         material.uniforms.uMixStrength.value = props.mixStrength
     }
-    if (props.color) {
+    if (props.color && material) {
         material.uniforms.uColor.value = new Color(props.color)
     }
 })

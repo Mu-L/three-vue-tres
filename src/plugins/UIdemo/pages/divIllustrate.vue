@@ -11,16 +11,11 @@
 	<TresCanvas clearColor="#333" window-size>
 		<TresPerspectiveCamera :position="[-500, 330, 500]" :fov="50" :near="0.1" :far="10000" />
 		<OrbitControls />
-		<TresAmbientLight color="#ffffff" intensity="1" />
+		<TresAmbientLight color="#ffffff" :intensity="1" />
 		<TresDirectionalLight color="#ffffff" :position="[300, 300, 250]" :intensity="6" />
 
-		<Suspense>
-			<modelVue />
-		</Suspense>
-
-		<Suspense>
-			<reflectorShaderMesh v-bind="configState" />
-		</Suspense>
+		<modelVue />
+		<reflectorShaderMesh v-bind="configState" :scale="100" :position="[0, -1, 0]" />
 
 		<illustratePropeller />
 		<illustrateWing />
@@ -48,7 +43,6 @@ const configState = reactive({
 	mirror: 113.25,
 	mixStrength: 12,
 	showGridHelper: true,
-	scale: 100.0
 })
 
 

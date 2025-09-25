@@ -55,10 +55,7 @@ if (qiankunWindow.__POWERED_BY_QIANKUN__) {
     console.log('qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__', qiankunWindow.__INJECTED_PUBLIC_PATH_BY_QIANKUN__)
     console.log('process.env.BASE_URL', process.env.BASE_URL)
 }
-const material = new ReflectorDudvMaterial({
-    map: null,
-    reflectivity: props.reflectivity as any,
-})
+let material = null as any
 const { state: map } = useTexture(mapurl)
 watch(
     () => map.value,
@@ -68,16 +65,19 @@ watch(
             mapv.wrapT = RepeatWrapping
             mapv.colorSpace = THREE.SRGBColorSpace
             mapv.repeat.set(6, 3)
-            material.uniforms.tMap.value = mapv
+            material = new ReflectorDudvMaterial({
+                map: mapv,
+                reflectivity: props.reflectivity as any,
+            })
+            material.uniforms.tReflect = { value: reflector.renderTarget.texture }
+            material.uniforms.tReflectBlur = reflector.renderTargetUniform
+            material.uniforms.uMatrix = reflector.textureMatrixUniform
+            mirror.material = material
         }
-    },
-    { deep: true },
+    }
 )
-material.uniforms.tReflect = { value: reflector.renderTarget.texture }
-material.uniforms.tReflectBlur = reflector.renderTargetUniform
-material.uniforms.uMatrix = reflector.textureMatrixUniform
 
-const mirror = new Mesh(new PlaneGeometry(props.size[0], props.size[1]), material)
+const mirror = new Mesh(new PlaneGeometry(props.size[0], props.size[1]), undefined)
 mirror.rotation.x = -Math.PI / 2
 mirror.add(reflector)
 
@@ -103,7 +103,7 @@ mirror.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => 
     mirror.visible = true
 }
 watchEffect(() => {
-    if (props.reflectivity) {
+    if (props.reflectivity&&material) {
         material.uniforms.uReflectivity.value = props.reflectivity
     }
 })
