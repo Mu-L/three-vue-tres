@@ -8,14 +8,14 @@
 -->
 <template>
 	<Suspense>
-		<primitive :object="group" :position="[1, 0, 1]" cast-shadow receive-shadow />
+		<primitive v-if="group" :object="group" :position="[1, 0, 1]" cast-shadow receive-shadow />
 	</Suspense>
-	<importantBuildings :group="group" />
+	<importantBuildings v-if="group" :group="group" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { ref, watch } from 'vue'
+import { useLoop } from '@tresjs/core'
 import { Group, Color, DoubleSide, Mesh, EdgesGeometry,MeshStandardMaterial } from 'three'
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2.js'
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
@@ -28,13 +28,40 @@ import fragmentShader from '../../shaders/buildingsCustomShaderMaterial.frag'
 import importantBuildings from './importantBuildings.vue'
 
 initMeshBvh()
-const { scene }
-	= await useGLTF(
+const { state: pState } = useGLTF(
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/digitalCity/shanghaiDraco/shanghaiDraco.gltf',
     { draco: true, decoderPath: './draco/' },
 )
 
-const group = scene.clone() as Group
+const group = ref<Group | null>(null)
+
+watch(
+    () => pState.value,
+    (state) => {
+        if (!state?.scene) return
+        group.value = state.scene.clone() as Group
+        // 原有的遍历和材质设置逻辑
+        group.value.traverse(async (mesh: any) => {
+            mesh as Mesh
+            if (mesh.isMesh && (mesh.name.indexOf('Shanghai') !== -1 || mesh.name.indexOf('Object') !== -1)) {
+                if (mesh.name.indexOf('Floor') !== -1) {
+                    //设置成地板材质
+                    // mesh.material.color = new Color('#ff0')
+                } else if (mesh.name.indexOf('River') !== -1) {
+                    //替换水的材质
+                    const waterm = await setThreeWater2(mesh)
+                    waterm.position.set(0, 0, 1800)
+                    mesh.add(waterm)
+                } else {
+                    setEffectMaterial(mesh)
+                    setBuildsLine(mesh)
+                    // mesh.castShadow = true
+                    // mesh.receiveShadow = true
+                }
+            }
+        })
+    },
+)
 const timeDelta = ref(0)
 const setEffectMaterial = (mesh) => {
 	const { geometry } = mesh
@@ -113,8 +140,8 @@ group.traverse(async (mesh: any) => {
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }) => {
 	timeDelta.value += delta
 })
 

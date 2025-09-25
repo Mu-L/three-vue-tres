@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { TransformControls } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = withDefaults(
 	defineProps<{
@@ -40,8 +40,8 @@ const modelc = ref("translate")
 // 		modelc.value = e.value
 // 	})
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	console.log(props.model.position)
 	console.log(props.model.rotation)
 	console.log(props.model.scale)

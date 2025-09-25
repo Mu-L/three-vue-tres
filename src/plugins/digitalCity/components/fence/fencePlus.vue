@@ -16,7 +16,7 @@
 import * as THREE from 'three'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { watch } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = withDefaults(
     defineProps<{
@@ -170,8 +170,8 @@ function createRectFrameGeometryWithUV(width: number, depth: number, height: num
 
 geometriesMesh = createRectFrameGeometryWithUV(props.width, props.depth, props.height)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
     rippleShader.uniforms.time.value += delta
 })
 

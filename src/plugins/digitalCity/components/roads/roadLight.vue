@@ -8,7 +8,8 @@
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { CatmullRomCurve3, Vector3, RepeatWrapping, BackSide, Color } from 'three'
 import { loadGeojson } from '../../common/utils'
 // import transformControlsDebug from '../../components/transformControlsDebug.vue'
@@ -30,13 +31,10 @@ const props = withDefaults(
 const tgRef = ref()
 const tmbmRef = ref()
 
-const { map: pTexture } = await useTexture({
-    map: './plugins/digitalCity/image/line.png',
-    // map: './plugins/digitalCity/image/line2.png',
-})
-pTexture.needsUpdate = true
-pTexture.wrapS = pTexture.wrapT = RepeatWrapping
-pTexture.repeat.set(1, 1)
+const { state: pTexture } = useTexture('./plugins/digitalCity/image/line.png')
+pTexture.value.needsUpdate = true
+pTexture.value.wrapS = pTexture.value.wrapT = RepeatWrapping
+pTexture.value.repeat.set(1, 1)
 
 // pTexture.rotation = Math.PI
 // pTexture.generateMipmaps = false
@@ -66,9 +64,9 @@ watchEffect(() => {
         }
     }
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
-    pTexture.offset.x -= (Math.random() / 20) * props.speed
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
+    pTexture.value.offset.x -= (Math.random() / 20) * props.speed
 })
 
 //<!-- <transformControlsDebug :model="tgRef" /> -->

@@ -58,7 +58,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import * as THREE from "three"
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { LayerMaterial, Color, Depth } from 'PLS/basic/components/forCientos/LayerMaterial'
 import { OrbitControls, Levioso } from '@tresjs/cientos'
 import { Environment, Lightformer } from 'PLS/basic'
@@ -74,8 +74,8 @@ const tcConfig = {
 const lightFormerPositions = [2, 0, 2, 0, 2, 0, 2, 0]
 const group = ref(null)
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }: { delta: number }) => {
 	if (group.value) {
 		// @ts-ignore
 		(group.value.position.z += delta * 10) > 20 && (group.value.position.z = -60)

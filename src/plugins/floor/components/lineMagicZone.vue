@@ -31,7 +31,8 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { CustomShaderMaterial } from '@tresjs/cientos'
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { useAttrs, watch } from 'vue'
 
 const attrs = useAttrs()
@@ -158,8 +159,8 @@ void main() {
 }
 `
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     uniforms.uTime.value += 0.01 * props.speed
 })
 

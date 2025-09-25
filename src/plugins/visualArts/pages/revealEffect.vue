@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { reflectorDUDV } from 'PLS/floor'
 import { Pane } from 'tweakpane'
@@ -52,7 +52,7 @@ paneControl.addBinding(pcssConfig, 'uProgress', {
     step: 0.01,
 }).disabled = true
 
-useRenderLoop().onLoop(({ elapsed }) => {
+useLoop().onRender(({ elapsed }: { elapsed: number }) => {
     pcssConfig.uProgress = (Math.sin(elapsed) + 1) / 2
     paneControl.refresh()
 })

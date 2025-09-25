@@ -8,7 +8,9 @@
 -->
 <script setup lang="ts">
 import { watch, watchEffect } from 'vue'
-import { useTexture, useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
+import { useTres } from '@tresjs/core'
 import { Clouds, Cloud } from '@pmndrs/vanilla'
 import * as THREE from 'three'
 
@@ -45,10 +47,9 @@ const props = withDefaults(
     },
 )
 
-//@ts-ignore
-const map = await useTexture(['./plugins/digitalCity/image/cloud.png'])
+const { state: map } = useTexture('./plugins/digitalCity/image/cloud.png')
 
-const clouds = new Clouds({ texture: map })
+const clouds = new Clouds({ texture: map.value })
 
 const cloud0 = new Cloud({ color: new THREE.Color(props.color) })
 clouds.add(cloud0)
@@ -57,9 +58,9 @@ const cloud1 = new Cloud({ color: new THREE.Color('pink') })
 cloud1.position.set(20, 0, 10)
 clouds.add(cloud1)
 
-const { camera } = useTresContext()
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta, elapsed }) => {
+const { camera } = useTres()
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }: { delta: number; elapsed: number }) => {
     clouds.update(camera.value, elapsed, delta)
 })
 watch(

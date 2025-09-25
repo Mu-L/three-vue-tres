@@ -7,10 +7,9 @@
  * @LastEditTime: 2024-03-15 12:12:46
 -->
 <template>
-	<loading></loading>
 	<pagesShow>
 		<template v-slot:ability>
-			<radraA v-if="typeAradarState.show" ref="radraARef" :color="typeAradarState.color"
+			<radraA v-if="typeAradarState.show" :color="typeAradarState.color"
 				:radius="typeAradarState.radius" :size="300" :position="[10, 60, 0]" />
 			<radraB v-if="typeBradarState.show" :position="[600, 30, 0]" :color="typeBradarState.color" :height="80"
 				:maxRadius="typeBradarState.maxRadius" />
@@ -19,13 +18,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import { Pane } from 'tweakpane';
-import { defaultLoading as loading } from 'PLS/UIdemo'
+import { reactive } from 'vue'
+import { Pane } from 'tweakpane'
 import { radraA, radraB } from 'PLS/digitalCity'
 import pagesShow from '../components/pagesShow.vue'
 
-const radraARef = ref()
 
 const typeAradarState = reactive({
 	show: true,

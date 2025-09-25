@@ -11,8 +11,8 @@
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useTresContext } from '@tresjs/core'
-import { useTexture } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{
@@ -25,7 +25,7 @@ const props = withDefaults(
         environment: true,
     },
 )
-const { scene } = useTresContext()
+const { scene } = useTres()
 
 const { map: pTexture } = await useTexture({ map: props.texture })
 pTexture.wrapS = pTexture.wrapT = THREE.ClampToEdgeWrapping

@@ -1,21 +1,41 @@
-threshold
 <template>
     <TresGroup :scale="curScale">
+        <!-- 球体 -->
         <TresMesh :renderOrder="2200">
-            <TresSphereGeometry :args="[props.radius, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2]" />
-            <TresMeshBasicMaterial :side="THREE.DoubleSide" transparent :map="pTexture[0]" :color="ballColor" :opacity="opacity" />
+            <TresSphereGeometry
+                :args="[props.radius, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2]"
+            />
+            <TresMeshBasicMaterial
+                :side="THREE.DoubleSide"
+                transparent
+                :map="textures[0]"
+                :color="ballColor"
+                :opacity="opacity"
+            />
         </TresMesh>
+
+        <!-- 圆柱墙 -->
         <TresMesh :renderOrder="2201" :position="[0, props.radius * 0.3, 0]">
-            <TresCylinderGeometry :args="[props.radius * 1.02, props.radius * 1.02, props.radius * 0.6, 32, 1, true]" :openEnded="true" />
-            <TresMeshBasicMaterial :side="THREE.DoubleSide" transparent :map="pTexture[1]" :color="wallColor" :opacity="opacity" />
+            <TresCylinderGeometry
+                :args="[props.radius * 1.02, props.radius * 1.02, props.radius * 0.6, 32, 1, true]"
+                :openEnded="true"
+            />
+            <TresMeshBasicMaterial
+                :side="THREE.DoubleSide"
+                transparent
+                :map="textures[1]"
+                :color="wallColor"
+                :opacity="opacity"
+            />
         </TresMesh>
     </TresGroup>
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
 import * as THREE from 'three'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = withDefaults(
     defineProps<{
@@ -32,13 +52,26 @@ const props = withDefaults(
     },
 )
 
-const pTexture = await useTexture(['./plugins/digitalCity/image/diffuseCircle1.png', './plugins/digitalCity/image/diffuseCircle2.png'])
-pTexture[1].offset.set(0.5, 0.5)
+// --- 新写法 useTextures ---
+const { textures, isLoading } = useTextures([
+    './plugins/digitalCity/image/diffuseCircle1.png',
+    './plugins/digitalCity/image/diffuseCircle2.png',
+])
 
+watch([textures, isLoading], ([texs, loading]) => {
+    if (texs && !loading) {
+        // 设置 offset
+        texs[1].offset.set(0.5, 0.5)
+    }
+})
+
+// --- 动态缩放 & 透明度 ---
 const curScale = ref(0)
 const opacity = ref(1)
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+
+// --- 新写法 useLoop ---
+const { onRender } = useLoop()
+onRender(({ delta }) => {
     if (curScale.value > 1) {
         curScale.value = 0
     }

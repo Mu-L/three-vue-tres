@@ -9,7 +9,7 @@
 <template></template>
 
 <script setup lang="ts">
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { Color, FogExp2, Fog } from 'three'
 import { watch } from 'vue'
 
@@ -30,7 +30,7 @@ const props = withDefaults(
     },
 )
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 watch(
     () => props.type,
     (nv) => {

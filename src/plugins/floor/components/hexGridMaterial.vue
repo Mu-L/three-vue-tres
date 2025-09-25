@@ -19,7 +19,8 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { CustomShaderMaterial } from '@tresjs/cientos'
 import fragmentShader from '../shaders/hexGridMaterial.frag'
 
@@ -95,8 +96,8 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
     uniforms.time.value += delta * props.speed
 })
 </script>

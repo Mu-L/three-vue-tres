@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { ref, watch, watchEffect } from 'vue'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { ProgressiveLightMap, SoftShadowMaterial } from '@pmndrs/vanilla'
 
 const props = withDefaults(
@@ -44,7 +44,7 @@ const props = withDefaults(
 
 let gPlane = ref<THREE.Mesh>()
 
-const { extend, scene, renderer, camera } = useTresContext()
+const { extend, scene, renderer, camera } = useTres()
 
 extend({ SoftShadowMaterial })
 const lightParams = {

@@ -15,7 +15,8 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import * as TQK from 'three.quarks'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{
@@ -74,8 +75,8 @@ batchSystem.addSystem(muzzle1)
 
 batchSystem.rotateX(-Math.PI / 2)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
     batchSystem.update(delta)
 })
 </script>

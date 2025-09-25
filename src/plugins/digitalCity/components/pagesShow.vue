@@ -8,7 +8,8 @@
 -->
 <template>
     <TresCanvas ref="tcRef" v-bind="state" window-size>
-        <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[600, 750, -1221]" :fov="45" :near="1" :far="100000" />
+        <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[600, 750, -1221]" :fov="45" :near="1"
+            :far="100000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
@@ -40,9 +41,9 @@ const props = withDefaults(
         disableRender: false,
     },
 )
-import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
+import { SRGBColorSpace, BasicShadowMap, ACESFilmicToneMapping } from 'three'
 import { reactive, ref } from 'vue'
-import {} from '@tresjs/core'
+import { } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 
 import { loadCityFBX } from '../common/loadCity'
@@ -56,8 +57,9 @@ const state = reactive({
     useLegacyLights: true,
     shadowMapType: BasicShadowMap,
     outputColorSpace: SRGBColorSpace,
-    toneMapping: NoToneMapping,
-    disableRender: props.disableRender,
+    toneMapping: ACESFilmicToneMapping,
+    toneMappingExposure: 1.2,
+    renderMode: props.disableRender ? 'manual' : 'always',
 })
 const controlsState = reactive({ autoRotate: props.autoRotate, enableDamping: true })
 

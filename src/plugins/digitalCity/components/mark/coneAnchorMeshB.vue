@@ -20,7 +20,7 @@
                     :opacity="0.8"
                     :depthTest="props.depthTest"
                     :depthWrite="false"
-                    :map="pTexture"
+                    :map="pTexture.value"
                 />
             </TresMesh>
         </TresGroup>
@@ -30,7 +30,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { useGLTF } from '@tresjs/cientos'
 
 const props = withDefaults(
@@ -52,9 +53,11 @@ const props = withDefaults(
     },
 )
 
-const { scene } = await useGLTF('./plugins/digitalCity/model/coneAnchorB.glb', { draco: true, decoderPath: './draco/' })
 
-const modelScene = scene.clone()
+
+const { state: pState } = useGLTF('./plugins/digitalCity/model/coneAnchorB.glb', { draco: true, decoderPath: './draco/' })
+
+const modelScene = pState.value?.scene?.clone()
 const modelMaterial = modelScene.children[0].material.clone()
 modelMaterial.color.set(props.anchorColor)
 modelMaterial.metalness = 0.0
@@ -65,10 +68,8 @@ modelMaterial.depthTest = props.depthTest
 modelScene.children[0].renderOrder = 0
 modelScene.children[0].material = modelMaterial
 
-const { map: pTexture } = await useTexture({
-    map: './plugins/digitalCity/image/waveCircle.png',
-})
-const { width, height } = pTexture.image
+const { state: pTexture } = useTexture('./plugins/digitalCity/image/waveCircle.png')
+const { width, height } = pTexture.value.image
 pTexture.wrapS = pTexture.wrapT = THREE.RepeatWrapping
 pTexture.repeat.set(1 / (width / height), 1)
 
@@ -81,13 +82,13 @@ watch(
 )
 
 const coneGroup = ref(null) as any
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 let _offset = 0
-onLoop(() => {
+onRender(() => {
     coneGroup.value?.children[0].rotateZ(props.rotateSpeed)
-    if (pTexture) {
+    if (pTexture.value) {
         _offset += props.floorSpeed
-        pTexture.offset.x = Math.floor(_offset) / (pTexture.image.width / pTexture.image.height)
+        pTexture.value.offset.x = Math.floor(_offset) / (pTexture.value.image.width / pTexture.value.image.height)
     }
 })
 </script>

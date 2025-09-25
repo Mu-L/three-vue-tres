@@ -8,11 +8,10 @@
 -->
 <script setup lang="ts">
 import { ref, watch, defineExpose, watchEffect } from 'vue';
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { DoubleSide, Color, LineCurve3, Vector3, Matrix4 } from 'three';
 const props = withDefaults(
 	defineProps<{
-		position?: Array<number>
 		radius?: number
 		maxRadius?: number
 		color?: string
@@ -21,7 +20,6 @@ const props = withDefaults(
 		height?: number
 	}>(),
 	{
-		position: [0, 0, 0],
 		radius: 10,
 		maxRadius: 200,
 		color: '#ffff00',
@@ -105,10 +103,10 @@ watchEffect(() => {
 		shader.uniforms.uColor.value = new Color(props.color)
 	}
 })
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 const timeDelta = { value: 0 }
-onLoop(({ delta }) => {
-	timeDelta.value += delta;
+onRender(({ delta }) => {
+	timeDelta.value += delta*10;
 	const rate = (timeDelta.value % props.period) / props.period
 
 	const currRadius = rate * (props.maxRadius - props.radius) + props.radius
@@ -125,7 +123,7 @@ defineExpose({
 </script>
 
 <template>
-	<TresMesh ref="MeshRef" :position="props.position" :renderOrder="2000">
+	<TresMesh ref="MeshRef" :renderOrder="2000">
 		<TresTubeGeometry ref="TresTubeGeometryRef" :args="[tubePath, 20, props.radius, 100/*平滑度*/, false]" />
 		<TresShaderMaterial v-bind="shader" />
 	</TresMesh>

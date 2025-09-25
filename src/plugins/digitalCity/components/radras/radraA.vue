@@ -8,11 +8,10 @@
 -->
 <script setup lang="ts">
 import { ref, watch, defineExpose, watchEffect } from 'vue';
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { Matrix4, AdditiveBlending, DoubleSide, Color } from 'three';
 const props = withDefaults(
 	defineProps<{
-		position?: Array<number>
 		size?: number
 		radius?: number
 		color?: string
@@ -21,7 +20,6 @@ const props = withDefaults(
 		followWidth?: number
 	}>(),
 	{
-		position: [0, 0, 0],
 		radius: 240,
 		size: 300,
 		color: '#ffff00',
@@ -31,11 +29,11 @@ const props = withDefaults(
 	},
 )
 
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 const timeDelta = { value: 0 }
 const TresCircleGeometryRef = ref()
-onLoop(({ delta }) => {
-	timeDelta.value += delta;
+onRender(({ delta }) => {
+	timeDelta.value += delta*10;
 })
 const shader = {
 	transparent: true,
@@ -143,7 +141,7 @@ defineExpose({
 </script>
 
 <template>
-	<TresMesh ref="MeshRef" :position="props.position">
+	<TresMesh ref="MeshRef">
 		<TresCircleGeometry ref="TresCircleGeometryRef" :args="[props.size, 1000]" />
 		<TresShaderMaterial v-bind="shader" />
 	</TresMesh>

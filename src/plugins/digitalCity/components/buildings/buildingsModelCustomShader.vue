@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 // import { CustomShaderMaterial } from '@tresjs/cientos'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 import { ref, watchEffect, watch } from 'vue';
@@ -86,10 +86,10 @@ const setEffectMaterial = () => {
 }
 setEffectMaterial()
 
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 
-onLoop(({ delta }) => {
-	timeDelta.value += delta;
+onRender(({ delta }) => {
+	timeDelta.value += delta*10;
 })
 watchEffect(() => {
 	if (props.bulidingsColor) {

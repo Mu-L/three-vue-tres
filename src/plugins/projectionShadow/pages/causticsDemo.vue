@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { ACESFilmicToneMapping } from 'three'
 import { reactive, ref } from 'vue'
-import { TresCanvas, useRenderLoop } from '@tresjs/core'
+import { TresCanvas, useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { groundProjectedEnv } from 'PLS/skyBox'
 import { Pane } from 'tweakpane'
@@ -50,8 +50,8 @@ const controlsState = reactive({
     autoRotate: false,
 })
 const torusMesh = ref(null)
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }: { elapsed: number }) => {
     if (torusMesh.value) {
         torusMesh.value.rotation.x = elapsed
         torusMesh.value.rotation.y = elapsed

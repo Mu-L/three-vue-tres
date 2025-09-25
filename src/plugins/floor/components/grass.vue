@@ -29,7 +29,8 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { createNoise2D } from 'simplex-noise'
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from '@tresjs/cientos'
 import { CientosShaderMaterial } from 'PLS/basic'
 
 const pbrTexture = await useTexture({
@@ -284,8 +285,8 @@ gm.map = pbrTexture.map
 gm.alphaMap = pbrTexture.alphaMap
 gm.toneMapped = false
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onRender } = useLoop()
+onRender(({ elapsed }: { elapsed: number }) => {
     gm.uniforms.time.value = elapsed / 4
 })
 </script>

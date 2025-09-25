@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { BasicShadowMap, SRGBColorSpace, NoToneMapping, Color, AdditiveBlending, BufferAttribute } from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { ref, watch } from 'vue'
 
@@ -130,7 +130,7 @@ function updateGalaxy() {
 
 const bufferRef = ref(null) as any
 
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 
 onLoop(({ elapsed }) => {
 	if (bufferRef.value) {

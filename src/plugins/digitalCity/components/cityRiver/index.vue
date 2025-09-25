@@ -1,6 +1,6 @@
 <template>
 	<TresGroup :position="[0, 0, -2]"> <!-- :position="[0, 19.1, -2]" -->
-		<primitive :object="scene" />
+		<primitive v-if="pState" :object="pState?.scene" />
 		<Suspense>
 			<threeWater2 :position-y="0.0001" :waterGeometry="nodes.mesh_0.geometry" v-bind="water2State" />
 		</Suspense>
@@ -15,8 +15,17 @@ import { Color } from 'three'
 
 import { Pane } from 'tweakpane'
 
-const { scene, nodes } = await useGLTF('https://a.amap.com/jsapi_demos/static/gltf-online/shanghai/scene.gltf')
-scene.renderOrder = 9999
+import { watch } from 'vue'
+
+const { state: pState, nodes } = useGLTF('https://a.amap.com/jsapi_demos/static/gltf-online/shanghai/scene.gltf')
+
+watch(
+    () => pState.value,
+    (state) => {
+        if (!state?.scene) return
+        state.scene.renderOrder = 9999
+    },
+)
 nodes.mesh_0.material.transparent = true
 nodes.mesh_0.material.depthWrite = true
 nodes.mesh_0.material.depthTest = true

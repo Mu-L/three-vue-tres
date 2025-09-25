@@ -28,27 +28,39 @@ const props = withDefaults(
     },
 )
 
-const imgList = {
+const imgList: Record<string, string> = {
     snow: './plugins/digitalCity/image/snow.png',
     rain: './plugins/digitalCity/image/rain2.png',
     cilcle: './plugins/digitalCity/image/cilcle.png',
-} as any
-const texture = reactive({}) as any
-if (imgList[props.type]) {
-    texture.value = await useTexture({ map: imgList[props.type] })
 }
-const precipitationRef = ref()
-watch(
-    () => props.type,
-    async (nv, ov) => {
-        if (nv != ov) {
-            if (texture.value?.map) {
-                texture.value.map.dispose()
-            }
-            texture.value = await useTexture({ map: imgList[nv] ? imgList[nv] : imgList.cilcle })
-        }
-    },
-)
+
+const textureCache: Record<string, THREE.Texture> = {}
+const preloadTextures = async () => {
+	const loader = new THREE.TextureLoader()
+	const promises = Object.entries(imgList).map(([key, url]) => {
+		return new Promise<void>((resolve, reject) => {
+			loader.load(
+				url,
+				(tex) => {
+					tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
+					tex.needsUpdate = true
+					textureCache[key] = tex
+					resolve()
+				},
+				undefined,
+				reject
+			)
+		})
+	})
+	await Promise.all(promises)
+	console.log('✅ 所有图片预加载完成:', Object.keys(textureCache))
+}
+const getTexture = (key: keyof typeof imgList) => {
+  return textureCache[key]
+}
+await preloadTextures()
+
+const texture = ref(getTexture(props.type))
 </script>
 
 <template>
@@ -64,8 +76,8 @@ watch(
         :randomness="props.randomness"
         :size="props.size"
         :opacity="1.0"
-        :map="texture.value.map"
-        :alphaMap="texture.value.map"
+        :map="texture"
+        :alphaMap="texture"
         :renderOrder="999999"
     />
 </template>

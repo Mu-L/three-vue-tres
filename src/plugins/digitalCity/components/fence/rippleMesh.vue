@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { watchEffect, ref, watch } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { getcenterPoint } from '../../common/utils'
 
 const props = withDefaults(
@@ -165,8 +165,8 @@ let { centerPoint, points } = getcenterPoint(props.positionSrc)
 
 getRippleGeometry(points, props.height)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
 	rippleShader.uniforms.time.value += delta
 })
 watchEffect(() => {

@@ -1,16 +1,7 @@
-<!--
- * @Description: 
- * @Version: 1.668
- * @Autor: 地虎降天龙
- * @Date: 2023-10-27 16:43:05
- * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 07:48:40
--->
 <script setup lang="ts">
-import { reactive, ref, watchEffect, watch } from 'vue'
-import { useTexture } from '@tresjs/core'
+import {  watch } from 'vue'
 import { Precipitation } from '@tresjs/cientos'
-import { Texture } from 'three';
+import * as THREE from 'three'
 
 const props = withDefaults(
 	defineProps<{
@@ -33,47 +24,58 @@ const props = withDefaults(
 		areaY: 1000,
 		areaZ: 1500,
 		color: '#fff',
-		type: 'snow',	// snow rain point
+		type: 'snow', // snow rain point
 	},
 )
 
-const imgList = {
+const imgList: Record<string, string> = {
 	snow: './plugins/digitalCity/image/snow.png',
 	rain: './plugins/digitalCity/image/rain.png',
 	cilcle: './plugins/digitalCity/image/cilcle.png',
 }
-const texture = reactive({})
-if (imgList[props.type]) {
-	texture.value = await useTexture({ map: imgList[props.type] })
+
+const textureCache: Record<string, THREE.Texture> = {}
+const preloadTextures = async () => {
+	const loader = new THREE.TextureLoader()
+	const promises = Object.entries(imgList).map(([key, url]) => {
+		return new Promise<void>((resolve, reject) => {
+			loader.load(
+				url,
+				(tex) => {
+					tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
+					tex.needsUpdate = true
+					textureCache[key] = tex
+					resolve()
+				},
+				undefined,
+				reject
+			)
+		})
+	})
+	await Promise.all(promises)
+	console.log('✅ 所有图片预加载完成:', Object.keys(textureCache))
 }
-const precipitationRef = ref()
-watchEffect(async () => {
-	// if (precipitationRef.value) {
-	// 	precipitationRef.value.$refs.geometryRef
-	// }
-	// if (props.type) {
-	// 	console.log(props, texture)
-	// 	if (texture.value) {
-	// 		texture.value.map.dispose()
-	// 		texture.value = await useTexture({ map: imgList[props.type] })
-	// 	}
-	// }
-})
+const getTexture = (key: keyof typeof imgList) => {
+  return textureCache[key]
+}
+await preloadTextures()
+
+let curRexture = null
 watch(
 	() => props.type,
-	async (nv, ov) => {
-		if (nv != ov) {
-			if (texture.value?.map) {
-				texture.value.map.dispose()
-			}
-			texture.value = await useTexture({ map: imgList[nv] ? imgList[nv] : imgList.cilcle })
+	(nv, ov) => {
+		if (nv !== ov) {
+			curRexture = getTexture(nv)
 		}
-	})
+	},
+	{
+		immediate: true,
+	}
+)
 </script>
 
 <template>
 	<Precipitation ref="precipitationRef" :position="[0, props.areaY / 2, 0]" :speed="props.speed" :color="props.color"
 		:alphaTest="0.5" :area="[props.areaX, props.areaY, props.areaZ]" :count="props.count" :depthWrite="true"
-		:randomness="props.randomness" :size="props.size" :opacity="1.0" :map="texture.value.map"
-		:alphaMap="texture.value.map" />
+		:randomness="props.randomness" :size="props.size" :opacity="1.0" :map="curRexture" :alphaMap="curRexture" />
 </template>

@@ -1,77 +1,63 @@
-<!--
- * @Description: 
- * @Version: 1.668
- * @Autor: 地虎降天龙
- * @Date: 2023-10-27 16:43:05
- * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-13 09:39:00
--->
 <script setup lang="ts">
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { watch } from 'vue'
+import { useTexture } from '@tresjs/cientos'
+import { useLoop } from '@tresjs/core'
 import * as THREE from 'three'
 import { default as SPE } from '../../common/ShaderParticleEngine/build/SPE'
 
-const { map: pTexture } = await useTexture({
-	map: './plugins/digitalCity/image/smokeparticle.png'
-})
+// ---------- 纹理加载 ----------
+const { state: pTexture } = useTexture('./plugins/digitalCity/image/smokeparticle.png')
 
+// ---------- 创建 SPE 粒子组 ----------
 const particleGroup = new SPE.Group({
-	texture: {
-		value: pTexture
-	},
-	blending: THREE.AdditiveBlending,
-	depthTest: true,
-	depthWrite: false,
+  blending: THREE.AdditiveBlending,
+  depthTest: true,
+  depthWrite: false,
+  // 先不传 texture，纹理加载后赋值
 })
 
+// ---------- 创建 Emitter ----------
 const emitter = new SPE.Emitter({
-	type: SPE.distributions.SPHERE,
-	particleCount: 150,
-	maxAge: {
-		value: 3,
-	},
-	position: {
-		value: new THREE.Vector3(0, 0, 0),
-		spread: new THREE.Vector3(1, 1, 1),
-		radius: 1,
-	},
-	velocity: {
-		value: new THREE.Vector3(0, 20, 0),
-		spread: new THREE.Vector3(12, 40, 12),
-		distribution: SPE.distributions.BOX,
-	},
-	size: {
-		value: [200, 100, 10],
-		// spread: [14, 10, 8],
-		// randomise: true,
-	},
-	// wiggle: {
-	// 	spread: 10
-	// },
-	// drag: {
-	// 	value: 10,
-	// 	spread: 10,
-	// },
-	// opacity: {
-	// 	value: [0.9, 1.5],
-	// 	spread: [1, 0],
-	// 	randomise: true,
-	// },
-	color: {
-		value: new THREE.Color('#ff0000'),
-		spread: new THREE.Vector3(0.05, 0.05, 0.01)
-	}
+  type: SPE.distributions.SPHERE,
+  particleCount: 150,
+  maxAge: { value: 3 },
+  position: {
+    value: new THREE.Vector3(0, 0, 0),
+    spread: new THREE.Vector3(1, 1, 1),
+    radius: 1,
+  },
+  velocity: {
+    value: new THREE.Vector3(0, 20, 0),
+    spread: new THREE.Vector3(12, 40, 12),
+    distribution: SPE.distributions.BOX,
+  },
+  size: { value: [200, 100, 10] },
+  color: { value: new THREE.Color('#ff0000'), spread: new THREE.Vector3(0.05, 0.05, 0.01) },
 })
 
 particleGroup.addEmitter(emitter)
+
+// ---------- 获取 mesh ----------
 const objCloud = particleGroup.mesh
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
-	particleGroup.tick()
+// ---------- 纹理加载完成后注入 ----------
+watch(
+  () => pTexture.value,
+  (mapv) => {
+    if (mapv) {
+      particleGroup.texture = { value: mapv }
+    }
+  },
+  { immediate: true }
+)
+
+// ---------- 渲染循环 ----------
+const { onRender } = useLoop()
+onRender(() => {
+  particleGroup.tick()
 })
 </script>
 
 <template>
-	<primitive :object="objCloud" :renderOrder="3001" />
+  <primitive :object="objCloud" :renderOrder="3001" />
 </template>
