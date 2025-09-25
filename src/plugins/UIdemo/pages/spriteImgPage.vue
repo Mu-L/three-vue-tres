@@ -12,11 +12,9 @@
         <OrbitControls />
         <TresAmbientLight />
 
-        <spriteImg v-bind="spriteImgConfig" :position="[0, -1, 0]" :scale="2" />
+        <spriteImg v-bind="spriteImgConfig" :position="[0, 1, 0]" :scale="2" />
 
-        <Suspense>
-            <reflectorShaderMesh v-bind="configState" />
-        </Suspense>
+        <reflectorShaderMesh v-bind="configState" />
     </TresCanvas>
 </template>
 
@@ -42,7 +40,7 @@ const configState = reactive({
     mirror: 113.25,
     mixStrength: 12,
     showGridHelper: true,
-    scale: 100.0,
+    scale: 1.0,
 })
 
 const spriteImgConfig = reactive({
