@@ -75,7 +75,7 @@
     "@mkkellogg/gaussian-splats-3d": "^0.4.7",
     "@pmndrs/vanilla": "^1.25.0",
     "@tresjs/cientos": "5.0.0",
-    "@tresjs/core": "5.0.1",
+    "@tresjs/core": "5.0.2",
     "@tresjs/leches": "^0.14.1",
     "@tresjs/post-processing": "3.0.0-next.0",
     "@turf/turf": "^7.2.0",

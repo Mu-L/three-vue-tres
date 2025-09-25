@@ -2403,10 +2403,10 @@
     three-custom-shader-material "^5.4.0"
     three-stdlib "^2.36.0"
 
-"@tresjs/core@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.0.1.tgz#4d06e42822d8e2fbdcbaae2200ca7b85562e4021"
-  integrity sha512-aQhIPvK85u+lSbjf67bNiqr4bSuJ4cLmpxsE7q7LSTLI4G4+3xqvhXzSyOYmgniW/KMhjTUQKfUEGtNdBRFDtg==
+"@tresjs/core@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.0.2.tgz#fcd3a44fe6aa22d9f4d20a9148ccd80529804844"
+  integrity sha512-ezgYndWQmn2cPlEmdT6epQ7ThMwRmG1/qbuASeAuqV3W3EDDpBWecCTAC6hjwHMy4W7LjAzCR/VZlpPmrG97TQ==
   dependencies:
     "@pmndrs/pointer-events" "^6.6.17"
     "@vue/devtools-api" "^7.7.2"
