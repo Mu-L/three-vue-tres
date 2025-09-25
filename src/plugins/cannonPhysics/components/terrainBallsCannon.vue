@@ -1,7 +1,7 @@
 <template></template>
 <script setup lang="ts">
 import { World, Sphere, Body, Heightfield, Vec3 } from 'cannon-es'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = defineProps({
     sphereGroup: {
@@ -65,9 +65,9 @@ terrainBody.quaternion.set(...(props.plane.quaternion.toArray() as [number, numb
 // terrainBody.position.set(-50, 0, 50)
 world.addBody(terrainBody)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
-    world.step(1 / 120, delta)
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
+    world.fixedStep(1 / 120, delta)
 
     sphereBodyList.forEach((sphereBody, index) => {
         props.sphereGroup.children[index].position.copy(sphereBody.position)

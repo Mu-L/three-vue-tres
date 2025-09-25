@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { World, Sphere, Body, Material, ContactMaterial, Plane, NaiveBroadphase } from 'cannon-es'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = defineProps({
     sphere: {
@@ -59,11 +59,11 @@ world.addBody(sphere1Body)
 world.addBody(sphere2Body)
 world.addBody(planeBody)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }: { delta: number }) => {
     // 以固定时间步长更新物理世界
-    world.step(1 / 120, delta)
-    // world.fixedStep(1 / 120, delta)
+    // world.step(1 / 120, delta)
+    world.fixedStep(1 / 120, delta)
 
     props.sphere.position.copy(sphere1Body.position)
     props.sphere2.position.copy(sphere2Body.position)
