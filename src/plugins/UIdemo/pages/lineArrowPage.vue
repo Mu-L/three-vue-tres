@@ -13,10 +13,8 @@
         <TresAmbientLight />
         <TresDirectionalLight :intensity="2" :position="[-2, 1, 0]" />
 
-        <lineArrow v-bind="lineArrowConfig" />
-        <Suspense>
-            <reflectorShaderMesh v-bind="configState" />
-        </Suspense>
+        <lineArrow v-bind="lineArrowConfig" :position="[0, 1, 0]"/>
+        <reflectorShaderMesh v-bind="configState" />
     </TresCanvas>
 </template>
 
@@ -42,14 +40,13 @@ const configState = reactive({
     mirror: 113.25,
     mixStrength: 12,
     showGridHelper: false,
-    scale: 100.0,
 })
 
 const lineArrowConfig = reactive({
     color: '#00ff97',
     hasArrow:true,
     radius: 0.1,
-    length: 10,
+    length: 5,
     cutoffRatio: 0.9,
     roughness: 0.2,
     metalness: 0,

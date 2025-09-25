@@ -12,11 +12,9 @@
         <OrbitControls />
         <TresAmbientLight />
 
-        <line2RoundedRect :position="[0, -1.5, 0]" v-bind="line2Config" />
+        <line2RoundedRect :position="[0, .5, 0]" v-bind="line2Config" />
 
-        <Suspense>
-            <reflectorShaderMesh v-bind="configState" />
-        </Suspense>
+        <reflectorShaderMesh v-bind="configState" />
     </TresCanvas>
 </template>
 
@@ -42,7 +40,7 @@ const configState = reactive({
     mirror: 113.25,
     mixStrength: 12,
     showGridHelper: false,
-    scale: 100.0,
+    scale: 1.0,
 })
 
 const line2Config = reactive({
