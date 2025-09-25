@@ -10,7 +10,8 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop, useTexture } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
 import * as ThreeMeshUI from '../../lib/three-mesh-ui.module.js'
 
 const rootBlock = new ThreeMeshUI.Block({
@@ -27,11 +28,11 @@ const rootBlock = new ThreeMeshUI.Block({
 rootBlock.position.set(0, -0.5 + 0.4, 1)
 rootBlock.rotation.x = -0.33
 
-const texture = await useTexture(['./plugins/industry4/preview/showLambo.png'])
+const { textures: texture, isLoading } = useTextures(['./plugins/industry4/preview/showLambo.png'])
 rootBlock.set({
     backgroundColor: new THREE.Color(0xffffff),
     backgroundOpacity: 1,
-    backgroundImage: texture,
+    backgroundImage: texture.value[0],
 })
 
 // 实现 文字和背景同时双面显示
@@ -50,11 +51,11 @@ const caption = new ThreeMeshUI.Text({
 })
 rootBlock.add(caption)
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 scene.value.add(rootBlock)
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     ThreeMeshUI.update()
 })
 </script>

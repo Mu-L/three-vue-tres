@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import * as ThreeMeshUI from '../../lib/three-mesh-ui.module.js'
 
 const rootBlock = new ThreeMeshUI.Block({
@@ -43,11 +43,11 @@ const inline = new ThreeMeshUI.Text({
 })
 rootBlock.add(inline)
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 scene.value.add(rootBlock)
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     inline.set({ textContent: textContent + '\n' + Math.random() })
     ThreeMeshUI.update()
 })

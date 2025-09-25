@@ -9,7 +9,7 @@
 
 <template>
     <TresGroup :rotate-x="-Math.PI / 2">
-        <primitive :object="floor" :scale="3.0" receive-shadow />
+        <primitive v-if="pState" :object="floor" :scale="3.0" receive-shadow />
         <Suspense>
             <Text3D
                 text="DFS 230A-1 新型滑翔机"
@@ -26,15 +26,25 @@
 
 <script setup lang="ts">
 import { useGLTF, Text3D } from '@tresjs/cientos'
+import { watch } from 'vue'
 
-const { nodes } = await useGLTF(
+const isDev = process.env.NODE_ENV === 'development'
+let floor = null as any
+
+const { state: pState,nodes } = useGLTF(
     `${
         process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'
     }/model/floor/redTextFloor/scene.gltf`,
     { draco: true, decoderPath: './draco/' },
 )
-const isDev = process.env.NODE_ENV === 'development'
-const floor = nodes.Sketchfab_model.getObjectByName('floor_grid_07_-_Default_0')
+
+watch(
+    () => nodes.value,
+    (nodesValue) => {
+        if (!nodesValue) return
+        floor = nodesValue.Sketchfab_model.getObjectByName('floor_grid_07_-_Default_0')
+    }
+)
 
 const t3dConfig = {
     size: 16,

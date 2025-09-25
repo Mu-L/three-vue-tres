@@ -10,7 +10,7 @@
 import * as echarts from "echarts"
 import * as THREE from "three"
 import { createVNode, render } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 var xAxisData = [];
 var data1 = [];
@@ -85,8 +85,8 @@ const resetChart = () => {
 }
 resetChart()
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (!isFinished) {
 		chartTexture.needsUpdate = true
 	} else {

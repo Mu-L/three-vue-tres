@@ -9,10 +9,10 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { Html } from '@tresjs/cientos'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import * as echarts from 'echarts'
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 const state = reactive({
 	wrapperClass: 'chartDiv',
 	as: 'div',
@@ -44,8 +44,8 @@ const intChart = () => {
 }
 
 const htmlRef = ref(null as any)
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (htmlRef.value && !chart) {
 		intChart()
 	}

@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<{
 	use: true,
 })
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
 	threshold: 0,
 	strength: 0.472,    // 强度
@@ -61,15 +61,15 @@ watchEffect(() => {
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
 	if (props.use) {
 		if (effectComposer) {
 			effectComposer.render()
 		}
 	} else {
-		if (renderer.value && camera.value) {
-			renderer.value.render(scene.value, camera.value)
+		if (renderer && camera.value) {
+			renderer.render(scene.value, camera.value)
 		}
 	}
 

@@ -10,7 +10,7 @@
 import * as echarts from "echarts"
 import * as THREE from "three"
 import { createVNode, render } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const width = 1024
 const height = 768
@@ -58,11 +58,11 @@ pieChart.on('finished', () => {
 	chartTexture.needsUpdate = true
 })
 
-const { onLoop } = useRenderLoop()
+const { onRender } = useLoop()
 const dataLength = option.series[0].data.length
 let currentIndex = 0
 let deltaCount = 0
-onLoop(() => {
+onRender(() => {
 	if (isFinished && deltaCount++ % 60 === 0) {
 		pieChart.dispatchAction({
 			type: 'downplay',

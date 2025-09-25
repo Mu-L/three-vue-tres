@@ -7,7 +7,7 @@
  * @LastEditTime: 2025-03-17 15:17:52
 -->
 <template>
-    <TresGroup>
+    <TresGroup v-if="pState">
         <primitive :object="nodes.RootNode" :position-z="props.zRoom" :rotation-z="rotationZnum" />
         <primitive :object="nodes.RootNode.clone()" :position-z="-props.zRoom" :rotation-y="-Math.PI" :rotation-z="rotationZnum" />
 
@@ -29,9 +29,9 @@
 
 <script setup lang="ts">
 import { useGLTF, Text3D } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { Color } from 'three'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const props = withDefaults(
     defineProps<{
         textRotation?: Array<number>
@@ -51,20 +51,26 @@ const props = withDefaults(
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const { nodes } = await useGLTF('./plugins/UIdemo/model/arrowWhite2.5d.glb')
+const { state: pState, nodes } = useGLTF('./plugins/UIdemo/model/arrowWhite2.5d.glb') as any
 
-console.log(nodes.RootNode)
-nodes.RootNode.scale.set(props.arrScale[0], props.arrScale[1], props.arrScale[2]) //缩放
+watch(
+    () => nodes.value,
+    (nodes) => {
+        if (!nodes) return
+        console.log(nodes.RootNode.value)
+        nodes.RootNode.scale.set(props.arrScale[0], props.arrScale[1], props.arrScale[2]) //缩放
 
-nodes.RootNode.children[0].children[0].material.color = new Color(props.color)
-nodes.RootNode.children[0].children[0].material.emissive = new Color(props.color)
-nodes.RootNode.children[0].children[0].castShadow = true
-nodes.RootNode.children[0].children[0].roughness = 0
+        nodes.RootNode.children[0].children[0].material.color = new Color(props.color)
+        nodes.RootNode.children[0].children[0].material.emissive = new Color(props.color)
+        nodes.RootNode.children[0].children[0].castShadow = true
+        nodes.RootNode.children[0].children[0].roughness = 0
 
-nodes.RootNode.children[1].children[0].material.color = new Color(props.color)
-nodes.RootNode.children[1].children[0].material.emissive = new Color(props.color)
-nodes.RootNode.children[1].children[0].castShadow = true
-nodes.RootNode.children[1].children[0].roughness = 0
+        nodes.RootNode.children[1].children[0].material.color = new Color(props.color)
+        nodes.RootNode.children[1].children[0].material.emissive = new Color(props.color)
+        nodes.RootNode.children[1].children[0].castShadow = true
+        nodes.RootNode.children[1].children[0].roughness = 0
+    }
+)
 
 //关于字体的设置，请自行更改
 const t3dConfig = {
@@ -79,8 +85,8 @@ const t3dConfig = {
 }
 
 let rotationZnum = ref(0)
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onRender } = useLoop()
+onRender(({ delta }) => {
     rotationZnum.value += delta * 2
 })
 </script>

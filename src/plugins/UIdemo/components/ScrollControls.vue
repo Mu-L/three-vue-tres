@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLogger, useLoop, useTresContext } from '@tresjs/core'
+import { useLogger, useLoop, useTres } from '@tresjs/core'
 import { useScroll, useWindowScroll, useWindowSize } from '@vueuse/core'
 import { ref, shallowRef, watch } from 'vue'
 
@@ -70,7 +70,7 @@ const { logWarning } = useLogger()
 if (props.smoothScroll < 0) { logWarning('SmoothControl must be greater than zero') }
 if (props.pages < 0) { logWarning('Pages must be greater than zero') }
 
-const { camera, controls, renderer, invalidate } = useTresContext()
+const { camera, controls, renderer, invalidate } = useTres()
 
 watch(props, () => {
   invalidate()

@@ -13,7 +13,7 @@ import { useGLTF } from '@tresjs/cientos'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
 import { loadOBJ } from 'PLS/medical/common/util'
 import { makeSimMesh, makeTexture } from '../lib/utils'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import particalMesh from '../components/particalMesh.vue'
 import { ref } from 'vue'
 
@@ -91,14 +91,14 @@ const FBOscene = new THREE.Scene()
 const FBOcamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1 / Math.pow(2, 53), 1)
 FBOscene.add(simMesh)
 
-const { onBeforeLoop } = useRenderLoop()
-const { camera, renderer } = useTresContext()
-onBeforeLoop(({ elapsed }) => {
-    if (renderer.value && camera.value && pMesh.value) {
-        renderer.value.setRenderTarget(fboTarget)
-        renderer.value.clear()
-        renderer.value.render(FBOscene, FBOcamera as THREE.Camera)
-        renderer.value.setRenderTarget(null)
+const { onBeforeRender } = useLoop()
+const { camera, renderer } = useTres()
+onBeforeRender(({ elapsed }) => {
+    if (renderer && camera.value && pMesh.value) {
+        renderer.setRenderTarget(fboTarget)
+        renderer.clear()
+        renderer.render(FBOscene, FBOcamera as THREE.Camera)
+        renderer.setRenderTarget(null)
 
         if (props.progress < 1 / 2) {
             simMesh.material.uniforms.uTextureA.value = guanyuTexture

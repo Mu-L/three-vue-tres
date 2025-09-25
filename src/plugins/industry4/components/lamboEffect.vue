@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -19,7 +19,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { LUTPass } from 'three/examples/jsm/postprocessing/LUTPass.js'
 import { LUTCubeLoader } from 'three/examples/jsm/loaders/LUTCubeLoader.js'
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
     threshold: 0.666,
     strength: 0.366, // 强度
@@ -53,12 +53,12 @@ new LUTCubeLoader().load(
 
 watchEffect(() => {
     if (sizes.width.value) {
-        Effect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+        Effect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
     }
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     if (effectComposer) {
         effectComposer.render()
     }
