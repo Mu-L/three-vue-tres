@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, nextTick, useAttrs,onMounted } from 'vue'
+import { watch, ref, nextTick, useAttrs, onMounted } from 'vue'
 import { Html } from '@tresjs/cientos'
 import { getUUID } from 'PLS/goView/lib/utils/global'
 
@@ -89,33 +89,30 @@ watch(
 )
 
 onMounted(() => {
-     nextTick(() => {
+    nextTick(() => {
         setDomContent()
-     })
+    })
 })
 </script>
 <template>
-    <Html
-        wrapperClass="tvtDomPanelClass"
-        v-if="!mustReBuildDom"
-        :transform="transform"
-        :sprite="sprite"
-        :center="center"
-        :distanceFactor="transform ? distanceFactor : undefined"
-    >
-        <!-- <div class="childWrapper" v-html="domContent" @click="(event) => clickFun()" /> -->
-        <!-- <div class="childWrapper" v-html="domContent" /> -->
-        <div :id="domID" class="childWrapper" />
+    <Html wrapperClass="tvtDomPanelClass" v-if="!mustReBuildDom" :transform="transform" :sprite="sprite"
+        :center="center" :distanceFactor="transform ? distanceFactor : undefined">
+    <!-- <div class="childWrapper" v-html="domContent" @click="(event) => clickFun()" /> -->
+    <!-- <div class="childWrapper" v-html="domContent" /> -->
+    <div :id="domID" class="childWrapper" />
+
     </Html>
 </template>
 
 <style lang="less">
-.tvtDomPanelClass > div:first-of-type {
+.tvtDomPanelClass>div:first-of-type {
     position: relative !important;
 }
+
 .tvtDomPanelClass {
     user-select: none;
     pointer-events: none !important;
+
     #inner,
     .childWrapper {
         user-select: none;
