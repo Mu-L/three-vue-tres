@@ -57,7 +57,7 @@ const bloomPassEffect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, re
 
 watchEffect(() => {
 	if (sizes.width.value) {
-		bloomPassEffect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+		bloomPassEffect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
 	}
 })
 

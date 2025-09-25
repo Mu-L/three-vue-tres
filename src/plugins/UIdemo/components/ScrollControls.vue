@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLogger, useLoop, useTres } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import { useScroll, useWindowScroll, useWindowSize } from '@vueuse/core'
 import { ref, shallowRef, watch } from 'vue'
 
@@ -65,10 +65,8 @@ const props = withDefaults(
 
 const emit = defineEmits(['update:modelValue'])
 
-const { logWarning } = useLogger()
-
-if (props.smoothScroll < 0) { logWarning('SmoothControl must be greater than zero') }
-if (props.pages < 0) { logWarning('Pages must be greater than zero') }
+// if (props.smoothScroll < 0) { logWarning('SmoothControl must be greater than zero') }
+// if (props.pages < 0) { logWarning('Pages must be greater than zero') }
 
 const { camera, controls, renderer, invalidate } = useTres()
 
@@ -136,6 +134,7 @@ watch(containerX, (value) => {
 watch(
   renderer,
   (value) => {
+    debugger
 		const canvas = value?.domElement
     if (props.htmlScroll && value?.domElement) {
       // use window scroll only Y axis
@@ -186,7 +185,7 @@ watch(
     }
   },
   {
-    immediate: true,
+    deep: true,
   },
 )
 
