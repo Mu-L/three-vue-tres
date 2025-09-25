@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, nextTick, useAttrs } from 'vue'
+import { watch, ref, nextTick, useAttrs,onMounted } from 'vue'
 import { Html } from '@tresjs/cientos'
 import { getUUID } from 'PLS/goView/lib/utils/global'
 
@@ -32,10 +32,10 @@ const props = withDefaults(
 )
 const domID = props.domID ?? getUUID() // crypto.randomUUID()
 const mustReBuildDom = ref(false)
-const mustReBuildContent = ref(true)
+const mustReBuildContent = ref(false)
 watch(
     () => [props.transform, props.center, props.distanceFactor, props.domContent],
-    ([transform, center, distanceFactor, domContent]) => {
+    () => {
         if (!mustReBuildDom.value) {
             mustReBuildDom.value = true
             nextTick(() => {
@@ -69,33 +69,30 @@ watch(
     },
 )
 
-let isFirstRun = true
+const setDomContent = () => {
+    const dom = document.getElementById(domID)
+    if (dom) {
+        dom.innerHTML = props.domContent
+    }
+    updateVisible()
+}
 watch(
     () => mustReBuildContent.value,
     (mrbc) => {
         if (mrbc) {
             nextTick(() => {
-                const setDomContent = () => {
-                    const dom = document.getElementById(domID)
-                    if (dom) {
-                        dom.innerHTML = props.domContent
-                    }
-                    updateVisible()
-                }
-                if (isFirstRun) {
-                    setTimeout(() => {
-                        setDomContent()
-                    }, 800)
-                    isFirstRun = false
-                } else {
-                    setDomContent()
-                }
+                setDomContent()
                 mustReBuildContent.value = false
             })
         }
     },
-    { immediate: true },
 )
+
+onMounted(() => {
+     nextTick(() => {
+        setDomContent()
+     })
+})
 </script>
 <template>
     <Html

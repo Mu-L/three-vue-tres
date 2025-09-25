@@ -9,9 +9,10 @@
 <template></template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
 import * as THREE from 'three'
 import { useTres, useLoop } from '@tresjs/core'
-import { useTextures } from '@tresjs/cientos'
+import { useTexture } from '@tresjs/cientos'
 import * as ThreeMeshUI from '../../lib/three-mesh-ui.module.js'
 
 const rootBlock = new ThreeMeshUI.Block({
@@ -28,12 +29,23 @@ const rootBlock = new ThreeMeshUI.Block({
 rootBlock.position.set(0, -0.5 + 0.4, 1)
 rootBlock.rotation.x = -0.33
 
-const { textures: texture, isLoading } = useTextures(['./plugins/industry4/preview/showLambo.png'])
-rootBlock.set({
-    backgroundColor: new THREE.Color(0xffffff),
-    backgroundOpacity: 1,
-    backgroundImage: texture.value[0],
-})
+
+const { state: pTexture } = useTexture('./plugins/industry4/preview/showLambo.png')
+watch(
+    () => pTexture,
+    (mapv) => {
+        if (mapv.value) {
+            rootBlock.set({
+                backgroundColor: new THREE.Color(0xffffff),
+                backgroundOpacity: 1,
+                backgroundImage: mapv.value,
+            })
+        }
+    },
+    { deep: true }
+)
+
+
 
 // 实现 文字和背景同时双面显示
 rootBlock.backgroundMaterial.depthWrite = false

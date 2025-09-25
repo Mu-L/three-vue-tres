@@ -17,9 +17,7 @@
             <TresMeshNormalMaterial />
         </TresMesh>
         <basicStart />
-        <Suspense>
-            <imgBlock />
-        </Suspense>
+        <imgBlock />
     </TresCanvas>
 </template>
 
