@@ -7,7 +7,7 @@
  * @LastEditTime: 2024-03-13 20:49:29
 -->
 <template>
-	<pagesShow ref="pagesShowRef" :showBuildings="false">
+	<pagesShow :showBuildings="false">
 		<template v-slot:ability>
 			<buildingsModel v-if="buildingState.show && showbuildingsLines" :model="CityFBX"
 				:bulidingsColor="buildingState.bulidingsColor" :landColor="buildingState.landColor"
@@ -28,16 +28,9 @@ import buildingsLines from '../components/buildings/buildingsLines.vue';
 
 import pagesShow from '../components/pagesShow.vue'
 
-const pagesShowRef = ref()
 const showbuildingsLines = ref(false)
 const CityFBX = await loadCityFBX()
 showbuildingsLines.value = true
-
-// watchEffect(() => {
-// 	if (pagesShowRef.value) {
-// 		pagesShowRef.value.$refs.tcRef.value.context.value.scene.value.fog = true;
-// 	}
-// })
 
 onMounted(() => {
 	const paneControl = new Pane({

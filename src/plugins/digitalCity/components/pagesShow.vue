@@ -4,12 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-24 09:49:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 07:22:18
+ * @LastEditTime: 2025-09-26 09:24:09
 -->
 <template>
-    <TresCanvas ref="tcRef" v-bind="state" window-size>
-        <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[600, 750, -1221]" :fov="45" :near="1"
-            :far="100000" />
+    <TresCanvas ref="tcRef" v-bind="state" window-size @ready="onReady">
+        <TresPerspectiveCamera :position="[600, 750, -1221]" :fov="45" :near="1" :far="100000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
@@ -42,8 +41,7 @@ const props = withDefaults(
     },
 )
 import { SRGBColorSpace, BasicShadowMap, ACESFilmicToneMapping } from 'three'
-import { reactive, ref } from 'vue'
-import { } from '@tresjs/core'
+import { reactive, ref, onMounted } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 
 import { loadCityFBX } from '../common/loadCity'
@@ -63,10 +61,22 @@ const state = reactive({
 })
 const controlsState = reactive({ autoRotate: props.autoRotate, enableDamping: true })
 
-let cityFBX = null
-if (props.showBuildings) {
-    cityFBX = await loadCityFBX()
+let cityFBX = ref(null) as any
+const contextReady = ref(false)
+onMounted(async () => {
+    if (props.showBuildings) {
+        cityFBX.value = await loadCityFBX()
+        contextReady.value = true
+    }
+})
+const onReady = (context: any) => {
+    debugger
+    // 此版本 tres.js  5.0.2  onReady 事件不触发
+    // contextReady.value = true
 }
-const perspectiveCameraRef = ref()
 const tcRef = ref()
+defineExpose({
+    context: tcRef,
+    contextReady
+})
 </script>
