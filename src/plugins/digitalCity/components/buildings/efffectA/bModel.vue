@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 // import { CustomShaderMaterial } from '@tresjs/cientos'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 import { watchEffect, watch } from 'vue';
@@ -129,9 +129,9 @@ const setEffectMaterial = () => {
 }
 setEffectMaterial()
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
 	CITY_UNTRIANGULATED.material.uniforms.uTime.value += delta
 	// console.log(CITY_UNTRIANGULATED.material.uniforms.uTime.value)
 })

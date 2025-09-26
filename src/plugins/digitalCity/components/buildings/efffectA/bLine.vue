@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-17 09:35:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-18 18:19:05
+ * @LastEditTime: 2025-09-26 14:48:00
 -->
 <script setup lang="ts">
 import { Color, EdgesGeometry, ShaderMaterial, LineSegments } from 'three'
-import { useRenderLoop } from '@tresjs/core'
-import vertexShader from '../../../shaders/buildingsEfffectA.vert?raw'
-import fragmentShader from '../../../shaders/buildingsEfffectA.frag?raw'
+import { useLoop } from '@tresjs/core'
+import vertexShader from '../../../shaders/buildingsEfffectA.vert'
+import fragmentShader from '../../../shaders/buildingsEfffectA.frag'
 
 import { watchEffect } from 'vue'
 const props = withDefaults(
@@ -74,8 +74,8 @@ watchEffect(() => {
 		shader.uniforms.uGradual.value = props.gradual
 	}
 });
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
 	shader.uniforms.uTime.value += delta * props.speed
 	shader.uniforms.uTime.value %= 1
 })

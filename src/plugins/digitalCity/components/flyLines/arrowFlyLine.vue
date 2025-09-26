@@ -1,10 +1,19 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-10-12 08:13:50
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-26 15:08:56
+-->
 <template>
     <TresMesh :geometry="meshLine._geometry" :material="material" :render-order="99999" />
 </template>
 <script lang="ts" setup>
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
+import { useLoop } from '@tresjs/core'
 import { MeshLine, MeshLineMaterial } from './THREE.MeshLine.js'
 
 const props = withDefaults(
@@ -38,6 +47,17 @@ const imgList = [
     './plugins/digitalCity/image/flyLine4.png',
     './plugins/digitalCity/image/flyLine5.png',
 ]
+const { textures: pTexture, isLoading } = useTextures(imgList)
+watch([pTexture, isLoading], ([pTexture, isLoading]) => {
+    if (pTexture && !isLoading) {
+        pTexture.forEach((item) => {
+            item.anisotropy = 16
+            item.wrapS = THREE.RepeatWrapping
+            item.wrapT = THREE.RepeatWrapping
+        })
+        material.map = pTexture[props.style]
+    }
+})
 
 const vX = (props.linePoints[1][0] + props.linePoints[0][0]) / 2
 const vZ = (props.linePoints[1][2] + props.linePoints[0][2]) / 2
@@ -54,14 +74,9 @@ geo.setFromPoints(curve.getPoints(100))
 const meshLine = new MeshLine()
 meshLine.setGeometry(geo)
 
-const pTexture = await useTexture({ map: imgList[props.style] })
-pTexture.map.anisotropy = 16
-pTexture.map.wrapS = THREE.RepeatWrapping
-pTexture.map.wrapT = THREE.RepeatWrapping
-
 const material = new MeshLineMaterial({
     color: props.color,
-    map: pTexture.map,
+    map: null,
     useMap: true,
     lineWidth: props.lineWidth,
     resolution: new THREE.Vector2(100, 100),
@@ -78,9 +93,9 @@ const material = new MeshLineMaterial({
 
 material.depthWrite = false
 material.depthTest = true
-const { onLoop } = useRenderLoop()
 
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     material.uniforms.offset.value.x -= props.speed
 })
 

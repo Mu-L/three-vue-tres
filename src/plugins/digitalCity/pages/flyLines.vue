@@ -9,25 +9,16 @@
 <template>
     <pagesShow>
         <template v-slot:ability>
-            <Suspense>
-                <arrowFlyLine v-bind="lineState" :linePoints="[[500, 20, 500],[0, 20, 0],]" />
-            </Suspense>
+            <arrowFlyLine v-bind="lineState" :linePoints="[[500, 20, 500], [0, 20, 0],]" />
 
-            <Suspense>
-                <arrowFlyLine :style="0" :linePoints="[[-500, 20, -500],[0, 20, 0],]" />
-            </Suspense>
+            <arrowFlyLine :style="0" :linePoints="[[-500, 20, -500], [0, 20, 0],]" />
 
-            <Suspense>
-                <arrowFlyLine :style="2" :linePoints="[[500, 20, -500],[0, 20, 0],]" />
-            </Suspense>
+            <arrowFlyLine :style="2" :linePoints="[[500, 20, -500], [0, 20, 0],]" />
 
-            <Suspense>
-                <arrowFlyLine :style="3" :linePoints="[[-500, 20, 500],[0, 20, 0],]" :opacity="0.8" :lineWidth="10" />
-            </Suspense>
+            <arrowFlyLine :style="3" :linePoints="[[-500, 20, 500], [0, 20, 0],]" :opacity="0.8" :lineWidth="10" />
 
-						<Suspense>
-                <arrowFlyLine :style="4" :linePoints="[[200, 60, 600],[0, 20, 0],]" />
-            </Suspense>
+            <arrowFlyLine :style="4" :linePoints="[[200, 60, 600], [0, 20, 0],]" />
+
         </template>
     </pagesShow>
 </template>
@@ -42,7 +33,7 @@ const lineState = reactive({
     color: '#FFF',
     speed: 0.01,
     opacity: 1,
-		lineWidth: 40,
+    lineWidth: 40,
 })
 const paneControl = new Pane({
     title: '效果参数',

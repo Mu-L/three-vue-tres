@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:00:01
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-06 16:15:44
+ * @LastEditTime: 2025-09-26 15:10:19
 -->
 <template>
 	<pagesShow ref="pagesShowRef">
@@ -23,19 +23,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, reactive } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import { Pane } from 'tweakpane'
 import pagesShow from '../components/pagesShow.vue'
 import rippleMesh from '../components/fence/rippleMesh.vue'
 
-const pagesShowRef = ref()
-onMounted(() => {
-    nextTick(() => {
-        if (pagesShowRef.value) {
-            pagesShowRef.value.$refs.perspectiveCameraRef.position.set(580, 360, 500)
+const pagesShowRef = ref() as any
+watch(
+    () => pagesShowRef.value?.contextReady,
+    (newVal: any) => {
+        if (newVal) {
+            pagesShowRef.value.context.context.camera.activeCamera.value.position.set(880, 660, 800)
         }
-    })
-})
+    }
+)
 
 const typeState = reactive({
 	color: '#00ffdd',

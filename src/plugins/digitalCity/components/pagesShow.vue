@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-24 09:49:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 14:32:58
+ * @LastEditTime: 2025-09-26 14:38:04
 -->
 <template>
     <TresCanvas ref="tcRef" v-bind="state" window-size @ready="onReady">
@@ -59,7 +59,7 @@ const state = reactive({
     toneMappingExposure: 1.2,
     renderMode: props.disableRender ? 'manual' : 'always',
 })
-const controlsState = reactive({ autoRotate: props.autoRotate, enableDamping: true })
+const controlsState = { autoRotate: props.autoRotate, enableDamping: true, makeDefault: true }
 
 let cityFBX = ref(null) as any
 const contextReady = ref(false)

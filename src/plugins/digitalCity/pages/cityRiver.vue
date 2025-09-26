@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-11 11:20:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 14:33:50
+ * @LastEditTime: 2025-09-26 14:43:09
 -->
 <template>
     <pagesShow ref="pagesShowRef" :showAxesHelper="false" :showGridHelper="false" :showBuildings="false"
@@ -32,5 +32,12 @@ watch(
         }
     }
 )
-// pagesShowRef.value.$refs.perspectiveCameraRef.lookAt(0, 0, -2)
+watch(
+    () => pagesShowRef.value?.context.context.controls.value,
+    (newVal: any) => {
+        if (newVal) {
+            newVal.target.set(0, -1, 0)
+        }
+    }
+)
 </script>

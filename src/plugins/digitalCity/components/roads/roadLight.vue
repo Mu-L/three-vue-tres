@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-24 10:36:23
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-14 20:48:42
+ * @LastEditTime: 2025-09-26 14:57:09
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
-import { CatmullRomCurve3, Vector3, RepeatWrapping, BackSide, Color } from 'three'
+import { UseTexture } from '@tresjs/cientos'
+import { CatmullRomCurve3, Vector3, RepeatWrapping, BackSide, Color, Texture } from 'three'
 import { loadGeojson } from '../../common/utils'
 // import transformControlsDebug from '../../components/transformControlsDebug.vue'
 
@@ -30,11 +30,6 @@ const props = withDefaults(
 
 const tgRef = ref()
 const tmbmRef = ref()
-
-const { state: pTexture } = useTexture('./plugins/digitalCity/image/line.png')
-pTexture.value.needsUpdate = true
-pTexture.value.wrapS = pTexture.value.wrapT = RepeatWrapping
-pTexture.value.repeat.set(1, 1)
 
 // pTexture.rotation = Math.PI
 // pTexture.generateMipmaps = false
@@ -64,20 +59,30 @@ watchEffect(() => {
         }
     }
 })
-const { onRender } = useLoop()
-onRender(({ delta }: { delta: number }) => {
-    pTexture.value.offset.x -= (Math.random() / 20) * props.speed
+const { onBeforeRender } = useLoop()
+const ppTexture = ref<Texture>()
+onBeforeRender(() => {
+    if (ppTexture.value) {
+        ppTexture.value.offset.x -= (Math.random() / 20) * props.speed
+    }
 })
 
-//<!-- <transformControlsDebug :model="tgRef" /> -->
+const handleLoaded = (texture: Texture) => {
+    texture.wrapS = texture.wrapT = RepeatWrapping
+    texture.repeat.set(1, 1)
+    ppTexture.value = texture
+}
 
 </script>
 
 <template>
     <TresGroup ref="tgRef">
-        <TresMesh v-for="item in curve" :renderOrder="3000">
-            <TresTubeGeometry :args="[item, 64, props.radius, 20 /*管道圆润*/, false]" />
-            <TresMeshBasicMaterial ref="tmbmRef" :map="pTexture" :side="BackSide" :transparent="true" :color="props.color" />
-        </TresMesh>
+        <UseTexture v-slot="{ state: pTexture }" path="./plugins/digitalCity/image/line.png" @loaded="handleLoaded">
+            <TresMesh v-for="item in curve" :renderOrder="3000">
+                <TresTubeGeometry :args="[item, 64, props.radius, 20 /*管道圆润*/, false]" />
+                <TresMeshBasicMaterial ref="tmbmRef" :map="pTexture" :side="BackSide" :transparent="true"
+                    :color="props.color" />
+            </TresMesh>
+        </UseTexture>
     </TresGroup>
 </template>

@@ -4,22 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-15 11:01:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-30 09:57:52
+ * @LastEditTime: 2025-09-26 14:46:12
 -->
 
 <script setup lang="ts">
 import * as THREE from 'three'
 import { defineProps, watchEffect } from 'vue'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-// import { FXAAShader } from 'three/addons/shaders/FXAAShader'
-// import { SMAAPass } from 'three/addons/postprocessing/SMAAPass' // 锯齿修正
-import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader' //颜色修正
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
 
-import vertexShader from '../../shaders/buildingsPassA.vert?raw'
-import fragmentShader from '../../shaders/buildingsPassA.frag?raw'
+import vertexShader from '../../shaders/buildingsPassA.vert'
+import fragmentShader from '../../shaders/buildingsPassA.frag'
 
 const props = withDefaults(
     defineProps<{
@@ -40,13 +38,13 @@ const props = withDefaults(
     },
 )
 
-const { renderer, scene, camera, sizes } = useTresContext()
+const { renderer, scene, camera, sizes } = useTres()
 let width,
     height = 0
 let effectComposer = null as any
 let shaderPass = null as any
 const initEffectComposer = () => {
-    effectComposer = new EffectComposer(renderer.value)
+    effectComposer = new EffectComposer(renderer)
     const depthTexture = new THREE.DepthTexture(width, height)
     effectComposer.readBuffer.depthBuffer = true
     effectComposer.readBuffer.depthTexture = depthTexture
@@ -88,7 +86,7 @@ const initEffectComposer = () => {
 
     // 两种抗锯齿的方法 都闪烁
     //SMAAPass 抗锯齿
-    // const pixelRatio = renderer.value.getPixelRatio()
+    // const pixelRatio = renderer.getPixelRatio()
     // const smaaPass = new SMAAPass(width * pixelRatio, height * pixelRatio)
     // effectComposer.addPass(smaaPass)
 
@@ -105,8 +103,8 @@ watchEffect(() => {
     }
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (effectComposer) {
         effectComposer.render()
         shaderPass.uniforms.time.value += props.speed / 60
