@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-27 16:43:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-28 15:48:30
+ * @LastEditTime: 2025-09-26 11:22:42
 -->
 <script setup lang="ts">
-import { watch, watchEffect } from 'vue'
+import { watch, watchEffect, ref,toRaw } from 'vue'
 import { useLoop } from '@tresjs/core'
 import { useTexture } from '@tresjs/cientos'
 import { useTres } from '@tresjs/core'
@@ -49,20 +49,24 @@ const props = withDefaults(
 
 const { state: map } = useTexture('./plugins/digitalCity/image/cloud.png')
 
-const clouds = new Clouds({ texture: map.value })
-
+const clouds = ref<any>(null)
 const cloud0 = new Cloud({ color: new THREE.Color(props.color) })
-clouds.add(cloud0)
-
 const cloud1 = new Cloud({ color: new THREE.Color('pink') })
 cloud1.position.set(20, 0, 10)
-clouds.add(cloud1)
 
 const { camera } = useTres()
 const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta, elapsed }: { delta: number; elapsed: number }) => {
-    clouds.update(camera.value, elapsed, delta)
+    clouds.value?.update(camera.value, elapsed, delta)
 })
+watch(
+    () => map.value,
+    (mapv) => {
+        clouds.value = new Clouds({ texture: mapv })
+        clouds.value.add(cloud0)
+        clouds.value.add(cloud1)
+    },
+)
 watch(
     () => props.color,
     (value) => {
@@ -101,5 +105,5 @@ watchEffect(() => {
 </script>
 
 <template>
-    <primitive :object="clouds" :renderOrder="3000" />
+    <primitive v-if="clouds" :object="toRaw(clouds)" :renderOrder="3000" />
 </template>

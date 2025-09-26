@@ -4,14 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-28 10:04:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-06 16:49:13
+ * @LastEditTime: 2025-09-26 11:05:22
 -->
 <template>
 	<pagesShow>
 		<template v-slot:ability>
-			<Suspense>
 				<cloudMesh />
-			</Suspense>
 		</template>
 	</pagesShow>
 </template>

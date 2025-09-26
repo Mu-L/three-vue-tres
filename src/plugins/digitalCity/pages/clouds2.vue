@@ -10,9 +10,7 @@
     <pagesShow>
         <template v-slot:ability>
             <TresDirectionalLight :position="[200, 100, 0]" :intensity="1.5" color="#ffffff" />
-            <Suspense>
-                <cloudsMesh :position="[10, 200, 0]" :scale="20" v-bind="cmConfig" />
-            </Suspense>
+            <cloudsMesh :position="[10, 200, 0]" :scale="20" v-bind="cmConfig" />
         </template>
     </pagesShow>
 </template>
