@@ -86,10 +86,10 @@ const setEffectMaterial = () => {
 }
 setEffectMaterial()
 
-const { onRender } = useLoop()
+const { onBeforeRender } = useLoop()
 
-onRender(({ delta }) => {
-	timeDelta.value += delta*10;
+onBeforeRender(({ delta }) => {
+	timeDelta.value += delta;
 })
 watchEffect(() => {
 	if (props.bulidingsColor) {

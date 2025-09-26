@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-23 15:48:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 07:48:29
+ * @LastEditTime: 2025-09-26 08:15:51
 -->
 <script setup lang="ts">
 import { ref, watch, defineExpose, watchEffect } from 'vue';
@@ -29,11 +29,11 @@ const props = withDefaults(
 	},
 )
 
-const { onRender } = useLoop()
+const { onBeforeRender } = useLoop()
 const timeDelta = { value: 0 }
 const TresCircleGeometryRef = ref()
-onRender(({ delta }) => {
-	timeDelta.value += delta*10;
+onBeforeRender(({ delta }) => {
+	timeDelta.value += delta;
 })
 const shader = {
 	transparent: true,

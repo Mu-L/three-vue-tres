@@ -4,15 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-17 15:53:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-17 16:41:55
+ * @LastEditTime: 2025-09-26 08:11:21
 -->
 <template>
     <loading></loading>
     <pagesShow ref="pagesShowRef">
         <template v-slot:ability>
-            <Suspense>
                 <diffuseCircle :position="[0, 20, 0]" v-bind="cmConfig" />
-            </Suspense>
         </template>
     </pagesShow>
 </template>
@@ -40,7 +38,7 @@ const pagesShowRef = shallowRef(null)
 watchEffect(() => {
     if (pagesShowRef.value) {
         if (pagesShowRef.value.$refs.tcRef) {
-            pagesShowRef.value.$refs.tcRef.context.camera.value.position.set(-135, 250, 320)
+            pagesShowRef.value.$refs.tcRef.context.camera.activeCamera.value.position.set(-135, 250, 320)
         } else {
             if (pagesShowRef.value.$refs.perspectiveCameraRef) {
                 pagesShowRef.value.$refs.perspectiveCameraRef.position.set(-135, 250, 320)

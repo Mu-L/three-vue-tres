@@ -103,10 +103,10 @@ watchEffect(() => {
 		shader.uniforms.uColor.value = new Color(props.color)
 	}
 })
-const { onRender } = useLoop()
+const { onBeforeRender } = useLoop()
 const timeDelta = { value: 0 }
-onRender(({ delta }) => {
-	timeDelta.value += delta*10;
+onBeforeRender(({ delta }) => {
+	timeDelta.value += delta;
 	const rate = (timeDelta.value % props.period) / props.period
 
 	const currRadius = rate * (props.maxRadius - props.radius) + props.radius

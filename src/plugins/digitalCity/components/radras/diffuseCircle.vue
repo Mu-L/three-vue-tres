@@ -70,8 +70,8 @@ const curScale = ref(0)
 const opacity = ref(1)
 
 // --- 新写法 useLoop ---
-const { onRender } = useLoop()
-onRender(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (curScale.value > 1) {
         curScale.value = 0
     }
