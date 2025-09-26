@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-17 15:29:48
+ * @LastEditTime: 2025-09-26 15:18:23
 -->
 <template>
     <TresMesh :renderOrder="2200" ref="tresMeshRef">
@@ -162,8 +162,8 @@ const { centerPoint, points } = getcenterPoint(props.positionSrc)
 
 getRippleGeometry(points, props.height)
 
-const { onRender } = useLoop()
-onRender(({ delta }: { delta: number }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }: { delta: number }) => {
     rippleShader.uniforms.uTime.value += delta
 })
 watchEffect(() => {

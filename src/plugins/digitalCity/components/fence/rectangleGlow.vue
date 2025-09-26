@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-04 08:50:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-04 10:46:38
+ * @LastEditTime: 2025-09-26 15:22:46
 -->
 <template>
     <TresGroup :renderOrder="9999" >
-        <TresMesh  :rotation="[Math.PI / 2, 0, 0]">
+        <TresMesh :rotation="[Math.PI / 2, 0, 0]">
             <TresPlaneGeometry :args="[w, h]" />
             <TresShaderMaterial v-bind="pShader" />
         </TresMesh>

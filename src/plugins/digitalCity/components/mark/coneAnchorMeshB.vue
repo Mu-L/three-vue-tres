@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-19 19:07:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-05-15 17:28:34
+ * @LastEditTime: 2025-09-26 15:51:50
 -->
 <template>
     <TresGroup>
@@ -12,16 +12,8 @@
             <primitive :object="modelScene" />
             <TresMesh>
                 <TresCircleGeometry :args="[floorSize, 32]" />
-                <TresMeshStandardMaterial
-                    :color="floorColor"
-                    :metalness="0.0"
-                    :roughness="0.6"
-                    transparent
-                    :opacity="0.8"
-                    :depthTest="props.depthTest"
-                    :depthWrite="false"
-                    :map="pTexture.value"
-                />
+                <TresMeshStandardMaterial :color="floorColor" :metalness="0.0" :roughness="0.6" transparent
+                    :opacity="0.8" :depthTest="props.depthTest" :depthWrite="false" :map="pTexture" />
             </TresMesh>
         </TresGroup>
     </TresGroup>
@@ -31,8 +23,7 @@
 import { ref, watch } from 'vue'
 import * as THREE from 'three'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF, useTexture } from 'PLS/basic'
 
 const props = withDefaults(
     defineProps<{
@@ -55,9 +46,9 @@ const props = withDefaults(
 
 
 
-const { state: pState } = useGLTF('./plugins/digitalCity/model/coneAnchorB.glb', { draco: true, decoderPath: './draco/' })
+const { scene } = await useGLTF('./plugins/digitalCity/model/coneAnchorB.glb')
 
-const modelScene = pState.value?.scene?.clone()
+const modelScene = scene?.clone()
 const modelMaterial = modelScene.children[0].material.clone()
 modelMaterial.color.set(props.anchorColor)
 modelMaterial.metalness = 0.0
@@ -68,8 +59,8 @@ modelMaterial.depthTest = props.depthTest
 modelScene.children[0].renderOrder = 0
 modelScene.children[0].material = modelMaterial
 
-const { state: pTexture } = useTexture('./plugins/digitalCity/image/waveCircle.png')
-const { width, height } = pTexture.value.image
+const pTexture = await useTexture('./plugins/digitalCity/image/waveCircle.png')
+const { width, height } = pTexture.image
 pTexture.wrapS = pTexture.wrapT = THREE.RepeatWrapping
 pTexture.repeat.set(1 / (width / height), 1)
 
@@ -86,9 +77,9 @@ const { onRender } = useLoop()
 let _offset = 0
 onRender(() => {
     coneGroup.value?.children[0].rotateZ(props.rotateSpeed)
-    if (pTexture.value) {
+    if (pTexture) {
         _offset += props.floorSpeed
-        pTexture.value.offset.x = Math.floor(_offset) / (pTexture.value.image.width / pTexture.value.image.height)
+        pTexture.offset.x = Math.floor(_offset) / (pTexture.image.width / pTexture.image.height)
     }
 })
 </script>

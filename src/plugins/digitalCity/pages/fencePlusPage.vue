@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-08-07 09:05:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-07 17:30:20
+ * @LastEditTime: 2025-09-26 15:16:18
 -->
 <template>
     <pagesShow ref="pagesShowRef">
@@ -15,20 +15,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, reactive } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import { Pane } from 'tweakpane'
 import pagesShow from '../components/pagesShow.vue'
 import fencePlus from '../components/fence/fencePlus.vue'
 
-const pagesShowRef = ref()
-onMounted(() => {
-    nextTick(() => {
-        if (pagesShowRef.value) {
-            pagesShowRef.value.$refs.perspectiveCameraRef.position.set(580, 360, 500)
+const pagesShowRef = ref() as any
+watch(
+    () => pagesShowRef.value?.contextReady,
+    (newVal: any) => {
+        if (newVal) {
+            pagesShowRef.value.context.context.camera.activeCamera.value.position.set(880, 660, 800)
         }
-    })
-})
-
+    }
+)
 const typeState = reactive({
     width: 100,
     height: 100,

@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import HolographicMaterial from '../../common/HolographicMaterial'
 import { resetUV } from '../../common/utils'
 import { Color, DoubleSide, AdditiveBlending } from 'three'
@@ -81,8 +81,8 @@ const setImportantBuilds = () => {
 }
 setImportantBuilds()
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	holoMaterial.update()
 	shzx.material.update()
 	jmds.material.update()

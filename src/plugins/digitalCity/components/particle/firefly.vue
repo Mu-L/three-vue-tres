@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-17 14:45:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-17 16:11:21
+ * @LastEditTime: 2025-09-26 15:59:44
 -->
 <template>
     <TresGroup>
@@ -16,7 +16,7 @@
 import * as THREE from 'three'
 import * as TQK from 'three.quarks'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
+import { useTexture } from 'PLS/basic'
 
 const props = withDefaults(
     defineProps<{
@@ -30,7 +30,7 @@ const props = withDefaults(
 )
 
 const batchSystem = new TQK.BatchedRenderer()
-const texture = await useTexture(['./plugins/basic/shine/image/round.png'])
+const texture = await useTexture('./plugins/basic/shine/image/round.png')
 
 const muzzle = {
     duration: 100,
@@ -75,8 +75,8 @@ batchSystem.addSystem(muzzle1)
 
 batchSystem.rotateX(-Math.PI / 2)
 
-const { onRender } = useLoop()
-onRender(({ delta }: { delta: number }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }: { delta: number }) => {
     batchSystem.update(delta)
 })
 </script>

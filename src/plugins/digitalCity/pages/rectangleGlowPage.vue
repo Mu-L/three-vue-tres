@@ -4,15 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-04 08:49:20
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-04 10:46:59
+ * @LastEditTime: 2025-09-26 15:23:02
 -->
 <template>
     <pagesShow ref="pagesShowRef">
         <template v-slot:ability>
-            <rectangleGlow :renderOrder="9998" :position="[93, 28, 28]" lColor="#ff0000" />
-						
+            <rectangleGlow :renderOrder="9998" :position="[93, 28, 28]" :w="100" :h="100" lColor="#ff0000" />
+
             <rectangleGlow :position-y="58" v-bind="rectangleState" />
-</template>
+        </template>
     </pagesShow>
 </template>
 

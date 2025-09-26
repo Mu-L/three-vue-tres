@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 11:27:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-06 09:24:46
+ * @LastEditTime: 2025-09-26 16:17:31
  */
 
 import Environment from './components/forCientos/useEnvironment/component.vue'
@@ -18,6 +18,8 @@ import meshReflectionMaterial from './components/forCientos/meshReflectionMateri
 import CubeCamera from './components/forCientos/CubeCamera/index.vue'
 import { CientosShaderMaterial } from './components/forCientos/ShaderMaterial/index.ts'
 import ClearcoatMaterial from './components/forCientos/ClearcoatMaterial/index.vue'
+import { useGLTF, useTexture } from './components/forCientos/ComV3/utils'
+import { useTexture as useTextures } from './components/forCientos/ComV3/useTexture.ts'
 
 export {
     Environment,
@@ -31,4 +33,7 @@ export {
     CubeCamera,
     CientosShaderMaterial,
     ClearcoatMaterial,
+    useGLTF,
+    useTexture,
+    useTextures
 }

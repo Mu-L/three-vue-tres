@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-02 10:15:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-08 16:57:14
+ * @LastEditTime: 2025-09-26 15:17:03
 -->
 <template>
     <TresMesh :renderOrder="2000" :geometry="geometriesMesh">
@@ -170,8 +170,8 @@ function createRectFrameGeometryWithUV(width: number, depth: number, height: num
 
 geometriesMesh = createRectFrameGeometryWithUV(props.width, props.depth, props.height)
 
-const { onRender } = useLoop()
-onRender(({ delta }: { delta: number }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }: { delta: number }) => {
     rippleShader.uniforms.time.value += delta
 })
 

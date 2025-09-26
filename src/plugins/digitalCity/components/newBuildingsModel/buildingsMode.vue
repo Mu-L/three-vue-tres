@@ -4,19 +4,17 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-02 10:55:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 11:25:43
+ * @LastEditTime: 2025-09-26 16:11:25
 -->
 <template>
-	<Suspense>
-		<primitive v-if="group" :object="group" :position="[1, 0, 1]" cast-shadow receive-shadow />
-	</Suspense>
-	<importantBuildings v-if="group" :group="group" />
+	<primitive v-if="group" :object="toRaw(group)" :position="[1, 0, 1]" />
+	<importantBuildings v-if="group" :group="toRaw(group)" />
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch,toRaw } from 'vue'
 import { useLoop } from '@tresjs/core'
-import { Group, Color, DoubleSide, Mesh, EdgesGeometry,MeshStandardMaterial } from 'three'
+import { Group, Color, DoubleSide, Mesh, EdgesGeometry, MeshStandardMaterial } from 'three'
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2.js'
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
 import { LineSegmentsGeometry } from 'three/examples/jsm/lines/LineSegmentsGeometry.js'
@@ -29,38 +27,40 @@ import importantBuildings from './importantBuildings.vue'
 
 initMeshBvh()
 const { state: pState } = useGLTF(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/digitalCity/shanghaiDraco/shanghaiDraco.gltf',
-    { draco: true, decoderPath: './draco/' },
+	(process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/digitalCity/shanghaiDraco/shanghaiDraco.gltf',
+	{ draco: true, decoderPath: './draco/' },
 )
 
 const group = ref<Group | null>(null)
 
 watch(
-    () => pState.value,
-    (state) => {
-        if (!state?.scene) return
-        group.value = state.scene.clone() as Group
-        // 原有的遍历和材质设置逻辑
-        group.value.traverse(async (mesh: any) => {
-            mesh as Mesh
-            if (mesh.isMesh && (mesh.name.indexOf('Shanghai') !== -1 || mesh.name.indexOf('Object') !== -1)) {
-                if (mesh.name.indexOf('Floor') !== -1) {
-                    //设置成地板材质
-                    // mesh.material.color = new Color('#ff0')
-                } else if (mesh.name.indexOf('River') !== -1) {
-                    //替换水的材质
-                    const waterm = await setThreeWater2(mesh)
-                    waterm.position.set(0, 0, 1800)
-                    mesh.add(waterm)
-                } else {
-                    setEffectMaterial(mesh)
-                    setBuildsLine(mesh)
-                    // mesh.castShadow = true
-                    // mesh.receiveShadow = true
-                }
-            }
-        })
-    },
+	() => pState.value,
+	(state) => {
+		if (!state?.scene) return
+		group.value = state.scene.clone() as Group
+
+		// 原有的遍历和材质设置逻辑
+		group.value.traverse(async (mesh: any) => {
+			mesh as Mesh
+			if (mesh.isMesh && (mesh.name.indexOf('Shanghai') !== -1 || mesh.name.indexOf('Object') !== -1)) {
+				if (mesh.name.indexOf('Floor') !== -1) {
+					//设置成地板材质
+					// mesh.material.color = new Color('#ff0')
+				} else if (mesh.name.indexOf('River') !== -1) {
+
+					//替换水的材质
+					const waterm = await setThreeWater2(toRaw(mesh))
+					waterm.position.set(0, 0, 1800)
+					mesh.add(waterm)
+				} else {
+					setEffectMaterial(toRaw(mesh))
+					setBuildsLine(toRaw(mesh))
+					// mesh.castShadow = true
+					// mesh.receiveShadow = true
+				}
+			}
+		})
+	},
 )
 const timeDelta = ref(0)
 const setEffectMaterial = (mesh) => {
@@ -120,28 +120,10 @@ const setBuildsLine = (mesh) => {
 	edgesmaterial.resolution.set(window.innerWidth, window.innerHeight)
 	mesh.add(new LineSegments2(wideEdges, edgesmaterial))
 }
-group.traverse(async (mesh: any) => {
-	mesh as Mesh
-	if (mesh.isMesh && (mesh.name.indexOf('Shanghai') !== -1 || mesh.name.indexOf('Object') !== -1)) {
-		if (mesh.name.indexOf('Floor') !== -1) {
-			//设置成地板材质
-			// mesh.material.color = new Color('#ff0')
-		} else if (mesh.name.indexOf('River') !== -1) {
-			//替换水的材质
-			const waterm = await setThreeWater2(mesh)
-			waterm.position.set(0, 0, 1800)
-			mesh.add(waterm)
-		} else {
-			setEffectMaterial(mesh)
-			setBuildsLine(mesh)
-			// mesh.castShadow = true
-			// mesh.receiveShadow = true
-		}
-	}
-})
 
-const { onRender } = useLoop()
-onRender(({ delta }) => {
+
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
 	timeDelta.value += delta
 })
 

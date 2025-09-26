@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-26 10:13:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-08-19 20:19:44
+ * @LastEditTime: 2025-09-26 15:56:47
 -->
 <template>
     <pagesShow ref="pagesShowRef">
@@ -13,15 +13,16 @@
                 <coneAnchorMeshB :position="[60, 19, 0]" :scale="6" v-bind="configState" />
             </Suspense>
 
-						<Suspense>
-                <coneAnchorMeshB :position="[319, 19, 119]" :scale="3" anchorColor="#ffffff" floorColor="#ffffff" :depthTest="false" />
+            <Suspense>
+                <coneAnchorMeshB :position="[319, 19, 119]" :scale="3" anchorColor="#ffffff" floorColor="#ffffff"
+                    :depthTest="false" />
             </Suspense>
 
-						<Suspense>
+            <Suspense>
                 <coneAnchorMeshB :position="[-319, 19, 619]" :scale="5" anchorColor="#ff0000" floorColor="#ffff00" />
             </Suspense>
 
-						<Suspense>
+            <Suspense>
                 <coneAnchorMeshB :position="[-319, 19, -619]" :scale="8" anchorColor="#ffff00" floorColor="#ffff00" />
             </Suspense>
         </template>
