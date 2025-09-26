@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-17 08:30:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 16:29:48
+ * @LastEditTime: 2025-09-26 09:47:40
 -->
 <template>
 	<loading></loading>
@@ -18,21 +18,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, reactive, toRefs } from 'vue'
+import { ref, watch, reactive, toRefs } from 'vue'
 import { Pane } from 'tweakpane'
 import loading from 'PLS/UIdemo/components/loading/default.vue'
 import pagesShow from '../components/pagesShow.vue'
 import precipitation from '../components/weather/precipitation.vue'
 // import smokes from '../components/weather/smokes.vue';
 
-const pagesShowRef = ref()
-onMounted(() => {
-    nextTick(() => {
-        if (pagesShowRef.value) {
-            pagesShowRef.value.$refs.perspectiveCameraRef.position.set(750, 500, 800)
-        }
-    })
-})
+const pagesShowRef = ref() as any
+
+watch(
+	() => pagesShowRef.value?.contextReady,
+	(newVal: any) => {
+		if (newVal) {
+			pagesShowRef.value.context.context.camera.activeCamera.value.position.set(750, 500, 800)
+		}
+	}
+)
+
 const precipitationState = reactive({
 	speed: 12,
 	size: 10,

@@ -1,5 +1,13 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-03-22 11:14:44
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-26 09:50:18
+-->
 <script setup lang="ts">
-import {  watch } from 'vue'
+import { watch } from 'vue'
 import { Precipitation } from '@tresjs/cientos'
 import * as THREE from 'three'
 
@@ -56,15 +64,16 @@ const preloadTextures = async () => {
 	console.log('✅ 所有图片预加载完成:', Object.keys(textureCache))
 }
 const getTexture = (key: keyof typeof imgList) => {
-  return textureCache[key]
+	return textureCache[key]
 }
 await preloadTextures()
-
+debugger
 let curRexture = null
 watch(
 	() => props.type,
 	(nv, ov) => {
 		if (nv !== ov) {
+			debugger
 			curRexture = getTexture(nv)
 		}
 	},

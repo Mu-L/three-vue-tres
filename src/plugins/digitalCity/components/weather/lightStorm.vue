@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { LightningStorm } from '../../common/lightningStorm/LightningStorm'
 import { watchEffect } from 'vue'
 
@@ -107,8 +107,8 @@ watchEffect(() => {
     rayParams.timeScale = props.timeScale
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     storm.update(elapsed)
 })
 </script>

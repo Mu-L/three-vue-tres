@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<{
 	opacity: 0.9,
 	gradient: true
 })
-const timeDelta = ref(0)
 const CITY_UNTRIANGULATED = props.model.city
 //props.model.model.children[0].material = new THREE.MeshBasicMaterial({ color: '#ffff00' })
 
@@ -70,7 +69,9 @@ const setEffectMaterial = () => {
 			uTopColor: {
 				value: new THREE.Color(props.topColor)
 			},
-			uTime: timeDelta,
+			uTime: {
+				value: 0
+			},
 			uGradient: {
 				value: props.gradient
 			}
@@ -89,7 +90,7 @@ setEffectMaterial()
 const { onBeforeRender } = useLoop()
 
 onBeforeRender(({ delta }) => {
-	timeDelta.value += delta;
+	CITY_UNTRIANGULATED.material.uniforms.uTime.value += delta;
 })
 watchEffect(() => {
 	if (props.bulidingsColor) {

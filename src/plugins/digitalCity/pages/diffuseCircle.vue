@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-17 15:53:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 09:27:18
+ * @LastEditTime: 2025-09-26 09:45:16
 -->
 <template>
     <loading></loading>
@@ -42,6 +42,6 @@ watch(
         if (newVal) {
             pagesShowRef.value.context.context.camera.activeCamera.value.position.set(-135, 250, 320)
         }
-    }, { immediate: true }
+    }
 )
 </script>

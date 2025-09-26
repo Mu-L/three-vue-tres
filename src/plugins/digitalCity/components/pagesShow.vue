@@ -12,7 +12,7 @@
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
-        <template v-if="props.showBuildings && cityFBX">
+        <template v-if="props.showBuildings && contextReady">
             <buildingsModel :model="cityFBX" />
             <buildingsLines :builds="cityFBX.city" color="#000" />
         </template>
