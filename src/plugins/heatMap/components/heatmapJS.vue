@@ -12,13 +12,11 @@ import { DoubleSide, Texture } from 'three'
 import h337 from 'heatmap.js-fix'
 const props = withDefaults(
 	defineProps<{
-		position?: Array<number>
 		Plane?: Array<number>
 		show2dCanvas?: boolean
 		heightRatio?: number
 	}>(),
 	{
-		position: [0, 0, 0],
 		Plane: [50, 50, 1000, 1000],
 		show2dCanvas: true,
 		heightRatio: 6
@@ -115,7 +113,7 @@ defineExpose({
 // }
 </script>
 <template>
-	<TresMesh :position="props.position">
+	<TresMesh>
 		<!-- @pointer-move="onPointerMove" -->
 		<!-- <BoxGeometry :args="[50, 10, 50]"></BoxGeometry> -->
 		<TresPlaneGeometry :args="props.Plane" :rotate-x="-Math.PI * 0.5" />

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-09 09:33:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-13 19:57:41
+ * @LastEditTime: 2025-09-26 14:21:51
 -->
 <script setup lang="ts">
 import { initHeatmap, setData, getData } from 'PLS/heatMap/common/utils'
@@ -112,8 +112,8 @@ const onPointerLeave = (ev) => {
 </script>
 
 <template>
-	<primitive :object="meshObj" :rotation-x="-Math.PI / 2" @pointer-move="onPointerMove" @pointer-enter="onPointerEnter"
-		@pointer-leave="onPointerLeave" />
+	<primitive :object="meshObj" :rotation-x="-Math.PI / 2" @pointermove="onPointerMove" @pointerenter="onPointerEnter"
+		@pointerleave="onPointerLeave" />
 	<!-- 道路 -->
 	<primitive :object="props.model.model.children[0].clone()" />
 </template>
