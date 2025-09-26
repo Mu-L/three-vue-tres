@@ -1,5 +1,13 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2023-11-28 16:54:50
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-26 13:39:41
+-->
 <script setup lang="ts">
-import { watchEffect } from 'vue'
+import { watch, watchEffect, useAttrs } from 'vue'
 import { useTexture } from '@tresjs/cientos'
 import { useLoop } from '@tresjs/core'
 import { Vector4, Color, Matrix4, Vector3, DoubleSide } from 'three'
@@ -21,10 +29,8 @@ const props = withDefaults(
   }
 )
 
-// ---------- 纹理加载 (cientos v4) ----------
 const { state: fireTex } = useTexture('./plugins/digitalCity/image/fire.png')
-
-// ---------- Shader 材质 ----------
+const attrs = useAttrs()
 const fireShader = {
   defines: {
     ITERATIONS: '20',
@@ -32,8 +38,8 @@ const fireShader = {
   },
   uniforms: {
     fireScale: { value: props.fireScale },
-    offsetPositin: { value: 0 },
-    fireTex: { value: null }, // 先占位，纹理加载后赋值
+    offsetPositin: { value: attrs.position },
+    fireTex: { value: null },
     color: { value: new Color(0xffffff) },
     time: { value: 0.0 },
     seed: { value: Math.random() * 19.19 },
@@ -52,32 +58,38 @@ const fireShader = {
   side: DoubleSide,
 }
 
-// ---------- 纹理加载完成后赋值 ----------
-watchEffect(() => {
-  if (fireTex.value) {
-    fireShader.uniforms.fireTex.value = fireTex.value
+watch(
+  () => fireTex.value,
+  (mapv) => {
+    if (!mapv) return
+    fireShader.uniforms.fireTex.value = mapv
   }
-})
+)
 
-// ---------- 渲染循环 ----------
-const { onRender } = useLoop()
-onRender(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
   fireShader.uniforms.time.value += 0.01
 })
 
-// ---------- props 变化监听 ----------
 watchEffect(() => {
-  if (props.fireScale !== undefined) fireShader.uniforms.fireScale.value = props.fireScale
-  if (props.magnitude !== undefined) fireShader.uniforms.magnitude.value = props.magnitude
-  if (props.lacunarity !== undefined) fireShader.uniforms.lacunarity.value = props.lacunarity
-  if (props.gain !== undefined) fireShader.uniforms.gain.value = props.gain
+  if (props.fireScale) {
+    fireShader.uniforms.fireScale.value = props.fireScale
+  }
+  if (props.magnitude) {
+    fireShader.uniforms.magnitude.value = props.magnitude
+  }
+  if (props.lacunarity) {
+    fireShader.uniforms.lacunarity.value = props.lacunarity
+  }
+  if (props.gain) {
+    fireShader.uniforms.gain.value = props.gain
+  }
 })
 </script>
 
 <template>
-  <TresMesh :position="[100, 19, 0]" :renderOrder="9999">
+  <TresMesh :scale="props.fireScale" :renderOrder="9999">
     <TresSphereGeometry :args="[1, 32, 16]" />
-    <!-- <TresBoxGeometry :args="[1, 1, 1]" /> -->
     <TresShaderMaterial v-bind="fireShader" />
   </TresMesh>
 </template>

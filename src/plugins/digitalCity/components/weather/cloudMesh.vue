@@ -7,7 +7,7 @@
  * @LastEditTime: 2025-09-26 11:12:54
 -->
 <script setup lang="ts">
-import { watch,ref,toRaw } from 'vue'
+import { watch, ref, toRaw } from 'vue'
 import { useTexture } from '@tresjs/cientos'
 import { useLoop } from '@tresjs/core'
 import * as THREE from 'three'
@@ -85,7 +85,7 @@ const { onBeforeRender } = useLoop()
 
 onBeforeRender(({ delta }) => {
   if (particleGroup) {
-  particleGroup.tick(delta)
+    particleGroup.tick(delta)
   }
 })
 </script>

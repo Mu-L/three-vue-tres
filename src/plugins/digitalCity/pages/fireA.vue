@@ -4,22 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-28 10:04:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 16:26:44
+ * @LastEditTime: 2025-09-26 13:38:11
 -->
 <template>
     <loading></loading>
     <pagesShow ref="pagesShowRef">
         <template v-slot:ability>
-            <Suspense>
-                <fireA v-bind="fireAState" :position="[200, 19, 120]" />
-            </Suspense>
+            <fireA v-bind="fireAState" :position="[200, 19, 120]" />
         </template>
     </pagesShow>
 </template>
 
 <script setup lang="ts">
 import { Pane } from 'tweakpane'
-import { ref, reactive, watchEffect } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import loading from 'PLS/UIdemo/components/loading/default.vue'
 import pagesShow from '../components/pagesShow.vue'
 import fireA from '../components/fire/fireA.vue'
@@ -59,16 +57,14 @@ paneControl.addBinding(fireAState, 'gain', {
     step: 0.1,
 })
 
-const pagesShowRef = ref()
-watchEffect(() => {
-    if (pagesShowRef.value) {
-        if (pagesShowRef.value.$refs.tcRef) {
-            pagesShowRef.value.$refs.tcRef.context.camera.value.position.set(580, 360, 500)
-        } else {
-            if (pagesShowRef.value.$refs.perspectiveCameraRef) {
-                pagesShowRef.value.$refs.perspectiveCameraRef.position.set(580, 360, 500)
-            }
+const pagesShowRef = ref() as any
+
+watch(
+    () => pagesShowRef.value?.contextReady,
+    (newVal: any) => {
+        if (newVal) {
+            pagesShowRef.value.context.context.camera.activeCamera.value.position.set(580, 360, 500)
         }
     }
-})
+)
 </script>
