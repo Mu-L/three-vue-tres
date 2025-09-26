@@ -9,9 +9,7 @@
 <template>
     <pagesShow>
         <template v-slot:ability>
-            <Suspense>
-                <fireD :position="[10, 15, 0]" />
-            </Suspense>
+            <fireD :position="[10, 15, 0]" />
         </template>
     </pagesShow>
 </template>

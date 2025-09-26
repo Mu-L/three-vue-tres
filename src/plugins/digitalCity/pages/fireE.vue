@@ -8,11 +8,9 @@
 -->
 <template>
 	<pagesShow>
-			<template v-slot:ability>
-					<Suspense>
-							<fireE :position="[30, 50, 0]" :scale="50" :renderOrder="3000" />
-					</Suspense>
-			</template>
+		<template v-slot:ability>
+			<fireE :position="[30, 50, 0]" :scale="50" :renderOrder="3000" />
+		</template>
 	</pagesShow>
 </template>
 

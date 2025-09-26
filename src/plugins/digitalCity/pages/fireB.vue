@@ -10,9 +10,7 @@
 <template>
 	<pagesShow>
 		<template v-slot:ability>
-			<Suspense>
-				<fireB :position="[-130, 26, 20]" />
-			</Suspense>
+			<fireB :position="[-130, 26, 20]" />
 		</template>
 	</pagesShow>
 </template>

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-20 11:35:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 15:11:05
+ * @LastEditTime: 2025-09-26 14:01:21
 -->
 <template>
     <TresMesh ref="sprite">
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 
 const vertexShaderCode = `
 varying vec2 vUv;
@@ -190,28 +190,20 @@ const tsMaterialConfig = {
 }
 
 const sprite = ref(null) as any
-const { camera } = useTresContext()
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ elapsed }) => {
+const { camera } = useTres()
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     if (sprite.value && camera.value) {
-        // sprite.value.quaternion.copy(camera.value.quaternion)
         sprite.value.lookAt(camera?.value?.position)
 
-        // 计算摄像机的方向向量
         const cameraDirection = new THREE.Vector3()
         camera.value.getWorldDirection(cameraDirection) // 获取摄像机的面向方向（单位向量）
 
-        // 计算mesh的方向向量
         const meshDirection = new THREE.Vector3()
         sprite.value.getWorldDirection(meshDirection) // 获取mesh的面向方向（单位向量）
 
-        // 计算两个向量之间的夹角（弧度）
-        // const angleRadians = meshDirection.angleTo(cameraDirection)
-        // console.log(cameraDirection)
         tsMaterialConfig.uniforms.iMouse.value.x = cameraDirection.x * 100
         tsMaterialConfig.uniforms.iMouse.value.y = -cameraDirection.y * 100
-        // // 将弧度转换为度数（可选）
-        // const angleDegrees = THREE.MathUtils.radToDeg(angleRadians)
     }
     tsMaterialConfig.uniforms.iTime.value = elapsed
 })

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-22 15:53:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-13 18:38:44
+ * @LastEditTime: 2025-09-26 13:53:58
 -->
 <template>
     <primitive :object="FlameSpriteAnimator.group" :renderOrder="9999" />
@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { SpriteAnimator } from '@pmndrs/vanilla'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const FlameSpriteAnimator = SpriteAnimator({
     startFrame: 0,
@@ -32,8 +32,8 @@ FlameSpriteAnimator.group.children[0].material.map.colorSpace = THREE.SRGBColorS
 // FlameSpriteAnimator.group.children[0].material.blending = THREE.NormalBlending
 // FlameSpriteAnimator.group.children[0].material.color.setHex(0xff0000)
 FlameSpriteAnimator.group.children[0].geometry.translate(0, 0.344, 0) // 偏移
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     FlameSpriteAnimator.update()
 })
 </script>

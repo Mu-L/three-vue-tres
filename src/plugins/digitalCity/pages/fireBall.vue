@@ -4,15 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-19 16:26:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-19 16:26:55
+ * @LastEditTime: 2025-09-26 14:11:33
 -->
 
 <template>
 	<pagesShow>
 		<template v-slot:ability>
-			<Suspense>
-				<fireBall />
-			</Suspense>
+			<fireBall />
 		</template>
 	</pagesShow>
 </template>

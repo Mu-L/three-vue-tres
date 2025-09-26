@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-03 15:24:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-03 16:03:22
+ * @LastEditTime: 2025-09-26 14:09:49
 -->
 <template></template>
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import * as Photons from '../../common/photons.module.js'
 
 const props = withDefaults(defineProps<{
@@ -26,7 +26,7 @@ const jsonTypeStore = new Photons.JSONTypeStore()
 jsonTypeStore.addNamespace('THREE', THREE)
 jsonTypeStore.addNamespace('Photons', Photons)
 
-const { renderer, camera, scene } = useTresContext()
+const { renderer, camera, scene } = useTres()
 const setupEmbers = (scale: number, position: THREE.Vector3) => {
     const embersRoot = new THREE.Object3D()
     embersRoot.position.copy(position)
@@ -37,7 +37,7 @@ const setupEmbers = (scale: number, position: THREE.Vector3) => {
     embersAtlas.addFrameSet(1, 0.0, 0.0, 1.0, 1.0)
     const embersRenderer = new Photons.AnimatedSpriteRenderer(true, embersAtlas, true, THREE.AdditiveBlending)
 
-    const embersParticleSystem = new Photons.ParticleSystem(embersRoot, embersRenderer, renderer.value)
+    const embersParticleSystem = new Photons.ParticleSystem(embersRoot, embersRenderer, renderer)
     embersParticleSystem.init(150)
 
     embersParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(6))
@@ -112,7 +112,7 @@ const setupBaseFlame = (scale: number, position: THREE.Vector3) => {
     baseFlameAtlas.addFrameSet(18, 0.0, 0.0, 128.0 / 1024.0, 128.0 / 512.0)
     const baseFlameRenderer = new Photons.AnimatedSpriteRenderer(true, baseFlameAtlas, true)
 
-    const baseFlameParticleSystem = new Photons.ParticleSystem(baseFlameRoot, baseFlameRenderer, renderer.value)
+    const baseFlameParticleSystem = new Photons.ParticleSystem(baseFlameRoot, baseFlameRenderer, renderer)
     baseFlameParticleSystem.init(50)
 
     baseFlameParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(10))
@@ -197,7 +197,7 @@ const setupBrightFLame = (scale: number, position: THREE.Vector3) => {
     brightFlameAtlas.addFrameSet(16, 0.0, 0.0, 212.0 / 1024.0, 256.0 / 1024.0)
     const brightFlameRenderer = new Photons.AnimatedSpriteRenderer(true, brightFlameAtlas, true)
 
-    const brightFlameParticleSystem = new Photons.ParticleSystem(brightFlameRoot, brightFlameRenderer, renderer.value)
+    const brightFlameParticleSystem = new Photons.ParticleSystem(brightFlameRoot, brightFlameRenderer, renderer)
     brightFlameParticleSystem.init(20)
 
     brightFlameParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(5))
@@ -290,9 +290,9 @@ PhotonsManager.addParticleSystem(setupBaseFlame(props.scale, flamePosition2))
 PhotonsManager.addParticleSystem(setupBrightFLame(props.scale, flamePosition2))
 PhotonsManager.addComponent(setupLights(flamePosition2, 100))
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     PhotonsManager.update()
-    PhotonsManager.render(renderer.value, camera.value)
+    PhotonsManager.render(renderer, camera.value)
 })
 </script>
