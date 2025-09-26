@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-15 09:23:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-15 10:48:38
+ * @LastEditTime: 2025-09-26 10:05:51
 -->
 <template>
     <TresShaderMaterial v-bind="tsMaterialConfig" />
@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import vertexShader from './shaders/tornado/vertex.glsl'
 import fragmentShader from './shaders/tornado/fragment.glsl'
 
@@ -67,9 +67,9 @@ const tsMaterialConfig = {
     depthTest: true,
 }
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
     tsMaterialConfig.uniforms.uTime.value += delta
 })
 

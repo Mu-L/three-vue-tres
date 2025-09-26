@@ -2,8 +2,9 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
-import { useLoader } from '@tresjs/core'
+import { useLoader } from './TresV3useLoader'
 import { ref, reactive } from 'vue'
 
 const loaderMapping: { [key: string]: any } = {
@@ -11,6 +12,7 @@ const loaderMapping: { [key: string]: any } = {
     TextureLoader: THREE.TextureLoader,
     STLLoader: STLLoader,
     RGBELoader: RGBELoader,
+    FBXLoader: FBXLoader,
     FileLoader: THREE.FileLoader,
 }
 
