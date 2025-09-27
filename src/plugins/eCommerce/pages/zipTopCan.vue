@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 09:32:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-30 12:18:58
+ * @LastEditTime: 2025-09-27 12:46:38
 -->
 
 <template>
@@ -25,11 +25,13 @@
         />
         <TresAmbientLight :intensity="0.5" />
 
-        <background />
+        <TresGroup @click="onClick">
+            <background ref="bgRef"/>
 
-        <Suspense>
-            <model />
-        </Suspense>
+            <Suspense>
+                <model ref="modelRef" />
+            </Suspense>
+        </TresGroup>
 
         <Suspense>
             <Environment files="./plugins/eCommerce/platz.hdr" />
@@ -38,10 +40,10 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import * as THREE from 'three'
-import { OrbitControls } from '@tresjs/cientos'
-import { Environment } from 'PLS/basic'
+import { OrbitControls,Environment } from '@tresjs/cientos'
 import background from '../components/zipTopCan/background.vue'
 import model from '../components/zipTopCan/model.vue'
 
@@ -52,5 +54,14 @@ const tcConfig = {
     toneMappingExposure: 0.8,
     shadows: true,
     outputColorSpace: THREE.SRGBColorSpace,
+}
+
+const bgRef = ref()
+const modelRef = ref()
+
+function onClick(ev: any) {
+    console.log('outGroup', ev)
+    bgRef.value?.onClick(ev)
+    modelRef.value?.onClick(ev)
 }
 </script>

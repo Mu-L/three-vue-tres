@@ -1,4 +1,4 @@
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { useLoader } from 'PLS/basic'
 import { CubeReflectionMapping, CubeTextureLoader, EquirectangularReflectionMapping } from 'three'
 import { RGBELoader } from 'three-stdlib'
@@ -26,7 +26,11 @@ import type { EnvironmentOptions } from './const'
 
 const PRESET_ROOT = 'https://raw.githubusercontent.com/Tresjs/assets/main/textures/hdr/'
 export async function useEnvironment(options: Partial<EnvironmentOptions>, fbo: Ref<WebGLCubeRenderTarget | null>): Promise<Ref<Texture | CubeTexture | null>> {
-    const { scene } = useTresContext()
+    const { scene, invalidate } = useTres()
+
+    watch(options, () => {
+        invalidate()
+    })
 
     const { preset, blur, files = ref([]), path = ref(''), background } = toRefs(options)
 
@@ -62,6 +66,7 @@ export async function useEnvironment(options: Partial<EnvironmentOptions>, fbo: 
                 if (texture.value) {
                     texture.value.mapping = isCubeMap.value ? CubeReflectionMapping : EquirectangularReflectionMapping
                 }
+                invalidate()
             }
         },
         {

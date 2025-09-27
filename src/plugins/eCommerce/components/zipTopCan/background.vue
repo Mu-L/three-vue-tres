@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 09:45:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-30 11:36:56
+ * @LastEditTime: 2025-09-27 12:45:14
 -->
 
 <template>
-    <TresMesh @click="onClick">
+    <TresMesh>
         <TresPlaneGeometry :args="[sizes.width.value / 50, sizes.height.value / 50]" />
         <TresShaderMaterial v-bind="tsMaterialConfig" />
     </TresMesh>
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTresContext, useLoop } from '@tresjs/core'
 const { sizes } = useTresContext()
 import { noise } from './Noise'
 import { gsap } from 'gsap'
@@ -78,27 +78,28 @@ const tsMaterialConfig = {
     }
 		`,
 }
-function onClick(ev: any) {
-    if (ev && ev.object && ev.object.material) {
-        if (++colorIndex >= colors.length) {
-            colorIndex = 0
-        }
-        console.log('colorIndex', colorIndex)
-        ev.object.material.uniforms.u_color.value = new THREE.Color(colors[colorIndex])
-        const uprogress = ev.object.material.uniforms.u_progress
-        gsap.killTweensOf(uprogress)
-        uprogress.value = 0
-        gsap.to(uprogress, {
-            duration: 2,
-            ease: 'power1.out',
-            value: 1,
-        })
+function onClick() {
+    if (++colorIndex >= colors.length) {
+        colorIndex = 0
     }
+    console.log('backgroud colorIndex', colorIndex)
+    tsMaterialConfig.uniforms.u_color.value = new THREE.Color(colors[colorIndex])
+    const uprogress = tsMaterialConfig.uniforms.u_progress
+    gsap.killTweensOf(uprogress)
+    uprogress.value = 0
+    gsap.to(uprogress, {
+        duration: 5,
+        ease: 'power1.out',
+        value: 1,
+    })
 }
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     if (tsMaterialConfig) {
         tsMaterialConfig.uniforms.u_time.value = elapsed
     }
+})
+defineExpose({
+    onClick
 })
 </script>

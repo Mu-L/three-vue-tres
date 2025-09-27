@@ -4,13 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 11:24:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 15:41:02
+ * @LastEditTime: 2025-09-27 12:50:45
 -->
 <template>
-    <TresMesh :visible="false" @click="onClick">
-        <TresPlaneGeometry :args="[sizes.width.value / 50, sizes.height.value / 50]" />
-    </TresMesh>
-    <TresGroup :rotation="[-Math.PI / 2, 1.7, Math.PI / 2]" :position="[0, tgpY, 5]">
+    <TresGroup v-if="contextReady" :rotation="[-Math.PI / 2, 1.7, Math.PI / 2]" :position="[0, tgpY, 5]">
         <TresGroup :rotation="[-Math.PI / 2, 0, 0]">
             <TresMesh :geometry="nodes.LowRes_Can_Alluminium_0.geometry" :material="materials.Alluminium" />
             <TresMesh :geometry="nodes.LowRes_Can_Body_0.geometry" :material="materials.Body" />
@@ -19,55 +16,43 @@
 </template>
 
 <script setup lang="ts">
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF } from 'PLS/basic'
 import { noise } from './Noise'
 import { gsap } from 'gsap'
 import * as THREE from 'three'
 import { colors } from './colors'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
-const { sizes } = useTresContext()
-import { ref } from 'vue'
+import { useLoop } from '@tresjs/core'
+import { ref, onMounted } from 'vue'
 
-// @ts-ignore
-const { nodes, materials } = await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/energy-can.glb', {
-    draco: true,
-    decoderPath: './draco/',
-})
+let nodes: any, materials: any
+const contextReady = ref(false)
+onMounted(async () => {
+    const { nodes: n, materials: m } = await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/energy-can.glb')
+    nodes = n
+    materials = m
 
-const uniforms = {
-    u_time: { value: 0 },
-    u_color1: { value: new THREE.Color(colors[0]) },
-    u_color2: { value: new THREE.Color(colors[1]) },
-    u_progress: { value: 0.5 },
-    u_width: { value: 0.8 },
-    u_scaleX: { value: 50 },
-    u_scaleY: { value: 50 },
-    u_textureSize: {
-        value: new THREE.Vector2(materials.Body.map.source.data.width, materials.Body.map.source.data.height),
-    },
-}
-materials.Body.metalness = 0
-materials.Body.roughness = 1
-materials.Body.onBeforeCompile = (shader: any) => {
-    shader.uniforms = Object.assign(shader.uniforms, uniforms)
-    shader.vertexShader = shader.vertexShader.replace(
-        `#include <common>`,
-        `
+    materials.Body.metalness = 0
+    materials.Body.roughness = 1
+    materials.Body.onBeforeCompile = (shader: any) => {
+        shader.uniforms = Object.assign(shader.uniforms, uniforms)
+        shader.vertexShader = shader.vertexShader.replace(
+            `#include <common>`,
+            `
           #include <common>
           varying vec2 vUv;
         `,
-    )
+        )
 
-    shader.vertexShader = shader.vertexShader.replace(
-        '#include <begin_vertex>',
-        `
+        shader.vertexShader = shader.vertexShader.replace(
+            '#include <begin_vertex>',
+            `
           #include <begin_vertex>
           vUv = uv;
         `,
-    )
-    shader.fragmentShader = shader.fragmentShader.replace(
-        `#include <common>`,
-        `
+        )
+        shader.fragmentShader = shader.fragmentShader.replace(
+            `#include <common>`,
+            `
           #include <common>
           uniform float u_time;
           uniform vec3 u_color1;
@@ -83,11 +68,11 @@ materials.Body.onBeforeCompile = (shader: any) => {
             return pow( 4. * x * ( 1. - x ), k );
           }
       `,
-    )
+        )
 
-    shader.fragmentShader = shader.fragmentShader.replace(
-        `#include <color_fragment>`,
-        `
+        shader.fragmentShader = shader.fragmentShader.replace(
+            `#include <color_fragment>`,
+            `
           #include <color_fragment>
             float aspect = u_textureSize.x/u_textureSize.y;
             float dt = parabola(u_progress,1.);
@@ -99,37 +84,55 @@ materials.Body.onBeforeCompile = (shader: any) => {
             float mask = smoothstep(border,border+0.01,maskValue);
             diffuseColor.rgb += mix(u_color1,u_color2,mask);
         `,
-    )
+        )
+    }
+
+    uniforms.u_textureSize.value = new THREE.Vector2(materials.Body.map.source.data.width, materials.Body.map.source.data.height)
+    contextReady.value = true
+})
+
+const uniforms = {
+    u_time: { value: 0 },
+    u_color1: { value: new THREE.Color(colors[0]) },
+    u_color2: { value: new THREE.Color(colors[1]) },
+    u_progress: { value: 0.5 },
+    u_width: { value: 0.8 },
+    u_scaleX: { value: 50 },
+    u_scaleY: { value: 50 },
+    u_textureSize: {
+        value: new THREE.Vector2(0, 0),
+    },
 }
 let colorIndex = 0
-function onClick(ev: any) {
-    if (ev && ev.object && ev.object.material) {
-        if (++colorIndex >= colors.length) {
-            colorIndex = 0
-        }
-        console.log('model colorIndex', colorIndex)
-        let nextTexture = new THREE.Color(colors[colorIndex])
-        uniforms.u_color2.value = nextTexture
-
-        const uprogress = uniforms.u_progress
-        gsap.killTweensOf(uprogress)
-        uprogress.value = 0.5
-        gsap.to(uprogress, {
-            duration: 1,
-            ease: 'power1.out',
-            value: 1,
-            onComplete: () => {
-                uniforms.u_color1.value = nextTexture
-            },
-        })
+function onClick() {
+    if (++colorIndex >= colors.length) {
+        colorIndex = 0
     }
-    ev.stopPropagation()
+    console.log('model colorIndex', colorIndex)
+    let nextTexture = new THREE.Color(colors[colorIndex])
+    uniforms.u_color2.value = nextTexture
+
+    const uprogress = uniforms.u_progress
+    gsap.killTweensOf(uprogress)
+    uprogress.value = 0.5
+    gsap.to(uprogress, {
+        duration: 1,
+        ease: 'power1.out',
+        value: 1,
+        onComplete: () => {
+            uniforms.u_color1.value = nextTexture
+        },
+    })
 }
 
 let tgpY = ref(0)
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     tgpY.value = Math.sin(elapsed) * 0.12
     uniforms.u_time.value = elapsed
+})
+
+defineExpose({
+    onClick
 })
 </script>
