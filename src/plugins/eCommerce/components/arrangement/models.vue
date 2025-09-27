@@ -4,15 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-16 09:39:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-26 11:24:12
+ * @LastEditTime: 2025-09-27 12:06:14
 -->
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF } from 'PLS/basic'
 import { Center, TransmissionMaterial, Caustics } from 'PLS/basic'
 import { AccumulativeShadows } from 'PLS/projectionShadow'
 import { Pane } from 'tweakpane'
-import { reactive } from 'vue'
+import { reactive, toRaw } from 'vue'
 
 const innerMaterial = new THREE.MeshStandardMaterial({
     transparent: true,
@@ -25,7 +25,11 @@ const innerMaterial = new THREE.MeshStandardMaterial({
     polygonOffsetFactor: 1,
     envMapIntensity: 0.6,
 })
-const { nodes, materials } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'  }/model/eCommerce/glass-transformed.glb`, { draco: true, decoderPath: './draco/' })
+const { nodes, materials } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/glass-transformed.glb`)
+const materialFork = toRaw(materials.ForkAndKnivesSet001_1K)
+const materialForkCopy = new THREE.MeshStandardMaterial()
+materialForkCopy.copy(materialFork)
+materialForkCopy.color = new THREE.Color('#999')
 
 const shadowState = {
     opacity: 0.8,
@@ -175,22 +179,27 @@ paneControl2.addBinding(causticsState, 'lightSource', {
     y: { min: -1, max: 1 },
     z: { min: -1, max: 1 },
 })
+
 </script>
 
 <template>
     <TresGroup :position="[0, -0.5, 0]" :rotation="[0, -0.75, 0]">
-        <TresMesh :geometry="nodes.cake.geometry" :rotation="[0, -0.5, 0]" :cast-shadow="true" :material="materials.FruitCakeSlice_u1_v1" />
+        <TresMesh :geometry="nodes.cake.geometry" :rotation="[0, -0.5, 0]" :cast-shadow="true"
+            :material="toRaw(materials.FruitCakeSlice_u1_v1)" />
 
         <TresMesh :geometry="nodes.straw_1.geometry" castShadow :material="materials.straw_2" />
         <TresMesh :geometry="nodes.straw_2.geometry" castShadow :material="materials.straw_1" />
-        <TresMesh :geometry="nodes.straw001_1.geometry" :position="[0, -0.005, 0]" :cast-shadow="true" :material="materials.straw_2" />
-        <TresMesh :geometry="nodes.straw001_2.geometry" :position="[0, -0.005, 0]" :cast-shadow="true" :material="materials.straw_1" />
+        <TresMesh :geometry="nodes.straw001_1.geometry" :position="[0, -0.005, 0]" :cast-shadow="true"
+            :material="materials.straw_2" />
+        <TresMesh :geometry="nodes.straw001_2.geometry" :position="[0, -0.005, 0]" :cast-shadow="true"
+            :material="materials.straw_1" />
 
         <Center top :rotation="[0, -0.4, 0]" :position="[-1, -0.01, -2]">
-            <TresMesh :geometry="nodes.flowers.geometry" castShadow :material="materials['draifrawer_u1_v1.001']" :scale="1.2" />
+            <TresMesh :geometry="nodes.flowers.geometry" castShadow :material="materials['draifrawer_u1_v1.001']"
+                :scale="1.2" />
         </Center>
 
-        <TresMesh castShadow :geometry="nodes.fork.geometry" :material="materials.ForkAndKnivesSet001_1K" material-color="#999" />
+        <TresMesh castShadow :geometry="toRaw(nodes.fork.geometry)" :material="materialForkCopy" />
 
         <Caustics v-bind="causticsState">
             <TresMesh castShadow receiveShadow :geometry="nodes.glass.geometry">

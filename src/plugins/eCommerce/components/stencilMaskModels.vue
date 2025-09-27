@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-04 16:02:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:07:54
+ * @LastEditTime: 2025-09-27 11:13:57
 -->
 <template>
 	<TresMesh name="front-face" :position="[0, 0, 0.5]">
@@ -14,7 +14,7 @@
 />
 	</TresMesh>
 	<Levioso :speed="2">
-		<primitive :rotation-z="-Math.PI / 2" :object="nodes.Sketchfab_model" :position="[0, -0.35, 0]" :scale="0.5">
+		<primitive :rotation-z="-Math.PI / 2" :object="toRaw(nodes.Sketchfab_model)" :position="[0, -0.35, 0]" :scale="0.5">
 		</primitive>
 	</Levioso>
 
@@ -50,7 +50,7 @@
 />
 	</TresMesh>
 	<Levioso :speed="2">
-		<primitive :object="macBook" :rotation-y="-Math.PI / 2" :position="[-0.1, -0.2, 0]" :scale="0.02">
+		<primitive :object="toRaw(macBook)" :rotation-y="-Math.PI / 2" :position="[-0.1, -0.2, 0]" :scale="0.02">
 		</primitive>
 	</Levioso>
 
@@ -80,8 +80,10 @@
 </template>
 
 <script setup>
+import { toRaw } from 'vue'
 import { AlwaysStencilFunc, EqualStencilFunc, ReplaceStencilOp, Mesh } from 'three'
-import { useGLTF, useAnimations, Levioso } from "@tresjs/cientos"
+import { useAnimations, Levioso } from "@tresjs/cientos"
+import { useGLTF } from 'PLS/basic'
 
 const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/eFan/nFan.gltf`)
 

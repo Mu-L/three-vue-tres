@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-04 15:40:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-02-04 16:13:37
+ * @LastEditTime: 2025-09-27 11:12:17
 -->
 
 <script setup lang="ts">
-import { useGLTF } from "@tresjs/cientos"
+import { useGLTF } from 'PLS/basic'
 import { FrontSide } from 'three'
 
 const { nodes } = await useGLTF('./plugins/eCommerce/model/box.glb')
@@ -21,6 +21,5 @@ showModel.material.side = FrontSide
 </script>
 
 <template>
-	<primitive :position="[0, 0, 0]" :object="showModel?.clone()" :scale="0.5">
-	</primitive>
+	<primitive :position="[0, 0, 0]" :object="showModel?.clone()" :scale="0.5" />
 </template>

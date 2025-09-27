@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-26 08:13:26
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:08:18
+ * @LastEditTime: 2025-09-27 11:18:24
 -->
 <template>
     <Suspense>
@@ -35,13 +35,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Environment, Lightformer } from 'PLS/basic'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const isDev = process.env.NODE_ENV === 'development'
 
 const refgroup = ref(null)
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (refgroup.value) {
         refgroup.value.rotation.z += delta
     }

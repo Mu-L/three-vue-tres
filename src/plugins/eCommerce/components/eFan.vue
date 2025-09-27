@@ -4,11 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-16 09:39:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-01-17 09:56:24
+ * @LastEditTime: 2025-09-27 10:57:14
 -->
 <script setup lang="ts">
-import { watch, ref, provide } from "vue"
-import { Levioso, ContactShadows, useGLTF, useAnimations } from "@tresjs/cientos"
+import { watch, ref, provide,toRaw } from "vue"
+import { Levioso, ContactShadows, useAnimations } from "@tresjs/cientos"
+import { useGLTF } from 'PLS/basic'
 import svgCom from "./svg.vue"
 
 const props = defineProps({
@@ -18,9 +19,10 @@ const props = defineProps({
 	},
 })
 
-const { nodes, materials, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/eFan/nFan.gltf`)
+const { nodes, animations } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/eCommerce/eFan/nFan.gltf`)
+const Sketchfab_model = toRaw(nodes.Sketchfab_model)
 
-const modelAttUVarr = (name) => nodes.Sketchfab_model.getObjectByName(name).geometry.attributes.uv.array
+const modelAttUVarr = (name) => Sketchfab_model.getObjectByName(name).geometry.attributes.uv.array
 //备份原始UV值
 const srcUVslist = {
 	'Object_4': new Float32Array(modelAttUVarr('Object_4')),
@@ -40,13 +42,13 @@ const setColorUV = (color) => {
 		for (let i = 0; i < modelAttUVarr(key).length; i++) {
 			modelAttUVarr(key)[i] = value[i] + colorList[color]
 		}
-		nodes.Sketchfab_model.getObjectByName(key).geometry.getAttribute('uv').needsUpdate = true
+		Sketchfab_model.getObjectByName(key).geometry.getAttribute('uv').needsUpdate = true
 	}
 
 }
 
-const switcherModel = nodes.Sketchfab_model.getObjectByName('Object_6001')
-const { actions } = useAnimations(animations, nodes.Sketchfab_model)
+const switcherModel = Sketchfab_model.getObjectByName('Object_6001')
+const { actions } = useAnimations(animations, Sketchfab_model)
 const currentAction = actions.Animation
 // currentAction.play()
 const animationPlay = ref(true)
@@ -76,8 +78,8 @@ watch(
 
 <template>
 	<Levioso :range="[-0.5, -0.5]" :speed="2">
-		<primitive :position="[-2, 0, 0]" :object="nodes.Sketchfab_model" :scale="3.0">
-			<svgCom :model="nodes.Sketchfab_model" />
+		<primitive :position="[-2, 0, 0]" :object="Sketchfab_model" :scale="3.0">
+			<svgCom :model="Sketchfab_model" />
 		</primitive>
 	</Levioso>
 	<ContactShadows :opacity="0.3" :blur="2.6" :position="[0, -2, 0]" />

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-25 10:20:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-26 09:34:26
+ * @LastEditTime: 2025-09-27 12:07:27
 -->
 
 <template>
@@ -12,7 +12,7 @@
     <TresCanvas v-bind="tcConfig">
         <TresPerspectiveCamera :position="[2, 1.6, 6]" :fov="45" :near="0.1" :far="1000" :lookAt="[0, 0, 0]" />
         <OrbitControls enableDamping />
-
+        <!-- <TresAmbientLight :intensity="10" /> -->
         <Suspense>
             <models />
         </Suspense>
@@ -29,7 +29,7 @@ import env from '../components/arrangement/env.vue'
 import models from '../components/arrangement/models.vue'
 
 const tcConfig = {
-    clearColor: '#fffffff',
+    clearColor: '#ffffff',
     windowSize: true,
     toneMapping: THREE.ACESFilmicToneMapping,
     toneMappingExposure: 0.8,

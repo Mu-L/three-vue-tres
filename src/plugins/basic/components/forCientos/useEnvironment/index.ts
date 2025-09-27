@@ -1,4 +1,5 @@
-import { useLoader, useTresContext } from '@tresjs/core'
+import { useTresContext } from '@tresjs/core'
+import { useLoader } from 'PLS/basic'
 import { CubeReflectionMapping, CubeTextureLoader, EquirectangularReflectionMapping } from 'three'
 import { RGBELoader } from 'three-stdlib'
 import { computed, ref, toRefs, unref, watch } from 'vue'
@@ -25,13 +26,9 @@ import type { EnvironmentOptions } from './const'
 
 const PRESET_ROOT = 'https://raw.githubusercontent.com/Tresjs/assets/main/textures/hdr/'
 export async function useEnvironment(options: Partial<EnvironmentOptions>, fbo: Ref<WebGLCubeRenderTarget | null>): Promise<Ref<Texture | CubeTexture | null>> {
-    const { scene, invalidate } = useTresContext()
+    const { scene } = useTresContext()
 
     const { preset, blur, files = ref([]), path = ref(''), background } = toRefs(options)
-
-    watch(options, () => {
-        invalidate()
-    })
 
     const texture: Ref<Texture | CubeTexture | null> = ref(null)
     const isCubeMap = computed(() => Array.isArray((files as Ref<string[]>).value))

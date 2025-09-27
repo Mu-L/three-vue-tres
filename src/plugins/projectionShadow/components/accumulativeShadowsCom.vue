@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-18 11:23:10
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-19 11:24:33
+ * @LastEditTime: 2025-09-27 11:28:09
 -->
 <template>
     <TresMesh receive-shadow ref="gPlane" :scale="10" :rotate-x="-Math.PI / 2">
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { ref, watch, watchEffect } from 'vue'
+import { ref, watch, watchEffect,toRaw } from 'vue'
 import { useTres } from '@tresjs/core'
 import { ProgressiveLightMap, SoftShadowMaterial } from '@pmndrs/vanilla'
 
@@ -62,7 +62,7 @@ const lightParams = {
     near: 0.5, // shadow camera near
     far: 200, // shadow camera far
 }
-const plm = new ProgressiveLightMap(renderer.value, scene.value, lightParams.mapSize)
+const plm = new ProgressiveLightMap(renderer, scene.value, lightParams.mapSize)
 const ssConfig = {
     map: plm.progressiveLightMap2.texture,
     transparent: true,
@@ -120,7 +120,7 @@ watch(
     () => gPlane.value,
     (value) => {
         if (value) {
-            plm.configure(value)
+            plm.configure(toRaw(value))
             plm.clear()
             console.log('shadows render start')
             renderShadows(props.frames)

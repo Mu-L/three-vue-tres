@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-16 08:58:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-01 11:13:52
+ * @LastEditTime: 2025-09-27 10:53:10
 -->
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
@@ -13,8 +13,8 @@ import { BasicShadowMap, SRGBColorSpace } from 'three'
 import eFan from '../components/eFan.vue'
 
 const gl = {
-	shadows: true,
 	alpha: true,
+	clearAlpha: 0,
 	shadowMapType: BasicShadowMap,
 	outputColorSpace: SRGBColorSpace,
 }

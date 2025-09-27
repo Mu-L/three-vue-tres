@@ -4,17 +4,17 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-29 10:52:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-01-29 18:51:11
+ * @LastEditTime: 2025-09-27 11:04:50
 -->
 
 <script setup lang="ts">
 import * as THREE from "three"
-import { useTexture, useTresContext, useRenderLoop } from '@tresjs/core'
-import { useGLTF } from "@tresjs/cientos"
-import SSRTGlassVertex from '../shaders/SSRTGlass.vert?raw'
-import SSRTGlassFrag from '../shaders/SSRTGlass.frag?raw'
+import { useTres, useLoop } from '@tresjs/core'
+import SSRTGlassVertex from '../shaders/SSRTGlass.vert'
+import SSRTGlassFrag from '../shaders/SSRTGlass.frag'
 import { DoubleDepthBuffer } from '../common/doubleDepthBuffer.js'
 import { watchEffect, watch } from 'vue'
+import { useTexture, useGLTF } from 'PLS/basic'
 
 const props = withDefaults(defineProps<{
 	skyBoxTexture: string
@@ -37,19 +37,19 @@ const props = withDefaults(defineProps<{
 	extintionCol2Random: false
 })
 
-const { map: pTexture } = await useTexture({ map: props.skyBoxTexture })
+const pTexture = await useTexture(props.skyBoxTexture)
 pTexture.wrapS = THREE.ClampToEdgeWrapping
 pTexture.wrapT = THREE.ClampToEdgeWrapping
 pTexture.magFilter = THREE.LinearMipmapLinearFilter
 pTexture.minFilter = THREE.LinearMipmapLinearFilter
 
-const { camera, renderer, scene } = useTresContext()
+const { camera, renderer } = useTres()
 
 const GlassMaterial = new THREE.ShaderMaterial({
 	uniforms: {
-		uSkybox: { type: "t", value: pTexture },
-		uBackFaceBuffer: { type: "t", value: null },
-		uFrontFaceBuffer: { type: "t", value: null },
+		uSkybox: { value: pTexture },
+		uBackFaceBuffer: { value: null },
+		uFrontFaceBuffer: { value: null },
 		uCameraFarInverse: { value: 1 / camera.value.far },
 
 		uScreenSizeInv: { value: new THREE.Vector2(1 / window.innerWidth, 1 / window.innerHeight) },
@@ -72,11 +72,11 @@ const GlassMaterial = new THREE.ShaderMaterial({
 	fragmentShader: SSRTGlassFrag,
 })
 
-const { nodes } = await useGLTF(props.modelPath, { draco: true, decoderPath: './draco/' })
+const { nodes } = await useGLTF(props.modelPath)
 
 const getMesh = nodes.Scene.getObjectByName(props.modelName)
 
-const ddbProgram = new DoubleDepthBuffer(getMesh, camera.value, renderer.value)
+const ddbProgram = new DoubleDepthBuffer(getMesh, camera.value, renderer)
 
 const showMesh = getMesh?.clone()
 showMesh?.traverse((child) => {
@@ -86,8 +86,8 @@ showMesh?.traverse((child) => {
 	}
 })
 
-const { onAfterLoop } = useRenderLoop()
-onAfterLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
 	if (getMesh && GlassMaterial) {
 		GlassMaterial.uniforms.uCameraPos.value = camera.value.position.clone()
 		GlassMaterial.uniforms.uTime.value = elapsed
@@ -96,11 +96,11 @@ onAfterLoop(({ elapsed }) => {
 		GlassMaterial.uniforms.uBackFaceBuffer.value = ddbProgram.getBackFaceTexture()
 		GlassMaterial.uniforms.uFrontFaceBuffer.value = ddbProgram.getFrontFaceTexture()
 
-		renderer.value.setRenderTarget(null)
-		renderer.value.autoClear = false
-		// renderer.value.render(scene.value, camera.value)
-		// renderer.value.autoClear = true
-		// renderer.value.setRenderTarget(null)
+		renderer.setRenderTarget(null)
+		renderer.autoClear = false
+		// renderer.render(scene.value, camera.value)
+		// renderer.autoClear = true
+		// renderer.setRenderTarget(null)
 	}
 })
 
