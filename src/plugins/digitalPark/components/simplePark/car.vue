@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-08 14:23:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-08 11:08:10
+ * @LastEditTime: 2025-09-27 10:28:46
 -->
 <template>
     <primitive :object="model" />
@@ -24,7 +24,7 @@
     </TresMesh>
 </template>
 <script setup>
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { Html } from '@tresjs/cientos'
 import * as THREE from 'three'
 import { ref, watch } from 'vue'
@@ -54,7 +54,7 @@ const materialState = {
     backsideThickness: 0.5,
 }
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 
 // const {
 //     scene: model,
@@ -196,8 +196,8 @@ watch(
     },
     { immediate: true },
 )
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     moveOnCurve()
 })
 </script>

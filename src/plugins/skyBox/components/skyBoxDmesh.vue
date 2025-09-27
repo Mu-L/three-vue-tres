@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { useTres } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
+import { useTexture } from 'PLS/basic'
 
 const props = withDefaults(
     defineProps<{
@@ -27,7 +27,7 @@ const props = withDefaults(
 )
 const { scene } = useTres()
 
-const { map: pTexture } = await useTexture({ map: props.texture })
+const pTexture = await useTexture(props.texture)
 pTexture.wrapS = pTexture.wrapT = THREE.ClampToEdgeWrapping
 pTexture.generateMipmaps = false
 pTexture.magFilter = THREE.LinearFilter

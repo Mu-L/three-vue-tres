@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-25 10:23:43
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-01-29 16:46:46
+ * @LastEditTime: 2025-09-27 10:27:37
 -->
 
 <template>
@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import * as THREE from "three"
-import { useTexture } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 
 const props = withDefaults(defineProps<{
 	texture: string
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<{
 	size: 1000
 })
 
-const { map: pTexture } = await useTexture({ map: props.texture })
+const pTexture = await useTexture(props.texture)
 pTexture.wrapS = pTexture.wrapT = THREE.ClampToEdgeWrapping
 pTexture.generateMipmaps = false
 pTexture.magFilter = THREE.LinearFilter

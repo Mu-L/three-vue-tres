@@ -2,10 +2,9 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { LayerMaterial, Depth, Color } from 'lamina/vanilla'
 import { lightFormer } from '../common/lightFormer'
-import { NumberInputPlugin } from '@tweakpane/core'
 
 const props = withDefaults(defineProps<{
 	resolution?: number
@@ -95,7 +94,7 @@ environmentMesh.add(backgroundMesh)
 // const backgroundMesh2 = backgroundMesh.clone()
 // backgroundMesh2.scale.set(10, 10, 10)
 
-const { scene, renderer, sizes } = useTresContext()
+const { scene, renderer, sizes } = useTres()
 watchEffect(() => {
 	if (sizes.width.value) {
 		virtualScene.add(environmentMesh)
@@ -104,11 +103,11 @@ watchEffect(() => {
 		// scene.value.add(backgroundMesh2)
 	}
 })
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
 	if (scene.value) {
 		(lightFormerGroup.position.z += delta * 10) > 20 && (lightFormerGroup.position.z = -60)
-		cubeCamera.update(renderer.value, virtualScene)
+		cubeCamera.update(renderer, virtualScene)
 		scene.value.environment = fbo.texture
 		scene.value.background = fbo.texture
 		scene.value.backgroundBlurriness = 1.0

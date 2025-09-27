@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-06 16:35:42
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 11:49:06
+ * @LastEditTime: 2025-09-27 10:34:27
 -->
 <template>
     <primitive :object="model" cast-shadow receive-shadow :position="[13.5, 0, -45]" :scale="[0.2, 0.3, 0.2]" name="办公大厅" :rotation-y="Math.PI" />
@@ -27,7 +27,7 @@
     </TresMesh>
 </template>
 <script lang="ts" setup>
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { Html } from '@tresjs/cientos'
 import * as THREE from 'three'
 import { gsap } from 'gsap'
@@ -36,7 +36,8 @@ import { Resource } from 'PLS/resourceManager'
 
 const { scene: model } = Resource.getItem('officeBuild.glb')
 
-const { scene, raycaster, camera } = useTresContext()
+const { scene, camera } = useTres()
+const raycaster = ref(new THREE.Raycaster())
 model.traverse((child) => {
     if (child.isMesh) {
         child.frustumCulled = false // 不剔除
