@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 11:07:52
+ * @LastEditTime: 2025-09-28 09:26:35
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -68,7 +68,7 @@ export default defineBuildConfig({
             chunkSizeWarningLimit: 1000, // 单位为KB
             rollupOptions: {
                 output: {
-                    manualChunks(id) {
+                    manualChunks (id) {
                         // 自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
                         if (id.includes('node_modules')) {
                             return id.toString().split('node_modules/')[1].split('/')[0]
@@ -88,8 +88,14 @@ export default defineBuildConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    javascriptEnabled: true,
-                    additionalData: `@import "src/plugins/goView/lib/scss/style.scss";`,
+                    // javascriptEnabled: true,
+                    // additionalData: `@import "src/plugins/goView/lib/scss/style.scss";`,
+                    additionalData: (content, filename) => {
+                        if (filename.includes('src/plugins/goView')) {
+                            return `@import "src/plugins/goView/lib/scss/style.scss";\n${content}`
+                        }
+                        return content
+                    }
                 },
             },
         },

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 11:24:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-27 12:50:45
+ * @LastEditTime: 2025-09-27 12:54:46
 -->
 <template>
     <TresGroup v-if="contextReady" :rotation="[-Math.PI / 2, 1.7, Math.PI / 2]" :position="[0, tgpY, 5]">
@@ -116,7 +116,7 @@ function onClick() {
     gsap.killTweensOf(uprogress)
     uprogress.value = 0.5
     gsap.to(uprogress, {
-        duration: 1,
+        duration: 1.5,
         ease: 'power1.out',
         value: 1,
         onComplete: () => {

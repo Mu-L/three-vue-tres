@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 15:00:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 09:36:28
+ * @LastEditTime: 2025-09-28 09:15:57
 -->
 <template>
     <div v-if="!hasFinishLoading" class="absolute bg-grey-600 t-0 l-0 w-full h-full z-99999999 flex justify-center items-center text-black font-mono bg-black">
@@ -66,8 +66,7 @@ if (props.isDemo) {
 </script>
 
 <style lang="scss" scoped>
-@import './bubbleLoading.scss';
-
+@use './bubbleLoading.scss' as *;
 .pspan {
     position: absolute;
     top: 50%;

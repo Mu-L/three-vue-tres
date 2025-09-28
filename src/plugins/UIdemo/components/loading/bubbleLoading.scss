@@ -1,3 +1,5 @@
+
+@use "sass:math";
 .g-container {
 	--headColor: hsl(130, 75%, 75%);
 	--endColor : hsl(60, 75%, 40%);
@@ -72,24 +74,24 @@
 	background   : var(--endColor);
 }
 
+
 $count: 200;
 
 @for $i from 1 through $count {
-	.g-bubble:nth-child(#{$i}) {
-		$rotate    : calc(360 / $count) * $i;
-		--rotate   : calc(#{$rotate} * 1deg);
-		--delayTime: calc(4000 * #{calc($i / $count)} * -1ms);
-		--width    : 30px;
-		--scale    : #{0.4 + calc(random(10) / 10)};
-		--x        : #{-100 + random(200)}px;
-		--y        : #{-100 + random(200)}px;
-		width      : var(--width);
-		height     : var(--width);
-		transform  :
-			rotateZ(var(--rotate)) translate(135px, 0);
-		opacity  : 1;
-		animation: showAndHide 4000ms linear var(--delayTime) infinite;
-	}
+  .g-bubble:nth-child(#{$i}) {
+    $rotate    : calc(360 / $count) * $i;
+    --rotate   : calc(#{$rotate} * 1deg);
+    --delayTime: calc(4000 * #{calc($i / $count)} * -1ms);
+    --width    : 30px;
+    --scale    : #{0.4 + calc(math.random(10) / 10)};
+    --x        : #{-100 + math.random(200)}px;
+    --y        : #{-100 + math.random(200)}px;
+    width      : var(--width);
+    height     : var(--width);
+    transform  : rotateZ(var(--rotate)) translate(135px, 0);
+    opacity    : 1;
+    animation  : showAndHide 4000ms linear var(--delayTime) infinite;
+  }
 }
 
 @keyframes showAndHide {
