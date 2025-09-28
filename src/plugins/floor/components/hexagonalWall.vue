@@ -4,14 +4,14 @@
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 08:11:08
+ * @LastEditTime: 2025-09-28 11:24:02
 -->
 <template>
-    <primitive :object="scene" :position-y="0.01" />
+    <primitive v-if="state" :object="state?.scene" :position-y="0.01" />
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { watch } from 'vue'
 import * as THREE from 'three'
 import { useGLTF } from '@tresjs/cientos'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
@@ -32,7 +32,7 @@ const props = withDefaults(
 )
 let effectComposer: EffectComposer | null = null
 
-const { textures } = useTextures(['./plugins/floor/image/concrete_wet_floor_basecolor.jpg', './plugins/floor/image/metal_plate_diff_1k.jpg'])
+const { textures, isLoading } = useTextures(['./plugins/floor/image/concrete_wet_floor_basecolor.jpg', './plugins/floor/image/metal_plate_diff_1k.jpg'])
 
 const { state } = useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/floor/baseModelI.glb`, {
     draco: true,
@@ -40,11 +40,10 @@ const { state } = useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.
 })
 
 let scene = null as any
-
 watch(
-    () => [state, textures],
-    ([pstate, ptextures]) => {
-        if (state && ptextures && ptextures.length) {
+    [state, textures, isLoading],
+    ([pstate, ptextures, isLoading]) => {
+        if (pstate && ptextures && !isLoading) {
             scene = pstate.scene
             scene.traverse((child) => {
                 if (child instanceof THREE.Mesh) {
@@ -93,8 +92,14 @@ watch(
                     }
                 }
             })
+
+            setupEnvironment()
+
+            setupBloomEffect()
+
+            createAssemblyAnimation()
         }
-    },
+    }
 )
 
 const meshData: Array<{
@@ -196,17 +201,6 @@ onRender(() => {
     if (effectComposer) {
         effectComposer.render()
     }
-})
-
-onMounted(() => {
-    setupEnvironment()
-    setTimeout(() => {
-        setupBloomEffect()
-    }, 200)
-
-    setTimeout(() => {
-        createAssemblyAnimation()
-    }, 100)
 })
 
 watch(

@@ -4,7 +4,7 @@
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 08:26:08
+ * @LastEditTime: 2025-09-28 11:00:34
 -->
 <template>
     <!-- 飞线网格地板 -->
@@ -177,10 +177,10 @@ const fragmentShader = `
 
 
 
-const { onRender } = useLoop()
+const { onBeforeRender } = useLoop()
 let elapsedTime = 0
 
-onRender(({ delta }) => {
+onBeforeRender(({ delta }) => {
     // 飞线网格地板动画
     if (!props.paused) {
         elapsedTime += delta

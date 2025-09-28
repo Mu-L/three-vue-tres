@@ -4,12 +4,14 @@
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 08:24:30
+ * @LastEditTime: 2025-09-28 11:04:11
 -->
 <template>
-    <primitive :object="scene" :position-y="0.01" />
-    <primitive v-if="scenedizuo" :object="scenedizuo?.scene" :position-y="0.1" />
-    <primitive :object="model" :position-y="0.1" />
+    <TresGroup v-if="scene && model">
+        <primitive :object="scene" :position-y="0.01" />
+        <primitive v-if="scenedizuo" :object="scenedizuo?.scene" :position-y="0.1" />
+        <primitive :object="model" :position-y="0.1" />
+    </TresGroup>
 </template>
 
 <script setup lang="ts">
@@ -100,8 +102,8 @@ watch(scene, (scene) => {
 })
 
 const setupBloomEffect = () => {
-    if (!renderer.value || !camera.value || !sizes.width.value) return
-    effectComposer = new EffectComposer(renderer.value)
+    if (!renderer || !camera.value || !sizes.width.value) return
+    effectComposer = new EffectComposer(renderer)
     const renderPass = new RenderPass(sceneValue.value, camera.value as THREE.Camera)
     effectComposer.addPass(renderPass)
     const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width.value, sizes.height.value), 0.1, 0.1, 0.1)
@@ -112,7 +114,7 @@ const setupBloomEffect = () => {
 }
 
 const setupEnvironment = () => {
-    const pmremGenerator = new THREE.PMREMGenerator(renderer.value)
+    const pmremGenerator = new THREE.PMREMGenerator(renderer)
     const environment = new RoomEnvironment()
     const envMap = pmremGenerator.fromScene(environment).texture
     sceneValue.value.environment = envMap

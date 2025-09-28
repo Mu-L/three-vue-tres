@@ -4,19 +4,17 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-05 09:49:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-06-05 10:33:42
+ * @LastEditTime: 2025-09-28 11:25:29
 -->
 <template>
     <TresCanvas clearColor="#000000" window-size>
         <TresPerspectiveCamera :position="[2, 2, 0]" :fov="45" :near="0.1" :far="10000" />
         <OrbitControls enableDamping />
-        <Suspense>
-            <hexagonalWall v-bind="rtState" />
-        </Suspense>
-        <Suspense>
-			<reflectorDUDV v-bind="configState"  />
-		</Suspense>
-   
+
+        <hexagonalWall v-bind="rtState" />
+
+        <reflectorDUDV v-bind="configState" />
+
     </TresCanvas>
 </template>
 
@@ -34,9 +32,10 @@ const paneControl = new Pane({
     expanded: true,
 })
 const configState = {
-	reflectivity:1.0,
-	showGridHelper: false,
-    scale:2.
+    reflectivity: 1.0,
+    showGridHelper: false,
+    scale: 2,
+    renderMode: 'manual'
 }
 paneControl.addBinding(rtState, 'color', { label: '颜色' })
 

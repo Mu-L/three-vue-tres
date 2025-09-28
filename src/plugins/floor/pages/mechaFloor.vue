@@ -13,9 +13,8 @@
         <Suspense>
             <mechaFloor v-bind="rtState" />
         </Suspense>
-        <Suspense>
-			<reflectorDUDV v-bind="configState"  />
-		</Suspense>
+
+		<reflectorDUDV v-bind="configState"  />
    
     </TresCanvas>
 </template>
@@ -36,7 +35,8 @@ const paneControl = new Pane({
 const configState = {
 	reflectivity:1.0,
 	showGridHelper: false,
-    scale:2.
+    scale: 2,
+    renderMode: 'manual'
 }
 paneControl.addBinding(rtState, 'color', { label: '颜色' })
 
