@@ -18,9 +18,7 @@
 			<TresBoxGeometry :args="[1, 1, 1]" />
 			<TresMeshNormalMaterial />
 		</TresMesh>
-		<Suspense>
-			<reflectorShaderMesh v-bind="configState" />
-		</Suspense>
+		<reflectorShaderMesh v-bind="configState" />
 	</TresCanvas>
 </template>
 

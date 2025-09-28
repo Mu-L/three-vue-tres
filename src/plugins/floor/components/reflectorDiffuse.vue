@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-07 23:03:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 16:48:07
+ * @LastEditTime: 2025-09-28 11:45:04
 -->
 <template>
-    <TresGroup>
+    <TresGroup v-if="!isLoading">
         <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2" :position-y="-0.1">
             <TresPlaneGeometry ref="tpgRef" :args="[10, 10]" />
             <TresMeshStandardMaterial ref="tmsmRef" v-bind="tmsMaterialConfig" />
@@ -21,7 +21,7 @@ import { Vector2, RepeatWrapping, Color, GridHelper } from 'three'
 import { useTextures } from '@tresjs/cientos'
 import { Reflector } from '../lib/alienJS/all.three.js'
 import { makeVertexShader, makeFragmentShader } from '../shaders/reflectorDiffuse.js'
-import { watchEffect, ref, watch } from 'vue'
+import { watchEffect, ref, watch, nextTick } from 'vue'
 
 const props = withDefaults(
     defineProps<{
@@ -49,15 +49,15 @@ const uniforms = {
     mixStrength: { value: props.mixStrength },
 }
 
-const { textures: pTexture } = await useTextures([
+const { textures: pTexture, isLoading } = await useTextures([
     './plugins/floor/image/polished_concrete_basecolor.jpg',
     './plugins/floor/image/polished_concrete_normal.jpg',
     './plugins/floor/image/polished_concrete_orm.jpg',
 ])
 
 let tmsMaterialConfig = {}
-watch([pTexture], ([pTexture]) => {
-    if (pTexture && pTexture.length === pTexture.length) {
+watch([isLoading, pTexture], ([isLoading, pTexture]) => {
+    if (pTexture && !isLoading) {
         for (var i = 0; i < 3; i++) {
             pTexture[i].wrapS = RepeatWrapping
             pTexture[i].wrapT = RepeatWrapping
@@ -76,6 +76,18 @@ watch([pTexture], ([pTexture]) => {
             normalMap: pTexture[1],
             normalScale: new Vector2(3, 3),
         }
+
+        nextTick(() => {
+            tpgRef.value.attributes.uv1 = tpgRef.value.attributes.uv
+            tmsmRef.value.aoMap.channel = 1
+            tmsmRef.value.onBeforeCompile = makeOnBeforeCompile
+            tmRef.value.add(reflector)
+            tmRef.value.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
+            reflector.update(rendererSelf, sceneSelf, cameraSelf)
+            }
+        })
+
+
     }
 })
 
@@ -87,22 +99,6 @@ const makeOnBeforeCompile = (shader: any) => {
     makeFragmentShader(shader)
 }
 watchEffect(() => {
-    if (tpgRef.value) {
-        tpgRef.value.attributes.uv1 = tpgRef.value.attributes.uv
-    }
-    if (tmsmRef.value) {
-        // Second channel for aoMap and lightMap
-        // https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.aoMap
-        tmsmRef.value.aoMap.channel = 1
-
-        tmsmRef.value.onBeforeCompile = makeOnBeforeCompile
-    }
-    if (tmRef.value) {
-        tmRef.value.add(reflector)
-        tmRef.value.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
-            reflector.update(rendererSelf, sceneSelf, cameraSelf)
-        }
-    }
     if (props.color) {
         if (tmsmRef.value) {
             tmsmRef.value.color = new Color(props.color)
