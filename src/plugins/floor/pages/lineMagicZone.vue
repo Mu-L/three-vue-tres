@@ -19,9 +19,7 @@
             <lineMagicZone :position="[-3, 0, 0]" :scale="1.6" :height="3.0" />
         </Suspense>
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

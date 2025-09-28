@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-22 09:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 11:06:12
+ * @LastEditTime: 2025-09-28 15:54:11
 -->
 <template>
 	<TresMesh :rotation-x="-Math.PI / 2">
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import * as THREE from "three"
 import { watch, reactive, createVNode, render } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { intLightningPattern, loopLightningPattern, setSpeed } from '../common/lightningPattern'
 
 const props = withDefaults(defineProps<{
@@ -74,8 +74,8 @@ watch(
 	}
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	loopLightningPattern()
 	floorTexture.needsUpdate = true
 })

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 15:54:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-07 08:20:36
+ * @LastEditTime: 2025-09-28 16:21:43
 -->
 <template>
     <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2" :scale="scale">
@@ -16,7 +16,8 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { reactive, ref, watchEffect } from 'vue'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 
 const props = withDefaults(
     defineProps<{
@@ -34,13 +35,13 @@ const props = withDefaults(
 )
 
 const tmRef = ref()
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (tmRef.value) {
         tmRef.value.material.uniforms.uTime.value += delta * props.speed
     }
 })
-const texture = await useTexture(['./plugins/floor/image/scan.png'])
+const texture = await useTexture('./plugins/floor/image/scan.png')
 texture.wrapS = THREE.RepeatWrapping
 texture.wrapT = THREE.RepeatWrapping
 const tmsMaterial = reactive({

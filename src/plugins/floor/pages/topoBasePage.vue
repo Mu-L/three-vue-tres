@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:03:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-12 12:23:38
+ * @LastEditTime: 2025-09-28 16:27:18
 -->
 <template>
     <TresCanvas clearColor="#201919" window-size>
@@ -15,10 +15,7 @@
 
         <topoBase selected="baseModelA" :position="[-6, 0, 0]" :scale="3.0" />
         <topoBase v-bind="baseState" :type="baseType" :scale="3.0" />
-
-        <Suspense>
-            <reflectorDUDV :position="[0, -2, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -2, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

@@ -12,19 +12,14 @@
         <OrbitControls enableDamping />
         <TresAmbientLight :intensity="6.0" />
 
-        <Suspense>
-            <imgFloor :position="[2, -2, 2]" v-bind="configState" imgSrcPath="./plugins/floor/image/imgFloor1.png" />
-        </Suspense>
-        <Suspense>
-            <imgFloor :position="[2, 0.1, 2]" v-bind="configState" imgSrcPath="./plugins/floor/image/imgFloor2.png" />
-        </Suspense>
-        <Suspense>
-            <imgFloor :position="[-2, 0, -2]" imgSrcPath="./plugins/floor/image/imgFloor3.png" />
-        </Suspense>
+        <imgFloor :position="[2, -2, 2]" v-bind="configState" imgSrcPath="./plugins/floor/image/imgFloor1.png" />
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -2, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <imgFloor :position="[2, 0.1, 2]" v-bind="configState" imgSrcPath="./plugins/floor/image/imgFloor2.png" />
+
+        <imgFloor :position="[-2, 0, -2]" imgSrcPath="./plugins/floor/image/imgFloor3.png" />
+
+        <reflectorDUDV :position="[0, -2, 0]" v-bind="reflectorState" />
+
     </TresCanvas>
 </template>
 

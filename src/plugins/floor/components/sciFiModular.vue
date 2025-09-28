@@ -4,37 +4,26 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:08:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:12:05
+ * @LastEditTime: 2025-09-28 15:49:15
 
  Sketchfab_model 
  Cube001__0 Cube009__0  Cube013__0 Cube014__0 Cube015__0 Cube016__0
 -->
 <template>
-    <primitive :rotation-x="-Math.PI / 2" :position="props.position" :object="meshOB" />
+    <primitive :rotation-x="-Math.PI / 2" :object="meshOB" />
 </template>
 
 <script lang="ts" setup>
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF} from 'PLS/basic'
 import { useTresContext } from '@tresjs/core'
 import { Reflector, ReflectorMaterial } from '../lib/alienJS/all.three.js'
 import { Vector2, Color, Mesh, Matrix4 } from 'three'
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 
-const props = withDefaults(
-    defineProps<{
-        position?: Array<number>
-    }>(),
-    {
-        position: [0, -1, 0],
-    },
-)
 const { scene } = useTresContext()
 const { nodes } = await useGLTF(
-    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/floor/modelDraco.glb',
-    { draco: true, decoderPath: './draco/' },
-)
+    (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/floor/modelDraco.glb')
 const ob = nodes.Cube016__0
-console.log(ob)
 
 const geometry = ob.geometry
 const bufferGeometries = BufferGeometryUtils.mergeGeometries([

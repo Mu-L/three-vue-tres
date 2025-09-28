@@ -14,10 +14,7 @@
         <Suspense>
             <shaderCircleWave v-bind="configState" />
         </Suspense>
-
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

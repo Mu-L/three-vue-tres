@@ -24,9 +24,7 @@
             <TresMeshBasicMaterial color="white" />
         </TresMesh>
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

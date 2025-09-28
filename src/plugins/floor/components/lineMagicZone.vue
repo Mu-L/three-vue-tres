@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-24 10:36:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-12-24 16:47:19
+ * @LastEditTime: 2025-09-28 16:24:50
 -->
 
 <template>
@@ -32,8 +32,8 @@
 import * as THREE from 'three'
 import { CustomShaderMaterial } from '@tresjs/cientos'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
 import { useAttrs, watch } from 'vue'
+import { useTextures} from 'PLS/basic'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -48,7 +48,7 @@ const props = defineProps({
     },
 })
 
-const pTexture = await useTexture(['./plugins/basic/shine/image/round.png', './plugins/digitalCity/image/noise/noisePerlin.png'])
+const pTexture = await useTextures(['./plugins/basic/shine/image/round.png', './plugins/digitalCity/image/noise/noisePerlin.png'])
 
 const curve = new THREE.EllipseCurve(0, 0, 8, 8, 0, 2 * Math.PI, false, 0)
 const pointsPos = []

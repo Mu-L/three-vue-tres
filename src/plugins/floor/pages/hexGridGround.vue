@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 15:54:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-06 18:42:05
+ * @LastEditTime: 2025-09-28 15:59:45
 -->
 <template>
     <TresCanvas clearColor="#666666" window-size>
@@ -12,9 +12,7 @@
         <OrbitControls enableDamping autoRotate />
         <hexGridMesh v-bind="configState" :scale="9" />
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.06, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -0.06, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

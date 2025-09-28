@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-22 10:48:23
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 09:15:10
+ * @LastEditTime: 2025-09-28 16:27:54
 -->
 <template>
     <TresCanvas clearColor="#000000" window-size>
@@ -14,9 +14,7 @@
         <Suspense>
             <hexagonalFloor v-bind="rtState" :scale="2" :position="[0, 0.5, 0]"/>
         </Suspense>
-        <Suspense>
-            <reflectorDUDV :reflectivity="1.0" :showGridHelper="false" :scale="2" />
-        </Suspense>
+        <reflectorDUDV :reflectivity="1.0" :showGridHelper="false" :scale="2" />
     </TresCanvas>
 </template>
 

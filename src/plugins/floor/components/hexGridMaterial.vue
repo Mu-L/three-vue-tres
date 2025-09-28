@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 09:31:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-06 18:45:22
+ * @LastEditTime: 2025-09-28 16:05:34
 -->
 <template>
     <CustomShaderMaterial
@@ -26,7 +26,7 @@ import fragmentShader from '../shaders/hexGridMaterial.frag'
 
 const props = defineProps({
     baseMaterial: {
-        default: new THREE.MeshPhongMaterial(),
+        default: THREE.MeshBasicMaterial,
     },
     speed: {
         default: 1.0,
@@ -42,7 +42,7 @@ const props = defineProps({
     direction: { default: 4 }, // vertical: 4, horizontal: 3, radial: 5 , circle: 6
     isReversed: { default: false },
     hasMaskTexture: { default: false },
-    maskTexture: { default: null },
+    maskTexture: { default: '' },
 })
 
 const vertexShader = `
@@ -68,7 +68,8 @@ const uniforms = {
 
 if (props.maskTexture) {
     // uniforms.hasMaskTexture.value = true
-    uniforms.maskTexture.value = await useTexture([props.maskTexture])
+    const { state: pTexture } = useTexture(props.maskTexture)
+    uniforms.maskTexture = pTexture
 }
 
 watch(
@@ -96,8 +97,8 @@ watch(
     },
 )
 
-const { onRender } = useLoop()
-onRender(({ delta }: { delta: number }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }: { delta: number }) => {
     uniforms.time.value += delta * props.speed
 })
 </script>

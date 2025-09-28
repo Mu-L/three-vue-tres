@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-25 10:23:43
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 17:13:02
+ * @LastEditTime: 2025-09-28 16:16:46
 -->
 
 <template>
@@ -35,7 +35,7 @@ const props = withDefaults(
     },
 )
 
-const tmRef = ref()
+const tmRef = ref() as any
 const { state: pTexture } = useTexture('./plugins/floor/image/whiteFloor.jpg')
 const tsMaterial = {
     uniforms: THREE.UniformsUtils.merge([
@@ -43,7 +43,8 @@ const tsMaterial = {
         {
             uColor: { value: new THREE.Color(props.color) },
             uShadowColor: { value: new THREE.Color(props.shadowColor) },
-            fEdge: { type: 'f', value: props.edge },
+            fEdge: { value: props.edge },
+            uTexture: { value: null },
         },
     ]),
     side: THREE.DoubleSide,
@@ -54,17 +55,13 @@ const tsMaterial = {
     transparent: true,
 }
 watch(
-    () => pTexture,
-    (pTexture) => {
-        if (pTexture.value) {
-            pTexture.value.wrapS = THREE.RepeatWrapping
-            pTexture.value.wrapT = THREE.RepeatWrapping
-            pTexture.value.repeat.set(6, 3)
-
-            // ShaderMaterial 下的 纹理参数重复无效 要在着色器中增加
-            // pTexture.repeat.set(100, 100)
-            // pTexture.needsUpdate = true
-            tsMaterial.uniforms.uTexture = { type: 't', value: pTexture.value }
+    pTexture,
+    (texture) => {
+        if (texture) {
+            texture.wrapS = THREE.RepeatWrapping
+            texture.wrapT = THREE.RepeatWrapping
+            texture.repeat.set(6, 3)
+            tmRef.value.material.uniforms.uTexture.value = texture
         }
     },
 )

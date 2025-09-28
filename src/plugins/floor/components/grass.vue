@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-25 08:31:01
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-06 10:54:49
+ * @LastEditTime: 2025-09-28 16:19:28
 -->
 <template>
     <TresGroup>
@@ -30,13 +30,9 @@
 import * as THREE from 'three'
 import { createNoise2D } from 'simplex-noise'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from '@tresjs/cientos'
-import { CientosShaderMaterial } from 'PLS/basic'
+import { CientosShaderMaterial,useTextures } from 'PLS/basic'
 
-const pbrTexture = await useTexture({
-    map: './plugins/floor/image/blade_diffuse.jpg',
-    alphaMap: './plugins/floor/image/blade_alpha.jpg',
-})
+const pbrTexture = await useTextures(['./plugins/floor/image/blade_diffuse.jpg','./plugins/floor/image/blade_alpha.jpg'])
 
 const props = withDefaults(
     defineProps<{
@@ -281,8 +277,8 @@ const GrassMaterial = CientosShaderMaterial(
     },
 )
 const gm = new GrassMaterial()
-gm.map = pbrTexture.map
-gm.alphaMap = pbrTexture.alphaMap
+gm.map = pbrTexture[0]
+gm.alphaMap = pbrTexture[1]
 gm.toneMapped = false
 
 const { onRender } = useLoop()

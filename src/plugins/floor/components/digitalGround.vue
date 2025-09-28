@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-25 08:31:01
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 17:06:01
+ * @LastEditTime: 2025-09-28 15:58:36
 -->
 <template>
     <TresGroup>
@@ -34,7 +34,7 @@ const props = withDefaults(
     },
 )
 
-const { textures: pTexture } = await useTextures([
+const { textures: pTexture, isLoading } = useTextures([
     './plugins/floor/image/digitalGround1.png',
     './plugins/floor/image/digitalGround2.png',
     './plugins/floor/image/digitalGround3.png',
@@ -51,6 +51,18 @@ const tsmConfig = {
         uColor: {
             value: new THREE.Color(props.color),
         },
+        texture0: {
+            value: null
+        },
+        texture1: {
+            value: null
+        },
+        texture2: {
+            value: null
+        },
+        texture3: {
+            value: null
+        }
     },
     vertexShader: `
         varying vec3 vPosition;
@@ -108,8 +120,8 @@ const tsmConfig = {
     side: THREE.DoubleSide,
     transparent: true,
 } as any
-watch([pTexture], ([pTexture]) => {
-    if (pTexture && pTexture.length === pTexture.length) {
+watch([pTexture, isLoading], ([pTexture, isLoading]) => {
+    if (pTexture && !isLoading) {
         for (let i = 0; i < pTexture.length; i++) {
             pTexture[i].colorSpace = THREE.LinearSRGBColorSpace
             pTexture[i].wrapS = THREE.RepeatWrapping
@@ -131,8 +143,8 @@ watch(
     },
 )
 
-const { onRender } = useLoop()
-onRender(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     tsmConfig.uniforms.time.value = (elapsed / 10) * props.speed
 })
 </script>

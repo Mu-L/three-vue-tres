@@ -3,13 +3,8 @@
         <TresPerspectiveCamera :position="[3, 3, 0]" :fov="45" :near="0.1" :far="10000" />
         <OrbitControls enableDamping autoRotate />
 
-        <Suspense>
-            <digitalGround v-bind="configState" />
-        </Suspense>
-
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <digitalGround v-bind="configState" />
+        <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 
@@ -27,7 +22,7 @@ const reflectorState = reactive({
     scale: 1,
 })
 const configState = reactive({
-    color: '#de62f2', 
+    color: '#de62f2',
     speed: 0.8,
     size: 10,
 })

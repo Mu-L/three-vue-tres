@@ -24,9 +24,7 @@
 
         <particleBase :position="[2, -1, 0]" v-bind="toRefsState" />
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

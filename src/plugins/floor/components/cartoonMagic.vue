@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-18 14:32:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 08:43:31
+ * @LastEditTime: 2025-09-28 16:23:11
 -->
 <template>
     <TresGroup>
@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import * as TQK from 'three.quarks'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { watch } from 'vue'
 
 const props = withDefaults(
@@ -69,8 +69,8 @@ loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj) => {
     emitters.add(obj)
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     batchSystem.update(delta)
 })
 

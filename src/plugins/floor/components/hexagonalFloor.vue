@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { watch } from 'vue'
 import * as THREE from 'three'
 import { useGLTF, useTexture } from '@tresjs/cientos'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
@@ -26,12 +26,12 @@ const props = defineProps({
 
 const { state: texture } = useTexture('./plugins/floor/image/concrete_wet_floor_basecolor.jpg')
 watch(
-    () => texture,
+    texture,
     (texture) => {
-        if (texture.value) {
-            texture.value.wrapS = THREE.RepeatWrapping
-            texture.value.wrapT = THREE.RepeatWrapping
-            texture.value.repeat.set(10, 10)
+        if (texture) {
+            texture.wrapS = THREE.RepeatWrapping
+            texture.wrapT = THREE.RepeatWrapping
+            texture.repeat.set(10, 10)
         }
     },
 )
@@ -51,8 +51,8 @@ const meshData: Array<{
 
 const tl = gsap.timeline()
 watch(
-    () => pState,
-    () => {
+    () => pState.value,
+    (pState) => {
         if (!pState.scene) return
         const scene = pState.scene
         scene.traverse((child) => {
@@ -124,6 +124,8 @@ watch(
                 0,
             )
         })
+
+        setupEnvironment()
     },
 )
 
@@ -133,8 +135,7 @@ const setupEnvironment = () => {
     const envMap = pmremGenerator.fromScene(environment).texture
 
     sceneValue.value.environment = envMap
-
-    pState.scene.traverse((child) => {
+    pState.value.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.material) {
             child.material.envMap = envMap
             child.material.needsUpdate = true
@@ -142,15 +143,13 @@ const setupEnvironment = () => {
     })
 
     environment.dispose()
-}
-onMounted(() => {
-    setupEnvironment()
-})
 
-watch(
-    () => [props.sideColor, props.floorColor, props.sideOpacity, props.floorMetalness, props.floorRoughness, props.floorEnvMapIntensity],
-    ([sideColor, floorColor, sideOpacity, floorMetalness, floorRoughness, floorEnvMapIntensity]) => {
-        pState.scene.traverse((child) => {
+    setupMaterial(props.sideColor, props.floorColor, props.sideOpacity, props.floorMetalness, props.floorRoughness, props.floorEnvMapIntensity)
+}
+
+const setupMaterial = (sideColor, floorColor, sideOpacity, floorMetalness, floorRoughness, floorEnvMapIntensity) => {
+    if (!pState.value?.scene) return
+        pState.value.scene.traverse((child) => {
             if (child instanceof THREE.Mesh && child.material) {
                 if (child.name.includes('_')) {
                     // 侧面材质
@@ -165,8 +164,12 @@ watch(
                 }
             }
         })
-    },
-    { immediate: true },
+}
+watch(
+    () => [props.sideColor, props.floorColor, props.sideOpacity, props.floorMetalness, props.floorRoughness, props.floorEnvMapIntensity],
+    ([sideColor, floorColor, sideOpacity, floorMetalness, floorRoughness, floorEnvMapIntensity]) => {
+        setupMaterial(sideColor, floorColor, sideOpacity, floorMetalness, floorRoughness, floorEnvMapIntensity)
+    }
 )
 watch(
     () => [props.speed],

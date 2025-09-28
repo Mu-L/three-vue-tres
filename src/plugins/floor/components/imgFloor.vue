@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-12 17:42:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 17:10:35
+ * @LastEditTime: 2025-09-28 15:52:58
 -->
 <template>
-    <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2">
+    <TresMesh v-if="!isLoading" ref="tmRef" :rotation-x="-Math.PI / 2">
         <TresPlaneGeometry :args="props.size" />
         <TresMeshBasicMaterial v-bind="tmsMaterial" />
     </TresMesh>
@@ -54,16 +54,16 @@ const tmsMaterial = reactive({
     depthTest: true,
     depthWrite: false,
 })
-const { state: pTexture } = useTexture(props.imgSrcPath)
+const { state: pTexture, isLoading } = useTexture(props.imgSrcPath)
 watch(
-    () => pTexture,
-    (pTexture) => {
-        if (pTexture.value) {
-            pTexture.value.colorSpace = THREE.SRGBColorSpace
-            pTexture.value.wrapS = THREE.RepeatWrapping
-            pTexture.value.wrapT = THREE.RepeatWrapping
-            pTexture.value.repeat.set(props.textureRepeat[0], props.textureRepeat[1])
-            tmsMaterial.map = pTexture.value
+    () => pTexture.value,
+    (texture) => {
+        if (texture) {
+            texture.colorSpace = THREE.SRGBColorSpace
+            texture.wrapS = THREE.RepeatWrapping
+            texture.wrapT = THREE.RepeatWrapping
+            texture.repeat.set(props.textureRepeat[0], props.textureRepeat[1])
+            tmsMaterial.map = texture
         }
     },
 )
