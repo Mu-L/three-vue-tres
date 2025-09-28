@@ -9186,12 +9186,13 @@ pify@^4.0.1:
   resolved "https://registry.npmmirror.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinia@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmmirror.com/pinia/-/pinia-3.0.3.tgz#f412019bdeb2f45e85927b432803190343e12d89"
-  integrity sha512-ttXO/InUULUXkMHpTdp9Fj4hLpD/2AoJdmAbAeW2yu1iy1k+pkFekQXw5VpC0/5p51IOR/jDaDRfRWRnMMsGOA==
+pinia@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.npmmirror.com/pinia/-/pinia-2.3.1.tgz#54c476675b72f5abcfafa24a7582531ea8c23d94"
+  integrity sha512-khUlZSwt9xXCaTbbxFYBKDc/bWAGWJjOgvxETwkTN7KRm66EeT1ZdZj6i2ceh9sP2Pzqsbc704r2yngBrxBVug==
   dependencies:
-    "@vue/devtools-api" "^7.7.2"
+    "@vue/devtools-api" "^6.6.3"
+    vue-demi "^0.14.10"
 
 pixelmatch@^4.0.2:
   version "4.0.2"
@@ -11394,7 +11395,7 @@ vooks@^0.2.12, vooks@^0.2.4:
   dependencies:
     evtd "^0.2.2"
 
-vue-demi@*:
+vue-demi@*, vue-demi@^0.14.10:
   version "0.14.10"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.10.tgz#afc78de3d6f9e11bf78c55e8510ee12814522f04"
   integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==

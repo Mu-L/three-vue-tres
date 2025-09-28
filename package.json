@@ -112,7 +112,7 @@
     "netcdfjs": "^3.0.0",
     "oimophysics": "^1.2.2",
     "patch-package": "^8.0.0",
-    "pinia": "3.0.3",
+    "pinia": "2.3.1",
     "postinstall-postinstall": "^2.1.0",
     "postprocessing": "6.37.8",
     "simplex-noise": "^4.0.3",
