@@ -4,10 +4,9 @@
  * @Autor: Hawk
  * @Date: 2023-10-13 09:04:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-12 19:54:32
+ * @LastEditTime: 2025-09-28 10:46:06
 -->
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls, Stars } from '@tresjs/cientos'
 import { PCFSoftShadowMap, SRGBColorSpace } from 'three'
 import { shallowRef } from 'vue'
@@ -24,14 +23,14 @@ const gl = {
 	useLegacyLights: true,
 }
 const yRotation = shallowRef(0)
-useRenderLoop().onLoop(({ delta }) => {
+const onLoop = ({ delta }) => {
 	yRotation.value += 0.02 * delta
-})
+}
 </script>
 
 <template>
 	<loading />
-	<TresCanvas v-bind="gl" window-size>
+	<TresCanvas v-bind="gl" window-size @loop="onLoop">
 		<TresPerspectiveCamera :position="[0, 1, 5]" :fov="75" :near="0.1" :far="1000" />
 		<OrbitControls />
 

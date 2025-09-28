@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-01 09:57:06
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-12 15:44:53
+ * @LastEditTime: 2025-09-28 10:01:16
 -->
 <script setup lang="ts">
-import { useTexture } from '@tresjs/core'
-import { AdditiveBlending } from 'three';
+import { useTextures } from '@tresjs/cientos'
+import { AdditiveBlending } from 'three'
 
-const pTexture = await useTexture(
+const { textures: pTexture } = useTextures(
 	['./plugins/earthSample/image/earthA/map.jpg', './plugins/earthSample/image/earthA/earth.jpg', './plugins/earthSample/image/earthA/glow.png', './plugins/earthSample/image/earthA/innerGlow.png']
 )
 

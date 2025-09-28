@@ -8,7 +8,6 @@
 -->
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { PCFSoftShadowMap, SRGBColorSpace } from 'three'
 
@@ -27,10 +26,6 @@ const gl = {
 	shadowMapType: PCFSoftShadowMap,
 	useLegacyLights: true,
 }
-const yRotation = ref(0)
-useRenderLoop().onLoop(({ delta }) => {
-	yRotation.value += 0.02 * delta
-})
 </script>
 
 <template>
@@ -39,15 +34,9 @@ useRenderLoop().onLoop(({ delta }) => {
 		<TresPerspectiveCamera :position="[0, 50, 300]" :fov="45" :near="0.1" :far="100000" />
 		<OrbitControls :autoRotate="true" :autoRotateSpeed="2" />
 		<starts />
-		<Suspense>
-			<earthmap />
-		</Suspense>
-		<Suspense>
-			<lightlinepoint />
-		</Suspense>
-		<Suspense>
-			<moon />
-		</Suspense>
+		<earthmap />
+		<lightlinepoint />
+		<moon />
 		<TresAmbientLight color="#484068" :intensity="1" />
 	</TresCanvas>
 </template>

@@ -4,11 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-02 10:23:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-02 12:04:27
+ * @LastEditTime: 2025-09-28 10:40:00
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { useRenderLoop } from '@tresjs/core';
 import * as THREE from 'three'
 
 const gl = {
@@ -21,13 +20,13 @@ const TresCanvasRef = ref()
 let camera, scene = null
 watchEffect(() => {
 	if (TresCanvasRef.value) {
-		TresCanvasRef.value.context.renderer.value.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-		TresCanvasRef.value.context.renderer.value.autoClear = false;
-		TresCanvasRef.value.context.renderer.value.setClearColor(0x000000, 0.0);
+		TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+		TresCanvasRef.value.context.renderer.instance.autoClear = false;
+		TresCanvasRef.value.context.renderer.instance.setClearColor(0x000000, 0.0);
 
 
 		scene = TresCanvasRef.value.context.scene.value
-		camera = TresCanvasRef.value.context.camera.value
+		camera = TresCanvasRef.value.context.camera.activeCamera.value
 		scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
 		camera.position.z = 800 / 2
 	}
@@ -50,18 +49,17 @@ for (let i = 0; i < 45000; i++) {
 	positionArray[i * 3 + 2] = Math.random() * 2000 - 1000;
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const onLoop = () => {
 	if (camera) {
 		camera.position.x += (mouseX - camera.position.x) * 0.005;
 		camera.position.y += (-mouseY - camera.position.y) * 0.005;
 		camera.lookAt(scene.position);
 	}
-})
+}
 </script>
 
 <template>
-	<TresCanvas ref="TresCanvasRef" v-bind="gl" window-size>
+	<TresCanvas ref="TresCanvasRef" v-bind="gl" window-size @loop="onLoop">
 		<TresPerspectiveCamera :position="[0, 50, 300]" :fov="40" :far="800" :plane="1" />
 		<TresPoints>
 			<TresBufferGeometry :args="[1000, 100, 50]" :position="[positionArray, 3]" />

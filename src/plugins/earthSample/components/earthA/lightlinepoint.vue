@@ -4,15 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-01 09:57:06
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-02 09:35:02
+ * @LastEditTime: 2025-09-28 10:13:32
 -->
 <script setup lang="ts">
-import { onMounted, getCurrentInstance } from 'vue'
-import { useTexture } from '@tresjs/core'
-import { AdditiveBlending, DoubleSide, Vector3 } from 'three';
+import { onMounted, getCurrentInstance, watch, nextTick } from 'vue'
+import { useTextures } from '@tresjs/cientos'
+import { AdditiveBlending, DoubleSide, Vector3 } from 'three'
 import { gsap } from "gsap";
 
-const pTexture = await useTexture(
+const { textures: pTexture, isLoading } = useTextures(
 	['./plugins/earthSample/image/earthA/light_column.png', './plugins/earthSample/image/earthA/label.png']
 )
 
@@ -33,11 +33,21 @@ onMounted(() => {
 			yoyo: true,
 			ease: "power2.inOut",
 		}))
-		const tmpMesh = proxy.$refs[`meshRef${i}`][0]
-		tmpMesh.quaternion.setFromUnitVectors(
-			new Vector3(0, 1, 0),
-			tmpMesh.position.clone().normalize()
-		);
+	}
+})
+
+watch(isLoading, (newVal) => {
+	if (!newVal) {
+		nextTick(() => {
+			for (let i = 1; i <= GZNUM; i++) {
+				const tmpMesh = proxy.$refs[`meshRef${i}`][0]
+				tmpMesh.quaternion.setFromUnitVectors(
+					new Vector3(0, 1, 0),
+					tmpMesh.position.clone().normalize()
+				)
+			}
+		})
+
 	}
 })
 const lon2xyz = (R, longitude, latitude) => {

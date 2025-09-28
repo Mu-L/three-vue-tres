@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 11:27:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-27 11:24:06
+ * @LastEditTime: 2025-09-28 10:33:56
  */
 
 import Environment from './components/forCientos/useEnvironment/component.vue'
@@ -21,6 +21,7 @@ import ClearcoatMaterial from './components/forCientos/ClearcoatMaterial/index.v
 import { useGLTF, useTexture } from './components/forCientos/ComV3/utils'
 import { useTexture as useTextures } from './components/forCientos/ComV3/useTexture.ts'
 import { useLoader } from './components/forCientos/ComV3/useLoader.ts'
+import { useSeek } from './components/forCientos/ComV3/useSeek.ts'
 
 export {
     Environment,
@@ -37,5 +38,6 @@ export {
     useGLTF,
     useTexture,
     useTextures,
-    useLoader
+    useLoader,
+    useSeek
 }

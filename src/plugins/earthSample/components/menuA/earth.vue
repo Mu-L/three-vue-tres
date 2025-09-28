@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-02 16:25:00
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-03 09:08:01
+ * @LastEditTime: 2025-09-28 10:39:11
 -->
 <script setup>
 import { watchEffect, ref } from 'vue'
-import { useRenderLoop, useSeek } from '@tresjs/core'
+import { useSeek } from 'PLS/basic'
 import { OrbitControls } from '@tresjs/cientos'
-import { Fog, Color } from 'three';
+import { Fog, Color } from 'three'
 import { initCountryPosition, addImgEarth, XRayearth } from '../../common/makeList'
 
 const gl = {
@@ -26,9 +26,9 @@ const moveMesh = []
 const { seek } = useSeek()
 watchEffect(() => {
 	if (TresCanvasRef.value && TresCanvasRef.value.context) {
-		TresCanvasRef.value.context.renderer.value.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-		TresCanvasRef.value.context.renderer.value.autoClear = false;
-		TresCanvasRef.value.context.renderer.value.autoClearColor = new Color(1, 0, 0, 0);
+		TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+		TresCanvasRef.value.context.renderer.instance.autoClear = false;
+		TresCanvasRef.value.context.renderer.instance.autoClearColor = new Color(1, 0, 0, 0);
 
 		scene = TresCanvasRef.value.context.scene.value
 		scene.fog = new Fog(0xfff, 100, 1000);
@@ -37,8 +37,7 @@ watchEffect(() => {
 		moveMesh[1] = XRayearth(scene)
 	}
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const onLoop = () => {
 	if (moveMesh[0] === undefined) {
 		const pointsEearth = seek(scene, 'name', 'pointsEearth')
 		if (pointsEearth) {
@@ -49,12 +48,12 @@ onLoop(({ delta }) => {
 		moveMesh[1].rotation.z += .002
 		moveMesh[0].rotation.y += .002
 	}
-})
+}
 </script>
 
 <template>
 	<div class="w-full h-full">
-		<TresCanvas ref="TresCanvasRef" v-bind="gl">
+		<TresCanvas ref="TresCanvasRef" v-bind="gl" @loop="onLoop">
 			<TresPerspectiveCamera :position="[0, 0, 365]" :fov="45" :near="1" :far="10000" />
 			<OrbitControls :autoRotate="true" :autoRotateSpeed="2" :enableZoom="false" :enablePan="false" />
 		</TresCanvas>

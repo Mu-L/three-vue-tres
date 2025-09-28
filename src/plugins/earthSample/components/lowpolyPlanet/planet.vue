@@ -4,13 +4,14 @@
  * @Autor: Hawk
  * @Date: 2023-10-13 09:05:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-03 12:24:32
+ * @LastEditTime: 2025-09-28 10:49:38
 -->
 <script setup lang="ts">
-import { useGLTF } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { useGLTF } from 'PLS/basic'
+import { useLoop } from '@tresjs/core'
 import Airplane from './airplane.vue'
 import Cloud from './cloud.vue'
+import { toRaw } from 'vue'
 
 const { nodes } = await useGLTF(
   './plugins/earthSample/model/lowpolyPlanet/planet.gltf',
@@ -24,9 +25,9 @@ planet.traverse((child) => {
   }
 })
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
   if (!planet) return
   planet.rotation.y += delta * 0.04
   planet.rotation.z += delta * 0.02
@@ -36,7 +37,7 @@ onLoop(({ delta }) => {
 </script>
 
 <template>
-  <primitive :object="planet" />
-  <Airplane :planet="icosphere" />
-  <Cloud v-for="cloud of [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="cloud" :planet="icosphere" />
+  <primitive :object="toRaw(planet)" />
+  <Airplane :planet="toRaw(icosphere)" />
+  <Cloud v-for="cloud of [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="cloud" :planet="toRaw(icosphere)" />
 </template>

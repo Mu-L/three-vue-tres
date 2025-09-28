@@ -4,16 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-01 09:57:06
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 10:40:32
+ * @LastEditTime: 2025-09-28 09:59:10
 -->
 <script setup lang="ts">
 import { shallowRef, ref, onMounted } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { Stars } from '@tresjs/cientos'
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 const yRotation = shallowRef(0)
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
 	yRotation.value += 0.02 * delta
 })
 

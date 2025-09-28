@@ -4,20 +4,18 @@
  * @Autor: Hawk
  * @Date: 2023-10-13 09:05:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-20 09:25:00
+ * @LastEditTime: 2025-09-28 10:46:44
 -->
 <script setup lang="ts">
 import type { Object3D } from 'three'
-import { shallowRef, watch } from 'vue'
-import { useGLTF } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { watch, toRaw } from 'vue'
+import { useGLTF } from 'PLS/basic'
+import { useLoop } from '@tresjs/core'
 const props = defineProps<{
   planet: Object3D
 }>()
 
-const { scene } = await useGLTF(
-  './plugins/earthSample/model/lowpolyPlanet/airplane.gltf',
-)
+const { scene } = await useGLTF('./plugins/earthSample/model/lowpolyPlanet/airplane.gltf')
 
 const airplane = scene
 airplane.rotation.set(0, Math.PI, 0)
@@ -28,7 +26,7 @@ scene.traverse((child) => {
 })
 airplane.updateMatrixWorld()
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
 watch(
   () => props.planet,
@@ -44,7 +42,7 @@ watch(
 
 let angle = 0
 const speed = 0.2
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
   if (!airplane || !props.planet) return
 
   const radius = Math.abs(props.planet.geometry.boundingSphere.radius) + 0.5
@@ -60,5 +58,5 @@ onLoop(({ delta }) => {
 </script>
 
 <template>
-  <primitive :object="airplane" />
+  <primitive :object="toRaw(airplane)" />
 </template>

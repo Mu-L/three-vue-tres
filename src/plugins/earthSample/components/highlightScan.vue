@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import * as THREE from 'three'
 import { watch } from 'vue'
 
@@ -71,8 +71,8 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     tsm.uniforms.uTime.value += delta * 0.1 * props.speed
 })
 </script>

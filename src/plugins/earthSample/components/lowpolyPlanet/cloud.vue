@@ -4,19 +4,18 @@
  * @Autor: Hawk
  * @Date: 2023-10-13 09:05:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-03 12:24:27
+ * @LastEditTime: 2025-09-28 10:50:17
 -->
 <script setup lang="ts">
 import type { Object3D } from 'three'
-import { shallowRef, watch } from 'vue'
-import { useGLTF } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { watch,toRaw} from 'vue'
+import { useGLTF } from 'PLS/basic'
+import { useLoop } from '@tresjs/core'
 const props = defineProps<{
   planet: Object3D
 }>()
 
 const { scene } = await useGLTF('./plugins/earthSample/model/lowpolyPlanet/cloud.gltf')
-const cloudRef = shallowRef()
 
 const cloud = scene.children[0] as Object3D
 cloud.castShadow = true
@@ -41,11 +40,11 @@ watch(
   },
 )
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
 let angle = random(-1, 1) * Math.PI
 const speed = Math.random() / 10
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
   if (!cloud) return
 
   const radius = Math.abs(props.planet.geometry.boundingSphere.radius - 0.5)
@@ -61,5 +60,5 @@ onLoop(({ delta }) => {
 </script>
 
 <template>
-  <primitive :object="scene" cast-shadow />
+  <primitive :object="toRaw(scene)" cast-shadow />
 </template>

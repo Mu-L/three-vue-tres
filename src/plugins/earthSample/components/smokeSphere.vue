@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-07-30 08:04:23
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-30 08:20:05
+ * @LastEditTime: 2025-09-28 10:56:40
 -->
 <template>
     <TresMesh>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import * as THREE from 'three'
 import { watch } from 'vue'
 
@@ -105,8 +105,8 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     tsm.uniforms.iTime.value += delta * props.speed
 })
 </script>

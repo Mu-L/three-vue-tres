@@ -8,16 +8,17 @@
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useTextures } from '@tresjs/cientos'
+import { useLoop } from '@tresjs/core'
 import { AdditiveBlending, DoubleSide } from 'three';
 
-const pTexture = await useTexture(
+const { textures: pTexture } = useTextures(
 	['./plugins/earthSample/image/earthA/moon.jpg', './plugins/earthSample/image/earthA/moon_ring.png']
 )
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 const moonRef = ref(null)
-onLoop(({ elapsed }) => {
+onBeforeRender(({ elapsed }) => {
 	if (moonRef) {
 		const tempelapsed = elapsed / 20
 		moonRef.value.position.x = 150 * Math.cos(tempelapsed * Math.PI * 2);
