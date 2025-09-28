@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-16 08:31:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-19 13:20:47
+ * @LastEditTime: 2025-09-28 17:13:15
 -->
 <template>
     <primitive :object="toRaw(modelSplat)" />
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import { watch, onUnmounted, ref, toRaw } from 'vue'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { Splat, SplatLoader } from '@pmndrs/vanilla'
 
 const props = defineProps({
@@ -22,9 +22,9 @@ const props = defineProps({
     },
 })
 
-const { camera, renderer } = useTresContext() as any
+const { camera, renderer } = useTres() as any
 
-const loader = new SplatLoader(renderer.value)
+const loader = new SplatLoader(renderer)
 
 let oneSplat = await loader.loadAsync(props.url)
 

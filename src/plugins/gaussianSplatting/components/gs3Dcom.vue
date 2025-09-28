@@ -1,7 +1,16 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-09-19 10:02:15
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-28 17:37:22
+-->
 <template>
-    <primitive :object="viewer" :rotate-y="Math.PI" />
+    <TresGroup ref="tgRef" :rotate-y="Math.PI"></TresGroup>
 </template>
 <script lang="ts" setup>
+import { ref, watch } from 'vue'
 import * as GaussianSplats3D from '@mkkellogg/gaussian-splats-3d'
 
 // 目前这部分 每一个模型的都在它自己得DropInViewer中维护，无法在外部进行管理，所以编辑器不用这个库来维护
@@ -20,6 +29,11 @@ viewer.addSplatScenes(
     true,
 )
 
+const tgRef = ref(null) as any
+watch(tgRef, (tg) => {
+    viewer.children[0].geometry.setAttribute('position',[]) // @mkkellogg/gaussian-splats-3d 兼容tres.js 的bugger
+    tg.add(viewer) 
+})
 // setTimeout(() => {
 // 	viewer.removeSplatScene(0)
 // }, 2000);
