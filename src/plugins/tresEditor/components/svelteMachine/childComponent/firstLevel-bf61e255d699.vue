@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-05-22 12:35:20
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-29 18:35:05
+-->
 <template>
     <!-- name:core uuid:fc5f1290-58d9-4fc1-937a-00183070e7c1 type:Group -->
     <primitive :object="object[0]" />
@@ -17,7 +25,7 @@
 
 <script setup lang="ts">
 import { initBeltFots, updateBeltFots, initRawItemsPool, updateRawItemsPool, initBoxesPool, updateBoxesPool } from '../utils'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import * as THREE from 'three'
 
 const props = withDefaults(
@@ -27,7 +35,7 @@ const props = withDefaults(
     {},
 )
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 const beltDotsItem = initBeltFots(props.object[1])
 scene.value.add(beltDotsItem)
 
@@ -43,8 +51,8 @@ group2.add(...boxesPool)
 group2.position.set(0, 1, 0)
 scene.value.add(group2)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     if (beltDotsItem) {
         updateBeltFots(beltDotsItem)
     }

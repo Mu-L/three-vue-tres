@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-22 08:36:08
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-22 12:14:39
+ * @LastEditTime: 2025-09-29 18:35:33
 -->
 <template>
     <!-- name:svelte-conveyor-belt.glb uuid:6ed6209f-3fe1-4809-ae6b-bf61e255d699 type:Group -->
@@ -24,11 +24,11 @@
 import { onMounted, ref } from 'vue'
 import * as THREE from 'three'
 import { loadImageToBase64, loadJsonFile } from 'PLS/tresEditor'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import player from './eventScript'
 import firstLevelbf61e255d699 from './childComponent/firstLevel-bf61e255d699.vue'
 
-const { scene: tresScene, renderer, camera, sizes } = useTresContext()
+const { scene: tresScene, renderer, camera, sizes } = useTres()
 player.init(tresScene, renderer, camera, sizes)
 
 const loader = new THREE.ObjectLoader()
@@ -74,8 +74,8 @@ onMounted(() => {
         sLight.angle = Math.PI / 2.5
     }
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     if (player.renderer) {
         player.render(elapsed * 1000, delta * 1000)
     }

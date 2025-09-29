@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-10 10:25:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-28 09:28:35
+ * @LastEditTime: 2025-09-29 17:49:06
 -->
 <template></template>
 
@@ -13,7 +13,7 @@ import * as THREE from 'three'
 import { exporterJsonZip, importJsonZip } from '../common/utils'
 import { initEvents, registerEvent, unregisterEvent, updateEvents } from '../common/event'
 import { makePluginZip } from '../common/makePlugin'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { Pane } from 'tweakpane'
 import { onMounted } from 'vue'
 import { FMessage } from '@fesjs/fes-design'
@@ -22,7 +22,7 @@ let fileInput: any
 let jsonData = null as any
 var loader = new THREE.ObjectLoader()
 let group = null as THREE.Group | null
-const { scene, renderer, camera, sizes } = useTresContext()
+const { scene, renderer, camera, sizes } = useTres()
 const clearScene = () => {
     if (!group) {
         return
@@ -181,7 +181,7 @@ const initSceneFromJsonData = (jd: any) => {
     jsonData = jd
     setScene(loader.parse(jsonData.scene))
 
-    initEvents(renderer.value, scene.value, camera.value, sizes, jsonData)
+    initEvents(renderer, scene.value, camera.value, sizes, jsonData)
     registerEvent()
 }
 onMounted(() => {
@@ -204,8 +204,8 @@ onMounted(() => {
         }
     }
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     updateEvents(elapsed * 1000, delta * 1000)
 })
 </script>

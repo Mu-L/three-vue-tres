@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-17 16:18:15
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-17 16:25:06
+ * @LastEditTime: 2025-09-29 18:00:25
 -->
 <template>
     <!-- name:AmbientLight uuid:d734c277-95ab-436d-a0b9-50aaddcd2c29 type:AmbientLight -->
@@ -22,11 +22,11 @@
 import { onMounted } from 'vue'
 import * as THREE from 'three'
 import { loadImageToBase64, loadJsonFile } from 'PLS/tresEditor'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import player from './eventScript'
 import firstLevel42dee480409b from './childComponent/firstLevel-42dee480409b.vue'
 
-const { scene: tresScene, renderer, camera, sizes } = useTresContext()
+const { scene: tresScene, renderer, camera, sizes } = useTres()
 player.init(tresScene, renderer, camera, sizes)
 
 const loader = new THREE.ObjectLoader()
@@ -63,8 +63,8 @@ onMounted(() => {
     player.load(sceneObject)
     player.play()
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     if (player.renderer) {
         player.render(elapsed * 1000, delta * 1000)
     }

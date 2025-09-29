@@ -6,7 +6,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-10 10:32:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:50:31
+ * @LastEditTime: 2025-09-29 18:33:52
  */
 import { request } from '@fesjs/fes'
 import JSZip from 'jszip'
@@ -219,7 +219,7 @@ const getResourceNum = (gJson) => {
         images: 0,
     }
     gJson.scene.geometries?.forEach((geometry) => {
-        if (geometry.data.startsWith('url:')) {
+        if (geometry.data?.startsWith('url:')) {
             srcNum.geometries++
         }
     })
@@ -243,7 +243,7 @@ export const importJsonZip = (file, handler) => {
                 const resourceNum = getResourceNum(gJson)
                 checkFinishImportJson(resourceNum, gJson, handler)
                 gJson.scene.geometries?.forEach((geometry) => {
-                    if (geometry.data.startsWith('url:')) {
+                    if (geometry.data?.startsWith('url:')) {
                         zip.files[geometry.data.slice(4)].async('string').then((gdata) => {
                             geometry.data = JSON.parse(gdata)
                             resourceNum.geometries--

@@ -27,10 +27,10 @@ const player = {
 			return Grscwh.sizes?.height?.value
 	},
 	get dom() {
-			return Grscwh.renderer?.value.domElement.parentElement
+			return Grscwh.renderer?.domElement.parentElement
 	},
 	get canvas() {
-			return Grscwh.renderer?.value.domElement
+			return Grscwh.renderer?.domElement
 	},
 	events: {},
 	init(scene, renderer, camera, sizes) {
