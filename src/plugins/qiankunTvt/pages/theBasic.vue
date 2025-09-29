@@ -1,15 +1,17 @@
 <template>
-    <TresCanvas v-bind="state" :style="{ height }">
+    <TresCanvas v-bind="state" :style="{ height }" @loop="onLoop">
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="0.5" />
 
-        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
+        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointer-enter="onPointerEnter"
+            @pointer-leave="onPointerLeave">
             <TresSphereGeometry :args="[2, 32, 32]" />
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
 
-        <TresMesh ref="sphereRef2" :position="[4, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
+        <TresMesh ref="sphereRef2" :position="[4, 4, 0]" cast-shadow @pointer-enter="onPointerEnter"
+            @pointer-leave="onPointerLeave">
             <TresSphereGeometry :args="[2, 32, 32]" />
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
@@ -24,13 +26,14 @@
 
         <TresGridHelper />
     </TresCanvas>
-    <h1 class="text-center text-white w-full absolute" v-if="!qiankunWindow.__POWERED_BY_QIANKUN__">请通过qiankun主程序访问此页面</h1>
+    <h1 class="text-center text-white w-full absolute" v-if="!qiankunWindow.__POWERED_BY_QIANKUN__">请通过qiankun主程序访问此页面
+    </h1>
 </template>
 
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
 import { reactive, ref, onMounted, shallowRef, watchEffect } from 'vue'
-import { TresCanvas, useRenderLoop } from '@tresjs/core'
+import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
@@ -68,10 +71,7 @@ const sphereRef = ref()
 const sphereRef2 = ref()
 const TDirectionalLight = shallowRef()
 
-// const { onLoop, pause, resume } = useRenderLoop()
-const { onLoop } = useRenderLoop()
-
-onLoop(({ elapsed }) => {
+const onLoop = (({ elapsed }: { elapsed: number }) => {
     if (!sphereRef.value) return
     sphereRef.value.position.y += Math.sin(elapsed) * 0.01
     sphereRef2.value.position.y += Math.sin(elapsed) * 0.01

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:13:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:14:10
+ * @LastEditTime: 2025-09-29 11:38:56
 -->
 <template>
 	<loading />
@@ -14,10 +14,7 @@
 		<TresAmbientLight :intensity="0.5" />
 		<TresGroup :position="[0, 120, 0]">
 			<cloudPoints v-if="cloudPointsState.show" :model="model" v-bind="cloudPointsState"></cloudPoints>
-			<Suspense>
-				<xRayEffect v-if="xRayState.show" :model="model" v-bind="xRayState" />
-			</Suspense>
-
+			<xRayEffect v-if="xRayState.show" :model="model" v-bind="xRayState" />
 			<bubblesEffect v-if="bubblesState.show" :model="model" v-bind="bubblesState" />
 		</TresGroup>
 		<reflectorMesh v-bind="configState" />

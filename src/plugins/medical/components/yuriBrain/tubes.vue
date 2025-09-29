@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-09 11:13:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-09 14:51:09
+ * @LastEditTime: 2025-09-29 11:54:52
 -->
 <template>
     <TresGroup :scale="10">
@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = defineProps({
 	brainCurves: { default: null, type: Array },
@@ -72,8 +72,8 @@ const tsmConfig = {
     blending: THREE.AdditiveBlending,
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     tsmConfig.uniforms.time.value = elapsed
 })
 

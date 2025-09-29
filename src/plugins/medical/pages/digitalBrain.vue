@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:13:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:14:03
+ * @LastEditTime: 2025-09-29 11:27:53
 -->
 <template>
 	<loading />
@@ -13,12 +13,11 @@
 		<OrbitControls v-bind="controlsState" />
 		<TresAmbientLight :intensity="0.5" />
 		<TresGroup :position="[0, 120, 0]">
-			<cloudPoints v-if="cloudPointsState.show" :model="model" v-bind="cloudPointsState"></cloudPoints>
-			<Suspense>
-				<xRayEffect v-if="xRayState.show" :model="model" v-bind="xRayState" />
-			</Suspense>
+			<cloudPoints v-if="cloudPointsState.show" :model="toRaw(model)" v-bind="cloudPointsState"></cloudPoints>
 
-			<bubblesEffect v-if="bubblesState.show" :model="model" v-bind="bubblesState" />
+			<xRayEffect v-if="xRayState.show" :model="toRaw(model)" v-bind="xRayState" />
+
+			<bubblesEffect v-if="bubblesState.show" :model="toRaw(model)" v-bind="bubblesState" />
 		</TresGroup>
 		<TresGridHelper :args="[400, 10]" />
 	</TresCanvas>
@@ -27,10 +26,10 @@
 
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
-import { reactive } from 'vue'
+import { reactive,toRaw } from 'vue'
 
 import { OrbitControls } from '@tresjs/cientos'
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { Pane } from 'tweakpane'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import { loadOBJ } from '../common/util'

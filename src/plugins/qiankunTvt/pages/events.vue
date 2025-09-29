@@ -1,10 +1,10 @@
 <template>
-    <TresCanvas v-bind="state" :style="{ height }">
+    <TresCanvas v-bind="state" :style="{ height }" @loop="onLoop">
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="0.5" />
 
-        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointer-enter="onPointerEnter" @pointer-leave="onPointerLeave">
+        <TresMesh ref="sphereRef" :position="[0, 4, 0]" cast-shadow @pointerenter="onPointerEnter" @pointerleave="onPointerLeave">
             <TresSphereGeometry :args="[2, 32, 32]" />
             <TresMeshToonMaterial color="#006060" />
         </TresMesh>
@@ -25,7 +25,6 @@
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
 import { reactive, ref, onMounted, shallowRef, watchEffect } from 'vue'
-import { TresCanvas, useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import { useQiankunTvtStore } from 'PLS/qiankunTvt/stores/index'
@@ -63,10 +62,9 @@ const controlsState = reactive({
 const sphereRef = ref()
 const TDirectionalLight = shallowRef()
 
-const { onLoop } = useRenderLoop()
 const qiankunTvtStore = useQiankunTvtStore() as any
 let timeplay = 0
-onLoop(() => {
+const onLoop = (({ elapsed }: { elapsed: number }) => {
     if (!sphereRef.value) return
     if (qiankunTvtStore.floatMove) {
         timeplay++

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-17 10:02:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-17 16:25:59
+ * @LastEditTime: 2025-09-29 11:11:41
 -->
 <template>
 	<TresPoints ref="TresMeshRef">
@@ -14,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import * as THREE from 'three';
-import { ref, watchEffect } from 'vue';
-import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
-import glowVertex from '../shaders/glow.vert?raw';
-import glowFrag from '../shaders/glow.frag?raw';
-import { useRenderLoop } from '@tresjs/core';
+import * as THREE from 'three'
+import { ref, watchEffect } from 'vue'
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+import glowVertex from '../shaders/glow.vert'
+import glowFrag from '../shaders/glow.frag'
+import { useLoop } from '@tresjs/core'
 
 const props = withDefaults(
 	defineProps<{
@@ -108,9 +108,9 @@ watchEffect(() => {
 	}
 });
 
-const TresMeshRef = ref();
-const { onLoop } = useRenderLoop();
-onLoop(({ delta }) => {
+const TresMeshRef = ref()
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	if (TresMeshRef.value) {
 		TresMeshRef.value.material.uniforms.uTime.value += 1 / 20;
 		TresMeshRef.value.material.uniforms.uSlowTime.value += 1 / 400;

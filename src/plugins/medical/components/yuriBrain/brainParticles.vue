@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-09 10:29:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-09 15:00:05
+ * @LastEditTime: 2025-09-29 11:54:34
 -->
 <template>
     <TresPoints :scale="10">
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { randomRange } from './makeData'
 
 const props = defineProps({
@@ -83,8 +83,8 @@ const uniforms = {
     blending: THREE.AdditiveBlending,
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (tbRef.value) {
         let curpositions = tbRef.value.attributes.position.array
         for (let i = 0; i < myPoints.length; i++) {
