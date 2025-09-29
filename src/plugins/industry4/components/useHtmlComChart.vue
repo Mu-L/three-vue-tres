@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-19 08:37:20
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-22 08:11:18
+ * @LastEditTime: 2025-09-29 10:00:56
 -->
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { Html } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import * as echarts from 'echarts'
 
 const state = reactive({
@@ -88,8 +88,8 @@ const resetChart = () => {
 	chart.setOption(option)
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	if (htmlRef.value && !chart) {
 		intChart()
 	}

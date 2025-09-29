@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-28 15:31:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-30 10:35:07
+ * @LastEditTime: 2025-09-29 09:52:10
 -->
 <template>
     <TresGroup v-if="model" :scale="0.5">
@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-// import { useGLTF } from '@tresjs/cientos'
 import { useMaterialDiyStore } from 'PLS/hunyuan3D/stores/index'
 import materialDiy from './materialDiy.vue'
 import { loadGLTFBufferIntoScene } from 'PLS/hunyuan3D/common/util'

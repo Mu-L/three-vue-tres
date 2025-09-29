@@ -19,7 +19,7 @@ import { Vector2, PlaneGeometry, Mesh, RepeatWrapping, Color, GridHelper } from 
 import { useTres } from '@tresjs/core'
 import { useTextures } from '@tresjs/cientos'
 import { Reflector, ReflectorMaterial } from '../lib/alienJS/all.three.js'
-import { watchEffect, watch, ref } from 'vue'
+import { watchEffect, watch } from 'vue'
 const props = withDefaults(
     defineProps<{
         reflectivity?: Number // 反射率

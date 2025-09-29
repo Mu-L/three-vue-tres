@@ -1,13 +1,13 @@
 <template>
-	<primitive :object="nodes.Sketchfab_model" />
+	<primitive :object="toRaw(nodes.Sketchfab_model)" />
 </template>
 
 <script setup lang="ts">
 import { MeshBasicMaterial, Mesh, Color } from 'three'
-import { watchEffect } from 'vue'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { watchEffect,toRaw } from 'vue'
+import { useTres, useLoop } from '@tresjs/core'
 import { reduceModelLine, unreal } from '../common/device'
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF } from 'PLS/basic'
 
 const props = withDefaults(
 	defineProps<{
@@ -23,23 +23,22 @@ const props = withDefaults(
 );
 
 const { nodes } = await useGLTF(
-(process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb',
-	{ draco: true, decoderPath: './draco/' })
+	(process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb')
 const lineGroup = reduceModelLine(nodes.Sketchfab_model)
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 let finalComposer = null as any
 let effectComposer = null as any
 let bloomPass = null as any
 const darkMaterial = new MeshBasicMaterial({ color: 'black' })
 watchEffect(() => {
 	if (camera.value) {
-		renderer.value.setPixelRatio(window.devicePixelRatio)
+		renderer.setPixelRatio(window.devicePixelRatio)
 		scene.value.add(lineGroup)
 		const { finalComposer: F,
 			effectComposer: B,
 			bloomPass: BP
-		} = unreal(scene.value, camera.value, renderer.value, sizes.width.value, sizes.height.value)
+		} = unreal(scene.value, camera.value, renderer, sizes.width.value, sizes.height.value)
 		finalComposer = F
 		effectComposer = B
 		bloomPass = BP
@@ -71,13 +70,13 @@ const restoreMaterial = (obj: Mesh) => {
 		delete materials[obj.uuid];
 	}
 }
-const { onLoop, onAfterLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 //旋转速度
 let rotationX = 0.03
 let right_pbr = nodes.Sketchfab_model.getObjectByName('canister_turbine_011_Nickel-Light-PBR_0')
 let oldMeshMaterila = right_pbr.material.clone()
 let errorMeshMaterila = new MeshBasicMaterial({ color: new Color('red'), transparent: true, opacity: 1.0 });
-onLoop(({ elapsed }) => {
+onBeforeRender(({ elapsed }) => {
 	// 旋转涡轮
 	if (nodes.hull_turbine) {
 		nodes.hull_turbine.rotation.x += rotationX
@@ -88,8 +87,8 @@ onLoop(({ elapsed }) => {
 	} else {
 		right_pbr.material = errorMeshMaterila
 	}
-})
-onAfterLoop(({ elapsed }) => {
+}, -1)
+onBeforeRender(({ elapsed }) => {
 	if (effectComposer) {
 		scene.value.traverse((child) => {
 			darkenNonBloomed(child)
@@ -103,5 +102,5 @@ onAfterLoop(({ elapsed }) => {
 		})
 		finalComposer.render(elapsed)
 	}
-})
+}, 1)
 </script>

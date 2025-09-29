@@ -4,15 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 08:51:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-13 20:41:29
+ * @LastEditTime: 2025-09-29 10:01:31
 -->
 <template>
 	<loading />
 	<TresCanvas clearColor="#333" shadows window-size>
 		<TresPerspectiveCamera :position="[500, 330, 500]" :fov="50" :near="0.1" :far="10000" />
 		<OrbitControls />
-		<TresAmbientLight color="#ffffff" intensity="1" />
-		<!-- <TresGridHelper :position="[0, 1, 0]" :args="[500, 10]" /> -->
+		<TresAmbientLight color="#ffffff" :intensity="1" />
 		<TresDirectionalLight ref="TDirectionalLight" color="#ffffff" :position="[300, 300, 350]" :intensity="6"
 			cast-shadow />
 		<Suspense>

@@ -4,29 +4,29 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-18 12:03:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:25:57
+ * @LastEditTime: 2025-09-29 10:03:06
 -->
 
 <template>
-	<primitive :object="nodes.Sketchfab_model" />
-	<cloudPoints isRemoveSrc :model="cubeCSBlack" color="#fff" />
+	<primitive :object="toRaw(nodes.Sketchfab_model)" />
+	<cloudPoints isRemoveSrc :model="toRaw(cubeCSBlack)" color="#fff" />
 </template>
 
 <script setup lang="ts">
-import { useTresContext } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import { toRaw } from 'vue'
+import { useTres } from '@tresjs/core'
+import { useGLTF } from 'PLS/basic'
 import { Plane, Vector3 } from 'three'
 import cloudPoints from 'PLS/medical/components/cloudPoints.vue'
 import { Pane } from 'tweakpane'
 
 
-const { renderer } = useTresContext()
-renderer.value.localClippingEnabled = true
+const { renderer } = useTres()
+renderer.localClippingEnabled = true
 
 const { nodes } = await useGLTF(
-	`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/plane/scene.gltf`, { draco: true, decoderPath: './draco/' })
+	`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/plane/scene.gltf`)
 
-console.log(nodes)
 //移除地板
 const floor = nodes.Sketchfab_model.getObjectByName('Floor')
 floor.removeFromParent()

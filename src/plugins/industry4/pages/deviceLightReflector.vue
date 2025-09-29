@@ -14,9 +14,7 @@
         <Suspense>
             <device v-bind="deviceState" />
         </Suspense>
-        <Suspense>
             <reflectorShaderMesh v-bind="configState" :position="[0, 0, 0]" />
-        </Suspense>
 
         <divContent />
         <useHtmlComChart :position="[-0.5, -0.001, 2.25]" :rotation="[-Math.PI / 2, 0, -Math.PI / 2]" />
