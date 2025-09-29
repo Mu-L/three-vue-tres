@@ -1,23 +1,19 @@
 <template>
   <TresMesh ref="meshRef">
     <TresPlaneGeometry :args="[aspect * 2, 2]" />
-    <TresShaderMaterial
-      :vertex-shader="vertexShader"
-      :fragment-shader="fragmentShader"
-      :uniforms="uniforms"
-      :transparent="true"
-      :side="doubleSide"
-    />
+    <TresShaderMaterial :vertex-shader="vertexShader" :fragment-shader="fragmentShader" :uniforms="uniforms"
+      :transparent="true" :side="doubleSide" />
   </TresMesh>
 </template>
 
 <script setup>
 import * as THREE from 'three'
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
-import { useTresContext, useRenderLoop , useTexture } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 
 import { gsap } from 'gsap'
-import {Pane} from 'tweakpane'
+import { Pane } from 'tweakpane'
 
 // 导入着色器
 import fragmentShader from '../shaders/fragment.glsl'
@@ -25,16 +21,14 @@ import vertexShader from '../shaders/vertex.glsl'
 
 const DURATION_TIME = 2.5
 
-const { sizes } = useTresContext()
+const { sizes } = useTres()
 const meshRef = ref(null)
 
 const aspect = sizes.width.value / sizes.height.value
 const doubleSide = THREE.DoubleSide
 
 // 纹理加载
-const { map: texture } = await useTexture({
-  map: './plugins/heroSection/img/chart.png'
-})
+const texture = await useTexture('./plugins/heroSection/img/chart.png')
 
 texture.minFilter = THREE.NearestFilter
 texture.magFilter = THREE.NearestFilter
@@ -63,7 +57,7 @@ const rotation = ref(new THREE.Euler(-0.75, 0, 0))
 const pane = ref(null)
 
 // 动画函数
-function playAnimation() {
+function playAnimation () {
   const timeline = gsap.timeline()
 
   timeline
@@ -92,12 +86,13 @@ function playAnimation() {
 }
 
 // 调试功能
-function setupDebug() {
+function setupDebug () {
   // 创建 Tweakpane 实例
   pane.value = new Pane({
     title: 'Earth Map Settings',
-    expanded: true
+    expanded: false,
   })
+  pane.value.containerElem_.style.zIndex= 999999999
 
   // 位置调试
   const positionFolder = pane.value.addFolder({
@@ -227,8 +222,8 @@ function setupDebug() {
 }
 
 // 渲染循环
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
   uniforms.uTime.value = elapsed
 
   if (meshRef.value) {

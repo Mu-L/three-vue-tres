@@ -5446,7 +5446,7 @@ china-location@^2.0.0:
   resolved "https://registry.npmmirror.com/china-location/-/china-location-2.1.0.tgz#5433ff393a8d6ffb42138a2a64d08bc8dfebefe4"
   integrity sha512-ZUvn1LnoNcTIbCrhM+xHYurb+F2xP7+g0WE87Ksw5IOmycy9uUq2O+fe8mD0m5vliSOhyiGIZOdQDTCxyFaBjw==
 
-chokidar@^3.5.2, chokidar@^3.6.0:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.2, chokidar@^3.6.0:
   version "3.6.0"
   resolved "https://registry.npmmirror.com/chokidar/-/chokidar-3.6.0.tgz#197c6cc669ef2a8dc5e7b4d97ee4e092c3eb0d5b"
   integrity sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
@@ -7621,6 +7621,11 @@ immediate@~3.0.5:
   version "3.0.6"
   resolved "https://registry.npmmirror.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
   integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
+
+immutable@^4.0.0:
+  version "4.3.7"
+  resolved "https://registry.npmmirror.com/immutable/-/immutable-4.3.7.tgz#c70145fc90d89fb02021e65c84eb0226e4e5a381"
+  integrity sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==
 
 immutable@^5.0.2:
   version "5.1.3"
@@ -9880,7 +9885,16 @@ sass-loader@^16.0.5:
   dependencies:
     neo-async "^2.6.2"
 
-sass@1.93.1, sass@^1.92.0:
+sass@1.49.11:
+  version "1.49.11"
+  resolved "https://registry.npmmirror.com/sass/-/sass-1.49.11.tgz#1ffeb77faeed8b806a2a1e021d7c9fd3fc322cb7"
+  integrity sha512-wvS/geXgHUGs6A/4ud5BFIWKO1nKd7wYIGimDk4q4GFkJicILActpv9ueMT4eRGSsp1BdKHuw1WwAHXbhsJELQ==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.92.0:
   version "1.93.1"
   resolved "https://registry.npmmirror.com/sass/-/sass-1.93.1.tgz#94bf77eeef5fba022c7316515327e275e46b654e"
   integrity sha512-wLAeLB7IksO2u+cCfhHqcy7/2ZUMPp/X2oV6+LjmweTqgjhOKrkaE/Q1wljxtco5EcOcupZ4c981X0gpk5Tiag==

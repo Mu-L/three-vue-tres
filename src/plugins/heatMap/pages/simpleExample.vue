@@ -4,12 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-06 18:53:07
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-07 10:07:44
+ * @LastEditTime: 2025-09-29 09:22:35
 -->
 
 <script setup lang="ts">
-// import { ref } from 'vue';
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { PCFSoftShadowMap, SRGBColorSpace, DoubleSide } from 'three'
 import { getAlphaScaleMap, getPaletteMap } from '../common/simpleExampleGetTexture'
@@ -22,10 +20,6 @@ const gl = {
 	shadowMapType: PCFSoftShadowMap,
 	useLegacyLights: true,
 }
-
-useRenderLoop().onLoop(({ delta }) => {
-
-})
 
 const shader = {
 	transparent: true,

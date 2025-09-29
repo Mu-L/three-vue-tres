@@ -9,6 +9,7 @@
 
 <script setup lang="ts">
 import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { Pane } from 'tweakpane';
 import { PCFSoftShadowMap, SRGBColorSpace } from 'three'
@@ -26,7 +27,7 @@ const gl = {
 }
 const heatmapJSRef = ref()
 let play = true
-useRenderLoop().onLoop(({ elapsed }) => {
+const onLoop = ({ elapsed }) => {
 	if (!play && parseInt(elapsed) % 2 == 1) {
 		play = true
 		if (heatmapJSRef.value) {
@@ -37,7 +38,7 @@ useRenderLoop().onLoop(({ elapsed }) => {
 		play = false
 	}
 
-})
+}
 const typeState = reactive({
 	show2dCanvas: true,
 	heightRatio: 6,
@@ -57,7 +58,7 @@ paneControl.addBinding(typeState, 'heightRatio', {
 </script>
 
 <template>
-	<TresCanvas v-bind="gl" window-size>
+	<TresCanvas v-bind="gl" window-size @loop="onLoop">
 		<TresPerspectiveCamera :position="[21, 34, 55]" :fov="60" :near="1" :far="1000" />
 		<OrbitControls :autoRotate="true" :autoRotateSpeed="2" />
 		<TresAmbientLight color="#cccccc" :intensity="0.4" />

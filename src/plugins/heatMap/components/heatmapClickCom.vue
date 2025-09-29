@@ -1,12 +1,12 @@
 <template>
-    <primitive :object="nodes.mesh_0" />
+    <primitive :object="toRaw(nodes.mesh_0)" />
 </template>
 
 <script setup lang="ts">
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF } from 'PLS/basic'
 import * as THREE from 'three'
 import h337 from 'heatmap.js-fix'
-import { watchEffect } from 'vue'
+import { watchEffect,toRaw } from 'vue'
 
 const props = withDefaults(
     defineProps<{
@@ -21,7 +21,6 @@ const props = withDefaults(
 
 const { nodes } = await useGLTF(
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/heatmap/test.glb',
-    { draco: true, decoderPath: './draco/' },
 )
 
 nodes.mesh_0.position.set(-5088.96, -3.08, 39374.7)

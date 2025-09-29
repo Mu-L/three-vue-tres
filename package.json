@@ -50,7 +50,6 @@
     "cross-env": "^10.0.0",
     "eslint": "^9.36.0",
     "esm": "^3.2.25",
-    "sass": "1.93.1",
     "typescript": "5.9.2",
     "vite-plugin-glsl": "1.5.1"
   },
@@ -115,6 +114,7 @@
     "pinia": "2.3.1",
     "postinstall-postinstall": "^2.1.0",
     "postprocessing": "6.37.8",
+    "sass": "1.49.11",
     "simplex-noise": "^4.0.3",
     "three": "0.180.0",
     "three-bvh-csg": "^0.0.17",

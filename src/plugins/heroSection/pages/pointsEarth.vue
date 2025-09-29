@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { shallowRef } from 'vue'
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useTextures } from 'PLS/basic'
 import { OrbitControls } from '@tresjs/cientos'
 // import loading from 'PLS/UIdemo/components/loading/default.vue'
 import { Pane } from 'tweakpane'
-import ParticalMesh from '@/plugins/UIdemo/components/particalMesh.vue'
-import vertex from '../shaders/pointsEarth.vert?raw'
-import fragment from '../shaders/pointsEarth.frag?raw'
+import vertex from '../shaders/pointsEarth.vert'
+import fragment from '../shaders/pointsEarth.frag'
 
 const params = {
     color: '#17c5a9',
@@ -28,7 +27,7 @@ const wireframeMaterial = {
     opacity: 0.2,
 }
 
-const textures = await useTexture([
+const textures = await useTextures([
     './plugins/earthSample/image/pointsEarth/00_earthmap1k.jpg',
     './plugins/earthSample/image/pointsEarth/circle.png',
     './plugins/earthSample/image/pointsEarth/04_rainbow1k.jpg',
@@ -89,19 +88,17 @@ debugFolder.addBinding(pointsShader.uniforms.uWaveSpeed, 'value', {
     label: '海浪变化速度',
 })
 
-const { onLoop } = useRenderLoop()
-
-onLoop(({ delta }) => {
+const onLoop = ({ delta }) => {
     if (groupRef.value) {
         groupRef.value.rotation.y += 0.002
         pointsShader.uniforms.uTime.value += 10 * delta
     }
-})
+}
 </script>
 
 <template>
     <!-- <loading /> -->
-    <TresCanvas v-bind="gl" window-size>
+    <TresCanvas v-bind="gl" window-size @loop="onLoop">
         <TresPerspectiveCamera :position="[0, 0, 3.5]" :fov="45" :near="0.1" :far="20" />
         <OrbitControls :autoRotate="true" :autoRotateSpeed="2" />
         <TresGroup ref="groupRef">
