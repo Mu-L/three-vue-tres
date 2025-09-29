@@ -14,7 +14,7 @@
     "pre.build": "cross-env NODE_OPTIONS=--max-old-space-size=8088 FES_ENV=predev fes build",
     "pre.build.one": "cross-env NODE_OPTIONS=--max-old-space-size=8088 FES_ENV=predev.one fes build",
     "both": "concurrently \"npm run dev\" \"npm run pre.dev\" ",
-    "plugin.marker": "node pluginMaker/index.js",
+    "plugin.marker": "node pluginMaker/index.cjs",
     "pre.build.icegl": "cross-env NODE_OPTIONS=--max-old-space-size=8088 FES_ENV=predev FES_APP_ONLINE_API=true fes build",
     "analyze": "cross-env ANALYZE=1 fes build",
     "test:unit": "fes test:unit",

@@ -124,11 +124,11 @@ const codeForSence = (srcFolder, pluginState, scene) => {
 import { onMounted } from 'vue'
 import * as THREE from 'three'
 import { loadImageToBase64, loadJsonFile } from 'PLS/tresEditor'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import player from '../common/eventScript'
 ${importFromchildComponentFileList()}
 
-const { scene: tresScene, renderer, camera, sizes } = useTresContext()
+const { scene: tresScene, renderer, camera, sizes } = useTres()
 player.init(tresScene, renderer, camera, sizes)
 
 const loader = new THREE.ObjectLoader()
@@ -169,8 +169,8 @@ onMounted(() => {
     player.load(sceneObject)
     player.play()
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     if (player.renderer) {
         player.render(elapsed * 1000, delta * 1000)
     }

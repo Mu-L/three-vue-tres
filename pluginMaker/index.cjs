@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-08 09:01:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-08 09:44:23
+ * @LastEditTime: 2025-09-29 18:53:43
  */
 const compressing = require('compressing')
 const fs = require('fs')
@@ -15,8 +15,9 @@ const readline = require('readline')
 const args = process.argv // 包含了所有的命令行参数，第一个元素为 node 路径，第二个元素为脚本文件名
 
 if (!args[2]) {
-    console.error('【类型:creat、package、install】 参数错误')
+    console.error('【类型:creat、package、install】 参数错误',args)
     return
+    // process.exit(1)
 }
 
 function fileExistsWithCaseSync(filepath) {
