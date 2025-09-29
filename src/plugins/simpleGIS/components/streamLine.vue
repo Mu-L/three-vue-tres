@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
-import { useRenderLoop, useTexture } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 import * as THREE from 'three'
 
 const props = withDefaults(
@@ -34,9 +35,7 @@ const props = withDefaults(
     },
 )
 
-const { map: pTexture } = await useTexture({
-    map: './plugins/digitalCity/image/line2.png',
-})
+const pTexture = await useTexture('./plugins/digitalCity/image/line2.png')
 pTexture.needsUpdate = true
 pTexture.wrapS = pTexture.wrapT = THREE.RepeatWrapping
 pTexture.repeat.set(props.fewNum, 1)
@@ -51,8 +50,8 @@ props.linesList.forEach((point) => {
 })
 const curve = new THREE.CatmullRomCurve3(pathPoint)
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     pTexture.offset.x += 0.002 * props.speed
 })
 
@@ -67,14 +66,9 @@ watch(
 
 <template>
     <TresMesh>
-        <TresTubeGeometry :args="[curve, props.tubularSegments /*管道路径平滑*/, props.radius, props.radialSegments /*管道壁圆润*/, props.closed]" />
-        <TresMeshBasicMaterial
-            :blending="THREE.AdditiveBlending"
-            :map="pTexture"
-            :side="THREE.DoubleSide"
-            :alphaMap="pTexture"
-            :transparent="true"
-            :color="props.color"
-        />
+        <TresTubeGeometry
+            :args="[curve, props.tubularSegments /*管道路径平滑*/, props.radius, props.radialSegments /*管道壁圆润*/, props.closed]" />
+        <TresMeshBasicMaterial :blending="THREE.AdditiveBlending" :map="pTexture" :side="THREE.DoubleSide"
+            :alphaMap="pTexture" :transparent="true" :color="props.color" />
     </TresMesh>
 </template>

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-25 08:59:26
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-25 16:29:20
+ * @LastEditTime: 2025-09-29 12:36:01
 -->
 <template>
     <TresGroup>
@@ -14,13 +14,13 @@
 
 <script lang="ts" setup>
 import { watchEffect } from 'vue'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { TilesRenderer } from '3d-tiles-renderer'
 import { CesiumIonAuthPlugin, GLTFExtensionsPlugin } from '3d-tiles-renderer/plugins'
 import * as THREE from 'three'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-const { camera, renderer, sizes } = useTresContext()
+const { camera, renderer, sizes } = useTres()
 
 const assetId = '354759'
 const accessToken =
@@ -69,12 +69,12 @@ setupTiles()
 watchEffect(() => {
     if (sizes.width.value) {
         tiles.setCamera(camera.value)
-        tiles.setResolutionFromRenderer(camera.value, renderer.value)
+        tiles.setResolutionFromRenderer(camera.value, renderer)
     }
 })
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (camera.value && sizes.width.value && tiles) {
         camera.value.updateMatrixWorld()
         tiles.update()

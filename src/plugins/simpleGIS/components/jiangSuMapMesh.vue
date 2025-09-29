@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-05 09:36:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-12 11:49:09
+ * @LastEditTime: 2025-09-29 12:26:48
 -->
 
 <template>
@@ -23,8 +23,8 @@
                 :name="item.name"
                 :renderOrder="index"
                 :pCenter="item.pCenter"
-                @pointer-enter="pEnter"
-                @pointer-leave="pLeave"
+                @pointerenter="pEnter"
+                @pointerleave="pLeave"
                 @click="pClick"
             >
                 <TresExtrudeGeometry :args="[item.shape, { depth: item.depth, bevelEnabled: false }]" />
@@ -57,7 +57,8 @@ import * as D3 from 'd3-geo'
 import * as THREE from 'three'
 import { loadGeojson } from 'PLS/digitalCity/common/utils'
 import { Html } from '@tresjs/cientos'
-import { useTexture, useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh'
 import { flyTo } from '../common/utils'
 
@@ -70,7 +71,7 @@ const initMeshBvh = () => {
 initMeshBvh()
 
 const areaJson = await loadGeojson('./plugins/simpleGIS/json/320000_full.json', 'features')
-const { map: pTexture } = await useTexture({ map: './plugins/simpleGIS/image/icon.png' })
+const pTexture = await useTexture('./plugins/simpleGIS/image/icon.png')
 
 const center = areaJson[0].properties.centroid
 
@@ -155,7 +156,7 @@ const pLeave = (intersection) => {
     intersection.eventObject.material.opacity = 1
 }
 
-const { camera, controls } = useTresContext()
+const { camera, controls } = useTres()
 let twInstant = null
 const pClick = (intersection) => {
     const targetPosition = new THREE.Vector3()
@@ -164,8 +165,8 @@ const pClick = (intersection) => {
     targetPosition.z = intersection.point.z
     twInstant = flyTo(camera, targetPosition, controls)
 }
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     twInstant?.update()
 })
 const htmlState = {

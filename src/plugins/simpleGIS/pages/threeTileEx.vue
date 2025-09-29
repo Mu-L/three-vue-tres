@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-05 12:42:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-19 17:34:53
+ * @LastEditTime: 2025-09-29 16:26:29
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
-        <TresPerspectiveCamera :position="[0, 12, 0]" :fov="70" :near="0.1" :far="50000" />
+        <TresPerspectiveCamera :position="[0, 12, 0]" :fov="70" :near="1" :far="4e10" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="1" />
         <mapBoxShow />
@@ -35,10 +35,10 @@ const controlsState = reactive({
     enableDamping: true,
     makeDefault: true,
     screenSpacePanning: false,
-    minDistance: 0.1,
-    maxDistance: 30000,
-    maxPolarAngle: 1.2,
-    dampingFactor: 0.035,
+    // minDistance: 0.1,
+    // maxDistance: 30000,
+    // maxPolarAngle: 1.2,
+    // dampingFactor: 0.035,
     keyPanSpeed: 5,
 })
 </script>

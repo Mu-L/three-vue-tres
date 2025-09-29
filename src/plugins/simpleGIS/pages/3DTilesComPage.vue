@@ -16,9 +16,7 @@
 
         <tilesCom v-bind="configState" />
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -120, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -120, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

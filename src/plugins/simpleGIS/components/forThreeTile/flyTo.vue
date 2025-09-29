@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-18 16:22:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-09-18 16:50:16
+ * @LastEditTime: 2025-09-29 12:43:11
 -->
 <template></template>
 <script lang="ts" setup>
 import * as THREE from 'three'
 import * as TWEEN from '@tweenjs/tween.js'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 
 const props = withDefaults(
     defineProps<{
@@ -19,7 +19,7 @@ const props = withDefaults(
     {},
 )
 
-const { camera, controls } = useTresContext()
+const { camera, controls } = useTres()
 let twInstant = [] as any
 /**
  * 飞行到某世界坐标
@@ -64,8 +64,8 @@ const goToGeo = (cameraGeo: THREE.Vector3, centerGeo: THREE.Vector3) => {
     controls.value.dispatchEvent({ type: 'change' })
 }
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (twInstant) {
         twInstant[0]?.update()
         // twInstant[1]?.update()

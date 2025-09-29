@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-18 10:12:36
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-18 20:47:48
+ * @LastEditTime: 2025-09-29 12:50:17
 -->
 <template>
 	<radraA color="#00c0ff" :radius="300" :size="300" :position="[cPosition[0], 8, -cPosition[1]]" />
@@ -36,16 +36,14 @@
 			:position="[cPosition[0], 300, -cPosition[1]]" :areaX="5000" :areaY="600" :areaZ="5000" />
 	</Suspense>
 
-	<Suspense>
-		<cloudMesh :cPosition="[cPosition[0], 600, -cPosition[1]]" />
-	</Suspense>
+	<cloudMesh :cPosition="[cPosition[0], 600, -cPosition[1]]" />
 
 	<rippleMesh :position-y="6"
 		:positionSrc="[{ x: p1[0], y: -p1[1] }, { x: p1[0], y: -p2[1] }, { x: p2[0], y: -p2[1] }, { x: p2[0], y: -p1[1] }, { x: p1[0], y: -p1[1] }]"
 		:height="220" color='#00ffdd' />
 
 	<Suspense>
-		<roadLightByLonLat :position="[500, 0, 340]" :radius="5.0"
+		<roadLightByLonLat :position="[500, 10, 340]" :radius="5.0"
 			geoJson="plugins/digitalCity/geojson/shenzhen2.geojson" />
 	</Suspense>
 </template>

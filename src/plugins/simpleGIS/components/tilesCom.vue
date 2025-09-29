@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { watch } from 'vue'
 import { TilesRenderer } from '3d-tiles-renderer'
 import { alignmentCenter, applyTransform } from '../common/utils'
@@ -124,7 +124,7 @@ const onLoadModel = ({ scene }: any) => {
     })
 }
 
-const { camera, renderer, sizes } = useTresContext()
+const { camera, renderer, sizes } = useTres()
 const setCameraAndRenderer = (newTiles: any, camera: any, renderer: any) => {
     newTiles.setCamera(camera)
     newTiles.setResolutionFromRenderer(camera, renderer)
@@ -150,7 +150,7 @@ const makeNewTiles = () => {
         })
     })
 
-    setCameraAndRenderer(newTiles, camera.value, renderer.value)
+    setCameraAndRenderer(newTiles, camera.value, renderer)
     return newTiles
 }
 let tiles = makeNewTiles()
@@ -159,13 +159,13 @@ watch(
     camera,
     () => {
         if (camera.value) {
-            setCameraAndRenderer(tiles, camera.value, renderer.value)
+            setCameraAndRenderer(tiles, camera.value, renderer)
         }
     },
     { immediate: true },
 )
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (camera.value && sizes.width.value && tiles.update) {
         camera.value.updateMatrixWorld()
         tiles.update()

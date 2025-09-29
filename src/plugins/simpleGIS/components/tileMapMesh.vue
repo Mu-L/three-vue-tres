@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-26 18:58:32
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-11 16:48:26
+ * @LastEditTime: 2025-09-29 12:30:30
 -->
 <template>
     <primitive :object="map" :rotation="[-Math.PI / 2, 0, 0]" />
@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { watchEffect, watch } from 'vue'
 import { Map, PlaneProvider, MapProvider, TerrainMeshProvider, MERC, MartiniTerrainProvider } from '../lib/threeSatelliteMap/index'
 
@@ -43,7 +43,7 @@ const props = withDefaults(
     },
 )
 
-const { renderer, scene } = useTresContext()
+const { renderer, scene } = useTres()
 
 const planProvider = new PlaneProvider()
 planProvider.coordType = MERC
@@ -105,8 +105,8 @@ map.camera = camera
 
 let orbitControl = null as any
 watchEffect(() => {
-    if (renderer.value && !orbitControl) {
-        orbitControl = new OrbitControls(camera, renderer.value.domElement)
+    if (renderer && !orbitControl) {
+        orbitControl = new OrbitControls(camera, renderer.domElement)
         orbitControl.enableDamping = true
         orbitControl.dampingFactor = 0.05
         orbitControl.minDistance = 600 //避免 在搞得地图瓦片情况下 太近不显示瓦片的问题
@@ -142,9 +142,9 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
-    if (renderer.value) {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
+    if (renderer) {
         props.tweenInstance?.update()
         if (orbitControl) {
             orbitControl.update()
@@ -155,7 +155,7 @@ onLoop(() => {
         camera.far = far + 5000
         camera.updateProjectionMatrix()
         // orbitControl.target.y = 0
-        renderer.value.render(scene.value, camera)
+        renderer.render(scene.value, camera)
     }
 })
 

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-18 15:14:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 10:41:35
+ * @LastEditTime: 2025-09-29 16:38:08
 -->
 <template>
     <TresDirectionalLight ref="tdLight" :position="[0, 2e3, 1e3]" :intensity="1" />
@@ -15,8 +15,9 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue'
 import * as THREE from 'three'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import * as tt from 'three-tile'
+import * as plugin from "three-tile/plugin"
 import flyTo from './flyTo.vue'
 import * as util from './utils'
 
@@ -39,7 +40,7 @@ import * as util from './utils'
 // 创建地图对象
 const map = new tt.TileMap({
     // 影像数据源
-    imgSource: [new tt.plugin.GDSource({ style: '6' }), new tt.plugin.GDSource({ style: '8' })],
+    imgSource: [new plugin.GDSource({ style: '6' }), new plugin.GDSource({ style: '8' })],
     // 高程数据源
     // demSource: mapBoxDemSource,
     // 地图投影中央经线经度
@@ -56,15 +57,15 @@ map.rotateX(-Math.PI / 2)
 // 地图中心坐标(经度，纬度，高度)
 const centerGeo = new THREE.Vector3(110, 30, 0)
 // 摄像坐标(经度，纬度，高度)
-const camersGeo = new THREE.Vector3(110, 0, 10000)
+const camersGeo = new THREE.Vector3(110, 0, 1e7)
 // 地图中心转为世界坐标
-const centerPostion = map.localToWorld(map.geo2pos(centerGeo))
+const centerPostion = map.localToWorld(map.geo2map(centerGeo))
 // 摄像机转为世界坐标
-const cameraPosition = map.localToWorld(map.geo2pos(camersGeo))
+const cameraPosition = map.localToWorld(map.geo2map(camersGeo))
 
 const tdLight = ref()
 
-const { camera, controls, scene, renderer } = useTresContext()
+const { camera, controls, scene, renderer } = useTres()
 
 if (camera.value) {
     camera.value.position.copy(cameraPosition)
@@ -93,7 +94,7 @@ watch(
     () => flyToRef.value,
     (value) => {
         if (value) {
-            const newCameraGeo = new THREE.Vector3(118.724693, 32.00741, 9.655599)
+            const newCameraGeo = new THREE.Vector3(118.724693, 32.00741, 9655)
             const newCenterGeo = new THREE.Vector3(118.724419, 32.010354, 0.0)
 
             setTimeout(() => {
@@ -107,5 +108,5 @@ watch(
     },
 )
 
-util.showLocation(camera.value, renderer.value.domElement, map)
+util.showLocation(camera.value, renderer.domElement, map)
 </script>

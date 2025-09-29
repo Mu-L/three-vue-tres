@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 10:02:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 15:04:09
+ * @LastEditTime: 2025-09-29 12:32:32
 -->
 <template>
     <TresGroup>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { watchEffect } from 'vue'
 import { TilesRenderer } from '3d-tiles-renderer'
 import * as THREE from 'three'
@@ -47,16 +47,16 @@ const onLoadModel = ({ scene }) => {
 tiles.addEventListener('load-model', onLoadModel)
 // tiles.onLoadModel = onLoadModel
 
-const { camera, renderer, sizes } = useTresContext()
+const { camera, renderer, sizes } = useTres()
 watchEffect(() => {
     if (sizes.width.value) {
         tiles.setCamera(camera.value)
-        tiles.setResolutionFromRenderer(camera.value, renderer.value)
+        tiles.setResolutionFromRenderer(camera.value, renderer)
     }
 })
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (camera.value && sizes.width.value) {
         camera.value.updateMatrixWorld()
         tiles.update()

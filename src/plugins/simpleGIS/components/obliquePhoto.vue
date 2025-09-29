@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-09-01 09:14:44
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-29 12:33:04
+-->
 <template>
     <TresGroup ref="groupRef">
         <primitive :object="tiles.group" />
@@ -5,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { TilesRenderer } from '3d-tiles-renderer'
 import { watch, ref } from 'vue'
 import { alignmentCenter, applyTransform } from '../common/utils'
@@ -24,7 +32,7 @@ const props = withDefaults(
 )
 
 const groupRef = ref(null as any)
-const { camera, renderer, sizes } = useTresContext()
+const { camera, renderer, sizes } = useTres()
 const setCameraAndRenderer = (newTiles: any, camera: any, renderer: any) => {
     newTiles.setCamera(camera)
     newTiles.setResolutionFromRenderer(camera, renderer)
@@ -44,7 +52,7 @@ const makeNewTiles = () => {
         })
     })
 
-    setCameraAndRenderer(newTiles, camera.value, renderer.value)
+    setCameraAndRenderer(newTiles, camera.value, renderer)
     return newTiles
 }
 let tiles = makeNewTiles()
@@ -62,13 +70,13 @@ watch(
     camera,
     () => {
         if (camera.value) {
-            setCameraAndRenderer(tiles, camera.value, renderer.value)
+            setCameraAndRenderer(tiles, camera.value, renderer)
         }
     },
     { immediate: true },
 )
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (camera.value && sizes.width.value && tiles.update) {
         camera.value.updateMatrixWorld()
         tiles.update()

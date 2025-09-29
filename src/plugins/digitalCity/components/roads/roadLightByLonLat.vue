@@ -1,6 +1,14 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-03-22 11:14:44
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-29 12:49:03
+-->
 <script setup lang="ts">
 import { watch } from 'vue'
-import { CatmullRomCurve3, Vector3, RepeatWrapping, BackSide } from 'three'
+import { CatmullRomCurve3, Vector3, RepeatWrapping, DoubleSide } from 'three'
 import { useTexture } from '@tresjs/cientos'
 import { useLoop } from '@tresjs/core'
 import { loadGeojson } from '../../common/utils'
@@ -49,8 +57,8 @@ for (let i = 0; i < linePrimary.length; i++) {
 }
 
 // ---------- 渲染循环 ----------
-const { onRender } = useLoop()
-onRender(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
   if (pTexture.value) {
     pTexture.value.offset.x -= (Math.random() / 20) * props.speed
   }
@@ -62,8 +70,8 @@ onRender(() => {
     <TresMesh v-for="(item, index) in curve" :key="index" :renderOrder="3000">
       <TresTubeGeometry :args="[item.cr3, 64, props.radius, 20, false]" />
       <TresMeshBasicMaterial
-        :map="pTexture.value"
-        :side="BackSide"
+        :map="pTexture"
+        :side="DoubleSide"
         :transparent="true"
         :color="item.color"
       />

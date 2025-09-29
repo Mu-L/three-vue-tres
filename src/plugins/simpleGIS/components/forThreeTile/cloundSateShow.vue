@@ -4,11 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-09-19 11:34:24 
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 15:04:27
+ * @LastEditTime: 2025-09-29 16:42:16
 -->
 <template>
     <TresGroup :position="[...pos]">
-        <TresMesh :scale="[scale.x, scale.y, height]" :material="material" :rotateX="-Math.PI / 2" :renderOrder="9999" :position-y="height / 5">
+        <TresMesh :scale="[scale.x, scale.y, height * 1000]" :material="material" :rotateX="-Math.PI / 2"
+            :renderOrder="9999" :position-y="height * 1000 / 5">
             <TresPlaneGeometry :args="[1, 1, 529, 420]" />
         </TresMesh>
     </TresGroup>
@@ -16,7 +17,7 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { watch } from 'vue'
-import { useTexture } from '@tresjs/core'
+import { useTextures } from 'PLS/basic'
 import * as util from './utils'
 
 const props = withDefaults(
@@ -59,23 +60,23 @@ material.onBeforeCompile = (shader: any) => {
     )
 }
 
-const pos = props.map.geo2pos(new THREE.Vector3(105, 34, 0)) // 云图的中心点
+const pos = props.map.geo2map(new THREE.Vector3(105, 34, 0)) // 云图的中心点
 pos.applyMatrix4(props.map.matrix)
 
-const scale = util.scaleImg(props.map, { x: 67, y: 11 }, { x: 140, y: 57 }, props.height) // 这里计算卫星云图的位置
+const scale = util.scaleImg(props.map, { x: 67, y: 11 }, { x: 140, y: 57 }, props.height * 1000) // 这里计算卫星云图的位置
 
 const imgList = [
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
-        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171300.HDF.png',
+    '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171300.HDF.png',
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
-        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171400.HDF.png',
+    '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171400.HDF.png',
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
-        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171500.HDF.png',
+    '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171500.HDF.png',
     (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') +
-        '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171600.HDF.png',
+    '/images/simpleGIS/SATE_L1_F2G_VISSR_MWB_NOM_FDI-201906171600.HDF.png',
 ]
 let curImgIndex = 0
-const pTexture = await useTexture(imgList)
+const pTexture = await useTextures(imgList)
 
 material.map = pTexture[curImgIndex]
 

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-24 10:17:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 11:29:11
+ * @LastEditTime: 2025-09-29 12:22:49
 -->
 <template>
     <TresGroup ref="tgRef">
@@ -13,9 +13,9 @@
             :key="`${index}`"
             :properties="item.properties"
             :renderOrder="index"
-            @pointer-enter="pEnter"
-            @pointer-leave="pLeave"
-            @pointer-move="pMove"
+            @pointerenter="pEnter"
+            @pointerleave="pLeave"
+            @pointermove="pMove"
         >
             <TresExtrudeGeometry :args="[item.shape, extrudeSettings]" />
             <TresMeshBasicMaterial color="#2defff" :transparent="true" :opacity="0.6" />
@@ -26,7 +26,6 @@
 <script setup>
 import { loadGeojson } from 'PLS/digitalCity/common/utils'
 import { watchEffect, ref } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
 import * as D3 from 'd3-geo'
 import * as THREE from 'three'
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh'
@@ -109,6 +108,4 @@ const pMove = (intersection) => {
     tooltip.style.left = `${intersection.clientX + 6}px`
     tooltip.style.top = `${intersection.clientY + 6}px`
 }
-const { onLoop } = useRenderLoop()
-onLoop(() => {})
 </script>

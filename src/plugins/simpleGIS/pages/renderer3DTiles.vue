@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 11:36:30
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-15 20:03:40
+ * @LastEditTime: 2025-09-29 12:31:57
 -->
 
 <template>
@@ -22,7 +22,6 @@
 
 <script setup lang="ts">
 import { reactive, watchEffect, shallowRef } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import tilesMesh from '../components/tilesMesh.vue'
 
@@ -36,12 +35,6 @@ const controlsState = reactive({
 	dampingFactor: 0.05,
 })
 
-
-const { onLoop } = useRenderLoop()
-
-onLoop(() => {
-
-})
 const TDirectionalLight = shallowRef()
 watchEffect(() => {
 	if (TDirectionalLight.value) {

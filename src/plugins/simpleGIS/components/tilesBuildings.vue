@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-28 14:45:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 10:35:38
+ * @LastEditTime: 2025-09-29 12:41:09
 -->
 <template>
     <TresGroup>
@@ -13,14 +13,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { watchEffect, ref } from 'vue'
 import { TilesRenderer } from '3d-tiles-renderer'
 import { onLoadTileSetForCesium3Dtitles } from '../lib/utils'
 import * as THREE from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
-import vertexShader from '../shaders/buildingsShaderMaterial.vert?raw'
-import fragmentShader from '../shaders/buildingsShaderMaterial.frag?raw'
+import vertexShader from '../shaders/buildingsShaderMaterial.vert'
+import fragmentShader from '../shaders/buildingsShaderMaterial.frag'
 
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2.js'
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js'
@@ -128,16 +128,16 @@ tiles.addEventListener('load-model', ({ scene }) => {
 })
 onLoadTileSetForCesium3Dtitles(tiles)
 
-const { renderer, sizes } = useTresContext()
+const { renderer, sizes } = useTres()
 watchEffect(() => {
     if (sizes.width.value) {
         tiles.setCamera(props.camera)
-        tiles.setResolutionFromRenderer(props.camera, renderer.value)
+        tiles.setResolutionFromRenderer(props.camera, renderer)
     }
 })
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     timeDelta.value += delta * 2.0
     if (props.camera && sizes.width.value) {
         props.camera.updateMatrixWorld()

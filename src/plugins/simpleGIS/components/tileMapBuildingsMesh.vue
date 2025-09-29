@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-29 10:48:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-18 15:31:17
+ * @LastEditTime: 2025-09-29 12:42:06
 -->
 <template>
 	<primitive :object="map" :rotation="[-Math.PI / 2, 0, 0]" />
@@ -12,8 +12,8 @@
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { useTres, useLoop } from '@tresjs/core'
 import { watchEffect, reactive, ref } from 'vue'
 import { Map, PlaneProvider, MapProvider, TerrainMeshProvider, UTM, MartiniTerrainProvider } from '../lib/threeSatelliteMap/index'
 
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
 	maxZoom: 20,
 })
 
-const { renderer, scene } = useTresContext()
+const { renderer, scene } = useTres()
 
 const planProvider = new PlaneProvider()
 planProvider.coordType = UTM
@@ -80,8 +80,8 @@ map.camera = props.camera
 
 let orbitControl = null as any
 watchEffect(() => {
-	if (renderer.value) {
-		orbitControl = new OrbitControls(props.camera, renderer.value.domElement)
+	if (renderer) {
+		orbitControl = new OrbitControls(props.camera, renderer.domElement)
 		orbitControl.enableDamping = true
 		orbitControl.dampingFactor = 0.05
 		orbitControl.minDistance = 600 //避免 在搞得地图瓦片情况下 太近不显示瓦片的问题
@@ -90,9 +90,9 @@ watchEffect(() => {
 	}
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
-	if (renderer.value) {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
+	if (renderer) {
 		const far = Math.abs(props.camera.position.y) * 50
 		props.camera.far = far + 5000
 		props.camera.updateProjectionMatrix()
@@ -102,7 +102,7 @@ onLoop(() => {
 			orbitControl.target.y = 0
 		}
 		map.update()
-		renderer.value.render(scene.value, props.camera)
+		renderer.render(scene.value, props.camera)
 	}
 
 })

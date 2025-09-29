@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-02-27 11:36:30
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-25 09:28:21
+ * @LastEditTime: 2025-09-29 12:35:47
 -->
 
 <template>
@@ -15,7 +15,7 @@
         <cesiumIon3DTile />
         <TresAxesHelper :args="[100]" />
     </TresCanvas>
-		<h1 class="text-center text-white w-full absolute">若没加载成功，请更换自己的Cesium-Key</h1>
+    <h1 class="text-center text-white w-full absolute">若没加载成功，请更换自己的Cesium-Key</h1>
 </template>
 
 <script setup lang="ts">
