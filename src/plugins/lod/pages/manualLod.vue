@@ -2,9 +2,7 @@
     <TresCanvas v-bind="state">
         <TresPerspectiveCamera ref="cameraRef" :fov="60" :near="0.1" :far="2000" :position="[0, 0, 25]" :look-at="[0, 0, 0]" />
         <TresAmbientLight :intensity="2" />
-        <Suspense>
-            <SphereWithManualLOD ref="sphereRef" />
-        </Suspense>
+        <SphereWithManualLOD ref="sphereRef" />
         <OrbitControls v-bind="controlsState" />
     </TresCanvas>
 </template>

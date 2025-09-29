@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { LOD, Mesh } from 'three'
 import { shallowRef, watch } from 'vue'
 
@@ -36,7 +36,7 @@ watch([mesh1Ref, mesh2Ref, mesh3Ref], () => {
     }
 })
 
-const { camera } = useTresContext()
+const { camera } = useTres()
 
 const updateLOD = () => {
     if (camera.value) lodRef.value?.update(camera.value)
