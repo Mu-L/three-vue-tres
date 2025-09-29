@@ -1,14 +1,22 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-03-03 21:11:40
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-29 10:48:10
+-->
 <template></template>
 
 <script setup lang="ts">
 import { watchEffect } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
     threshold: 0,
     strength: 0.216, // 强度
@@ -30,12 +38,12 @@ const bloomPassEffect = (scene: THREE.Scene, camera: THREE.PerspectiveCamera, re
 
 watchEffect(() => {
     if (sizes.width.value) {
-        bloomPassEffect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
+        bloomPassEffect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
     }
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (effectComposer) {
         effectComposer.render()
     }

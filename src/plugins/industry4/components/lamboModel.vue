@@ -4,16 +4,17 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 14:36:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:25:43
+ * @LastEditTime: 2025-09-29 10:20:10
 -->
 <template>
     <TresGroup ref="contactShadowsRef">
-        <primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
+        <primitive :object="toRaw(scene)" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
     </TresGroup>
 </template>
 <script setup>
-import { useGLTF } from '@tresjs/cientos' //ContactShadows
+import { useGLTF } from 'PLS/basic'
 import * as THREE from 'three'
+import { toRaw } from 'vue'
 
 const { scene, nodes, materials } = await useGLTF(
     `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/lambo.glb`,

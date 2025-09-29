@@ -4,16 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-14 17:59:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 15:55:00
+ * @LastEditTime: 2025-09-29 10:24:14
 -->
 <template>
-    <primitive :object="scene" :rotation-y="Math.PI" />
+    <primitive :object="toRaw(scene)" :rotation-y="Math.PI" />
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, watch } from 'vue'
-import { useTexture, useRenderLoop } from '@tresjs/core'
-// import { useGLTF } from '@tresjs/cientos'
+import { defineProps, withDefaults, watch,toRaw } from 'vue'
+import { useLoop } from '@tresjs/core'
+import { useTextures } from 'PLS/basic'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 import { flatModel } from './utils'
@@ -55,7 +55,7 @@ function getAllMaterials(object) {
     return Object.fromEntries(materialsMap)
 }
 const materials = getAllMaterials(scene)
-const pTexture = await useTexture([
+const pTexture = await useTextures([
     './plugins/industry4/texture/t_car_body_AO.raw.jpg',
     './plugins/industry4/texture/t_cat_car_body_bc.webp',
     './plugins/industry4/texture/t_gm_car_body_bc.webp',
@@ -87,8 +87,8 @@ wheel.children.forEach((child) => {
     mat.envMapIntensity = 4
 })
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (props.run) {
         wheel.children.forEach((child) => {
             child.rotateZ(-delta * 30 * 0.5)
@@ -126,11 +126,11 @@ watch(
         gsap.killTweensOf(carColor)
         if (newVal === 'c8.webp') {
             materials.Car_body.color.set('#ffffff')
-            materials.Car_body.map = pTexture[1]
+            materials.Car_body.map = pTexture[2]
             materials.Car_body.envMapIntensity = 2
         } else if (newVal === 'c9.webp') {
             materials.Car_body.color.set('#ffffff')
-            materials.Car_body.map = pTexture[2]
+            materials.Car_body.map = pTexture[1]
             materials.Car_body.envMapIntensity = 2
         } else {
             materials.Car_body.map = null

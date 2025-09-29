@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 08:51:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 18:27:43
+ * @LastEditTime: 2025-09-29 10:27:00
 -->
 <template>
     <Suspense>
@@ -41,6 +41,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+// import * as THREE from 'three'
 import { OrbitControls, Levioso } from '@tresjs/cientos'
 import { randomLoading as loading } from 'PLS/UIdemo'
 import { Pane } from 'tweakpane'
@@ -58,6 +59,8 @@ const state = reactive({
     physicallyCorrectLights: true,
     logarithmicDepthBuffer: false, // 开启后，镜面反射底部会透明过来
     renderMode: 'manual',
+    // toneMapping: THREE.ACESFilmicToneMapping,
+    // toneMappingExposure : 2.0
 })
 const controlsState = reactive({
     // autoRotate: true,

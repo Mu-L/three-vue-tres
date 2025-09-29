@@ -4,14 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 15:38:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-16 09:11:13
+ * @LastEditTime: 2025-09-29 10:25:06
 -->
 <template></template>
 
 <script setup lang="ts">
 import { watchEffect, watch } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
@@ -28,7 +28,7 @@ const props = withDefaults(
 	},
 )
 
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 const params = {
 	threshold: 0.666,
 	strength: 0.166,
@@ -56,8 +56,8 @@ const afterImagePassEffect = (renderer: THREE.WebGLRenderer) => {
 
 watchEffect(() => {
 	if (sizes.width.value) {
-		Effect(scene.value, camera.value as any, renderer.value, sizes.width.value, sizes.height.value)
-		afterImagePassEffect(renderer.value)
+		Effect(scene.value, camera.value as any, renderer, sizes.width.value, sizes.height.value)
+		afterImagePassEffect(renderer)
 	}
 })
 
@@ -77,8 +77,8 @@ watch(
 	}
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	if (effectComposer) {
 		effectComposer.render()
 	}

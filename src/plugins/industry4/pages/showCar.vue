@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 08:51:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 16:25:40
+ * @LastEditTime: 2025-09-29 10:14:21
 -->
 <template>
     <loading />
@@ -13,23 +13,12 @@
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="3" />
         <TresDirectionalLight color="#ffffff" :intensity="5" castShadow :position="[0, 3, 0]" />
-        <TresSpotLight
-            ref="spotLight"
-            :position="[0, 10, 0]"
-            :angle="Math.PI / 4"
-            :distance="20"
-            :penumbra="0.1"
-            castShadow
-            :intensity="60"
-            :decay="1.5"
-            :focus="0.5"
-        />
+        <TresSpotLight ref="spotLight" :position="[0, 10, 0]" :angle="Math.PI / 4" :distance="20" :penumbra="0.1"
+            castShadow :intensity="60" :decay="1.5" :focus="0.5" />
         <Suspense>
             <carModel />
         </Suspense>
-        <Suspense>
-            <reflectorShaderMesh v-bind="configState" :position="[0, -1.17, 0]" />
-        </Suspense>
+        <reflectorShaderMesh v-bind="configState" :scale="[3, 1, 3]" :position="[0, -1.17, 0]" />
         <Suspense>
             <envLightForCar />
         </Suspense>
@@ -58,9 +47,9 @@ watchEffect(() => {
 })
 
 const configState = reactive({
-    reflectivity: 0.1,
-    mirror: 0.92, // 去除纹理 镜面化
-    mixStrength: 36,
+    reflectivity: 1,
+    mirror: 0.9, // 去除纹理 镜面化
+    mixStrength: 1.8,
     showGridHelper: false,
 })
 
@@ -71,7 +60,8 @@ const state = reactive({
     antialias: true,
     pixelRatio: window.devicePixelRatio,
     outputColorSpace: THREE.SRGBColorSpace,
-    // toneMapping: THREE.ACESFilmic,
+    toneMappingExposure:2.0,
+    toneMapping: THREE.ACESFilmicToneMapping,
     useLegacyLights: true,
     physicallyCorrectLights: true,
 })

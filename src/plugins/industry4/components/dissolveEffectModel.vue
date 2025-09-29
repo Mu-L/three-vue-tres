@@ -4,15 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-23 08:36:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:24:30
+ * @LastEditTime: 2025-09-29 10:45:57
 -->
 <template>
-    <primitive :object="scene" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
+    <primitive :object="toRaw(scene)" :scale="0.015" :rotation="[0, Math.PI / 1.5, 0]" />
 </template>
 <script setup>
-import { useGLTF } from '@tresjs/cientos'
-import { useTexture, useRenderLoop } from '@tresjs/core'
-import { watchEffect, ref, defineExpose } from 'vue'
+import { useGLTF, useTextures } from 'PLS/basic'
+import { useLoop } from '@tresjs/core'
+import { watchEffect, ref, defineExpose, toRaw } from 'vue'
 import * as THREE from 'three'
 
 const props = defineProps({
@@ -77,7 +77,7 @@ nodes.yellow_WhiteCar_0.material = new THREE.MeshPhysicalMaterial({
     clearcoat: 1,
 })
 
-const pTexture = await useTexture(['./plugins/digitalCity/image/smokeparticle.png', './plugins/industry4/image/dissolve.jpg'])
+const pTexture = await useTextures(['./plugins/digitalCity/image/smokeparticle.png', './plugins/industry4/image/dissolve.jpg'])
 const shaders = []
 let isDissolving = false
 const params = {
@@ -157,8 +157,8 @@ Object.values(nodes).forEach((node) => {
     }
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ dt }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (isDissolving) {
         for (const shader of shaders) {
             const { dissolveProgress, dissolveSpeed } = shader.uniforms

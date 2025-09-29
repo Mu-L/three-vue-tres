@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-09 16:17:02
+ * @LastEditTime: 2025-09-29 11:00:15
 -->
 <template>
     <TresMesh :renderOrder="9999">
@@ -27,7 +27,7 @@
 <script lang="ts" setup>
 import { watch, ref } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { CustomShaderMaterial } from '@tresjs/cientos'
 import { buildRoundedPath } from '../common/buildFlexiblePipe'
 
@@ -132,8 +132,8 @@ watch(
     { immediate: true },
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     uniformData.uTime.value += props.speed
 })
 </script>

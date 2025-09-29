@@ -4,19 +4,18 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-27 10:38:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:01:29
+ * @LastEditTime: 2025-09-29 10:22:54
 -->
 <template>
-    <primitive :object="scene" ref="tresMesh" />
+    <primitive :object="toRaw(scene)" ref="tresMesh" />
     <reflectorMipMap ref="reflectorMipMapRef" :parent="floor" :ignoreObjects="[light, floor]" />
 </template>
 
 <script setup lang="ts">
-import { useTexture } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import { useGLTF, useTextures } from 'PLS/basic'
 import * as THREE from 'three'
 import { flatModel } from './utils'
-import { defineExpose, ref, watch } from 'vue'
+import { defineExpose, ref, watch, toRaw } from 'vue'
 import { makeCustomShaderMaterial } from 'PLS/floor/common/reflectorCustomMaterial'
 import { reflectorMipMap } from 'PLS/floor'
 
@@ -29,9 +28,9 @@ const props = withDefaults(
     },
 )
 
-const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/su7_car/su7_startroom.raw.glb`, { draco: true, decoderPath: './draco/' })
+const { scene } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/su7_car/su7_startroom.raw.glb`)
 
-const pTexture = await useTexture([
+const pTexture = await useTextures([
     './plugins/industry4/texture/t_startroom_light.raw.jpg',
     './plugins/industry4/texture/t_startroom_ao.raw.jpg',
     './plugins/industry4/texture/t_floor_roughness.webp',

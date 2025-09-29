@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-06-06 14:46:11
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-06 09:45:46
+ * @LastEditTime: 2025-09-29 10:58:44
 -->
 <template>
     <TresMesh :renderOrder="9999">
@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { watch, ref } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { Resource } from 'PLS/resourceManager'
 import { buildRoundedPath } from '../common/buildFlexiblePipe'
 
@@ -89,8 +89,8 @@ watch(
 )
 
 const tmsmRef = ref(null) as any
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     if (pTexture.value) {
         pTexture.value.offset.x -= props.speed
     }

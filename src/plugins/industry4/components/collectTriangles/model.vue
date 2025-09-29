@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-27 10:38:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:05:05
+ * @LastEditTime: 2025-09-29 10:37:31
 -->
 <template>
     <TresMesh ref="targetMesh" :geometry="geometry" :scale="0.005" :material="material" />
@@ -28,8 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { useLoader, useRenderLoop, useTresContext } from '@tresjs/core'
-import { STLLoader } from 'three/addons/loaders/STLLoader'
+import { useLoop, useTres } from '@tresjs/core'
+import { useLoader } from 'PLS/basic'
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast, CONTAINED, INTERSECTED, NOT_INTERSECTED } from 'three-mesh-bvh'
 import * as THREE from 'three'
 import { ref, watchEffect } from 'vue'
@@ -50,7 +51,7 @@ const initMeshBvh = () => {
 }
 initMeshBvh()
 
-const geometry = await useLoader(STLLoader, `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/TR12J_OCC.stl`)
+const geometry = await useLoader(STLLoader as any, `${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn'}/model/industry4/TR12J_OCC.stl`) as any
 
 const material = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.2, metalness: 1, vertexColors: true })
 const colorArray = new Uint8Array(geometry.attributes.position.count * 3)
@@ -65,9 +66,10 @@ const brushActive = ref(false)
 const mouseType = ref(-1)
 const size = ref(0.2)
 const mouse = new THREE.Vector2()
-const { camera, raycaster } = useTresContext()
+const { camera } = useTres()
+const raycaster = ref(new THREE.Raycaster())
 const pColor = { x: 15 / 255, y: 78 / 255, z: 85 / 255 }
-let bvh = null
+let bvh = null as any
 watchEffect(() => {
     if (targetMesh.value) {
         console.log('targetMesh.value init', targetMesh.value)
@@ -78,8 +80,8 @@ watchEffect(() => {
     }
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     const indexAttr = geometry.index
     if (!brushMesh.value) {
         return
@@ -164,6 +166,7 @@ const btn = paneControl.addButton({
 })
 
 const outGeometry = new THREE.BufferGeometry()
+outGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(), 0))
 btn.on('click', () => {
     const outArray = <number[]>[]
     const outNormalArray = <number[]>[]

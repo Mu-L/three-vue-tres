@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 09:23:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:52:27
+ * @LastEditTime: 2025-09-29 10:50:06
 -->
 <template>
     <!-- name:AmbientLight uuid:4a88f8db-06d0-47b4-ad5f-aad9885c3b29 type:AmbientLight -->
@@ -26,7 +26,7 @@
 import { onMounted, reactive, watch } from 'vue'
 // import { useAnimations } from '@tresjs/cientos'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import player from './eventScript'
 import firstLevel86e5869a71b5 from './childComponent/firstLevel-86e5869a71b5.vue'
 import firstLevelda662feb67b1 from './childComponent/firstLevel-da662feb67b1.vue'
@@ -44,7 +44,7 @@ const configState = reactive({
 })
 paneControl.addBinding(configState, 'showFront', { label: '显示正面' })
 
-const { scene: tresScene, renderer, camera, sizes } = useTresContext()
+const { scene: tresScene, renderer, camera, sizes } = useTres()
 player.init(tresScene, renderer, camera, sizes)
 
 const loader = new THREE.ObjectLoader()
@@ -121,8 +121,8 @@ onMounted(() => {
     player.load(sceneObject)
     player.play()
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta, elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta, elapsed }) => {
     if (player.renderer) {
         player.render(elapsed * 1000, delta * 1000)
     }

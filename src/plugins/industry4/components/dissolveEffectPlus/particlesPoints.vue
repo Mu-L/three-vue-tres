@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-03 20:21:59
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-03 21:06:10
+ * @LastEditTime: 2025-09-29 10:48:48
 -->
 <template>
     <TresPoints :geometry="meshGeo">
@@ -20,7 +20,8 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTexture, useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
+import { useTres, useLoop } from '@tresjs/core'
 import snoise from '../../shaders/snoise.glsl'
 
 const props = defineProps({
@@ -50,7 +51,7 @@ const props = defineProps({
 
 const meshGeo = props.geo.clone()
 
-const pTexture = await useTexture(['./plugins/industry4/image/particle.png'])
+const pTexture = await useTexture('./plugins/industry4/image/particle.png')
 
 let particleCount = meshGeo.attributes.position.count
 let particleMaxOffsetArr: Float32Array // -- how far a particle can go from its initial position
@@ -92,14 +93,14 @@ function initParticleAttributes(meshGeo: THREE.BufferGeometry) {
 
 initParticleAttributes(meshGeo)
 
-const { renderer } = useTresContext()
+const { renderer } = useTres()
 
 const particlesUniformData = {
     uTexture: {
         value: pTexture,
     },
     uPixelDensity: {
-        value: renderer.value.getPixelRatio(),
+        value: renderer.getPixelRatio(),
     },
     uProgress: {
         value: props.uProgress,
@@ -257,8 +258,8 @@ function updateParticleAttriutes() {
     meshGeo.setAttribute('aDist', new THREE.BufferAttribute(particleDistArr, 1))
     meshGeo.setAttribute('aAngle', new THREE.BufferAttribute(particleRotationArr, 1))
 }
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     updateParticleAttriutes()
 })
 

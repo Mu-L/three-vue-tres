@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-07 14:29:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 11:40:26
+ * @LastEditTime: 2025-09-29 10:09:32
 -->
 <template>
     <Environment :blur="1" background :far="10000">
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { LayerMaterial, Color, Depth } from 'PLS/basic/components/forCientos/LayerMaterial'
 import { Levioso } from '@tresjs/cientos'
 
@@ -51,8 +51,8 @@ import { Environment, Lightformer } from 'PLS/basic'
 
 const lightFormerPositions = [2, 0, 2, 0, 2, 0, 2, 0]
 const group = ref(null)
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     if (group.value) {
         // @ts-ignore
         ;(group.value.position.z += delta * 10) > 20 && (group.value.position.z = -60)

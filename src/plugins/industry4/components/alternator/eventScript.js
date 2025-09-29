@@ -7,7 +7,7 @@ window.THREE = THREE // Used by APP Scripts.
 const Grscwh = { scene: null, renderer: null, camera: null, sizes: null }
 const player = {
 	get renderer() {
-		return Grscwh.renderer?.value
+		return Grscwh.renderer
 	},
 	loader: new THREE.TextureLoader(),
 	get scene() {
@@ -23,10 +23,10 @@ const player = {
 			return Grscwh.sizes?.height?.value
 	},
 	get dom() {
-			return Grscwh.renderer?.value.domElement.parentElement
+			return Grscwh.renderer?.domElement.parentElement
 	},
 	get canvas() {
-			return Grscwh.renderer?.value.domElement
+			return Grscwh.renderer?.domElement
 	},
 	events: {},
 	init(scene, renderer, camera, sizes) {

@@ -4,20 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-27 10:38:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 11:43:43
+ * @LastEditTime: 2025-09-29 10:10:12
 -->
 <template>
     <TresGroup ref="contactShadowsRef">
-        <primitive :object="scene" :scale="1.6" :position="[-0.5, -0.18, 0]" :rotation="[0, Math.PI / 5, 0]" />
+        <primitive :object="toRaw(scene)" :scale="1.6" :position="[-0.5, -0.18, 0]" :rotation="[0, Math.PI / 5, 0]" />
         <!-- <ContactShadows :resolution="80" :opacity="1.0" :blur="1" :position="[0, -1.2, 0]" :frames="10" :scale="1" :far="1"
 			:width="10" :height="10" /> -->
     </TresGroup>
 </template>
 
 <script setup>
-import { useGLTF } from '@tresjs/cientos' //ContactShadows
+import { useGLTF} from 'PLS/basic' //ContactShadows
 import * as THREE from 'three'
-// import { shallowRef, watch } from 'vue'
+import { toRaw } from 'vue'
 
 // const contactShadowsRef = shallowRef(null)
 // import { loadHDR } from 'PLS/skyBox/common/utils'
