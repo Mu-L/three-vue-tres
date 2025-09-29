@@ -7,7 +7,7 @@
  * @LastEditTime: 2024-04-15 16:24:24
 -->
 <template>
-	<TresCanvas v-bind="tcConfig">
+	<TresCanvas v-bind="tcConfig" @loop="onLoop">
 		<TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="10000" :look-at="[0, 0, 0]" />
 		<OrbitControls enableDamping />
 		<TresAmbientLight :intensity="0.5" />
@@ -58,7 +58,6 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import * as THREE from "three"
-import { useLoop } from '@tresjs/core'
 import { LayerMaterial, Color, Depth } from 'PLS/basic/components/forCientos/LayerMaterial'
 import { OrbitControls, Levioso } from '@tresjs/cientos'
 import { Environment, Lightformer } from 'PLS/basic'
@@ -74,11 +73,10 @@ const tcConfig = {
 const lightFormerPositions = [2, 0, 2, 0, 2, 0, 2, 0]
 const group = ref(null)
 
-const { onBeforeRender } = useLoop()
-onBeforeRender(({ delta }: { delta: number }) => {
+const onLoop = ({ delta }: { delta: number }) => {
 	if (group.value) {
 		// @ts-ignore
 		(group.value.position.z += delta * 10) > 20 && (group.value.position.z = -60)
 	}
-})
+}
 </script>
