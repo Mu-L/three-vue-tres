@@ -4,33 +4,33 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-06 17:34:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-06 18:29:27
+ * @LastEditTime: 2025-09-30 09:20:13
 -->
 <template>
-    <TresShaderMaterial v-bind="smState" />
+	<TresShaderMaterial v-bind="smState" />
 </template>
 
 <script lang="ts" setup>
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import noise from 'PLS/floor/lib/alienJS/shaders/modules/noise/classic3d.glsl'
 
 const props = defineProps({
-    uProgress: { default: 0 },
-    texture: { default: null },
+	uProgress: { default: 0 },
+	texture: { default: null },
 })
 
 const smState = {
-    uniforms: {
-        uTexture: { value: props.texture },
-        uTime: { value: 0 },
-        uProgress: { value: 0 },
-        uImageRes: { value: new THREE.Vector2(1, 1) },
-        uRes: { value: new THREE.Vector2(1, 1) },
-    },
-    transparent: true,
-    vertexShader: `
+	uniforms: {
+		uTexture: { value: props.texture },
+		uTime: { value: 0 },
+		uProgress: { value: 0 },
+		uImageRes: { value: new THREE.Vector2(1, 1) },
+		uRes: { value: new THREE.Vector2(1, 1) },
+	},
+	transparent: true,
+	vertexShader: `
 	uniform float uProgress;
 	varying vec2 vUv;
 
@@ -54,7 +54,7 @@ const smState = {
 		vUv = uv;
 	}
 	`,
-    fragmentShader: `
+	fragmentShader: `
 		uniform sampler2D uTexture;
 		uniform float uTime;
 		uniform float uProgress;
@@ -104,18 +104,18 @@ const smState = {
 }
 
 watch(
-    () => props.uProgress,
-    (value) => {
-        if (smState) {
-            smState.uniforms.uProgress.value = value
-        }
-    },
+	() => props.uProgress,
+	(value) => {
+		if (smState) {
+			smState.uniforms.uProgress.value = value
+		}
+	},
 )
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
-    if (smState) {
-        smState.uniforms.uTime.value = elapsed
-    }
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
+	if (smState) {
+		smState.uniforms.uTime.value = elapsed
+	}
 })
 </script>

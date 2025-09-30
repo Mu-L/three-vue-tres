@@ -1,11 +1,19 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-01-10 11:48:37
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-30 09:32:37
+-->
 <template>
-    <primitive :object="scene" />
+    <primitive :object="toRaw(scene)" />
 </template>
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, toRaw } from 'vue'
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import { useLoop } from '@tresjs/core'
+import { useGLTF } from 'PLS/basic'
 import vertexShader from '../../shaders/voxelized.vert'
 import fragmentShader from '../../shaders/voxelized.frag'
 
@@ -27,7 +35,7 @@ const voxelizedMaterial = new THREE.ShaderMaterial({
     fragmentShader,
 })
 
-const { scene } = (await useGLTF('./plugins/visualArts/model/LeePerrySmith.glb', { draco: true, decoderPath: './draco/' })) as any
+const { scene } = await useGLTF('./plugins/visualArts/model/LeePerrySmith.glb')
 scene.traverse((child: any) => {
     if (child.isMesh) {
         child.material = voxelizedMaterial
@@ -49,8 +57,8 @@ for (let i = 0; i < pos.length; i += 9) {
 }
 scene.children[0].geometry.setAttribute('center', new THREE.BufferAttribute(new Float32Array(centers), 3))
 
-const { onLoop } = useRenderLoop()
-onLoop(({}) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ }) => {
     voxelizedMaterial.uniforms.time.value += 0.05
 })
 

@@ -14,7 +14,7 @@
 import * as THREE from 'three'
 import { createNoise2D } from 'simplex-noise'
 import { shallowRef } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 // 生成地形
 const noise2D = createNoise2D()
@@ -52,8 +52,8 @@ const texture = new THREE.CanvasTexture(canvas)
 
 //控制动画流动
 const group = shallowRef(null as THREE.Group | null)
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     if (group.value) {
         group.value.children.forEach((mesh: any, index: number) => {
             const time = elapsed / 5

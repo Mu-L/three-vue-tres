@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-06 15:52:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-07 19:48:57
+ * @LastEditTime: 2025-09-30 09:22:14
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -16,9 +16,7 @@
             <imgParticleMesh v-bind="pcssConfig" />
         </Suspense>
 
-        <Suspense>
-            <reflectorDUDV :position="[0, -6, 0]" v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV :position="[0, -6, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
 

@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 08:18:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-07-18 11:35:18
+ * @LastEditTime: 2025-09-30 08:29:55
 -->
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state">
         <TresPerspectiveCamera :position="[0, 0, 30]" :fov="45" :near="0.1" :far="1000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="0.5" />
@@ -37,18 +37,19 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watch, nextTick, onMounted } from 'vue'
+import { reactive, ref, watch, nextTick } from 'vue'
 import { TresCanvas } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { meshReflectionMaterial } from 'PLS/basic'
 import screen from '../components/volumetricLightGodray/screen.vue'
 import effectComposer from '../components/volumetricLightGodray/effectComposer.vue'
 
-const state = reactive({
+const state = {
     clearColor: '#050505',
     antialias: false,
     renderMode: 'manual',
-})
+    windowSize: true
+}
 
 const controlsState = reactive({
     enableDamping: true,

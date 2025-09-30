@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-10 14:37:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-10 15:01:53
+ * @LastEditTime: 2025-09-30 09:31:18
 -->
 <template></template>
 <script setup lang="ts">
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useLoop, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 
 const props = defineProps({
     use: { default: true },
@@ -18,7 +18,7 @@ const props = defineProps({
     translate: { default: 0 },
 })
 
-const { camera, renderer, scene, sizes } = useTresContext() as any
+const { camera, renderer, scene, sizes } = useTres() as any
 
 const sourceRenderTarget = new THREE.WebGLRenderTarget(sizes.width.value, sizes.height.value)
 let renderTarget1 = new THREE.WebGLRenderTarget(sizes.width.value, sizes.height.value)
@@ -87,33 +87,32 @@ const finalQuad = new THREE.Mesh(
 )
 finalScene.add(finalQuad)
 
-const { render } = useLoop()
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender, onRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     postQuad.material.uniforms.time.value = elapsed
 })
-render(() => {
+onRender(() => {
     if (props.use) {
-        renderer.value.setRenderTarget(sourceRenderTarget)
-        renderer.value.render(scene.value, camera.value)
+        renderer.setRenderTarget(sourceRenderTarget)
+        renderer.render(scene.value, camera.value)
         postQuad.material.uniforms.current.value = sourceRenderTarget.texture
         postQuad.material.uniforms.prev.value = renderTarget1.texture
 
-        renderer.value.setRenderTarget(renderTarget2)
-        renderer.value.render(orthoScene, orthoCamera)
+        renderer.setRenderTarget(renderTarget2)
+        renderer.render(orthoScene, orthoCamera)
 
         finalQuad.material.map = renderTarget1.texture
-        renderer.value.setRenderTarget(null)
-        renderer.value.render(finalScene, orthoCamera)
+        renderer.setRenderTarget(null)
+        renderer.render(finalScene, orthoCamera)
 
         // swap render targets
         const temp = renderTarget1
         renderTarget1 = renderTarget2
         renderTarget2 = temp
 
-        renderer.value.render(orthoScene, orthoCamera)
+        renderer.render(orthoScene, orthoCamera)
     } else {
-        renderer.value.render(scene.value, camera.value)
+        renderer.render(scene.value, camera.value)
     }
 })
 

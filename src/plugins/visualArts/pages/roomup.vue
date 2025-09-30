@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-29 15:38:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-29 17:14:57
+ * @LastEditTime: 2025-09-30 08:58:50
 -->
 <template>
     <loading />
@@ -13,7 +13,7 @@
         <OrbitControls enableDamping />
         <TresAmbientLight :intensity="2" />
         <Levioso>
-            <TresDirectionalLight ref="dLight" :position="[5, 5, -8]" castShadow :intensity="5" :shadow-mapSize="2048" :shadow-bias="-0.001" />
+            <TresDirectionalLight ref="dLight" :position="[5, 5, -8]" castShadow :intensity="5" :shadow-mapSize="new THREE.Vector2(2048, 2048)" :shadow-bias="-0.001" />
         </Levioso>
         <Suspense>
             <roomMesh :scale="0.5" :position="[0, -1, 0]" />

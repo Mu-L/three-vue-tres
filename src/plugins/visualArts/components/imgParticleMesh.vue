@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-07 15:43:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-07 19:51:22
+ * @LastEditTime: 2025-09-30 09:29:50
 -->
 <template>
     <TresPoints :position="[-8, 10, -2]" :scale="0.02">
-        <TresBufferGeometry :position="[positionArray, 3]" :color_list="[colorListArray, 3]" />
+        <TresBufferGeometry :position="[positionArray, 3]" :colorlist="[colorListArray, 3]" />
         <TresShaderMaterial v-bind="smConfig" />
     </TresPoints>
 </template>
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { watch } from 'vue'
 import * as THREE from 'three'
-import { useTexture } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 
 const props = defineProps({
     zPos: { default: 1 },
@@ -24,7 +24,7 @@ const props = defineProps({
     customColor: { default: '#ff0000' },
 })
 
-const pTexture = await useTexture(['./logo.png'])
+const pTexture = await useTexture('./logo.png')
 const canvas = document.createElement('canvas')
 const w = pTexture.image.width
 const h = pTexture.image.height
@@ -62,13 +62,13 @@ const smConfig = {
         customColor: { value: new THREE.Color(props.customColor) },
     },
     vertexShader: `
-		attribute vec3 color_list;
+		attribute vec3 colorlist;
 		varying vec3 vColor;
 		uniform float zPos;
 		void main() {
 			vec3 pos = position;
 			pos.z *= zPos;
-			vColor = color_list;
+			vColor = colorlist;
 			vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
 			vec4 viewPosition = viewMatrix * modelPosition;
 			gl_PointSize = 0.001 * (1.0 - viewPosition.z);

@@ -10,7 +10,7 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import noise from '../../shaders/lightNoise.glsl'
 import lucesPlane from './lucesPlane.vue'
 import portal from './portal.vue'
@@ -51,7 +51,7 @@ const rtPlane = new THREE.Mesh(rtGeo, rtMat)
 rtScene.add(rtPlane)
 globalUniforms.noise.value = renderTarget.texture
 
-const { camera, renderer, scene, sizes, controls } = useTresContext()
+const { camera, renderer, scene, sizes, controls } = useTres()
 
 watch(
     () => controls.value,
@@ -63,8 +63,8 @@ watch(
     },
 )
 
-const bloomComposer = new EffectComposer(renderer.value)
-const finalComposer = new EffectComposer(renderer.value)
+const bloomComposer = new EffectComposer(renderer)
+const finalComposer = new EffectComposer(renderer)
 
 const renderScene = new RenderPass(scene.value, camera.value)
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width.value, sizes.height.value), 1.2, 0.5, 0)
@@ -103,14 +103,14 @@ finalComposer.addPass(finalPass)
 
 scene.value.fog = new THREE.Fog(0x665566, 1, 25)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     globalUniforms.time.value = elapsed
 
-    if (renderer.value) {
-        renderer.value.setRenderTarget(renderTarget)
-        renderer.value.render(rtScene, rtCamera)
-        renderer.value.setRenderTarget(null)
+    if (renderer) {
+        renderer.setRenderTarget(renderTarget)
+        renderer.render(rtScene, rtCamera)
+        renderer.setRenderTarget(null)
 
         globalUniforms.globalBloom.value = 1.2
         scene.value.fog.color.set(0x000000)

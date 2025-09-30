@@ -4,17 +4,18 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-29 17:32:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-30 16:11:56
+ * @LastEditTime: 2025-09-30 08:46:32
 -->
 <script setup lang="ts">
+import { toRaw } from 'vue'
 import { useGLTF } from '@tresjs/cientos'
 
-const { nodes, materials } = await useGLTF('./plugins/visualArts/model/room-transformed.glb', { draco: true, decoderPath: './draco/' })
+const { state, nodes, materials } = useGLTF('./plugins/visualArts/model/room-transformed.glb', { draco: true, decoderPath: './draco/' })
 </script>
 
 <template>
-    <TresGroup :rotation="[-Math.PI / 2, 0, 0]">
-        <TresMesh castShadow receiveShadow :geometry="nodes.Object_2.geometry" :material="materials.Material" />
+    <TresGroup v-if="state" :rotation="[-Math.PI / 2, 0, 0]">
+        <TresMesh castShadow receiveShadow :geometry="toRaw(nodes.Object_2.geometry)" :material="toRaw(materials).Material" />
         <TresMesh castShadow receiveShadow :geometry="nodes.Object_3.geometry" :material="materials[`Material.002`]" />
         <TresMesh castShadow receiveShadow :geometry="nodes.Object_4.geometry" :material="materials[`Material.003`]" />
         <TresMesh castShadow receiveShadow :geometry="nodes.Object_6.geometry" :material="materials.krzeslo_1" />

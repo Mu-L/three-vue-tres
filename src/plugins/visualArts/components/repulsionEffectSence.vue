@@ -2,7 +2,7 @@
 import { shallowRef, computed, watch, reactive } from 'vue'
 import { degToRad } from 'three/src/math/MathUtils'
 import { gsap } from 'gsap'
-import { useSeek } from '@tresjs/core'
+import { useSeek } from 'PLS/basic'
 import { Cone, Plane } from '@tresjs/cientos'
 
 const meshesRef = shallowRef(null) as any
@@ -84,7 +84,7 @@ const computePosition = (col, row) => [(col - 1) * grid.gutter - gridOffset.valu
 </script>
 
 <template>
-    <Plane receive-shadow :args="[100, 100]" :rotation-x="-Math.PI / 2" :position="[0, 0, 0]" @pointer-move="onPointerMove">
+    <Plane receive-shadow :args="[100, 100]" :rotation-x="-Math.PI / 2" :position="[0, 0, 0]" @pointermove="onPointerMove">
         <TresShadowMaterial transparent :opacity="0.3" />
     </Plane>
     <TresGroup ref="shapesGroupRef" name="shapes">

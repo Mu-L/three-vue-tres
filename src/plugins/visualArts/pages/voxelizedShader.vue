@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-10 11:30:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-10 15:03:43
+ * @LastEditTime: 2025-09-30 09:30:12
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -16,9 +16,7 @@
             <voxelizedShaderModel :position="[0, 4, 0]" v-bind="voxelizedShaderConfig" />
         </Suspense>
 
-        <Suspense>
-            <reflectorDUDV v-bind="reflectorState" />
-        </Suspense>
+        <reflectorDUDV v-bind="reflectorState" />
 
         <postProcessing v-bind="voxelizedShaderConfig" />
     </TresCanvas>

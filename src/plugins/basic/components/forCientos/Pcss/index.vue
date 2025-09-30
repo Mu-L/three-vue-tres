@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { defineProps, withDefaults, watch } from 'vue'
 import { Mesh } from 'three'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { pcss } from './index.ts'
 
 const props = withDefaults(
@@ -28,14 +28,14 @@ const props = withDefaults(
     },
 )
 
-const { camera, renderer, scene } = useTresContext()
+const { camera, renderer, scene } = useTres()
 let reset = null as any
 
 const updatePCSS = (args: { enabled: boolean; size: number; focus: number; samples: number }) => {
     const { enabled, size, focus, samples } = args
 
     if (reset) {
-        reset(renderer.value, scene.value, camera.value)
+        reset(renderer, scene.value, camera.value)
         reset = null
     }
 

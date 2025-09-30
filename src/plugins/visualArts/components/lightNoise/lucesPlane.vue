@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const props = withDefaults(
     defineProps<{
@@ -157,8 +157,8 @@ const pMaterial = new THREE.MeshLambertMaterial({
     },
 })
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     for (let i = 0; i < instCount; i++) {
         const li = lucesInit[i]
         let z = ((li.y + elapsed + 25) % 50) - 25

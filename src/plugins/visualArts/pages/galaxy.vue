@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { BasicShadowMap, SRGBColorSpace, NoToneMapping, Color, AdditiveBlending, BufferAttribute } from 'three'
-import { useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { ref, watch } from 'vue'
 
@@ -16,8 +15,8 @@ const gl = {
   alpha: false,
   shadowMapType: BasicShadowMap,
   outputColorSpace: SRGBColorSpace,
-	toneMapping: NoToneMapping,
-	windowSize: true,
+  toneMapping: NoToneMapping,
+  windowSize: true,
 }
 
 const parameters = {
@@ -130,15 +129,12 @@ function updateGalaxy() {
 
 const bufferRef = ref(null) as any
 
-const { onRender } = useLoop()
-
-onLoop(({ elapsed }) => {
-	if (bufferRef.value) {
-		debugger
+const onLoop = ({ elapsed }: { elapsed: number }) => {
+  if (bufferRef.value) {
     bufferRef.value.material.uniforms.uTime.value = elapsed
   }
-})
-const {count, size, radius, branches, spin, randomness, randomnessPower, insideColor, outsideColor} = useControls({
+}
+const { count, size, radius, branches, spin, randomness, randomnessPower, insideColor, outsideColor } = useControls({
 
   count: {
     value: 30000,
@@ -185,12 +181,10 @@ const {count, size, radius, branches, spin, randomness, randomnessPower, insideC
   insideColor: '#b5f28d',
   outsideColor: '#1b3984',
 })
-debugger
 watch([count.value, size.value, radius.value, branches.value, spin.value, randomness.value, randomnessPower.value, insideColor.value, outsideColor.value], (state) => {
-  state.forEach((value:any, index:any) => {
+  state.forEach((value: any, index: any) => {
     parameters[Object.keys(parameters)[index] as string] = value.value
-	})
-	debugger
+  })
   updateGalaxy()
 })
 
@@ -198,18 +192,14 @@ watch([count.value, size.value, radius.value, branches.value, spin.value, random
 
 <template>
   <TresLeches />
-  <TresCanvas v-bind="gl">
+  <TresCanvas v-bind="gl" @loop="onLoop">
     <TresPerspectiveCamera :position="[3, 3, 3]" />
     <TresPoints ref="bufferRef">
-      <TresBufferGeometry
-        :position="[positions, 3]"
-        :a-scale="[scales, 1]"
-        :color="[colors, 3]"
-        :a-randomness="[randomnessArray, 3]"
-      />
+      <TresBufferGeometry :position="[positions, 3]" :a-scale="[scales, 1]" :color="[colors, 3]"
+        :a-randomness="[randomnessArray, 3]" />
       <TresShaderMaterial v-bind="shader" />
     </TresPoints>
-		
+
     <OrbitControls />
   </TresCanvas>
 </template>

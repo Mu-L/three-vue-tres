@@ -4,14 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 10:59:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-04-30 16:05:53
+ * @LastEditTime: 2025-09-30 08:33:49
 -->
 <template></template>
 
 <script setup lang="ts">
 import { watchEffect, toRaw } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { EffectComposer, EffectPass, RenderPass, BloomEffect, GodRaysEffect } from 'postprocessing'
 
 const props = withDefaults(
@@ -20,7 +20,7 @@ const props = withDefaults(
     }>(),
     {},
 )
-const { camera, renderer, scene, sizes } = useTresContext()
+const { camera, renderer, scene, sizes } = useTres()
 let effectComposer = null as any
 let effectPass = null as any
 const effects = [] as any[]
@@ -56,7 +56,7 @@ const addGodRaysEffect = (camera: THREE.PerspectiveCamera) => {
     sun.matrixAutoUpdate = false
     const godRaysEffect = new GodRaysEffect(camera, toRaw(props.screen), {
         blur: true,
-        decay: 0.8,
+        decay: 0.9,
         exposure: 0.34,
     })
     effects.push(godRaysEffect)
@@ -70,15 +70,15 @@ const makeEffectPass = (camera: THREE.PerspectiveCamera) => {
 watchEffect(() => {
     if (sizes.width.value) {
         const camerav = camera.value as any
-        init(scene.value, camerav, renderer.value, sizes.width.value, sizes.height.value)
+        init(scene.value, camerav, renderer, sizes.width.value, sizes.height.value)
         addGodRaysEffect(camerav)
-        addBloomEffect()
+        // addBloomEffect()
         makeEffectPass(camerav)
     }
 })
 
-const { onAfterLoop } = useRenderLoop()
-onAfterLoop(() => {
+const { onRender } = useLoop()
+onRender(() => {
     if (effectComposer) {
         effectComposer.render()
     }

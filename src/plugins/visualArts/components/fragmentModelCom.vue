@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-13 09:05:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-08-18 16:09:04
+ * @LastEditTime: 2025-09-30 09:18:16
 -->
 <template>
     <TresMesh :geometry="geometry">
@@ -15,11 +15,9 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 import * as THREE from 'three'
-import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
-import { loadOBJ } from 'PLS/medical/common/util'
-import { useTexture, useRenderLoop } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+import { useLoop } from '@tresjs/core'
+import { useGLTF, useTexture } from 'PLS/basic'
 import { Pane } from 'tweakpane'
 import vertexShader from '../shaders/fragmentModel.vert'
 import fragmentShader from '../shaders/fragmentModel.frag'
@@ -38,16 +36,14 @@ const mergeGeometriesForMesh = (model: THREE.Object3D) => {
 
 const guanyuModel = (
     await useGLTF(
-        (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/guanYu.glb',
-        { draco: true, decoderPath: './draco/' },
-    )
+        (process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/eCommerce/guanYu.glb')
 ).scene
 const guanyuGeometries = mergeGeometriesForMesh(guanyuModel.children[0])
 guanyuGeometries.rotateX(Math.PI / 2)
 guanyuGeometries.translate(0, -0.9, 0)
 const geometry = guanyuGeometries.clone().toNonIndexed()
 
-const planeModel = (await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb', { draco: true, decoderPath: './draco/' })).scene
+const planeModel = (await useGLTF((process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/model/industry4/modelDraco.glb')).scene
 const planeGeometries = mergeGeometriesForMesh(planeModel.children[0])
 planeGeometries.rotateX(-Math.PI / 2)
 planeGeometries.rotateY(Math.PI / 3)
@@ -113,7 +109,7 @@ geometry.setAttribute('toNormal', new THREE.BufferAttribute(toNormal, 3))
 
 console.log(geometry.attributes)
 
-const pTexture = await useTexture(['./plugins/visualArts/image/fragment512px.png'])
+const pTexture = await useTexture('./plugins/visualArts/image/fragment512px.png')
 
 const tsMaterialConfig = {
     uniforms: {
@@ -167,7 +163,7 @@ watch(
     { deep: true },
 )
 
-useRenderLoop().onLoop(({ elapsed }) => {
+useLoop().onBeforeRender(({ elapsed }) => {
     tsMaterialConfig.uniforms.u_progress.value = (Math.sin(elapsed * speed.value) + 1) / 2
     paneControl.refresh()
 })

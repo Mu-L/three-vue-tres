@@ -1,21 +1,16 @@
-
 <template>
-    <!-- <loading /> -->
     <TresCanvas v-bind="tcConfig">
         <TresPerspectiveCamera :position="[0, 20, 30]" :fov="45" :near="0.1" :far="1000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight :intensity="2" />
-        <Suspense>
-            <Bubble v-bind="pcssConfig" />
-        </Suspense>
+        <Bubble v-bind="pcssConfig" />
     </TresCanvas>
 </template>
 
 <script setup lang="ts">
-import { randomLoading as loading } from 'PLS/UIdemo'
 import * as THREE from 'three'
 import { ref, watch, reactive } from 'vue'
-import { OrbitControls, Levioso } from '@tresjs/cientos'
+import { OrbitControls } from '@tresjs/cientos'
 import Bubble from '../components/bubble.vue'
 import { Pane } from 'tweakpane'
 

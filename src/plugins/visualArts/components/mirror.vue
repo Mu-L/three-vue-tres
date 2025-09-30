@@ -1,9 +1,17 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-09-07 22:45:14
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-30 09:09:02
+-->
 <script setup lang="js">
 import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 
-const { scene } = useTresContext()
+const { scene } = useTres()
 const texture = {
   matcap:
     "/plugins/visualArts/image/photo.avif",
@@ -71,3 +79,4 @@ class Space {
 }
 const world = new Space()
 </script>
+<template></template>
