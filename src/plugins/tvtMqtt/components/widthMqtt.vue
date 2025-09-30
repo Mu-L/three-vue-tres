@@ -1,6 +1,10 @@
 <template>
-    <div class="w-100 absolute z-99999 mqttdebugger" style="background-color: #aaaaaa; margin-top: 40px">
-        <n-card title="MQTT 调试面板">
+    <div class="w-100 absolute z-99999 mqttdebugger" style="margin-top: 40px">
+        <n-card title="MQTT 调试面板" style="background-color: #d6d0c540;">
+            <n-form-item label="注意：">
+                <n-tag :style="{ 'padding': '30px 21px', 'line-height': '21px' }"
+                    type="warning">免费服务每月流量/次数有限<br />若连接失败请自行更换自己的mqtt服务</n-tag>
+            </n-form-item>
             <n-divider style="margin-top: -10px">mqtt配置信息</n-divider>
             <n-input :value="JSON.stringify(config, null, 2)" type="textarea" :rows="9" disabled />
             <n-divider>连接状态</n-divider>
@@ -16,14 +20,15 @@
             <n-divider>信息日志列表</n-divider>
             <n-log :log="messages.join('\n')" :rows="12" />
             <n-divider>通过mqtt交互状态</n-divider>
-            开关电风扇 : <n-switch :loading="eFanStateLoading" :round="false" v-model:value="eFanState" @update:value="handleChange" />
+            开关电风扇 : <n-switch :loading="eFanStateLoading" :round="false" v-model:value="eFanState"
+                @update:value="handleChange" />
         </n-card>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onUnmounted, onMounted, watch, inject } from 'vue'
-import { useMessage, NCard, NInput, NLog, NFormItem, NDivider, NSwitch } from 'naive-ui'
+import { useMessage, NCard, NInput, NLog, NFormItem, NDivider, NSwitch, NTag } from 'naive-ui'
 import { MqttClientWrapper } from '../lib/mqttTvt'
 
 const globeMessage = useMessage()
@@ -139,6 +144,7 @@ watch(
 </script>
 <style lang="less">
 .mqttdebugger {
+
     textarea,
     input {
         color: black !important;

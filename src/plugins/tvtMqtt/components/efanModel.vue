@@ -1,6 +1,15 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-07-10 11:16:41
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-30 08:21:28
+-->
 <script setup lang="ts">
-import { watch, inject } from 'vue'
-import { Levioso, ContactShadows, useGLTF, useAnimations } from '@tresjs/cientos'
+import { watch, inject, toRaw } from 'vue'
+import { Levioso, ContactShadows, useAnimations } from '@tresjs/cientos'
+import { useGLTF } from 'PLS/basic'
 
 const props = defineProps({
     color: {
@@ -67,7 +76,7 @@ watch(
 
 <template>
     <Levioso :range="[-0.5, -0.5]" :speed="2">
-        <primitive :position="[-2, 0, 0]" :object="nodes.Sketchfab_model" :scale="3.0" />
+        <primitive :position="[-2, 0, 0]" :object="toRaw(nodes.Sketchfab_model)" :scale="3.0" />
     </Levioso>
     <ContactShadows :opacity="0.3" :blur="2.6" :position="[0, -2, 0]" />
 </template>

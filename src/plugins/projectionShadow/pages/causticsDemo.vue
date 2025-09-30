@@ -7,7 +7,7 @@
  * @LastEditTime: 2024-04-26 11:20:17
 -->
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @loop="onLoop">
         <TresPerspectiveCamera :position="[-20, 20, 15]" :fov="45" :near="1" :far="1000" />
         <OrbitControls v-bind="controlsState" />
         <TresDirectionalLight :position="[10, 2, 4]" :intensity="1" />
@@ -32,7 +32,6 @@
 <script setup lang="ts">
 import { ACESFilmicToneMapping } from 'three'
 import { reactive, ref } from 'vue'
-import { TresCanvas, useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { groundProjectedEnv } from 'PLS/skyBox'
 import { Pane } from 'tweakpane'
@@ -50,8 +49,7 @@ const controlsState = reactive({
     autoRotate: false,
 })
 const torusMesh = ref(null)
-const { onBeforeRender } = useLoop()
-onBeforeRender(({ elapsed }: { elapsed: number }) => {
+const onLoop = (({ elapsed }: { elapsed: number }) => {
     if (torusMesh.value) {
         torusMesh.value.rotation.x = elapsed
         torusMesh.value.rotation.y = elapsed

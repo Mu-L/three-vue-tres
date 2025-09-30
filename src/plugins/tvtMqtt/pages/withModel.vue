@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-10 11:11:06
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-10 16:25:17
+ * @LastEditTime: 2025-09-30 08:22:39
 -->
 <template>
     <TresCanvas v-bind="gl">
@@ -38,6 +38,7 @@ const gl = {
     shadowMapType: BasicShadowMap,
     outputColorSpace: SRGBColorSpace,
     windowSize: true,
+    clearColor: '#ffffff',
 }
 
 const animationPlay = ref(false)

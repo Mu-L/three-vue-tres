@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { defineProps, withDefaults, watchEffect, watch } from 'vue'
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import { Caustics } from '@pmndrs/vanilla'
 
 const props = withDefaults(
@@ -49,13 +49,13 @@ mat.thickness = 2
 const torusMesh = new THREE.Mesh(geometry, mat)
 torusMesh.position.set(0, 6, 0)
 
-const { renderer } = useTresContext()
+const { renderer } = useTres()
 const caustics = Caustics(renderer.value, { frames: Infinity, resolution: 1024, worldRadius: props.worldRadius })
 caustics.params.backside = true
 caustics.scene.add(torusMesh)
 
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     torusMesh.rotation.x = elapsed
     torusMesh.rotation.y = elapsed
     caustics.update()

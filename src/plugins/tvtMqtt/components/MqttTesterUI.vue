@@ -2,6 +2,9 @@
     <div class="w-full" style="background-color: #ffffff">
         <n-card title="MQTT 调试面板" class="max-w-4xl mx-auto">
             <n-form :model="form" label-width="100">
+                <n-form-item label="注意：">
+                    <n-tag :style="{'margin-left': '10px'}" type="warning">免费服务每月流量/次数有限，若连接失败请自行更换自己的mqtt服务</n-tag>
+                </n-form-item>
                 <n-form-item label="地址">
                     <n-input v-model:value="form.host" placeholder="例如: broker.hivemq.com" />
                 </n-form-item>
