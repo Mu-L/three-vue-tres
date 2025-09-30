@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-05 16:39:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-18 10:22:57
+ * @LastEditTime: 2025-09-30 09:42:56
 -->
 <template>
     <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2">
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { ref, watch, watchEffect } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { CustomShaderMaterial as CustomShaderMaterialCom } from '@tresjs/cientos'
 import * as THREE from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
@@ -147,8 +147,8 @@ const uniforms = {
     },
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     uniforms.uTime.value = -elapsed / 5
 })
 

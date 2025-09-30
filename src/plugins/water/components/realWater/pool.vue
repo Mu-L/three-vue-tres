@@ -1,7 +1,15 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-11-19 09:35:25
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-30 09:48:51
+-->
 <template></template>
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useTresContext, useRenderLoop } from '@tresjs/core'
+import { useTres, useLoop } from '@tresjs/core'
 import vertexShader from '../../shaders/pool/vertex.glsl'
 import fragmentShader from '../../shaders/pool/fragment.glsl'
 
@@ -36,15 +44,15 @@ const _material = new THREE.RawShaderMaterial({
 
 const _mesh = new THREE.Mesh(_geometry, _material)
 
-const { renderer, camera } = useTresContext() as any
+const { renderer, camera } = useTres() as any
 const draw = (waterTexture: any, causticsTexture: any) => {
     _material.uniforms['water'].value = waterTexture
     _material.uniforms['causticTex'].value = causticsTexture
-    renderer.value.render(_mesh, camera.value)
+    renderer.render(_mesh, camera.value)
 }
 
-const { onAfterLoop } = useRenderLoop()
-onAfterLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
     draw(props.waterTexture, props.causticsTexture)
-})
+},-1)
 </script>

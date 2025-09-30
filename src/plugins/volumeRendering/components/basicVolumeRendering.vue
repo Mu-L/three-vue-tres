@@ -11,7 +11,7 @@ import * as Three from 'three'
 import { Pane } from 'tweakpane'
 import vertex from '../shaders/vertex.glsl'
 import fragment from '../shaders/fragment.glsl'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 
 const dim = 41
 const width = window.innerWidth
@@ -49,7 +49,7 @@ crossFolder.addBinding(crossSectionSize, 'y', { label: 'Y', min: 0.02, max: 0.5,
 crossFolder.addBinding(crossSectionSize, 'z', { label: 'Z', min: 0.02, max: 0.5, step: 0.02 })
 crossFolder.expanded = true
 
-const { camera } = useTresContext()
+const { camera } = useTres()
 
 const uniforms = reactive({
     u_camera: {
@@ -99,9 +99,9 @@ watch(volumeData, (newData) => {
         uniforms.u_volume.value = volumeDataTexture
     }
 })
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(() => {
+onBeforeRender(() => {
     uniforms.u_time.value = clock.getElapsedTime()
 })
 

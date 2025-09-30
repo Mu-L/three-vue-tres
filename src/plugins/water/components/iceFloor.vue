@@ -4,20 +4,21 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-07-22 10:03:17
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-22 12:28:59
+ * @LastEditTime: 2025-09-30 10:02:03
 -->
 <template>
     <TresGroup>
         <TresMesh :rotate-x="-Math.PI / 2">
             <TresPlaneGeometry :args="[40, 40]" />
-            <TresShaderMaterial :vertexShader="iceVertex" :fragmentShader="iceFragment" transparent :uniforms="uniforms" />
+            <TresShaderMaterial :vertexShader="iceVertex" :fragmentShader="iceFragment" transparent
+                :uniforms="uniforms" />
         </TresMesh>
     </TresGroup>
 </template>
 <script setup lang="ts">
 import * as THREE from 'three'
 import { watch } from 'vue'
-import { useTexture } from '@tresjs/core'
+import { useTextures } from 'PLS/basic'
 import iceVertex from '../shaders/ice/vertex.glsl'
 import iceFragment from '../shaders/ice/fragment.glsl'
 
@@ -39,7 +40,7 @@ const props = defineProps({
 const imgList = Array.from({ length: 7 }, (_, i) => `./plugins/water/images/textures/${i + 1}.png`)
 imgList.push('./plugins/water/images/textures/super-perlin.png')
 
-const pTexture = await useTexture(imgList)
+const pTexture = await useTextures(imgList)
 pTexture.forEach((texture: THREE.Texture) => {
     texture.colorSpace = THREE.LinearSRGBColorSpace
     texture.wrapS = THREE.RepeatWrapping

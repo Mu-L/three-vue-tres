@@ -4,19 +4,21 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-18 10:10:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-19 11:24:18
+ * @LastEditTime: 2025-09-30 10:00:29
 -->
 <template>
     <caustics :lightFrontGeometry="_geometry" :waterTexture="texture.texture" :light="light" />
 </template>
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { useRenderLoop, useTresContext } from '@tresjs/core'
+import { ref } from 'vue'
+import { useLoop, useTres } from '@tresjs/core'
 import vertexShader from '../../shaders/simulation/vertex.glsl'
 import dropFragmentShader from '../../shaders/simulation/drop_fragment.glsl'
 import normalFragmentShader from '../../shaders/simulation/normal_fragment.glsl'
 import updateFragmentShader from '../../shaders/simulation/update_fragment.glsl'
 import caustics from './caustics.vue'
+import { throttle } from 'lodash'
 
 const props = defineProps<{
     light: Array<number>
@@ -81,19 +83,20 @@ const updateNormals = (renderer: any) => {
     _render(renderer, _normalMesh)
 }
 
-const { renderer, camera, raycaster } = useTresContext() as any
-renderer.value.autoClear = false
-const { onBeforeLoop } = useRenderLoop()
-onBeforeLoop(() => {
-    stepSimulation(renderer.value)
-    updateNormals(renderer.value)
+const { renderer, camera } = useTres() as any
+const raycaster = ref(new THREE.Raycaster())
+renderer.autoClear = false
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
+    stepSimulation(renderer)
+    updateNormals(renderer)
 })
 
 const addDrop = (x: number, y: number, radius: number, strength: number) => {
     _dropMesh.material.uniforms['center'].value = [x, y]
     _dropMesh.material.uniforms['radius'].value = radius
     _dropMesh.material.uniforms['strength'].value = strength
-    _render(renderer.value, _dropMesh)
+    _render(renderer, _dropMesh)
 }
 
 const mouse = new THREE.Vector2()
@@ -107,7 +110,7 @@ for (let i = 0; i < position.count; i++) {
 position.needsUpdate = true
 const targetmesh = new THREE.Mesh(targetgeometry)
 const onMouseMove = (event: any) => {
-    const rect = renderer.value.domElement.getBoundingClientRect()
+    const rect = renderer.domElement.getBoundingClientRect()
 
     const width = rect.width
     const height = rect.height
@@ -124,13 +127,13 @@ const onMouseMove = (event: any) => {
     }
 }
 const mouseEventHandler = {
-  handleEvent: onMouseMove
+    handleEvent: onMouseMove
 };
 const mouseEvent = (isOn: boolean) => {
-    if(isOn){
-        renderer.value.domElement.addEventListener('mousemove', mouseEventHandler)
+    if (isOn) {
+        renderer.domElement.addEventListener('mousemove', throttle(onMouseMove, 30)) // 降低监听帧率
     } else {
-        renderer.value.domElement.removeEventListener('mousemove',mouseEventHandler)
+        renderer.domElement.removeEventListener('mousemove', mouseEventHandler)
     }
 }
 defineExpose({ addDrop, mouseEvent })

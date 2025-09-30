@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-11 09:54:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-11 11:00:32
+ * @LastEditTime: 2025-09-30 09:42:10
 -->
 
 
@@ -13,7 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import { useTexture, useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 import { RepeatWrapping, Vector3, PlaneGeometry } from 'three'
 import { Water } from 'three/addons/objects/Water'
 import { watchEffect } from 'vue'
@@ -27,9 +28,7 @@ const props = withDefaults(defineProps<{
 })
 
 const waterGeometry = new PlaneGeometry(1000, 1000)
-const { map: waternormals } = await useTexture({
-	map: './plugins/water/images/waternormals.jpg'
-})
+const waternormals = await useTexture('./plugins/water/images/waternormals.jpg')
 waternormals.wrapS = waternormals.wrapT = RepeatWrapping
 
 const tsWater = new Water(
@@ -54,8 +53,8 @@ watchEffect(() => {
 })
 
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	tsWater.material.uniforms.time.value += 1.0 / 60.0
 })
 </script>

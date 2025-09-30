@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-01 14:04:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-06-06 08:53:16
+ * @LastEditTime: 2025-09-30 09:39:32
 -->
 
 <template>
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { CustomShaderMaterial } from '@tresjs/cientos'
 import { watch } from 'vue'
 import vertexShader from '../shaders/waterGlass.vert'
@@ -56,8 +56,8 @@ const smState = {
     thickness: 1.5,
     refractionRatio: 1.5,
 }
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     uniforms.time.value += delta
 })
 

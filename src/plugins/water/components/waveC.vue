@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-10-10 10:45:35
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-09-30 09:40:07
+-->
 <template>
     <TresMesh :rotation-x="-Math.PI / 2" :position-y="1">
         <TresPlaneGeometry :args="[10, 10, 512, 512]"></TresPlaneGeometry>
@@ -13,7 +21,7 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { watch } from 'vue'
 import vertexShader from '../shaders/waveC.vert'
 import fragmentShader from '../shaders/waveC.frag'
@@ -63,8 +71,8 @@ const uniforms = {
     uPerlinWaveSpeed: { value: props.perlinWaveSpeed },
 }
 
-const { onLoop } = useRenderLoop()
-onLoop(({ elapsed }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ elapsed }) => {
     uniforms.uTime.value = elapsed
 })
 

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-01 14:04:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-01 15:02:39
+ * @LastEditTime: 2025-09-30 09:38:54
 -->
 
 <template>
@@ -17,9 +17,9 @@
 <script setup lang="ts">
 import { watch } from "vue"
 import * as THREE from 'three'
-import { useRenderLoop } from '@tresjs/core'
-import vertexShader from '../shaders/tilingCaustics.vert?raw'
-import fragmentShader from '../shaders/tilingCaustics.frag?raw'
+import { useLoop } from '@tresjs/core'
+import vertexShader from '../shaders/tilingCaustics.vert'
+import fragmentShader from '../shaders/tilingCaustics.frag'
 const props = withDefaults(
 	defineProps<{
 		speed?: number
@@ -55,8 +55,8 @@ const smState = {
 	depthWrite: false,
 	depthTest: true,
 }
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
 	smState.uniforms.time.value += delta;
 })
 watch(() => props, () => {
