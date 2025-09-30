@@ -6,10 +6,10 @@
 
         <!-- 基础飞线 -->
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine1.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine1.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoFlyline
-                    :map="textures.map"
+                    :map="state"
                     :start="flylineStart1"
                     :end="flylineEnd"
                     type="mesh"
@@ -26,10 +26,10 @@
 
         <!-- 虚线飞线 -->
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine2.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine2.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoFlyline
-                    :map="textures.map"
+                    :map="state"
                     :start="flylineStart2"
                     :end="flylineEnd"
                     type="mesh"
@@ -54,10 +54,10 @@
 
         <!-- 高弧度飞线 -->
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine3.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine3.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoFlyline
-                    :map="textures.map"
+                    :map="state"
                     :start="flylineStart3"
                     :end="flylineEnd"
                     type="mesh"
@@ -80,10 +80,10 @@
 
         <!-- 细线飞线 -->
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine4.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine4.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoFlyline
-                    :map="textures.map"
+                    :map="state"
                     :start="flylineStart4"
                     :end="flylineEnd"
                     type="mesh"
@@ -100,9 +100,9 @@
 
         <!-- 长距离飞线 -->
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine5.png">
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine5.png">
                 <GeoFlyline
-                    :map="textures.map"
+                    :map="state"
                     :start="flylineStart5"
                     :end="flylineEnd"
                     type="tube"
@@ -128,7 +128,7 @@
 <script setup lang="ts">
 import { GeoCanvas, GeoControls, GeoFlyline, GeoScene, GeoPositionConfig, GeoText, GeoTextureProps } from '@icegl/geokit'
 import { ref, computed } from 'vue'
-import { UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 import { RepeatWrapping } from 'three'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 

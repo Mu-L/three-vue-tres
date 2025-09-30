@@ -107,15 +107,15 @@
         <!-- 地理多边形 -->
         <GeoPolygon :geometry="currentGeometry" :subdivisions="currentSubdivisions" :height="currentFaceHeight">
             <Suspense fallback="">
-                <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/rain.png">
-                    <GeoTextureProps :texture="textures.map" :rotation="time * 0.1" :center="[0.5, 0.5]" />
+                <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/rain.png">
+                    <GeoTextureProps :texture="state" :rotation="time * 0.1" :center="[0.5, 0.5]" />
                     <TresMeshStandardMaterial
                         :color="currentColor"
                         :transparent="currentOpacity < 1"
                         :opacity="currentOpacity"
                         :wireframe="isWireframe"
                         :side="DoubleSide"
-                        :map="textures.map"
+                        :map="state"
                     />
                 </UseTexture>
             </Suspense>
@@ -124,15 +124,15 @@
         <!-- 地理墙体 -->
         <GeoWall :geometry="currentGeometry" :height="50" :baseHeight="0">
             <Suspense>
-                <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/line2.png">
-                    <GeoTextureProps :texture="textures.map" :rotation="time * 0.1" :center="[0.5, 0.5]" />
+                <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/line2.png">
+                    <GeoTextureProps :texture="state" :rotation="time * 0.1" :center="[0.5, 0.5]" />
                     <TresMeshStandardMaterial
                         :color="currentColor"
                         :transparent="currentOpacity < 1"
                         :opacity="currentOpacity"
                         :wireframe="isWireframe"
                         :side="DoubleSide"
-                        :map="textures.map"
+                        :map="state"
                     />
                 </UseTexture>
             </Suspense>
@@ -144,7 +144,7 @@
 import { GeoCanvas, GeoControls, GeoPolygon, GeoWall, GeoScene, GeoTextureProps, GeoPositionConfig } from '@icegl/geokit'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { DoubleSide } from 'three'
-import { UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 // 相机位置

@@ -8,52 +8,52 @@
         <DevTDTTiles />
 
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="/plugins/geokit/image/110000.bg.jpg">
-                <GeoTextureProps :texture="textures.map" />
+            <UseTexture v-slot="{ state }" path="/plugins/geokit/image/110000.bg.jpg">
+                <GeoTextureProps :texture="state" />
                 <GeoPolygon v-if="beijingGeojson" :geometry="beijingGeojson.features[0].geometry" :height="5000" :renderOrder="10">
-                    <TresMeshStandardMaterial :map="textures.map" :side="DoubleSide" transparent :depth-write="false" />
+                    <TresMeshStandardMaterial :map="state" :side="DoubleSide" transparent :depth-write="false" />
                 </GeoPolygon>
             </UseTexture>
         </Suspense>
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/line2.png">
-                <GeoTextureProps :texture="textures.map" :rotation="-Math.PI / 2" :center="[0.2, 0.5]" />
+            <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/line2.png">
+                <GeoTextureProps :texture="state" :rotation="-Math.PI / 2" :center="[0.2, 0.5]" />
                 <GeoWall v-if="beijingGeojson" :geometry="beijingGeojson.features[0].geometry" :height="5000" :renderOrder="10">
-                    <TresMeshStandardMaterial :map="textures.map" :side="DoubleSide" transparent :depth-write="false" />
+                    <TresMeshStandardMaterial :map="state" :side="DoubleSide" transparent :depth-write="false" />
                 </GeoWall>
             </UseTexture>
         </Suspense>
         
         <Suspense v-if="beijingBorder.length">
-            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine4.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/flyLine4.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoLineAnimation :duration="2000">
                     <GeoMeshline
                         :points="beijingBorder"
                         :width="500"
                         :renderOrder="50"
                         color="#0057ff"
-                        :map="textures.map"
+                        :map="state"
                     />
                 </GeoLineAnimation>
             </UseTexture>
         </Suspense>
 
         <Suspense v-if="beijingChidlrenGeojson">
-            <UseTexture v-slot="{ textures }" map="/plugins/floor/image/concrete_wet_floor_basecolor.jpg">
-                <GeoTextureProps :texture="textures.map" />
+            <UseTexture v-slot="{ state }" path="/plugins/floor/image/concrete_wet_floor_basecolor.jpg">
+                <GeoTextureProps :texture="state" />
                 <template v-for="(feature, index) in beijingChidlrenGeojson.features" :key="index">
                     <GeoPolygon
                         v-if="feature"
                         :geometry="feature.geometry"
                         :height="5000"
                         :renderOrder="20"
-                        @pointer-enter="hoverAreaName = feature.properties?.name"
-                        @pointer-leave="hoverAreaName = ''"
+                        @pointerenter="hoverAreaName = feature.properties?.name"
+                        @pointerleave="hoverAreaName = ''"
                         @click="goToArea(feature.properties?.name)"
                     >
                         <TresMeshStandardMaterial
-                            :map="textures.map"
+                            :map="state"
                             :side="DoubleSide"
                             transparent
                             :opacity="highlightAreaName === feature.properties?.name ? 0.7 : 0"
@@ -93,7 +93,7 @@ import {
     GeoCSS2D,
     GeoLineAnimation,
 } from '@icegl/geokit'
-import { UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const state = reactive({
@@ -145,7 +145,7 @@ onMounted(() => {
         .then((response) => response.json())
         .then((data) => {
             beijingGeojson.value = data
-            beijingBorder.value = data.features[0].geometry.coordinates[0][0].map((point) => ({
+            beijingBorder.value = data.features[0].geometry.coordinates[0][0].map((point: number[]) => ({
                 lon: point[0],
                 lat: point[1],
                 height: 5100,
@@ -165,7 +165,7 @@ onMounted(() => {
         })
 })
 
-const goToArea = (areaName) => {
+const goToArea = (areaName: string) => {
     if (!areaName) return
 
     if (focusAreaName.value === areaName) {

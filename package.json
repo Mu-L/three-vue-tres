@@ -68,7 +68,7 @@
     "@fesjs/plugin-request": "5.0.0-beta.0",
     "@fesjs/plugin-sass": "4.0.0-beta.0",
     "@here/quantized-mesh-decoder": "^1.2.8",
-    "@icegl/geokit": "^1.4.5",
+    "@icegl/geokit": "^2.0.2",
     "@iconify/json": "2.2.386",
     "@mapbox/tilebelt": "^2.0.2",
     "@mkkellogg/gaussian-splats-3d": "^0.4.7",

@@ -5,20 +5,21 @@
         <DevTDTTiles />
 
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="plugins/digitalCity/image/flyLine5.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoLineAnimation :reverse="isReverse" :duration="1500">
                     <!-- MeshLine线条 - 使用统一的颜色、宽度、贴图和动画 -->
-                    <GeoMeshline :points="linePoints1" color="#ff0000" :width="currentWidth" :map="textures.map" />
+                    <GeoMeshline :points="linePoints1" color="#ff0000" :width="currentWidth" :map="state" />
                 </GeoLineAnimation>
-
-                <GeoTextureClone :="textures" v-slot="{ textures }">
-                    <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
-                    <GeoLineAnimation :reverse="isReverse" :duration="1500">
-                        <!-- 管道线条 - 使用统一的颜色、宽度、贴图和动画 -->
-                        <GeoTubeline :points="linePoints2" color="#00ff00" :width="currentWidth" :map="textures.map" />
-                    </GeoLineAnimation>
-                </GeoTextureClone>
+            </UseTexture>
+        </Suspense>
+        <Suspense>
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :reverse="isReverse" :duration="1500">
+                    <!-- 管道线条 - 使用统一的颜色、宽度、贴图和动画 -->
+                    <GeoTubeline :points="linePoints2" color="#00ff00" :width="currentWidth" :map="state" />
+                </GeoLineAnimation>
             </UseTexture>
         </Suspense>
     </GeoCanvas>
@@ -33,16 +34,14 @@ import {
     GeoScene,
     GeoPositionConfig,
     GeoTextureProps,
-    GeoTextureClone,
     GeoLineAnimation,
 } from '@icegl/geokit'
 import { RepeatWrapping } from 'three'
 import { ref } from 'vue'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
-import { UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 
 // 需要添加这些响应式变量
-const textures = ref({})
 const isReverse = ref(false)
 const currentWidth = ref(50)
 

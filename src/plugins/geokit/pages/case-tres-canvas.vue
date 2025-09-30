@@ -1,23 +1,48 @@
 <template>
-    <TresCanvas window-size alpha antialias auto-clear disable-render :output-color-space="SRGBColorSpace" :tone-mapping="NoToneMapping" :pixel-ratio="1">
+    <TresCanvas window-size alpha antialias auto-clear disable-render :output-color-space="SRGBColorSpace"
+        :tone-mapping="NoToneMapping" :pixel-ratio="1">
         <TresPerspectiveCamera :fov="29" :near="50" :far="1000000" />
         <GeoCSS2DRenderer />
         <GeoControls v-model:position="cameraPosition" :min-distance="1" />
         <GeoScene :sceneConfig="sceneConfig" />
         <DevTDTTiles />
 
-        <GeoTubeline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints1" color="#ff0000" :width="50" :duration="2" />
-
-        <GeoTubeline texture="plugins/digitalCity/image/flyLine5.png" :points="linePoints2" color="#00ff00" :width="30" :duration="2" />
+        <Suspense>
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :reverse="isReverse" :duration="1500">
+                    <!-- MeshLine线条 - 使用统一的颜色、宽度、贴图和动画 -->
+                    <GeoMeshline :points="linePoints1" color="#ff0000" :width="currentWidth" :map="state" />
+                </GeoLineAnimation>
+            </UseTexture>
+        </Suspense>
+        <Suspense>
+            <UseTexture v-slot="{ state }" path="plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+                <GeoLineAnimation :reverse="isReverse" :duration="1500">
+                    <!-- 管道线条 - 使用统一的颜色、宽度、贴图和动画 -->
+                    <GeoTubeline :points="linePoints2" color="#00ff00" :width="currentWidth" :map="state" />
+                </GeoLineAnimation>
+            </UseTexture>
+        </Suspense>
     </TresCanvas>
 </template>
 
 <script setup lang="ts">
 import { TresCanvas } from '@tresjs/core'
-import { SRGBColorSpace, NoToneMapping } from 'three'
-import { GeoControls, GeoCSS2DRenderer, GeoTubeline, GeoScene, GeoPositionConfig } from '@icegl/geokit'
+import { SRGBColorSpace, NoToneMapping, RepeatWrapping } from 'three'
+import {
+    GeoControls, GeoCSS2DRenderer,
+    GeoTextureProps, GeoMeshline,
+    GeoLineAnimation, GeoTubeline, GeoScene, GeoPositionConfig
+} from '@icegl/geokit'
 import { ref } from 'vue'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
+import { UseTexture } from '@tresjs/cientos'
+
+// 需要添加这些响应式变量
+const isReverse = ref(false)
+const currentWidth = ref(50)
 
 const sceneConfig = ref({
     effectProps: {

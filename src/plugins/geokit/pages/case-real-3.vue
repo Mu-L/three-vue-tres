@@ -1,5 +1,5 @@
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @loop="onLoop">
         <TresPerspectiveCamera :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" ref="cameraRef" />
         <GeoCSS2DRenderer />
         <GeoControls
@@ -24,12 +24,12 @@
         </GeoPosition>
 
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="/plugins/geokit/case-real-3/image/road-texture.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="/plugins/geokit/case-real-3/image/road-texture.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoLineAnimation :speed="lineSpeed" v-if="road1.length">
                     <GeoMeshline
                         :repeat="[lineRepeat, 1]"
-                        :map="textures.map"
+                        :map="state"
                         :duration="4"
                         :points="road1"
                         :width="lineWidth"
@@ -87,8 +87,7 @@ import {
     GeoIcon,
     GeoMapControlsTarget,
 } from '@icegl/geokit'
-
-import { useLoop, useRenderLoop, UseTexture } from '@tresjs/core'
+import {UseTexture} from '@tresjs/cientos'
 import DevTDTTiles from '../components/DevTDTTiles.vue'
 
 const state = reactive({
@@ -195,15 +194,14 @@ function animateWeiXing() {
     weiXingPosition.value.lat = orbitLat + 5 * Math.cos(theta)
     weiXingPosition.value.height = orbitHeight
 }
-const { onLoop, resume } = useRenderLoop()
 
-onLoop(() => {
+const onLoop = () => {
     animateWeiXing()
 
     if (cameraRef.value) {
         cameraHeight.value = vec32ecefHeight(cameraRef.value?.getWorldPosition(new Vector3()))
     }
-})
+}
 
 const sceneConfig = ref({
     effectProps: {

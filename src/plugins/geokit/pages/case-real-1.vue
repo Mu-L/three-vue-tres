@@ -33,8 +33,8 @@
             show-top
             :height="mainBuilding.properties.height"
             :base-height="0"
-            @pointer-over="hoverMainBuilding = true"
-            @pointer-leave="hoverMainBuilding = false"
+            @pointerover="hoverMainBuilding = true"
+            @pointerleave="hoverMainBuilding = false"
             @click="jumpToBuilding"
         >
             <template #top>
@@ -42,9 +42,9 @@
             </template>
             <template #walls>
                 <Suspense>
-                    <UseTexture v-slot="{ textures }" map="/plugins/geokit/image/building-wall.png">
-                        <GeoTextureProps :texture="textures.map" :wrapS="RepeatWrapping" :wrapT="RepeatWrapping" :repeat="[5, 1]" :center="[0.5, 0.5]" />
-                        <TresMeshStandardMaterial :color="mainBuilding.properties.color" :side="DoubleSide" :map="textures.map" />
+                    <UseTexture v-slot="{ state }" path="/plugins/geokit/image/building-wall.png">
+                        <GeoTextureProps :texture="state" :wrapS="RepeatWrapping" :wrapT="RepeatWrapping" :repeat="[5, 1]" :center="[0.5, 0.5]" />
+                        <TresMeshStandardMaterial :color="mainBuilding.properties.color" :side="DoubleSide" :map="state" />
                     </UseTexture>
                 </Suspense>
             </template>
@@ -55,29 +55,29 @@
         </GeoCSS2D>
 
         <Suspense>
-            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/line2.png">
+            <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/line2.png">
                 <GeoWall :geometry="lightWall.geometry" :height="26" v-if="hoverMainBuilding">
-                    <GeoTextureProps :texture="textures.map" :rotation="Math.PI / 2" :center="[0.5, 0.5]" />
-                    <TresMeshBasicMaterial color="#93adff" :transparent="true" :opacity="0.8" :side="DoubleSide" :map="textures.map" />
+                    <GeoTextureProps :texture="state" :rotation="Math.PI / 2" :center="[0.5, 0.5]" />
+                    <TresMeshBasicMaterial color="#93adff" :transparent="true" :opacity="0.8" :side="DoubleSide" :map="state" />
                 </GeoWall>
 
                 <GeoWall :geometry="school.geometry" :height="20">
-                    <GeoTextureProps :texture="textures.map" :rotation="Math.PI / 2" :center="[0.5, 0.5]" />
-                    <TresMeshBasicMaterial color="#00cb91" :transparent="true" :opacity="0.8" :side="DoubleSide" :map="textures.map" />
+                    <GeoTextureProps :texture="state" :rotation="Math.PI / 2" :center="[0.5, 0.5]" />
+                    <TresMeshBasicMaterial color="#00cb91" :transparent="true" :opacity="0.8" :side="DoubleSide" :map="state" />
                 </GeoWall>
             </UseTexture>
         </Suspense>
 
-        <GeoPolygon :geometry="school.geometry" :height="1" :subdivisions="2" @pointer-over="hoverSchool = true" @pointer-leave="hoverSchool = false">
+        <GeoPolygon :geometry="school.geometry" :height="1" :subdivisions="2" @pointerover="hoverSchool = true" @pointerleave="hoverSchool = false">
             <TresMeshStandardMaterial color="#00cb91" transparent :opacity="0.6" :side="DoubleSide" />
         </GeoPolygon>
 
         <Suspense v-if="hoverSchool">
-            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine1.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/flyLine1.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoLineAnimation :duration="2000">
                     <GeoFlyline
-                        :map="textures.map"
+                        :map="state"
                         :start="{ lon: 116.40463917407055, lat: 39.889897530319814, height: 0 }"
                         :end="{ lon: 116.40036727754858, lat: 39.88920339523989, height: 0 }"
                         type="mesh"
@@ -95,10 +95,10 @@
         </GeoCSS2D>
         
         <Suspense v-if="hoverMainBuilding">
-            <UseTexture v-slot="{ textures }" map="/plugins/digitalCity/image/flyLine5.png">
-                <GeoTextureProps :texture="textures.map" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
+            <UseTexture v-slot="{ state }" path="/plugins/digitalCity/image/flyLine5.png">
+                <GeoTextureProps :texture="state" :wrapT="RepeatWrapping" :wrapS="RepeatWrapping" />
                 <GeoLineAnimation :duration="4000">
-                    <GeoMeshline :points="moveLine" color="#00cb91" :width="6" :map="textures.map" />
+                    <GeoMeshline :points="moveLine" color="#00cb91" :width="6" :map="state" />
                 </GeoLineAnimation>
             </UseTexture>
         </Suspense>
@@ -108,7 +108,7 @@
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping, DoubleSide, RepeatWrapping } from 'three'
 import { reactive, ref, onMounted } from 'vue'
-import { useRenderLoop, UseTexture } from '@tresjs/core'
+import { UseTexture } from '@tresjs/cientos'
 import {
     GeoBuilding,
     GeoWall,
@@ -128,6 +128,7 @@ import DevTDTTiles from '../components/DevTDTTiles.vue'
 const jumpToBuilding = () => {
     window.open(`https://www.baidu.com/s?wd=tvt.js`)
 }
+
 
 const state = reactive({
     clearColor: '#201919',
@@ -324,13 +325,6 @@ const school = {
         type: 'Polygon' as const,
     },
 }
-
-// const { onLoop, pause, resume } = useRenderLoop()
-const { onLoop } = useRenderLoop()
-
-onLoop(({ elapsed }) => {})
-
-onMounted(() => {})
 </script>
 <style scoped>
 .hover-main-building {
