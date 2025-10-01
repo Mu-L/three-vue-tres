@@ -1,0 +1,15 @@
+//// view //// { "id": "", "UIState": { "showMainPreview": true, "showBlackBoard": true, "showInspector": true }, "type": "ShaderGraph", "version": "1.0.0", "setting": { "template": "MeshStandardNodeMaterial", "surfaceType": "Transparent", "renderFace": "FrontSide", "depthWrite": "enable", "depthTest": "enable", "depthTestFunc": "LessEqualDepth", "blendingMode": "NormalBlending", "castShadows": true }, "parameters": [], "textures": [] }
+
+(() => {
+  const cameraHeight = tsl.cameraPosition.y;
+  
+  // Normalize camera height to brightness (adjust range as needed)
+  const brightness = tsl.clamp(tsl.div(tsl.abs(cameraHeight), tsl.float(100)), tsl.float(0), tsl.float(1));
+  
+  material.colorNode = tsl.vec4(
+    brightness,
+    brightness,
+    brightness,
+    tsl.float(1)
+  );
+})();
