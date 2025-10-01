@@ -12,5 +12,6 @@ export default {
 		{ "src": "plugins/tsl/preview/tsg-case-1.png", "type": "img", "name": "tsg-case-1", "title": "TSG案例1 - 物体随相机变化" },
 		{ "src": "plugins/tsl/preview/tsg-case-2.png", "type": "img", "name": "tsg-case-2", "title": "TSG案例2 - 参数控制" },
 		{ "src": "plugins/tsl/preview/tsg-case-3.png", "type": "img", "name": "tsg-case-3", "title": "TSG案例3 - 故障效果" },
+		{ "src": "plugins/tsl/preview/tsg-case-4.png", "type": "img", "name": "tsg-case-4", "title": "TSG案例4 - 溶解效果" },
 	]
 }

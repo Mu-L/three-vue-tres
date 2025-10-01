@@ -1,0 +1,84 @@
+//// view //// {"id":"","nodes":{"35":{"id":35,"data":{"vertValue":0,"vertValueType":"vertex","expanded":true},"inputs":{"vert":{"connections":[{"node":36,"output":"vert","data":{"fixed":true}}]}},"outputs":{},"blocks":[{"id":39,"data":{"colorNodeValue":[0,0.8823529411764706,1],"colorNodeValueType":"vec3","expanded":true},"inputs":{"colorNode":{"connections":[{"node":227,"output":"out","data":{}}]}},"outputs":{},"blocks":[],"position":[0,0],"name":"ColorNodeBlock","contextId":35},{"id":50,"data":{"opacityNodeValue":1,"opacityNodeValueType":"float","expanded":true},"inputs":{"opacityNode":{"connections":[{"node":40,"output":"out","data":{}}]}},"outputs":{},"blocks":[],"position":[0,0],"name":"OpacityNodeBlock","contextId":35}],"position":[550,0],"name":"Fragment"},"36":{"id":36,"data":{"vertValue":0,"vertValueType":"vertex","expanded":true},"inputs":{},"outputs":{"vert":{"connections":[{"node":35,"input":"vert","data":{"fixed":true}}]}},"blocks":[{"id":37,"data":{"positionValue":[0,0,0],"positionValueType":"vec3","expanded":true},"inputs":{"position":{"connections":[]}},"outputs":{},"blocks":[],"position":[0,0],"name":"PositionBlock","contextId":36},{"id":38,"data":{"normalValue":[0,0,0],"normalValueType":"vec3","expanded":true},"inputs":{"normal":{"connections":[]}},"outputs":{},"blocks":[],"position":[0,0],"name":"NormalBlock","contextId":36}],"position":[550,-300],"name":"Vertex"},"40":{"id":40,"data":{"uvValue":"UV0","uvValueType":"vec2","scaleValue":"30","scaleValueType":"float","outValue":0,"outValueType":"float","expanded":true,"preview":true},"inputs":{"uv":{"connections":[]},"scale":{"connections":[]}},"outputs":{"out":{"connections":[{"node":50,"input":"opacityNode","data":{}},{"node":309,"input":"edge","data":{}}]}},"blocks":[],"position":[-526.9532048384959,-496.5414441032199],"name":"SimpleNoise"},"227":{"id":227,"data":{"aValue":[0,0,0],"aValueType":"vec3","bValue":[0,0,0],"bValueType":"vec3","outValue":[0,0,0],"outValueType":"vec3","expanded":true,"preview":true},"inputs":{"a":{"connections":[{"node":236,"output":"out","data":{}}]},"b":{"connections":[{"node":309,"output":"out","data":{}}]}},"outputs":{"out":{"connections":[{"node":39,"input":"colorNode","data":{}}]}},"blocks":[],"position":[195.49393589101157,-335.7442582178932],"name":"Multiply"},"236":{"id":236,"data":{"outValue":[0,0.7490196078431373,1],"outValueType":"vec3","expanded":true,"outValueUsage":"color"},"inputs":{},"outputs":{"out":{"connections":[{"node":227,"input":"a","data":{}}]}},"blocks":[],"position":[-44.20919106494172,-453.22926386824827],"name":"Color"},"309":{"id":309,"data":{"edgeValue":0,"edgeValueType":"float","inValue":"0.5","inValueType":"float","outValue":0,"outValueType":"float","expanded":true,"preview":true},"inputs":{"edge":{"connections":[{"node":40,"output":"out","data":{}}]},"in":{"connections":[{"node":426,"output":"out","data":{}}]}},"outputs":{"out":{"connections":[{"node":227,"input":"b","data":{}}]}},"blocks":[],"position":[-47.47030357504554,-253.34772469983025],"name":"Step"},"409":{"id":409,"data":{"xValue":"0.018","xValueType":"float","outValue":0,"outValueType":"float","expanded":true},"inputs":{"x":{"connections":[]}},"outputs":{"out":{"connections":[{"node":426,"input":"a","data":{}}]}},"blocks":[],"position":[-457.99248155235125,26.890046803199766],"name":"Float"},"426":{"id":426,"data":{"aValue":0,"aValueType":"float","bValue":0,"bValueType":"float","outValue":0,"outValueType":"float","expanded":true},"inputs":{"a":{"connections":[{"node":409,"output":"out","data":{}}]},"b":{"connections":[{"node":30821,"output":"out","data":{}}]}},"outputs":{"out":{"connections":[{"node":309,"input":"in","data":{}}]}},"blocks":[],"position":[-256.0956938434732,21.774645405726076],"name":"Add"},"30821":{"id":30821,"data":{"outValue":"0","outValueType":"float","outValueName":"show","exposed":true,"expanded":true},"inputs":{},"outputs":{"out":{"connections":[{"node":426,"input":"b","data":{}}]}},"blocks":[],"position":[-476.43293341044546,357.6323012816241],"name":"Parameter"}},"UIState":{"showMainPreview":true,"showBlackBoard":true,"showInspector":true},"type":"ShaderGraph","version":"1.0.0","setting":{"template":"MeshBasicNodeMaterial","surfaceType":"Transparent","renderFace":"FrontSide","depthWrite":"enable","depthTest":"enable","depthTestFunc":"LessDepth","blendingMode":"AdditiveBlending","castShadows":true},"parameters":[{"name":"show","type":"float","defalutValue":"0","exposed":true}],"textures":[]}
+
+
+const sg_Parameter_show = tsl.uniform(0);
+if (default_uniforms.show) {
+  sg_Parameter_show.value = default_uniforms.show;
+}
+uniforms.show = sg_Parameter_show;
+
+const sg_SimpleNoise_fn_rand = tsl.wgslFn(`
+  fn sg_SimpleNoise_fn_rand(seed: vec2<f32>) -> f32 {
+    return fract(sin(dot(seed, vec2<f32>(12.9898, 78.233))) * 43758.5453);
+  }
+`);
+const sg_SimpleNoise_fn_valueNoise = tsl.wgslFn(
+  `
+  fn sg_SimpleNoise_fn_valueNoise (uv_: vec2<f32>) -> f32 {
+    let i = floor(uv_);
+    var f = fract(uv_);
+    f = f * f * (3.0 - 2.0 * f);
+
+    let uv = abs(fract(uv_) - 0.5);
+    let c0 = i + vec2<f32>(0.0, 0.0);
+    let c1 = i + vec2<f32>(1.0, 0.0);
+    let c2 = i + vec2<f32>(0.0, 1.0);
+    let c3 = i + vec2<f32>(1.0, 1.0);
+    let r0 = sg_SimpleNoise_fn_rand(c0);
+    let r1 = sg_SimpleNoise_fn_rand(c1);
+    let r2 = sg_SimpleNoise_fn_rand(c2);
+    let r3 = sg_SimpleNoise_fn_rand(c3);
+
+    let bottomOfGrid = sg_SimpleNoise_fn_interpolate(r0, r1, f.x);
+    let topOfGrid = sg_SimpleNoise_fn_interpolate(r2, r3, f.x);
+    let t = sg_SimpleNoise_fn_interpolate(bottomOfGrid, topOfGrid, f.y);
+    return t;
+  }
+`,
+  [
+    tsl.wgslFn(`
+  fn sg_SimpleNoise_fn_interpolate (a: f32, b: f32, t: f32) -> f32 {
+    return (1.0-t)*a + (t*b);
+  }
+`),
+    sg_SimpleNoise_fn_rand,
+  ],
+);
+
+const sg_SimpleNoise_fn = tsl.wgslFn(
+  `
+  fn sg_SimpleNoise_fn(UV: vec2<f32>, Scale: f32) -> f32 {
+    var t = 0.0;
+
+    var freq = pow(2.0, 0.0);
+    var amp = pow(0.5, 3.0-0.0);
+    t += sg_SimpleNoise_fn_valueNoise(vec2<f32>(UV.x*Scale/freq, UV.y*Scale/freq))*amp;
+
+    freq = pow(2.0, 1.0);
+    amp = pow(0.5, 3.0-1.0);
+    t += sg_SimpleNoise_fn_valueNoise(vec2<f32>(UV.x*Scale/freq, UV.y*Scale/freq))*amp;
+
+    freq = pow(2.0, 2.0);
+    amp = pow(0.5, 3.0-2.0);
+    t += sg_SimpleNoise_fn_valueNoise(vec2<f32>(UV.x*Scale/freq, UV.y*Scale/freq))*amp;
+
+    return t;
+  }
+`,
+  [sg_SimpleNoise_fn_valueNoise],
+);
+
+(() => {
+  material.positionNode = tsl.Fn(() => {
+    return tsl.positionLocal;
+  })();
+})();
+(() => {
+  const simple_noise_0 = sg_SimpleNoise_fn({ UV: tsl.uv(0), Scale: 30 });
+  const mul_5 = tsl.mul(
+    tsl.vec3(0, 0.7490196078431373, 1),
+    tsl.vec3(tsl.step(simple_noise_0, tsl.add(tsl.float(0.018), sg_Parameter_show).x)),
+  );
+  material.opacityNode = simple_noise_0;
+  material.colorNode = mul_5;
+})();
