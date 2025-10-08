@@ -4,15 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-06 08:56:43
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 16:36:45
+ * @LastEditTime: 2025-10-08 11:57:00
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { ScrollControls, Stars, Sphere, Box } from '@tresjs/cientos'
 import { SRGBColorSpace, NoToneMapping } from 'three'
 
-const scRef = ref()
-const sphereRef = ref()
 const boxRef = ref()
 const progress = ref(0)
 
@@ -42,8 +40,8 @@ const onLoop = () => {
     <Stars :radius="1" />
     <TresGridHelper :args="[10, 10]" />
 
-    <ScrollControls ref="scRef" v-model="progress" :distance="10" :smooth-scroll="0.1" htmlScroll>
-      <Sphere ref="sphereRef" :scale="0.1" :position="[1, 2, 0]" />
+    <ScrollControls v-model="progress" :distance="10" :smooth-scroll="0.1" htmlScroll>
+      <Sphere :scale="0.1" :position="[1, 2, 0]" />
       <Box ref="boxRef" :scale="0.5" :color="0xff00ff" :position="[-1, 1, 0]" />
     </ScrollControls>
   </TresCanvas>
