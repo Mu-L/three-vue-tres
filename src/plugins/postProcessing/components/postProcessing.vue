@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTresContext, useTexture } from '@tresjs/core'; //useRenderLoop
+import { useLoop, useTres, useTexture } from '@tresjs/core'; //useRenderLoop
 import { OrbitControls } from '@tresjs/cientos';
 import * as THREE from 'three';
 import { postComposer } from '../common/postComposer.js';
@@ -31,7 +31,7 @@ import depthfs from '../shaders/packed-depth-fs.glsl?raw';
 import depthvs from '../shaders/packed-depth-vs.glsl?raw';
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import { reactive } from 'vue';
-const { camera, renderer, scene, sizes } = useTresContext();
+const { camera, renderer, scene, sizes } = useTres();
 
 var mergedGeometry = new THREE.BufferGeometry();
 
@@ -136,9 +136,9 @@ btn.on('click', (e) => {
 });
 
 Composer.onWindowResize(renderer.value, camera.value);
-const { onLoop } = useRenderLoop();
+const { onBeforeRender } = useLoop();
 let stack: any = null;
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
     if (model) {
         renderer.value.autoClearColor = true;
         Composer.Reset();

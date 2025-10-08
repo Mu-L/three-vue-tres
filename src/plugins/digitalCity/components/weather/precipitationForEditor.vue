@@ -1,6 +1,14 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-05-07 10:06:41
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-08 11:29:45
+-->
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
-import { useTexture } from '@tresjs/core'
+import { watch } from 'vue'
+import * as THREE from 'three'
 import { Precipitation } from '@tresjs/cientos'
 
 const props = withDefaults(
@@ -31,7 +39,7 @@ const props = withDefaults(
 const imgList: Record<string, string> = {
     snow: './plugins/digitalCity/image/snow.png',
     rain: './plugins/digitalCity/image/rain2.png',
-    cilcle: './plugins/digitalCity/image/cilcle.png',
+    point: './plugins/digitalCity/image/cilcle.png',
 }
 
 const textureCache: Record<string, THREE.Texture> = {}
@@ -60,7 +68,18 @@ const getTexture = (key: keyof typeof imgList) => {
 }
 await preloadTextures()
 
-const texture = ref(getTexture(props.type))
+let curRexture = null
+watch(
+	() => props.type,
+	(nv, ov) => {
+		if (nv !== ov) {
+			curRexture = getTexture(nv)
+		}
+	},
+	{
+		immediate: true,
+	}
+)
 </script>
 
 <template>
@@ -76,8 +95,8 @@ const texture = ref(getTexture(props.type))
         :randomness="props.randomness"
         :size="props.size"
         :opacity="1.0"
-        :map="texture"
-        :alphaMap="texture"
+        :map="curRexture"
+        :alphaMap="curRexture"
         :renderOrder="999999"
     />
 </template>

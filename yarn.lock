@@ -7,11 +7,6 @@
   resolved "https://registry.npmmirror.com/3d-tiles-renderer/-/3d-tiles-renderer-0.4.16.tgz#32d6fd12716bb35a3c3afddfa46060edd63b546e"
   integrity sha512-2zGeUx89pU40yWqYbbLXg2loCzjwEh4NKxK4qUZBE5WNDzkxt7AOmygYF4eFzjcFCeDtCyqtGzRNZtjiBKeNQA==
 
-"@alvarosabu/utils@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmmirror.com/@alvarosabu/utils/-/utils-3.2.0.tgz#76b8e3a2390143858a8cad8efe4286b5dde51e8d"
-  integrity sha512-aoGWRfaQjOo9TUwrBA6W0zwTHktgrXy69GIFNILT4gHsqscw6+X8P6uoSlZVQFr887SPm8x3aDin5EBVq8y4pw==
-
 "@amap/amap-jsapi-loader@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npmmirror.com/@amap/amap-jsapi-loader/-/amap-jsapi-loader-1.0.1.tgz#9ec4b4d5d2467eac451f6c852e35db69e9f9f0c0"
@@ -1426,18 +1421,19 @@
   resolved "https://registry.npmmirror.com/@humanwhocodes/retry/-/retry-0.4.3.tgz#c2b9d2e374ee62c586d3adbea87199b1d7a7a6ba"
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
-"@icegl/geokit@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.npmmirror.com/@icegl/geokit/-/geokit-1.4.5.tgz#d6812cfc92720c9473cb048a5f3095501a8379f4"
-  integrity sha512-FkxNgA87S9g0MsXk6/9gqBMUzqgCg5SAoy8lXYiInP00dwSbatfrQ1GF0uTQMlcDpkltzT+Tj5Ugj9hfuurzPw==
+"@icegl/geokit@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmmirror.com/@icegl/geokit/-/geokit-2.0.2.tgz#fa6b428b31b671352047cd75354558ee3e7db5f3"
+  integrity sha512-zRl4wpS472reqa9QY5MiIBF7md+h24iBPFiw+sh9Q3y1RyxZnxbZvwIUFqMo5O5X+K8MqxkrPH3EXgsqlk679Q==
   dependencies:
     "3d-tiles-renderer" "^0.4.11"
-    "@tresjs/core" "^4.3.6"
+    "@tresjs/cientos" "^5.0.0"
+    "@tresjs/core" "^5.0.2"
     "@tresjs/post-processing" "^2.4.0"
     "@turf/turf" "^7.2.0"
     delaunator "^5.0.1"
     gsap "^3.13.0"
-    three "^0.174.0"
+    three "^0.180.0"
     three-stdlib "^2.36.0"
     tiny-invariant "^1.3.3"
     vue "^3.5.17"
@@ -2391,7 +2387,19 @@
   resolved "https://registry.npmmirror.com/@tokenizer/token/-/token-0.3.0.tgz#fe98a93fe789247e998c75e74e9c7c63217aa276"
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
-"@tresjs/cientos@5.0.0":
+"@tresjs/cientos@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmmirror.com/@tresjs/cientos/-/cientos-5.0.1.tgz#9b58b0506a33589241e54f25f0771cae714f4884"
+  integrity sha512-KxzCXOnJRMB6wCgL3enYnT6xYcZeKy9aFwX5WfaGlri19rdKbdrxqRc9OXly6k9zhWNMPpahxgYe+sPBfmmMtA==
+  dependencies:
+    "@vueuse/core" "^13.9.0"
+    camera-controls "^2.9.0"
+    stats-gl "^2.0.1"
+    stats.js "^0.17.0"
+    three-custom-shader-material "^5.4.0"
+    three-stdlib "^2.36.0"
+
+"@tresjs/cientos@^5.0.0":
   version "5.0.0"
   resolved "https://registry.npmmirror.com/@tresjs/cientos/-/cientos-5.0.0.tgz#a9b34798a65ed1338487b5eb5316f630c6e371b0"
   integrity sha512-m65PsPZELODzwvI4jjCXTuA68xsAXVjyS+yB/Niql0qcI07HtPQzPSerLFg+qEjVBOealC+u89UnB/Qd/Uwj8Q==
@@ -2403,7 +2411,17 @@
     three-custom-shader-material "^5.4.0"
     three-stdlib "^2.36.0"
 
-"@tresjs/core@5.0.2":
+"@tresjs/core@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.0.3.tgz#96499b1b56c954a270abdded711e6976457cbf39"
+  integrity sha512-peXTm0kzIAiU54ewuf3zcyNW8oU7Q4OGgCWKrzADDs9ZavEog3jf8WrMEjQzGuWl7pnVtu1O05UREpUzHIsY9Q==
+  dependencies:
+    "@pmndrs/pointer-events" "^6.6.17"
+    "@vue/devtools-api" "^7.7.2"
+    "@vueuse/core" "^13.9.0"
+    radashi "^12.6.2"
+
+"@tresjs/core@^5.0.2":
   version "5.0.2"
   resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.0.2.tgz#fcd3a44fe6aa22d9f4d20a9148ccd80529804844"
   integrity sha512-ezgYndWQmn2cPlEmdT6epQ7ThMwRmG1/qbuASeAuqV3W3EDDpBWecCTAC6hjwHMy4W7LjAzCR/VZlpPmrG97TQ==
@@ -2412,15 +2430,6 @@
     "@vue/devtools-api" "^7.7.2"
     "@vueuse/core" "^13.9.0"
     radashi "^12.6.2"
-
-"@tresjs/core@^4.3.6":
-  version "4.3.6"
-  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-4.3.6.tgz#2df9fad11026e4b898897c7a218cae077c8c0307"
-  integrity sha512-CCk4+jwbiTl7Hj3REZqweglUQQdA3cF29TqJ4dEWunaBPyfsAGLTlJExK5lGIS10ptJkr8DqPvHQT41iTIb0Yg==
-  dependencies:
-    "@alvarosabu/utils" "^3.2.0"
-    "@vue/devtools-api" "^6.6.3"
-    "@vueuse/core" "^12.5.0"
 
 "@tresjs/leches@^0.14.1":
   version "0.14.1"
@@ -10496,7 +10505,7 @@ three.quarks@^0.16.0:
   dependencies:
     quarks.core "^0.16.0"
 
-three@0.180.0:
+three@0.180.0, three@^0.180.0:
   version "0.180.0"
   resolved "https://registry.npmmirror.com/three/-/three-0.180.0.tgz#b930cabfb524f6d36bf63e874b4d866888b50487"
   integrity sha512-o+qycAMZrh+TsE01GqWUxUIKR1AL0S8pq7zDkYOQw8GqfX8b8VoCKYUoHbhiX5j+7hr8XsuHDVU6+gkQJQKg9w==
@@ -10505,11 +10514,6 @@ three@^0.170.0:
   version "0.170.0"
   resolved "https://registry.npmmirror.com/three/-/three-0.170.0.tgz#6087f97aab79e9e9312f9c89fcef6808642dfbb7"
   integrity sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==
-
-three@^0.174.0:
-  version "0.174.0"
-  resolved "https://registry.npmmirror.com/three/-/three-0.174.0.tgz#53f46d6fd27515231b2af321f798f1e0ecf3f905"
-  integrity sha512-p+WG3W6Ov74alh3geCMkGK9NWuT62ee21cV3jEnun201zodVF4tCE5aZa2U122/mkLRmhJJUQmLLW1BH00uQJQ==
 
 through2@^0.6.3:
   version "0.6.5"
