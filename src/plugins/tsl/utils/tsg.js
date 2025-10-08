@@ -117,7 +117,7 @@ const applySGSettingToMaterial = (material, settings) => {
  *   settings
  * }}
  */
-export const tsg = (tsgString, defaultUniforms, textureMap = {}) => {
+export const tsg = (tsgString, defaultUniforms = {}, textureMap = {}) => {
 	const tslResultMaterial = {};
 
 	const tslJson = getTSLJson(tsgString);
