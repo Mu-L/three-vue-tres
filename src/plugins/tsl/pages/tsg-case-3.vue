@@ -19,7 +19,7 @@ import { reactive, watch, ref, toValue, shallowRef, onMounted } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import type { TresRendererSetupContext } from '@tresjs/core'
 import * as THREE from 'three/webgpu'
-import { tsg } from 'tsl-shader-graph'
+import { tsg } from '../utils/tsg'
 
 const redMaterial = ref()
 
