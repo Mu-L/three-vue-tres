@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-22 11:14:44
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 09:50:18
+ * @LastEditTime: 2025-10-08 11:27:55
 -->
 <script setup lang="ts">
 import { watch } from 'vue'
@@ -39,7 +39,7 @@ const props = withDefaults(
 const imgList: Record<string, string> = {
 	snow: './plugins/digitalCity/image/snow.png',
 	rain: './plugins/digitalCity/image/rain.png',
-	cilcle: './plugins/digitalCity/image/cilcle.png',
+	point: './plugins/digitalCity/image/cilcle.png',
 }
 
 const textureCache: Record<string, THREE.Texture> = {}
@@ -67,13 +67,11 @@ const getTexture = (key: keyof typeof imgList) => {
 	return textureCache[key]
 }
 await preloadTextures()
-debugger
 let curRexture = null
 watch(
 	() => props.type,
 	(nv, ov) => {
 		if (nv !== ov) {
-			debugger
 			curRexture = getTexture(nv)
 		}
 	},
