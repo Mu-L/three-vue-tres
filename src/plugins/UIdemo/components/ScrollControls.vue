@@ -134,7 +134,6 @@ watch(containerX, (value) => {
 watch(
   renderer,
   (value) => {
-    debugger
 		const canvas = value?.domElement
     if (props.htmlScroll && value?.domElement) {
       // use window scroll only Y axis

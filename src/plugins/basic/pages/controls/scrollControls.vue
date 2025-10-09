@@ -8,7 +8,8 @@
 -->
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { ScrollControls, Stars, Sphere, Box } from '@tresjs/cientos'
+import { ScrollControls } from 'PLS/UIdemo'
+import { Stars, Sphere, Box } from '@tresjs/cientos'
 import { SRGBColorSpace, NoToneMapping } from 'three'
 
 const boxRef = ref()
