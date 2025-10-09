@@ -4,7 +4,7 @@
  * @Autor: 石头
  * @Date: 2025-10-08 11:07:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-09 09:32:25
+ * @LastEditTime: 2025-10-09 09:39:24
 -->
 <template>
     <TresCanvas clearColor="#201919" v-bind="state" :renderer="createWebGPURenderer">
@@ -63,8 +63,7 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    clearAlpha: 0,
-    disableRender: true,
+    clearAlpha: 0
 })
 
 const controlsState = reactive({
