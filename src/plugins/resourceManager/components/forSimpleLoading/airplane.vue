@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { Resource } from 'PLS/resourceManager'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 const props = defineProps<{
     planet: any
 }>()
@@ -16,7 +16,7 @@ scene.traverse((child: any) => {
 })
 airplane.updateMatrixWorld()
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
 watch(
     () => props.planet,
@@ -32,7 +32,7 @@ watch(
 
 let angle = 0
 const speed = 0.2
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
     if (!airplane || !props.planet) return
 
     const radius = Math.abs(props.planet.geometry.boundingSphere.radius) + 0.5

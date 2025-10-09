@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-11-26 10:11:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-02-06 12:43:53
+ * @LastEditTime: 2025-10-09 15:01:40
 -->
 <template>
     <primitive :object="emitters" />
@@ -14,7 +14,7 @@
 import * as THREE from 'three'
 import * as TQK from 'three.quarks'
 import { Resource } from 'PLS/resourceManager'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { watch } from 'vue'
 
 const props = withDefaults(
@@ -61,8 +61,8 @@ if (obj.type === 'ParticleEmitter') {
 // TQK.QuarksUtil.play(obj)
 emitters.add(obj)
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(({ delta }) => {
     batchSystem.update(delta)
 })
 

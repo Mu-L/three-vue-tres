@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Resource } from 'PLS/resourceManager'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import Airplane from './airplane.vue'
 import Cloud from './cloud.vue'
 
@@ -14,9 +14,9 @@ planet.traverse((child: any) => {
     }
 })
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
     if (!planet) return
     planet.rotation.y += delta * 0.04
     planet.rotation.z += delta * 0.02

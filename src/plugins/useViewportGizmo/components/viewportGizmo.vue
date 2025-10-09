@@ -4,20 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-22 08:59:30
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 13:23:52
+ * @LastEditTime: 2025-10-09 15:53:51
 -->
 <template></template>
 
 <script setup lang="ts">
 import { watch, toRaw, useAttrs } from 'vue'
-import { useLoop, useTresContext } from '@tresjs/core'
+import { useLoop, useTres } from '@tresjs/core'
 import { ViewportGizmo } from '../lib/ViewportGizmo'
 
-const { camera, controls, renderer, sizes } = useTresContext() as any
+const { camera, controls, renderer, sizes } = useTres() as any
 const attrs = useAttrs()
 const viewportConfig = { ...toRaw(attrs) }
 
-const gizmo = new ViewportGizmo(toRaw(camera.value), toRaw(renderer.value), viewportConfig)
+const gizmo = new ViewportGizmo(toRaw(camera.value), toRaw(renderer), viewportConfig)
 watch(
     () => controls.value,
     (cc) => {
@@ -37,9 +37,9 @@ watch(
         immediate: true,
     },
 )
-const { onAfterRender } = useLoop()
+const { onRender } = useLoop()
 
-onAfterRender(() => {
+onRender(() => {
     gizmo.render()
-})
+}, 1)
 </script>

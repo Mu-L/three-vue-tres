@@ -1,5 +1,5 @@
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @loop="onLoop">
         <TresPerspectiveCamera :position="[15, 15, 15]" :fov="45" :near="0.1" :far="1000" :look-at="[0, 0, 0]" />
         <OrbitControls makeDefault />
         <TresAmbientLight :intensity="0.5" />
@@ -31,7 +31,6 @@
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
 import { reactive, ref, shallowRef, watchEffect } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { viewportGizmo } from 'PLS/useViewportGizmo'
 
@@ -89,13 +88,11 @@ const sphereRef = ref()
 const sphereRef2 = ref()
 const TDirectionalLight = shallowRef()
 
-const { onLoop } = useRenderLoop()
-
-onLoop(({ elapsed }) => {
+const onLoop = ({ elapsed }: { elapsed: number }) => {
     if (!sphereRef.value) return
     sphereRef.value.position.y += Math.sin(elapsed) * 0.01
     sphereRef2.value.position.y += Math.sin(elapsed) * 0.01
-})
+}
 
 watchEffect(() => {
     if (TDirectionalLight.value) {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { Resource } from 'PLS/resourceManager'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 const props = defineProps<{
     planet: any
 }>()
@@ -31,11 +31,11 @@ watch(
     },
 )
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
 let angle = random(-1, 1) * Math.PI
 const speed = Math.random() / 10
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
     if (!cloud) return
 
     const radius = Math.abs(props.planet.geometry.boundingSphere.radius - 0.5)
