@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 石头
+ * @Date: 2025-10-08 11:07:31
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-09 09:32:25
+-->
 <template>
     <TresCanvas clearColor="#201919" v-bind="state" :renderer="createWebGPURenderer">
         <TresPerspectiveCamera :fov="60" :near="0.1" :far="2000" :position="[60, 60, 60]" :look-at="[0, 0, 0]" />
@@ -18,7 +26,7 @@ import { reactive, watch, ref, toValue, shallowRef, onMounted } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import type { TresRendererSetupContext } from '@tresjs/core'
 import * as THREE from 'three/webgpu'
-import { tsg } from 'tsl-shader-graph'
+import { tsg } from '../utils/tsg'
 
 const redMaterial = ref()
 
