@@ -1,5 +1,36 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-08-14 10:52:40
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-10 08:27:41
+ */
+import { ref, shallowReactive } from 'vue'
 import * as THREE from 'three'
 import * as SkeletonUtils from 'three/examples/jsm/utils/SkeletonUtils'
+
+function useAnimations(onBeforeRender, animations, modelRef) {
+    const reference = ref(modelRef)
+
+    const mixer = new THREE.AnimationMixer(reference.value)
+
+    const actions = shallowReactive({})
+
+    animations.forEach((animation) => {
+        const action = mixer.clipAction(animation, reference.value)
+        actions[animation.name] = action
+    })
+
+    onBeforeRender(({ delta }) => {
+        mixer.update(delta)
+    })
+
+    return {
+        actions,
+        mixer,
+    }
+}
 
 function containsSkinnedMesh(object) {
 		let hasSkinnedMesh = false
@@ -48,4 +79,4 @@ function standardizationMeshCopy(mesh) {
 		return centerObjectAtOrigin(ms)
 }
 
-export { standardizationMeshCopy }
+export { standardizationMeshCopy, useAnimations }
