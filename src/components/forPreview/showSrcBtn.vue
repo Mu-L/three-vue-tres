@@ -4,16 +4,22 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-15 09:11:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-13 11:57:00
+ * @LastEditTime: 2025-10-10 09:18:25
 -->
 <template>
     <template v-if="detectDeviceType() !== 'Mobile'">
-        <FButton type="info" class="absolute home-btn" size="small" @click="tohome()">
-            <template #icon> <HomeOutlined />首页 </template>
-        </FButton>
-        <FButton type="info" class="absolute" size="small" style="right: 10px; bottom: 10px" @click="jump()">
-            <template #icon> <ProductOutlined /> </template>源码Src
-        </FButton>
+        <div class="rbts">
+            <FButton type="info" class="absolute home-btn" size="small" @click="tohome()">
+                <template #icon>
+                    <HomeOutlined />首页
+                </template>
+            </FButton>
+            <FButton type="info" class="absolute" size="small" style="right: 10px; bottom: 10px" @click="jump()">
+                <template #icon>
+                    <ProductOutlined />
+                </template>源码Src
+            </FButton>
+        </div>
     </template>
 </template>
 <script setup lang="ts">
@@ -44,5 +50,12 @@ const tohome = () => {
     bottom: 10px;
     --f-btn-min-width: auto;
     border-right-width: 0px;
+}
+
+.rbts {
+    z-index: 10001;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 </style>

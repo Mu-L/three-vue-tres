@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-11 08:59:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-11 09:37:05
+ * @LastEditTime: 2025-10-10 09:29:53
 -->
 
 <template>
     <loading useResourceManager />
     <TresCanvas v-bind="tcConfig">
-        <TresOrthographicCamera :position="[-2.82, 8.65, 12.56]" :left="-5" :right="5" :top="5" :bottom="-5" :zoom="84.2" :near="-10" :far="100000" />
+        <TresOrthographicCamera :position="[-2.82, 8.65, 12.56]" :left="-1000" :right="1000" :top="1000" :bottom="-1000" :zoom="108.8" :near="-100" :far="10000" />
         <OrbitControls makeDefault :target="new THREE.Vector3(2.53, 1.78, -0.12)" />
         <TresAmbientLight :color="0xffffff" :intensity="0.5" />
         <viewportGizmo v-bind="viewportConfig" />

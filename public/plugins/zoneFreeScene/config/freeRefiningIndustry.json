@@ -3606,14 +3606,14 @@
           "z": -1.37
         },
         "fov": 75,
-        "near": -10,
-        "left": -5,
-        "right": 5,
-        "top": 5,
-        "bottom": -5,
+        "near": -100,
+        "left": -1000,
+        "right": 1000,
+        "top": 1000,
+        "bottom": -1000,
         "zoom": 108.8,
         "aspect": 1,
-        "far": 100000
+        "far": 10000
       },
       "weather": {
         "curTime": 14.2,
