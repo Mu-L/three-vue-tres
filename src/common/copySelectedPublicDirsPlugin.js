@@ -1,13 +1,13 @@
 import fs from 'fs'
-// import path from 'path'
-// const fs = require('fs').promises
-const path = require('path')
-const glob = require('glob')
+import path from 'path'
+import glob from 'glob'
+import { fileURLToPath, pathToFileURL } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 /**
- * 递归拷贝目录或单个文件，自动判断类型
- * @param {string} src 源路径（文件或目录）
- * @param {string} dest 目标路径
+ * 递归拷贝文件/目录
  */
 async function copy(src, dest) {
     if (!fs.existsSync(src)) return
@@ -31,17 +31,29 @@ async function copy(src, dest) {
     }
 }
 
-const makeAllowPluginDirs = () => {
+/**
+ * 读取插件配置并生成允许的插件目录列表
+ */
+async function makeAllowPluginDirs() {
     const onePLAname = process.env.FES_APP_PLSNAME
     if (!onePLAname) {
         console.error('未设置插件名称')
+        return []
     }
+
     const configFile = glob.sync(`../plugins/${onePLAname}/config.js`, { cwd: __dirname })
-    const require2 = require('esm')(module)
-    const requireConfig = require2(path.join(__dirname, configFile[0])).default
-    // console.log(requireConfig)
-    const allowPluginDirs = requireConfig.require
+    if (!configFile.length) {
+        console.error(`未找到插件配置文件: ../plugins/${onePLAname}/config.js`)
+        return []
+    }
+
+    const configPath = path.join(__dirname, configFile[0])
+    const configModule = await import(pathToFileURL(configPath))
+    const requireConfig = configModule.default
+
+    const allowPluginDirs = requireConfig.require || []
     allowPluginDirs.push(onePLAname)
+
     console.log(allowPluginDirs)
     return allowPluginDirs
 }
@@ -53,20 +65,21 @@ const makeAllowPluginDirs = () => {
  * @param {string} outputDir 目标 dist 目录路径
  * @returns Vite 插件对象
  */
-export default function copyPublicWithPluginExclusion (allowPluginDirs, publicDir = 'public', outputDir = 'dist') {
-    
+export default function copyPublicWithPluginExclusion(allowPluginDirs, publicDir = 'public', outputDir = 'dist') {
     return {
         name: 'vite-plugin-copy-public',
         apply: 'build',
         async closeBundle() {
             if (!fs.existsSync(publicDir)) return
-            allowPluginDirs = makeAllowPluginDirs()
 
+            // 动态读取允许的插件目录
+            allowPluginDirs = await makeAllowPluginDirs()
+
+            // 复制 public 下除 plugins 的所有文件
             const items = await fs.promises.readdir(publicDir, { withFileTypes: true })
-
             for (const item of items) {
-                if (item.name.startsWith('.')) continue // 跳过隐藏文件
-                if (item.name === 'plugins') continue // 跳过 plugins 目录
+                if (item.name.startsWith('.')) continue
+                if (item.name === 'plugins') continue
 
                 const srcPath = path.join(publicDir, item.name)
                 const destPath = path.join(outputDir, item.name)
@@ -75,7 +88,7 @@ export default function copyPublicWithPluginExclusion (allowPluginDirs, publicDi
                 console.log(`✔ Copied: ${srcPath} → ${destPath}`)
             }
 
-            // 复制 `public/plugins/` 目录下允许的子目录
+            // 复制 public/plugins 下允许的子目录
             const pluginsDir = path.join(publicDir, 'plugins')
             const pluginsDest = path.join(outputDir, 'plugins')
 

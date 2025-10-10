@@ -7,7 +7,7 @@
  * @LastEditTime: 2025-07-25 18:10:33
  */
 import { defineBuildConfig } from '@fesjs/fes'
-import copyPublicWithPluginExclusion from './src/common/copySelectedPublicDirsPlugin'
+import copyPublicWithPluginExclusion from './src/common/copySelectedPublicDirsPlugin.js'
 
 export default defineBuildConfig({
     layout: {
