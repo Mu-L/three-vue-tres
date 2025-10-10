@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-08 09:01:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-29 18:53:43
+ * @LastEditTime: 2025-10-10 14:32:37
  */
 const compressing = require('compressing')
 const fs = require('fs')
@@ -52,7 +52,17 @@ const packagePlugins = (pluginName) => {
     // 	})
     const zipStream = new compressing.zip.Stream()
     zipStream.addEntry(pluginPath, { relativePath: pluginPath, ignoreBase: true })
-    zipStream.addEntry(`./public/plugins/${pluginName}`, { relativePath: `./public/plugins/${pluginName}`, ignoreBase: true })
+    // zipStream.addEntry(`./public/plugins/${pluginName}`, { relativePath: `./public/plugins/${pluginName}`, ignoreBase: true })
+    // ✅ 仅当 public/plugins 存在时才添加
+    const publicPluginPath = `./public/plugins/${pluginName}`
+    if (fs.existsSync(publicPluginPath)) {
+        zipStream.addEntry(publicPluginPath, {
+            relativePath: publicPluginPath,
+            ignoreBase: true
+        })
+    } else {
+        console.warn(`⚠️  打包插件_: 未找到 public 目录：${publicPluginPath}，已跳过。`)
+    }
     const destStream = fs.createWriteStream(packagePath)
     zipStream
         .pipe(destStream)

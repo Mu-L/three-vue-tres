@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-04-01 15:50:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-04-09 10:28:48
+ * @LastEditTime: 2025-10-10 14:00:58
  */
 export default {
     name: 'qiankunTvt',
@@ -12,12 +12,12 @@ export default {
     intro: `本案例结合qiankun微前端框架，演示了如何把tvt以子应用引入到自己的主应用框架中，并且实现了qiankun的沙箱隔离机制。qiankun是一个基于single-spa的微前端框架，支持多种主应用和子应用的组合方式。</br>
     演示地址：<a style="color:#5384ff;" href="https://cos.icegl.cn" target="_blank">cos.icegl.cn</a></br>
     教程文档：<a style="color:#5384ff;" href="https://docs.icegl.cn/docs/three-vue-tres/qiankun/introduction.html" target="_blank">详细教程</a></br>`,
-    version: '1.0.0',
+    version: '2.0.0',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
     creatTime: '2025-04-01',
-    updateTime: '2025-04-01',
+    updateTime: '2025-10-10',
     require: ['floor','medical'],
     preview: [
         {

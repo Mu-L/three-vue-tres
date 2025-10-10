@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-01-03 20:13:33
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-09 15:52:18
+ * @LastEditTime: 2025-10-10 14:22:59
  */
 export default {
     "name": "useViewportGizmo",
@@ -16,7 +16,7 @@ export default {
     "website": 'https://gitee.com/hawk86104',
     "state": 'active',
     "creatTime": "2025-01-03",
-    "updateTime": "2025-01-03",
+    "updateTime": "2025-10-10",
     "require": [],
     "tvtstore": 'FREE',
     "preview": [{
