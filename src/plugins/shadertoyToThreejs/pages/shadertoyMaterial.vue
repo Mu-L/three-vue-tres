@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue';
-import { useRenderLoop, useTexture } from '@tresjs/core';
+import { useLoop, useTexture } from '@tresjs/core';
 import { OrbitControls } from '@tresjs/cientos';
 import { DoubleSide, Mesh, Vector2, BoxGeometry, Group, PlaneGeometry, TorusKnotGeometry } from 'three';
 import ShaderToyMaterial from '../common/ShaderToyMaterial.js';
@@ -107,8 +107,8 @@ const updateGroupGeometry = (mesh, geometry) => {
     mesh.children[0].geometry.dispose();
     mesh.children[0].geometry = geometry;
 };
-const { onLoop } = useRenderLoop();
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop();
+onBeforeRender(({ delta }) => {
     ShaderToymaterialParams.material.uniforms.utime.value += delta;
 });
 onMounted(() => {

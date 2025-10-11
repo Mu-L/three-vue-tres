@@ -61,6 +61,9 @@ let oldEnvMapIntensity
 let oldTone
 let oldSide
 onBeforeRender(({ elapsed }) => {
+    if (!MeshTransmissionMaterialClass.value) {
+        return
+    }
     MeshTransmissionMaterialClass.value.time = elapsed
     if (MeshTransmissionMaterialClass.value.buffer === fboMain.value.texture) {
         if (parent.value) {

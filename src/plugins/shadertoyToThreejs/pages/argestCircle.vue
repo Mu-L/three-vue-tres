@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'; //useRenderLoop
+import { useLoop } from '@tresjs/core'; //useRenderLoop
 import { OrbitControls } from '@tresjs/cientos';
 import { AdditiveBlending, DoubleSide } from 'three';
 import stringVertex from '../shaders/argestCircle.vert?raw'
@@ -40,8 +40,8 @@ const Material = {
     depthWrite: false,
     transparent: true,
 };
-const { onLoop } = useRenderLoop();
-onLoop(({ delta }) => {
+const { onBeforeRender } = useLoop();
+onBeforeRender(({ delta }) => {
     Material.uniforms.uTime.value += delta;
 });
 </script>
