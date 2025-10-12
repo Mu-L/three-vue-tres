@@ -14,13 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import {  useRenderLoop } from '@tresjs/core'
+import {  useLoop } from '@tresjs/core'
 import { DoubleSide, Vector2 } from 'three'
 import { watchEffect } from 'vue'
 
 import stringVertex from '../shaders/rayMarching.vert?raw'
 import stringFrag from '../shaders/rayMarching.frag?raw'
-const { onLoop, onAfterLoop } = useRenderLoop();
+const { onBeforeRender } = useLoop();
 const shader = {
     transparent: true,
     depthWrite: true,
@@ -50,9 +50,9 @@ function onMouseMove(e: MouseEvent) {
 }
 document.addEventListener('mousemove', onMouseMove, false);
 watchEffect(() => {});
-onLoop(() => {
+onBeforeRender(() => {
     shader.uniforms.u_time.value += 0.01;
     shader.uniforms.u_mouse.value = new Vector2(mouseX, mouseY);
 });
-onAfterLoop(() => {});
+
 </script>

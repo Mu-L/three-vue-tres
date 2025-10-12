@@ -8,7 +8,7 @@
 -->
 
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @onLoop="onBeforeRender">
         <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[0, 0, 1800]" :fov="45" :near="1" :far="10000" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core' //useRenderLoop
+import { useLoop } from '@tresjs/core' //useRenderLoop
 import { OrbitControls } from '@tresjs/cientos'
 import { AdditiveBlending, DoubleSide } from 'three'
 import stringVertex from '../shaders/argestCircle.vert?raw'
@@ -44,8 +44,8 @@ const Material = {
     depthWrite: false,
     transparent: true,
 }
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+
+const onBeforeRender =function({ delta }) {
     Material.uniforms.uTime.value += delta
-})
+}
 </script>

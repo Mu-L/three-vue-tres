@@ -1,8 +1,8 @@
 <template></template>
 
 <script setup lang="ts">
-import { useLoop, useTres, useTexture } from '@tresjs/core'; //useRenderLoop
-import { OrbitControls } from '@tresjs/cientos';
+import { useLoop, useTres } from '@tresjs/core'; //useRenderLoop
+import { useTexture  } from '@tresjs/cientos';
 import * as THREE from 'three';
 import { postComposer } from '../common/postComposer.js';
 import { deepCopy, generateUUID } from '../common/utils.js';
@@ -30,7 +30,7 @@ import ASCIIPass from '../shaders/ascii-fs.glsl?raw';
 import depthfs from '../shaders/packed-depth-fs.glsl?raw';
 import depthvs from '../shaders/packed-depth-vs.glsl?raw';
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
-import { reactive } from 'vue';
+import { watch } from 'vue';
 const { camera, renderer, scene, sizes } = useTres();
 
 var mergedGeometry = new THREE.BufferGeometry();
@@ -43,14 +43,12 @@ for (var i = 0; i < 100; i++) {
     boxGeometries.push(boxGeometry);
 }
 mergedGeometry = BufferGeometryUtils.mergeGeometries(boxGeometries);
-const mapimg = await useTexture({
-    map: 'plugins/postProcessing/image/1324.jpg',
-});
-const normalmapimg = await useTexture({
-    map: 'plugins/postProcessing/image/1324-normal.jpg',
-});
+const  { state: mapimg }  =  useTexture(
+     'plugins/postProcessing/image/1324.jpg');
+const  { state: normalmapimg }   =  useTexture( 'plugins/postProcessing/image/1324-normal.jpg');
+
 var material = new THREE.MeshPhongMaterial({
-    map: mapimg.map,
+ 
     normalMap: normalmapimg.map,
     normalScale: new THREE.Vector2(0.8, -0.8),
     shininess: 100,
@@ -59,7 +57,7 @@ var model = new THREE.Mesh(mergedGeometry, material);
 model.castShadow = true;
 model.receiveShadow = true;
 scene.value.add(model);
-const Composer = new postComposer(renderer.value, {
+const Composer = new postComposer(renderer, {
     useRGBA: true,
 });
 
@@ -134,13 +132,32 @@ btn.on('click', (e) => {
     let newParams = deepCopy(params, e.target.label, e.value);
     Composer.addPass(key, value, newParams, uuid);
 });
+debugger
+Composer.onWindowResize(renderer, camera.value);
+watch(
+  () => mapimg.value,
+  (mapv) => {
+    if (mapv) {
+      mapv.wrapS = THREE.RepeatWrapping
+      material.map = mapv
+    }
+  }
+)
+watch(
+  () => normalmapimg.value,
+  (mapv) => {
+    if (mapv) {
+      mapv.wrapS = THREE.RepeatWrapping
+      material.normalMap = mapv
+    }
+  }
+)
 
-Composer.onWindowResize(renderer.value, camera.value);
 const { onBeforeRender } = useLoop();
 let stack: any = null;
 onBeforeRender(({ delta }) => {
     if (model) {
-        renderer.value.autoClearColor = true;
+        renderer.autoClearColor = true;
         Composer.Reset();
 
         model.material = material;

@@ -9,7 +9,7 @@
 <template></template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTresContextProvider, useTresContext, useTexture } from '@tresjs/core';
+import { useLoop, useTresContextProvider, useTres, useTexture } from '@tresjs/core';
 import { OrbitControls } from '@tresjs/cientos';
 import { AdditiveBlending, DoubleSide, Vector2, LinearFilter, RGBAFormat, WebGLRenderTarget } from 'three';
 
@@ -19,9 +19,9 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import VERTEX from '../shaders/light.vert?raw';
 import FRAGMENT from '../shaders/light.frag?raw';
 
-const { camera, renderer, scene, sizes } = useTresContext();
+const { camera, renderer, scene, sizes } = useTres();
 
-const { onLoop, onAfterLoop } = useRenderLoop();
+const { onBeforeRender,render } = useLoop();
 
 const resolution = new Vector2(window.innerWidth, window.innerHeight);
 const drawShader = {
@@ -34,16 +34,18 @@ const drawShader = {
     fragmentShader: FRAGMENT,
 };
 
-const composer = new EffectComposer(renderer.value);
+const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene.value, camera.value));
 const pass = new ShaderPass(drawShader);
 // pass.renderToScreen = true;
 composer.addPass(pass);
 
-onLoop(({ elapsed }) => {
+onBeforeRender(({ elapsed }) => {
     pass.uniforms.iTime.value = elapsed * 0.3;
-});
-onAfterLoop(() => {
     composer.render();
 });
+render(({ elapsed }) => {
+    composer.render();
+});
+
 </script>

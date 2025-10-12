@@ -3,11 +3,11 @@
 <script setup lang="ts">
 import { onMounted, watchEffect, ref } from 'vue'
 import * as THREE from 'three'
-import { useTresContext } from '@tresjs/core'
+import { useTres } from '@tresjs/core'
 import { Pane } from 'tweakpane'
 
-const { camera, scene, raycaster } = useTresContext()
-
+const { camera, scene } =useTres();
+const raycaster = ref(new THREE.Raycaster())
 const mouse = new THREE.Vector2()
 const points = [] as any
 const MeshRef = ref(null)
@@ -20,7 +20,11 @@ let type = ''
 const initLine = function () {
     window.addEventListener('click', onMouseClick, false)
 }
-
+let onMouseRightClick= function(event: MouseEvent){
+    event.preventDefault() // 阻止默认的右键菜单
+    window.removeEventListener('click', onMouseClick, false)
+    window.removeEventListener('contextmenu', onMouseRightClick, false)
+}
 let onMouseClick = function (event) {
     // 将鼠标坐标转换到[-1, 1]范围
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1
@@ -146,7 +150,7 @@ const initUI = function () {
     // paneControl.containerElem_.style.top = '54px'
 
     const f1 = paneControl.addFolder({
-        title: '参数(鼠标间断点两个点，分别作为箭头的起点)',
+        title: '参数(鼠标间断点两个点，分别作为箭头的起点)，点击鼠标右键移除绘制',
     })
 
     f1.addButton({
@@ -154,6 +158,7 @@ const initUI = function () {
         label: '激活', // optional
     }).on('click', () => {
         window.removeEventListener('click', onMouseClick, false)
+        window.addEventListener('contextmenu', onMouseRightClick, false)
         type = 'line'
         initLine()
     })

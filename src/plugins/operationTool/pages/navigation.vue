@@ -9,7 +9,7 @@
 
 <template>
     <div>
-        <TresCanvas clearColor="#201919" window-size v-bind="state">
+        <TresCanvas clearColor="#201919" v-bind="state">
             <TresPerspectiveCamera :fov="60" :near="0.1" :far="2000" :position="[0, 0, 50]" :look-at="[0, 0, 0]" ref="navSceneCamera" />
             <TresAmbientLight :intensity="2" />
             <OrbitControls v-bind="controlsState" />
@@ -31,8 +31,8 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    clearAlpha: 0,
-    renderMode: 'manual',
+
+
 })
 const controlsState = reactive({
     enableDamping: true,

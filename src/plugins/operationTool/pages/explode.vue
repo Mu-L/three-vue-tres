@@ -1,34 +1,33 @@
 <template>
-    <TresCanvas clearColor="#201919" window-size v-bind="state">
+    <TresCanvas clearColor="#201919" window-size v-bind="state"  @loop="onLoop">
         <TresPerspectiveCamera :fov="60" :near="0.1" :far="2000" :position="[0, 10, -28]" />
         <TresAmbientLight :intensity="1" />
         <OrbitControls />
         <Suspense>
-            <primitive :object="model" />
+            <primitive :object="pState?.scene" v-if="pState"/>
         </Suspense>
     </TresCanvas>
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted ,watch} from 'vue'
 import { OrbitControls, useGLTF } from '@tresjs/cientos'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop  } from '@tresjs/core'
 import { Pane } from 'tweakpane'
 import * as TWEEN from '@tweenjs/tween.js'
 import _ from 'lodash'
 import * as THREE from 'three'
 
-const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
-model.updateMatrixWorld(true) // 强制更新
+const { state: pState } =  useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
+
 const state = reactive({
     alpha: true,
     antialias: true,
-    clearAlpha: 0,
-    disableRender: true,
+ 
 })
 const twGroup = new TWEEN.Group()
 const disintegrate = function () {
-    model.children.forEach((child, index) => {
+    pState?.value.scene.children.forEach((child, index) => {
         if (child.isMesh) {
             const boundingBox = new THREE.Box3().setFromObject(child)
             const childCenter = new THREE.Vector3()
@@ -45,7 +44,7 @@ const disintegrate = function () {
     })
 }
 const explode = function () {
-    model.children.forEach((child, index) => {
+    pState?.value.scene.children.forEach((child, index) => {
         const origin = _.cloneDeep(child.position)
         child.userData.explode = {
             state: false,
@@ -90,11 +89,21 @@ onMounted(() => {
         disintegrate()
     })
 })
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {
+watch(
+  () => pState.value,
+  (state) => {
+    if (!state?.scene) return
+    state.scene.updateMatrixWorld(true) // 强制更新
+  }
+)
+
+const onLoop =function() {
+ 
     twGroup?.update()
-    //循环render
-})
+
+}
+// const { onBeforeRender  } = useLoop()
+
 </script>
 
 <style scoped></style>

@@ -19,7 +19,7 @@ const state = reactive({
     // windowSize: true,
     alpha: true,
     antialias: true,
-    clearAlpha: 0,
+  
   
 })
 const controlsState = reactive({

@@ -1,5 +1,5 @@
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @loop="onLoop">
         <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[600, 750, -1221]" :fov="45" :near="1"
             :far="10000" />
         <OrbitControls v-bind="controlsState" />
@@ -40,8 +40,8 @@ const Material = {
     depthWrite: false,
     transparent: true,
 };
-const { onBeforeRender } = useLoop();
-onBeforeRender(({ delta }) => {
+const onLoop = function ({delta}) {
     Material.uniforms.uTime.value += delta;
-});
+}
+
 </script>

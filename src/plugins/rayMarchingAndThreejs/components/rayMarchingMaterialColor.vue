@@ -14,13 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTresContextProvider, useTresContext, useTexture } from '@tresjs/core';
+import { useLoop, useTresContextProvider, useTresContext, useTexture } from '@tresjs/core';
 import { OrbitControls } from '@tresjs/cientos';
 import { AdditiveBlending, DoubleSide, Vector2, LinearFilter, RGBAFormat, WebGLRenderTarget, Color } from 'three';
 import { ref, watch, defineExpose, watchEffect } from 'vue';
 import stringVertex from '../shaders/rayMarchingTranformColor.vert?raw';
 import stringFrag from '../shaders/rayMarchingTranformColor.frag?raw';
-const { onLoop, onAfterLoop } = useRenderLoop();
+const { onBeforeRender } = useLoop();
 const shader = {
     transparent: true,
     depthWrite: true,
@@ -50,9 +50,9 @@ function onMouseMove(e) {
 }
 document.addEventListener('mousemove', onMouseMove, false);
 watchEffect(() => { });
-onLoop(({ elapsed }) => {
+onBeforeRender(({ elapsed }) => {
     shader.uniforms.u_time.value += 0.001;
     shader.uniforms.u_mouse.value = new Vector2(mouseX, mouseY);
 });
-onAfterLoop(() => { });
+
 </script>

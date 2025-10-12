@@ -7,14 +7,14 @@
  * @LastEditTime: 2025-08-18 16:17:23
 -->
 <template>
-    <primitive :object="model" />
+   <primitive :object="pState?.scene" v-if="pState"/>
 </template>
 
 <script setup lang="ts">
 import { onMounted, watchEffect } from 'vue'
 import { useGLTF } from '@tresjs/cientos'
 
-const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
+const { state: pState  } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
 
 onMounted(() => {})
 watchEffect(() => {})

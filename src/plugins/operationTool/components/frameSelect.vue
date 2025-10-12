@@ -1,5 +1,5 @@
 <template>
-   <primitive :object="model" />
+   <primitive :object="pState?.scene"  v-if="pState"/>
 </template>
 
 <script setup lang="ts">
@@ -7,14 +7,14 @@ import { onMounted, watchEffect } from 'vue'
 import * as THREE from 'three'
 import { SelectionBox } from 'three/examples/jsm/interactive/SelectionBox'
 import { SelectionHelper } from 'three/examples/jsm/interactive/SelectionHelper'
-import { useTresContext} from '@tresjs/core'
+import { useTres} from '@tresjs/core'
 import {  useGLTF} from '@tresjs/cientos'
 
-const { scene: model } = await useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
-const { camera, renderer, scene, sizes, controls } = useTresContext()
+const {state: pState } =  useGLTF(`${process.env.NODE_ENV === 'development' ? 'resource.cos' : 'https://opensource.cdn.icegl.cn' }/model/operationTool/湖中小亭/湖中小亭.gltf`)
+const { camera, renderer, scene, sizes, controls } = useTres()
 
 const selectionBox = new SelectionBox(camera.value, scene.value)
-const helper = new SelectionHelper(renderer.value, 'selectBox')
+const helper = new SelectionHelper(renderer, 'selectBox')
 const init = function () {
     document.addEventListener('mousedown', onMouseDown, false)
     document.addEventListener('mousemove', onMouseMove, false)

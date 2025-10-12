@@ -19,17 +19,18 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect } from 'vue'
-import { useRenderLoop, useTresContext, useTexture } from '@tresjs/core'
+import { watchEffect,watch  } from 'vue'
+import { useLoop, useTres } from '@tresjs/core'
+import { useTexture  } from '@tresjs/cientos';
 import { DoubleSide, Vector2, LinearFilter, RGBAFormat, WebGLRenderTarget } from 'three'
 
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 
-const { camera, renderer, scene, sizes } = useTresContext()
-const pTexture = await useTexture({ map: './plugins/shadertoyToThreejs/image/noise.png' })
-const { onLoop, onAfterLoop } = useRenderLoop();
+const { camera, renderer, scene, sizes } = useTres()
+const {state:pTexture} =  useTexture('./plugins/shadertoyToThreejs/image/noise.png' )
+const { onRender} = useLoop();
 const PARAMETERS = {
     minFilter: LinearFilter,
     magFilter: LinearFilter,
@@ -147,36 +148,45 @@ void main()
 }
 `;
 
-const finalShader = {
+let finalShader = {
     uniforms: {
-        tDiffuse: { type: 't', value: null },
+        tDiffuse: { type: 't', value: null as any },
         iTime: { type: 'f', value: 0.0 },
-        tNoise: { type: 't', value: pTexture },
+        tNoise: { type: 't', value: null as any },
     },
     vertexShader: VERTEX,
     fragmentShader: FRAGMENT_FINAL,
 }
-
+watch(
+  () => pTexture.value,
+  (mapv) => {
+    if (mapv) {
+      finalShader.uniforms.tNoise.value = mapv as any
+    }
+  }
+)
 const passFinal = new ShaderPass(finalShader)
 passFinal.renderToScreen = true
-passFinal.material.extensions.derivatives = true
+// passFinal.material.extensions.derivatives = true
 watchEffect(() => {
-    if (sizes.width.value) {
-        composer = new EffectComposer(renderer.value)
-        composer.addPass(new RenderPass(scene.value, camera.value))
+    if (sizes.width.value && renderer && scene.value && camera.value) {
+        if (composer) {
+            composer.dispose();
+        }
+        composer = new EffectComposer(renderer)
+        composer.addPass(new RenderPass(scene.value, camera.value!))
         composer.addPass(pass)
         composer.addPass(passFinal)
     }
 })
 
-onLoop(({ elapsed }) => {
-    renderer.value.render(scene.value, camera.value, shadowBuffer);
+onRender(({ elapsed }) => {
+    renderer.render(scene.value, camera.value, shadowBuffer);
     pass.uniforms.tShadow.value = shadowBuffer.texture;
     passFinal.uniforms.iTime.value = elapsed;
-});
-onAfterLoop(() => {
     if (composer) {
-        composer.render()
+        composer.render();
     }
 });
+
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <TresCanvas v-bind="state" window-size>
+    <TresCanvas v-bind="state" window-size @onLoop="onBeforeRender">
         <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[300, 250, -122]" :fov="45" :near="1"
             :far="10000" />
         <OrbitControls v-bind="controlsState" />
@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
-import { useLoop, useTexture } from '@tresjs/core';
-import { OrbitControls } from '@tresjs/cientos';
+import { reactive, onMounted ,watch} from 'vue';
+import { useLoop } from '@tresjs/core';
+import { OrbitControls ,useTexture} from '@tresjs/cientos';
 import { DoubleSide, Mesh, Vector2, BoxGeometry, Group, PlaneGeometry, TorusKnotGeometry } from 'three';
 import ShaderToyMaterial from '../common/ShaderToyMaterial.js';
 import { Pane } from 'tweakpane';
@@ -31,7 +31,9 @@ const cloudPointsState = reactive({
     addres: 'https://www.shadertoy.com/view/mtyGWy',
     shadervalue: ``,
 });
-let pTexture = await useTexture(['./plugins/earthSample/image/earthA/moon_ring.png']);
+
+const  { state: pTexture }  =  useTexture(
+     './plugins/earthSample/image/earthA/moon_ring.png');
 let cloudModel = new Group();
 let ShaderToymaterialParams = reactive({
     material: {
@@ -107,10 +109,17 @@ const updateGroupGeometry = (mesh, geometry) => {
     mesh.children[0].geometry.dispose();
     mesh.children[0].geometry = geometry;
 };
-const { onBeforeRender } = useLoop();
-onBeforeRender(({ delta }) => {
+watch(
+  () => pTexture.value,
+  (mapv) => {
+    if (mapv) {
+      ShaderToymaterialParams.material.uniforms.utexture.value = mapv
+    }
+  }
+)
+const onBeforeRender = function({ delta }) {
     ShaderToymaterialParams.material.uniforms.utime.value += delta;
-});
+};
 onMounted(() => {
     let geometry = new BoxGeometry(100, 100, 100);
     getShadertoy(geometry);

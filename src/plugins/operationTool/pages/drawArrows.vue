@@ -1,6 +1,6 @@
 
 <template>
-    <TresCanvas clearColor="#201919" window-size v-bind="state">
+    <TresCanvas clearColor="#201919"  v-bind="state">
         <TresPerspectiveCamera :fov="60" :near="0.1" :far="2000" :position="[0, 0, 200]" :look-at="[0, 0, 0]"/>
         <TresAmbientLight :intensity="2" />
         <OrbitControls v-bind="controlsState" />
@@ -21,8 +21,7 @@ const state = reactive({
     windowSize: true,
     alpha: true,
     antialias: true,
-    clearAlpha: 0,
-    disableRender: true,
+
 })
 const controlsState = reactive({
     enableDamping: true,

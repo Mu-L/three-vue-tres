@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core' //useRenderLoop
+
 import { OrbitControls } from '@tresjs/cientos'
 import postProcessing from '../components/postProcessing.vue'
 
@@ -32,6 +32,5 @@ const state = {
 }
 const controlsState = { autoRotate: true, enableDamping: true }
 
-const { onLoop } = useRenderLoop()
-onLoop(({ delta }) => {})
+
 </script>

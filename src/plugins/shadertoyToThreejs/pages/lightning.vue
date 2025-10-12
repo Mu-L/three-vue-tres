@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRenderLoop, useTresContextProvider, useTresContext, useTexture } from '@tresjs/core';
+
 import { OrbitControls } from '@tresjs/cientos';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
