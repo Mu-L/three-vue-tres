@@ -8,7 +8,7 @@
 -->
 
 <template>
-    <TresCanvas v-bind="state" window-size @onLoop="onBeforeRender">
+    <TresCanvas v-bind="state" window-size @loop="onBeforeRender1">
         <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[0, 0, 1800]" :fov="45" :near="1" :far="10000" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
@@ -45,7 +45,7 @@ const Material = {
     transparent: true,
 }
 
-const onBeforeRender =function({ delta }) {
+const onBeforeRender1 =function({ delta }) {
     Material.uniforms.uTime.value += delta
 }
 </script>
