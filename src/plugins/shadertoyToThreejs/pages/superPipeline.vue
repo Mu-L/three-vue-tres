@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Jsonco
  * @Date: 2024-09-13 20:27:24
- * @LastEditors: sueRimn
- * @LastEditTime: 2024-09-13 21:20:37
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-13 08:08:14
 -->
 
 <template>
@@ -20,11 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { useLoop } from '@tresjs/core' //useRenderLoop
-import { OrbitControls } from '@tresjs/cientos'
 import { AdditiveBlending, DoubleSide } from 'three'
-import stringVertex from '../shaders/argestCircle.vert?raw'
-import stringFrag from '../shaders/superPipeline.frag?raw'
+import stringVertex from '../shaders/argestCircle.vert'
+import stringFrag from '../shaders/superPipeline.frag'
 
 const state = {
     clearColor: '#000000',
@@ -45,7 +43,7 @@ const Material = {
     transparent: true,
 }
 
-const onBeforeRender1 =function({ delta }) {
-    Material.uniforms.uTime.value += delta
+const onBeforeRender1 =function() {
+    Material.uniforms.uTime.value += 0.03
 }
 </script>

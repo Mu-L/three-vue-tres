@@ -15,11 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { useLoop } from '@tresjs/core'; //useRenderLoop
-import { OrbitControls } from '@tresjs/cientos';
-import { AdditiveBlending, DoubleSide } from 'three';
-import stringVertex from '../shaders/argestCircle.vert?raw'
-import stringFrag from '../shaders/argestCircle.frag?raw'
+import { OrbitControls } from '@tresjs/cientos'
+import { AdditiveBlending, DoubleSide } from 'three'
+import stringVertex from '../shaders/argestCircle.vert'
+import stringFrag from '../shaders/argestCircle.frag'
 
 const state = {
     clearColor: '#000000',
@@ -40,8 +39,8 @@ const Material = {
     depthWrite: false,
     transparent: true,
 };
-const onLoop = function ({delta}) {
-    Material.uniforms.uTime.value += delta;
+const onLoop = function () {
+    Material.uniforms.uTime.value += 0.01
 }
 
 </script>

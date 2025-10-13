@@ -3,18 +3,18 @@
  * @version: 
  * @Author: Jsonco
  * @Date: 2024-09-13 20:27:24
- * @LastEditors: sueRimn
- * @LastEditTime: 2024-09-13 20:53:21
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-13 08:07:36
 -->
 <template>
-    <TresCanvas v-bind="state" window-size @onLoop="onBeforeRender">
+    <TresCanvas v-bind="state" window-size @loop="onBeforeRender">
         <TresPerspectiveCamera ref="perspectiveCameraRef" :position="[600, 750, -1221]" :fov="45" :near="1" :far="10000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
         <TresMesh ref="quanMeshRef" :position="[0, 100, 0]" :rotation-x="((2 * Math.PI) / 360) * 90">
             <TresPlaneGeometry :args="[1000, 1000]" />
-            <TresShaderMaterial v-bind="Material"></TresShaderMaterial>
+            <TresShaderMaterial v-bind="Material" />
         </TresMesh>
         <TresAxesHelper :args="[1000]" :position="[0, 19, 0]" />
         <TresGridHelper :args="[6000, 100]" :position="[0, 19, 0]" />
@@ -22,10 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import { useLoop } from '@tresjs/core' //useRenderLoop
+
 import { OrbitControls } from '@tresjs/cientos'
 import { AdditiveBlending, DoubleSide } from 'three'
-import stringVertex from '../shaders/argestCircle.vert?raw'
+import stringVertex from '../shaders/argestCircle.vert'
 const state = {
     clearColor: '#000000',
     shadows: true,
@@ -87,7 +87,7 @@ const Material = {
     transparent: true,
 }
 
-const onBeforeRender = function({ delta }) {
-    Material.uniforms.uTime.value += delta
+const onBeforeRender = function () {
+    Material.uniforms.uTime.value += 0.006
 }
 </script>

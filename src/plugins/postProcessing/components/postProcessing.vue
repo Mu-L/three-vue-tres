@@ -8,27 +8,27 @@ import { postComposer } from '../common/postComposer.js';
 import { deepCopy, generateUUID } from '../common/utils.js';
 
 import { Pane } from 'tweakpane';
-import InvertPass from '../shaders/invert-fs.glsl?raw';
-import FXAAPass from '../shaders/fxaa-fs.glsl?raw';
-import SSAOPass from '../shaders/ssao-fs.glsl?raw';
-import SEPIAPass from '../shaders/sepia-fs.glsl?raw';
-import SNOISEPass from '../shaders/noise-fs.glsl?raw';
-import BOXBLURPass from '../shaders/box-blur2-fs.glsl?raw';
-import DENOISEPass from '../shaders/denoise-fs.glsl?raw';
-import CGAPass from '../shaders/cga-fs.glsl?raw';
-import SOBELPass from '../shaders/sobel-fs.glsl?raw';
-import RGBPass from '../shaders/rgb-split-fs.glsl?raw';
-import DOTPass from '../shaders/dot-screen-fs.glsl?raw';
-import CIRCULARPass from '../shaders/circular-blur-fs.glsl?raw';
-import POISSONPass from '../shaders/poisson-disc-blur-fs.glsl?raw';
-import VIGNETTE2Pass from '../shaders/vignette2-fs.glsl?raw';
-import VIGNETTE1Pass from '../shaders/vignette-fs.glsl?raw';
-import FREICHENPass from '../shaders/frei-chen-fs.glsl?raw';
-import TOONPass from '../shaders/toon-fs.glsl?raw';
-import ASCIIPass from '../shaders/ascii-fs.glsl?raw';
+import InvertPass from '../shaders/invert-fs.glsl'
+import FXAAPass from '../shaders/fxaa-fs.glsl'
+import SSAOPass from '../shaders/ssao-fs.glsl'
+import SEPIAPass from '../shaders/sepia-fs.glsl'
+import SNOISEPass from '../shaders/noise-fs.glsl'
+import BOXBLURPass from '../shaders/box-blur2-fs.glsl'
+import DENOISEPass from '../shaders/denoise-fs.glsl'
+import CGAPass from '../shaders/cga-fs.glsl'
+import SOBELPass from '../shaders/sobel-fs.glsl'
+import RGBPass from '../shaders/rgb-split-fs.glsl'
+import DOTPass from '../shaders/dot-screen-fs.glsl'
+import CIRCULARPass from '../shaders/circular-blur-fs.glsl'
+import POISSONPass from '../shaders/poisson-disc-blur-fs.glsl'
+import VIGNETTE2Pass from '../shaders/vignette2-fs.glsl'
+import VIGNETTE1Pass from '../shaders/vignette-fs.glsl'
+import FREICHENPass from '../shaders/frei-chen-fs.glsl'
+import TOONPass from '../shaders/toon-fs.glsl'
+import ASCIIPass from '../shaders/ascii-fs.glsl'
 
-import depthfs from '../shaders/packed-depth-fs.glsl?raw';
-import depthvs from '../shaders/packed-depth-vs.glsl?raw';
+import depthfs from '../shaders/packed-depth-fs.glsl'
+import depthvs from '../shaders/packed-depth-vs.glsl'
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import { watch } from 'vue';
 const { camera, renderer, scene, sizes } = useTres();
@@ -132,7 +132,6 @@ btn.on('click', (e) => {
     let newParams = deepCopy(params, e.target.label, e.value);
     Composer.addPass(key, value, newParams, uuid);
 });
-debugger
 Composer.onWindowResize(renderer, camera.value);
 watch(
   () => mapimg.value,

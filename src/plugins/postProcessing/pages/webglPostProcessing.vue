@@ -1,18 +1,17 @@
 <template >
     <canvas id="canvaswebgl">
-        <img id="logo-texture" :src="publicPath + '/plugins/postProcessing/image/logo.png'" style="display: none" />
+        <img id="logo-texture" :src="publicPath + './logo.png'" style="display: none" @load="main"/>
     </canvas>
 </template>
 
 <script setup lang="ts">
-import { OrbitControls } from '@tresjs/cientos';
-import postProcessFShaderSource from '../shaders/post-process.frag?raw';
-import postProcessVShaderSource from '../shaders/post-process.vert?raw';
-import texQuadVShaderSource from '../shaders/tex-quad.vert?raw';
-import texQuadFShaderSource from '../shaders/tex-quad.frag?raw';
-import { initShaders, resizeCanvasToDisplaySize, degToRad } from '../common/ice-utils.js';
+import postProcessFShaderSource from '../shaders/post-process.frag'
+import postProcessVShaderSource from '../shaders/post-process.vert'
+import texQuadVShaderSource from '../shaders/tex-quad.vert'
+import texQuadFShaderSource from '../shaders/tex-quad.frag'
+import { initShaders, resizeCanvasToDisplaySize, degToRad } from '../common/ice-utils.js'
 import * as glMatrix from 'gl-matrix';
-import { onMounted, reactive } from 'vue';
+import { reactive } from 'vue';
 import { Pane } from 'tweakpane';
 
 let publicPath = process.env.BASE_URL
@@ -143,9 +142,6 @@ paneControl
         dataPostProcess[16] = PARAMS.offset_left_top.y;
         postProcessSetup();
     });
-onMounted(() => {
-    main();
-});
 const main = function () {
     canvas = document.querySelector('#canvaswebgl');
     canvas.width = window.innerWidth;

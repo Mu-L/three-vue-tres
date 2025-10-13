@@ -10,7 +10,7 @@ export default {
     name: 'shadertoyToThreejs',
     title: 'shadertoyToThree',
     intro: 'shadertoy转threejs案例',
-    version: '0.0.1',
+    version: '1.0.0',
     author: 'Jsonco',
     website: "https://space.bilibili.com/410503457",
     state: 'active',

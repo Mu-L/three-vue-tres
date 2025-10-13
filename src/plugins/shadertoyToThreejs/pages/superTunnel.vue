@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Jsonco
  * @Date: 2024-09-13 20:27:24
- * @LastEditors: sueRimn
- * @LastEditTime: 2024-09-13 21:21:22
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-13 08:05:29
 -->
 
 <template>
@@ -45,7 +45,7 @@ const Material = {
     transparent: true,
 }
 
-const onloop=function({ delta }) {
-    Material.uniforms.uTime.value += delta
+const onloop=function() {
+    Material.uniforms.uTime.value += 0.006
 }
 </script>

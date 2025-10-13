@@ -12,13 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted ,watch} from 'vue';
-import { useLoop } from '@tresjs/core';
-import { OrbitControls ,useTexture} from '@tresjs/cientos';
-import { DoubleSide, Mesh, Vector2, BoxGeometry, Group, PlaneGeometry, TorusKnotGeometry } from 'three';
-import ShaderToyMaterial from '../common/ShaderToyMaterial.js';
-import { Pane } from 'tweakpane';
-import axios from 'axios';
+import { reactive, onMounted ,watch} from 'vue'
+import { OrbitControls ,useTexture} from '@tresjs/cientos'
+import { DoubleSide, Mesh, Vector2, BoxGeometry, Group, PlaneGeometry, TorusKnotGeometry } from 'three'
+import ShaderToyMaterial from '../common/ShaderToyMaterial.js'
+import { Pane } from 'tweakpane'
+import axios from 'axios'
 const state = {
     clearColor: '#000000',
     shadows: true,
