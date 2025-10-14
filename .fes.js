@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-29 18:44:58
+ * @LastEditTime: 2025-10-14 08:44:18
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -91,7 +91,7 @@ export default defineBuildConfig({
                     // javascriptEnabled: true,
                     // additionalData: `@import "src/plugins/goView/lib/scss/style.scss";`,
                     additionalData: (content, filename) => {
-                        if (filename.includes('src/plugins/goView')) {
+                        if (filename.includes('src/plugins/goView') || filename.includes('src/plugins/zone3Deditor')) {
                             return `@import "src/plugins/goView/lib/scss/style.scss";\n${content}`
                         }
                         return content

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-22 16:05:20
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 16:55:34
+ * @LastEditTime: 2025-10-14 10:14:10
 -->
 
 <template>
@@ -47,6 +47,18 @@ const { textures: pTexture, isLoading } = useTextures([
 let material = null as any
 let meshOB = null as any
 let gridHelp = null as any
+function fixSpritesForMirror(root: any, isf = true) {
+    root.traverse((obj: any) => {
+        if (obj.isSprite) {
+            // 垂直镜像反射时翻转Y轴
+            if (isf) {
+                obj.material.rotation = (obj.material.rotation || 0) + Math.PI
+            } else {
+                obj.material.rotation = obj.material.rotation - Math.PI
+            }
+        }
+    });
+}
 watch([pTexture, isLoading], ([pTexture, isLoading]) => {
     if (pTexture && pTexture.length === 2 && !isLoading) {
         pTexture[0].wrapS = RepeatWrapping
@@ -80,7 +92,9 @@ watch([pTexture, isLoading], ([pTexture, isLoading]) => {
         meshOB.add(reflector)
         meshOB.onBeforeRender = (rendererSelf, sceneSelf, cameraSelf) => {
             meshOB.visible = false
+            fixSpritesForMirror(sceneSelf)
             reflector.update(rendererSelf, sceneSelf, cameraSelf)
+            fixSpritesForMirror(sceneSelf,false)
             meshOB.visible = true
         }
         gridHelp = new GridHelper(9.5, 10)

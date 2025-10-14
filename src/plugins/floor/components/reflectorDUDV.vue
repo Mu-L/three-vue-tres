@@ -4,11 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 15:27:04
+ * @LastEditTime: 2025-10-14 10:30:51
 -->
 <template>
-    <TresGroup :scale="[scale, 1, scale]">
-        <primitive :object="mirror" :position-y="-0.01" />
+    <TresGroup :scale="[scale, 1, scale]" v-if="!isLoading">
+        <primitive :object="toRaw(mirror)" :position-y="-0.01" />
         <primitive :object="gridHelp" />
     </TresGroup>
 </template>
@@ -20,7 +20,7 @@ import { useTexture } from '@tresjs/cientos'
 import { Reflector, ReflectorDudvMaterial } from '../lib/alienJS/all.three.js'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
-import { watchEffect, watch } from 'vue'
+import { watchEffect, watch, ref, toRaw } from 'vue'
 const props = withDefaults(
     defineProps<{
         reflectivity?: number
@@ -56,7 +56,8 @@ if (qiankunWindow.__POWERED_BY_QIANKUN__) {
     console.log('process.env.BASE_URL', process.env.BASE_URL)
 }
 let material = null as any
-const { state: map } = useTexture(mapurl)
+let mirror = ref(null) as any
+const { state: map, isLoading } = useTexture(mapurl)
 watch(
     () => map.value,
     (mapv) => {
@@ -72,38 +73,51 @@ watch(
             material.uniforms.tReflect = { value: reflector.renderTarget.texture }
             material.uniforms.tReflectBlur = reflector.renderTargetUniform
             material.uniforms.uMatrix = reflector.textureMatrixUniform
-            mirror.material = material
+
+            mirror.value = new Mesh(new PlaneGeometry(props.size[0], props.size[1]), undefined)
+            mirror.value.material = material
+            mirror.value.rotation.x = -Math.PI / 2
+            mirror.value.add(reflector)
+
+            function fixSpritesForMirror(root: any, isf = true) {
+                root.traverse((obj: any) => {
+                    if (obj.isSprite) {
+                        // 垂直镜像反射时翻转Y轴
+                        if (isf) {
+                            obj.material.rotation = (obj.material.rotation || 0) + Math.PI
+                        } else {
+                            obj.material.rotation = obj.material.rotation - Math.PI
+                        }
+                    }
+                });
+            }
+            mirror.value.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
+                mirror.visible = false
+                props.ignoreObjects.forEach((child: any) => {
+                    if (child.isMesh) {
+                        child.visible = false
+                    }
+                    if (child.value && child.value.isMesh) {
+                        child.value.visible = false
+                    }
+                })
+                fixSpritesForMirror(sceneSelf)
+                reflector.update(rendererSelf, sceneSelf, cameraSelf)
+                fixSpritesForMirror(sceneSelf, false)
+                props.ignoreObjects.forEach((child: any) => {
+                    if (child.isMesh) {
+                        child.visible = true
+                    }
+                    if (child.value && child.value.isMesh) {
+                        child.value.visible = true
+                    }
+                })
+            }
         }
     }
 )
-
-const mirror = new Mesh(new PlaneGeometry(props.size[0], props.size[1]), undefined)
-mirror.rotation.x = -Math.PI / 2
-mirror.add(reflector)
-
-mirror.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
-    mirror.visible = false
-    props.ignoreObjects.forEach((child: any) => {
-        if (child.isMesh) {
-            child.visible = false
-        }
-        if (child.value && child.value.isMesh) {
-            child.value.visible = false
-        }
-    })
-    reflector.update(rendererSelf, sceneSelf, cameraSelf)
-    props.ignoreObjects.forEach((child: any) => {
-        if (child.isMesh) {
-            child.visible = true
-        }
-        if (child.value && child.value.isMesh) {
-            child.value.visible = true
-        }
-    })
-    mirror.visible = true
-}
 watchEffect(() => {
-    if (props.reflectivity&&material) {
+    if (props.reflectivity && material) {
         material.uniforms.uReflectivity.value = props.reflectivity
     }
 })

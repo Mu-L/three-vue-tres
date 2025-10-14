@@ -4,12 +4,11 @@
  * @Autor: Jsonco
  * @Date: 2025-06-05 09:50:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-28 11:00:34
+ * @LastEditTime: 2025-10-14 08:55:13
 -->
 <template>
-    <!-- 飞线网格地板 -->
     <TresMesh :rotation-x="-Math.PI / 2" :position="[0, 0, 0]">
-        <TresPlaneGeometry :args="[100, 100]" />
+        <TresPlaneGeometry :args="[10, 10]" />
         <TresShaderMaterial
             :uniforms="shaderUniforms"
             :vertex-shader="vertexShader"

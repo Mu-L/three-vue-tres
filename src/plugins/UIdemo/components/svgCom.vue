@@ -1,11 +1,20 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-09-13 15:20:02
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-10-14 09:38:43
+-->
 <template>
-    <TresGroup v-if="!isLoading">
-        <TresMesh v-for="(layer, index) in visibleLayers" :key="`layer-${index}`" :geometry="layer.geometry"
-            :render-order="index">
-            <TresMeshBasicMaterial v-bind="layer.material" />
-        </TresMesh>
+    <TresGroup>
+        <TresGroup v-if="!isLoading">
+            <TresMesh v-for="(layer, index) in visibleLayers" :key="`layer-${index}`" :geometry="layer.geometry"
+                :render-order="index">
+                <TresMeshBasicMaterial v-bind="layer.material" />
+            </TresMesh>
+        </TresGroup>
     </TresGroup>
-
 </template>
 <script setup lang="ts">
 import { onUnmounted, computed, watch, ref } from 'vue'
