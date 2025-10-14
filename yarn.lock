@@ -2387,10 +2387,10 @@
   resolved "https://registry.npmmirror.com/@tokenizer/token/-/token-0.3.0.tgz#fe98a93fe789247e998c75e74e9c7c63217aa276"
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
-"@tresjs/cientos@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmmirror.com/@tresjs/cientos/-/cientos-5.0.1.tgz#9b58b0506a33589241e54f25f0771cae714f4884"
-  integrity sha512-KxzCXOnJRMB6wCgL3enYnT6xYcZeKy9aFwX5WfaGlri19rdKbdrxqRc9OXly6k9zhWNMPpahxgYe+sPBfmmMtA==
+"@tresjs/cientos@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmmirror.com/@tresjs/cientos/-/cientos-5.1.0.tgz#1e8e58143fdbb5b67ba42f2f3aa3dbed12c45fde"
+  integrity sha512-Bknum+VQXdzljxvF35noZjbzLH2w4t/n+xTQCgMajTfngzRh24ExfxHXD5PqdJ/mNyUmX4SxC5dwucCPccY5yQ==
   dependencies:
     "@vueuse/core" "^13.9.0"
     camera-controls "^2.9.0"
@@ -2411,10 +2411,10 @@
     three-custom-shader-material "^5.4.0"
     three-stdlib "^2.36.0"
 
-"@tresjs/core@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.0.3.tgz#96499b1b56c954a270abdded711e6976457cbf39"
-  integrity sha512-peXTm0kzIAiU54ewuf3zcyNW8oU7Q4OGgCWKrzADDs9ZavEog3jf8WrMEjQzGuWl7pnVtu1O05UREpUzHIsY9Q==
+"@tresjs/core@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmmirror.com/@tresjs/core/-/core-5.1.0.tgz#2fb6dd352ed77340aef47c570b4207adfe0c7cd5"
+  integrity sha512-kL/4Io4RtQzCbL2+UAVUrAMhZPhOswnelZgPPpO89Mr6dAnwG1kZcOC+8n00XJ/GHce6UGFJfVgssj/H6JsY1A==
   dependencies:
     "@pmndrs/pointer-events" "^6.6.17"
     "@vue/devtools-api" "^7.7.2"
@@ -2431,7 +2431,7 @@
     "@vueuse/core" "^13.9.0"
     radashi "^12.6.2"
 
-"@tresjs/leches@^0.14.1":
+"@tresjs/leches@0.14.1":
   version "0.14.1"
   resolved "https://registry.npmmirror.com/@tresjs/leches/-/leches-0.14.1.tgz#81d5aa5b92b232af4207788cde0cb02b36d50d98"
   integrity sha512-mM5Z0FWseNw8v0pS4XueINE6VFicm1aTp/4b86wlAOAp7ximVAfVnRcUZfl5EbfuEm3R8f5Flefma5JVcQz0ew==
@@ -2439,12 +2439,12 @@
     "@unocss/core" "^65.4.0"
     "@vueuse/components" "^12.4.0"
 
-"@tresjs/post-processing@3.0.0-next.0":
-  version "3.0.0-next.0"
-  resolved "https://registry.npmmirror.com/@tresjs/post-processing/-/post-processing-3.0.0-next.0.tgz#ab829a06bca365fc4fab1dfff14d49309200b132"
-  integrity sha512-EK2W+h9UxzzpBXiE7EowjZngw7k97TonIGhp5b6jshyrRrhsq4EPi92l6yF7zyWaXjVHKcse+Jf6OCNwK5EJwg==
+"@tresjs/post-processing@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.npmmirror.com/@tresjs/post-processing/-/post-processing-3.1.0.tgz#785a2d368965ebeac6f2b041b8daa0989fdce3e1"
+  integrity sha512-bOwfJDMGS8Bgum2ngtsvBMsfjNsjPMz4OGmDNtngPQ0oF64Nypd3po+dfoMqzKw3EZbrLaP6fXhY40dAKBjxGw==
   dependencies:
-    "@vueuse/core" "^12.5.0"
+    "@vueuse/core" "^13.9.0"
     postprocessing "^6.37.2"
 
 "@tresjs/post-processing@^2.4.0":
