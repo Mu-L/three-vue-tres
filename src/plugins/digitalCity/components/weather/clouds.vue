@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, watchEffect } from 'vue'
+import { watch, watchEffect, toRaw, ref } from 'vue'
 import { useTexture } from '@tresjs/cientos'
 import { useLoop, useTres } from '@tresjs/core'
 import { Clouds, Cloud } from '@pmndrs/vanilla'
@@ -38,38 +38,33 @@ const props = withDefaults(
   },
 )
 
-// ---------- 纹理加载 (cientos v4) ----------
 const { state: cloudTex } = useTexture('./plugins/digitalCity/image/cloud.png')
 
-// ---------- 创建云层 ----------
-const clouds = new Clouds({
-  texture: undefined, // 先占位，等纹理加载好再赋值
-  material: THREE.MeshBasicMaterial,
-  frustumCulled: false,
-})
+const clouds = ref<any>(null)
 
 const cloud0 = new Cloud({ color: new THREE.Color(props.color) })
-clouds.add(cloud0)
 
-// ---------- 监听纹理加载后赋值 ----------
+
 watch(
   () => cloudTex.value,
   (mapv) => {
     if (mapv) {
-      clouds.texture = mapv
+
+      clouds.value = new Clouds({
+        texture: mapv, material: THREE.MeshBasicMaterial,
+        frustumCulled: false,
+      })
+      clouds.value.add(cloud0)
     }
-  },
-  { immediate: true },
+  }
 )
 
-// ---------- Tres 上下文 ----------
 const { camera } = useTres()
 
-// ---------- 渲染循环 ----------
 const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta, elapsed }) => {
-  if (camera.value) {
-    clouds.update(camera.value, elapsed, delta)
+  if (camera.value && clouds.value) {
+    clouds.value.update(camera.value, elapsed, delta)
   }
 })
 
@@ -99,5 +94,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <primitive :object="clouds" :renderOrder="3000" />
+  <primitive v-if="clouds" :object="toRaw(clouds)" :renderOrder="3000" />
 </template>
