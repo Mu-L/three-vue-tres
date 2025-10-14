@@ -1,99 +1,107 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <script setup lang="ts">
-import { useLoop, useTresContext } from '@tresjs/core'
-import {
-    Color,
-    DepthTexture,
-    Euler,
-    HalfFloatType,
-    LinearFilter,
-    Matrix4,
-    PerspectiveCamera,
-    Plane,
-    TangentSpaceNormalMap,
-    Vector2,
-    Vector3,
-    Vector4,
-    WebGLRenderTarget,
+import { logWarning, useLoop, useTres } from '@tresjs/core'
+import { fixSpritesForMirror } from 'PLS/floor/common/utils.js'
+import type {
+  Texture,
 } from 'three'
-import { computed, onBeforeUnmount, shallowRef, watch } from 'vue'
+import {
+  Color,
+  DepthTexture,
+  Euler,
+  HalfFloatType,
+  LinearFilter,
+  Matrix4,
+  PerspectiveCamera,
+  Plane,
+  TangentSpaceNormalMap,
+  Vector2,
+  Vector3,
+  Vector4,
+  WebGLRenderer,
+  WebGLRenderTarget,
+} from 'three'
+import { computed, onBeforeUnmount, shallowRef, toValue, watch } from 'vue'
 import type { TresColor } from '@tresjs/core'
-import type { Camera, Object3D, Scene, Texture, WebGLRenderer } from 'three'
 import { BlurPass } from './BlurPass'
 import { MeshReflectionMaterial } from './material'
+import { WebGPURenderer } from 'three/webgpu'
 
 export interface MeshReflectionMaterialProps {
-    /** Length in pixels of one side of the square reflective textures. */
-    resolution?: number
-    /** Overall strength of the reflection. */
-    mix?: number
 
-    /** Strength of the sharp reflection on smooth surfaces. */
-    sharpMix?: number
-    /** Sharp reflection can be faded out by depth – distance from the reflective surface. Performance note: if the value is greater than `0`, a depth texture will be created. */
-    sharpDepthScale?: number
-    /** Sharp reflection depth falloff bias. */
-    sharpDepthBias?: number
-    /** Sharp reflection depth falloff start. */
-    sharpDepthEdgeMin?: number
-    /** Sharp reflection depth falloff end. */
-    sharpDepthEdgeMax?: number
+  /** Length in pixels of one side of the square reflective textures. */
+  resolution?: number
+  /** Overall strength of the reflection. */
+  mix?: number
 
-    /** Strength of the blurred reflection on smooth surfaces. */
-    blurMixSmooth?: number
-    /** Strength of the blurred reflection on rough surfaces. */
-    blurMixRough?: number
-    /** Blurred reflection can spread out by depth – distance from the reflective surface. Performance note: if the value is greater than `0`, depth texture will be rendered. */
-    blurDepthScale?: number
-    /** Blurred reflection depth spread bias. */
-    blurDepthBias?: number
-    /** Blurred reflection depth spread start. */
-    blurDepthEdgeMin?: number
-    /** Blurred reflection depth spread end. */
-    blurDepthEdgeMax?: number
-    /** Size of the blur. If `[number, number]`, first number is width, second is height. Performance note: if other than `[0, 0]` or `0`, a blur texture will be rendered. */
-    blurSize?: [number, number] | number
+  /** Strength of the sharp reflection on smooth surfaces. */
+  sharpMix?: number
+  /** Sharp reflection can be faded out by depth – distance from the reflective surface. Performance note: if the value is greater than `0`, a depth texture will be created. */
+  sharpDepthScale?: number
+  /** Sharp reflection depth falloff bias. */
+  sharpDepthBias?: number
+  /** Sharp reflection depth falloff start. */
+  sharpDepthEdgeMin?: number
+  /** Sharp reflection depth falloff end. */
+  sharpDepthEdgeMax?: number
 
-    /** Texture for offsetting the reflection. */
-    distortionMap?: Texture
-    /** Influence of `distortionMap`. */
-    distortion?: number
-    /** Offsets the reflection. */
-    reflectorOffset?: number
+  /** Strength of the blurred reflection on smooth surfaces. */
+  blurMixSmooth?: number
+  /** Strength of the blurred reflection on rough surfaces. */
+  blurMixRough?: number
+  /** Blurred reflection can spread out by depth – distance from the reflective surface. Performance note: if the value is greater than `0`, depth texture will be rendered. */
+  blurDepthScale?: number
+  /** Blurred reflection depth spread bias. */
+  blurDepthBias?: number
+  /** Blurred reflection depth spread start. */
+  blurDepthEdgeMin?: number
+  /** Blurred reflection depth spread end. */
+  blurDepthEdgeMax?: number
+  /** Size of the blur. If `[number, number]`, first number is width, second is height. Performance note: if other than `[0, 0]` or `0`, a blur texture will be rendered. */
+  blurSize?: [number, number] | number
 
-    color?: TresColor
-    roughness?: number
-    metalness?: number
-    map?: Texture
-    lightMap?: Texture
-    lightMapIntensity?: number
-    aoMap?: Texture | null
-    aoMapIntensity?: number
-    emissive?: TresColor
-    emissiveIntensity?: number
-    emissiveMap?: Texture
-    bumpMap?: Texture
-    bumpScale?: number
-    normalMap?: Texture
-    normalMapType?: number
-    normalScale?: Vector2
-    displacementMap?: Texture
-    displacementScale?: number
-    displacementBias?: number
-    roughnessMap?: Texture | null
-    metalnessMap?: Texture | null
-    alphaMap?: Texture | null
-    envMap?: Texture | null
-    envMapRotation?: Euler
-    envMapIntensity?: number
-    wireframe?: boolean
-    wireframeLinewidth?: number
-    wireframeLinecap?: string
-    wireframeLinejoin?: string
-    flatShading?: boolean
-    fog?: boolean
+  /** Texture for offsetting the reflection. */
+  distortionMap?: Texture
+  /** Influence of `distortionMap`. */
+  distortion?: number
+  /** Offsets the reflection. */
+  reflectorOffset?: number
+
+  color?: TresColor
+  roughness?: number
+  metalness?: number
+  map?: Texture
+  lightMap?: Texture
+  lightMapIntensity?: number
+  aoMap?: Texture | null
+  aoMapIntensity?: number
+  emissive?: TresColor
+  emissiveIntensity?: number
+  emissiveMap?: Texture
+  bumpMap?: Texture
+  bumpScale?: number
+  normalMap?: Texture
+  normalMapType?: number
+  normalScale?: Vector2
+  displacementMap?: Texture
+  displacementScale?: number
+  displacementBias?: number
+  roughnessMap?: Texture | null
+  metalnessMap?: Texture | null
+  alphaMap?: Texture | null
+  envMap?: Texture | null
+  envMapRotation?: Euler
+  envMapIntensity?: number
+  wireframe?: boolean
+  wireframeLinewidth?: number
+  wireframeLinecap?: string
+  wireframeLinejoin?: string
+  flatShading?: boolean
+  fog?: boolean
 }
-const props = withDefaults(defineProps<MeshReflectionMaterialProps>(), {
+const props = withDefaults(
+  defineProps<MeshReflectionMaterialProps>(),
+  {
     resolution: 256,
     mix: 1,
 
@@ -139,9 +147,10 @@ const props = withDefaults(defineProps<MeshReflectionMaterialProps>(), {
     wireframeLinejoin: 'round',
     flatShading: false,
     fog: true,
-})
+  },
+)
 
-const { extend } = useTresContext()
+const { extend, invalidate } = useTres()
 extend({ MeshReflectionMaterial })
 
 const blurWidth = computed(() => 500 - (Array.isArray(props.blurSize) ? props.blurSize[0] : props.blurSize))
@@ -155,64 +164,152 @@ const materialRef = shallowRef()
 let blurpass: BlurPass
 
 const state = {
-    reflectorPlane: new Plane(),
-    normal: new Vector3(),
-    reflectorWorldPosition: new Vector3(),
-    cameraWorldPosition: new Vector3(),
-    rotationMatrix: new Matrix4(),
-    lookAtPosition: new Vector3(0, 0, -1),
-    clipPlane: new Vector4(),
-    view: new Vector3(),
-    target: new Vector3(),
-    q: new Vector4(),
-    virtualCamera: new PerspectiveCamera(),
-    textureMatrix: new Matrix4(),
+  reflectorPlane: new Plane(),
+  normal: new Vector3(),
+  reflectorWorldPosition: new Vector3(),
+  cameraWorldPosition: new Vector3(),
+  rotationMatrix: new Matrix4(),
+  lookAtPosition: new Vector3(0, 0, -1),
+  clipPlane: new Vector4(),
+  view: new Vector3(),
+  target: new Vector3(),
+  q: new Vector4(),
+  virtualCamera: new PerspectiveCamera(),
+  textureMatrix: new Matrix4(),
 }
 
-const fboSharp = new WebGLRenderTarget(props.resolution, props.resolution, {
+const fboSharp = new WebGLRenderTarget(
+  props.resolution,
+  props.resolution,
+  {
     minFilter: LinearFilter,
     magFilter: LinearFilter,
     type: HalfFloatType,
     depthBuffer: true,
-    depthTexture: new DepthTexture(props.resolution, props.resolution),
-})
+    depthTexture: new DepthTexture(
+      props.resolution,
+      props.resolution,
+    ),
+  },
+)
 
-const fboBlur = new WebGLRenderTarget(props.resolution, props.resolution, {
+const fboBlur = new WebGLRenderTarget(
+  props.resolution,
+  props.resolution,
+  {
     minFilter: LinearFilter,
     magFilter: LinearFilter,
     type: HalfFloatType,
-})
+  },
+)
 
-function onBeforeRender(renderer: WebGLRenderer, scene: Scene, camera: Camera, object: Object3D,invalidate:Function) {
-    // scene.traverse((object) => {
-    //     if (object.type === 'PointLight') {
-    //         object.visible = false
-    //     }
-    // })
+watch(
+  () => [props.resolution],
+  () => {
+    fboSharp.setSize(props.resolution, props.resolution)
+    fboBlur.setSize(props.resolution, props.resolution)
+  },
+)
+
+watch(() => [
+  props.resolution,
+  blurWidth.value,
+  blurHeight.value,
+  props.blurDepthEdgeMin,
+  props.blurDepthEdgeMax,
+  props.blurDepthScale,
+  props.blurDepthBias,
+], () => {
+  blurpass?.dispose()
+  blurpass = new BlurPass({
+    resolution: props.resolution,
+    width: blurWidth.value,
+    height: blurHeight.value,
+    depthEdge0: props.blurDepthEdgeMin,
+    depthEdge1: props.blurDepthEdgeMax,
+    depthScale: props.blurDepthScale,
+    depthBias: props.blurDepthBias,
+  })
+}, { immediate: true })
+
+// NOTE: Begin #615 warning
+// The Tres core doesn't currently swap mesh materials when a
+// material component recompiles.
+//
+// Issue: https://github.com/Tresjs/tres/issues/615
+//
+// Workaround: Warn users if they trigger a recompile.
+//
+// TODO: This code can be removed when #615 is resolved
+watch(() => [hasBlur.value], () => {
+  logWarning(
+    'MeshReflectionMaterial: Setting blurMixRough or blurMixSmooth to 0, then non-zero triggers a recompile.'
+    + 'The TresJS core cannot currently handle recompiled materials.',
+  )
+})
+watch(hasDepth, () => {
+  logWarning(
+    'MeshReflectionMaterial: Setting depthScale to 0, then non-zero triggers a recompile.'
+    + 'The TresJS core cannot currently handle recompiled materials.',
+  )
+})
+watch(hasDistortion, () => {
+  logWarning(
+    'MeshReflectionMaterial: Toggling distortionMap triggers a recompile.'
+    + 'The TresJS core cannot currently handle recompiled materials.',
+  )
+})
+watch(hasRoughness, () => {
+  logWarning(
+    'MeshReflectionMaterial: Toggling roughnessMap triggers a recompile.'
+    + 'The TresJS core cannot currently handle recompiled materials.',
+  )
+})
+watch(() => [props.normalMap], () => {
+  logWarning(
+    'MeshReflectionMaterial: Toggling normalMap triggers a recompile.'
+    + 'The TresJS core cannot currently handle recompiled materials.',
+  )
+})
+// End #615 warning
+
+onBeforeUnmount(() => {
+  fboSharp.dispose()
+  fboBlur.dispose()
+  blurpass.dispose()
+})
+const { onBeforeRender } = useLoop()
+
+onBeforeRender(({ renderer, scene, camera }) => {
+  const parent = (materialRef.value as any)?.__tres?.parent
+  if (!parent) { return }
+  if (renderer instanceof WebGPURenderer) {
+    console.warn('MeshReflectionMaterial: WebGPURenderer is not supported yet')
+    return
+  }
+  if (renderer instanceof WebGLRenderer) {
     invalidate()
 
     const currentXrEnabled = renderer.xr.enabled
     const currentShadowAutoUpdate = renderer.shadowMap.autoUpdate
 
-    state.reflectorWorldPosition.setFromMatrixPosition(object.matrixWorld)
-    state.cameraWorldPosition.setFromMatrixPosition(camera.matrixWorld as Matrix4)
-    state.rotationMatrix.extractRotation(object.matrixWorld)
+    state.reflectorWorldPosition.setFromMatrixPosition(parent.matrixWorld)
+    state.cameraWorldPosition.setFromMatrixPosition(camera.value?.matrixWorld as Matrix4)
+    state.rotationMatrix.extractRotation(parent.matrixWorld)
     state.normal.set(0, 0, 1)
     state.normal.applyMatrix4(state.rotationMatrix)
     state.reflectorWorldPosition.addScaledVector(state.normal, props.reflectorOffset)
     state.view.subVectors(state.reflectorWorldPosition, state.cameraWorldPosition)
 
     // NOTE: Avoid rendering when reflector is facing away
-    if (state.view.dot(state.normal) > 0) {
-        return
-    }
+    if (state.view.dot(state.normal) > 0) { return }
 
     // NOTE: Avoid re-rendering the reflective object.
-    object.visible = false
+    parent.visible = false
 
     state.view.reflect(state.normal).negate()
     state.view.add(state.reflectorWorldPosition)
-    state.rotationMatrix.extractRotation(camera.matrixWorld as Matrix4)
+    state.rotationMatrix.extractRotation(camera.value?.matrixWorld as Matrix4)
     state.lookAtPosition.set(0, 0, -1)
     state.lookAtPosition.applyMatrix4(state.rotationMatrix)
     state.lookAtPosition.add(state.cameraWorldPosition)
@@ -224,21 +321,27 @@ function onBeforeRender(renderer: WebGLRenderer, scene: Scene, camera: Camera, o
     state.virtualCamera.up.applyMatrix4(state.rotationMatrix)
     state.virtualCamera.up.reflect(state.normal)
     state.virtualCamera.lookAt(state.target)
-    state.virtualCamera.far = (camera as PerspectiveCamera).far
+    state.virtualCamera.far = (camera.value as PerspectiveCamera).far
     state.virtualCamera.updateMatrixWorld()
-    state.virtualCamera.projectionMatrix.copy((camera as PerspectiveCamera).projectionMatrix)
+    state.virtualCamera.far = (camera.value as PerspectiveCamera).far
+    state.virtualCamera.projectionMatrix.copy((camera.value as PerspectiveCamera).projectionMatrix)
 
     // NOTE: Update the texture matrix
     state.textureMatrix.set(0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 1.0)
     state.textureMatrix.multiply(state.virtualCamera.projectionMatrix)
     state.textureMatrix.multiply(state.virtualCamera.matrixWorldInverse)
-    state.textureMatrix.multiply(object.matrixWorld)
+    state.textureMatrix.multiply(parent.matrixWorld)
 
     // NOTE: Now update projection matrix with new clip reflectorPlane, implementing code from: http://www.terathon.com/code/oblique.html
     // Paper explaining this technique: http://www.terathon.com/lengyel/Lengyel-Oblique.pdf
     state.reflectorPlane.setFromNormalAndCoplanarPoint(state.normal, state.reflectorWorldPosition)
     state.reflectorPlane.applyMatrix4(state.virtualCamera.matrixWorldInverse)
-    state.clipPlane.set(state.reflectorPlane.normal.x, state.reflectorPlane.normal.y, state.reflectorPlane.normal.z, state.reflectorPlane.constant)
+    state.clipPlane.set(
+      state.reflectorPlane.normal.x,
+      state.reflectorPlane.normal.y,
+      state.reflectorPlane.normal.z,
+      state.reflectorPlane.constant,
+    )
     const projectionMatrix = state.virtualCamera.projectionMatrix
     state.q.x = (Math.sign(state.clipPlane.x) + projectionMatrix.elements[8]) / projectionMatrix.elements[0]
     state.q.y = (Math.sign(state.clipPlane.y) + projectionMatrix.elements[9]) / projectionMatrix.elements[5]
@@ -254,77 +357,43 @@ function onBeforeRender(renderer: WebGLRenderer, scene: Scene, camera: Camera, o
 
     renderer.shadowMap.autoUpdate = false
     renderer.setRenderTarget(fboSharp)
-    if (!renderer.autoClear) {
-        renderer.clear()
+    if (!renderer.autoClear) { renderer.clear() }
+
+    fixSpritesForMirror(toValue(scene))
+
+    renderer.render(toValue(scene), state.virtualCamera)
+    if (renderer instanceof WebGLRenderer) {
+      blurpass.render(renderer, fboSharp, fboBlur)
     }
-    renderer.render(scene, state.virtualCamera)
-    blurpass.render(renderer, fboSharp, fboBlur)
+
+    fixSpritesForMirror(toValue(scene),false)
 
     // NOTE: Restore the previous render target and material
     renderer.xr.enabled = currentXrEnabled
     renderer.shadowMap.autoUpdate = currentShadowAutoUpdate
-    object.visible = true
+    parent.visible = true
     renderer.setRenderTarget(null)
-    // scene.traverse((object) => {
-    //     if (object.type === 'PointLight') {
-    //         object.visible = true
-    //     }
-    // })
-}
-
-watch(
-    () => [props.resolution],
-    () => {
-        fboSharp.setSize(props.resolution, props.resolution)
-        fboBlur.setSize(props.resolution, props.resolution)
-    },
-)
-
-watch(
-    () => [props.resolution, blurWidth.value, blurHeight.value, props.blurDepthEdgeMin, props.blurDepthEdgeMax, props.blurDepthScale, props.blurDepthBias],
-    () => {
-        blurpass?.dispose()
-        blurpass = new BlurPass({
-            resolution: props.resolution,
-            width: blurWidth.value,
-            height: blurHeight.value,
-            depthEdge0: props.blurDepthEdgeMin,
-            depthEdge1: props.blurDepthEdgeMax,
-            depthScale: props.blurDepthScale,
-            depthBias: props.blurDepthBias,
-        })
-    },
-    { immediate: true },
-)
-
-onBeforeUnmount(() => {
-    fboSharp.dispose()
-    fboBlur.dispose()
-    blurpass.dispose()
-})
-
-useLoop().onBeforeRender(({ renderer, scene, camera, invalidate }) => {
-    const parent = (materialRef.value as any)?.__tres?.parent
-    if (!parent) {
-        return
-    }
-    onBeforeRender(renderer, scene.value, camera.value, parent,invalidate)
     invalidate()
+  }
 })
 defineExpose({ instance: materialRef })
 </script>
 
 <template>
-    <TresMeshReflectionMaterial
-        :key="`key${hasBlur ? '0' : '1'}${hasDepth ? '0' : '1'}${hasDistortion ? '0' : '1'}${hasRoughness ? '0' : '1'}`"
-        ref="materialRef"
-        v-bind="props"
-        :texture-matrix="state.textureMatrix"
-        :t-sharp="fboSharp?.texture"
-        :t-depth="fboSharp?.depthTexture"
-        :t-blur="fboBlur?.texture"
-        :defines-USE_BLUR="hasBlur ? '' : undefined"
-        :defines-USE_DEPTH="hasDepth ? '' : undefined"
-        :defines-USE_DISTORTION="hasDistortion ? '' : undefined"
-    />
+  <TresMeshReflectionMaterial
+    :key="`key${hasBlur ? '0' : '1'
+    }${hasDepth ? '0' : '1'
+    }${hasDistortion ? '0' : '1'
+    }${hasRoughness ? '0' : '1'
+    }`"
+    ref="materialRef"
+    v-bind="props"
+    :texture-matrix="state.textureMatrix"
+    :t-sharp="fboSharp?.texture"
+    :t-depth="fboSharp?.depthTexture"
+    :t-blur="fboBlur?.texture"
+    :defines-USE_BLUR="hasBlur ? '' : undefined"
+    :defines-USE_DEPTH="hasDepth ? '' : undefined"
+    :defines-USE_DISTORTION="hasDistortion ? '' : undefined"
+  />
 </template>

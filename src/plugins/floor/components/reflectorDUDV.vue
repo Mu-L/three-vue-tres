@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-14 10:30:51
+ * @LastEditTime: 2025-10-14 15:57:06
 -->
 <template>
     <TresGroup :scale="[scale, 1, scale]" v-if="!isLoading">
@@ -19,6 +19,7 @@ import { Mesh, PlaneGeometry, RepeatWrapping, GridHelper } from 'three'
 import { useTexture } from '@tresjs/cientos'
 import { Reflector, ReflectorDudvMaterial } from '../lib/alienJS/all.three.js'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
+import { fixSpritesForMirror } from '../common/utils.js'
 
 import { watchEffect, watch, ref, toRaw } from 'vue'
 const props = withDefaults(
@@ -79,18 +80,6 @@ watch(
             mirror.value.rotation.x = -Math.PI / 2
             mirror.value.add(reflector)
 
-            function fixSpritesForMirror(root: any, isf = true) {
-                root.traverse((obj: any) => {
-                    if (obj.isSprite) {
-                        // 垂直镜像反射时翻转Y轴
-                        if (isf) {
-                            obj.material.rotation = (obj.material.rotation || 0) + Math.PI
-                        } else {
-                            obj.material.rotation = obj.material.rotation - Math.PI
-                        }
-                    }
-                });
-            }
             mirror.value.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
                 mirror.visible = false
                 props.ignoreObjects.forEach((child: any) => {

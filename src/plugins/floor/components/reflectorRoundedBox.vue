@@ -19,8 +19,8 @@ import { watch, ref } from 'vue'
 import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry'
 import { extend } from '@tresjs/core'
-// import MeshReflectionMaterial from 'PLS/basic/components/forCientos/meshReflectionMaterial/index.vue'
-import { MeshReflectionMaterial } from '@tresjs/cientos'
+import MeshReflectionMaterial from 'PLS/basic/components/forCientos/meshReflectionMaterial/index.vue'
+// import { MeshReflectionMaterial } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{

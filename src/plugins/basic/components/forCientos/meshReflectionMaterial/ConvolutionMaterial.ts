@@ -31,25 +31,25 @@ const getVersion = () => Number.parseInt(REVISION.replace(/\D+/g, ''))
 const version = /* @__PURE__ */ getVersion()
 
 export class ConvolutionMaterial extends ShaderMaterial {
-    readonly kernel: Float32Array
-    constructor(texelSize = new Vector2()) {
-        super({
-            uniforms: {
-                inputBuffer: new Uniform(null),
-                depthBuffer: new Uniform(null),
-                resolution: new Uniform(new Vector2()),
-                texelSize: new Uniform(new Vector2()),
-                halfTexelSize: new Uniform(new Vector2()),
-                kernel: new Uniform(0.0),
-                scale: new Uniform(1.0),
-                cameraNear: new Uniform(0.0),
-                cameraFar: new Uniform(1.0),
-                depthEdge0: new Uniform(0.0),
-                depthEdge1: new Uniform(1.0),
-                depthScale: new Uniform(0.0),
-                depthBias: new Uniform(0.25),
-            },
-            fragmentShader: `#include <common>
+  readonly kernel: Float32Array
+  constructor(texelSize = new Vector2()) {
+    super({
+      uniforms: {
+        inputBuffer: new Uniform(null),
+        depthBuffer: new Uniform(null),
+        resolution: new Uniform(new Vector2()),
+        texelSize: new Uniform(new Vector2()),
+        halfTexelSize: new Uniform(new Vector2()),
+        kernel: new Uniform(0.0),
+        scale: new Uniform(1.0),
+        cameraNear: new Uniform(0.0),
+        cameraFar: new Uniform(1.0),
+        depthEdge0: new Uniform(0.0),
+        depthEdge1: new Uniform(1.0),
+        depthScale: new Uniform(0.0),
+        depthBias: new Uniform(0.25),
+      },
+      fragmentShader: `#include <common>
         #include <dithering_pars_fragment>      
         uniform sampler2D inputBuffer;
         uniform sampler2D depthBuffer;
@@ -88,7 +88,7 @@ export class ConvolutionMaterial extends ShaderMaterial {
           #include <tonemapping_fragment>
           #include <${version >= 154 ? 'colorspace_fragment' : 'encodings_fragment'}>
         }`,
-            vertexShader: `uniform vec2 texelSize;
+      vertexShader: `uniform vec2 texelSize;
         uniform vec2 halfTexelSize;
         uniform float kernel;
         uniform float scale;
@@ -110,22 +110,22 @@ export class ConvolutionMaterial extends ShaderMaterial {
 
           gl_Position = vec4(position.xy, 1.0, 1.0);
         }`,
-            blending: NoBlending,
-            depthWrite: false,
-            depthTest: false,
-        })
+      blending: NoBlending,
+      depthWrite: false,
+      depthTest: false,
+    })
 
-        this.toneMapped = false
-        this.setTexelSize(texelSize.x, texelSize.y)
-        this.kernel = new Float32Array([0.0, 1.0, 2.0, 2.0, 3.0])
-    }
+    this.toneMapped = false
+    this.setTexelSize(texelSize.x, texelSize.y)
+    this.kernel = new Float32Array([0.0, 1.0, 2.0, 2.0, 3.0])
+  }
 
-    setTexelSize(x: number, y: number) {
-        this.uniforms.texelSize.value.set(x, y)
-        this.uniforms.halfTexelSize.value.set(x, y).multiplyScalar(0.5)
-    }
+  setTexelSize(x: number, y: number) {
+    this.uniforms.texelSize.value.set(x, y)
+    this.uniforms.halfTexelSize.value.set(x, y).multiplyScalar(0.5)
+  }
 
-    setResolution(resolution: Vector2) {
-        this.uniforms.resolution.value.copy(resolution)
-    }
+  setResolution(resolution: Vector2) {
+    this.uniforms.resolution.value.copy(resolution)
+  }
 }

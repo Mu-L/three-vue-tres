@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-22 16:05:20
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-14 10:14:10
+ * @LastEditTime: 2025-10-14 15:58:04
 -->
 
 <template>
@@ -20,6 +20,7 @@ import { useTres } from '@tresjs/core'
 import { useTextures } from '@tresjs/cientos'
 import { Reflector, ReflectorMaterial } from '../lib/alienJS/all.three.js'
 import { watchEffect, watch } from 'vue'
+import { fixSpritesForMirror } from '../common/utils.js'
 const props = withDefaults(
     defineProps<{
         reflectivity?: Number // 反射率
@@ -47,18 +48,7 @@ const { textures: pTexture, isLoading } = useTextures([
 let material = null as any
 let meshOB = null as any
 let gridHelp = null as any
-function fixSpritesForMirror(root: any, isf = true) {
-    root.traverse((obj: any) => {
-        if (obj.isSprite) {
-            // 垂直镜像反射时翻转Y轴
-            if (isf) {
-                obj.material.rotation = (obj.material.rotation || 0) + Math.PI
-            } else {
-                obj.material.rotation = obj.material.rotation - Math.PI
-            }
-        }
-    });
-}
+
 watch([pTexture, isLoading], ([pTexture, isLoading]) => {
     if (pTexture && pTexture.length === 2 && !isLoading) {
         pTexture[0].wrapS = RepeatWrapping
