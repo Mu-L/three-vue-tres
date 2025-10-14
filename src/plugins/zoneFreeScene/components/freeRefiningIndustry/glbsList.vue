@@ -4,6 +4,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import * as THREE from 'three'
 import { Resource } from 'PLS/resourceManager'
 import { standardizationMeshCopy } from '@/common/forEditor'
@@ -32,8 +33,8 @@ const syncMeshProp = (glb :THREE.Object3D, meshProp:any, animations:any) => {
 
     // 同步动画
     if (animations && meshProp.actionList && meshProp.actionList.actions && Object.keys(meshProp.actionList.actions).length > 0) {
-        const { mixer, actions } = useAnimations(animations, glb as any)
-        mixer.timeScale = meshProp.actionList.timeScale || 1
+        const { mixer, actions } = useAnimations(ref(animations), glb as any)
+        mixer.value.timeScale = meshProp.actionList.timeScale || 1
         Object.keys(meshProp.actionList.actions).forEach((actionName) => {
             if (actions[actionName]) {
                 if (meshProp.actionList.actions[actionName] !== 0) {
