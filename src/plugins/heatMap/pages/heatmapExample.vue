@@ -4,16 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-07 08:30:32
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-11-08 11:27:17
+ * @LastEditTime: 2025-10-15 12:38:31
 -->
 
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
-import { useLoop } from '@tresjs/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { Pane } from 'tweakpane';
 import { PCFSoftShadowMap, SRGBColorSpace } from 'three'
-import { reactive, watchEffect, ref } from 'vue';
+import { reactive, ref } from 'vue';
 import heatmapJS from '../components/heatmapJS.vue'
 
 const gl = {

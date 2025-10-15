@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-19 16:05:04
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-03-20 10:17:29
+ * @LastEditTime: 2025-10-15 12:38:13
 -->
 <script lang="ts" setup>
 import * as echarts from "echarts"
 import * as THREE from "three"
 import { createVNode, render } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 
 const width = 1024
 const height = 768
@@ -79,8 +79,8 @@ const resetChart = () => {
 }
 resetChart()
 
-const { onLoop } = useRenderLoop()
-onLoop(() => {
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
 	if (!isFinished) {
 		chartTexture.needsUpdate = true
 	} else {

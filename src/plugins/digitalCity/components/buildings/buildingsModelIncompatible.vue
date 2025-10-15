@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-17 09:35:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-10-25 11:15:30
+ * @LastEditTime: 2025-10-15 12:28:30
 -->
 <script setup lang="ts">
-import { useRenderLoop } from '@tresjs/core'
+import { useLoop } from '@tresjs/core'
 import { watchEffect } from 'vue';
 import * as THREE from 'three'
 // import { toRaw } from 'vue'
@@ -119,9 +119,9 @@ const setEffectMaterial = () => {
 // setColorMaterial()
 setEffectMaterial()
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
 	timeDelta.value += delta;
 	// timeDelta.value = 0.2;
 })

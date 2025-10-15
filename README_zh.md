@@ -182,11 +182,12 @@
 		</TresCanvas>
 </template>
 <script setup lang="ts">
-		import { useRenderLoop, useTexture } from '@tresjs/core'
+		import { useLoop } from '@tresjs/core'
+		import { useTextures } from 'PLS/basic'
 		//读取材质
-		const pTexture = await useTexture(['./**.jpg', './**.png'])
-		const { onLoop } = useRenderLoop()
-		onLoop(({ delta }) => {
+		const pTexture = await useTextures(['./**.jpg', './**.png'])
+		const { onLoop } = useLoop()
+		onBeforeRender(({ delta }) => {
 				//循环render
 		})
 </script>

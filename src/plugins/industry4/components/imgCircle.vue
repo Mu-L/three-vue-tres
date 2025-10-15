@@ -6,9 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTexture } from '@tresjs/core'
+import { useTexture } from 'PLS/basic'
 
-const pTexture = await useTexture(
-	['./plugins/industry4/image/circle.png']
-)
+const pTexture = await useTexture('./plugins/industry4/image/circle.png')
 </script>

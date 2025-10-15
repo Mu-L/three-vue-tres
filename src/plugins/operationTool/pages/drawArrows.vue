@@ -11,10 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref } from 'vue'
-import { OrbitControls, useGLTF } from '@tresjs/cientos'
-import { useRenderLoop, useTexture } from '@tresjs/core'
-import { Pane } from 'tweakpane'
+import { reactive } from 'vue'
+import { OrbitControls } from '@tresjs/cientos'
 import drawArrows from  "../components/drawArrows.vue"
 
 const state = reactive({

@@ -4,20 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-07 15:53:08
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-05-08 10:15:56
+ * @LastEditTime: 2025-10-15 12:43:13
 -->
 <template>
     <primitive :object="model" name="水池" />
 </template>
 <script lang="ts" setup>
-import { useTresContext, useTexture } from '@tresjs/core'
-import { useGLTF } from '@tresjs/cientos'
+import { useTres } from '@tresjs/core'
+import { useGLTF, useTextures } from 'PLS/basic'
 import * as THREE from 'three'
 import { Water } from 'three/addons/objects/Water2'
 // import { resetUV, randomUV } from 'PLS/digitalCity/common/utils.js'
 
-const { scene: model } = await useGLTF('./plugins/digitalPark/model/pool.glb', { draco: true, decoderPath: './draco/' })
-const { scene } = useTresContext()
+const { scene: model } = await useGLTF('./plugins/digitalPark/model/pool.glb')
+const { scene } = useTres()
 
 const resetUV = (geometry: THREE.BufferGeometry, isCenter = false) => {
     geometry.computeBoundingBox()
@@ -44,7 +44,7 @@ const resetUV = (geometry: THREE.BufferGeometry, isCenter = false) => {
 }
 
 const setThreeWater2 = async (mesh) => {
-    const pTexture = await useTexture(['./plugins/water/images/Water_1_M_Normal.jpg', './plugins/water/images/Water_2_M_Normal.jpg'])
+    const pTexture = await useTextures(['./plugins/water/images/Water_1_M_Normal.jpg', './plugins/water/images/Water_2_M_Normal.jpg'])
     const waterGeometry = mesh.children[0].geometry.clone()
     resetUV(waterGeometry, true)
     debugger

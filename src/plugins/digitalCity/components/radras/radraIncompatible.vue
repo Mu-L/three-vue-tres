@@ -7,15 +7,15 @@
  * @LastEditTime: 2023-10-23 18:38:51
 -->
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
-import { useRenderLoop } from '@tresjs/core'
+import { ref, watchEffect } from 'vue'
+import { useLoop } from '@tresjs/core'
 import { Matrix4 } from 'three';
 
-const { onLoop } = useRenderLoop()
+const { onBeforeRender } = useLoop()
 const timeDelta = { value: 0 }
 const MeshPhongMaterialRef = ref()
 const TresCircleGeometryRef = ref()
-onLoop(({ delta }) => {
+onBeforeRender(({ delta }) => {
 	timeDelta.value += delta;
 })
 // 定义雷达参数  
