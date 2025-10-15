@@ -4,13 +4,14 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-11 08:59:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-10 09:29:53
+ * @LastEditTime: 2025-10-15 09:38:44
 -->
 
 <template>
     <loading useResourceManager />
     <TresCanvas v-bind="tcConfig">
-        <TresOrthographicCamera :position="[-2.82, 8.65, 12.56]" :left="-1000" :right="1000" :top="1000" :bottom="-1000" :zoom="108.8" :near="-100" :far="10000" />
+        <TresOrthographicCamera :position="[-2.82, 8.65, 12.56]" :left="-widths" :right="widths" :top="heights"
+            :bottom="-heights" :zoom="108.8" :near="-100" :far="10000" />
         <OrbitControls makeDefault :target="new THREE.Vector3(2.53, 1.78, -0.12)" />
         <TresAmbientLight :color="0xffffff" :intensity="0.5" />
         <viewportGizmo v-bind="viewportConfig" />
@@ -25,6 +26,8 @@
 
 <script setup lang="ts">
 import * as THREE from 'three'
+import { computed } from 'vue'
+import { useWindowSize } from '@vueuse/core'
 import { OrbitControls } from '@tresjs/cientos'
 import { viewportGizmo } from 'PLS/useViewportGizmo'
 import { Resource } from 'PLS/resourceManager'
@@ -34,6 +37,12 @@ import skylight from '../components/freeRefiningIndustry/skylight.vue'
 import glbsList from '../components/freeRefiningIndustry/glbsList.vue'
 import tresProcessing from '../components/freeRefiningIndustry/tresProcessing.vue'
 import extendMeshes from '../components/freeRefiningIndustry/extendMeshes.vue'
+
+const widths = 1000
+const { width, height } = useWindowSize()
+const heights = computed(() => {
+    return 1000 * height.value / width.value
+})
 
 const fState = { color: '#C2C2C2', shadowColor: '#8C8C8C', receiveShadow: true, edge: 0.35, scale: 2.93 }
 const gridState = {
