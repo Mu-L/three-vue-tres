@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-25 11:41:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-14 15:57:06
+ * @LastEditTime: 2025-10-15 11:12:54
 -->
 <template>
     <TresGroup :scale="[scale, 1, scale]" v-if="!isLoading">
@@ -81,7 +81,7 @@ watch(
             mirror.value.add(reflector)
 
             mirror.value.onBeforeRender = (rendererSelf: any, sceneSelf: any, cameraSelf: any) => {
-                mirror.visible = false
+                mirror.value.visible = false
                 props.ignoreObjects.forEach((child: any) => {
                     if (child.isMesh) {
                         child.visible = false
@@ -101,6 +101,7 @@ watch(
                         child.value.visible = true
                     }
                 })
+                mirror.value.visible = true
             }
         }
     }
