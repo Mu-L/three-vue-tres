@@ -31,7 +31,7 @@
 
 > 若您是从之前`tvt.js`的V4版本升级，我们有详细的升级方法，请跳转：[icegl.cn/ask/article/22769](https://icegl.cn/ask/article/22769.html)
 
-> 旧版V4[所属分支：tres-v4_fes-v3 ](https://gitee.com/ice-gl/icegl-three-vue-tres/tree/tres-v5_fes-v4/)
+> 旧版V4:[所属分支：tres-v4_fes-v3 ](https://gitee.com/ice-gl/icegl-three-vue-tres/tree/tres-v4_fes-v3/)
 
 ```shell
 如果对您有帮助，您可以点右上角 “Star⭐” 收藏一下 ，您的star就是我开发的动力，感谢！
