@@ -10,7 +10,7 @@ export const useForPreviewStore = defineStore('forPreviewStore', () => {
 
 		const signin = () => {
 				const { setRole } = access
-				user.userName = 'tvt.js'
+				user.userName = 'V5版'
 				setRole('admin')
 		}
 
