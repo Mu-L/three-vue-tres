@@ -51,6 +51,13 @@ This project integrates with three major ecosystems:
 - If VPN is available, use GitHub Pages mirror: [🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
 - Scan QR code for mini program: <img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
+> 相关技术栈拓扑图 【包含全套项目源码】: 
+<a href="./src/plugins/zoneFreeScene/pages/freeTvtStack.vue">git项目源码地址</a>
+
+在线编辑器再次编辑后免费导出源码项目二开 :
+<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack">zone3Deditor页面跳转</a>
+
+<a style="display:block;width:800px;max-width:100%;" href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl three.js"></a>
 
 <table style="border: none; width: 100%; text-align: center;">
   <tr>
@@ -175,7 +182,7 @@ More demos are available on the preview page.
 ```js
 1. git clone or download this repo
 2. cd to project root
-3. yarn // install dependencies
+3. yarn // install dependencies [node -v >= 20.18]
 4. yarn pre.dev // preview debug mode
 5. yarn dev // project debug mode
 6. yarn pre.build // build preview
