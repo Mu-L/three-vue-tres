@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-12 11:16:41
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-15 10:58:58
+ * @LastEditTime: 2025-10-23 14:17:17
  */
 export default {
     name: 'UIdemo',
@@ -40,5 +40,6 @@ export default {
         { src: 'plugins/UIdemo/preview/svgComPage.png', type: 'img', name: 'svgComPage', title: 'svg组件' },
         { src: 'plugins/UIdemo/preview/line2RoundedRectPage.png', type: 'img', name: 'line2RoundedRectPage', title: '矩形线边框' },
         { src: 'plugins/UIdemo/preview/lineArrowPage.png', type: 'img', name: 'lineArrowPage', title: '箭头线组件' },
+        { src: 'plugins/UIdemo/preview/generalFontPage.png', type: 'img', name: 'generalFontPage', title: '标准三维字体组件' },
     ],
 }

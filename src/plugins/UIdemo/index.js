@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-13 21:01:18
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-08 12:04:08
+ * @LastEditTime: 2025-10-23 14:19:21
  */
 import loading1 from 'PLS/UIdemo/components/loading/huruji.vue'
 import loading2 from 'PLS/UIdemo/components/loading/cssLoaders.vue'
@@ -23,6 +23,7 @@ import svgCom from 'PLS/UIdemo/components/svgCom.vue'
 import line2RoundedRect from 'PLS/UIdemo/components/line2RoundedRect.vue'
 import lineArrow from 'PLS/UIdemo/components/lineArrow.vue'
 import ScrollControls from 'PLS/UIdemo/components/ScrollControls.vue'
+import generalFont from 'PLS/UIdemo/components/generalFont.vue'
 
 export {
     reactor,
@@ -41,5 +42,6 @@ export {
     svgCom,
     line2RoundedRect,
     lineArrow,
-    ScrollControls
+    ScrollControls,
+    generalFont
 }
