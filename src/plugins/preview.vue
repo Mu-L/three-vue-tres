@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 11:47:56
+ * @LastEditTime: 2025-10-24 11:15:58
 -->
 <template>
     <div class="absolute menuSelf">
@@ -45,7 +45,7 @@
                         <div class="flex absolute" style="left: 1px; flex-direction: column; top: 10px">
                             <f-badge value="AllFree" class="tag-fbdge afree-tag" type="success" size="small" />
                         </div>
-                        基础功能 <FBadge :max="999" :value="getMenusCount().basic" class="count-fbdge big-cf" type="primary" size="small"
+                        基础功能组件 <FBadge :max="999" :value="getMenusCount().basic" class="count-fbdge big-cf" type="primary" size="small"
                     /></template>
                     <template v-for="(bP, pkey) in filteredData">
                         <f-menu-item v-if="pkey === 'basic'" v-for="(onePlugin, okey) in bP.child" :value="onePlugin.name">
@@ -69,7 +69,7 @@
                         <div class="flex absolute" style="left: 1px; flex-direction: column; top: 10px">
                             <f-badge value="AllFree" class="tag-fbdge afree-tag" type="success" size="small" />
                         </div>
-                        样例中心 <FBadge :max="999" :value="getMenusCount().case" class="count-fbdge big-cf" type="primary" size="small"
+                        样例与组件 <FBadge :max="999" :value="getMenusCount().case" class="count-fbdge big-cf" type="primary" size="small"
                     /></template>
                     <template v-for="(onePlugin, pkey) in filteredData">
                         <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'caseCenter'" :value="pkey">
