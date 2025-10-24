@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 11:27:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-15 10:31:50
+ * @LastEditTime: 2025-10-23 16:35:42
  */
 
 import Environment from './components/forCientos/useEnvironment/component.vue'
@@ -23,7 +23,8 @@ import { useGLTF } from './components/forCientos/ComV3/useGLTF'
 import { useTexture as useTextures } from './components/forCientos/ComV3/useTexture.ts'
 import { useLoader } from './components/forCientos/ComV3/useLoader.ts'
 import { useSeek } from './components/forCientos/ComV3/useSeek.ts'
-
+import MaterialSelector from './components/forCientos/MaterialSelector/index.vue'
+    
 export {
     Environment,
     Lightformer,
@@ -40,5 +41,6 @@ export {
     useTexture,
     useTextures,
     useLoader,
-    useSeek
+    useSeek,
+    MaterialSelector
 }

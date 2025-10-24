@@ -3,7 +3,9 @@
 		<Suspense>
 			<Text3D v-if="loadedFont" :text="text" :font="font" :size="size" :height="height" :curveSegments="curveSegments"
 				:bevelEnabled="bevelEnabled" :bevelThickness="bevelThickness" :bevelSize="bevelSize" :bevelOffset="bevelOffset"
-				:bevelSegments="bevelSegments" :center="center" :needUpdates="true"></Text3D>
+				:bevelSegments="bevelSegments" :center="center" :needUpdates="true">
+				<MaterialSelector :type="materialType" :material-props="materialProps" />
+			</Text3D>
 		</Suspense>
 	</TresGroup>
 </template>
@@ -14,6 +16,8 @@ import { useLoader } from '@tresjs/core'
 import { Text3D } from '@tresjs/cientos'
 import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader.js'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import { MaterialSelector } from 'PLS/basic'
+import { type MaterialType as mType  } from 'PLS/basic/components/forCientos/MaterialSelector/materials'
 
 const props = defineProps({
 	ttfUrl: {
@@ -48,7 +52,15 @@ const props = defineProps({
 	},
 	center: {
 		default: true,
-	}
+	},
+	materialType: {
+		type: String as () => mType,
+		default: 'MeshStandardMaterial',
+	},
+	materialProps: {
+		type: Object,
+		required: true
+	},
 })
 
 

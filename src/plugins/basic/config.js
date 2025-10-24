@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 15:07:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-02 09:49:07
+ * @LastEditTime: 2025-10-23 16:30:03
  */
 export default {
     name: 'basic',
@@ -52,6 +52,7 @@ export default {
                     title: 'instanced和继承材质',
                 },
                 { src: 'plugins/basic/materials/preview/vertexSnapping.png', type: 'img', name: 'vertexSnapping', title: '顶点捕捉材质' },
+                { src: 'plugins/basic/materials/preview/materialSelector.png', type: 'img', name: 'materialSelector', title: '多材质切换组件' },
             ],
         },
         {
