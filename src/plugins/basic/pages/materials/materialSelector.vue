@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-23 16:29:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-24 11:04:35
+ * @LastEditTime: 2025-11-03 11:22:34
 -->
 <script setup lang="ts">
 import * as THREE from 'three'
@@ -45,8 +45,13 @@ provide('MaterialSelectorProps', currentProps)
 	<TresCanvas v-bind="tcConfig">
 		<TresPerspectiveCamera :position="[-5, 3, 5]" :fov="50" :near="0.1" :far="10000" />
 		<OrbitControls />
-		<TresAmbientLight />
-		<TresDirectionalLight :intensity="2" :position="[-2, 1, 0]" />
+		<TresAmbientLight :intensity="2" />
+		<TresDirectionalLight :intensity="6" :position="[-2, 1, 0]" />
+
+		<TresMesh :position="[1, 1, -1]">
+			<TresBoxGeometry :args="[1, 1, 1]" />
+			<TresMeshNormalMaterial />
+		</TresMesh>
 
 		<TresMesh :position="[0, 1, 0]">
 			<TresBoxGeometry />

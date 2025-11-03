@@ -1,39 +1,30 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 1.668
  * @Autor: 地虎降天龙
  * @Date: 2025-10-23 16:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-24 09:58:52
+ * @LastEditTime: 2025-11-03 11:50:17
  */
 // materials.ts
 import type { ColorRepresentation } from 'three'
-import {
-  FrontSide,
-  BackSide,
-  DoubleSide,
-  NormalBlending,
-  AdditiveBlending,
-  SubtractiveBlending,
-  MultiplyBlending,
-  NoBlending,
-  type Side,
-  type Blending,
-} from 'three'
+import { FrontSide, BackSide, DoubleSide, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, NoBlending, type Side, type Blending, } from 'three'
 
-export const sideOptions = [
-  { label: 'FrontSide', value: FrontSide },
-  { label: 'BackSide', value: BackSide },
-  { label: 'DoubleSide', value: DoubleSide }
-]
+export const sideOptions =
+  [
+    { label: 'FrontSide', value: FrontSide },
+    { label: 'BackSide', value: BackSide },
+    { label: 'DoubleSide', value: DoubleSide }
+  ]
 
-export const blendingOptions = [
-  { label: 'NoBlending', value: NoBlending },
-  { label: 'NormalBlending', value: NormalBlending },
-  { label: 'AdditiveBlending', value: AdditiveBlending },
-  { label: 'SubtractiveBlending', value: SubtractiveBlending },
-  { label: 'MultiplyBlending', value: MultiplyBlending }
-]
+export const blendingOptions =
+  [
+    { label: 'NoBlending', value: NoBlending },
+    { label: 'NormalBlending', value: NormalBlending },
+    { label: 'AdditiveBlending', value: AdditiveBlending },
+    { label: 'SubtractiveBlending', value: SubtractiveBlending },
+    { label: 'MultiplyBlending', value: MultiplyBlending }
+  ]
 
 // ✅ 所有材质的基础属性（MeshBasicMaterial 也适用）
 export const commonMaterialProps = {
@@ -105,9 +96,9 @@ export const physicalExtraProps = {
   clearcoat: 0.2,
   clearcoatRoughness: 0.1,
   reflectivity: 0.5,
-  transmission: 0,            // 玻璃透明度
-  ior: 1.5,                   // 折射率
-  thickness: 0.01,            // 厚度
+  transmission: 0,  // 玻璃透明度
+  ior: 1.5,         // 折射率
+  thickness: 0.01,  // 厚度
   attenuationColor: '#ffffff' as ColorRepresentation,
   attenuationDistance: 0,
   specularIntensity: 1,
@@ -128,6 +119,41 @@ export const toonExtraProps = {
   normalScale: { x: 1, y: 1 },
 } as const
 
+export const glassExtraProps = {
+  metalness: 0.5,
+  roughness: 0,
+} as const
+
+export const transmissionExtraProps = {
+  color: '#ffffff',
+  roughness: 0,
+  reflectivity: 0.5,
+  attenuationColor: '#ffffff',
+  attenuationDistance: 2,
+  chromaticAberration: 0.05,
+  anisotropicBlur: 0.1,
+  distortion: 0,
+  temporalDistortion: 0,
+  backside: true,
+  thickness: 1,
+  backsideThickness: 0.5,
+} as const
+
+const clearcoatExtraProps = {
+  color: '#ff00fc',
+  metalness: 1,
+  roughness: 1,
+  clearcoat: 1,
+  clearcoatRoughness: 0,
+} as const
+
+// const holographicExtraProps = {
+// 	fresnelAmount: 0,
+// 	fresnelOpacity: 0.0,
+// 	scanlineSize: 15,
+// 	signalSpeed: 1.3,
+// 	hologramColor: "#00d5ff",
+// } as const
 
 // ✅ 每种 Tres 组件对应 three.js 材质
 export const materialPresets = {
@@ -141,41 +167,68 @@ export const materialPresets = {
 
   MeshLambertMaterial: {
     component: 'TresMeshLambertMaterial',
-    props: {
-      ...commonMaterialProps,
-      ...lambertExtraProps
-    }
+    props: { ...commonMaterialProps, ...lambertExtraProps }
   },
 
   MeshPhongMaterial: {
     component: 'TresMeshPhongMaterial',
-    props: {
-      ...commonMaterialProps,
-      ...phongExtraProps
-    }
+    props: { ...commonMaterialProps, ...phongExtraProps }
   },
 
   MeshStandardMaterial: {
     component: 'TresMeshStandardMaterial',
-    props: {
-      ...commonMaterialProps,
-      ...standardExtraProps
-    }
+    props: { ...commonMaterialProps, ...standardExtraProps }
   },
 
   MeshPhysicalMaterial: {
     component: 'TresMeshPhysicalMaterial',
-    props: {
-      ...commonMaterialProps,
-      ...physicalExtraProps
-    }
+    props: { ...commonMaterialProps, ...physicalExtraProps }
   },
 
   MeshToonMaterial: {
     component: 'TresMeshToonMaterial',
+    props: { ...commonMaterialProps, ...toonExtraProps }
+  },
+
+  MeshGlassMaterial:
+  {
+    component: async () => {
+      const mod = await import('@tresjs/cientos')
+      return mod.MeshGlassMaterial
+    },
     props: {
       ...commonMaterialProps,
-      ...toonExtraProps
+      ...glassExtraProps
+    }
+  },
+
+  TransmissionMaterial: {
+    component: async () => {
+      const mod = await import('PLS/basic')
+      return mod.TransmissionMaterial
+    },
+    props: {
+      ...transmissionExtraProps
+    }
+  },
+
+  // HolographicMaterial: {
+  //   component: async () => {
+  //     const mod = await import('@tresjs/cientos')
+  //     return mod.HolographicMaterial
+  //   },
+  //   props: {
+  //     ...holographicExtraProps
+  //   }
+  // },
+
+  ClearcoatMaterial: {
+    component: async () => {
+      const mod = await import('PLS/basic')
+      return mod.ClearcoatMaterial
+    },
+    props: {
+      ...clearcoatExtraProps
     }
   },
 } as const
