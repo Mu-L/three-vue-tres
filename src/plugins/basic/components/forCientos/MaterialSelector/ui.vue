@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-24 08:52:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-24 11:02:10
+ * @LastEditTime: 2025-11-03 18:05:43
 -->
 
 <template>
@@ -16,7 +16,7 @@
 				</n-form-item>
 				<template v-for="(value, key) in materialProps" :key="key">
 					<n-form-item :label="key"
-						v-if="(getControlType(value, key) !== 'texture' && getControlType(value, key) !== 'vector2') && getControlType(value, key) !== 'aboutMap' ">
+						v-if="(getControlType(value, key) !== 'texture' && getControlType(value, key) !== 'vector2') && getControlType(value, key) !== 'aboutMap'">
 						<n-color-picker :show-alpha="false" v-if="getControlType(value, key) === 'color'" size="small"
 							v-model:value="materialProps[key]" />
 						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'number'" v-model:value="materialProps[key]"
@@ -47,7 +47,7 @@ const materialProps = inject('MaterialSelectorProps') as Ref<Record<string, any>
 // 切换材质类型时，自动重置 props
 watch(type, (key) => {
 	materialProps.value = { ...materialPresets[(key as PresetKeys)].props }
-}, { immediate: true })
+})
 
 // 选项数据（用于 <n-select>）
 const typeOptions = Object.keys(materialPresets).map(key => ({

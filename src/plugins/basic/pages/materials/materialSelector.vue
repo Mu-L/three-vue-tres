@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-23 16:29:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-03 11:22:34
+ * @LastEditTime: 2025-11-03 15:21:59
 -->
 <script setup lang="ts">
 import * as THREE from 'three'
@@ -59,5 +59,5 @@ provide('MaterialSelectorProps', currentProps)
 		</TresMesh>
 		<reflectorShaderMesh v-bind="configState" />
 	</TresCanvas>
-	<ui :type="currentType" :material-props="currentProps" />
+	<ui />
 </template>
