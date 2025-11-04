@@ -4,10 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-11-04 09:13:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-04 09:24:58
+ * @LastEditTime: 2025-11-04 10:43:54
 -->
 <template>
-    <component v-if="shapeComponent" :is="shapeComponent" :args="modelValue.args" />
+    <component v-if="shapeComponent" :is="shapeComponent" :args="modelValue.args">
+			<slot />
+		</component>
 </template>
 
 <script setup lang="ts">

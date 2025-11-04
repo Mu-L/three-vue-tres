@@ -4,11 +4,11 @@
 			<n-space vertical size="small">
 				<n-select v-model:value="type" :options="shapeOptions" placeholder="选择图形类型" @update:value="resetDefaults(false)"/>
 
-				<n-form v-if="meta">
+				<n-form v-if="meta" size="small" label-placement="left" :label-width="100">
 					<div v-for="param in meta.params" :key="param.key" style="margin-bottom: 12px">
 						<n-form-item :label="param.label">
-							<n-slider v-if="param.type === 'number'" v-model:value="controls[param.key]" v-bind="getNumberAttrs(param)" style="width: 100%" />
-							<n-switch v-else-if="param.type === 'boolean'" v-model:value="controls[param.key]" />
+							<n-slider size="tiny" v-if="param.type === 'number'" v-model:value="controls[param.key]" v-bind="getNumberAttrs(param)" style="width: 100%" />
+							<n-switch size="small" v-else-if="param.type === 'boolean'" v-model:value="controls[param.key]" />
 						</n-form-item>
 					</div>
 				</n-form>
@@ -90,6 +90,14 @@ function getNumberAttrs(param: any) {
 	}
 }
 </script>
+<style lang="less">
+.shape-configurator {
+	.n-form-item .n-form-item-feedback-wrapper {
+		min-height: 12px;
+		line-height: 12px;
+	}
+}
+</style>
 <style lang="scss" scoped>
 .shape-configurator {
 	z-index: 1999;
