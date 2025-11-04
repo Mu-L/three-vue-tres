@@ -36,6 +36,7 @@
 ```shell
 如果对您有帮助，您可以点右上角 “Star⭐” 收藏一下 ，您的star就是我开发的动力，感谢！
 ```
+<img style="display:block;width:500px;max-width:100%;" src="./preview/gitee2k.png" alt="tvt webgl tvt.js"><br/>
 
 > B 站上对此项目的视频说明点击下方 👇🏻 跳转
 
