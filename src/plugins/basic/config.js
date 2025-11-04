@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-03 15:07:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-23 16:30:03
+ * @LastEditTime: 2025-11-04 08:54:50
  */
 export default {
     name: 'basic',
@@ -25,6 +25,7 @@ export default {
                 { src: 'plugins/basic/base/preview/theGroups.png', type: 'img', name: 'theGroups', title: '组合Group' },
                 { src: 'plugins/basic/base/preview/theConditional.png', type: 'img', name: 'theConditional', title: '显隐v-if' },
                 { src: 'plugins/basic/base/preview/theBasic.png', type: 'img', name: 'theBasic', title: '基本' },
+                { src: 'plugins/basic/base/preview/shapesPage.png', type: 'img', name: 'shapesPage', title: '图形合集组件' },
                 { src: 'plugins/basic/base/preview/theEvents.png', type: 'img', name: 'theEvents', title: '事件' },
                 { src: 'plugins/basic/base/preview/shaderParticles.png', type: 'img', name: 'shaderParticles', title: '着色器实践' },
                 { src: 'plugins/basic/base/preview/penetrateEvent.png', type: 'img', name: 'penetrateEvent', title: '穿透事件' },

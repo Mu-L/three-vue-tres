@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-09 11:27:03
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-23 16:35:42
+ * @LastEditTime: 2025-11-04 09:21:04
  */
 
 import Environment from './components/forCientos/useEnvironment/component.vue'
@@ -24,6 +24,8 @@ import { useTexture as useTextures } from './components/forCientos/ComV3/useText
 import { useLoader } from './components/forCientos/ComV3/useLoader.ts'
 import { useSeek } from './components/forCientos/ComV3/useSeek.ts'
 import MaterialSelector from './components/forCientos/MaterialSelector/index.vue'
+import shapeConfigurator from './components/forCientos/ShapesList/shapeConfigurator.vue'
+import shapeRenderer from './components/forCientos/ShapesList/shapeRenderer.vue'
     
 export {
     Environment,
@@ -42,5 +44,7 @@ export {
     useTextures,
     useLoader,
     useSeek,
-    MaterialSelector
+    MaterialSelector,
+    shapeConfigurator,
+    shapeRenderer
 }
