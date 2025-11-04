@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-11-04 08:52:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-04 10:45:57
+ * @LastEditTime: 2025-11-04 10:53:12
 -->
 
 <template>
@@ -13,7 +13,8 @@
     <TresCanvas v-bind="state" window-size>
         <TresPerspectiveCamera :position="[5, 10, 5]" :fov="30" :near="1" :far="1000" />
         <OrbitControls />
-        <TresAmbientLight color="#ffffff" :intensity="2" />
+        <TresAmbientLight :intensity="2" />
+		<TresDirectionalLight :intensity="6" :position="[-2, 1, 0]" />
         <reflectorDUDV :reflectivity="2.6" showGridHelper :position="[0, -0.6, 0]" />
         
         <shapeRenderer :position="[0, 0.5, 0]" :modelValue="shape">
@@ -30,7 +31,7 @@ import { materialPresets, type MaterialType } from 'PLS/basic/components/forCien
 import MaterialSelectorUI from 'PLS/basic/components/forCientos/MaterialSelector/ui.vue'
 
 const state = {
-    clearColor: '#000000',
+    clearColor: '#333333',
     shadows: true,
     alpha: false,
     antialias: true,
