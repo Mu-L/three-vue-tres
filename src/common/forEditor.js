@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-08-14 10:52:40
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-21 17:01:41
+ * @LastEditTime: 2025-11-05 16:41:29
  */
 import { ref, shallowReactive } from 'vue'
 import * as THREE from 'three'
@@ -125,7 +125,7 @@ function meshAddEvent(mesh, events) {
   for (const ev of enabledEvents) {
     if (['click', 'doubleclick'].includes(ev.eventType)) continue
     mesh.addEventListener(ev.eventType, e => callEvent(ev, e))
-    console.log(`✅ 已绑定 ${type} uuid=${mesh.uuid}`)
+    console.log(`✅ 已绑定 ${ev.eventType} uuid=${mesh.uuid}`)
   }
 }
 
