@@ -1,0 +1,3290 @@
+{
+  "history": [
+    {
+      "mlist": {
+        "e1eeb0c8-3fd3-41cd-a943-0ff09d645373": {
+          "uuid": "e1eeb0c8-3fd3-41cd-a943-0ff09d645373",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -2.677,
+            "y": 0,
+            "z": 3.789
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-employee",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/character-employee.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "static": 0,
+              "idle": 1,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 0,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "eaea4135-2a10-436c-b794-ab45af8e5a71": {
+          "uuid": "eaea4135-2a10-436c-b794-ab45af8e5a71",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.982,
+            "y": 0,
+            "z": -4.45
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-gamer",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/character-gamer.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 0,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "092aa20d-7b81-4d4e-bff3-53a3a505643f": {
+          "uuid": "092aa20d-7b81-4d4e-bff3-53a3a505643f",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.73,
+            "y": 0,
+            "z": -3.153
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "pinball",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/pinball.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "dc78f8fc-dff9-45a4-8370-bb59001ad7fd": {
+          "uuid": "dc78f8fc-dff9-45a4-8370-bb59001ad7fd",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.688000000000001,
+            "y": 0,
+            "z": -3.153
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "pinball",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/pinball.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "b997ca1e-1190-4581-af0f-0f08e1d5a279": {
+          "uuid": "b997ca1e-1190-4581-af0f-0f08e1d5a279",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.2090000000000005,
+            "y": 0,
+            "z": -3.152
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "pinball",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/pinball.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "ebd4d418-1d2a-437b-9388-516918fac31e": {
+          "uuid": "ebd4d418-1d2a-437b-9388-516918fac31e",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.178000000000001,
+            "y": 0,
+            "z": -3.156
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "pinball",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/pinball.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "cb0a1e25-7100-47f6-8147-1972ba1d6359": {
+          "uuid": "cb0a1e25-7100-47f6-8147-1972ba1d6359",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -7.2410000000000005,
+            "y": 0,
+            "z": -3.1590000000000003
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "pinball",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/pinball.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "c2ce7ec6-22e8-46e8-8763-0fca57d09b09": {
+          "uuid": "c2ce7ec6-22e8-46e8-8763-0fca57d09b09",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -2.658,
+            "y": 0,
+            "z": 4.348
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "cash-register",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/cash-register.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "131cece7-4a96-41cb-a340-093d47e13d52": {
+          "uuid": "131cece7-4a96-41cb-a340-093d47e13d52",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.011592653589793344,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -5.196,
+            "y": 0,
+            "z": -3.784773732790505
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gambling-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/gambling-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "9d7fdbf6-e185-43e9-9a79-b2d2d97f18d6": {
+          "uuid": "9d7fdbf6-e185-43e9-9a79-b2d2d97f18d6",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.011592653589793344,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -5.736116061296574,
+            "y": 0,
+            "z": -3.7847737327905056
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gambling-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/gambling-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "ecbbe4f8-038d-4e32-8b2f-204c2d240068": {
+          "uuid": "ecbbe4f8-038d-4e32-8b2f-204c2d240068",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.011592653589793344,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -6.276232122593148,
+            "y": 0,
+            "z": -3.781
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gambling-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/gambling-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "4de49cfc-86d1-46e0-a64a-e32f5e7f8760": {
+          "uuid": "4de49cfc-86d1-46e0-a64a-e32f5e7f8760",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.011592653589793344,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -7.276,
+            "y": 0,
+            "z": -3.771
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gambling-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/gambling-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "b7dfa9a8-04ae-4e33-ae87-8b2ca354154e": {
+          "uuid": "b7dfa9a8-04ae-4e33-ae87-8b2ca354154e",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.011592653589793344,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -6.768,
+            "y": 0,
+            "z": -3.782
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "gambling-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/gambling-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "cdb9d96c-f4ae-4390-8682-80bf4400e50d": {
+          "uuid": "cdb9d96c-f4ae-4390-8682-80bf4400e50d",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -4.546056457771179,
+            "y": 0,
+            "z": -3.479166509444079
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "column",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/column.glb",
+          "isCollision": false,
+          "canSelect": false,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "c615cbfa-e625-4210-a2eb-b57ba9e4a93e": {
+          "uuid": "c615cbfa-e625-4210-a2eb-b57ba9e4a93e",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 0.45317193455379323,
+            "y": 0,
+            "z": -2.6430000000000002
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "5b93abd6-027c-4d8c-8185-519b50b0dc3f": {
+          "uuid": "5b93abd6-027c-4d8c-8185-519b50b0dc3f",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 1.186377024122885,
+            "y": 0,
+            "z": -2.645
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "d4f2eba4-60d7-4176-a263-4e63dc6137fb": {
+          "uuid": "d4f2eba4-60d7-4176-a263-4e63dc6137fb",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 1.9195821136919768,
+            "y": 0,
+            "z": -2.629
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e1e5cf81-d517-47cb-810a-090a26aedfd2": {
+          "uuid": "e1e5cf81-d517-47cb-810a-090a26aedfd2",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 2.6527872032610684,
+            "y": 0,
+            "z": -2.62
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": false,
+          "canSelect": false,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "7cec9237-24bc-441d-8221-88cba1bdcf06": {
+          "uuid": "7cec9237-24bc-441d-8221-88cba1bdcf06",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 3.38599229283016,
+            "y": 0,
+            "z": -2.592
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "8a93c14b-3078-45d6-bab4-30a095d0953c": {
+          "uuid": "8a93c14b-3078-45d6-bab4-30a095d0953c",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.119197382399252,
+            "y": 0,
+            "z": -2.573
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "dance-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/dance-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f413f2be-2fae-4e9e-9ffd-80b0af0af476": {
+          "uuid": "f413f2be-2fae-4e9e-9ffd-80b0af0af476",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 4.072,
+            "y": 0,
+            "z": -3.365921951462237
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "9d996f0d-3e2d-46c1-b558-d6b7a98360a3": {
+          "uuid": "9d996f0d-3e2d-46c1-b558-d6b7a98360a3",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 3.39,
+            "y": 0,
+            "z": -3.384921951462237
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "334620e6-2280-4031-ac8f-26c8c9c9a81d": {
+          "uuid": "334620e6-2280-4031-ac8f-26c8c9c9a81d",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 1.937,
+            "y": 0,
+            "z": -3.421921951462237
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "2a7b720c-95c6-4587-b789-b777e3818401": {
+          "uuid": "2a7b720c-95c6-4587-b789-b777e3818401",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 2.689,
+            "y": 0,
+            "z": -3.412921951462237
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e7863ca3-823a-4c58-906f-2873b11c7473": {
+          "uuid": "e7863ca3-823a-4c58-906f-2873b11c7473",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 1.194,
+            "y": 0,
+            "z": -3.437921951462237
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f92c3dee-84a9-4f7c-be25-296d10683f19": {
+          "uuid": "f92c3dee-84a9-4f7c-be25-296d10683f19",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.008407346410206854,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 0.46,
+            "y": 0,
+            "z": -3.4359219514622374
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "arcade-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/arcade-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f39d5248-46e6-4af5-9e53-1672f940e0fa": {
+          "uuid": "f39d5248-46e6-4af5-9e53-1672f940e0fa",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.2813232975514619,
+            "y": 0,
+            "z": -2.874
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "column",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/column.glb",
+          "isCollision": false,
+          "canSelect": false,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "5f6d0463-cad4-4e6a-9e74-7d260fc05244": {
+          "uuid": "5f6d0463-cad4-4e6a-9e74-7d260fc05244",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.678,
+            "y": 0,
+            "z": 4.469
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "wall-door-rotate",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/wall-door-rotate.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "open": 0,
+              "close": 0,
+              "open-and-close": 0
+            }
+          }
+        },
+        "0aba38d8-1f77-414c-953b-477fe8bda7c7": {
+          "uuid": "0aba38d8-1f77-414c-953b-477fe8bda7c7",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 1.5364367326251274,
+            "y": 0.188,
+            "z": 2.598849568730132
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "prize-wheel",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/prize-wheel.glb",
+          "isCollision": false,
+          "canSelect": false,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "d0bae1a9-cd30-4f1f-9b75-4f1b307f0b9c": {
+          "uuid": "d0bae1a9-cd30-4f1f-9b75-4f1b307f0b9c",
+          "rotation": {
+            "x": 0,
+            "y": 0.6900000000000001,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.271,
+            "y": 0,
+            "z": 1.262
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "prizes",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/prizes.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "dda65a59-ae98-4a67-a1bc-352ecaf4b42c": {
+          "uuid": "dda65a59-ae98-4a67-a1bc-352ecaf4b42c",
+          "rotation": {
+            "x": 0,
+            "y": -0.4300000000000002,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.179,
+            "y": 0,
+            "z": 1.206
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "prizes",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/prizes.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "ce1ed0bb-56ff-4930-ba52-6bb690202fce": {
+          "uuid": "ce1ed0bb-56ff-4930-ba52-6bb690202fce",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -1.9573038512163414,
+            "y": 0,
+            "z": -7.479887395600839
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "claw-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/claw-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "98c779b5-9a0d-4d99-a14b-58bd044988a6": {
+          "uuid": "98c779b5-9a0d-4d99-a14b-58bd044988a6",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -2.6203038483553183,
+            "y": 0,
+            "z": -7.511549038749379
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "claw-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/claw-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "161bde41-fe35-4b2b-8527-0be847264ce7": {
+          "uuid": "161bde41-fe35-4b2b-8527-0be847264ce7",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.689,
+            "y": 0,
+            "z": -6.899
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "ticket-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/ticket-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "3ee7efb5-09b7-4262-a72d-4546a9ee7de3": {
+          "uuid": "3ee7efb5-09b7-4262-a72d-4546a9ee7de3",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.248,
+            "y": 0,
+            "z": -6.908
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "ticket-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/ticket-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "a1e75bba-7061-45a7-901e-db151b52d6bc": {
+          "uuid": "a1e75bba-7061-45a7-901e-db151b52d6bc",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.02159265358979313,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -6.284,
+            "y": 0,
+            "z": -7.559
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "ticket-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/ticket-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "f37e7740-7ad1-45c8-ad09-a53f1b764ff9": {
+          "uuid": "f37e7740-7ad1-45c8-ad09-a53f1b764ff9",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.02159265358979313,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -5.688,
+            "y": 0,
+            "z": -7.593
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "ticket-machine",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/ticket-machine.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "animation": 0
+            }
+          }
+        },
+        "61b0e4b2-d700-40f5-a726-5114d739c30a": {
+          "uuid": "61b0e4b2-d700-40f5-a726-5114d739c30a",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 0.996,
+            "y": 0,
+            "z": -8.226
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "636500ec-8189-40ef-a5a1-45d0dd5f37d0": {
+          "uuid": "636500ec-8189-40ef-a5a1-45d0dd5f37d0",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 1.655,
+            "y": 0,
+            "z": -8.224
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "aac642c4-61a6-4c34-8d9f-fb16189a842e": {
+          "uuid": "aac642c4-61a6-4c34-8d9f-fb16189a842e",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 0.3359999642372131,
+            "y": 0,
+            "z": -8.224
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "b7aab519-0c7e-4ff0-9b54-7f87a3be2726": {
+          "uuid": "b7aab519-0c7e-4ff0-9b54-7f87a3be2726",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 2.315000035762787,
+            "y": 0,
+            "z": -8.234
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "008cb88f-24bd-4406-9e5b-3206883519c4": {
+          "uuid": "008cb88f-24bd-4406-9e5b-3206883519c4",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 2.971,
+            "y": 0,
+            "z": -8.206
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "d3086159-1efc-4abd-a70a-90b06bf8483b": {
+          "uuid": "d3086159-1efc-4abd-a70a-90b06bf8483b",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 3.63500010728836,
+            "y": 0,
+            "z": -8.191354273738007
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "basketball-game",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/basketball-game.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f1c5a246-7962-46d3-9dc0-5dfa6b7bf79f": {
+          "uuid": "f1c5a246-7962-46d3-9dc0-5dfa6b7bf79f",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 2.1270000000000002,
+            "y": 0,
+            "z": -5.977
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "air-hockey",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/air-hockey.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "bf394cec-fd7f-4f73-aee4-8288acfe74e7": {
+          "uuid": "bf394cec-fd7f-4f73-aee4-8288acfe74e7",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.332892812490463,
+            "y": 0,
+            "z": -8.097729909402627
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "column",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/0游乐场/models/column.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "7d3c5778-dca8-4164-99e6-0971ac9c7643": {
+          "uuid": "7d3c5778-dca8-4164-99e6-0971ac9c7643",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 1.5364367326251274,
+            "y": 0,
+            "z": 2.598849568730132
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "obstacle-box",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/1滑板场/models/obstacle-box.glb",
+          "isCollision": false,
+          "canSelect": false,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "e4ff2006-bd5d-4a95-b8a6-bfcfdecd9ab5": {
+          "uuid": "e4ff2006-bd5d-4a95-b8a6-bfcfdecd9ab5",
+          "rotation": {
+            "x": 3.141592653589793,
+            "y": -1.5115926535897934,
+            "z": 3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 2.8970000000000002,
+            "y": 0.038,
+            "z": -5.921836591541303
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-skate-boy",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/1滑板场/models/character-skate-boy.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 0.6,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 1,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 0,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "skate": 0,
+              "skate-stand": 0,
+              "skate-air": 0,
+              "skate-grab": 0
+            }
+          }
+        },
+        "cba448b3-38e3-4de5-a49f-71c4e6326952": {
+          "uuid": "cba448b3-38e3-4de5-a49f-71c4e6326952",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 1.5215926535897921,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 1.1268568251592688,
+            "y": 0,
+            "z": -5.894128963439219
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-skate-girl",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/1滑板场/models/character-skate-girl.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 0.3,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 1,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "skate": 0,
+              "skate-stand": 0,
+              "skate-air": 0,
+              "skate-grab": 0
+            }
+          }
+        },
+        "2a9c3187-12bf-4e54-9e79-671c2300a45a": {
+          "uuid": "2a9c3187-12bf-4e54-9e79-671c2300a45a",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.486454583764076,
+            "y": 0,
+            "z": 2.213
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-green",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-green.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "fc4cacbe-8680-4568-9e04-63f9948c99db": {
+          "uuid": "fc4cacbe-8680-4568-9e04-63f9948c99db",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -4.848324047482295,
+            "y": 0,
+            "z": 2.199
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-red",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-red.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "2e7a429f-5a98-4d3a-b044-e7fd4291e966": {
+          "uuid": "2e7a429f-5a98-4d3a-b044-e7fd4291e966",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.319,
+            "y": 0,
+            "z": 2.203
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-red",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-red.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "9477e94a-c62b-49be-94bc-23de301e7e78": {
+          "uuid": "9477e94a-c62b-49be-94bc-23de301e7e78",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.083545416235924,
+            "y": 0,
+            "z": 2.202
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-green",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-green.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "0d486e8b-a3fa-456b-99b6-88aca4abcd15": {
+          "uuid": "0d486e8b-a3fa-456b-99b6-88aca4abcd15",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.554454583764076,
+            "y": 0,
+            "z": 2.204
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-green",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-green.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "247ca21f-47ff-46b3-97eb-71673b0a32ca": {
+          "uuid": "247ca21f-47ff-46b3-97eb-71673b0a32ca",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.789909167528152,
+            "y": 0,
+            "z": 2.208558001602094
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-red",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-red.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "11416f64-10c5-41c0-a367-2656faa9d66b": {
+          "uuid": "11416f64-10c5-41c0-a367-2656faa9d66b",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.251,
+            "y": 0,
+            "z": 2.216
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-red",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-red.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "ed43009d-6abc-4fca-9acf-f5da9327efda": {
+          "uuid": "ed43009d-6abc-4fca-9acf-f5da9327efda",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -6.025363751292228,
+            "y": 0,
+            "z": 2.209
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "aid-defibrillator-green",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/aid-defibrillator-green.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "6f9b69ca-f942-49e3-8798-570a773610d2": {
+          "uuid": "6f9b69ca-f942-49e3-8798-570a773610d2",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.4184073464102069,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 3.1390000000000002,
+            "y": 0,
+            "z": -1.293
+          },
+          "scale": {
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.8
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-female-d",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/character-female-d.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 0.5,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 0,
+              "emote-yes": 0,
+              "emote-no": 1,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "788329a1-79c0-48c5-af56-de177b21faef": {
+          "uuid": "788329a1-79c0-48c5-af56-de177b21faef",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.02840734641020669,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -5.256,
+            "y": 0,
+            "z": -2.544
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-female-b",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/character-female-b.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 0.3,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 1,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "152efd24-e65d-4a0b-ad61-47b872d5a70a": {
+          "uuid": "152efd24-e65d-4a0b-ad61-47b872d5a70a",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": -0.018407346410206908,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -5.572,
+            "y": 0.10400000000000001,
+            "z": 2.875
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-female-f",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素人物/models/character-female-f.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 0.3,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 1,
+              "pick-up": 0,
+              "emote-yes": 0,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "8b1df7c3-3bca-4804-8438-8d8535b4a59b": {
+          "uuid": "8b1df7c3-3bca-4804-8438-8d8535b4a59b",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -5.706,
+            "y": 0,
+            "z": -8.241
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "character-employee",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/character-employee.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "static": 0,
+              "idle": 0,
+              "walk": 0,
+              "sprint": 0,
+              "jump": 0,
+              "fall": 0,
+              "crouch": 0,
+              "sit": 0,
+              "drive": 0,
+              "die": 0,
+              "pick-up": 0,
+              "emote-yes": 1,
+              "emote-no": 0,
+              "holding-right": 0,
+              "holding-left": 0,
+              "holding-both": 0,
+              "holding-right-shoot": 0,
+              "holding-left-shoot": 0,
+              "holding-both-shoot": 0,
+              "attack-melee-right": 0,
+              "attack-melee-left": 0,
+              "attack-kick-right": 0,
+              "attack-kick-left": 0,
+              "interact-right": 0,
+              "interact-left": 0,
+              "wheelchair-sit": 0,
+              "wheelchair-look-left": 0,
+              "wheelchair-look-right": 0,
+              "wheelchair-move-forward": 0,
+              "wheelchair-move-back": 0,
+              "wheelchair-move-left": 0,
+              "wheelchair-move-right": 0
+            }
+          }
+        },
+        "797bf688-5da7-491b-afb2-3fcb8db40b96": {
+          "uuid": "797bf688-5da7-491b-afb2-3fcb8db40b96",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -0.460015371816618,
+            "y": 0,
+            "z": 0.6510882397883258
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "shelf-bags",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/shelf-bags.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "fbda1ccc-60ad-425e-95c8-b5f932c0c4be": {
+          "uuid": "fbda1ccc-60ad-425e-95c8-b5f932c0c4be",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 6.056,
+            "y": 0,
+            "z": 0.261
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": true,
+          "receiveShadow": false,
+          "name": "shelf-end",
+          "type": "Model",
+          "path": "./plugins/zone3Deditor/models/低像素市场/models/shelf-end.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        }
+      },
+      "selectedMeshUUID": "8b1df7c3-3bca-4804-8438-8d8535b4a59b",
+      "emxlist": {
+        "392d397d-71f8-48ca-9d8c-1b985e93f1fd": {
+          "object3D": {
+            "uuid": "392d397d-71f8-48ca-9d8c-1b985e93f1fd",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 2.3040000000000003,
+              "y": 1.733,
+              "z": -7.2860000000000005
+            },
+            "scale": {
+              "x": 1,
+              "y": 0.28,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐方式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "text": "运动区域🏃🏻‍♀️",
+              "fontSize": 42,
+              "fontColor": "#FFFBFB",
+              "backgroundColor": "#001C9A8F",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.005,
+              "borderColor": "#FFFFFF",
+              "borderWidth": 2.1,
+              "borderRadius": 6.8,
+              "dpi": 2.9
+            }
+          }
+        },
+        "f7beac04-f712-46d0-b70e-c1a8d9bd8395": {
+          "object3D": {
+            "uuid": "f7beac04-f712-46d0-b70e-c1a8d9bd8395",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 2.2840000000000003,
+              "y": 1.145,
+              "z": -7.329
+            },
+            "scale": {
+              "x": 0.03,
+              "y": 0.03,
+              "z": 0.03
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB"
+          },
+          "extendProperties": {
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB",
+            "pluginPath": "PLS/digitalCity",
+            "previewPath": "./plugins/digitalCity/preview/coneAnchorB.png",
+            "default": {
+              "anchorColor": "#0059ff",
+              "rotateSpeed": 0.05,
+              "floorSize": 12,
+              "floorColor": "#0059ff",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 0.03,
+                "y": 0.03,
+                "z": 0.03
+              }
+            },
+            "config": {
+              "anchorColor": {
+                "name": "浮标颜色",
+                "com": "ColorPicker"
+              },
+              "rotateSpeed": {
+                "name": "旋转速度",
+                "com": "Slider",
+                "min": -0.2,
+                "max": 0.2,
+                "step": 0.001
+              },
+              "floorColor": {
+                "name": "波浪颜色",
+                "com": "ColorPicker"
+              },
+              "floorSize": {
+                "name": "波浪大小",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 20,
+                "step": 0.1
+              },
+              "floorSpeed": {
+                "name": "波浪速度",
+                "com": "Slider",
+                "min": -2,
+                "max": 3,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "anchorColor": "#0059ff",
+              "rotateSpeed": 0.05,
+              "floorSize": 12,
+              "floorColor": "#0059ff",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            }
+          }
+        },
+        "8893a493-3e72-4ea3-b3d8-2f098a2a83ef": {
+          "object3D": {
+            "uuid": "8893a493-3e72-4ea3-b3d8-2f098a2a83ef",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -6.469,
+              "y": 1.499,
+              "z": -5.901
+            },
+            "scale": {
+              "x": 1,
+              "y": 0.3,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐方式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "text": "金币博弈区",
+              "fontSize": 42,
+              "fontColor": "#FFFBFB",
+              "backgroundColor": "#A3008A8F",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.005,
+              "borderColor": "#FFFFFF",
+              "borderWidth": 2.1,
+              "borderRadius": 6.8,
+              "dpi": 2.9
+            }
+          }
+        },
+        "95a1601f-e59f-4dcb-903c-91bc13c7a3fd": {
+          "object3D": {
+            "uuid": "95a1601f-e59f-4dcb-903c-91bc13c7a3fd",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -5.815,
+              "y": 0.884,
+              "z": 1.663
+            },
+            "scale": {
+              "x": 0.03,
+              "y": 0.03,
+              "z": 0.03
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB"
+          },
+          "extendProperties": {
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB",
+            "pluginPath": "PLS/digitalCity",
+            "previewPath": "./plugins/digitalCity/preview/coneAnchorB.png",
+            "default": {
+              "anchorColor": "#0059ff",
+              "rotateSpeed": 0.05,
+              "floorSize": 12,
+              "floorColor": "#0059ff",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 0.03,
+                "y": 0.03,
+                "z": 0.03
+              }
+            },
+            "config": {
+              "anchorColor": {
+                "name": "浮标颜色",
+                "com": "ColorPicker"
+              },
+              "rotateSpeed": {
+                "name": "旋转速度",
+                "com": "Slider",
+                "min": -0.2,
+                "max": 0.2,
+                "step": 0.001
+              },
+              "floorColor": {
+                "name": "波浪颜色",
+                "com": "ColorPicker"
+              },
+              "floorSize": {
+                "name": "波浪大小",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 20,
+                "step": 0.1
+              },
+              "floorSpeed": {
+                "name": "波浪速度",
+                "com": "Slider",
+                "min": -2,
+                "max": 3,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "anchorColor": "#DCB300",
+              "rotateSpeed": 0.05,
+              "floorSize": 20,
+              "floorColor": "#AE9400",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            }
+          }
+        },
+        "a540e915-e253-4f46-943a-941992273996": {
+          "object3D": {
+            "uuid": "a540e915-e253-4f46-943a-941992273996",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -5.792,
+              "y": 1.532,
+              "z": 1.681
+            },
+            "scale": {
+              "x": 1,
+              "y": 0.3,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐方式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "text": "兑换区👛",
+              "fontSize": 42,
+              "fontColor": "#FFFBFB",
+              "backgroundColor": "#A28F008F",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.005,
+              "borderColor": "#FFFFFF",
+              "borderWidth": 2.1,
+              "borderRadius": 6.8,
+              "dpi": 2.9
+            }
+          }
+        },
+        "0410033d-503b-4856-878f-4d8835f13d44": {
+          "object3D": {
+            "uuid": "0410033d-503b-4856-878f-4d8835f13d44",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -6.4990000000000006,
+              "y": 0.884,
+              "z": -5.8660000000000005
+            },
+            "scale": {
+              "x": 0.03,
+              "y": 0.03,
+              "z": 0.03
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB"
+          },
+          "extendProperties": {
+            "name": "浮锚标识B",
+            "type": "coneAnchorMeshB",
+            "pluginPath": "PLS/digitalCity",
+            "previewPath": "./plugins/digitalCity/preview/coneAnchorB.png",
+            "default": {
+              "anchorColor": "#0059ff",
+              "rotateSpeed": 0.05,
+              "floorSize": 12,
+              "floorColor": "#0059ff",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 0.03,
+                "y": 0.03,
+                "z": 0.03
+              }
+            },
+            "config": {
+              "anchorColor": {
+                "name": "浮标颜色",
+                "com": "ColorPicker"
+              },
+              "rotateSpeed": {
+                "name": "旋转速度",
+                "com": "Slider",
+                "min": -0.2,
+                "max": 0.2,
+                "step": 0.001
+              },
+              "floorColor": {
+                "name": "波浪颜色",
+                "com": "ColorPicker"
+              },
+              "floorSize": {
+                "name": "波浪大小",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 20,
+                "step": 0.1
+              },
+              "floorSpeed": {
+                "name": "波浪速度",
+                "com": "Slider",
+                "min": -2,
+                "max": 3,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "anchorColor": "#A70194",
+              "rotateSpeed": 0.05,
+              "floorSize": 20,
+              "floorColor": "#AE00AE",
+              "floorSpeed": 0.6,
+              "depthTest": true
+            }
+          }
+        },
+        "c471b24f-6e53-4a37-a34f-a3aa36c5fb06": {
+          "object3D": {
+            "uuid": "c471b24f-6e53-4a37-a34f-a3aa36c5fb06",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -0.674,
+              "y": 1.178,
+              "z": 4.305
+            },
+            "scale": {
+              "x": 1,
+              "y": 0.3,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "精灵图文字",
+            "type": "bannerLabel"
+          },
+          "extendProperties": {
+            "name": "精灵图文字",
+            "type": "bannerLabel",
+            "pluginPath": "PLS/UIdemo",
+            "previewPath": "./plugins/UIdemo/preview/bannerLabel.png",
+            "default": {
+              "text": "标识",
+              "fontSize": 38,
+              "fontColor": "#000000",
+              "backgroundColor": "#ffaa0066",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "left-bottom",
+              "scaleFactor": 0.01,
+              "borderColor": "#000000",
+              "borderWidth": 1,
+              "borderRadius": 2,
+              "dpi": 2
+            },
+            "defaultObject3D": {
+              "scale": {
+                "x": 1,
+                "y": 0.5,
+                "z": 1
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "fontSize": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 20,
+                "max": 100,
+                "step": 1
+              },
+              "fontColor": {
+                "name": "字体颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker",
+                "alpha": true
+              },
+              "padding": {
+                "name": "间距",
+                "com": "numberList",
+                "data": [
+                  {
+                    "t": "y",
+                    "decimal": 0
+                  },
+                  {
+                    "t": "x",
+                    "decimal": 0
+                  }
+                ]
+              },
+              "align": {
+                "name": "对齐方式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "left-top",
+                    "value": "left-top"
+                  },
+                  {
+                    "label": "left-center",
+                    "value": "left-center"
+                  },
+                  {
+                    "label": "left-bottom",
+                    "value": "left-bottom"
+                  },
+                  {
+                    "label": "center-top",
+                    "value": "center-top"
+                  },
+                  {
+                    "label": "center",
+                    "value": "center"
+                  },
+                  {
+                    "label": "center-bottom",
+                    "value": "center-bottom"
+                  },
+                  {
+                    "label": "right-top",
+                    "value": "right-top"
+                  },
+                  {
+                    "label": "right-center",
+                    "value": "right-center"
+                  },
+                  {
+                    "label": "right-bottom",
+                    "value": "right-bottom"
+                  }
+                ]
+              },
+              "scaleFactor": {
+                "name": "缩放因子",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.099,
+                "step": 0.001
+              },
+              "borderColor": {
+                "name": "边框颜色",
+                "com": "ColorPicker"
+              },
+              "borderWidth": {
+                "name": "边框粗细",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "borderRadius": {
+                "name": "边框轮廓",
+                "com": "Slider",
+                "min": 0,
+                "max": 20,
+                "step": 0.1
+              },
+              "dpi": {
+                "name": "清晰度",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 0.1
+              }
+            },
+            "curValue": {
+              "text": "游乐场入口",
+              "fontSize": 42,
+              "fontColor": "#FFFBFB",
+              "backgroundColor": "#820B008F",
+              "padding": {
+                "y": 10,
+                "x": 20
+              },
+              "align": "center-bottom",
+              "scaleFactor": 0.005,
+              "borderColor": "#FFFFFF",
+              "borderWidth": 2.1,
+              "borderRadius": 6.8,
+              "dpi": 2.9
+            }
+          }
+        }
+      },
+      "selectedExtendMeshUUID": null,
+      "weather": {
+        "curTime": 10,
+        "direct": -0.1,
+        "shadowIntensity": 1,
+        "intensity": 1,
+        "isRain": false,
+        "rainConfig": {
+          "type": "rain",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isSnow": false,
+        "snowConfig": {
+          "type": "snow",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isCloud": true,
+        "cloudConfig": {
+          "color": "#FFFFFF",
+          "segments": 56,
+          "volume": 0.1,
+          "opacity": 0.8,
+          "seed": 0,
+          "fade": 10,
+          "growth": 10,
+          "speed": 0.06,
+          "bounds": {
+            "x": 15.8,
+            "y": 0,
+            "z": 15.8
+          },
+          "position-y": 7
+        }
+      },
+      "floor": {
+        "showGrid": true,
+        "floorType": "whiteFloor",
+        "fState": {
+          "color": "#BB3B00",
+          "shadowColor": "#636363",
+          "receiveShadow": true,
+          "edge": 0.35,
+          "scale": 3.16
+        },
+        "comConfig": {
+          "color": {
+            "name": "面颜色",
+            "com": "ColorPicker"
+          },
+          "shadowColor": {
+            "name": "阴影颜色",
+            "com": "ColorPicker"
+          },
+          "receiveShadow": {
+            "name": "显示阴影",
+            "com": "Switch"
+          },
+          "edge": {
+            "name": "边缘模糊",
+            "com": "Slider",
+            "min": 0.2,
+            "max": 0.36,
+            "step": 0.01
+          }
+        }
+      },
+      "postProcessing": {
+        "isOpenList": {
+          "Bloom": false,
+          "chromaticAberration": false
+        },
+        "configList": {
+          "Bloom": {
+            "radius": 0.02,
+            "intensity": 0.01,
+            "luminance-threshold": 0.1,
+            "luminance-smoothing": 0.3,
+            "mipmap-blur": false
+          },
+          "chromaticAberration": {
+            "offsetX": 0.04,
+            "offsetY": 0.03,
+            "radialModulation": true,
+            "modulationOffset": 0.37
+          }
+        }
+      },
+      "label": "配置导入",
+      "timestamp": 1754382389090,
+      "otherParams": {
+        "isCollision": false
+      }
+    }
+  ],
+  "currentIndex": 0
+}
