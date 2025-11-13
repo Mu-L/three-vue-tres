@@ -15,8 +15,10 @@ const gl = {
 
 const controlsState = reactive({
   distance: 5,
-  minDistance: 0,
+  minDistance: 1,
   maxDistance: 100,
+  // 是否启用无限缩放 注意需要 搭配 minDistance一起用 并且 minDistance不能为0
+  infinityDolly: true,
 })
 
 const controlsRef = shallowRef()
@@ -28,7 +30,7 @@ const distanceFolder = pane.addFolder({ title: '距离参数' })
 distanceFolder.addBinding(controlsState, 'distance', {
   label: '设置距离',
   step: 0.01,
-  min: 0,
+  min: 0.1,
   max: 100,
 })
 distanceFolder.addBinding(controlsState, 'minDistance', {
