@@ -8,7 +8,7 @@
                 :scale="[5,1,1]" 
                 name="RoundedBox镜面" uuid="adf72280-7167-437d-a590-15eed8b883ff"
                 :castShadow="true" :receiveShadow="false" :renderOrder="0" :visible="true"
-                v-bind="eMeshState0" />
+                v-bind="eMeshState0" v-on="eMeshEvents0" />
         </Suspense>
         
         <Suspense>
@@ -58,7 +58,7 @@
                 :scale="[1,1,1]" 
                 name="RoundedBox镜面" uuid="8c9cd24d-a7e3-4ac7-afbb-123da53ad4a8"
                 :castShadow="true" :receiveShadow="false" :renderOrder="0" :visible="true"
-                v-bind="eMeshState5" />
+                v-bind="eMeshState5" v-on="eMeshEvents5" />
         </Suspense>
         
         <Suspense>
@@ -426,24 +426,95 @@
                 :position="[-2.532,0,2.4210000000000003]" 
                 :rotation="[0,0,0]" 
                 :scale="[1.5,1.5,1.5]" 
-                name="粒子底座" uuid="d5a64650-b4d8-466e-9618-4b350982a25f"
-                :castShadow="false" :receiveShadow="false" :renderOrder="9999" :visible="true"
+                name="粒子底座" uuid="727b4e34-b34e-453e-b6ec-4351a499adbd"
+                :castShadow="false" :receiveShadow="false" :renderOrder="9999" :visible="false"
                 v-bind="eMeshState42" />
         </Suspense>
         
         <Suspense>
-            <bannerLabel 
-                :position="[13.294,2.198,0.49]" 
-                :rotation="[2.203128000743436,0.0017911059282950934,3.1392205565761686]" 
-                :scale="[1,0.5,1]" 
-                name="精灵图文字" uuid="2ed7571f-c994-4f93-bfe7-a15360f5d670"
-                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="true"
+            <particleBase 
+                :position="[4.5680000000000005,-0.168,-8.631]" 
+                :rotation="[0,0,0]" 
+                :scale="[1.5,1.5,1.5]" 
+                name="粒子底座" uuid="b7d7dbd5-a959-4cd2-94bc-ac0d7d3e86e0"
+                :castShadow="false" :receiveShadow="false" :renderOrder="9999" :visible="false"
                 v-bind="eMeshState43" />
+        </Suspense>
+        
+        <Suspense>
+            <shapesforEditor 
+                :position="[4.481,1.442,-9.173]" 
+                :rotation="[0,0,0]" 
+                :scale="[2.6174728581863396,1,2.9753858623945484]" 
+                name="图形合集组件" uuid="6901ad93-4948-409a-82cb-30a8377ad229"
+                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="false"
+                v-bind="eMeshState44" v-on="eMeshEvents44" />
+        </Suspense>
+        
+        <Suspense>
+            <particleBase 
+                :position="[-9.371,-0.168,-8.631]" 
+                :rotation="[0,0,0]" 
+                :scale="[1.5,1.5,1.5]" 
+                name="粒子底座" uuid="231c0df2-8a18-4bd5-aede-7f5009b45f80"
+                :castShadow="false" :receiveShadow="false" :renderOrder="9999" :visible="false"
+                v-bind="eMeshState45" />
+        </Suspense>
+        
+        <Suspense>
+            <shapesforEditor 
+                :position="[-9.023,1.442,-9.173]" 
+                :rotation="[0,0,0]" 
+                :scale="[2.6174728581863396,1,2.9753858623945484]" 
+                name="图形合集组件" uuid="6fa6ccf2-3d8f-4f9c-8ac4-e74beb3f8822"
+                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="false"
+                v-bind="eMeshState46" v-on="eMeshEvents46" />
+        </Suspense>
+        
+        <Suspense>
+            <particleBase 
+                :position="[-9.633000000000001,-0.168,-8.307]" 
+                :rotation="[0,0,0]" 
+                :scale="[1.5,1.5,1.5]" 
+                name="粒子底座" uuid="e632e05f-46c9-4aaa-9031-de1d6a29b702"
+                :castShadow="false" :receiveShadow="false" :renderOrder="9999" :visible="false"
+                v-bind="eMeshState47" />
+        </Suspense>
+        
+        <Suspense>
+            <fencePlus 
+                :position="[-2,-0.043000000000000003,-24.473]" 
+                :rotation="[0,0,0]" 
+                :scale="[4.965722235761583,1,1.0242279475383238]" 
+                name="围墙高级" uuid="80179003-8d69-4ed1-957a-cbd9e2a742f9"
+                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="false"
+                v-bind="eMeshState48" />
+        </Suspense>
+        
+        <Suspense>
+            <generalFont 
+                :position="[16.937,1.911,-2.743]" 
+                :rotation="[-2.5515926535897933,-0.008407346410206696,-3.141592653589793]" 
+                :scale="[1.5,1.5,1.5]" 
+                name="tvt.js 技术栈" uuid="71d39a00-71ac-4075-943e-3850bb70e6bb"
+                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="true"
+                v-bind="eMeshState49" />
+        </Suspense>
+        
+        <Suspense>
+            <shapesforEditor 
+                :position="[-2.5460000000000003,1.442,-9.173]" 
+                :rotation="[0,0,0]" 
+                :scale="[2.6174728581863396,1,2.9753858623945484]" 
+                name="图形合集组件" uuid="053bf11b-f4f1-4dbc-a2e9-3216a4676e78"
+                :castShadow="false" :receiveShadow="false" :renderOrder="0" :visible="false"
+                v-bind="eMeshState50" v-on="eMeshEvents50" />
         </Suspense>
         </TresGroup>
 </template>
 
 <script setup lang="ts">
+import { extendMakeEvent } from '@/common/forEditor'
 import { reflectorRoundedBox } from 'PLS/floor'
             import { line2RoundedRect } from 'PLS/UIdemo'
             import { topoBase } from 'PLS/floor'
@@ -451,9 +522,55 @@ import { reflectorRoundedBox } from 'PLS/floor'
             import { bannerLabel } from 'PLS/UIdemo'
             import { lineArrow } from 'PLS/UIdemo'
             import { particleBase } from 'PLS/floor'
+            import { shapesforEditor } from 'PLS/basic'
+            import { fencePlus } from 'PLS/digitalCity'
+            import { generalFont } from 'PLS/UIdemo'
             
         const eMeshState0 = {"color":"#2A74C9","width":10,"height":0.65,"depth":6.03,"radius":0.16,"roughness":0.28,"metalness":0.41,"reflectorOffset":0.33,"mix":0.43,"sharpMix":0.57}
         
+    const eMeshEvents0 = extendMakeEvent([
+    {
+        eventType: 'click',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("单击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("双击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标右键:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移入:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '80179003-8d69-4ed1-957a-cbd9e2a742f9');
+if(wq){
+wq.visible = !wq.visible
+}
+document.body.style.cursor = 'pointer';
+            }
+        },{
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移出:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '80179003-8d69-4ed1-957a-cbd9e2a742f9');
+if(wq){
+wq.visible = !wq.visible
+}
+document.body.style.cursor = 'default';
+            }
+        },])
+    
         const eMeshState1 = {"linewidth":2.8,"color":"#2C2C2C","width":10,"height":5.7,"radius":0.107,"cornerSegments":6}
         
         const eMeshState2 = {"selected":"baseModelH","colorlist":["#6381EE","#FFFFFF","#FFFFFF","#FFFFFF","#6381EE","#FFFFFF"],"roughness":0.43,"metalness":0,"type":["baseModelA","baseModelB","baseModelC","baseModelD","baseModelE","baseModelF","baseModelG","baseModelH"]}
@@ -464,6 +581,51 @@ import { reflectorRoundedBox } from 'PLS/floor'
         
         const eMeshState5 = {"color":"#2A74C9","width":7.17,"height":0.65,"depth":6.03,"radius":0.16,"roughness":0.28,"metalness":0.41,"reflectorOffset":0.33,"mix":0.43,"sharpMix":0.57}
         
+    const eMeshEvents5 = extendMakeEvent([
+    {
+        eventType: 'click',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("单击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+window.open('https://gitee.com/ice-gl/icegl-three-vue-tres/');
+            }
+        },{
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("双击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标右键:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移入:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '727b4e34-b34e-453e-b6ec-4351a499adbd');
+if(wq){
+wq.visible = true
+}
+document.body.style.cursor = 'pointer';
+
+            }
+        },{
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移出:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '727b4e34-b34e-453e-b6ec-4351a499adbd');
+if(wq){
+wq.visible = false
+}
+document.body.style.cursor = 'default';
+            }
+        },])
+    
         const eMeshState6 = {"base64":"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzMzIiBoZWlnaHQ9IjM3NSIgdmlld0JveD0iMCAwIDMzMyAzNzUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xNzAuNDY2IDI5Ni4xNDRMMzkuMTExMiAzNzAuNjU0QzIxLjU3NTUgMzgwLjYwMiAtMC4xNTI3MTIgMzY3LjgzNiAwLjAwMDgwODk0OSAzNDcuNjc2TDEuMTIzODYgMjAwLjA4NUwxNzAuNDY2IDI5Ni4xNDRaTTE4MC42NTcgMjkwLjM2MkwxODAuNiAyOTAuMzk1TDEuNTUzNTQgMTg4LjgzMkwxNzkuMDkxIDg0LjUyMTVMMTgwLjY1NyAyOTAuMzYyWk0zMTkuMjM0IDE2Ni41OTFDMzM2LjYxNyAxNzYuODA0IDMzNi40MjUgMjAyLjAwNCAzMTguODg5IDIxMS45NTFMMTkwLjYxNSAyODQuNzE0TDE4OS4xMzQgOTAuMTUwNEwzMTkuMjM0IDE2Ni41OTFaTTIuNDQ5MDUgMjYuMDI5M0MyLjYwMjYyIDUuODY5NTIgMjQuNTIxNCAtNi41NjUwNyA0MS45MDQxIDMuNjQ3NUwxNjkuNDUyIDc4LjU4N0wxLjI5NjcxIDE3Ny4zODVMMi40NDkwNSAyNi4wMjkzWiIgZmlsbD0iIzM4MzgzOCIvPgo8L3N2Zz4K","isSprite":true}
         
         const eMeshState7 = {"linewidth":2.8,"color":"#2C2C2C","width":6.8,"height":5.7,"radius":0.107,"cornerSegments":6}
@@ -536,7 +698,143 @@ import { reflectorRoundedBox } from 'PLS/floor'
         
         const eMeshState41 = {"isSprite":false,"text":"🎉 三维可视化项目快速落地的开源框架 🎊","fontSize":82,"fontColor":"#141414","backgroundColor":"#FFFFFFC9","padding":{"y":20,"x":20},"align":"left-bottom","scaleFactor":0.02,"borderColor":"#000000","borderWidth":2.6,"borderRadius":0.9,"dpi":3.4}
         
-        const eMeshState42 = {"speed":-0.03,"randomness":0.61,"count":33,"size":0.23,"color":"#FFFFFF","areaX":5,"areaY":2.9,"areaZ":5,"opacity":0.68}
+        const eMeshState42 = {"speed":-0.17,"randomness":0.61,"count":127,"size":0.35,"color":"#FFFFFF","areaX":5,"areaY":3.5,"areaZ":5,"opacity":0.74}
         
-        const eMeshState43 = {"isSprite":false,"text":"tvt.js 技术栈","fontSize":60,"fontColor":"#000000","backgroundColor":"#FFFFFF00","padding":{"y":10,"x":20},"align":"left-bottom","scaleFactor":0.045,"borderColor":"#FFFFFF","borderWidth":0.1,"borderRadius":2,"dpi":2}
-        </script>
+        const eMeshState43 = {"speed":-0.03,"randomness":0.61,"count":94,"size":0.22,"color":"#B1C6FF","areaX":2.9,"areaY":2.4,"areaZ":2.6,"opacity":0.74}
+        
+        const eMeshState44 = {"modelValue":{"type":"Box","args":[1,1,1]},"materialType":"MeshStandardMaterial","materialProps":{"color":"#ffffff","map":null,"wireframe":false,"opacity":1,"transparent":false,"side":0,"alphaTest":0,"blending":1,"depthTest":true,"depthWrite":true,"emissive":"#000000","emissiveIntensity":1,"metalness":0.5,"roughness":0.5,"metalnessMap":null,"roughnessMap":null,"normalMap":null,"normalScale":{"x":1,"y":1},"bumpMap":null,"bumpScale":1,"displacementMap":null,"displacementScale":1,"displacementBias":0,"aoMap":null,"aoMapIntensity":1,"envMap":null,"envMapIntensity":1}}
+        
+    const eMeshEvents44 = extendMakeEvent([
+    {
+        eventType: 'click',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("单击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("双击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标右键:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移入:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', 'b7d7dbd5-a959-4cd2-94bc-ac0d7d3e86e0');
+if(wq){
+wq.visible = true
+}
+document.body.style.cursor = 'pointer';
+            }
+        },{
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移出:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', 'b7d7dbd5-a959-4cd2-94bc-ac0d7d3e86e0');
+if(wq){
+wq.visible = false
+}
+document.body.style.cursor = 'default';
+            }
+        },])
+    
+        const eMeshState45 = {"speed":-0.03,"randomness":0.61,"count":94,"size":0.22,"color":"#B1FFC8","areaX":2.9,"areaY":2.4,"areaZ":2.6,"opacity":0.74}
+        
+        const eMeshState46 = {"modelValue":{"type":"Box","args":[1,1,1]},"materialType":"MeshStandardMaterial","materialProps":{"color":"#ffffff","map":null,"wireframe":false,"opacity":1,"transparent":false,"side":0,"alphaTest":0,"blending":1,"depthTest":true,"depthWrite":true,"emissive":"#000000","emissiveIntensity":1,"metalness":0.5,"roughness":0.5,"metalnessMap":null,"roughnessMap":null,"normalMap":null,"normalScale":{"x":1,"y":1},"bumpMap":null,"bumpScale":1,"displacementMap":null,"displacementScale":1,"displacementBias":0,"aoMap":null,"aoMapIntensity":1,"envMap":null,"envMapIntensity":1}}
+        
+    const eMeshEvents46 = extendMakeEvent([
+    {
+        eventType: 'click',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("单击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("双击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标右键:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移入:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '231c0df2-8a18-4bd5-aede-7f5009b45f80');
+if(wq){
+wq.visible = true
+}
+document.body.style.cursor = 'pointer';
+            }
+        },{
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移出:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+const wq = currentObject.parent.parent.getObjectByProperty('uuid', '231c0df2-8a18-4bd5-aede-7f5009b45f80');
+if(wq){
+wq.visible = false
+}
+document.body.style.cursor = 'default';
+            }
+        },])
+    
+        const eMeshState47 = {"speed":-0.03,"randomness":0.61,"count":94,"size":0.22,"color":"#B1FFC8","areaX":4.4,"areaY":2.4,"areaZ":4.8,"opacity":0.74}
+        
+        const eMeshState48 = {"width":10,"height":5.787,"depth":6.068,"color":"#73D3FF","opacity":0.7,"num":5,"thickness":0.32,"speed":0.44,"room":0.64}
+        
+        const eMeshState49 = {"text":"tvtJS_技术栈","size":2,"height":0.4,"curveSegments":5,"bevelEnabled":true,"bevelThickness":0.08,"bevelSize":0.01,"bevelOffset":0.01,"bevelSegments":7,"center":true,"materialType":"TransmissionMaterial","materialProps":{"color":"#FFFFFF","roughness":0.24,"reflectivity":0.89,"attenuationColor":"#BDBDBD","attenuationDistance":1,"chromaticAberration":0.17,"anisotropicBlur":0.28,"distortion":0.61,"temporalDistortion":0.56,"backside":true,"thickness":0.61,"backsideThickness":0.26}}
+        
+        const eMeshState50 = {"modelValue":{"type":"Box","args":[1,1,1]},"materialType":"MeshStandardMaterial","materialProps":{"color":"#ffffff","map":null,"wireframe":false,"opacity":1,"transparent":false,"side":0,"alphaTest":0,"blending":1,"depthTest":true,"depthWrite":true,"emissive":"#000000","emissiveIntensity":1,"metalness":0.5,"roughness":0.5,"metalnessMap":null,"roughnessMap":null,"normalMap":null,"normalScale":{"x":1,"y":1},"bumpMap":null,"bumpScale":1,"displacementMap":null,"displacementScale":1,"displacementBias":0,"aoMap":null,"aoMapIntensity":1,"envMap":null,"envMapIntensity":1}}
+        
+    const eMeshEvents50 = extendMakeEvent([
+    {
+        eventType: 'click',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("单击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+window.open('https://docs.icegl.cn/');
+            }
+        },{
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("双击事件:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标右键:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+            }
+        },{
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移入:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+document.body.style.cursor = 'pointer';
+            }
+        },{
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+                console.log("鼠标移出:"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)
+document.body.style.cursor = 'default';
+            }
+        },])
+    </script>

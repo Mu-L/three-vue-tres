@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-09-11 08:59:53
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-15 08:29:32
+ * @LastEditTime: 2025-11-17 08:16:56
  */
 
 export default {
@@ -22,12 +22,12 @@ export default {
      QA问答:<br>
     1、此插件包依赖免费插件，请前往下载安装： <a style="color: #5384ff;" href="https://www.icegl.cn/tvtstore/useViewportGizmo" target="_blank">ViewportGizmo插件</a><br>
     `,
-    version: '2.0.0',
+    version: '2.0.1',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
     creatTime: '2025-09-11',
-    updateTime: '2025-10-10',
+    updateTime: '2025-11-17',
     require: [],
     tvtstore: 'FREE',
     preview: [
