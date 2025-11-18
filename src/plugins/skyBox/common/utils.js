@@ -1,5 +1,13 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2024-01-26 16:14:33
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-11-18 15:15:38
+ */
 import * as THREE from 'three'
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
+import { RGBELoader } from 'three-stdlib'
 export const loadHDR = (filepath) => new Promise((resolve, reject) => {
 	const loader = new RGBELoader()
 	// loader.setDataType(THREE.UnsignedByteType)
