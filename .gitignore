@@ -78,6 +78,7 @@ public/plugins/smartOilDepot
 src/plugins/zoneLowAltitudeUAV
 src/plugins/zonePixelLowMachinRoom
 src/plugins/superFactory
+src/plugins/zonePlasticProducts
 
 
 # 排除安装插件包
