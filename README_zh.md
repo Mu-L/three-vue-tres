@@ -165,6 +165,30 @@
 			</a>
 		</td>
   </tr>
+	<tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/zonePixelLowMachinRoom">
+				低像素风格机房：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+		<td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/zonePlasticProducts">
+				塑料制品厂三维：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zonePixelLowMachinRoom/#/plugins/zonePixelLowMachinRoom/index" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20251106/ac894bb3033344fe9ca7534d64a9885d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+			</a>
+		</td>
+		<td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zonePlasticProducts/#/plugins/zonePlasticProducts/secondaryCoding" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20251119/09534134fd018fe09c18bad0c4565e1d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 ```shell

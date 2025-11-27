@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-03 09:50:51
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-12 08:55:55
+ * @LastEditTime: 2025-11-27 15:14:57
  */
 import reflectorDiffuse from './components/reflectorDiffuse.vue'
 import reflectorDUDV from './components/reflectorDUDV.vue'
@@ -23,6 +23,7 @@ import hexagonalWall from './components/hexagonalWall.vue'
 import mechaFloor from './components/mechaFloor.vue'
 import rippleFloor from './components/rippleFloor.vue'
 import hexagonalFloor from './components/hexagonalFloor.vue'
+import ribbonArrow from './components/ribbonArrow.vue'
 export {
     reflectorDiffuse,
     reflectorDUDV,
@@ -40,5 +41,6 @@ export {
     hexagonalWall,  
     mechaFloor,
     rippleFloor,
-    hexagonalFloor
+    hexagonalFloor,
+    ribbonArrow
 }

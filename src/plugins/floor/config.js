@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-22 10:47:42
+ * @LastEditTime: 2025-11-27 15:11:47
  */
 export default {
     name: 'floor',
@@ -50,5 +50,6 @@ export default {
         { src: 'plugins/floor/preview/particleBasePage.png', type: 'img', name: 'particleBasePage', title: '粒子底座' },
         { src: 'plugins/floor/preview/topoBasePage.png', type: 'img', name: 'topoBasePage', title: '拓扑底座' },
         { src: 'plugins/floor/preview/hexagonalFloorPage.png', type: 'img', name: 'hexagonalFloorPage', title: '六面地板组件化' },
+        { src: 'plugins/floor/preview/ribbonArrowPage.png', type: 'img', name: 'ribbonArrowPage', title: '滚动箭头组件' },
     ],
 }
