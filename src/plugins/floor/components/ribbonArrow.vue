@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-11-27 15:14:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-27 16:42:18
+ * @LastEditTime: 2025-11-28 08:41:49
 -->
 <template>
 	<TresGroup>
@@ -150,59 +150,85 @@ const createBufferGeometry = () => {
 createBufferGeometry()
 
 const makeArrowTextureCanvas = ({ arrowWidthPx, arrowHeightPx, spacingPx, style, color, lineWidth, offset }) => {
-	const width = arrowWidthPx + spacingPx;
-	const height = arrowHeightPx * 1.5;
-	const canvas = document.createElement('canvas');
-	canvas.width = width; canvas.height = height;
-	const ctx = canvas.getContext('2d');
-	ctx.clearRect(0, 0, width, height);
-	ctx.translate(0.5, 0.5);
-	ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = lineWidth;
-	const midY = height / 2 + offset;
-	const sW = arrowWidthPx;
-	const sH = arrowHeightPx;
+     // padding（左右留白）
+    const padding = spacingPx;
+    
+    // Canvas 的逻辑尺寸（CSS 像素）
+    const width = arrowWidthPx + padding * 2;
+    const height = arrowHeightPx + padding * 2;
 
-	const originX = spacingPx * 0.1;
-	if (style === 'chevron') {
-		ctx.beginPath();
-		ctx.moveTo(originX, midY - sH / 2);
-		ctx.lineTo(originX + sW, midY);
-		ctx.lineTo(originX, midY + sH / 2);
-		ctx.stroke();
-	} else if (style === 'double') {
-		ctx.beginPath();
-		ctx.moveTo(originX, midY - sH / 2);
-		ctx.lineTo(originX + sW * 0.7, midY);
-		ctx.lineTo(originX, midY + sH / 2);
-		ctx.stroke();
-		ctx.beginPath();
-		ctx.moveTo(originX + sW * 0.4, midY - sH / 2);
-		ctx.lineTo(originX + sW * 1.1, midY);
-		ctx.lineTo(originX + sW * 0.4, midY + sH / 2);
-		ctx.stroke();
-	} else if (style === 'triangle') {
-		ctx.beginPath();
-		ctx.moveTo(originX, midY - sH / 2);
-		ctx.lineTo(originX + sW, midY);
-		ctx.lineTo(originX, midY + sH / 2);
-		ctx.closePath(); ctx.fill();
-	} else if (style === 'diamond') {
-		ctx.beginPath();
-		const cx = originX + sW / 2;
-		ctx.moveTo(cx, midY - sH / 2);
-		ctx.lineTo(cx + sW / 2, midY);
-		ctx.lineTo(cx, midY + sH / 2);
-		ctx.lineTo(cx - sW / 2, midY);
-		ctx.closePath(); ctx.fill();
-	} else {
-		ctx.beginPath();
-		ctx.moveTo(originX, midY - sH / 2);
-		ctx.lineTo(originX + sW, midY);
-		ctx.lineTo(originX, midY + sH / 2);
-		ctx.stroke();
-	}
+    // 处理高 DPI
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const canvas = document.createElement('canvas');
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
 
-	return new THREE.CanvasTexture(canvas);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    // 图标绘制区域（保证始终居中）
+    const x0 = padding;
+    const y0 = padding;
+    const w = arrowWidthPx;
+    const h = arrowHeightPx;
+
+    const cx = x0 + w / 2;
+    const cy = y0 + h / 2 + offset;
+
+    //-------------------------------------------------------
+    // 正式绘制图标
+    //-------------------------------------------------------
+    if (style === 'chevron') {
+        ctx.beginPath();
+        ctx.moveTo(x0, cy - h / 2);
+        ctx.lineTo(x0 + w, cy);
+        ctx.lineTo(x0, cy + h / 2);
+        ctx.stroke();
+
+    } else if (style === 'triangle') {
+        ctx.beginPath();
+        ctx.moveTo(x0, cy - h / 2);
+        ctx.lineTo(x0 + w, cy);
+        ctx.lineTo(x0, cy + h / 2);
+        ctx.closePath();
+        ctx.fill();
+
+    } else if (style === 'diamond') {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - h / 2);
+        ctx.lineTo(cx + w / 2, cy);
+        ctx.lineTo(cx, cy + h / 2);
+        ctx.lineTo(cx - w / 2, cy);
+        ctx.closePath();
+        ctx.fill();
+
+    } else {
+        // default chevron stroke
+        ctx.beginPath();
+        ctx.moveTo(x0, cy - h / 2);
+        ctx.lineTo(x0 + w, cy);
+        ctx.lineTo(x0, cy + h / 2);
+        ctx.stroke();
+    }
+
+	const tex = new THREE.CanvasTexture(canvas)
+  tex.generateMipmaps = false
+  tex.minFilter = THREE.LinearFilter
+	tex.magFilter = THREE.LinearFilter
+	tex.wrapS = THREE.RepeatWrapping
+	tex.wrapT = THREE.ClampToEdgeWrapping
+	tex.repeat.set(pathWorldLength / (props.arrowWidth + props.arrowSpacing), 1)
+  tex.needsUpdate = true
+  return tex
 }
 
 let arrowTex = null
@@ -219,9 +245,6 @@ const getArrowTex = () => {
 		lineWidth: props.arrowLineWidth,
 		offset: props.arrowOffset
 	})
-	arrowTex.wrapS = THREE.RepeatWrapping
-	arrowTex.wrapT = THREE.ClampToEdgeWrapping
-	arrowTex.repeat.set(pathWorldLength / (props.arrowWidth + props.arrowSpacing), 1)
 }
 getArrowTex()
 
