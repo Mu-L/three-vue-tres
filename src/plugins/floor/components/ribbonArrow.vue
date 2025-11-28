@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-11-27 15:14:48
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-28 09:13:23
+ * @LastEditTime: 2025-11-28 15:33:03
 -->
 <template>
 	<TresGroup>
@@ -271,9 +271,9 @@ watch(
 )
 
 const { onBeforeRender } = useLoop()
-onBeforeRender(({ delta }) => {
+onBeforeRender(() => {
 	if (arrowTex) {
-		const dt = props.speed * delta
+		const dt = props.speed * 0.01
 		arrowTex.offset.x = (arrowTex.offset.x - dt) % 1
 		if (arrowTex.offset.x > 1) arrowTex.offset.x -= 1
 		arrowTex.needsUpdate = true
