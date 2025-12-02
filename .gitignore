@@ -79,6 +79,7 @@ src/plugins/zoneLowAltitudeUAV
 src/plugins/zonePixelLowMachinRoom
 src/plugins/superFactory
 src/plugins/zonePlasticProducts
+src/plugins/zoneSmartWarehouse
 
 
 # 排除安装插件包
