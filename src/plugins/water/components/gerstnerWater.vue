@@ -52,7 +52,7 @@ const props = defineProps({
 		}
 	},
 	meshUUIDList: {
-		default: () => [] as string[],
+		default: () => [] as any,
 	},
 })
 
@@ -192,17 +192,49 @@ function getWaveInfo(x: number, z: number, time: number) {
 		normal: normal
 	}
 }
+
+
 const meshList = [] as any
-watch(
-	() => props.meshUUIDList,
-	(meshUUIDList) => {
-		meshList.length = 0
-		meshUUIDList.forEach((uuid) => {
-			const item = scene.value.getObjectByProperty('uuid', uuid)
+declare global {
+	interface Window {
+		globalTvtFun?: any // 包含所有一些全局函数
+	}
+}
+window.globalTvtFun = window.globalTvtFun || {}
+window.globalTvtFun.gerstnerWater_updateMeshList = () => {
+	// 重置 每个物体的最初位置 和 最初旋转
+	if (meshList.length > 0) {
+		props.meshUUIDList.forEach((i: any) => {
+			const item = scene.value.getObjectByProperty('uuid', i.uuid)
 			if (item) {
-				meshList.push(item)
+				const meshItem = meshList.find((m: any) => m.mesh.uuid === i.uuid)
+				if (meshItem) {
+					item.position.copy(meshItem.defaultPosition)
+					item.quaternion.copy(meshItem.defaultQuaternion)
+				}
 			}
 		})
+	}
+	meshList.length = 0
+	props.meshUUIDList.forEach((i: any) => {
+		const item = scene.value.getObjectByProperty('uuid', i.uuid)
+		if (item) {
+			let floatScale = 1.0
+			let yOffsetScale = 1.0
+			if (i.floatScale != null && i.floatScale !== '') {
+				floatScale = i.floatScale
+			}
+			if (i.yOffsetScale != null && i.yOffsetScale !== '') {
+				yOffsetScale = i.yOffsetScale
+			}
+			meshList.push({ mesh: item, floatScale, yOffsetScale, defaultPosition: item.position.clone(), defaultQuaternion: item.quaternion.clone() })
+		}
+	})
+}
+watch(
+	() => props.meshUUIDList,
+	() => {
+		window.globalTvtFun.gerstnerWater_updateMeshList()
 	},
 	{ immediate: true, deep: true }
 )
@@ -211,11 +243,13 @@ const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta }) => {
 	water.material.uniforms['time'].value += delta
 
-	meshList.forEach((b: any) => {
+	meshList.forEach((item: any) => {
+		const b = item.mesh
+		const scale = item.floatScale
 		const waveInfo = getWaveInfo(b.position.x, b.position.z, water.material.uniforms['time'].value)
-		b.position.y = waveInfo.position.y
+		b.position.y = waveInfo.position.y * item.yOffsetScale
 		const quat = new THREE.Quaternion().setFromEuler(
-			new THREE.Euler(waveInfo.normal.x, waveInfo.normal.y, waveInfo.normal.z)
+			new THREE.Euler(waveInfo.normal.x * scale, waveInfo.normal.y * scale, waveInfo.normal.z * scale)
 		)
 		b.quaternion.rotateTowards(quat, delta * 0.5)
 	})

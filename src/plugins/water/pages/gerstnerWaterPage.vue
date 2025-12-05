@@ -4,14 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-05 10:15:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-05 15:26:20
+ * @LastEditTime: 2025-12-05 17:46:05
 -->
 <template>
 	<TresCanvas v-bind="gl" window-size>
 		<TresPerspectiveCamera :position="[30, 30, 100]" :far="2000" :near="1" />
 		<OrbitControls />
-		<gerstnerWater v-bind="gwState"
-			:meshUUIDList="['dsads-bvffdssa-dsaewq-ecxs-dsa', 'gsgads-sgffdssa-lsaewq-ycxs-jdsad']" />
+		<gerstnerWater v-bind="gwState" :meshUUIDList="meshUUIDList" />
 
 		<basiceEnv :on="true" :environmentIntensity="1" />
 
@@ -25,12 +24,17 @@
 			<TresMeshNormalMaterial />
 		</TresMesh>
 
+		<TresMesh uuid="agsgads-sgffdssa-lsaewq-ycxs-jdsad" :position="[-60, -10, -60]">
+			<TresBoxGeometry :args="[60, 60, 60]" />
+			<TresMeshNormalMaterial />
+		</TresMesh>
+
 	</TresCanvas>
 </template>
 
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { gerstnerWater } from 'PLS/water'
 import { Pane } from 'tweakpane'
 import { basiceEnv } from 'PLS/skyBox'
@@ -63,6 +67,14 @@ const gwState = reactive({
 	}
 })
 
+const meshUUIDList = ref([
+	{ uuid: 'dsads-bvffdssa-dsaewq-ecxs-dsa' },
+	{ uuid: 'gsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 1, yOffsetScale: 1 },
+	{ uuid: 'agsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 0.1, yOffsetScale: 0.5 },
+])
+setTimeout(() => {
+	window.globalTvtFun.gerstnerWater_updateMeshList()
+}, 1000)
 const paneControl = new Pane({
 	title: '参数',
 	expanded: true
@@ -77,6 +89,16 @@ paneControl.addBinding(gwState, 'wireframe', {
 })
 paneControl.addBinding(gwState, 'waterColor', {
 	label: '水颜色',
+})
+paneControl.addBinding(meshUUIDList.value[2], 'floatScale', {
+	label: '最大物体的浮动比例', min: 0,
+	max: 2,
+	step: 0.01,
+})
+paneControl.addBinding(meshUUIDList.value[2], 'yOffsetScale', {
+	label: '最大物体的上下比例', min: 0,
+	max: 2,
+	step: 0.01,
 })
 
 const adf = paneControl.addFolder({ title: '波浪A' })
