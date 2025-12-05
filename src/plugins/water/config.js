@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-22 09:54:51
+ * @LastEditTime: 2025-12-05 10:14:27
  */
 
 export default {
@@ -42,6 +42,12 @@ export default {
             name: 'iceFloor',
             title: '冰面',
             referenceSource: { title: 'ice-trails', url: 'https://github.com/rock-biter/ice-trails' },
+        },
+        {
+            src: 'plugins/water/preview/gerstnerWaterPage.png',
+            type: 'img',
+            name: 'gerstnerWaterPage',
+            title: '海洋波浪组件',
         },
     ],
 }

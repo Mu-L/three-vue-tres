@@ -8,5 +8,6 @@
  */
 import staticWater from './components/staticWater.vue'
 import iceFloor from './components/iceFloor.vue'
+import gerstnerWater from './components/gerstnerWater.vue'
 
-export { staticWater, iceFloor }
+export { staticWater, iceFloor, gerstnerWater }
