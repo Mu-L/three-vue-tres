@@ -4,15 +4,26 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-05 10:15:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-05 14:58:45
+ * @LastEditTime: 2025-12-05 15:26:20
 -->
 <template>
 	<TresCanvas v-bind="gl" window-size>
 		<TresPerspectiveCamera :position="[30, 30, 100]" :far="2000" :near="1" />
 		<OrbitControls />
-		<gerstnerWater v-bind="gwState" />
+		<gerstnerWater v-bind="gwState"
+			:meshUUIDList="['dsads-bvffdssa-dsaewq-ecxs-dsa', 'gsgads-sgffdssa-lsaewq-ycxs-jdsad']" />
 
 		<basiceEnv :on="true" :environmentIntensity="1" />
+
+		<TresMesh uuid="dsads-bvffdssa-dsaewq-ecxs-dsa">
+			<TresBoxGeometry :args="[10, 10, 10]" />
+			<TresMeshNormalMaterial />
+		</TresMesh>
+
+		<TresMesh uuid="gsgads-sgffdssa-lsaewq-ycxs-jdsad" :position="[-20, -3, -20]">
+			<TresBoxGeometry :args="[8, 8, 8]" />
+			<TresMeshNormalMaterial />
+		</TresMesh>
 
 	</TresCanvas>
 </template>

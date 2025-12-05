@@ -32,6 +32,7 @@ const props = defineProps({
 		default: '#001e0f',
 	},
 	waves: {
+		type: Object,
 		default: {
 			A: {
 				direction: 0,
@@ -49,7 +50,10 @@ const props = defineProps({
 				wavelength: 15
 			},
 		}
-	}
+	},
+	meshUUIDList: {
+		default: () => [] as string[],
+	},
 })
 
 const { scene } = useTres()
@@ -151,12 +155,69 @@ watch(
 			waves.C.steepness,
 			waves.C.wavelength,
 		]
-	},	
+	},
 	{ deep: true }
+)
+
+function getWaveInfo(x: number, z: number, time: number) {
+	const pos = new THREE.Vector3()
+	const tangent = new THREE.Vector3(1, 0, 0)
+	const binormal = new THREE.Vector3(0, 0, 1)
+	Object.keys(props.waves).forEach((wave) => {
+		const w = props.waves[wave]
+		const k = (Math.PI * 2) / w.wavelength;
+		const c = Math.sqrt(9.8 / k);
+		const d = new THREE.Vector2(
+			Math.sin((w.direction * Math.PI) / 180),
+			-Math.cos((w.direction * Math.PI) / 180)
+		);
+		const f = k * (d.dot(new THREE.Vector2(x, z)) - c * time);
+		const a = w.steepness / k;
+
+		pos.x += d.y * (a * Math.cos(f));
+		pos.y += a * Math.sin(f);
+		pos.z += d.x * (a * Math.cos(f));
+
+		tangent.x += -d.x * d.x * (w.steepness * Math.sin(f));
+		tangent.y += d.x * (w.steepness * Math.cos(f));
+		tangent.z += -d.x * d.y * (w.steepness * Math.sin(f));
+
+		binormal.x += -d.x * d.y * (w.steepness * Math.sin(f));
+		binormal.y += d.y * (w.steepness * Math.cos(f));
+		binormal.z += -d.y * d.y * (w.steepness * Math.sin(f));
+	})
+	const normal = binormal.cross(tangent).normalize();
+	return {
+		position: pos,
+		normal: normal
+	}
+}
+const meshList = [] as any
+watch(
+	() => props.meshUUIDList,
+	(meshUUIDList) => {
+		meshList.length = 0
+		meshUUIDList.forEach((uuid) => {
+			const item = scene.value.getObjectByProperty('uuid', uuid)
+			if (item) {
+				meshList.push(item)
+			}
+		})
+	},
+	{ immediate: true, deep: true }
 )
 
 const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta }) => {
 	water.material.uniforms['time'].value += delta
+
+	meshList.forEach((b: any) => {
+		const waveInfo = getWaveInfo(b.position.x, b.position.z, water.material.uniforms['time'].value)
+		b.position.y = waveInfo.position.y
+		const quat = new THREE.Quaternion().setFromEuler(
+			new THREE.Euler(waveInfo.normal.x, waveInfo.normal.y, waveInfo.normal.z)
+		)
+		b.quaternion.rotateTowards(quat, delta * 0.5)
+	})
 })
 </script>
