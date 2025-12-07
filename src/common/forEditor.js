@@ -187,4 +187,12 @@ function extendMakeEvent(eventList) {
   return handlers
 }
 
-export { standardizationMeshCopy, useAnimations, meshAddEvent, extendMakeEvent }
+function onReadySenceOnce () {
+  if (window.globalTvtFun) {
+    if (window.globalTvtFun?.gerstnerWater_updateMeshList) {
+      window.globalTvtFun?.gerstnerWater_updateMeshList(true)
+    }
+  }
+}
+
+export { standardizationMeshCopy, useAnimations, meshAddEvent, extendMakeEvent, onReadySenceOnce }

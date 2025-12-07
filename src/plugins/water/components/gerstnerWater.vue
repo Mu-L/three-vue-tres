@@ -58,11 +58,11 @@ const props = defineProps({
 
 const { scene } = useTres()
 
-const waterGeometry = new THREE.PlaneGeometry(2048, 2048, 512, 512)
+const waterGeometry = new THREE.PlaneGeometry(512, 512, 256, 256)
 
 const water = new Water(waterGeometry, {
-	textureWidth: 512,
-	textureHeight: 512,
+	textureWidth: 256,
+	textureHeight: 256,
 	waterNormals: new THREE.TextureLoader().load('./plugins/water/images/waternormals.jpg',
 		function (texture) {
 			texture.wrapS = texture.wrapT = THREE.RepeatWrapping
