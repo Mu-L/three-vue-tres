@@ -4,13 +4,13 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-05 10:15:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-07 11:44:07
+ * @LastEditTime: 2025-12-07 15:11:45
 -->
 <template>
 	<TresCanvas v-bind="gl" window-size>
 		<TresPerspectiveCamera :position="[30, 30, 100]" :far="2000" :near="1" />
 		<OrbitControls />
-		<gerstnerWater v-bind="gwState" :meshUUIDList="meshUUIDList" />
+		<gerstnerWater :scale="[2, 1, 2]" v-bind="gwState" :meshUUIDList="meshUUIDList" />
 
 		<basiceEnv :on="true" :environmentIntensity="1" />
 
@@ -68,8 +68,8 @@ const gwState = reactive({
 })
 
 const meshUUIDList = ref([
-	{ uuid: 'dsads-bvffdssa-dsaewq-ecxs-dsa' },
-	{ uuid: 'gsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 1, yOffsetScale: 1 },
+	{ uuid: 'dsads-bvffdssa-dsaewq-ecxs-dsa', floatScale: 0.9, yOffsetScale: 0.8 },
+	{ uuid: 'gsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 0.9, yOffsetScale: 0.8 },
 	{ uuid: 'agsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 0.2, yOffsetScale: 0.5 },
 ])
 setTimeout(() => {

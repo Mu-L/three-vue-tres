@@ -58,7 +58,7 @@ const props = defineProps({
 
 const { scene } = useTres()
 
-const waterGeometry = new THREE.PlaneGeometry(512, 512, 256, 256)
+const waterGeometry = new THREE.PlaneGeometry(1024, 1024, 256, 256)
 
 const water = new Water(waterGeometry, {
 	textureWidth: 256,
