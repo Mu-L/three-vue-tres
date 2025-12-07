@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-05 10:15:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-05 17:46:05
+ * @LastEditTime: 2025-12-07 11:44:07
 -->
 <template>
 	<TresCanvas v-bind="gl" window-size>
@@ -70,11 +70,11 @@ const gwState = reactive({
 const meshUUIDList = ref([
 	{ uuid: 'dsads-bvffdssa-dsaewq-ecxs-dsa' },
 	{ uuid: 'gsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 1, yOffsetScale: 1 },
-	{ uuid: 'agsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 0.1, yOffsetScale: 0.5 },
+	{ uuid: 'agsgads-sgffdssa-lsaewq-ycxs-jdsad', floatScale: 0.2, yOffsetScale: 0.5 },
 ])
 setTimeout(() => {
 	window.globalTvtFun.gerstnerWater_updateMeshList()
-}, 1000)
+}, 500)
 const paneControl = new Pane({
 	title: '参数',
 	expanded: true

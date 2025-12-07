@@ -201,9 +201,9 @@ declare global {
 	}
 }
 window.globalTvtFun = window.globalTvtFun || {}
-window.globalTvtFun.gerstnerWater_updateMeshList = () => {
+window.globalTvtFun.gerstnerWater_updateMeshList = (resetAll = false) => {
 	// 重置 每个物体的最初位置 和 最初旋转
-	if (meshList.length > 0) {
+	if (!resetAll && meshList.length > 0) {
 		props.meshUUIDList.forEach((i: any) => {
 			const item = scene.value.getObjectByProperty('uuid', i.uuid)
 			if (item) {
@@ -239,6 +239,7 @@ watch(
 	{ immediate: true, deep: true }
 )
 
+const curUp = new THREE.Vector3(0, 1, 0)
 const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta }) => {
 	water.material.uniforms['time'].value += delta
@@ -248,10 +249,25 @@ onBeforeRender(({ delta }) => {
 		const scale = item.floatScale
 		const waveInfo = getWaveInfo(b.position.x, b.position.z, water.material.uniforms['time'].value)
 		b.position.y = waveInfo.position.y * item.yOffsetScale
-		const quat = new THREE.Quaternion().setFromEuler(
-			new THREE.Euler(waveInfo.normal.x * scale, waveInfo.normal.y * scale, waveInfo.normal.z * scale)
-		)
-		b.quaternion.rotateTowards(quat, delta * 0.5)
+		// 法线方向
+	const n = waveInfo.normal.clone().normalize();
+
+	// 计算目标四元数：让物体的 up 指向法线
+	const targetQuat = new THREE.Quaternion().setFromUnitVectors(curUp, n);
+
+	// 小幅度时，可插值放小
+	if (scale !== 1) {
+		const current = b.quaternion.clone();
+		// slerp towards (缩放幅度)
+		targetQuat.slerp(current, 1 - scale);
+	}
+
+	// 最终旋转插值
+	b.quaternion.slerp(targetQuat, delta * item.floatScale)
+		// const quat = new THREE.Quaternion().setFromEuler(
+		// 	new THREE.Euler(waveInfo.normal.x * scale, waveInfo.normal.y * scale, waveInfo.normal.z * scale)
+		// )
+		// b.quaternion.rotateTowards(quat, delta * 0.5)
 	})
 })
 </script>
