@@ -1,0 +1,1069 @@
+{
+  "history": [
+    {
+      "mlist": {
+        "4c8821f0-8ef6-41c0-a964-6b447bd56239": {
+          "uuid": "4c8821f0-8ef6-41c0-a964-6b447bd56239",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -89.642,
+            "y": -0.784,
+            "z": -79.459
+          },
+          "scale": {
+            "x": 0.2,
+            "y": 0.2,
+            "z": 0.2
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "灯塔B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/灯塔B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "670f59b7-487c-4cec-aaed-328e392965ff": {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "rotation": {
+            "x": 0,
+            "y": -0.07,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 4.891,
+            "y": -0.9,
+            "z": 10.46
+          },
+          "scale": {
+            "x": 0.6,
+            "y": 0.6,
+            "z": 0.6
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "货轮B",
+          "type": "Model",
+          "path": "http://localhost:4000/static/3船/models/货轮B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a": {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -25.194,
+            "y": -1.6620000000000001,
+            "z": -44.363
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "游轮A",
+          "type": "Model",
+          "path": "http://localhost:4000/static/3船/models/游轮A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "7229e153-93c4-446f-8c67-319ae4c40487": {
+          "uuid": "7229e153-93c4-446f-8c67-319ae4c40487",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -20.865000000000002,
+            "y": -0.523,
+            "z": -102.563
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "f0110b48-c960-4ce1-8e98-fbce2fdaa037": {
+          "uuid": "f0110b48-c960-4ce1-8e98-fbce2fdaa037",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 31.039,
+            "y": -0.523,
+            "z": -144.81900000000002
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "c5c14774-7b51-4bcc-906d-f1706d951c0a": {
+          "uuid": "c5c14774-7b51-4bcc-906d-f1706d951c0a",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": -18.967,
+            "y": -0.523,
+            "z": -155.776
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "a4b5c472-ebbc-49f6-b4cb-241ef1dd8810": {
+          "uuid": "a4b5c472-ebbc-49f6-b4cb-241ef1dd8810",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 6.238,
+            "y": -0.523,
+            "z": -150.404
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "26aa2615-d20b-4d82-8106-a896781540a8": {
+          "uuid": "26aa2615-d20b-4d82-8106-a896781540a8",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 3.747,
+            "y": -0.523,
+            "z": -100.664
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "87cc1f5b-334b-4dfd-b846-ffdabb6d80f9": {
+          "uuid": "87cc1f5b-334b-4dfd-b846-ffdabb6d80f9",
+          "rotation": {
+            "x": -3.141592653589793,
+            "y": 0.8915926535897933,
+            "z": -3.141592653589793
+          },
+          "visible": true,
+          "position": {
+            "x": 29.54,
+            "y": -0.523,
+            "z": -97.354
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2,
+            "z": 1
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机B",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "WindTurbines": 1
+            }
+          }
+        },
+        "5ae98182-959e-4790-99c4-697f3a71f972": {
+          "uuid": "5ae98182-959e-4790-99c4-697f3a71f972",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -47.114000000000004,
+            "y": -0.49,
+            "z": -116.732
+          },
+          "scale": {
+            "x": 2,
+            "y": 2.5,
+            "z": 2
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "风电机A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {
+              "TurbineRotation": 1
+            }
+          }
+        },
+        "52df6326-8128-4687-a752-51b56df75185": {
+          "uuid": "52df6326-8128-4687-a752-51b56df75185",
+          "rotation": {
+            "x": 0.14006728658097345,
+            "y": 0.010700356584025858,
+            "z": 0.15224562763014243
+          },
+          "visible": true,
+          "position": {
+            "x": -76.925,
+            "y": -2.7408526475183908,
+            "z": -18.594
+          },
+          "scale": {
+            "x": 0.02,
+            "y": 0.02,
+            "z": 0.02
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "浮标A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "f0c2641d-e5d5-47cd-b638-91cbaf06af5e": {
+          "uuid": "f0c2641d-e5d5-47cd-b638-91cbaf06af5e",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -54.084,
+            "y": -0.86,
+            "z": -18.071
+          },
+          "scale": {
+            "x": 0.02,
+            "y": 0.02,
+            "z": 0.02
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "浮标A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "6200a408-1b9f-4073-824a-063ae623a5ba": {
+          "uuid": "6200a408-1b9f-4073-824a-063ae623a5ba",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": -24.257,
+            "y": -0.86,
+            "z": -18.071
+          },
+          "scale": {
+            "x": 0.02,
+            "y": 0.02,
+            "z": 0.02
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "浮标A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "c37ca173-1ffd-43d5-8645-254547b96e36": {
+          "uuid": "c37ca173-1ffd-43d5-8645-254547b96e36",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 9.359,
+            "y": -0.86,
+            "z": -18.071
+          },
+          "scale": {
+            "x": 0.02,
+            "y": 0.02,
+            "z": 0.02
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "浮标A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        },
+        "59a38498-8204-4279-8d6b-c84704941f3c": {
+          "uuid": "59a38498-8204-4279-8d6b-c84704941f3c",
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "position": {
+            "x": 42.304,
+            "y": -0.86,
+            "z": -18.071
+          },
+          "scale": {
+            "x": 0.02,
+            "y": 0.02,
+            "z": 0.02
+          },
+          "renderOrder": 0,
+          "castShadow": false,
+          "receiveShadow": false,
+          "name": "浮标A",
+          "type": "Model",
+          "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb",
+          "isCollision": true,
+          "canSelect": true,
+          "actionList": {
+            "timeScale": 1,
+            "actions": {}
+          }
+        }
+      },
+      "selectedMeshUUID": null,
+      "emxlist": {
+        "9d8aa48a-5303-4227-b335-f1740742de50": {
+          "object3D": {
+            "uuid": "9d8aa48a-5303-4227-b335-f1740742de50",
+            "rotation": {
+              "x": -1.55,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": -135.023,
+              "y": 0.1,
+              "z": 10.726
+            },
+            "scale": {
+              "x": 5,
+              "y": 5,
+              "z": 5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "滚动箭头组件",
+            "type": "ribbonArrow"
+          },
+          "extendProperties": {
+            "name": "滚动箭头组件",
+            "type": "ribbonArrow",
+            "pluginPath": "PLS/floor",
+            "vueFile": "PLS/floor/components/ribbonArrow.vue",
+            "previewPath": "./plugins/floor/preview/ribbonArrowPage.png",
+            "default": {
+              "length": 20,
+              "speed": 1,
+              "width": 1,
+              "bendPosition": 0.5,
+              "curvature": 0.4,
+              "backgroundColor": "#00aaff",
+              "backgroundAlpha": 0.25,
+              "segments": 240,
+              "arrowColor": "#ffffff",
+              "arrowWidth": 2,
+              "arrowHeight": 2,
+              "arrowSpacing": 2,
+              "arrowOffset": 0,
+              "arrowLineWidth": 18,
+              "arrowStyle": "chevron",
+              "pixelWorldScale": 0.03
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.5,
+                "z": 0
+              }
+            },
+            "config": {
+              "length": {
+                "name": "长度",
+                "com": "Slider",
+                "min": 1,
+                "max": 60,
+                "step": 0.1
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -5,
+                "max": 5,
+                "step": 0.01
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 5,
+                "step": 0.1
+              },
+              "bendPosition": {
+                "name": "弯折位置",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "curvature": {
+                "name": "弯曲度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundAlpha": {
+                "name": "背景透明度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "segments": {
+                "name": "分段数",
+                "com": "Slider",
+                "min": 10,
+                "max": 500,
+                "step": 1
+              },
+              "arrowColor": {
+                "name": "箭头颜色",
+                "com": "ColorPicker"
+              },
+              "arrowWidth": {
+                "name": "箭头高度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowHeight": {
+                "name": "箭头宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowSpacing": {
+                "name": "箭头间距",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowOffset": {
+                "name": "箭头垂直偏移",
+                "com": "Slider",
+                "min": -5,
+                "max": 5,
+                "step": 0.01
+              },
+              "arrowLineWidth": {
+                "name": "线条箭头粗细",
+                "com": "Slider",
+                "min": 1,
+                "max": 50,
+                "step": 1
+              },
+              "arrowStyle": {
+                "name": "箭头样式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "chevron",
+                    "value": "chevron"
+                  },
+                  {
+                    "label": "double",
+                    "value": "double"
+                  },
+                  {
+                    "label": "triangle",
+                    "value": "triangle"
+                  },
+                  {
+                    "label": "diamond",
+                    "value": "diamond"
+                  }
+                ]
+              },
+              "pixelWorldScale": {
+                "name": "像素到世界单位比例",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.1,
+                "step": 0.001
+              }
+            },
+            "curValue": {
+              "length": 60,
+              "speed": 1,
+              "width": 1.4,
+              "bendPosition": 1,
+              "curvature": 0.33,
+              "backgroundColor": "#D32709",
+              "backgroundAlpha": 0.25,
+              "segments": 240,
+              "arrowColor": "#ffffff",
+              "arrowWidth": 5.2,
+              "arrowHeight": 5.6,
+              "arrowSpacing": 4.6,
+              "arrowOffset": 0,
+              "arrowLineWidth": 18,
+              "arrowStyle": "chevron",
+              "pixelWorldScale": 0.066
+            }
+          }
+        },
+        "13b3c540-85ec-4529-93e8-a00027f08a3a": {
+          "object3D": {
+            "uuid": "13b3c540-85ec-4529-93e8-a00027f08a3a",
+            "rotation": {
+              "x": -1.5915919188276957,
+              "y": -0.00017482726218845442,
+              "z": -3.1331871250633148
+            },
+            "visible": true,
+            "position": {
+              "x": 95.032,
+              "y": 0.1,
+              "z": -45.215
+            },
+            "scale": {
+              "x": 5,
+              "y": 5,
+              "z": 5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "滚动箭头组件",
+            "type": "ribbonArrow"
+          },
+          "extendProperties": {
+            "name": "滚动箭头组件",
+            "type": "ribbonArrow",
+            "pluginPath": "PLS/floor",
+            "vueFile": "PLS/floor/components/ribbonArrow.vue",
+            "previewPath": "./plugins/floor/preview/ribbonArrowPage.png",
+            "default": {
+              "length": 20,
+              "speed": 1,
+              "width": 1,
+              "bendPosition": 0.5,
+              "curvature": 0.4,
+              "backgroundColor": "#00aaff",
+              "backgroundAlpha": 0.25,
+              "segments": 240,
+              "arrowColor": "#ffffff",
+              "arrowWidth": 2,
+              "arrowHeight": 2,
+              "arrowSpacing": 2,
+              "arrowOffset": 0,
+              "arrowLineWidth": 18,
+              "arrowStyle": "chevron",
+              "pixelWorldScale": 0.03
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.5,
+                "z": 0
+              }
+            },
+            "config": {
+              "length": {
+                "name": "长度",
+                "com": "Slider",
+                "min": 1,
+                "max": 60,
+                "step": 0.1
+              },
+              "speed": {
+                "name": "速度",
+                "com": "Slider",
+                "min": -5,
+                "max": 5,
+                "step": 0.01
+              },
+              "width": {
+                "name": "宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 5,
+                "step": 0.1
+              },
+              "bendPosition": {
+                "name": "弯折位置",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "curvature": {
+                "name": "弯曲度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "backgroundColor": {
+                "name": "背景颜色",
+                "com": "ColorPicker"
+              },
+              "backgroundAlpha": {
+                "name": "背景透明度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "segments": {
+                "name": "分段数",
+                "com": "Slider",
+                "min": 10,
+                "max": 500,
+                "step": 1
+              },
+              "arrowColor": {
+                "name": "箭头颜色",
+                "com": "ColorPicker"
+              },
+              "arrowWidth": {
+                "name": "箭头高度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowHeight": {
+                "name": "箭头宽度",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowSpacing": {
+                "name": "箭头间距",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 10,
+                "step": 0.1
+              },
+              "arrowOffset": {
+                "name": "箭头垂直偏移",
+                "com": "Slider",
+                "min": -5,
+                "max": 5,
+                "step": 0.01
+              },
+              "arrowLineWidth": {
+                "name": "线条箭头粗细",
+                "com": "Slider",
+                "min": 1,
+                "max": 50,
+                "step": 1
+              },
+              "arrowStyle": {
+                "name": "箭头样式",
+                "com": "Select",
+                "options": [
+                  {
+                    "label": "chevron",
+                    "value": "chevron"
+                  },
+                  {
+                    "label": "double",
+                    "value": "double"
+                  },
+                  {
+                    "label": "triangle",
+                    "value": "triangle"
+                  },
+                  {
+                    "label": "diamond",
+                    "value": "diamond"
+                  }
+                ]
+              },
+              "pixelWorldScale": {
+                "name": "像素到世界单位比例",
+                "com": "Slider",
+                "min": 0.001,
+                "max": 0.1,
+                "step": 0.001
+              }
+            },
+            "curValue": {
+              "length": 60,
+              "speed": 1,
+              "width": 1.4,
+              "bendPosition": 1,
+              "curvature": 0.33,
+              "backgroundColor": "#0949D3",
+              "backgroundAlpha": 0.25,
+              "segments": 240,
+              "arrowColor": "#ffffff",
+              "arrowWidth": 5.2,
+              "arrowHeight": 5.6,
+              "arrowSpacing": 4.6,
+              "arrowOffset": 0,
+              "arrowLineWidth": 18,
+              "arrowStyle": "chevron",
+              "pixelWorldScale": 0.066
+            }
+          }
+        }
+      },
+      "selectedExtendMeshUUID": "9d8aa48a-5303-4227-b335-f1740742de50",
+      "eventlist": [],
+      "camera": {
+        "type": "perspective",
+        "position": {
+          "x": 37.98,
+          "y": 38.83,
+          "z": 49.21
+        },
+        "target": {
+          "x": -1.76,
+          "y": 3.13,
+          "z": -19.4
+        },
+        "fov": 75,
+        "near": 1,
+        "left": -5,
+        "right": 5,
+        "top": 3.5,
+        "bottom": -3.5,
+        "zoom": 80,
+        "aspect": 1,
+        "far": 100000
+      },
+      "weather": {
+        "curTime": 7.6,
+        "direct": -0.1,
+        "shadowIntensity": 1,
+        "toneMapping": 1,
+        "toneMappingExposure": 0.99,
+        "intensity": 1,
+        "isRain": false,
+        "rainConfig": {
+          "type": "rain",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isSnow": false,
+        "snowConfig": {
+          "type": "snow",
+          "speed": 10,
+          "size": 5,
+          "count": 100,
+          "color": "#fff"
+        },
+        "isCloud": false,
+        "cloudConfig": {
+          "color": "#ffffff",
+          "segments": 56,
+          "volume": 0.1,
+          "opacity": 0.8,
+          "seed": 0,
+          "fade": 10,
+          "growth": 10,
+          "speed": 0.06,
+          "bounds": {
+            "x": 15.8,
+            "y": 0,
+            "z": 15.8
+          },
+          "position-y": 6
+        }
+      },
+      "backgroundEnv": {
+        "type": "desert",
+        "on": true,
+        "environmentIntensity": 1.2,
+        "environmentRotations": {
+          "x": 0.06,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "floor": {
+        "showGrid": false,
+        "gridState": {
+          "cellSize": 0.6,
+          "cellThickness": 1,
+          "cellColor": "#6f6f6f",
+          "sectionColor": "#63e2b7",
+          "sectionSize": 3.3,
+          "sectionThickness": 1.5,
+          "fadeDistance": 25,
+          "fadeStrength": 1,
+          "infiniteGrid": true
+        },
+        "floorType": "gerstnerWater",
+        "fState": {
+          "size": 0.8,
+          "wireframe": false,
+          "waterColor": "#002E5C",
+          "waves": {
+            "A": {
+              "direction": 0,
+              "steepness": 0.16,
+              "wavelength": 60
+            },
+            "B": {
+              "direction": 30,
+              "steepness": 0.24,
+              "wavelength": 30
+            },
+            "C": {
+              "direction": 60,
+              "steepness": 0.33,
+              "wavelength": 15
+            }
+          },
+          "meshUUIDList": [
+            {
+              "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+              "floatScale": 0.4,
+              "yOffsetScale": 0.3
+            },
+            {
+              "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+              "floatScale": 0.4,
+              "yOffsetScale": 0.4
+            },
+            {
+              "uuid": "52df6326-8128-4687-a752-51b56df75185",
+              "floatScale": 1.1,
+              "yOffsetScale": 0.68
+            },
+            {
+              "uuid": "f0c2641d-e5d5-47cd-b638-91cbaf06af5e",
+              "floatScale": 1.1,
+              "yOffsetScale": 0.68
+            },
+            {
+              "uuid": "6200a408-1b9f-4073-824a-063ae623a5ba",
+              "floatScale": 1.2,
+              "yOffsetScale": 0.68
+            },
+            {
+              "uuid": "c37ca173-1ffd-43d5-8645-254547b96e36",
+              "floatScale": 1.2,
+              "yOffsetScale": 0.68
+            },
+            {
+              "uuid": "59a38498-8204-4279-8d6b-c84704941f3c",
+              "floatScale": 1.2,
+              "yOffsetScale": 0.68
+            }
+          ],
+          "scale": 0.81
+        },
+        "comConfig": {
+          "size": {
+            "name": "水变化尺度",
+            "com": "Slider",
+            "min": 0.1,
+            "max": 10,
+            "step": 0.1
+          },
+          "wireframe": {
+            "name": "线框模式",
+            "com": "Switch"
+          },
+          "waterColor": {
+            "name": "水颜色",
+            "com": "ColorPicker"
+          },
+          "wavesConfig": {
+            "name": "波浪属性",
+            "com": "wavesConfig"
+          }
+        }
+      },
+      "postProcessing": {
+        "isOpenList": {},
+        "configList": {}
+      },
+      "label": "配置导入",
+      "timestamp": 1765165817076,
+      "otherParams": {
+        "isCollision": false
+      }
+    }
+  ],
+  "currentIndex": 0
+}
