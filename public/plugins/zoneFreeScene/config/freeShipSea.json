@@ -56,7 +56,7 @@
           "receiveShadow": false,
           "name": "货轮B",
           "type": "Model",
-          "path": "http://localhost:4000/static/3船/models/货轮B.glb",
+          "path": "https://oss.icegl.cn/p/modelServer/models/3船/models/货轮B.glb",
           "isCollision": true,
           "canSelect": true,
           "actionList": {
@@ -87,7 +87,7 @@
           "receiveShadow": false,
           "name": "游轮A",
           "type": "Model",
-          "path": "http://localhost:4000/static/3船/models/游轮A.glb",
+          "path": "https://oss.icegl.cn/p/modelServer/models/3船/models/游轮A.glb",
           "isCollision": true,
           "canSelect": true,
           "actionList": {
