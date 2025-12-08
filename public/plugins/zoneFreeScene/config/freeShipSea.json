@@ -36,14 +36,14 @@
         "670f59b7-487c-4cec-aaed-328e392965ff": {
           "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
           "rotation": {
-            "x": 0,
-            "y": -0.07,
-            "z": 0
+            "x": 0.011340316950557396,
+            "y": 0.000015718236624510755,
+            "z": 0.0027720668085343394
           },
           "visible": true,
           "position": {
             "x": 4.891,
-            "y": -0.9,
+            "y": -1.189124326363998,
             "z": 10.46
           },
           "scale": {
@@ -67,14 +67,14 @@
         "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a": {
           "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
           "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
+            "x": -0.028761572024479633,
+            "y": 0.000053580117989377876,
+            "z": -0.0037255517435211528
           },
           "visible": true,
           "position": {
             "x": -25.194,
-            "y": -1.6620000000000001,
+            "y": -0.9499404222230202,
             "z": -44.363
           },
           "scale": {
@@ -482,7 +482,7 @@
           }
         }
       },
-      "selectedMeshUUID": null,
+      "selectedMeshUUID": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
       "emxlist": {
         "9d8aa48a-5303-4227-b335-f1740742de50": {
           "object3D": {
@@ -881,10 +881,1067 @@
               "pixelWorldScale": 0.066
             }
           }
+        },
+        "59ba73a5-6d86-4c27-977e-78c95c7bb340": {
+          "object3D": {
+            "uuid": "59ba73a5-6d86-4c27-977e-78c95c7bb340",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 13.619,
+              "y": 0.851,
+              "z": 24.773
+            },
+            "scale": {
+              "x": 7,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "图形合集组件",
+            "type": "shapesforEditor"
+          },
+          "extendProperties": {
+            "name": "图形合集组件",
+            "type": "shapesforEditor",
+            "pluginPath": "PLS/basic",
+            "vueFile": "PLS/basic/components/forCientos/ShapesList/forEditor.vue",
+            "previewPath": "./plugins/basic/base/preview/shapesPage.png",
+            "default": {
+              "modelValue": {
+                "type": "Box",
+                "args": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#ffffff",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.5,
+                "roughness": 0.5,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 1,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.6,
+                "z": 0
+              }
+            },
+            "config": {
+              "shapeRenderer": {
+                "name": "形状渲染器",
+                "com": "shapeRendererUI"
+              },
+              "materialSelector": {
+                "name": "材质选择器",
+                "com": "materialSelectorUI"
+              }
+            },
+            "curValue": {
+              "modelValue": {
+                "type": "Box",
+                "args": [
+                  5,
+                  1.1,
+                  3,
+                  2,
+                  1,
+                  2
+                ]
+              },
+              "materialType": "TransmissionMaterial",
+              "materialProps": {
+                "color": "#FFFFFF",
+                "roughness": 0.11,
+                "reflectivity": 0.73,
+                "attenuationColor": "#6C6C6C",
+                "attenuationDistance": 0.38,
+                "chromaticAberration": 0,
+                "anisotropicBlur": 0.37,
+                "distortion": 0.3,
+                "temporalDistortion": 0,
+                "backside": false,
+                "thickness": 0.17,
+                "backsideThickness": 0.46
+              }
+            }
+          }
+        },
+        "85280b80-7a1c-4031-8cc8-aaf70f892041": {
+          "object3D": {
+            "uuid": "85280b80-7a1c-4031-8cc8-aaf70f892041",
+            "rotation": {
+              "x": -1.6600000000000004,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 11.285,
+              "y": 1.3900000000000001,
+              "z": 24.641000000000002
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "标准三维字体",
+            "type": "generalFont"
+          },
+          "extendProperties": {
+            "name": "标准三维字体",
+            "type": "generalFont",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/generalFont.vue",
+            "previewPath": "./plugins/UIdemo/preview/generalFontPage.png",
+            "default": {
+              "text": "3D文字展示组件",
+              "size": 0.5,
+              "height": 0.2,
+              "curveSegments": 5,
+              "bevelEnabled": true,
+              "bevelThickness": 0.05,
+              "bevelSize": 0.02,
+              "bevelOffset": 0,
+              "bevelSegments": 4,
+              "center": true,
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#ffffff",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.5,
+                "roughness": 0.5,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 1,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.3,
+                "z": 0
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "size": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 2,
+                "step": 0.1
+              },
+              "height": {
+                "name": "文字厚度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "curveSegments": {
+                "name": "曲线分段数",
+                "com": "Slider",
+                "min": 1,
+                "max": 20,
+                "step": 1
+              },
+              "bevelEnabled": {
+                "name": "斜角启用",
+                "com": "Switch"
+              },
+              "bevelThickness": {
+                "name": "斜角厚度",
+                "com": "Slider",
+                "min": 0,
+                "max": 0.2,
+                "step": 0.01
+              },
+              "bevelSize": {
+                "name": "斜角大小",
+                "com": "Slider",
+                "min": 0,
+                "max": 0.1,
+                "step": 0.01
+              },
+              "bevelOffset": {
+                "name": "斜角偏移",
+                "com": "Slider",
+                "min": -0.1,
+                "max": 0.1,
+                "step": 0.01
+              },
+              "bevelSegments": {
+                "name": "斜角分段数",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 1
+              },
+              "center": {
+                "name": "居中显示",
+                "com": "Switch"
+              },
+              "materialSelector": {
+                "name": "材质选择器",
+                "com": "materialSelectorUI"
+              }
+            },
+            "curValue": {
+              "text": "MRC集装箱货轮 - 18260GT",
+              "size": 1.5,
+              "height": 0.22,
+              "curveSegments": 9,
+              "bevelEnabled": true,
+              "bevelThickness": 0.05,
+              "bevelSize": 0.02,
+              "bevelOffset": 0,
+              "bevelSegments": 4,
+              "center": true,
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#993B3B",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.49,
+                "roughness": 0.72,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 0.85,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            }
+          }
+        },
+        "ea09fd01-9c32-4e07-838d-28a4d6379448": {
+          "object3D": {
+            "uuid": "ea09fd01-9c32-4e07-838d-28a4d6379448",
+            "rotation": {
+              "x": -1.5298976620779419,
+              "y": -0.07073732188678589,
+              "z": -1.5679040721375466
+            },
+            "visible": true,
+            "position": {
+              "x": -5.89,
+              "y": 0.354,
+              "z": 22.939
+            },
+            "scale": {
+              "x": 1.5,
+              "y": 1,
+              "z": 1.5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "箭头线组件",
+            "type": "lineArrow"
+          },
+          "extendProperties": {
+            "name": "箭头线组件",
+            "type": "lineArrow",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/lineArrow.vue",
+            "previewPath": "./plugins/UIdemo/preview/lineArrowPage.png",
+            "default": {
+              "color": "#00ff97",
+              "hasArrow": true,
+              "radius": 0.1,
+              "length": 10,
+              "cutoffRatio": 0.9,
+              "roughness": 0.2,
+              "metalness": 0
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 2,
+                "z": 0
+              }
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "hasArrow": {
+                "name": "箭头",
+                "com": "Switch"
+              },
+              "radius": {
+                "name": "粗细",
+                "com": "Slider",
+                "step": 0.01,
+                "min": 0.01,
+                "max": 0.2
+              },
+              "length": {
+                "name": "长度",
+                "com": "Slider",
+                "step": 0.1,
+                "min": 0.1,
+                "max": 10
+              },
+              "cutoffRatio": {
+                "name": "箭头延展",
+                "com": "Slider",
+                "step": 0.01,
+                "min": 0.01,
+                "max": 0.99
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#993B3B",
+              "hasArrow": true,
+              "radius": 0.1,
+              "length": 10,
+              "cutoffRatio": 0.91,
+              "roughness": 0.16,
+              "metalness": 0.62
+            }
+          }
+        },
+        "3a2b9c28-5cb3-40c2-9811-4e06fcf7ed3a": {
+          "object3D": {
+            "uuid": "3a2b9c28-5cb3-40c2-9811-4e06fcf7ed3a",
+            "rotation": {
+              "x": -1.5298976620779419,
+              "y": -0.07073732188678589,
+              "z": -1.5679040721375466
+            },
+            "visible": true,
+            "position": {
+              "x": -16.14,
+              "y": 0.354,
+              "z": -30.504
+            },
+            "scale": {
+              "x": 1.5,
+              "y": 1,
+              "z": 1.5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "箭头线组件",
+            "type": "lineArrow"
+          },
+          "extendProperties": {
+            "name": "箭头线组件",
+            "type": "lineArrow",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/lineArrow.vue",
+            "previewPath": "./plugins/UIdemo/preview/lineArrowPage.png",
+            "default": {
+              "color": "#00ff97",
+              "hasArrow": true,
+              "radius": 0.1,
+              "length": 10,
+              "cutoffRatio": 0.9,
+              "roughness": 0.2,
+              "metalness": 0
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 2,
+                "z": 0
+              }
+            },
+            "config": {
+              "color": {
+                "name": "颜色",
+                "com": "ColorPicker"
+              },
+              "hasArrow": {
+                "name": "箭头",
+                "com": "Switch"
+              },
+              "radius": {
+                "name": "粗细",
+                "com": "Slider",
+                "step": 0.01,
+                "min": 0.01,
+                "max": 0.2
+              },
+              "length": {
+                "name": "长度",
+                "com": "Slider",
+                "step": 0.1,
+                "min": 0.1,
+                "max": 10
+              },
+              "cutoffRatio": {
+                "name": "箭头延展",
+                "com": "Slider",
+                "step": 0.01,
+                "min": 0.01,
+                "max": 0.99
+              },
+              "roughness": {
+                "name": "金属度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              },
+              "metalness": {
+                "name": "粗糙度",
+                "com": "Slider",
+                "min": 0,
+                "max": 1,
+                "step": 0.01
+              }
+            },
+            "curValue": {
+              "color": "#344AAB",
+              "hasArrow": true,
+              "radius": 0.1,
+              "length": 10,
+              "cutoffRatio": 0.91,
+              "roughness": 0.16,
+              "metalness": 0.62
+            }
+          }
+        },
+        "fdd0ac03-4039-4a30-8c03-a1b5e170fef4": {
+          "object3D": {
+            "uuid": "fdd0ac03-4039-4a30-8c03-a1b5e170fef4",
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 2.387,
+              "y": 0.851,
+              "z": -27.739
+            },
+            "scale": {
+              "x": 6.5,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "图形合集组件",
+            "type": "shapesforEditor"
+          },
+          "extendProperties": {
+            "name": "图形合集组件",
+            "type": "shapesforEditor",
+            "pluginPath": "PLS/basic",
+            "vueFile": "PLS/basic/components/forCientos/ShapesList/forEditor.vue",
+            "previewPath": "./plugins/basic/base/preview/shapesPage.png",
+            "default": {
+              "modelValue": {
+                "type": "Box",
+                "args": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#ffffff",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.5,
+                "roughness": 0.5,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 1,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.6,
+                "z": 0
+              }
+            },
+            "config": {
+              "shapeRenderer": {
+                "name": "形状渲染器",
+                "com": "shapeRendererUI"
+              },
+              "materialSelector": {
+                "name": "材质选择器",
+                "com": "materialSelectorUI"
+              }
+            },
+            "curValue": {
+              "modelValue": {
+                "type": "Box",
+                "args": [
+                  5,
+                  1.1,
+                  2.7,
+                  2,
+                  1,
+                  2
+                ]
+              },
+              "materialType": "TransmissionMaterial",
+              "materialProps": {
+                "color": "#FFFFFF",
+                "roughness": 0.11,
+                "reflectivity": 0.73,
+                "attenuationColor": "#6C6C6C",
+                "attenuationDistance": 0.38,
+                "chromaticAberration": 0,
+                "anisotropicBlur": 0.37,
+                "distortion": 0.3,
+                "temporalDistortion": 0,
+                "backside": false,
+                "thickness": 0.17,
+                "backsideThickness": 0.46
+              }
+            }
+          }
+        },
+        "124add95-dcae-4b8e-98cd-0fb79f90a276": {
+          "object3D": {
+            "uuid": "124add95-dcae-4b8e-98cd-0fb79f90a276",
+            "rotation": {
+              "x": -1.6600000000000004,
+              "y": 0,
+              "z": 0
+            },
+            "visible": true,
+            "position": {
+              "x": 0.40900000000000003,
+              "y": 1.3900000000000001,
+              "z": -27.722
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "标准三维字体",
+            "type": "generalFont"
+          },
+          "extendProperties": {
+            "name": "标准三维字体",
+            "type": "generalFont",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/generalFont.vue",
+            "previewPath": "./plugins/UIdemo/preview/generalFontPage.png",
+            "default": {
+              "text": "3D文字展示组件",
+              "size": 0.5,
+              "height": 0.2,
+              "curveSegments": 5,
+              "bevelEnabled": true,
+              "bevelThickness": 0.05,
+              "bevelSize": 0.02,
+              "bevelOffset": 0,
+              "bevelSegments": 4,
+              "center": true,
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#ffffff",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.5,
+                "roughness": 0.5,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 1,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            },
+            "defaultObject3D": {
+              "position": {
+                "x": 0,
+                "y": 0.3,
+                "z": 0
+              }
+            },
+            "config": {
+              "text": {
+                "name": "文字内容",
+                "com": "Input"
+              },
+              "size": {
+                "name": "文字大小",
+                "com": "Slider",
+                "min": 0.1,
+                "max": 2,
+                "step": 0.1
+              },
+              "height": {
+                "name": "文字厚度",
+                "com": "Slider",
+                "min": 0.01,
+                "max": 1,
+                "step": 0.01
+              },
+              "curveSegments": {
+                "name": "曲线分段数",
+                "com": "Slider",
+                "min": 1,
+                "max": 20,
+                "step": 1
+              },
+              "bevelEnabled": {
+                "name": "斜角启用",
+                "com": "Switch"
+              },
+              "bevelThickness": {
+                "name": "斜角厚度",
+                "com": "Slider",
+                "min": 0,
+                "max": 0.2,
+                "step": 0.01
+              },
+              "bevelSize": {
+                "name": "斜角大小",
+                "com": "Slider",
+                "min": 0,
+                "max": 0.1,
+                "step": 0.01
+              },
+              "bevelOffset": {
+                "name": "斜角偏移",
+                "com": "Slider",
+                "min": -0.1,
+                "max": 0.1,
+                "step": 0.01
+              },
+              "bevelSegments": {
+                "name": "斜角分段数",
+                "com": "Slider",
+                "min": 1,
+                "max": 10,
+                "step": 1
+              },
+              "center": {
+                "name": "居中显示",
+                "com": "Switch"
+              },
+              "materialSelector": {
+                "name": "材质选择器",
+                "com": "materialSelectorUI"
+              }
+            },
+            "curValue": {
+              "text": "豪华邮轮探险号 - 3280GT",
+              "size": 1.5,
+              "height": 0.22,
+              "curveSegments": 9,
+              "bevelEnabled": true,
+              "bevelThickness": 0.05,
+              "bevelSize": 0.02,
+              "bevelOffset": 0,
+              "bevelSegments": 4,
+              "center": true,
+              "materialType": "MeshStandardMaterial",
+              "materialProps": {
+                "color": "#344AAB",
+                "map": null,
+                "wireframe": false,
+                "opacity": 1,
+                "transparent": false,
+                "side": 0,
+                "alphaTest": 0,
+                "blending": 1,
+                "depthTest": true,
+                "depthWrite": true,
+                "emissive": "#000000",
+                "emissiveIntensity": 1,
+                "metalness": 0.49,
+                "roughness": 0.72,
+                "metalnessMap": null,
+                "roughnessMap": null,
+                "normalMap": null,
+                "normalScale": {
+                  "x": 1,
+                  "y": 1
+                },
+                "bumpMap": null,
+                "bumpScale": 1,
+                "displacementMap": null,
+                "displacementScale": 0.85,
+                "displacementBias": 0,
+                "aoMap": null,
+                "aoMapIntensity": 1,
+                "envMap": null,
+                "envMapIntensity": 1
+              }
+            }
+          }
+        },
+        "00346b27-ba1e-4b17-a699-8ba3248060a6": {
+          "object3D": {
+            "uuid": "00346b27-ba1e-4b17-a699-8ba3248060a6",
+            "rotation": {
+              "x": -9.689998818189584e-18,
+              "y": 0.010000000000000989,
+              "z": 2.446423349157282e-16
+            },
+            "visible": true,
+            "position": {
+              "x": -20.97,
+              "y": 14.288,
+              "z": -44.687
+            },
+            "scale": {
+              "x": 5,
+              "y": 5,
+              "z": 5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "dom面板",
+            "type": "domPanel"
+          },
+          "extendProperties": {
+            "name": "dom面板",
+            "type": "domPanel",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/domPanel.vue",
+            "previewPath": "./plugins/UIdemo/preview/domPanelPage.png",
+            "default": {
+              "center": false,
+              "transform": false,
+              "sprite": false,
+              "distanceFactor": 10,
+              "domContent": "<div class=\"boxStyle1 pos-relative left-20 top--30 text-white\" style=\"padding: 10px;border-left: 10px solid #336699;background-image: linear-gradient(132deg, #00336680, #00336610);\">\n                这是正方形 📦\n            </div>"
+            },
+            "config": {
+              "center": {
+                "name": "居中",
+                "com": "Switch"
+              },
+              "transform": {
+                "name": "坐标转换",
+                "com": "Switch"
+              },
+              "sprite": {
+                "name": "精灵",
+                "com": "Switch"
+              },
+              "distanceFactor": {
+                "name": "距离缩放",
+                "com": "Slider",
+                "min": 1,
+                "max": 50,
+                "step": 1
+              },
+              "domContent": {
+                "name": "dom代码",
+                "com": "codeModal"
+              }
+            },
+            "curValue": {
+              "center": true,
+              "transform": true,
+              "sprite": false,
+              "distanceFactor": 3,
+              "domContent": "<div class=\"semi-wrap\" aria-hidden=\"true\">\n  <div class=\"semi\">\n    <div class=\"ring\" style=\"--p:86;\"></div>\n    <div class=\"sheen\"></div>\n  </div>\n\n  <div class=\"info\">\n    <div class=\"label\">仓位</div>\n    <div class=\"percent\">86%</div>\n  </div>\n</div>\n\n<style>\n/* 组件局部变量，无全局污染 */\n.semi-wrap{\n  --size: 240px;\n  --thickness: 44px;\n  --accent: #2fb0ff;\n  --base: rgba(255,255,255,0.08);\n  --p: 86;\n\n  width: var(--size);\n  height: calc(var(--size)/2 + 56px);\n  position: relative;\n  font-family: \"Segoe UI\", Roboto, \"PingFang SC\", \"Helvetica Neue\", Arial;\n  display: flex;\n  align-items: flex-start;\n  justify-content: center;\n}\n\n/* 半圆容器 */\n.semi-wrap .semi{\n  width: var(--size);\n  height: var(--size);\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  pointer-events: none;\n}\n\n/* 环 */\n.semi-wrap .ring{\n  --d: var(--size);\n  width: var(--d);\n  height: var(--d);\n  border-radius: 50%;\n  position: absolute;\n  left: 0;\n  top: 0;\n\n  transform: rotate(90deg);\n  transform-origin: 50% 50%;\n\n  background-image:\n    conic-gradient(from 180deg, var(--accent) calc(var(--p) * 1.8deg), transparent 0),\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      rgba(0,0,0,0) calc(50% - var(--thickness) + .5px)\n    );\n  background-blend-mode: normal;\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  -webkit-mask-composite: source-in;\n  mask-composite: exclude;\n\n  filter: drop-shadow(0 8px 20px rgba(47,176,255,0.14));\n}\n\n/* 高光 */\n.semi-wrap .sheen{\n  position: absolute;\n  width: var(--size);\n  height: var(--size);\n  left: 0;\n  top: 0;\n  border-radius: 50%;\n  pointer-events: none;\n  opacity: .9;\n\n  background:\n    conic-gradient(from 180deg,\n      rgba(255,255,255,0) 0deg,\n      rgba(255,255,255,.22) 2deg,\n      rgba(255,255,255,0) 4deg,\n      transparent 5deg\n    );\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n\n  animation: sheen-rotate 3.2s linear infinite;\n  transform-origin: 50% 50%;\n}\n\n/* 发光呼吸 */\n.semi-wrap .ring::after{\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  border-radius: 50%;\n  pointer-events: none;\n\n  box-shadow: 0 0 18px rgba(47,176,255,0.12), 0 0 36px rgba(47,176,255,0.06);\n  opacity: 1;\n  animation: glow 2.8s ease-in-out infinite;\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n}\n\n/* 信息区 */\n.semi-wrap .info{\n  position: absolute;\n  left: 50%;\n  transform: translateX(-50%);\n  top: 4px;\n  text-align: center;\n  color: white;\n  pointer-events: none;\n  width: 100%;\n}\n\n.semi-wrap .label{\n  font-size: 26px;\n  opacity: 1;\n  margin-bottom: -8px;\n  font-weight: 800;\n}\n\n.semi-wrap .percent{\n  font-size: 32px;\n  font-weight: 800;\n  letter-spacing: .4px;\n  text-shadow: 0 3px 10px rgba(0,0,0,.45);\n}\n\n/* 动效 */\n@keyframes sheen-rotate{\n  from { transform: rotate(0deg); }\n  to   { transform: rotate(360deg); }\n}\n@keyframes glow{\n  0%   { opacity: .75; transform: scale(1); }\n  50%  { opacity: 1;   transform: scale(1.02); }\n  100% { opacity: .75; transform: scale(1); }\n}\n</style>"
+            }
+          }
+        },
+        "0c4f4069-85da-4feb-95c1-a808eb53f315": {
+          "object3D": {
+            "uuid": "0c4f4069-85da-4feb-95c1-a808eb53f315",
+            "rotation": {
+              "x": -9.689998818189584e-18,
+              "y": 0.010000000000000989,
+              "z": 2.446423349157282e-16
+            },
+            "visible": true,
+            "position": {
+              "x": 2.758,
+              "y": 9.34,
+              "z": 8.858
+            },
+            "scale": {
+              "x": 5,
+              "y": 5,
+              "z": 5
+            },
+            "renderOrder": 0,
+            "castShadow": false,
+            "receiveShadow": false,
+            "name": "dom面板",
+            "type": "domPanel"
+          },
+          "extendProperties": {
+            "name": "dom面板",
+            "type": "domPanel",
+            "pluginPath": "PLS/UIdemo",
+            "vueFile": "PLS/UIdemo/components/domPanel.vue",
+            "previewPath": "./plugins/UIdemo/preview/domPanelPage.png",
+            "default": {
+              "center": false,
+              "transform": false,
+              "sprite": false,
+              "distanceFactor": 10,
+              "domContent": "<div class=\"boxStyle1 pos-relative left-20 top--30 text-white\" style=\"padding: 10px;border-left: 10px solid #336699;background-image: linear-gradient(132deg, #00336680, #00336610);\">\n                这是正方形 📦\n            </div>"
+            },
+            "config": {
+              "center": {
+                "name": "居中",
+                "com": "Switch"
+              },
+              "transform": {
+                "name": "坐标转换",
+                "com": "Switch"
+              },
+              "sprite": {
+                "name": "精灵",
+                "com": "Switch"
+              },
+              "distanceFactor": {
+                "name": "距离缩放",
+                "com": "Slider",
+                "min": 1,
+                "max": 50,
+                "step": 1
+              },
+              "domContent": {
+                "name": "dom代码",
+                "com": "codeModal"
+              }
+            },
+            "curValue": {
+              "center": true,
+              "transform": true,
+              "sprite": false,
+              "distanceFactor": 3,
+              "domContent": "<div class=\"semi-wrap2\" aria-hidden=\"true\">\n  <div class=\"semi\">\n    <div class=\"ring\" style=\"--p:68;\"></div>\n    <div class=\"sheen\"></div>\n  </div>\n\n  <div class=\"info\">\n    <div class=\"label\">仓位</div>\n    <div class=\"percent\">68%</div>\n  </div>\n</div>\n\n<style>\n/* 组件局部变量，无全局污染 */\n.semi-wrap2{\n  --size: 240px;           /* 外圆直径（半圆基于此） */\n  --thickness: 44px;       /* 环厚 */\n  --accent: #D32709;       /* 填充色（进度）*/\n  --base: rgba(255,255,255,0.08); /* 未填充透明/弱色（尽量透明）*/\n  --p: 68;                 /* 默认百分比（0-100），可覆盖到元素上 */\n\n  width: var(--size);\n  height: calc(var(--size)/2 + 56px);\n  position: relative;\n  font-family: \"Segoe UI\", Roboto, \"PingFang SC\", \"Helvetica Neue\", Arial;\n  display: flex;\n  align-items: flex-start;\n  justify-content: center;\n}\n\n/* 半圆容器 */\n.semi-wrap2 .semi{\n  width: var(--size);\n  height: var(--size);\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  pointer-events: none;\n}\n\n/* 环 */\n.semi-wrap2 .ring{\n  --d: var(--size);\n  width: var(--d);\n  height: var(--d);\n  border-radius: 50%;\n  position: absolute;\n  left: 0;\n  top: 0;\n\n  transform: rotate(90deg);\n  transform-origin: 50% 50%;\n\n  background-image:\n    conic-gradient(from 180deg, var(--accent) calc(var(--p) * 1.8deg), transparent 0),\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      rgba(0,0,0,0) calc(50% - var(--thickness) + .5px)\n    );\n  background-blend-mode: normal;\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  -webkit-mask-composite: source-in;\n  mask-composite: exclude;\n\n  filter: drop-shadow(0 8px 20px rgba(47,176,255,0.14));\n}\n\n/* 高光 */\n.semi-wrap2 .sheen{\n  position: absolute;\n  width: var(--size);\n  height: var(--size);\n  left: 0;\n  top: 0;\n  border-radius: 50%;\n  pointer-events: none;\n  opacity: .9;\n\n  background:\n    conic-gradient(from 180deg,\n      rgba(255,255,255,0) 0deg,\n      rgba(255,255,255,.22) 2deg,\n      rgba(255,255,255,0) 4deg,\n      transparent 5deg\n    );\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n\n  animation: sheen-rotate 3.2s linear infinite;\n  transform-origin: 50% 50%;\n}\n\n/* 发光呼吸 */\n.semi-wrap2 .ring::after{\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  border-radius: 50%;\n  pointer-events: none;\n\n  box-shadow: 0 0 18px rgba(47,176,255,0.12), 0 0 36px rgba(47,176,255,0.06);\n  opacity: 1;\n  animation: glow 2.8s ease-in-out infinite;\n\n  -webkit-mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n  mask:\n    radial-gradient(circle at center,\n      transparent calc(50% - var(--thickness)),\n      black calc(50% - var(--thickness) + .5px)\n    );\n}\n\n/* 信息区 */\n.semi-wrap2 .info{\n  position: absolute;\n  left: 50%;\n  transform: translateX(-50%);\n  top: 4px;\n  text-align: center;\n  color: white;\n  pointer-events: none;\n  width: 100%;\n}\n\n.semi-wrap2 .label{\n  font-size: 26px;\n  opacity: 1;\n  margin-bottom: -8px;\n  font-weight: 800;\n}\n\n.semi-wrap2 .percent{\n  font-size: 32px;\n  font-weight: 800;\n  letter-spacing: .4px;\n  text-shadow: 0 3px 10px rgba(0,0,0,.45);\n}\n\n/* 动效 */\n@keyframes sheen-rotate{\n  from { transform: rotate(0deg); }\n  to   { transform: rotate(360deg); }\n}\n@keyframes glow{\n  0%   { opacity: .75; transform: scale(1); }\n  50%  { opacity: 1;   transform: scale(1.02); }\n  100% { opacity: .75; transform: scale(1); }\n}\n</style>"
+            }
+          }
         }
       },
-      "selectedExtendMeshUUID": "9d8aa48a-5303-4227-b335-f1740742de50",
-      "eventlist": [],
+      "selectedExtendMeshUUID": null,
+      "eventlist": [
+        {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "type": "general",
+          "eventType": "click",
+          "eventFun": "console.log(\"单击事件:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "type": "general",
+          "eventType": "doubleclick",
+          "eventFun": "console.log(\"双击事件:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "type": "general",
+          "eventType": "contextmenu",
+          "eventFun": "console.log(\"鼠标右键:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "type": "general",
+          "eventType": "pointerenter",
+          "eventFun": "console.log(\"鼠标移入:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": true
+        },
+        {
+          "uuid": "670f59b7-487c-4cec-aaed-328e392965ff",
+          "type": "general",
+          "eventType": "pointerleave",
+          "eventFun": "console.log(\"鼠标移出:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": true
+        },
+        {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "type": "general",
+          "eventType": "click",
+          "eventFun": "console.log(\"单击事件:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "type": "general",
+          "eventType": "doubleclick",
+          "eventFun": "console.log(\"双击事件:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "type": "general",
+          "eventType": "contextmenu",
+          "eventFun": "console.log(\"鼠标右键:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": false
+        },
+        {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "type": "general",
+          "eventType": "pointerenter",
+          "eventFun": "console.log(\"鼠标移入:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": true
+        },
+        {
+          "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a",
+          "type": "general",
+          "eventType": "pointerleave",
+          "eventFun": "console.log(\"鼠标移出:\"+currentObject.uuid,PointerEvent,currentObject,point,object,distance)",
+          "enabled": true
+        }
+      ],
       "camera": {
         "type": "perspective",
         "position": {
@@ -1059,7 +2116,7 @@
         "configList": {}
       },
       "label": "配置导入",
-      "timestamp": 1765165817076,
+      "timestamp": 1765184318145,
       "otherParams": {
         "isCollision": false
       }

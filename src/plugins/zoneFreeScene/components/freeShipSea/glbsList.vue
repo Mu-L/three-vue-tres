@@ -6,9 +6,8 @@
 import * as THREE from 'three'
 import { ref } from 'vue'
 import { Resource } from 'PLS/resourceManager'
-import { standardizationMeshCopy, meshAddEvent } from '@/common/forEditor'
+import { standardizationMeshCopy, meshAddEvent, onReadySenceOnce } from '@/common/forEditor'
 import { useAnimations } from '@tresjs/cientos'
-import { onReadySenceOnce } from '@/common/forEditor'
 
 const setupLightingForModel = (selectedMesh: THREE.Object3D, value: boolean, type: string) => {
     selectedMesh.traverse((child: any) => {
@@ -53,14 +52,89 @@ syncMeshProp(oneglb0_0, op0_0, Resource.getItem('灯塔B.glb').animations)
 glbsGroup.add(oneglb0_0)
 
 const oneglb1_0 = standardizationMeshCopy(Resource.getItem('货轮B.glb').scene) as any
-const op1_0 = { "uuid": "670f59b7-487c-4cec-aaed-328e392965ff", "rotation": { "x": 0, "y": -0.07, "z": 0 }, "visible": true, "position": { "x": 4.891, "y": -0.9, "z": 10.46 }, "scale": { "x": 0.6, "y": 0.6, "z": 0.6 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "货轮B", "type": "Model", "path": "http://localhost:4000/static/3船/models/货轮B.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
+const op1_0 = { "uuid": "670f59b7-487c-4cec-aaed-328e392965ff", "rotation": { "x": 0.011340316950557396, "y": 0.000015718236624510755, "z": 0.0027720668085343394 }, "visible": true, "position": { "x": 4.891, "y": -1.189124326363998, "z": 10.46 }, "scale": { "x": 0.6, "y": 0.6, "z": 0.6 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "货轮B", "type": "Model", "path": "http://localhost:4000/static/3船/models/货轮B.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
 syncMeshProp(oneglb1_0, op1_0, Resource.getItem('货轮B.glb').animations)
 glbsGroup.add(oneglb1_0)
 
+meshAddEvent(oneglb1_0, [
+    {
+        eventType: 'click',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("单击事件:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("双击事件:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("鼠标右键:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            window.tvtDomPanel2visible.value = true
+            document.body.style.cursor = 'pointer'
+            console.log("鼠标移入:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            window.tvtDomPanel2visible.value = false
+            document.body.style.cursor = 'default'
+            console.log("鼠标移出:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    },])
+
 const oneglb2_0 = standardizationMeshCopy(Resource.getItem('游轮A.glb').scene) as any
-const op2_0 = { "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a", "rotation": { "x": -0.06906887624263622, "y": 0.00129954126544455, "z": -0.03761091015561855 }, "visible": true, "position": { "x": -25.194, "y": -0.39870295424744273, "z": -44.363 }, "scale": { "x": 1, "y": 1, "z": 1 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "游轮A", "type": "Model", "path": "http://localhost:4000/static/3船/models/游轮A.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
+const op2_0 = { "uuid": "75ef2b5c-62d6-4c23-b9c9-e8c2d6cd440a", "rotation": { "x": -0.028761572024479633, "y": 0.000053580117989377876, "z": -0.0037255517435211528 }, "visible": true, "position": { "x": -25.194, "y": -0.9499404222230202, "z": -44.363 }, "scale": { "x": 1, "y": 1, "z": 1 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "游轮A", "type": "Model", "path": "http://localhost:4000/static/3船/models/游轮A.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
 syncMeshProp(oneglb2_0, op2_0, Resource.getItem('游轮A.glb').animations)
 glbsGroup.add(oneglb2_0)
+
+meshAddEvent(oneglb2_0, [
+    {
+        eventType: 'click',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("单击事件:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'doubleclick',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("双击事件:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'contextmenu',
+        enabled: false,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("鼠标右键:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'pointerenter',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            console.log("鼠标移入:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+            window.tvtDomPanel1visible.value = true
+            document.body.style.cursor = 'pointer'
+            console.log("鼠标移入:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    }, {
+        eventType: 'pointerleave',
+        enabled: true,
+        function: (PointerEvent: any, currentObject: any, point: any, object: any, distance: any) => {
+            window.tvtDomPanel1visible.value = false
+            document.body.style.cursor = 'default'
+            console.log("鼠标移出:" + currentObject.uuid, PointerEvent, currentObject, point, object, distance)
+        }
+    },])
 
 const oneglb3_0 = standardizationMeshCopy(Resource.getItem('风电机B.glb').scene) as any
 const op3_0 = { "uuid": "7229e153-93c4-446f-8c67-319ae4c40487", "rotation": { "x": -3.141592653589793, "y": 0.8915926535897933, "z": -3.141592653589793 }, "visible": true, "position": { "x": -20.865000000000002, "y": -0.523, "z": -102.563 }, "scale": { "x": 1, "y": 1.2, "z": 1 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "风电机B", "type": "Model", "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/风电机B.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": { "WindTurbines": 1 } } }
@@ -98,7 +172,7 @@ syncMeshProp(oneglb4_0, op4_0, Resource.getItem('风电机A.glb').animations)
 glbsGroup.add(oneglb4_0)
 
 const oneglb5_0 = standardizationMeshCopy(Resource.getItem('浮标A.glb').scene) as any
-const op5_0 = { "uuid": "52df6326-8128-4687-a752-51b56df75185", "rotation": { "x": 0.14006728658097345, "y": 0.010700356584025858, "z": 0.15224562763014243 }, "visible": true, "position": { "x": -76.925, "y": -0.86, "z": -18.594 }, "scale": { "x": 0.02, "y": 0.02, "z": 0.02 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "浮标A", "type": "Model", "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
+const op5_0 = { "uuid": "52df6326-8128-4687-a752-51b56df75185", "rotation": { "x": 0.14006728658097345, "y": 0.010700356584025858, "z": 0.15224562763014243 }, "visible": true, "position": { "x": -76.925, "y": -2.7408526475183908, "z": -18.594 }, "scale": { "x": 0.02, "y": 0.02, "z": 0.02 }, "renderOrder": 0, "castShadow": false, "receiveShadow": false, "name": "浮标A", "type": "Model", "path": "https://oss.icegl.cn/p/modelServer/models/4海上标识/models/浮标A.glb", "isCollision": true, "canSelect": true, "actionList": { "timeScale": 1, "actions": {} } }
 syncMeshProp(oneglb5_0, op5_0, Resource.getItem('浮标A.glb').animations)
 glbsGroup.add(oneglb5_0)
 
@@ -122,7 +196,5 @@ const op5_4 = { "uuid": "59a38498-8204-4279-8d6b-c84704941f3c", "rotation": { "x
 syncMeshProp(oneglb5_4, op5_4, Resource.getItem('浮标A.glb').animations)
 glbsGroup.add(oneglb5_4)
 
-setTimeout(() => {
-	onReadySenceOnce()
-}, 1500)
+setTimeout(() => { onReadySenceOnce(); }, 1500)
 </script>
