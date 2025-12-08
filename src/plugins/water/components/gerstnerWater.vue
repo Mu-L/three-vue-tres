@@ -241,8 +241,8 @@ watch(
 
 const curUp = new THREE.Vector3(0, 1, 0)
 const { onBeforeRender } = useLoop()
-onBeforeRender(({ delta }) => {
-	water.material.uniforms['time'].value += delta
+onBeforeRender(() => {
+	water.material.uniforms['time'].value += 0.01
 
 	meshList.forEach((item: any) => {
 		const b = item.mesh
@@ -263,7 +263,7 @@ onBeforeRender(({ delta }) => {
 	}
 
 	// 最终旋转插值
-	b.quaternion.slerp(targetQuat, delta * item.floatScale)
+	b.quaternion.slerp(targetQuat, 0.01 * item.floatScale)
 		// const quat = new THREE.Quaternion().setFromEuler(
 		// 	new THREE.Euler(waveInfo.normal.x * scale, waveInfo.normal.y * scale, waveInfo.normal.z * scale)
 		// )

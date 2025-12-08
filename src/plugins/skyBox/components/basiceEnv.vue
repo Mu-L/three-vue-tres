@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-11-18 14:57:52
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2025-12-08 11:04:45
+-->
 <template>
 
 </template>
@@ -45,9 +53,9 @@ function toEuler(value: any): THREE.Euler | null {
 
 const { scene } = useTres()
 const pTexture = ref(null) as any
-watch(() => props.on, (value) => {
+watch(() => [props.on, pTexture.value], ([on,p]) => {
 	if (scene.value) {
-		if (value && pTexture.value) {
+		if (on && pTexture.value) {
 			scene.value.environment = pTexture.value
 		} else {
 			scene.value.environment = null
