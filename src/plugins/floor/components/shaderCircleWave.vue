@@ -4,20 +4,20 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 15:54:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-15 08:58:18
+ * @LastEditTime: 2025-12-15 11:09:33
 -->
 <template>
     <TresGroup>
         <TresMesh :rotation-x="-Math.PI / 2">
             <TresPlaneGeometry :args="[1, 1]" />
-            <TresShaderMaterial v-bind="tmsMaterial" />
+            <TresShaderMaterial ref="tsmRef" v-bind="tmsMaterial" />
         </TresMesh>
     </TresGroup>
 </template>
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { reactive, watch } from 'vue'
+import { reactive, watch,ref } from 'vue'
 import { useLoop } from '@tresjs/core'
 import { useTexture } from '@tresjs/cientos'
 
@@ -39,7 +39,8 @@ const tmsMaterial = reactive({
     transparent: true,
     blending: THREE.AdditiveBlending,
     flatShading: true,
-    depthTest: false,
+    depthTest: true,
+    depthWrite: false,
     uniforms: {
         uTime: { type: 'f', value: 0.0 },
         uScanTex: {
@@ -124,6 +125,7 @@ void main()
 `,
 })
 
+const tsmRef = ref<any>(null)
 const { state: pTexture } = useTexture('./plugins/floor/image/scan.png')
 watch(
     () => pTexture.value,
@@ -132,6 +134,8 @@ watch(
             mapv.wrapS = THREE.RepeatWrapping
             mapv.wrapT = THREE.RepeatWrapping
             tmsMaterial.uniforms.uScanTex.value = mapv
+            tsmRef.value.needsUpdate = true
+            tsmRef.value.uniformsNeedUpdate = true
         }
     }
 )
