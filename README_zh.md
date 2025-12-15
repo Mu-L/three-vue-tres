@@ -189,6 +189,30 @@
 			</a>
 		</td>
   </tr>
+		<tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/zoneSmartWarehouse">
+				智能仓储管理：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+		<td style="padding:10px;font-size:1.2em;">
+			<a href="https://opensource.icegl.cn/#/#zoneFreeScene">
+				海洋船运可视化：[ 免费 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zoneSmartWarehouse/#/plugins/zoneSmartWarehouse/secondaryCoding" style="display:block;max-width:100%;">
+				<img src="https://cdn.index.icegl.cn/uploads/20251202/a92bcc26c186fbf65d9851a0c87b05ca.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+			</a>
+		</td>
+		<td style="padding: 10px;">
+			<a href="https://oss.icegl.cn/p/zone3Deditor/#/plugins/zone3Deditor/index?sceneConfig=freeShipSea" style="display:block;max-width:100%;">
+				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeShipSea.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 ```shell
