@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-27 15:11:47
+ * @LastEditTime: 2025-12-15 08:57:50
  */
 export default {
     name: 'floor',
@@ -44,7 +44,7 @@ export default {
             title: '草地',
             referenceSource: { title: 'react-three-fiber', url: 'https://codesandbox.io/s/5xho4' },
         },
-        { src: 'plugins/floor/preview/circleWave.png', type: 'img', name: 'circleWave', title: 'shaderCircleWave' },
+        { src: 'plugins/floor/preview/circleWave.png', type: 'img', name: 'circleWave', title: '花纹圈动画' },
         { src: 'plugins/floor/preview/cartoonMagicZone.png', type: 'img', name: 'cartoonMagicZone', title: '卡通能量圈' },
         { src: 'plugins/floor/preview/lineMagicZone.png', type: 'img', name: 'lineMagicZone', title: '线条能量圈' },
         { src: 'plugins/floor/preview/particleBasePage.png', type: 'img', name: 'particleBasePage', title: '粒子底座' },

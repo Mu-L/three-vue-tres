@@ -4,46 +4,36 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 15:54:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-28 16:21:43
+ * @LastEditTime: 2025-12-15 08:58:18
 -->
 <template>
-    <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2" :scale="scale">
-        <TresPlaneGeometry :args="[1, 1]" />
-        <TresShaderMaterial v-bind="tmsMaterial" />
-    </TresMesh>
+    <TresGroup>
+        <TresMesh :rotation-x="-Math.PI / 2">
+            <TresPlaneGeometry :args="[1, 1]" />
+            <TresShaderMaterial v-bind="tmsMaterial" />
+        </TresMesh>
+    </TresGroup>
 </template>
 
 <script lang="ts" setup>
 import * as THREE from 'three'
-import { reactive, ref, watchEffect } from 'vue'
+import { reactive, watch } from 'vue'
 import { useLoop } from '@tresjs/core'
-import { useTexture } from 'PLS/basic'
+import { useTexture } from '@tresjs/cientos'
 
 const props = withDefaults(
     defineProps<{
         color?: string
         colorDark?: string
         speed?: number
-        scale?: number
     }>(),
     {
         color: '#ffffff',
         colorDark: '#000000',
         speed: 1,
-        scale: 2,
     },
 )
 
-const tmRef = ref()
-const { onBeforeRender } = useLoop()
-onBeforeRender(({ delta }) => {
-    if (tmRef.value) {
-        tmRef.value.material.uniforms.uTime.value += delta * props.speed
-    }
-})
-const texture = await useTexture('./plugins/floor/image/scan.png')
-texture.wrapS = THREE.RepeatWrapping
-texture.wrapT = THREE.RepeatWrapping
 const tmsMaterial = reactive({
     side: THREE.DoubleSide,
     transparent: true,
@@ -54,7 +44,7 @@ const tmsMaterial = reactive({
         uTime: { type: 'f', value: 0.0 },
         uScanTex: {
             type: 't',
-            value: texture,
+            value: null as THREE.Texture | null,
         },
         uScanColor: {
             type: 'v3',
@@ -134,10 +124,27 @@ void main()
 `,
 })
 
-watchEffect(() => {
-    if (tmRef.value) {
-        tmRef.value.material.uniforms.uScanColor.value = new THREE.Color(props.color)
-        tmRef.value.material.uniforms.uScanColorDark.value = new THREE.Color(props.colorDark)
+const { state: pTexture } = useTexture('./plugins/floor/image/scan.png')
+watch(
+    () => pTexture.value,
+    (mapv) => {
+        if (mapv) {
+            mapv.wrapS = THREE.RepeatWrapping
+            mapv.wrapT = THREE.RepeatWrapping
+            tmsMaterial.uniforms.uScanTex.value = mapv
+        }
     }
+)
+watch(
+    () => [props.color, props.colorDark],
+    ([color, colorDark]) => {
+        tmsMaterial.uniforms.uScanColor.value = new THREE.Color(color!)
+        tmsMaterial.uniforms.uScanColorDark.value = new THREE.Color(colorDark!)
+    }
+)
+
+const { onBeforeRender } = useLoop()
+onBeforeRender(() => {
+    tmsMaterial.uniforms.uTime.value += 0.01 * props.speed
 })
 </script>

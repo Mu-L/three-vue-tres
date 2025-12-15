@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-18 14:32:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-28 16:23:11
+ * @LastEditTime: 2025-12-15 09:01:18
 -->
 <template>
     <TresGroup>
@@ -21,12 +21,14 @@ import { watch } from 'vue'
 const props = withDefaults(
     defineProps<{
         color?: string
+        speed?: number
         position?: Array<number>
         scale?: Array<number> | number
         rotation?: Array<number>
     }>(),
     {
         color: '#00ffff',
+        speed: 1,
         position: [0, 0, 0] as any,
         scale: 1,
         rotation: [0, 0, 0] as any,
@@ -45,8 +47,8 @@ const loader = new TQK.QuarksLoader()
 loader.setCrossOrigin('')
 
 const emitters = new THREE.Group()
-loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj) => {
-    obj.traverse((child) => {
+loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj: any) => {
+    obj.traverse((child: THREE.Object3D) => {
         if (child.type === 'ParticleEmitter') {
             // child.scale.setScalar(0.5)
             if (child.name === 'BasicZoneRedEmitter') {
@@ -70,15 +72,15 @@ loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj) => {
 })
 
 const { onBeforeRender } = useLoop()
-onBeforeRender(({ delta }) => {
-    batchSystem.update(delta)
+onBeforeRender(() => {
+    batchSystem.update(0.01 * props.speed)
 })
 
 watch(
     () => [props.color],
-    ([color]) => {
+    () => {
         batchSystem.systemToBatchIndex.forEach((value, ps) => {
-            ;(ps as any).startColor = getPropsColor((ps as any).startColor.color.w)
+            ; (ps as any).startColor = getPropsColor((ps as any).startColor.color.w)
         })
     },
 )

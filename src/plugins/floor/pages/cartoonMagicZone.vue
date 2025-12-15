@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 15:51:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2024-11-27 12:03:06
+ * @LastEditTime: 2025-12-15 09:03:05
 -->
 <template>
     <TresCanvas clearColor="#201919" window-size>
@@ -13,7 +13,7 @@
         <TresAmbientLight :intensity="2" />
 
         <cartoonMagic v-bind="configState" />
-        <cartoonMagic color="yellow" :scale="1.0" :position="[3, 0, 0]" />
+        <cartoonMagic color="yellow" :scale="1.5" :position="[3, 0, 0]" />
 
         <TresMesh :position="[3, 0, 0]">
             <TresSphereGeometry :args="[1, 32, 32]" />
@@ -34,7 +34,7 @@ import { reactive } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { Pane } from 'tweakpane'
 import reflectorDUDV from '../components/reflectorDUDV.vue'
-import cartoonMagic from '../components/cartoonMagic.vue'
+import { cartoonMagic } from 'PLS/floor'
 
 const reflectorState = reactive({
     reflectivity: 0.1,

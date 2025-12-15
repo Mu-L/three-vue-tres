@@ -11,9 +11,9 @@
         <TresPerspectiveCamera :position="[3, 3, 0]" :fov="45" :near="0.1" :far="10000" />
         <OrbitControls enableDamping />
         <TresAmbientLight :intensity="6.0" />
-        <Suspense>
-            <shaderCircleWave v-bind="configState" />
-        </Suspense>
+
+        <shaderCircleWave v-bind="configState" />
+        
         <reflectorDUDV :position="[0, -0.5, 0]" v-bind="reflectorState" />
     </TresCanvas>
 </template>
@@ -24,7 +24,7 @@ import { reactive } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { Pane } from 'tweakpane'
 import reflectorDUDV from '../components/reflectorDUDV.vue'
-import shaderCircleWave from '../components/shaderCircleWave.vue'
+import { shaderCircleWave } from 'PLS/floor'
 
 const reflectorState = reactive({
     reflectivity: 0.1,

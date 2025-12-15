@@ -24,6 +24,9 @@ import mechaFloor from './components/mechaFloor.vue'
 import rippleFloor from './components/rippleFloor.vue'
 import hexagonalFloor from './components/hexagonalFloor.vue'
 import ribbonArrow from './components/ribbonArrow.vue'
+import shaderCircleWave from './components/shaderCircleWave.vue'
+import cartoonMagic from './components/cartoonMagic.vue'
+
 export {
     reflectorDiffuse,
     reflectorDUDV,
@@ -42,5 +45,7 @@ export {
     mechaFloor,
     rippleFloor,
     hexagonalFloor,
-    ribbonArrow
+    ribbonArrow,
+    shaderCircleWave,
+    cartoonMagic
 }
