@@ -4,34 +4,27 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-18 14:32:19
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-15 09:01:18
+ * @LastEditTime: 2025-12-15 10:46:32
 -->
 <template>
     <TresGroup>
-        <primitive :object="emitters" />
-        <primitive :object="batchSystem" :position="position" :scale="scale" :rotation="rotation" />
+        <primitive :object="batchSystem" />
     </TresGroup>
 </template>
 <script lang="ts" setup>
 import * as THREE from 'three'
 import * as TQK from 'three.quarks'
-import { useLoop } from '@tresjs/core'
-import { watch } from 'vue'
+import { useLoop, useTresContext } from '@tresjs/core'
+import { watch,onUnmounted } from 'vue'
 
 const props = withDefaults(
     defineProps<{
         color?: string
         speed?: number
-        position?: Array<number>
-        scale?: Array<number> | number
-        rotation?: Array<number>
     }>(),
     {
         color: '#00ffff',
         speed: 1,
-        position: [0, 0, 0] as any,
-        scale: 1,
-        rotation: [0, 0, 0] as any,
     },
 )
 
@@ -46,7 +39,12 @@ const batchSystem = new TQK.BatchedRenderer()
 const loader = new TQK.QuarksLoader()
 loader.setCrossOrigin('')
 
+const { scene } = useTresContext()
 const emitters = new THREE.Group()
+scene.value.add(emitters)
+onUnmounted(() => {
+    scene.value.remove(emitters)
+})
 loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj: any) => {
     obj.traverse((child: THREE.Object3D) => {
         if (child.type === 'ParticleEmitter') {
@@ -55,7 +53,6 @@ loader.load('./plugins/floor/json/CartoonMagicZone2.json', (obj: any) => {
                 // 针对最新更新的three.quarks 特殊处理
                 child.rotation.set(Math.PI / 2, 0, 0)
             }
-
             //@ts-ignore
             const childSystem = child.system
             if (childSystem.startSpeed.value === -0.25) {
@@ -75,7 +72,6 @@ const { onBeforeRender } = useLoop()
 onBeforeRender(() => {
     batchSystem.update(0.01 * props.speed)
 })
-
 watch(
     () => [props.color],
     () => {
