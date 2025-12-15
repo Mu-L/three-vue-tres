@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:01:37
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-15 08:57:50
+ * @LastEditTime: 2025-12-15 15:39:20
  */
 export default {
     name: 'floor',
@@ -51,5 +51,6 @@ export default {
         { src: 'plugins/floor/preview/topoBasePage.png', type: 'img', name: 'topoBasePage', title: '拓扑底座' },
         { src: 'plugins/floor/preview/hexagonalFloorPage.png', type: 'img', name: 'hexagonalFloorPage', title: '六面地板组件化' },
         { src: 'plugins/floor/preview/ribbonArrowPage.png', type: 'img', name: 'ribbonArrowPage', title: '滚动箭头组件' },
+        { src: 'plugins/floor/preview/dynamicRotatingBase.png', type: 'img', name: 'dynamicRotatingBase', title: '动态旋转基座' },
     ],
 }

@@ -26,6 +26,7 @@ import hexagonalFloor from './components/hexagonalFloor.vue'
 import ribbonArrow from './components/ribbonArrow.vue'
 import shaderCircleWave from './components/shaderCircleWave.vue'
 import cartoonMagic from './components/cartoonMagic.vue'
+import dynamicRotatingBase from './components/dynamicRotatingBase.vue'
 
 export {
     reflectorDiffuse,
@@ -47,5 +48,6 @@ export {
     hexagonalFloor,
     ribbonArrow,
     shaderCircleWave,
-    cartoonMagic
+    cartoonMagic,
+    dynamicRotatingBase
 }
