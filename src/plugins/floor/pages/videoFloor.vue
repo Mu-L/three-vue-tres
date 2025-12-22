@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-20 17:03:14
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-17 14:16:41
+ * @LastEditTime: 2025-12-22 17:32:03
 -->
 <template>
     <TresCanvas clearColor="#201919" window-size>
@@ -15,7 +15,7 @@
             v-bind="configState"
             :position="[0, 0, 10]"
             :size="[10, 10]"
-            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + 'video/floor/floorV1.mp4'"
+            :vSrcPath="(isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV1.mp4'"
         />
         <videoFloorCom
             color="#02a7ff"
