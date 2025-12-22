@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-12 17:42:50
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-15 16:41:54
+ * @LastEditTime: 2025-12-22 17:24:08
 -->
 <template>
 	<TresMesh ref="tmRef">
@@ -31,9 +31,9 @@ const congfigRes = {
 	imgA: { type: 'img', path: './plugins/floor/image/imgFloor1.png' },
 	imgB: { type: 'img', path: './plugins/floor/image/imgFloor2.png' },
 	imgC: { type: 'img', path: './plugins/floor/image/imgFloor3.png' },
-	videoA: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + 'video/floor/floorV1.mp4' },
-	videoB: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + 'video/floor/floorV2.mp4' },
-	videoC: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + 'video/floor/floorV3.mp4' },
+	videoA: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV1.mp4' },
+	videoB: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV2.mp4' },
+	videoC: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV3.mp4' },
 } as any
 
 const props = withDefaults(
