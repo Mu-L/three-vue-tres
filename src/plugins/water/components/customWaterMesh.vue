@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-05 16:39:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-22 11:40:31
+ * @LastEditTime: 2025-12-22 12:29:13
 -->
 <template>
     <TresMesh :rotation-x="-Math.PI / 2">
@@ -37,7 +37,7 @@ const props = withDefaults(
         waterColor?: string
         waterHighlight?: string
         brightness?: number
-        baseMaterial?: any
+        baseMaterial?: string
         roughness?: number
         metalness?: number
         speed?: number
@@ -48,13 +48,12 @@ const props = withDefaults(
         waterColor: '#52a7f7',
         waterHighlight: '#b3ffff',
         brightness: 1,
-        baseMaterial: THREE.MeshPhysicalMaterial,
+        baseMaterial: 'MeshPhysicalMaterial',
         roughness: 0.2,
         metalness: 0.1,
         speed: 1,
     },
 )
-
 const shader = {
     vertex: `
 uniform float uTime;

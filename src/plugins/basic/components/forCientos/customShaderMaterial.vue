@@ -1,24 +1,23 @@
 <script setup lang="ts">
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 import { shallowRef, watch, useAttrs } from 'vue'
-import type { Fn } from '@vueuse/core'
+import * as THREE from 'three'
 
 interface CustomShaderMaterialProps {
-	baseMaterial: Fn
+	baseMaterial?: string
 	vertexShader?: string
 	fragmentShader?: string
 	uniforms?: { [uniform: string]: any }
 }
 const attrs = useAttrs()
 const props = defineProps<CustomShaderMaterialProps>()
-
 const material = shallowRef(null) as any
 watch(() => props.baseMaterial, (bm) => {
 	if (material.value) {
 		material.value.dispose()
-	}
+  }
 	material.value = new CustomShaderMaterial({
-		baseMaterial: bm,
+		baseMaterial: THREE[bm as keyof typeof THREE],
 		vertexShader: props.vertexShader,
 		fragmentShader: props.fragmentShader,
 		uniforms: props.uniforms,
@@ -26,7 +25,7 @@ watch(() => props.baseMaterial, (bm) => {
 }, { immediate: true })
 watch(
   () => ({ ...attrs }),
-  (newAttrs) => {
+  (newAttrs : any) => {
     const mat = material.value
     if (!mat) return
 

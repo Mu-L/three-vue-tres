@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-06 08:56:34
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-22 10:23:44
+ * @LastEditTime: 2025-12-22 12:28:02
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -31,7 +31,7 @@ import { reactive } from 'vue'
 import { OrbitControls } from '@tresjs/cientos'
 import { Environment } from 'PLS/basic'
 import { gridPlus } from 'PLS/floor'
-import customWaterMesh from '../components/customWaterMesh.vue'
+import { customWaterMesh } from 'PLS/water'
 import { Pane } from 'tweakpane'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -66,7 +66,7 @@ const customWaterState = reactive({
     waterColor: '#52a7f7',
     waterHighlight: '#b3ffff',
     brightness: 1,
-    baseMaterial: THREE.MeshPhysicalMaterial,
+    baseMaterial: 'MeshPhysicalMaterial',
     roughness: 0.2,
     metalness: 0.1,
     speed: 1,
@@ -116,14 +116,14 @@ paneControl.addBlade({
     view: 'list',
     label: '材质',
     options: [
-        { text: 'MeshPhysicalMaterial', value: THREE.MeshPhysicalMaterial },
-        { text: 'MeshBasicMaterial', value: THREE.MeshBasicMaterial },
-        { text: 'MeshNormalMaterial', value: THREE.MeshNormalMaterial },
-        { text: 'MeshStandardMaterial', value: THREE.MeshStandardMaterial },
-        { text: 'MeshPhongMaterial', value: THREE.MeshPhongMaterial },
-        { text: 'MeshToonMaterial', value: THREE.MeshToonMaterial },
-        { text: 'MeshLambertMaterial', value: THREE.MeshLambertMaterial },
-        { text: 'MeshDepthMaterial', value: THREE.MeshDepthMaterial },
+        { text: 'MeshPhysicalMaterial', value: 'MeshPhysicalMaterial' },
+        { text: 'MeshBasicMaterial', value: 'MeshBasicMaterial' },
+        { text: 'MeshNormalMaterial', value: 'MeshNormalMaterial' },
+        { text: 'MeshStandardMaterial', value: 'MeshStandardMaterial' },
+        { text: 'MeshPhongMaterial', value: 'MeshPhongMaterial' },
+        { text: 'MeshToonMaterial', value: 'MeshToonMaterial' },
+        { text: 'MeshLambertMaterial', value: 'MeshLambertMaterial' },
+        { text: 'MeshDepthMaterial', value: 'MeshDepthMaterial' },
     ],
     value: customWaterState.baseMaterial,
 })
