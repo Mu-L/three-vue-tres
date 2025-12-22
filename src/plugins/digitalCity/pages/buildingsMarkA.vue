@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-28 10:04:13
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2023-12-21 11:38:07
+ * @LastEditTime: 2025-12-22 16:54:41
 -->
 <template>
 	<pagesShow ref="pagesShowRef">
@@ -16,7 +16,7 @@
 			<markA :position="[-410, 19, -260]" :scale="200" img="./plugins/digitalCity/image/znsb-err.png"
 				:sizeAttenuation="true" :foremost="true" />
 
-			<radraB :position="[-410, 19, -260]" :height="60" color="#ff0000" />
+			<radraB :position="[-410, 19, -260]" :height="0.5" :maxRadius="200" :scale-y="100" color="#ff0000" />
 		</template>
 	</pagesShow>
 </template>

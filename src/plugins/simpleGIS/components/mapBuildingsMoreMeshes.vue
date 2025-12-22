@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-18 10:12:36
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-29 12:50:17
+ * @LastEditTime: 2025-12-22 15:45:12
 -->
 <template>
 	<radraA color="#00c0ff" :radius="300" :size="300" :position="[cPosition[0], 8, -cPosition[1]]" />
@@ -13,7 +13,7 @@
 			:foremost="false" />
 	</Suspense>
 
-	<radraB :position="[cPosition[0] + 700, 10, -cPosition[1] + 300]" color="#ffff00" :height="180" :maxRadius="400" />
+	<radraB :position="[cPosition[0] + 700, 10, -cPosition[1] + 300]" color="#ffff00" :height="0.5" :scale-y="100" :maxRadius="200" />
 	<Suspense>
 		<markA :position="[cPosition[0] + 700, 10, -cPosition[1] + 300]" :scale="200"
 			img="./plugins/digitalCity/image/znsb-err.png" :sizeAttenuation="true" :foremost="true" />

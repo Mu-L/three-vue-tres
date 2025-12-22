@@ -4,12 +4,12 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-23 15:48:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 08:15:51
+ * @LastEditTime: 2025-12-22 16:24:58
 -->
 <script setup lang="ts">
-import { ref, watch, defineExpose, watchEffect } from 'vue';
+import { nextTick, ref, watch, watchEffect } from 'vue'
 import { useLoop } from '@tresjs/core'
-import { Matrix4, AdditiveBlending, DoubleSide, Color } from 'three';
+import { Matrix4, DoubleSide, Color } from 'three'
 const props = withDefaults(
 	defineProps<{
 		size?: number
@@ -24,22 +24,21 @@ const props = withDefaults(
 		size: 300,
 		color: '#ffff00',
 		opacity: 0.9,
-		speed: 300,
-		followWidth: 220, //扇面大小
+		speed: 1,
+		followWidth: 220,
 	},
 )
 
 const { onBeforeRender } = useLoop()
 const timeDelta = { value: 0 }
 const TresCircleGeometryRef = ref()
-onBeforeRender(({ delta }) => {
-	timeDelta.value += delta;
+onBeforeRender(() => {
+	timeDelta.value += 0.02 * props.speed
 })
 const shader = {
 	transparent: true,
-	blending: AdditiveBlending,
+	// blending: AdditiveBlending,
 	depthWrite: false,
-	side: DoubleSide,
 	depthTest: true,
 	vertexShader: `
 	varying vec3 vPosition;
@@ -53,10 +52,10 @@ const shader = {
   `,
 	fragmentShader: `
 	uniform float uRadius;     
-  uniform float uTime;            
-  uniform float uSpeed; 
+  uniform float uTime;      
   uniform float uFollowWidth; 
   varying vec3 vPosition;
+	uniform float uOpacity;
 	uniform vec3 ncolor;
   float calcAngle(vec3 oFrag){
     float fragAngle;
@@ -70,7 +69,7 @@ const shader = {
     if(oFrag.z > 0.0) {
       fragAngle = -fragAngle + 360.0;
     }
-    float scanAngle = uTime * uSpeed - floor(uTime * uSpeed / 360.0) * 360.0;
+    float scanAngle = uTime * 100.0 - floor(uTime * 100.0 / 360.0) * 360.0;
     float angle = scanAngle - fragAngle;
     if(angle < 0.0){
       angle = angle + 360.0;
@@ -80,13 +79,13 @@ const shader = {
   void main() {
 			// length内置函数，取向量的长度
 		if(length(vPosition) == 0.0 || length(vPosition) > uRadius-2.0){
-			gl_FragColor = vec4( ncolor, 1.0 );
+			gl_FragColor = vec4( ncolor, uOpacity );
 		} else {
 			float angle = calcAngle(vPosition);
 			if(angle < uFollowWidth){
 				// 尾焰区域
 				float opacity =  1.0 - angle / uFollowWidth; 
-				gl_FragColor = vec4( ncolor, 1.0 * opacity );  
+				gl_FragColor = vec4( ncolor, uOpacity * opacity );  
 			} else {
 				// 其他位置的像素均为透明
 				gl_FragColor = vec4( ncolor, 0.0 ); 
@@ -95,54 +94,44 @@ const shader = {
 	}
   `,
 	uniforms: {
-		uSpeed: { value: props.speed },
 		uRadius: { value: props.radius },
 		uTime: timeDelta,
 		uFollowWidth: { value: props.followWidth },
 		ncolor: { value: new Color(props.color) },
+		uOpacity: { value: props.opacity }
 	},
 }
 watch(TresCircleGeometryRef, (newValue, oldValue) => {
 	if (newValue && oldValue === undefined) {
-		const rotateMatrix = new Matrix4().makeRotationX(-Math.PI / 180 * 90)
-		TresCircleGeometryRef.value.applyMatrix4(rotateMatrix)
+		TresCircleGeometryRef.value.applyMatrix4(new Matrix4().makeRotationX(-Math.PI / 2))
 	}
 })
-const MeshRef = ref()
+watch(() => props.size, () => {
+	nextTick(() => { 
+		TresCircleGeometryRef.value.applyMatrix4(new Matrix4().makeRotationX(Math.PI / 2))
+	})
+	
+})
 watchEffect(() => {
 	if (props.color) {
 		shader.uniforms.ncolor.value = new Color(props.color)
 	}
+	if (props.opacity) {
+		shader.uniforms.uOpacity.value = props.opacity
+	}
 	if (props.radius) {
 		shader.uniforms.uRadius.value = props.radius
-		// if (MeshRef.value && TresCircleGeometryRef.value) {
-		// 	const rotateMatrix = new Matrix4().makeRotationX(-Math.PI / 180 * 90)
-		// 	TresCircleGeometryRef.value.applyMatrix4(rotateMatrix)
-		// }
-		// if (TresCircleGeometryRef.value) {
-		// 	console.log('props.radius', rotateX.value)
-		// 	rotateX.value += 0.01
-
-		// const rotateMatrix = new Matrix4().makeRotationX(-Math.PI / 180 * 90)
-		// TresCircleGeometryRef.value.applyMatrix4(rotateMatrix)
-		// TresCircleGeometryRef.value.rotateY(-Math.PI / 180 * 90)
-		// if (MeshRef.value.updateMatrix) {
-		// 	console.log('props.updateMatrix')
-		// 	MeshRef.value.updateMatrix()
-		// }
-		// }
+	}
+	if (props.followWidth) {
+		shader.uniforms.uFollowWidth.value = props.followWidth
 	}
 })
-const rotateX = ref(-Math.PI / 180 * 90)
-defineExpose({
-	MeshRef
-})
-// :rotate-x="rotateX"
+
 </script>
 
 <template>
-	<TresMesh ref="MeshRef">
-		<TresCircleGeometry ref="TresCircleGeometryRef" :args="[props.size, 1000]" />
-		<TresShaderMaterial v-bind="shader" />
+	<TresMesh>
+		<TresCircleGeometry ref="TresCircleGeometryRef" :args="[props.size, 64]" />
+		<TresShaderMaterial v-bind="shader" :side="DoubleSide" />
 	</TresMesh>
 </template>
