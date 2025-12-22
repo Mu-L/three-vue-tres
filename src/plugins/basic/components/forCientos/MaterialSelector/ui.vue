@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-24 08:52:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-03 18:05:43
+ * @LastEditTime: 2025-12-22 09:32:43
 -->
 
 <template>
@@ -27,6 +27,14 @@
 							v-model:value="materialProps[key]" :options="sideOptions" />
 						<n-select size="tiny" v-else-if="getControlType(value, key) === 'enum-blending'"
 							v-model:value="materialProps[key]" :options="blendingOptions" />
+						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uEdge'" v-model:value="materialProps[key]"
+							:min="0" :max="10" :step="0.01" />
+						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uFreq'" v-model:value="materialProps[key]"
+							:min="0.002" :max="2" :step="0.002" />
+						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uAmp'" v-model:value="materialProps[key]"
+							:min="3" :max="22" :step="0.01" />
+						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uProgress'" v-model:value="materialProps[key]"
+							:min="-30" :max="30" :step="0.1" />
 					</n-form-item>
 				</template>
 			</n-form>
@@ -56,6 +64,10 @@ const typeOptions = Object.keys(materialPresets).map(key => ({
 }))
 
 function getControlType(value: any, key: string) {
+	if (key === 'uAmp') return 'uAmp'
+	if (key === 'uProgress') return 'uProgress'
+	if (key === 'uFreq') return 'uFreq'
+	if (key === 'uEdge') return 'uEdge'
 	if (key === 'side') return 'enum-side'
 	if (key === 'blending') return 'enum-blending'
 	if (key.includes('Map')) return 'aboutMap'

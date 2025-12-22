@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-03-03 16:04:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-03 20:21:16
+ * @LastEditTime: 2025-12-22 09:18:57
 -->
 <template>
     <CustomShaderMaterial
@@ -23,7 +23,7 @@ import snoise from '../../shaders/snoise.glsl'
 
 const props = defineProps({
     baseMaterial: {
-        default: new THREE.MeshPhysicalMaterial(),
+        type: Object,
     },
     uEdgeColor: {
         default: '#4d9bff',
@@ -35,7 +35,7 @@ const props = defineProps({
     uAmp: { default: 20.0 },
     uProgress: { default: -2.0 },
 })
-
+const baseMaterial = props.baseMaterial ?? THREE.MeshPhysicalMaterial as any
 const dissolveUniformData = {
     uEdgeColor: {
         value: new THREE.Color(props.uEdgeColor),

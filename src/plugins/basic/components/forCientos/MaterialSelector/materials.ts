@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-23 16:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-11-03 11:50:17
+ * @LastEditTime: 2025-12-22 09:31:00
  */
 // materials.ts
 import type { ColorRepresentation } from 'three'
@@ -147,6 +147,15 @@ const clearcoatExtraProps = {
   clearcoatRoughness: 0,
 } as const
 
+const dissolveEffectProps = {
+  color: '#B520A9',
+  uEdgeColor: '#4d9bff',
+  uEdge: 6,
+  uFreq: 0.41,
+  uAmp: 20,
+  uProgress: -1,
+} as const
+
 // const holographicExtraProps = {
 // 	fresnelAmount: 0,
 // 	fresnelOpacity: 0.0,
@@ -231,6 +240,16 @@ export const materialPresets = {
       ...clearcoatExtraProps
     }
   },
+
+  dissolveEffectMaterial: {
+    component: async () => {
+      const mod = await import('PLS/industry4')
+      return mod.dissolveEffectMaterial
+    },
+    props: {
+      ...dissolveEffectProps
+    }
+  }
 } as const
 
 export type MaterialType = keyof typeof materialPresets
