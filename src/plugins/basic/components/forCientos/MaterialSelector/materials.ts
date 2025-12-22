@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-23 16:15:24
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-22 09:31:00
+ * @LastEditTime: 2025-12-22 09:53:04
  */
 // materials.ts
 import type { ColorRepresentation } from 'three'
@@ -154,6 +154,8 @@ const dissolveEffectProps = {
   uFreq: 0.41,
   uAmp: 20,
   uProgress: -1,
+  metalness: 1,
+  roughness: 1,
 } as const
 
 // const holographicExtraProps = {

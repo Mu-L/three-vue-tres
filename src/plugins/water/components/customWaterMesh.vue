@@ -4,19 +4,19 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-06-05 16:39:29
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-30 09:42:56
+ * @LastEditTime: 2025-12-22 11:40:31
 -->
 <template>
-    <TresMesh ref="tmRef" :rotation-x="-Math.PI / 2">
+    <TresMesh :rotation-x="-Math.PI / 2">
         <TresBoxGeometry :args="[5, 5, height, 64, 64, 1]" />
-        <CustomShaderMaterialCom
-            :baseMaterial="THREE.MeshPhysicalMaterial"
+        <CustomShaderMaterial
+            :baseMaterial="baseMaterial"
             :vertexShader="patchShaders(shader.vertex)"
             :fragmentShader="shader.fragment"
             :uniforms="uniforms"
             :side="THREE.DoubleSide"
-            :roughness="0.2"
-            :metalness="0.1"
+            :roughness="roughness"
+            :metalness="metalness"
             :flatShading="Flatshading"
             silent
         />
@@ -24,11 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, watchEffect } from 'vue'
+import { watchEffect } from 'vue'
 import { useLoop } from '@tresjs/core'
-import { CustomShaderMaterial as CustomShaderMaterialCom } from '@tresjs/cientos'
 import * as THREE from 'three'
-import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
+import { patchShaders } from 'gl-noise/build/glNoise.m'
+import { CustomShaderMaterial } from 'PLS/basic'
 
 const props = withDefaults(
     defineProps<{
@@ -38,6 +38,9 @@ const props = withDefaults(
         waterHighlight?: string
         brightness?: number
         baseMaterial?: any
+        roughness?: number
+        metalness?: number
+        speed?: number
     }>(),
     {
         height: 0.2,
@@ -46,12 +49,11 @@ const props = withDefaults(
         waterHighlight: '#b3ffff',
         brightness: 1,
         baseMaterial: THREE.MeshPhysicalMaterial,
+        roughness: 0.2,
+        metalness: 0.1,
+        speed: 1,
     },
 )
-
-import { patchShaders } from 'gl-noise/build/glNoise.m'
-
-const tmRef = ref(null as any)
 
 const shader = {
     vertex: `
@@ -148,46 +150,19 @@ const uniforms = {
 }
 
 const { onBeforeRender } = useLoop()
-onBeforeRender(({ elapsed }) => {
-    uniforms.uTime.value = -elapsed / 5
+onBeforeRender(() => {
+    uniforms.uTime.value -= 0.002 * props.speed
 })
-
 watchEffect(() => {
-    if (props.height) {
-        uniforms.uHeight.value = props.height
-    }
-    if (props.waterColor) {
-        uniforms.waterColor.value = new THREE.Color(props.waterColor).convertLinearToSRGB()
-    }
-    if (props.waterHighlight) {
-        uniforms.waterHighlight.value = new THREE.Color(props.waterHighlight).convertLinearToSRGB()
-    }
-    if (props.brightness) {
-        uniforms.brightness.value = props.brightness
-    }
+  uniforms.uHeight.value = props.height
+  uniforms.brightness.value = props.brightness
+
+  uniforms.waterColor.value
+    .set(props.waterColor)
+    .convertLinearToSRGB()
+
+  uniforms.waterHighlight.value
+    .set(props.waterHighlight)
+    .convertLinearToSRGB()
 })
-watch(
-    () => props.Flatshading,
-    (val) => {
-        tmRef.value.material.needsUpdate = true
-    },
-)
-watch(
-    () => props.baseMaterial,
-    (val) => {
-        const material = new CustomShaderMaterial({
-            baseMaterial: THREE[val],
-            vertexShader: patchShaders(shader.vertex),
-            fragmentShader: shader.fragment,
-            uniforms: uniforms,
-            flatShading: props.Flatshading,
-            side: THREE.DoubleSide,
-            roughness: 0.2,
-            metalness: 0.1,
-            silent: true,
-        })
-        tmRef.value.material.dispose()
-        tmRef.value.material = material
-    },
-)
 </script>

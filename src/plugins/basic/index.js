@@ -27,6 +27,7 @@ import MaterialSelector from './components/forCientos/MaterialSelector/index.vue
 import shapeConfigurator from './components/forCientos/ShapesList/shapeConfigurator.vue'
 import shapeRenderer from './components/forCientos/ShapesList/shapeRenderer.vue'
 import shapesforEditor from './components/forCientos/ShapesList/forEditor.vue'
+import CustomShaderMaterial from './components/forCientos/customShaderMaterial.vue'
     
 export {
     Environment,
@@ -48,5 +49,6 @@ export {
     MaterialSelector,
     shapeConfigurator,
     shapeRenderer,
-    shapesforEditor
+    shapesforEditor,
+    CustomShaderMaterial
 }
