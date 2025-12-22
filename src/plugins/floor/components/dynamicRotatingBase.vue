@@ -31,9 +31,9 @@ const congfigRes = {
 	imgA: { type: 'img', path: './plugins/floor/image/imgFloor1.png' },
 	imgB: { type: 'img', path: './plugins/floor/image/imgFloor2.png' },
 	imgC: { type: 'img', path: './plugins/floor/image/imgFloor3.png' },
-	videoA: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV1.mp4' },
-	videoB: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV2.mp4' },
-	videoC: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + './video/floor/floorV3.mp4' },
+	videoA: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV1.mp4' },
+	videoB: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV2.mp4' },
+	videoC: { type: 'video', path: (isDev ? 'resource.cos' : 'https://opensource.cdn.icegl.cn') + '/video/floor/floorV3.mp4' },
 } as any
 
 const props = withDefaults(
