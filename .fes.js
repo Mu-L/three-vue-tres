@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-14 08:44:18
+ * @LastEditTime: 2025-12-26 15:30:11
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -15,6 +15,7 @@ import { templateCompilerOptions } from '@tresjs/core'
 import UnoCSS from 'unocss/vite'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import glsl from 'vite-plugin-glsl'
+import federation from '@originjs/vite-plugin-federation'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -61,6 +62,14 @@ export default defineBuildConfig({
             }),
             glsl({
                 warnDuplicatedImports: false, // 禁用重复导入警告
+            }),
+            federation({
+                name: 'tvt-host',
+                remotes: {},
+                shared: {
+                    vue: {},
+                    three: {},
+                }
             })
         ],
         build: {
