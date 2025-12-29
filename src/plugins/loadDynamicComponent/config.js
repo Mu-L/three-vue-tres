@@ -16,5 +16,12 @@ export default {
         "title": "简单读取实例",
         disableFPSGraph: false,
         disableSrcBtn: false
+    },{
+        "src": "plugins/loadDynamicComponent/preview/readConfig.png",
+        "type": "img",
+        "name": "readConfig",
+        "title": "读取远程配置实例",
+        disableFPSGraph: false,
+        disableSrcBtn: false
     },]
 }

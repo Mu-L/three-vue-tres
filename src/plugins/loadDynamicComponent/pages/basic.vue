@@ -4,10 +4,11 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-26 15:03:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-26 17:39:45
+ * @LastEditTime: 2025-12-29 10:03:28
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
+        <TresPerspectiveCamera :position="[5, 5, 5]" />
         <OrbitControls />
         <component :is="theExperienceCom"></component>
         <TresGridHelper :position-y="0.1" />
@@ -37,7 +38,7 @@ __federation_method_setRemote('tvt', {
     format: 'esm',
     from: 'vite'
 })
-__federation_method_getRemote('tvt', './TheExperience')
+__federation_method_getRemote('tvt', './testBase')
     .then((moduleWraped: any) => __federation_method_unwrapDefault(moduleWraped))
     .then((module: any) => {
         theExperienceCom.value = module
