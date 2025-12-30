@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 09:39:35
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-29 11:26:49
+ * @LastEditTime: 2025-12-30 22:38:58
  */
 // @ts-ignore
 import { __federation_method_setRemote, __federation_method_getRemote, __federation_method_unwrapDefault } from 'virtual:__federation__'
@@ -48,15 +48,18 @@ export class RemoteInstance {
       this.remoteName,
       './config'
     )
-      .then((wrap: any) =>
-        __federation_method_unwrapDefault(wrap)
-      )
+      .then((wrap: any) =>__federation_method_unwrapDefault(wrap))
       .then((config: RemotePluginConfig) => {
         this.validateConfig(config)
 				this.config = config;
 				// 静态资源路径映射
 				(window as any).__REMOTE_ASSET_MAP__[config.name] = this.resPath
         return config
+      })
+      .catch((err: any) => {
+        this.config = null
+        console.error(`[Remote ${this.remoteName}] load config failed:`, err)
+        throw err
       })
       .finally(() => {
         this.loading = null

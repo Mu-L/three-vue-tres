@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 12:50:51
+ * @LastEditTime: 2025-12-30 22:26:00
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -65,29 +65,44 @@ export default defineBuildConfig({
             }),
             federation({
                 name: 'tvt-host',
-                remotes: {},
+                remotes: {
+                    home: {
+                        // 必须默认引用一个 不然会报错：ReferenceError: __rf_placeholder__shareScope is not defined
+                        external: `Promise.resolve('http://dcser.icegl.cn/assets/remoteEntry.js')`,
+                        externalType: "promise"
+                    }
+                },
                 shared: {
                     vue: {},
-                    // '3d-tiles-renderer': { import: false, generate: false},
+                    three: { version: '0.180.0' },
+                    // "@tresjs/cientos": { version: '5.2.0' },
+                    // "@tresjs/core": { version: '5.2.0' },
                     // three: { import: false, generate: false }
-                    // three: {},
                 }
             })
         ],
-        optimizeDeps: {
-            exclude: ['vue', 'three', '3d-tiles-renderer'],
-        },
         build: {
             target: 'esnext', // 或者 'es2020' 以支持 BigInt
             chunkSizeWarningLimit: 1000, // 单位为KB
             rollupOptions: {
                 output: {
-                    manualChunks (id) {
-                        // 自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
-                        if (id.includes('node_modules')) {
-                            return id.toString().split('node_modules/')[1].split('/')[0]
-                        }
+                    minifyInternalExports: false,
+                    manualChunks: {
+                        three: ['three'],
                     },
+                    // manualChunks (id) {
+                    //     if (id.includes('node_modules/three')) {
+                    //         return 'three'
+                    //     }
+                    //     自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
+                    //     if (id.includes('node_modules')) {
+                    //         const texts = id.toString().split('node_modules/')[1].split('/')[0]
+                    //         // if (texts) {
+                    //         //     console.log(id.toString(), texts)
+                    //         // }
+                    //         return texts
+                    //     }
+                    // },
                     format: 'es',
                     chunkFileNames: `js/[name].[hash]${timeStamp}.js`,
                     entryFileNames: `js/[name].[hash]${timeStamp}.js`,
@@ -95,8 +110,8 @@ export default defineBuildConfig({
                     name: 'TvT.js',
                 },
             },
-            sourcemap: false,
-            minify: process.env.NODE_ENV === 'production' ? 'terser' : false,
+            sourcemap: true,
+            minify: false,
         },
         // 全局 css 注册
         css: {
