@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 12:40:48
+ * @LastEditTime: 2025-12-30 12:50:51
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -63,20 +63,20 @@ export default defineBuildConfig({
             glsl({
                 warnDuplicatedImports: false, // 禁用重复导入警告
             }),
-            // federation({
-            //     name: 'tvt-host',
-            //     remotes: {},
-            //     shared: {
-            //         vue: {},
-            //         // '3d-tiles-renderer': {},
-            //         // three: { import: false, generate: false }
-            //         // three: {},
-            //     }
-            // })
+            federation({
+                name: 'tvt-host',
+                remotes: {},
+                shared: {
+                    vue: {},
+                    // '3d-tiles-renderer': { import: false, generate: false},
+                    // three: { import: false, generate: false }
+                    // three: {},
+                }
+            })
         ],
-        // optimizeDeps: {
-        //     exclude: ['vue', 'three', '3d-tiles-renderer'],
-        // },
+        optimizeDeps: {
+            exclude: ['vue', 'three', '3d-tiles-renderer'],
+        },
         build: {
             target: 'esnext', // 或者 'es2020' 以支持 BigInt
             chunkSizeWarningLimit: 1000, // 单位为KB
