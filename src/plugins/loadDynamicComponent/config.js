@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-26 15:03:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 11:42:22
+ * @LastEditTime: 2025-12-31 11:45:01
  */
 export default {
     "name": "loadDynamicComponent",
@@ -23,7 +23,7 @@ export default {
     "require": [],
     "preview": [{
        src: `
-            1、使用发布的开源动态组件:<a style="color: #5384ff;" href="http://dcser.icegl.cn" target="_blank">http://dcser.icegl.cn</a></br>
+            1、使用发布的开源动态组件:<a style="color: #5384ff;" href="https://dcser.icegl.cn" target="_blank">https://dcser.icegl.cn</a></br>
             2、动态组件库已开源：<a style="color: #5384ff;" href="https://gitee.com/ice-gl/dynamic-component-service" target="_blank">制作你自己的高级组件</a>
             3、发布你自己的高级组件，可以通过此组件，在tvt.js灵活调试</br>`,
             type: 'text',

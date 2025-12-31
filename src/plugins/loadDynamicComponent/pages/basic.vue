@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-26 15:03:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 09:48:46
+ * @LastEditTime: 2025-12-31 11:45:19
 -->
 <template>
     <TresCanvas v-bind="state" window-size>
@@ -34,7 +34,7 @@ const state = reactive({
 
 const theExperienceCom = shallowRef(null)
 __federation_method_setRemote('tvt', {
-    url: () => Promise.resolve('http://dcser.icegl.cn/assets/remoteEntry.js'),
+    url: () => Promise.resolve('https://dcser.icegl.cn/assets/remoteEntry.js'),
     format: 'esm',
     from: 'vite'
 })

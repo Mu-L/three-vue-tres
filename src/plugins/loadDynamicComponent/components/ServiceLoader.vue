@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-30 10:27:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 11:42:44
+ * @LastEditTime: 2025-12-31 11:45:11
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -16,7 +16,7 @@ const emit = defineEmits<{
 }>()
 
 const message = useMessage()
-const serviceUrl = ref('http://dcser.icegl.cn') // http://dcser.icegl.cn http://localhost:5000
+const serviceUrl = ref('https://dcser.icegl.cn') // https://dcser.icegl.cn http://localhost:5000
 const loading = ref(false)
 
 const handleApply = async () => {

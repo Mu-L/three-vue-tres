@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-31 10:46:40
+ * @LastEditTime: 2025-12-31 11:44:50
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -68,7 +68,7 @@ export default defineBuildConfig({
                 remotes: {
                     home: {
                         // 必须默认引用一个 不然会报错：ReferenceError: __rf_placeholder__shareScope is not defined
-                        external: `Promise.resolve('http://dcser.icegl.cn/assets/remoteEntry.js')`,
+                        external: `Promise.resolve('https://dcser.icegl.cn/assets/remoteEntry.js')`,
                         externalType: "promise"
                     }
                 },
