@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 22:26:00
+ * @LastEditTime: 2025-12-31 10:46:40
  */
 // import { resolve } from 'path';
 import { join, dirname } from 'path'
@@ -89,12 +89,10 @@ export default defineBuildConfig({
                     minifyInternalExports: false,
                     manualChunks: {
                         three: ['three'],
+                        '3d-tiles-renderer': ['3d-tiles-renderer'],
                     },
                     // manualChunks (id) {
-                    //     if (id.includes('node_modules/three')) {
-                    //         return 'three'
-                    //     }
-                    //     自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
+                    //     // 自定义拆分策略，例如将特定的第三方库拆分为单独的 chunk
                     //     if (id.includes('node_modules')) {
                     //         const texts = id.toString().split('node_modules/')[1].split('/')[0]
                     //         // if (texts) {
@@ -110,8 +108,8 @@ export default defineBuildConfig({
                     name: 'TvT.js',
                 },
             },
-            sourcemap: true,
-            minify: false,
+            sourcemap: false,
+            minify: 'terser',
         },
         // 全局 css 注册
         css: {
