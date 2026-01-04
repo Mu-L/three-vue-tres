@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 10:09:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 11:28:05
+ * @LastEditTime: 2026-01-04 12:32:50
 -->
 <template>
 	<n-message-provider>
@@ -16,6 +16,8 @@
 	<TresCanvas v-bind="state" window-size>
 		<TresPerspectiveCamera :position="[5, 5, 5]" />
 		<OrbitControls />
+		<TresAmbientLight :intensity="0.5" />
+    <TresDirectionalLight :position="[10, 10, 10]" :intensity="1.5" />
 		<Suspense>
 			<oneRemoteCom v-if="comState" v-bind="comState" :attrsData="attrsData" :config="comConfig" />
 		</Suspense>
