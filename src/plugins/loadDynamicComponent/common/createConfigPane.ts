@@ -4,13 +4,15 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 17:17:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-29 17:22:30
+ * @LastEditTime: 2026-01-04 16:00:47
  */
 import { Pane } from 'tweakpane';
+import * as EssentialsPlugin from '@pangenerator/tweakpane-textarea-plugin';
+import JSON5 from 'json5'
 
 export interface ConfigSchemaItem {
   name: string;
-  com: 'Select' | 'ColorPicker' | 'Switch' | 'Slider';
+  com: 'Select' | 'ColorPicker' | 'Switch' | 'Slider' | 'jsonText';
   options?: Array<{ label: string; value: any }>;
   min?: number;
   max?: number;
@@ -33,6 +35,8 @@ export function createConfigPane(
     title: '配置',
   }) as any
 
+  pane.registerPlugin(EssentialsPlugin);
+
   Object.entries(config).forEach(([key, item]) => {
     switch (item.com) {
       case 'Select':
@@ -44,7 +48,7 @@ export function createConfigPane(
               return acc;
             }, {} as Record<string, any>),
           })
-          .on('change', ev => {
+          .on('change', (ev: any) => {
             values[key] = ev.value;
           });
         break;
@@ -55,7 +59,7 @@ export function createConfigPane(
             label: item.name,
             picker: 'inline'
           })
-          .on('change', ev => {
+          .on('change', (ev: any) => {
             values[key] = ev.value;
           });
         break;
@@ -65,7 +69,7 @@ export function createConfigPane(
           .addBinding(values, key, {
             label: item.name,
           })
-          .on('change', ev => {
+          .on('change', (ev: any) => {
             values[key] = ev.value;
           });
         break;
@@ -78,9 +82,41 @@ export function createConfigPane(
             max: item.max,
             step: item.step,
           })
-          .on('change', ev => {
+          .on('change', (ev: any) => {
             values[key] = ev.value;
           });
+        break;
+
+      case 'jsonText':
+        pane.addBinding(values, key, {
+          view: 'textarea',
+          label: 'JSON 数据',
+          rows: 8,
+          placeholder: '请在此输入 JSON...',
+        })
+        values.jsonError = ''; // 用于显示错误信息
+        values.jsonTextChangeNumber = 0; // 用于触发更新
+        const errorMessageBinding = pane.addBinding(values, 'jsonError', {
+          label: 'JSON错误',
+          multiline: true,
+          rows: 3,
+          readonly: true,
+          lineBreaks: true,
+        });
+        // 点击事件：校验并应用 JSON
+        pane.addButton({ title: '应用配置' }).on('click', () => {
+          try {
+            const parsed = JSON5.parse(values[key]);
+            values.jsonError = ''
+            errorMessageBinding.refresh();
+            console.log('JSON 校验成功：', parsed);
+            values.jsonTextChangeNumber++;
+          } catch (e: any) {
+            values.jsonError = e.message;
+            errorMessageBinding.refresh();
+            console.warn('JSON 格式错误', e);
+          }
+        });
         break;
 
       default:

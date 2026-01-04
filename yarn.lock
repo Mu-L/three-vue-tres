@@ -1865,6 +1865,11 @@
     estree-walker "^3.0.2"
     magic-string "^0.27.0"
 
+"@pangenerator/tweakpane-textarea-plugin@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/@pangenerator/tweakpane-textarea-plugin/-/tweakpane-textarea-plugin-2.0.0.tgz#364b0cf78c1072a63ded5a432d39ee8185de9b33"
+  integrity sha512-BERPuuyJYWvtJzXh4wtgYspza0ihigE2m4qs57ERKtWG59+lI2t/2TOXlwz7Xyx/QEIH25uO1g732YCljgKaUw==
+
 "@parcel/watcher-android-arm64@2.5.1":
   version "2.5.1"
   resolved "https://registry.npmmirror.com/@parcel/watcher-android-arm64/-/watcher-android-arm64-2.5.1.tgz#507f836d7e2042f798c7d07ad19c3546f9848ac1"
