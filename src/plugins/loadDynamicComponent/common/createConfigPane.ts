@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 17:17:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-04 16:00:47
+ * @LastEditTime: 2026-01-05 09:44:56
  */
 import { Pane } from 'tweakpane';
 import * as EssentialsPlugin from '@pangenerator/tweakpane-textarea-plugin';
@@ -98,16 +98,13 @@ export function createConfigPane(
         values.jsonTextChangeNumber = 0; // 用于触发更新
         const errorMessageBinding = pane.addBinding(values, 'jsonError', {
           label: 'JSON错误',
-          multiline: true,
-          rows: 3,
           readonly: true,
-          lineBreaks: true,
         });
         // 点击事件：校验并应用 JSON
-        pane.addButton({ title: '应用配置' }).on('click', () => {
+        pane.addButton({ title: '应用JSON数据' }).on('click', () => {
           try {
             const parsed = JSON5.parse(values[key]);
-            values.jsonError = ''
+            values.jsonError = 'JSON 校验成功'
             errorMessageBinding.refresh();
             console.log('JSON 校验成功：', parsed);
             values.jsonTextChangeNumber++;
