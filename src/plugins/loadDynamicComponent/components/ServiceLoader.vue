@@ -31,7 +31,8 @@ const handleApply = async () => {
 			serviceUrl.value + '/',
 			serviceUrl.value + '/assets/remoteEntry.js'
 		)
-		const config = await remoteRegistry.loadRemoteConfig('base')
+		const config = await remoteRegistry.loadRemoteConfig('base') as any
+		config.serUrl = serviceUrl.value
 		emit('loaded', config)
 		message.success('服务加载成功')
 	} catch (e) {
