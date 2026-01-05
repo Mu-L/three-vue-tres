@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-30 10:27:12
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-31 11:45:11
+ * @LastEditTime: 2026-01-05 13:55:43
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -25,6 +25,7 @@ const handleApply = async () => {
 		return
 	}
 	loading.value = true
+	serviceUrl.value = serviceUrl.value.replace(/\/+$/, '')
 	try {
 		remoteRegistry.registerRemote(
 			'base',
