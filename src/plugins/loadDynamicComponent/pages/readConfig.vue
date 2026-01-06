@@ -64,7 +64,7 @@ const handleSelectComponent = (item: any) => {
 		attrsData.value = item?.default || {}
 		comConfig.value = item?.config || null
 		comState.value = {
-			remoteName: 'base',
+			remoteName: serviceData.value.name,
 			comName: item.type,
 			position: [0, 0, 0],
 			rotation: [0, 0, 0],

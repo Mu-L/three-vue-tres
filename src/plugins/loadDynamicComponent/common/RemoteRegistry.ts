@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 09:42:41
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-29 11:26:08
+ * @LastEditTime: 2026-01-06 08:49:38
  */
 import { RemoteInstance } from './RemoteInstance'
 import type { RemotePluginConfig } from './types'
@@ -49,6 +49,24 @@ export class RemoteRegistry {
     return remote.loadConfig()
   }
 
+  async getGeneralConfigNewBase(path: string) {
+    this.registerRemote(
+			'generalConfig',
+			path + '/',
+			path + '/assets/remoteEntry.js'
+		)
+    const generalConfig = await remoteRegistry.loadRemoteConfig('generalConfig') as any
+    // 根据获得的 name 和 version 新建再注册或者获取对应的 remote
+    this.registerRemote(
+			generalConfig.name,
+			path + '/',
+			path + '/assets/remoteEntry.js'
+		)
+    const curConfig = await remoteRegistry.loadRemoteConfig(generalConfig.name) as any
+    curConfig.serUrl = path
+    return curConfig
+  }
+
   /** 获取已加载配置 */
   getRemoteConfig(remoteName: string) {
     return this.remotes.get(remoteName)?.getConfig()
@@ -60,28 +78,6 @@ export class RemoteRegistry {
       [...this.remotes.values()].map(r => r.loadConfig())
     )
   }
-
-  /** 聚合：所有组件清单（给编辑器 / UI 用） */
-  // getAllComponents() {
-  //   const result: Array<{
-  //     remote: string
-  //     component: RemotePluginConfig['components'][0]
-  //   }> = []
-
-  //   for (const [name, remote] of this.remotes) {
-  //     const config = remote.getConfig()
-  //     if (!config) continue
-
-  //     config.components.forEach(c => {
-  //       result.push({
-  //         remote: name,
-  //         component: c
-  //       })
-  //     })
-  //   }
-
-  //   return result
-  // }
 }
 
 export const remoteRegistry = RemoteRegistry.getInstance()

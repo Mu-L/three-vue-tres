@@ -44,7 +44,9 @@ export class RemoteInstance {
   }
   setResPath(resPath: string) {
     this.resPath = resPath;
-    (window as any).__REMOTE_ASSET_MAP__ ??= {}
+    (window as any).__REMOTE_ASSET_MAP__ ??= {};
+    // 静态资源路径映射
+    (window as any).__REMOTE_ASSET_MAP__[this.remoteName] = this.resPath
   }
 
   async loadConfig(): Promise<RemotePluginConfig> {
@@ -59,8 +61,6 @@ export class RemoteInstance {
       .then((config: RemotePluginConfig) => {
         this.validateConfig(config)
         this.config = config;
-        // 静态资源路径映射
-        (window as any).__REMOTE_ASSET_MAP__[config.name] = this.resPath
         return config
       })
       .catch((err: any) => {
@@ -76,11 +76,11 @@ export class RemoteInstance {
   }
 
   async loadComponentModule(comFile: string): Promise<any> {
-    if (!this.config) {
-      throw new Error(
-        `[Remote ${this.remoteName}] config not loaded`
-      )
-    }
+    // if (!this.config) {
+    //   throw new Error(
+    //     `[Remote ${this.remoteName}] config not loaded`
+    //   )
+    // }
 
     // 1️⃣ 命中缓存（包含加载中 & 已完成）
     if (this.moduleCache.has(comFile)) {
