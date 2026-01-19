@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-05-28 12:11:05
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-04 15:06:11
+ * @LastEditTime: 2026-01-19 09:35:52
  */
 export default {
     name: 'goView',
@@ -44,6 +44,14 @@ export default {
             disableFPSGraph: false,
             disableSrcBtn: true,
             title: '配置组件化',
+        },
+        {
+            src: 'plugins/goView/preview/chartDataAPIPage.png',
+            type: 'img',
+            name: 'chartDataAPIPage',
+            disableFPSGraph: false,
+            disableSrcBtn: false,
+            title: '测试数据接口联动',
         },
     ],
 }
