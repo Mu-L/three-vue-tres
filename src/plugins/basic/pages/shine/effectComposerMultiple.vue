@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-09 15:02:26
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 18:12:35
+ * @LastEditTime: 2026-01-19 10:39:40
 -->
 
 <template>
@@ -20,13 +20,16 @@
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
 import ecLayerMultiple from '../../components/ecLayerMultiple.vue'
-import { watchEffect, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 
 const tcRef = ref()
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        let renderer = tcRef.value.context.renderer.instance
-        renderer.autoClear = false
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.autoClear = false
+            })
     }
 })
 </script>

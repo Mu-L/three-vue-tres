@@ -8,7 +8,7 @@
 -->
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 
 import { OrbitControls } from '@tresjs/cientos'
 import { Plane, Vector3, DoubleSide, MathUtils } from 'three'
@@ -28,10 +28,13 @@ const params = {
     showHelpers: false,
 }
 
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.instance
-        renderer.localClippingEnabled = true
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.localClippingEnabled = true
+            })
     }
 })
 
@@ -71,10 +74,7 @@ paneControl.addBinding(clipPlanes[2], 'constant', {
                 <TresSphereGeometry :args="[i / 30, 48, 24]" />
                 <TresMeshLambertMaterial
                     :color="[MathUtils.randInt(0.1, 1), MathUtils.randInt(0, 1), MathUtils.randInt(0, 1)]"
-                    :side="DoubleSide"
-                    :clippingPlanes="clipPlanes"
-                    :clipIntersection="params.clipIntersection"
-                />
+                    :side="DoubleSide" :clippingPlanes="clipPlanes" :clipIntersection="params.clipIntersection" />
             </TresMesh>
         </TresGroup>
     </TresCanvas>

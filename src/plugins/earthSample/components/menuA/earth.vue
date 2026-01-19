@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-02 16:25:00
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-28 10:39:11
+ * @LastEditTime: 2026-01-19 10:50:09
 -->
 <script setup>
-import { watchEffect, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import { useSeek } from 'PLS/basic'
 import { OrbitControls } from '@tresjs/cientos'
 import { Fog, Color } from 'three'
@@ -24,17 +24,21 @@ const TresCanvasRef = ref()
 let scene = null
 const moveMesh = []
 const { seek } = useSeek()
-watchEffect(() => {
-	if (TresCanvasRef.value && TresCanvasRef.value.context) {
-		TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-		TresCanvasRef.value.context.renderer.instance.autoClear = false;
-		TresCanvasRef.value.context.renderer.instance.autoClearColor = new Color(1, 0, 0, 0);
+onMounted(() => {
+	if (TresCanvasRef.value) {
+		watch(() => TresCanvasRef.value.context,
+			() => {
+				TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+				TresCanvasRef.value.context.renderer.instance.autoClear = false;
+				TresCanvasRef.value.context.renderer.instance.autoClearColor = new Color(1, 0, 0, 0);
 
-		scene = TresCanvasRef.value.context.scene.value
-		scene.fog = new Fog(0xfff, 100, 1000);
-		initCountryPosition(scene)
-		addImgEarth(scene)
-		moveMesh[1] = XRayearth(scene)
+				scene = TresCanvasRef.value.context.scene.value
+				scene.fog = new Fog(0xfff, 100, 1000);
+				initCountryPosition(scene)
+				addImgEarth(scene)
+				moveMesh[1] = XRayearth(scene)
+			})
+
 	}
 })
 const onLoop = () => {

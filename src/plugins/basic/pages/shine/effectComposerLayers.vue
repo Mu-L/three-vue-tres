@@ -20,14 +20,17 @@
 
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
-import { watchEffect, ref } from 'vue'
+import { watch, ref, onMounted  } from 'vue'
 import ecLayers from '../../components/ecLayers.vue'
 
 const tcRef = ref()
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.instance
-        renderer.autoClear = false
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.autoClear = false
+            })
     }
 })
 </script>

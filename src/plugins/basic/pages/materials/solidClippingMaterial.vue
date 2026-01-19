@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-26 09:31:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-24 08:50:54
+ * @LastEditTime: 2026-01-19 10:36:55
 -->
 <script setup lang="ts">
-import { ref, watchEffect, reactive } from 'vue'
+import { watch, ref, onMounted, reactive } from 'vue'
 
 import { OrbitControls } from '@tresjs/cientos'
 import { Plane, Vector3, DoubleSide } from 'three'
@@ -21,10 +21,13 @@ const params = reactive({
     color: '#aaff11',
 })
 
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.instance
-        renderer.localClippingEnabled = true
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.localClippingEnabled = true
+            })
     }
 })
 

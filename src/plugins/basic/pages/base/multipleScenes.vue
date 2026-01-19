@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-01-30 14:29:07
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-23 16:27:40
+ * @LastEditTime: 2026-01-19 10:33:03
 -->
 <template>
     <TresCanvas v-bind="state" ref="tcRef">
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { SRGBColorSpace, BasicShadowMap, NoToneMapping } from 'three'
-import { reactive, watchEffect, ref } from 'vue'
+import { reactive, watch, ref, onMounted } from 'vue'
 
 import { OrbitControls } from '@tresjs/cientos'
 import otherScene from '../../components/otherScene.vue'
@@ -53,10 +53,13 @@ const controlsState = reactive({
 
 const tcRef = ref()
 
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        const renderer = tcRef.value.context.renderer.instance
-        renderer.autoClear = false
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.autoClear = false
+            })
     }
 })
 </script>

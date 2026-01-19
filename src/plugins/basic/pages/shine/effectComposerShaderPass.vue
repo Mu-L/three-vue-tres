@@ -20,13 +20,16 @@
 <script setup lang="ts">
 import { OrbitControls } from '@tresjs/cientos'
 import ecLayerShaderPass from '../../components/ecLayerShaderPass.vue'
-import { watchEffect, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 
 const tcRef = ref()
-watchEffect(() => {
+onMounted(() => {
     if (tcRef.value) {
-        let renderer = tcRef.value.context.renderer.instance
-        renderer.autoClear = false
+        watch(() => tcRef.value.context,
+            () => {
+                const renderer = tcRef.value.context.renderer.instance
+                renderer.autoClear = false
+            })
     }
 })
 </script>

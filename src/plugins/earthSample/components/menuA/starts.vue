@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-02 10:23:58
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-28 10:40:00
+ * @LastEditTime: 2026-01-19 10:49:28
 -->
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import * as THREE from 'three'
 
 const gl = {
@@ -18,17 +18,21 @@ const gl = {
 }
 const TresCanvasRef = ref()
 let camera, scene = null
-watchEffect(() => {
+onMounted(() => {
 	if (TresCanvasRef.value) {
-		TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-		TresCanvasRef.value.context.renderer.instance.autoClear = false;
-		TresCanvasRef.value.context.renderer.instance.setClearColor(0x000000, 0.0);
+		watch(() => TresCanvasRef.value.context,
+			() => {
+				TresCanvasRef.value.context.renderer.instance.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+				TresCanvasRef.value.context.renderer.instance.autoClear = true;
+				TresCanvasRef.value.context.renderer.instance.autoClearColor = new THREE.Color(1, 0, 0, 0);
+				TresCanvasRef.value.context.renderer.instance.setClearColor(0x000000, 0.0);
 
+				scene = TresCanvasRef.value.context.scene.value
+				camera = TresCanvasRef.value.context.camera.activeCamera.value
+				scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
+				camera.position.z = 800 / 2
+			})
 
-		scene = TresCanvasRef.value.context.scene.value
-		camera = TresCanvasRef.value.context.camera.activeCamera.value
-		scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
-		camera.position.z = 800 / 2
 	}
 })
 
