@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-29 17:17:45
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-05 09:44:56
+ * @LastEditTime: 2026-01-22 10:17:32
  */
 import { Pane } from 'tweakpane';
 import * as EssentialsPlugin from '@pangenerator/tweakpane-textarea-plugin';
@@ -90,7 +90,7 @@ export function createConfigPane(
       case 'jsonText':
         pane.addBinding(values, key, {
           view: 'textarea',
-          label: 'JSON 数据',
+          label: item.name,
           rows: 8,
           placeholder: '请在此输入 JSON...',
         })

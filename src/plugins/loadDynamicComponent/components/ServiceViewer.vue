@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-30 10:39:46
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-30 11:12:48
+ * @LastEditTime: 2026-01-22 10:20:57
 -->
 <script setup lang="ts">
 import {
@@ -16,6 +16,7 @@ import {
 	NButton,
 	NSpace,
 	NTag,
+	NElement
 } from 'naive-ui'
 
 const props = defineProps<{
@@ -42,6 +43,7 @@ const handleSelect = (item: any) => {
 </script>
 
 <template>
+	<div style="max-width:500px;">
 	<NSpace vertical size="large">
 		<!-- 基础信息 -->
 		<NDescriptions bordered size="small">
@@ -52,7 +54,7 @@ const handleSelect = (item: any) => {
 				<NTag type="info">{{ props.data.version }}</NTag>
 			</NDescriptionsItem>
 			<NDescriptionsItem label="描述">
-				{{ props.data.description }}
+				 <NElement tag="div" v-html="props.data.description" />
 			</NDescriptionsItem>
 		</NDescriptions>
 
@@ -73,6 +75,7 @@ const handleSelect = (item: any) => {
 			删除当前服务 / 重新加载
 		</NButton>
 	</NSpace>
+	</div>
 </template>
 <style lang="less" scoped>
 .n-list-item--active {
