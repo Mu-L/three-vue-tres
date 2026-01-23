@@ -29,7 +29,15 @@ A Vue 3 wrapper for Three.js using TresJS for building interactive 3D scenes.
 If you find this project helpful, please click the "Star⭐" button on the top right corner. Your star is my motivation to keep developing. Thank you!
 ```
 
-> For video explanation of this project on Bilibili, click the link below 👇🏻
+## 面向国产化 / 信创环境 Web三维可视化框架 🇨🇳 🚩
+具体 国产化 描述文档部分，[点击详情](https://docs.icegl.cn/docs/three-vue-tres/guide/localization.html)
+```shell
+1️⃣ 国产化硬件支持
+2️⃣ 国产操作系统 & 浏览器支持
+3️⃣ 国产化开发 / 部署环境
+- 您完全可以把tvt.js作为国产化三维可视化项目、数字孪生平台的前端技术底座。
+- 我们在所有依赖完全开源的基础上，拥有自主软件知识产权和软件著作权，开源且免费商用。
+```
 
 <a style="display:block;width:800px;max-width:100%;" href="https://www.bilibili.com/video/BV1mfCcYeE9E"><img src="./preview/bilibili.gif" alt="tres.js webgl three.js"></a>
 
@@ -143,7 +151,6 @@ If access errors occur due to frequent project updates and builds, please clear 
 <a href="https://opensource.icegl.cn"><img src="./preview/p1.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" alt="three.js tres.js webgl tvt.js"></a>
-<a href="https://opensource.icegl.cn"><img src="./preview/p4.gif" alt="three.js tres.js webgl tvt.js"></a>
 
 
 More demos are available on the preview page.
