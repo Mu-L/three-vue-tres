@@ -1,0 +1,34 @@
+name: Build and Deploy to hawk86104.github.io
+
+on:
+  push:
+    branches:
+      - main   # 或 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install deps
+        run: yarn
+
+      - name: Build
+        run: yarn pre.build.icegl
+
+      - name: Deploy to github.io repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.PAGES_TOKEN }}
+          external_repository: hawk86104/hawk86104.github.io
+          publish_branch: main        # 你 github.io 仓库的分支
+          publish_dir: ./dist
+          commit_message: 'deploy: auto publish from three-vue-tres'
