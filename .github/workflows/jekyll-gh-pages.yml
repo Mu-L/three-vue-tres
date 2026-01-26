@@ -3,7 +3,7 @@ name: Build and Deploy to hawk86104.github.io
 on:
   push:
     branches:
-      - main   # 或 master
+      - master   # 或 master
 
 jobs:
   deploy:
