@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-10 11:18:10
+ * @LastEditTime: 2026-01-26 09:52:13
  */
 
 export default {
@@ -82,6 +82,12 @@ export default {
             type: 'img',
             name: 'flexiblePipe2Page',
             title: '伸缩管线2',
+        },
+        {
+            src: 'plugins/industry4/preview/tslGearsForkedPage.png',
+            type: 'img',
+            name: 'tslGearsForkedPage',
+            title: 'TSL齿轮分叉',
         }
     ],
 }

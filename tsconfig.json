@@ -11,10 +11,10 @@
       "dom"
     ],
     "sourceMap": true,
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "ignoreDeprecations": "5.0",
