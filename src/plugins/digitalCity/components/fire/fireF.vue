@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-03 15:24:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 14:09:49
+ * @LastEditTime: 2026-01-26 17:23:35
 -->
 <template></template>
 
@@ -12,13 +12,54 @@
 import * as THREE from 'three'
 import { useLoop, useTres } from '@tresjs/core'
 import * as Photons from '../../common/photons.module.js'
+import { watch, onUnmounted, computed } from 'vue'
+
+type Vec3Array = [number, number, number]
+type Vec3Object = { x: number; y: number; z: number }
+type Vec3 = Vec3Array | Vec3Object
 
 const props = withDefaults(defineProps<{
-	position: any
-	scale?: number
+    position?: Vec3
+    scale?: Vec3 | number
+    flickerLightIntensity?: number
+    flickerLightIntensityFlux?: number
+    flickerLightColor?: string
 }>(), {
-	position: [0, 0, 0],
-	scale: 1
+    position: () => [0, 0, 0],
+    scale: 1,
+    flickerLightIntensity: 2,
+    flickerLightIntensityFlux: 0.4,
+    flickerLightColor: "#f5d26b",
+})
+
+function normalizeVec3(
+    value: Vec3 | number | undefined,
+    defaultValue: Vec3Array = [0, 0, 0]
+): Vec3Array {
+    if (typeof value === 'number') {
+        return [value, value, value]
+    }
+
+    if (Array.isArray(value)) {
+        const [x = 0, y = 0, z = 0] = value
+        return [x, y, z]
+    }
+
+    if (value && typeof value === 'object') {
+        const { x = 0, y = 0, z = 0 } = value
+        return [x, y, z]
+    }
+
+    return defaultValue
+}
+
+const normalizedPosition = computed<[number, number, number]>(() => {
+    return normalizeVec3(props.position)
+})
+
+const normalizedScale = computed<number>(() => {
+    const scaleVec = normalizeVec3(props.scale, [1, 1, 1])
+    return scaleVec[0]
 })
 
 const PhotonsManager = new Photons.Manager()
@@ -35,9 +76,9 @@ const setupEmbers = (scale: number, position: THREE.Vector3) => {
     const embersTexture = new THREE.TextureLoader().load(texturePath)
     const embersAtlas = new Photons.Atlas(embersTexture, texturePath)
     embersAtlas.addFrameSet(1, 0.0, 0.0, 1.0, 1.0)
-    const embersRenderer = new Photons.AnimatedSpriteRenderer(true, embersAtlas, true, THREE.AdditiveBlending)
+    const embersRenderer = new Photons.AnimatedSpriteRenderer(true, embersAtlas, true, 1)
 
-    const embersParticleSystem = new Photons.ParticleSystem(embersRoot, embersRenderer, renderer)
+    const embersParticleSystem = new Photons.ParticleSystem(embersRoot, embersRenderer)
     embersParticleSystem.init(150)
 
     embersParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(6))
@@ -112,7 +153,7 @@ const setupBaseFlame = (scale: number, position: THREE.Vector3) => {
     baseFlameAtlas.addFrameSet(18, 0.0, 0.0, 128.0 / 1024.0, 128.0 / 512.0)
     const baseFlameRenderer = new Photons.AnimatedSpriteRenderer(true, baseFlameAtlas, true)
 
-    const baseFlameParticleSystem = new Photons.ParticleSystem(baseFlameRoot, baseFlameRenderer, renderer)
+    const baseFlameParticleSystem = new Photons.ParticleSystem(baseFlameRoot, baseFlameRenderer)
     baseFlameParticleSystem.init(50)
 
     baseFlameParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(10))
@@ -197,7 +238,7 @@ const setupBrightFLame = (scale: number, position: THREE.Vector3) => {
     brightFlameAtlas.addFrameSet(16, 0.0, 0.0, 212.0 / 1024.0, 256.0 / 1024.0)
     const brightFlameRenderer = new Photons.AnimatedSpriteRenderer(true, brightFlameAtlas, true)
 
-    const brightFlameParticleSystem = new Photons.ParticleSystem(brightFlameRoot, brightFlameRenderer, renderer)
+    const brightFlameParticleSystem = new Photons.ParticleSystem(brightFlameRoot, brightFlameRenderer)
     brightFlameParticleSystem.init(20)
 
     brightFlameParticleSystem.setEmitter(new Photons.ConstantParticleEmitter(5))
@@ -268,9 +309,10 @@ const setupBrightFLame = (scale: number, position: THREE.Vector3) => {
     brightFlameParticleSystem.start()
     return brightFlameParticleSystem
 }
-
+let lightParent = null as any
+let flickerLight = null as any
 const setupLights = (position: THREE.Vector3, intensity = 10) => {
-    const lightParent = new THREE.Object3D()
+    lightParent = new THREE.Object3D()
     scene.value.add(lightParent)
     lightParent.position.copy(position)
 
@@ -281,14 +323,49 @@ const setupLights = (position: THREE.Vector3, intensity = 10) => {
         bias: 0.000009,
         edgeRadius: 3,
     } as any
-    return new Photons.FlickerLight(lightParent, intensity, 2, new THREE.Color().setRGB(1, 0.8, 0.4), 0, 1.0, flickerLightShadows)
+    flickerLight = new Photons.FlickerLight(lightParent, props.flickerLightIntensity, props.flickerLightIntensityFlux, new THREE.Color().set(props.flickerLightColor), 0, 1.0, flickerLightShadows)
+    return flickerLight
 }
 
-const flamePosition2 = new THREE.Vector3(...props.position)
-PhotonsManager.addParticleSystem(setupEmbers(props.scale, flamePosition2))
-PhotonsManager.addParticleSystem(setupBaseFlame(props.scale, flamePosition2))
-PhotonsManager.addParticleSystem(setupBrightFLame(props.scale, flamePosition2))
-PhotonsManager.addComponent(setupLights(flamePosition2, 100))
+const initFire = () => {
+    const flamePosition1 = new THREE.Vector3(...normalizedPosition.value)
+    PhotonsManager.addParticleSystem(setupEmbers(normalizedScale.value, flamePosition1))
+    PhotonsManager.addParticleSystem(setupBaseFlame(normalizedScale.value, flamePosition1))
+    PhotonsManager.addParticleSystem(setupBrightFLame(normalizedScale.value, flamePosition1))
+    PhotonsManager.addComponent(setupLights(flamePosition1, 100))
+}
+initFire()
+const clearFire = () => {
+    for (const system of PhotonsManager.particleSystems) {
+        system.particleSystemRenderer.dispose()
+    }
+    PhotonsManager.particleSystems = []
+    if (lightParent) {
+        scene.value.remove(lightParent)
+        flickerLight = null
+    }
+}
+onUnmounted(() => {
+    clearFire()
+})
+watch(
+    () => [props.scale, props.position],
+    () => {
+        clearFire()
+        initFire()
+    }, { deep: true }
+)
+
+watch(
+    () => [props.flickerLightIntensity, props.flickerLightIntensityFlux, props.flickerLightColor],
+    () => {
+        if (flickerLight) {
+            flickerLight.intensity = props.flickerLightIntensity
+            flickerLight.intensityFlux = props.flickerLightIntensityFlux
+            flickerLight.light.color.copy(props.flickerLightColor)
+        }
+    }
+)
 
 const { onRender } = useLoop()
 onRender(() => {

@@ -2725,4 +2725,3 @@ class JSONTypeStore {
 }
 
 export { AccelerationOperator, AnimatedSpriteRenderer, Atlas, BaseParticleStateInitializer, BaseParticleStateOperator, BoxPositionInitializer, ColorInterpolatorOperator, ConstantParticleEmitter, FlickerLight, JSONTypeStore, LifetimeInitializer, Manager, OpacityInterpolatorOperator, ParticleStateArray, ParticleSystem, ParticleSystemState, RandomGenerator, RandomVelocityInitializer, Renderer, RotationInitializer, RotationalSpeedInitializer, SequenceInitializer, SequenceOperator, SizeInitializer, SizeInterpolatorOperator, SphereRandomGenerator }
-//# sourceMappingURL=photons.module.js.map

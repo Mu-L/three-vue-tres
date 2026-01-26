@@ -4,10 +4,10 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-24 09:49:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-27 12:53:39
+ * @LastEditTime: 2026-01-26 18:55:58
 -->
 <template>
-    <TresCanvas ref="tcRef" v-bind="state" window-size @ready="onReady">
+    <TresCanvas ref="tcRef" v-bind="state" window-size @ready="onReady" @loop="onLoop">
         <TresPerspectiveCamera :position="[600, 750, -1221]" :fov="45" :near="1" :far="100000" />
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
@@ -67,12 +67,16 @@ onMounted(async () => {
     if (props.showBuildings) {
         cityFBX.value = await loadCityFBX()
     }
-    contextReady.value = true
 })
 const onReady = (context: any) => {
     debugger
     // 此版本 tres.js  5.0.2  onReady 事件不触发
     // contextReady.value = true
+}
+const onLoop = () => {
+    if (!contextReady.value) {
+        contextReady.value = true
+    }
 }
 const tcRef = ref()
 defineExpose({

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-12-11 11:20:54
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-09-26 14:43:09
+ * @LastEditTime: 2026-01-26 18:57:34
 -->
 <template>
     <pagesShow ref="pagesShowRef" :showAxesHelper="false" :showGridHelper="false" :showBuildings="false"
@@ -29,15 +29,9 @@ watch(
     (newVal: any) => {
         if (newVal) {
             pagesShowRef.value.context.context.camera.activeCamera.value.position.set(4.0, 2.15, 3.6)
+            pagesShowRef.value?.context.context.controls.value.target.set(0, -1, 0)
         }
     }
 )
-watch(
-    () => pagesShowRef.value?.context.context.controls.value,
-    (newVal: any) => {
-        if (newVal) {
-            newVal.target.set(0, -1, 0)
-        }
-    }
-)
+
 </script>
