@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-10 16:11:27
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-26 09:52:13
+ * @LastEditTime: 2026-01-26 11:42:42
  */
 
 export default {
@@ -88,6 +88,7 @@ export default {
             type: 'img',
             name: 'tslGearsForkedPage',
             title: 'TSL齿轮分叉',
+            referenceSource: { title: 'react-three/fiber', url: 'https://codesandbox.io/p/sandbox/webgpu-tsl-gears-forked-v3d959' },
         }
     ],
 }
