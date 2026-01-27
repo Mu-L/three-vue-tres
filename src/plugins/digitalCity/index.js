@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-03-15 22:00:55
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-07-04 09:12:24
+ * @LastEditTime: 2026-01-27 11:14:46
  */
 import radraA from './components/radras/radraA.vue'
 import radraB from './components/radras/radraB.vue'
@@ -17,6 +17,8 @@ import clouds from './components/weather/clouds.vue'
 import markA from './components/buildings/buildingsMarkA.vue'
 import fireA from './components/fire/fireA.vue'
 import fireB from './components/fire/fireB.vue'
+import fireC from './components/fire/fireC.vue'
+import fireF from './components/fire/fireF.vue'
 import smokeA from './components/smoke/smokeA.vue'
 import rippleMesh from './components/fence/rippleMesh.vue'
 import regionGlow from './components/fence/regionGlow.vue'
@@ -53,4 +55,6 @@ export {
     objectToSceneCenter,
     adjustGroupCenter,
     fencePlus,
+    fireF,
+    fireC
 }

@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-24 09:49:39
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-26 18:55:58
+ * @LastEditTime: 2026-01-27 08:28:26
 -->
 <template>
     <TresCanvas ref="tcRef" v-bind="state" window-size @ready="onReady" @loop="onLoop">
@@ -12,7 +12,7 @@
         <OrbitControls v-bind="controlsState" />
         <TresAmbientLight color="#ffffff" />
         <TresDirectionalLight :position="[100, 100, 0]" :intensity="0.5" color="#ffffff" />
-        <template v-if="props.showBuildings && contextReady">
+        <template v-if="props.showBuildings && cityFBX">
             <buildingsModel :model="cityFBX" />
             <buildingsLines :builds="cityFBX.city" color="#000" />
         </template>

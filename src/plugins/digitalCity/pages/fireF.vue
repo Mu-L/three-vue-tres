@@ -4,21 +4,21 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-03 15:24:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-26 17:51:28
+ * @LastEditTime: 2026-01-27 08:29:02
 -->
 <template>
     <pagesShow ref="pagesShowRef">
         <template v-slot:ability>
             <fireF :position="[0, 20, 10]" :scale="40" />
-            <fireF :position="[posX, posY, posZ]" :scale="scale" v-bind="lightConfig"/>
+            <fireF :position="[posX, posY, posZ]" :scale="scale" v-bind="lightConfig" />
         </template>
     </pagesShow>
 </template>
 
 <script setup lang="ts">
-import { ref, watch,reactive,onMounted } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import pagesShow from '../components/pagesShow.vue'
-import fireF from '../components/fire/fireF.vue'
+import { fireF } from 'PLS/digitalCity'
 import { Pane } from 'tweakpane'
 
 const pagesShowRef = ref() as any
@@ -31,9 +31,6 @@ watch(
     }
 )
 
-onMounted(() => {
-    debugger
-})
 const posX = ref(100)
 const posY = ref(100)
 const posZ = ref(100)
