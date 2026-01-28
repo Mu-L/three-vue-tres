@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-08-24 22:59:23
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-27 09:38:54
+ * @LastEditTime: 2026-01-28 08:55:44
 -->
 <script setup lang="ts">
 import { watch, ref, toRaw, useAttrs } from 'vue'
@@ -122,5 +122,7 @@ onBeforeRender(() => {
 </script>
 
 <template>
-  <primitive v-if="objCloud" :object="toRaw(objCloud)" :renderOrder="3001" />
+  <TresGroup>
+    <primitive v-if="objCloud" :object="toRaw(objCloud)" :renderOrder="3001" />
+  </TresGroup> 
 </template>

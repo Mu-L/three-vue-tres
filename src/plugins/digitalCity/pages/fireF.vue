@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-03 15:24:52
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-27 08:29:02
+ * @LastEditTime: 2026-01-28 09:52:06
 -->
 <template>
     <pagesShow ref="pagesShowRef">
@@ -36,9 +36,10 @@ const posY = ref(100)
 const posZ = ref(100)
 const scale = ref(100)
 const lightConfig = reactive({
-    intensity: 10,
-    intensityFlux: 2,
-    color: '#ffaa33',
+    hasPointLight: true,
+    flickerLightIntensity: 10,
+    flickerLightIntensityFlux: 2,
+    flickerLightColor: '#ffaa33',
 })
 const paneControl = new Pane()
 paneControl.addBinding(posX, 'value', {
@@ -65,20 +66,22 @@ paneControl.addBinding(scale, 'value', {
     max: 100,
     step: 0.1,
 })
-
-paneControl.addBinding(lightConfig, 'intensity', {
+paneControl.addBinding(lightConfig, 'hasPointLight', {
+    label: '启用点光源',
+})
+paneControl.addBinding(lightConfig, 'flickerLightIntensity', {
     label: 'intensity',
     min: 0.1,
     max: 10,
     step: 0.1,
 })
-paneControl.addBinding(lightConfig, 'intensityFlux', {
-    label: 'intensityFlux',
+paneControl.addBinding(lightConfig, 'flickerLightIntensityFlux', {
+    label: '闪烁强度',
     min: 0.1,
     max: 20,
     step: 0.1,
 })
-paneControl.addBinding(lightConfig, 'color', {
+paneControl.addBinding(lightConfig, 'flickerLightColor', {
     label: 'lightcolor',
 })
 </script>

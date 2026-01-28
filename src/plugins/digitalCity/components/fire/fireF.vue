@@ -4,32 +4,34 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-12-03 15:24:57
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-01-26 17:23:35
+ * @LastEditTime: 2026-01-28 09:54:44
 -->
-<template></template>
+<template>
+    <TresGroup />
+</template>
 
 <script lang="ts" setup>
 import * as THREE from 'three'
 import { useLoop, useTres } from '@tresjs/core'
 import * as Photons from '../../common/photons.module.js'
-import { watch, onUnmounted, computed } from 'vue'
+import { watch, onUnmounted, computed, useAttrs } from 'vue'
 
 type Vec3Array = [number, number, number]
 type Vec3Object = { x: number; y: number; z: number }
 type Vec3 = Vec3Array | Vec3Object
 
 const props = withDefaults(defineProps<{
-    position?: Vec3
-    scale?: Vec3 | number
+    hasPointLight?: boolean
     flickerLightIntensity?: number
     flickerLightIntensityFlux?: number
     flickerLightColor?: string
+    isEditor?: boolean
 }>(), {
-    position: () => [0, 0, 0],
-    scale: 1,
+    hasPointLight: true,
     flickerLightIntensity: 2,
     flickerLightIntensityFlux: 0.4,
     flickerLightColor: "#f5d26b",
+    isEditor: false
 })
 
 function normalizeVec3(
@@ -52,14 +54,19 @@ function normalizeVec3(
 
     return defaultValue
 }
-
-const normalizedPosition = computed<[number, number, number]>(() => {
-    return normalizeVec3(props.position)
+const attrs = useAttrs() as any
+const normalizedPosition = computed(() => {
+    if (attrs.position) {
+        return new THREE.Vector3(...normalizeVec3(attrs.position))
+    }
+    return new THREE.Vector3(0, 0, 0)
 })
 
-const normalizedScale = computed<number>(() => {
-    const scaleVec = normalizeVec3(props.scale, [1, 1, 1])
-    return scaleVec[0]
+const normalizedScale = computed(() => {
+    if (attrs.scale) {
+        return normalizeVec3(attrs.scale)[0]
+    }
+    return 1
 })
 
 const PhotonsManager = new Photons.Manager()
@@ -311,9 +318,13 @@ const setupBrightFLame = (scale: number, position: THREE.Vector3) => {
 }
 let lightParent = null as any
 let flickerLight = null as any
-const setupLights = (position: THREE.Vector3, intensity = 10) => {
+const setupLights = (position: THREE.Vector3) => {
     lightParent = new THREE.Object3D()
-    scene.value.add(lightParent)
+    if (window.globalTvtExtendMeshScenes) {
+        window.globalTvtExtendMeshScenes.add(lightParent)
+    } else {
+        scene.value.add(lightParent)
+    }
     lightParent.position.copy(position)
 
     const flickerLightShadows = {
@@ -332,7 +343,8 @@ const initFire = () => {
     PhotonsManager.addParticleSystem(setupEmbers(normalizedScale.value, flamePosition1))
     PhotonsManager.addParticleSystem(setupBaseFlame(normalizedScale.value, flamePosition1))
     PhotonsManager.addParticleSystem(setupBrightFLame(normalizedScale.value, flamePosition1))
-    PhotonsManager.addComponent(setupLights(flamePosition1, 100))
+    if (props.hasPointLight)
+        PhotonsManager.addComponent(setupLights(flamePosition1))
 }
 initFire()
 const clearFire = () => {
@@ -341,7 +353,11 @@ const clearFire = () => {
     }
     PhotonsManager.particleSystems = []
     if (lightParent) {
-        scene.value.remove(lightParent)
+        if (window.globalTvtExtendMeshScenes) {
+            window.globalTvtExtendMeshScenes.remove(lightParent)
+        } else {
+            scene.value.remove(lightParent)
+        }
         flickerLight = null
     }
 }
@@ -349,8 +365,32 @@ onUnmounted(() => {
     clearFire()
 })
 watch(
-    () => [props.scale, props.position],
-    () => {
+    () => props.hasPointLight,
+    (newVal) => {
+        if (newVal) {
+            if (!flickerLight) {
+                PhotonsManager.addComponent(setupLights(new THREE.Vector3(...normalizedPosition.value)))
+            }
+        } else {
+            if (flickerLight) {
+                flickerLight.dispose()
+                if (window.globalTvtExtendMeshScenes) {
+                    window.globalTvtExtendMeshScenes.remove(lightParent)
+                } else {
+                    scene.value.remove(lightParent)
+                }
+                flickerLight = null
+                PhotonsManager.componentContainer.components = []
+            }
+        }
+    }, { immediate: true }
+)
+watch(
+    () => [attrs.scale, attrs.position],
+    ([ns, np], [os, op]) => {
+        if (JSON.stringify(ns) === JSON.stringify(os) && JSON.stringify(np) === JSON.stringify(op)) {
+            return
+        }
         clearFire()
         initFire()
     }, { deep: true }
@@ -360,16 +400,26 @@ watch(
     () => [props.flickerLightIntensity, props.flickerLightIntensityFlux, props.flickerLightColor],
     () => {
         if (flickerLight) {
+            console.log('update light')
             flickerLight.intensity = props.flickerLightIntensity
             flickerLight.intensityFlux = props.flickerLightIntensityFlux
-            flickerLight.light.color.copy(props.flickerLightColor)
+            flickerLight.light.color.set(props.flickerLightColor)
         }
     }
 )
 
-const { onRender } = useLoop()
-onRender(() => {
+const curRender = () => {
     PhotonsManager.update()
     PhotonsManager.render(renderer, camera.value)
+}
+if (!props.isEditor) {
+    const { onRender } = useLoop()
+    onRender(() => {
+        curRender()
+    })
+}
+defineExpose({
+    curRender
 })
+
 </script>
