@@ -12,7 +12,7 @@ import JSON5 from 'json5'
 
 export interface ConfigSchemaItem {
   name: string
-  com: 'Select' | 'ColorPicker' | 'Switch' | 'Slider' | 'jsonText' | 'ActionButton'
+  com: 'Select' | 'ColorPicker' | 'Switch' | 'Slider' | 'Text' | 'jsonText' | 'ActionButton'
   action?: string
   options?: Array<{ label: string; value: any }>
   min?: number
@@ -92,6 +92,16 @@ export function createConfigPane(
             min: item.min,
             max: item.max,
             step: item.step,
+          })
+          .on('change', (ev: any) => {
+            values[key] = ev.value
+          })
+        break
+
+      case 'Text':
+        pane
+          .addBinding(values, key, {
+            label: item.name,
           })
           .on('change', (ev: any) => {
             values[key] = ev.value
