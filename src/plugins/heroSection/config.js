@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2026-05-07 17:15:49
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2026-05-07 18:37:13
+ */
 export default {
     "name": "heroSection",
     "title": "概念网站 HeroSection",
@@ -18,5 +26,9 @@ export default {
         disableSrcBtn: false
     },
     { src: 'plugins/heroSection/preview/pointsEarth.png', type: 'img', name: 'pointsEarth', title: '粒子球' },
- ]
+    {
+        src: 'plugins/heroSection/preview/particleEarth.png', type: 'img', name: 'particleEarth', title: '粒子地球',
+        referenceSource: { title: 'tsl-scifi-earth', url: 'https://github.com/hexianWeb/tsl-scifi-earth' },
+    },
+    ]
 }
