@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-26 15:03:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-31 11:45:01
+ * @LastEditTime: 2026-05-12 16:55:12
  */
 export default {
     "name": "loadDynamicComponent",
@@ -13,13 +13,15 @@ export default {
     发布服务程序gitee开源地址：
     <a style="color: #5384ff;" href="https://gitee.com/ice-gl/dynamic-component-service" target="_blank">gitee.com/ice-gl/dynamic-component-service</a></br>
     1、发布你自己的高级组件，可以通过此组件，在tvt.js灵活调试</br>
-    2、可以导入到在线的 <区域场景编辑器> <a style="color: #5384ff;" href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" target="_blank">zone3deditor.icegl.cn</a>，进行二次编辑后，再开发。`,
-    "version": "1.0.0",
+    2、可以导入到在线的 <区域场景编辑器> <a style="color: #5384ff;" href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" target="_blank">zone3deditor.icegl.cn</a>，进行二次编辑后，再开发。</br>
+    3、可以导入到在线的 <gis地理信息编辑器> <a style="color: #05794c;" href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" target="_blank">gisPlaneEditor.icegl.cn</a>，进行二次编辑后，再开发。</br>`,
+    "version": "2.0.2",
+    tvtstore: 'FREE',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
     state: 'active',
     "creatTime": "2025-12-26",
-    "updateTime": "2025-12-26",
+    "updateTime": "2026-05-12",
     "require": [],
     "preview": [{
        src: `

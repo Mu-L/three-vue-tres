@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-11-18 22:17:49
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-10-24 11:15:58
+ * @LastEditTime: 2026-05-12 09:06:12
 -->
 <template>
     <div class="absolute menuSelf">
@@ -175,6 +175,36 @@
                         </f-menu-item>
                     </template>
                 </f-sub-menu>
+                <f-sub-menu value="6">
+                    <template #icon>
+                        <EditOutlined />
+                    </template>
+                    <template #label
+                        >动态组件服务 <FBadge :max="999" :value="getMenusCount().loadDynamic" class="count-fbdge big-cf" type="primary" size="small"
+                    /></template>
+                    <template v-for="(onePlugin, pkey) in filteredData">
+                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'loadDynamic'" :value="pkey">
+                            <template #label>
+                                <div class="flex absolute badge-group">
+                                    <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE'" />
+                                </div>
+                                <div class="flex absolute" style="top: 3px; right: 30px">
+                                    <f-badge :value="onePlugin.version" class="tag-fbdge" type="primary" size="small" />
+                                </div>
+                                <span class="left-m-text">{{ onePlugin.title }}</span>
+                                <FBadge :value="onePlugin.preview.length" class="count-fbdge" type="primary" size="small" />
+                            </template>
+                        </f-menu-item>
+                    </template>
+                    <f-menu-item value="loadDynamicEcoUrl">
+                        <template #label>
+                            <div class="flex absolute badge-group">
+                                <f-badge value="dcser" class="tag-fbdge" type="danger" size="small" />
+                            </div>
+                            <span class="left-m-text">动态组件服务生态</span>
+                        </template>
+                    </f-menu-item>
+                </f-sub-menu>
             </FMenu>
         </div>
         <div
@@ -208,6 +238,11 @@
             </template>
             <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
                 <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'gisEditor'" :ref="(el) => (tabListRef[pkey] = el)">
+                    <cardList :onePlugin="onePlugin" />
+                </div>
+            </template>
+            <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
+                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'loadDynamic'" :ref="(el) => (tabListRef[pkey] = el)">
                     <cardList :onePlugin="onePlugin" />
                 </div>
             </template>
@@ -257,6 +292,8 @@ const goto = (value: any) => {
         window.open('https://www.icegl.cn/tvtstore/zone3Deditor', '_blank')
     } else if (value.value === 'gisPlaneEditorIntroUrl') {
         window.open('https://www.icegl.cn/tvtstore/gisPlaneEditor', '_blank')
+    } else if (value.value === 'loadDynamicEcoUrl') {
+        window.open('https://dcser.icegl.cn', '_blank')
     } else {
         tabListRef.value[value.value]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         router.replace({ hash: `#${value.value}` })
@@ -392,7 +429,9 @@ const isTvtstore = (onePlugin: any) => {
             return 'zoneEditor'
         } else if (onePlugin.name.startsWith('gis')) {
             return 'gisEditor'
-        } else {
+        } else if (onePlugin.name.startsWith('loadDynamic')) {
+            return 'loadDynamic'
+        }else {
             return 'Tvtstore'
         }
     } else {
@@ -404,6 +443,7 @@ const getMenusCount = () => {
         basic: 0,
         case: 0,
         tvtstore: 0,
+        loadDynamic: 0,
         zoneEditor: 0,
         gisEditor: 0,
     }
@@ -424,6 +464,8 @@ const getMenusCount = () => {
                     reCount.zoneEditor += filteredData.value[key].preview.length
                 } else if (isTvtstore(filteredData.value[key]) === 'gisEditor') {
                     reCount.gisEditor += filteredData.value[key].preview.length
+                } else if (isTvtstore(filteredData.value[key]) === 'loadDynamic') {
+                    reCount.loadDynamic += filteredData.value[key].preview.length
                 }
             }
         }
