@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-12-26 15:03:02
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-05-12 16:55:12
+ * @LastEditTime: 2026-05-12 18:36:03
  */
 export default {
     "name": "loadDynamicComponent",
@@ -15,7 +15,7 @@ export default {
     1、发布你自己的高级组件，可以通过此组件，在tvt.js灵活调试</br>
     2、可以导入到在线的 <区域场景编辑器> <a style="color: #5384ff;" href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" target="_blank">zone3deditor.icegl.cn</a>，进行二次编辑后，再开发。</br>
     3、可以导入到在线的 <gis地理信息编辑器> <a style="color: #05794c;" href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" target="_blank">gisPlaneEditor.icegl.cn</a>，进行二次编辑后，再开发。</br>`,
-    "version": "2.0.2",
+    "version": "2.2.2",
     tvtstore: 'FREE',
     author: '地虎降天龙',
     website: 'https://gitee.com/hawk86104',
