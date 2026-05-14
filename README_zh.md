@@ -79,21 +79,15 @@
 		<img src="https://img.shields.io/npm/v/@tresjs/core?color=%2382DBCA&label=%40tresjs%2Fcore&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjY4NTQgMy40MjkxNkMxMi4wNzM4IDIuNzgxODIgMTMuMDEyIDIuNzgxODIgMTMuNDAwNCAzLjQyOTE1TDE5LjE3NzEgMTMuMDU2OUMxOS41NzcgMTMuNzIzNSAxOS4wOTY5IDE0LjU3MTQgMTguMzE5NiAxNC41NzE0SDYuNzY2MjRDNS45ODg5NCAxNC41NzE0IDUuNTA4ODMgMTMuNzIzNSA1LjkwODc1IDEzLjA1NjlMMTEuNjg1NCAzLjQyOTE2WiIgZmlsbD0iIzgyREJDNSIvPgo8cGF0aCBkPSJNMTUuNjg1NyAxMC41NDI5QzE1LjY4NTcgOS45OTA1OSAxNi4xMzM0IDkuNTQyODggMTYuNjg1NyA5LjU0Mjg4SDI2QzI2LjU1MjIgOS41NDI4OCAyNyA5Ljk5MDU5IDI3IDEwLjU0MjlWMTkuODU3MkMyNyAyMC40MDk0IDI2LjU1MjIgMjAuODU3MiAyNiAyMC44NTcySDE2LjY4NTdDMTYuMTMzNCAyMC44NTcyIDE1LjY4NTcgMjAuNDA5NCAxNS42ODU3IDE5Ljg1NzJWMTAuNTQyOVoiIGZpbGw9IiM0RjRGNEYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIyMiIgcj0iNiIgZmlsbD0iI0VGQUMzNSIvPgo8L3N2Zz4K" alt="npm package">
 		</a>
 		使用 Vue3.x 组件实现声明式的 ThreeJS，做属于前端的三维项目。<br/><br/>
+## ✨ 动态组件发布与加载服务：[🌏 dcser.icegl.cn](https://dcser.icegl.cn/)
+> 基于 tvt.js 生态的动态组件发布与加载服务，用于构建更灵活的模块化应用体系。 
+<a style="display:block;width:800px;max-width:100%;" href="https://dcser.icegl.cn"><img src="./preview/dcser.gif" alt="tres.js webgl three.js"></a>
 
 ## 🏕 点击预览：[🌏 opensource.icegl.cn](https://opensource.icegl.cn)
 
--   如果访问太慢，请访问镜像站点：[🌏 oss.icegl.cn](http://oss.icegl.cn/)
 -   如果有条件，也可直接访问 github 的镜像站:[🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
 -   全案例微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
 -   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
-
-> 相关技术栈拓扑图 【包含全套项目源码】: 
-<a href="./src/plugins/zoneFreeScene/pages/freeTvtStack.vue">git项目源码地址</a>
-
-在线编辑器再次编辑后免费导出源码项目二开 :
-<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack">zone3Deditor页面跳转</a>
-
-<a style="display:block;width:800px;max-width:100%;" href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl three.js"></a>
 
 <table style="border: none; width: 100%; text-align: center;">
   <tr>
@@ -117,6 +111,30 @@
     <td style="padding: 10px;">
 			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;max-width:100%;">
 				<img src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
+  <tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack">
+				技术栈拓扑图：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeHYworld">
+				混元世界：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack" style="display:block;max-width:100%;">
+				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl">
+			</a>
+		</td>
+    <td style="padding: 10px;">
+			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeHYworld" style="display:block;max-width:100%;">
+				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeHYworld.png" alt="tres.js webgl">
 			</a>
 		</td>
   </tr>
@@ -217,52 +235,40 @@
 			</a>
 		</td>
   </tr>
+	<tr>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://www.icegl.cn/tvtstore/gisPlaneEditor">
+				地图空间编辑器：[ 面向投影地图场景的 GIS 编辑器 ]
+			</a>
+		</td>
+    <td style="padding:10px;font-size:1.2em;">
+			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index?sceneConfig=多套倾斜摄影3D">
+				多套倾斜摄影3D：[ 编辑器直接落地项目 ]
+			</a>
+		</td>
+  </tr>
+	<tr>
+    <td style="padding: 10px;">
+			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;max-width:100%;">
+				<img src="https://opensource.icegl.cn/plugins/gisPlaneEditor/preview/index.png" alt="tres.js webgl">
+			</a>
+		</td>
+    <td style="padding: 10px;">
+			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/preview?sceneConfig=多套倾斜摄影3D" style="display:block;max-width:100%;">
+				<img src="https://gisplaneeditor.icegl.cn/plugins/gisPlaneEditor/preview/多套倾斜摄影3D.png" alt="tres.js webgl">
+			</a>
+		</td>
+  </tr>
 </table>
 
 ```shell
 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
 ```
 
-<a href="https://opensource.icegl.cn"><img src="./preview/p1.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" alt="three.js tres.js webgl tvt.js"></a>
 
 更多演示请进入预览页面
-
-# 优势
-
--   🌈 前端の基本素养 \* FesJS [点击详情](https://fesjs.mumblefe.cn)<br/>
-<a href="https://www.npmjs.com/package/@fesjs/fes">
-<img src="https://img.shields.io/npm/v/%40fesjs%2Ffes?label=%40fesjs%2Ffes">
-</a><br/>
-集成封装项目落地的常用库：图标、多语言、API 接口调用、Vuex/Pinia、model 数据封装、页面 layout/权限 access、路由管理等。<br/>
-
--   🌠 像写 Vue3.x 一样写三维可视化项目[点击详情](https://tresjs.org/guide)<br/>
-![npm](https://img.shields.io/npm/v/%40tresjs%2Fcientos?label=%40tresjs%2Fcientos)<br/>
-全功能版本追溯保持 threeJS 最新版本 \* TresJS
-最新 Vue3.x 的语法糖写法，TS/JS 通吃，让你以最新最爽快的方式构建三维可视化项目
-
-```html
-<template>
-		<TresCanvas window-size>
-				<TresPerspectiveCamera />
-				<TresMesh>
-						<TresTorusGeometry :args="[1, 0.5, 16, 32]" />
-						<TresMeshBasicMaterial color="orange" />
-				</TresMesh>
-		</TresCanvas>
-</template>
-<script setup lang="ts">
-		import { useLoop } from '@tresjs/core'
-		import { useTextures } from 'PLS/basic'
-		//读取材质
-		const pTexture = await useTextures(['./**.jpg', './**.png'])
-		const { onLoop } = useLoop()
-		onBeforeRender(({ delta }) => {
-				//循环render
-		})
-</script>
-```
 
 ### 敬请右上角一键三连: 关注 💛 点赞 ⭐ fork👣
 
