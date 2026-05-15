@@ -279,11 +279,7 @@ const menuGoto = (value: any) => {
 }
 
 const tabListRef = ref([]) as any
-const pluginsConfig = ref({})
-pluginsConfig.value = getPluginsConfig() as any
-if ((process.env.NODE_ENV === 'development' && process.env.FES_APP_PLSNAME === undefined) || process.env.FES_APP_ONLINE_API) {
-    getOnlinePluginConfig(pluginsConfig)
-}
+const pluginsConfig = ref(getPluginsConfig() as any)
 const router = useRouter()
 const goto = (value: any) => {
     if (value.value === 'tvtPluginUrl') {
@@ -358,10 +354,7 @@ const filterObjects = (obj: any, searchString: string): any => {
     }
     return result
 }
-let filteredData = ref(pluginsConfig.value) as any
-watch(filterFixedInputValue, (newValue: any) => {
-    filteredData.value = filterObjects(pluginsConfig.value, newValue.toLocaleLowerCase())
-})
+const filteredData = ref(pluginsConfig.value) as any
 
 const { menuSetup } = useForPreviewStore()
 
@@ -399,9 +392,20 @@ function filterMenuSetup(msFilter: any) {
 }
 const menuSetupFilter = ref([])
 provide('menuSetupFilter', menuSetupFilter)
-watch(menuSetupFilter, (newValue: any) => {
-    filteredData.value = filterMenuSetup(newValue)
+const refreshFilteredData = () => {
+    filteredData.value = filterObjects(pluginsConfig.value, String(filterFixedInputValue.value || '').toLocaleLowerCase())
+}
+watch(filterFixedInputValue, refreshFilteredData)
+watch(menuSetupFilter, refreshFilteredData)
+watch(pluginsConfig, refreshFilteredData, {
+    deep: true,
 })
+const shouldCheckReleaseMenu = process.env.NODE_ENV === 'development' || process.env.FES_APP_ONLINE_API
+if (process.env.FES_APP_PLSNAME === undefined) {
+    getOnlinePluginConfig(pluginsConfig, {
+        checkReleaseMenu: shouldCheckReleaseMenu,
+    })
+}
 const getleftMenuBadge = (name: string) => {
     const tagOne = {
         recommend: { show: false, text: '荐' },

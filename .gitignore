@@ -20,67 +20,9 @@
 yarn-error.log
 package-lock.json
 
-# 排除tvtViewHelper、 tvtSceneCreator、 eMRIscand、digitalMapBlock、tvtAirport、tvtSubstation、networkLinkTopology 等插件 可通过插件中心下载
-src/plugins/eMRIscan
-public/plugins/eMRIscan
-src/plugins/digitalMapBlock
-public/plugins/digitalMapBlock
-src/plugins/tvtAirport
-public/plugins/tvtAirport
-src/plugins/tvtSubstation
-public/plugins/tvtSubstation
-src/plugins/networkLinkTopology
-public/plugins/networkLinkTopology
-src/plugins/AIModels
-public/plugins/AIModels
-
-# 排除tvtCharts、showCabinet、tvtVolumeRendering、dxf2mesh、metaHuman、freeDigitalHome、humanMedicine、indoorMap 等插件 <但可演示> 可通过插件中心下载
-src/plugins/tvtViewHelper
-public/plugins/tvtViewHelper
-src/plugins/tvtCharts
-public/plugins/tvtCharts
-src/plugins/showCabinet
-public/plugins/showCabinet
-src/plugins/tvtVolumeRendering
-public/plugins/tvtVolumeRendering
-src/plugins/dxf2mesh
-public/plugins/dxf2mesh
-src/plugins/metaHuman
-public/plugins/metaHuman
+# 排除插件 可通过插件中心下载
 src/plugins/freeDigitalHome
 public/plugins/freeDigitalHome
-src/plugins/humanMedicine
-public/plugins/humanMedicine
-src/plugins/indoorMap
-public/plugins/indoorMap
-src/plugins/topoEditor
-public/plugins/topoEditor
-src/plugins/topoProject
-public/plugins/topoProject
-src/plugins/communityMetaverse
-public/plugins/communityMetaverse
-src/plugins/singleLayerEarth
-public/plugins/singleLayerEarth
-src/plugins/useThreeGeospatial
-public/plugins/useThreeGeospatial
-src/plugins/smartPark
-public/plugins/smartPark
-src/plugins/zoneMachinRoom
-public/plugins/zoneMachinRoom
-src/plugins/zoneRefiningIndustry
-public/plugins/zoneRefiningIndustry
-src/plugins/smartFactory
-public/plugins/smartFactory
-src/plugins/zoneOfficeFloor
-public/plugins/zoneOfficeFloor
-src/plugins/smartOilDepot
-public/plugins/smartOilDepot
-src/plugins/zoneLowAltitudeUAV
-src/plugins/zonePixelLowMachinRoom
-src/plugins/superFactory
-src/plugins/zonePlasticProducts
-src/plugins/zoneSmartWarehouse
-
 
 # 排除安装插件包
 !pluginMaker/install/请把下载的插件包放在这里。

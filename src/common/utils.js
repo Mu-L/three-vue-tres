@@ -4,11 +4,16 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-03-18 10:54:33
+ * @LastEditTime: 2026-05-15 09:40:18
  */
 // 放工具函数
 import { request } from '@fesjs/fes'
 import { FMessage } from '@fesjs/fes-design'
+
+const OSS_ASSET_PREFIX = 'https://oss.icegl.cn/'
+const REMOTE_PLUGIN_MENU_URL = 'https://oss.icegl.cn/p/pluginsList.json' //`${OSS_ASSET_PREFIX}${encodeURIComponent('插件菜单配置.json')}`
+
+const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key)
 
 const findStringBetween = (str) => {
     const regex = /\/([^/]+)(?=\/[^/]*$)/
@@ -64,6 +69,35 @@ export const getPluginsConfig = () => {
     return window.pluginsConfig
 }
 
+const getRemotePluginMenuUrl = () => REMOTE_PLUGIN_MENU_URL
+
+const isRelativeUrl = (src) => typeof src === 'string' && src && !/^(?:[a-z][a-z\d+.-]*:|\/\/|#|data:|blob:)/i.test(src)
+
+const withOssPrefix = (src) => OSS_ASSET_PREFIX + src.replace(/^\.\//, '').replace(/^\//, '')
+
+const normalizePreviewSrc = (preview) => {
+    if (preview?.type === 'img' && isRelativeUrl(preview.src)) {
+        return {
+            ...preview,
+            src: withOssPrefix(preview.src),
+        }
+    }
+    return preview
+}
+
+const normalizeRemotePluginConfig = (pluginConfig) => {
+    if (!pluginConfig || typeof pluginConfig !== 'object') {
+        return pluginConfig
+    }
+    return {
+        ...pluginConfig,
+        remotePluginMenu: true,
+        preview: Array.isArray(pluginConfig.preview) ? pluginConfig.preview.map(normalizePreviewSrc) : [],
+    }
+}
+
+const getMenuConfigs = (menuPayload) => menuPayload?.configs || menuPayload || {}
+
 // 警告函数
 function showWarning() {
     FMessage.warning?.({
@@ -73,32 +107,41 @@ function showWarning() {
     })
 }
 const formatMenu = (online, local) => {
+    const onlineConfigs = getMenuConfigs(online)
     // 复制本地菜单
     const result = { ...local }
 
-    for (const olKey in online) {
-        if (olKey === 'basic' || online[olKey].tvtstore !== undefined) {
+    for (const olKey in onlineConfigs) {
+        if (!hasOwn(onlineConfigs, olKey) || olKey === 'basic' || onlineConfigs[olKey].tvtstore !== undefined) {
             continue
         }
-        const olItem = online[olKey]
+        const olItem = onlineConfigs[olKey]
         const loItem = local[olKey]
+        const onlinePreviews = Array.isArray(olItem.preview) ? olItem.preview : []
 
         //  如果在线和本地都存在该键，比较它们的预览项
         if (loItem) {
-            const localPreviews = new Map(loItem.preview.map((item) => [item.name, item]))
+            const localPreviews = new Map((loItem.preview || []).map((item) => [item.name, item]))
+            const mergedPreview = Array.isArray(result[olKey].preview) ? result[olKey].preview : []
 
             // 检查并添加在线中缺少的预览到结果中
-            olItem.preview.forEach((preview) => {
+            onlinePreviews.forEach((preview) => {
                 if (!localPreviews.has(preview.name)) {
-                    preview.waitForGit = true
-                    result[olKey].preview.push(preview)
+                    mergedPreview.push({ ...preview, waitForGit: true })
                     showWarning()
                 }
             })
+            result[olKey] = {
+                ...result[olKey],
+                preview: mergedPreview,
+            }
         } else {
             //如果本地不存在该键，则从在线添加整个部分
-            olItem.waitForGit = true
-            result[olKey] = olItem
+            result[olKey] = {
+                ...olItem,
+                waitForGit: true,
+                preview: onlinePreviews,
+            }
             showWarning()
         }
     }
@@ -106,21 +149,58 @@ const formatMenu = (online, local) => {
     return result
 }
 
-export const getOnlinePluginConfig = (plConfig) => {
-    request(
-        `${process.env.NODE_ENV === 'development' ? 'api.icegl' : 'https://www.icegl.cn'}/addons/tvt/index/getRelaseMenuList`,
-        {},
-        {
-            method: 'get',
-        },
-    )
+const mergeRemotePluginMenu = (remoteMenu, local) => {
+    const remoteConfigs = getMenuConfigs(remoteMenu)
+    const result = { ...local }
+
+    for (const olKey in remoteConfigs) {
+        if (!hasOwn(remoteConfigs, olKey) || olKey === 'basic') {
+            continue
+        }
+        const olItem = remoteConfigs[olKey]
+        if (!olItem || olItem.tvtstore === undefined || result[olKey]) {
+            continue
+        }
+        result[olKey] = normalizeRemotePluginConfig(olItem)
+    }
+
+    return result
+}
+
+export const getOnlinePluginConfig = (plConfig, options = {}) => {
+    const checkReleaseMenu = options.checkReleaseMenu !== false
+    const releaseMenuPromise = checkReleaseMenu
+        ? request(
+              `${process.env.NODE_ENV === 'development' ? 'api.icegl' : 'https://www.icegl.cn'}/addons/tvt/index/getRelaseMenuList`,
+              {},
+              {
+                  method: 'get',
+              },
+          )
+              .then((res) => {
+                  plConfig.value = formatMenu(res.code.menuList.configs, plConfig.value)
+              })
+              .catch((err) => {
+                  // 处理异常
+                  console.log(err, '请连接网络，获得插件的菜单更新')
+              })
+        : Promise.resolve()
+
+    const remotePluginMenuPromise = fetch(getRemotePluginMenuUrl(), { cache: 'no-cache' })
         .then((res) => {
-            plConfig.value = formatMenu(res.code.menuList.configs, plConfig.value)
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`)
+            }
+            return res.json()
+        })
+        .then((res) => {
+            plConfig.value = mergeRemotePluginMenu(res, plConfig.value)
         })
         .catch((err) => {
-            // 处理异常
-            console.log(err, '请连接网络，获得插件的菜单更新')
+            console.log(err, '请连接网络，获得在线插件菜单配置')
         })
+
+    return Promise.allSettled([releaseMenuPromise, remotePluginMenuPromise])
 }
 
 // 通过名称查找预览配置
