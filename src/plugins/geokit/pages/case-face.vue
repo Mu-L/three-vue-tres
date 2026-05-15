@@ -175,7 +175,7 @@ const sceneConfig = ref({
         intensity: 2,
         position: [-1500, 500, 500] as [number, number, number],
     },
-    background: '/plugins/topoProject/image/farm_field_puresky_2k.jpg',
+    background: 'https://oss.icegl.cn/p/topoProject/plugins/topoProject/image/farm_field_puresky_2k.jpg',
 })
 
 const animate = () => {

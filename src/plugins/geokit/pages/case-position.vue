@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 1.668
+ * @Autor: 地虎降天龙
+ * @Date: 2025-08-11 13:52:14
+ * @LastEditors: 地虎降天龙
+ * @LastEditTime: 2026-05-15 09:30:43
+-->
 <template>
     <GeoCanvas v-model:position="cameraPosition">
         <GeoControls v-model:position="cameraPosition" />
@@ -44,7 +52,7 @@ const sceneConfig = ref({
         intensity: 2,
         position: [-1500, 500, 500] as [number, number, number],
     },
-    background: '/plugins/topoProject/image/farm_field_puresky_2k.jpg',
+    background: 'https://oss.icegl.cn/p/topoProject/plugins/topoProject/image/farm_field_puresky_2k.jpg',
 })
 
 // 相机位置

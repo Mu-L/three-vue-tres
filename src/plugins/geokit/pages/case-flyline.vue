@@ -147,7 +147,7 @@ const sceneConfig = ref({
         intensity: 2,
         position: [-1500, 500, 500],
     },
-    background: '/plugins/topoProject/image/farm_field_puresky_2k.jpg',
+    background: 'https://oss.icegl.cn/plugins/topoProject/image/farm_field_puresky_2k.jpg',
 })
 
 // 相机位置
