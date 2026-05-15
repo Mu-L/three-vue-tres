@@ -11,9 +11,10 @@ import { request } from '@fesjs/fes'
 import { FMessage } from '@fesjs/fes-design'
 
 const OSS_ASSET_PREFIX = 'https://oss.icegl.cn/'
-const REMOTE_PLUGIN_MENU_URL = 'https://oss.icegl.cn/p/pluginsList.json' //`${OSS_ASSET_PREFIX}${encodeURIComponent('插件菜单配置.json')}`
+const REMOTE_PLUGIN_MENU_URL = 'https://www.icegl.cn/addons/tvt/pluginsforpreivew/index'
 
 const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key)
+const isPlainObject = (obj) => Object.prototype.toString.call(obj) === '[object Object]'
 
 const findStringBetween = (str) => {
     const regex = /\/([^/]+)(?=\/[^/]*$)/
@@ -71,6 +72,11 @@ export const getPluginsConfig = () => {
 
 const getRemotePluginMenuUrl = () => REMOTE_PLUGIN_MENU_URL
 
+const requestRemotePluginMenu = () =>
+    request(getRemotePluginMenuUrl(), {}, {
+        method: 'get',
+    })
+
 const isRelativeUrl = (src) => typeof src === 'string' && src && !/^(?:[a-z][a-z\d+.-]*:|\/\/|#|data:|blob:)/i.test(src)
 
 const withOssPrefix = (src) => OSS_ASSET_PREFIX + src.replace(/^\.\//, '').replace(/^\//, '')
@@ -85,18 +91,44 @@ const normalizePreviewSrc = (preview) => {
     return preview
 }
 
+const getPreviewList = (previews) => (Array.isArray(previews) ? previews.filter(isPlainObject) : [])
+
 const normalizeRemotePluginConfig = (pluginConfig) => {
-    if (!pluginConfig || typeof pluginConfig !== 'object') {
+    if (!isPlainObject(pluginConfig)) {
         return pluginConfig
     }
     return {
         ...pluginConfig,
         remotePluginMenu: true,
-        preview: Array.isArray(pluginConfig.preview) ? pluginConfig.preview.map(normalizePreviewSrc) : [],
+        preview: getPreviewList(pluginConfig.preview).map(normalizePreviewSrc),
     }
 }
 
-const getMenuConfigs = (menuPayload) => menuPayload?.configs || menuPayload || {}
+const getMenuConfigs = (menuPayload) => {
+    const configs =
+        menuPayload?.configs ||
+        menuPayload?.data?.configs ||
+        menuPayload?.result?.configs ||
+        menuPayload?.code?.configs ||
+        menuPayload?.code?.menuList?.configs ||
+        menuPayload?.data ||
+        menuPayload?.result ||
+        menuPayload
+    return isPlainObject(configs) ? configs : {}
+}
+
+const isValidRemotePluginConfig = (pluginConfig) =>
+    isPlainObject(pluginConfig) &&
+    typeof pluginConfig.name === 'string' &&
+    pluginConfig.name &&
+    typeof pluginConfig.title === 'string' &&
+    pluginConfig.title &&
+    (pluginConfig.preview === undefined || Array.isArray(pluginConfig.preview))
+
+const isValidRemoteMenuPayload = (menuPayload) => {
+    const configs = getMenuConfigs(menuPayload)
+    return Object.keys(configs).some((key) => isValidRemotePluginConfig(configs[key]))
+}
 
 // 警告函数
 function showWarning() {
@@ -116,8 +148,11 @@ const formatMenu = (online, local) => {
             continue
         }
         const olItem = onlineConfigs[olKey]
+        if (!isPlainObject(olItem)) {
+            continue
+        }
         const loItem = local[olKey]
-        const onlinePreviews = Array.isArray(olItem.preview) ? olItem.preview : []
+        const onlinePreviews = getPreviewList(olItem.preview)
 
         //  如果在线和本地都存在该键，比较它们的预览项
         if (loItem) {
@@ -150,6 +185,10 @@ const formatMenu = (online, local) => {
 }
 
 const mergeRemotePluginMenu = (remoteMenu, local) => {
+    if (!isValidRemoteMenuPayload(remoteMenu)) {
+        console.log('在线插件菜单配置格式异常，已使用本地插件菜单')
+        return local
+    }
     const remoteConfigs = getMenuConfigs(remoteMenu)
     const result = { ...local }
 
@@ -158,7 +197,7 @@ const mergeRemotePluginMenu = (remoteMenu, local) => {
             continue
         }
         const olItem = remoteConfigs[olKey]
-        if (!olItem || olItem.tvtstore === undefined || result[olKey]) {
+        if (!isValidRemotePluginConfig(olItem) || olItem.tvtstore === undefined || result[olKey]) {
             continue
         }
         result[olKey] = normalizeRemotePluginConfig(olItem)
@@ -186,13 +225,7 @@ export const getOnlinePluginConfig = (plConfig, options = {}) => {
               })
         : Promise.resolve()
 
-    const remotePluginMenuPromise = fetch(getRemotePluginMenuUrl(), { cache: 'no-cache' })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP ${res.status}`)
-            }
-            return res.json()
-        })
+    const remotePluginMenuPromise = requestRemotePluginMenu()
         .then((res) => {
             plConfig.value = mergeRemotePluginMenu(res, plConfig.value)
         })
