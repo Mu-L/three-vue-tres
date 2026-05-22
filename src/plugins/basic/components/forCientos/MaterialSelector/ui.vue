@@ -27,6 +27,8 @@
 							v-model:value="materialProps[key]" :options="sideOptions" />
 						<n-select size="tiny" v-else-if="getControlType(value, key) === 'enum-blending'"
 							v-model:value="materialProps[key]" :options="blendingOptions" />
+						<n-select size="tiny" v-else-if="getControlType(value, key) === 'enum-palette-scheme'"
+							v-model:value="materialProps[key]" :options="paletteSchemeOptions" />
 						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uEdge'" v-model:value="materialProps[key]"
 							:min="0" :max="10" :step="0.01" />
 						<n-slider size="tiny" v-else-if="getControlType(value, key) === 'uFreq'" v-model:value="materialProps[key]"
@@ -100,7 +102,30 @@ const sliderRangeMap: Record<string, { min: number; max: number; step: number }>
 	iridescenceIOR: { min: 1, max: 3, step: 0.01 },
 	iridescenceThicknessMin: { min: 0, max: 1500, step: 1 },
 	iridescenceThicknessMax: { min: 0, max: 1500, step: 1 },
+	channelAmount: { min: 0, max: 4, step: 0.01 },
+	maskAmount: { min: 0, max: 1, step: 0.01 },
+	scanDuration: { min: 0.2, max: 10, step: 0.01 },
+	scanStart: { min: -5, max: 5, step: 0.01 },
+	scanEnd: { min: -5, max: 5, step: 0.01 },
+	scanYOffset: { min: -3, max: 3, step: 0.01 },
+	scanIntensity: { min: 0, max: 3, step: 0.01 },
+	gridAmount: { min: 0, max: 2, step: 0.01 },
+	tempMaskAmount: { min: 0, max: 1, step: 0.01 },
+	tempGridAmount: { min: 0, max: 1, step: 0.01 },
+	triplanarScale: { min: 0.2, max: 6, step: 0.01 },
+	paletteFlow: { min: -2, max: 2, step: 0.01 },
+	paletteContrast: { min: 0.2, max: 2, step: 0.01 },
+	emissiveBoost: { min: 0, max: 8, step: 0.01 },
+	diffuseMix: { min: 0, max: 1, step: 0.01 },
+	alphaCutoff: { min: 0, max: 0.5, step: 0.001 },
 }
+
+const paletteSchemeOptions = [
+	{ label: 'Kingfisher', value: 'kingfisher' },
+	{ label: 'Aurora', value: 'aurora' },
+	{ label: 'Nebula', value: 'nebula' },
+	{ label: 'Prism', value: 'prism' },
+]
 
 function getControlType(value: any, key: string) {
 	if (key === 'uAmp') return 'uAmp'
@@ -109,6 +134,7 @@ function getControlType(value: any, key: string) {
 	if (key === 'uEdge') return 'uEdge'
 	if (key === 'side') return 'enum-side'
 	if (key === 'blending') return 'enum-blending'
+	if (key === 'paletteScheme') return 'enum-palette-scheme'
 	if (key.includes('Map')) return 'aboutMap'
 	if (typeof value === 'string' && value.startsWith('#')) return 'color'
 	if (typeof value === 'number') return 'number'

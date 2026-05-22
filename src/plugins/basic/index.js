@@ -29,6 +29,7 @@ import shapeRenderer from './components/forCientos/ShapesList/shapeRenderer.vue'
 import shapesforEditor from './components/forCientos/ShapesList/forEditor.vue'
 import CustomShaderMaterial from './components/forCientos/customShaderMaterial.vue'
 import LiquidMetalMaterial from './components/forCientos/LiquidMetalMaterial/index.vue'
+import JumpingBlockMaterial from './components/forCientos/JumpingBlockMaterial/index.vue'
     
 export {
     Environment,
@@ -53,4 +54,5 @@ export {
     shapesforEditor,
     CustomShaderMaterial,
     LiquidMetalMaterial,
+    JumpingBlockMaterial,
 }

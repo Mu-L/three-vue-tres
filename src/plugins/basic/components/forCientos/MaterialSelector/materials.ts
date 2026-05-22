@@ -10,6 +10,7 @@
 import type { ColorRepresentation } from 'three'
 import { FrontSide, BackSide, DoubleSide, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, NoBlending, type Side, type Blending, } from 'three'
 import { liquidMetalMaterialDefaults } from '../LiquidMetalMaterial/controls'
+import { jumpingBlockMaterialPresetProps } from '../JumpingBlockMaterial/controls'
 
 export const sideOptions =
   [
@@ -152,6 +153,10 @@ const liquidMetalExtraProps = {
   ...liquidMetalMaterialDefaults,
 } as const
 
+const jumpingBlockExtraProps = {
+  ...jumpingBlockMaterialPresetProps,
+} as const
+
 const dissolveEffectProps = {
   color: '#B520A9',
   uEdgeColor: '#4d9bff',
@@ -255,6 +260,16 @@ export const materialPresets = {
     },
     props: {
       ...liquidMetalExtraProps
+    }
+  },
+
+  JumpingBlockMaterial: {
+    component: async () => {
+      const mod = await import('PLS/basic')
+      return mod.JumpingBlockMaterial
+    },
+    props: {
+      ...jumpingBlockExtraProps
     }
   },
 

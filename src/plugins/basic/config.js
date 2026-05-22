@@ -54,6 +54,12 @@ export default {
                     referenceSource: { title: 'Liquid Metal', url: 'https://codepen.io/sabosugi/pen/yyabKEP' },
                 },
                 {
+                    src: 'plugins/basic/materials/preview/jumpingBlockMaterial.svg',
+                    type: 'img',
+                    name: 'jumpingBlockMaterial',
+                    title: '跳动块动画材质',
+                },
+                {
                     src: 'plugins/basic/materials/preview/instancedMeshCustomShaderMaterial.png',
                     type: 'img',
                     name: 'instancedMeshCustomShaderMaterial',
