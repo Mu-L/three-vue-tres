@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2025-10-24 08:52:31
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-12-22 09:32:43
+ * @LastEditTime: 2026-05-22 11:12:33
 -->
 
 <template>
@@ -121,7 +121,7 @@ const sliderRangeMap: Record<string, { min: number; max: number; step: number }>
 }
 
 const paletteSchemeOptions = [
-	{ label: 'Kingfisher', value: 'kingfisher' },
+	{ label: 'colorful', value: 'colorful' },
 	{ label: 'Aurora', value: 'aurora' },
 	{ label: 'Nebula', value: 'nebula' },
 	{ label: 'Prism', value: 'prism' },
