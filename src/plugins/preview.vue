@@ -175,6 +175,36 @@
                         </f-menu-item>
                     </template>
                 </f-sub-menu>
+                <f-sub-menu value="animationEditorMenu">
+                    <template #icon>
+                        <EditOutlined />
+                    </template>
+                    <template #label
+                        >动画编辑器 <FBadge :max="999" :value="getMenusCount().animationEditor" class="count-fbdge big-cf" type="primary" size="small"
+                    /></template>
+                    <f-menu-item value="animationEditorIntroUrl">
+                        <template #label>
+                            <div class="flex absolute badge-group">
+                                <f-badge value="动画" class="tag-fbdge" type="danger" size="small" />
+                            </div>
+                            <span class="left-m-text">编辑器介绍</span>
+                        </template>
+                    </f-menu-item>
+                    <template v-for="(onePlugin, pkey) in filteredData">
+                        <f-menu-item v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'animationEditor'" :value="pkey">
+                            <template #label>
+                                <div class="flex absolute badge-group">
+                                    <f-badge value="free" class="tag-fbdge afree-tag" type="success" size="small" v-if="onePlugin.tvtstore === 'FREE'" />
+                                </div>
+                                <div class="flex absolute" style="top: 3px; right: 30px">
+                                    <f-badge :value="onePlugin.version" class="tag-fbdge" type="primary" size="small" />
+                                </div>
+                                <span class="left-m-text">{{ onePlugin.title }}</span>
+                                <FBadge :value="onePlugin.preview.length" class="count-fbdge" type="primary" size="small" />
+                            </template>
+                        </f-menu-item>
+                    </template>
+                </f-sub-menu>
                 <f-sub-menu value="6">
                     <template #icon>
                         <EditOutlined />
@@ -242,6 +272,11 @@
                 </div>
             </template>
             <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
+                <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'animationEditor'" :ref="(el) => (tabListRef[pkey] = el)">
+                    <cardList :onePlugin="onePlugin" />
+                </div>
+            </template>
+            <template v-for="(onePlugin, pkey) in filteredData" :key="pkey">
                 <div style="background-color: #f1f1f2" v-if="pkey !== 'basic' && isTvtstore(onePlugin) === 'loadDynamic'" :ref="(el) => (tabListRef[pkey] = el)">
                     <cardList :onePlugin="onePlugin" />
                 </div>
@@ -288,6 +323,8 @@ const goto = (value: any) => {
         window.open('https://www.icegl.cn/tvtstore/zone3Deditor', '_blank')
     } else if (value.value === 'gisPlaneEditorIntroUrl') {
         window.open('https://www.icegl.cn/tvtstore/gisPlaneEditor', '_blank')
+    } else if (value.value === 'animationEditorIntroUrl') {
+        window.open('https://www.icegl.cn/tvtstore/animationEditor.html', '_blank')
     } else if (value.value === 'loadDynamicEcoUrl') {
         window.open('https://dcser.icegl.cn', '_blank')
     } else {
@@ -433,6 +470,8 @@ const isTvtstore = (onePlugin: any) => {
             return 'zoneEditor'
         } else if (onePlugin.name.startsWith('gis')) {
             return 'gisEditor'
+        } else if (onePlugin.name.startsWith('animation')) {
+            return 'animationEditor'
         } else if (onePlugin.name.startsWith('loadDynamic')) {
             return 'loadDynamic'
         }else {
@@ -450,6 +489,7 @@ const getMenusCount = () => {
         loadDynamic: 0,
         zoneEditor: 0,
         gisEditor: 0,
+        animationEditor: 0,
     }
     for (const key in filteredData.value) {
         if (filteredData.value.hasOwnProperty(key)) {
@@ -468,6 +508,8 @@ const getMenusCount = () => {
                     reCount.zoneEditor += filteredData.value[key].preview.length
                 } else if (isTvtstore(filteredData.value[key]) === 'gisEditor') {
                     reCount.gisEditor += filteredData.value[key].preview.length
+                } else if (isTvtstore(filteredData.value[key]) === 'animationEditor') {
+                    reCount.animationEditor += filteredData.value[key].preview.length
                 } else if (isTvtstore(filteredData.value[key]) === 'loadDynamic') {
                     reCount.loadDynamic += filteredData.value[key].preview.length
                 }
