@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2023-10-16 10:53:09
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2026-03-31 14:08:45
+ * @LastEditTime: 2026-06-01 16:00:37
  */
 import { defineBuildConfig } from '@fesjs/fes'
 // import viteCompression from 'vite-plugin-compression'
@@ -71,6 +71,10 @@ export default defineBuildConfig({
                     {
                         path: 'https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index',
                         title: '🗺️ GIS地理空间编辑器',
+                    },
+                    {
+                        path: 'https://animationeditor.icegl.cn/#/plugins/animationEditor/index',
+                        title: '🐛 草履虫动画编辑器',
                     },
                 ],
             },
