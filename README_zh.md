@@ -1,6 +1,10 @@
-# 🧊🧊🧊 TvT.js 🧊🧊🧊
+# 🧊 TvT.js
+
 简体中文 | [English](./README.md)
-## 🎉🎉🎊 三维可视化项目快速落地的开源框架 🎊🎉🎉
+
+## 三维可视化项目快速落地的开源框架
+
+TvT.js 融合 ThreeJS、Vue 3 与 TresJS 生态，面向数字孪生、工业可视化、在线三维编辑器和项目插件化交付场景，永久开源且免费商用。
 
 <p align="center">
 		<a href="https://github.com/hawk86104/three-vue-tres" target="_blank">
@@ -22,248 +26,180 @@
 		</a>
 </p>
 
-## 🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊🧊
-```shell
-如果对您有帮助，您可以点右上角 “Star⭐” 收藏一下 ，您的star就是我开发的动力，感谢！
-```
-> 从2025年十月中旬已经全面升级所有依赖库，涉及Vue3、Tres V5、Fes V4、Cientos V4 以及 Three.js (r17x → r18x) 等的版本更新
+## 项目信息
+
+> 如果对您有帮助，欢迎点右上角 “Star⭐” 收藏一下，您的 star 就是我持续开发的动力，感谢！
+
+> 从 2025 年 10 月中旬起，项目已全面升级依赖库，涉及 Vue3、Tres V5、Fes V4、Cientos V4 以及 Three.js (r17x → r18x) 等版本更新。
 
 > 若您是从之前`tvt.js`的V4版本升级，我们有详细的升级方法，请跳转：[icegl.cn/ask/article/22769](https://icegl.cn/ask/article/22769.html)
 
 > 旧版V4:[所属分支：tres-v4_fes-v3 ](https://gitee.com/ice-gl/icegl-three-vue-tres/tree/tres-v4_fes-v3/)
 
-<table style="border: none; width: 100%; text-align: center;">
+<table width="100%" align="center">
 	<tr>
-		<td style="padding:10px;">
-			<img style="display:block;width:500px;max-width:100%;" src="./preview/gitee2k.png" alt="tvt webgl tvt.js">
+		<td width="50%" align="center" valign="top" style="padding:10px;">
+			<img width="500" src="./preview/gitee2k.png" alt="tvt webgl tvt.js">
 		</td>
-		<td style="padding:10px;">
-			<img style="display:block;width:500px;max-width:100%;" src="./preview/gitcodestar.png" alt="tvt webgl tvt.js">
+		<td width="50%" align="center" valign="top" style="padding:10px;">
+			<img width="500" src="./preview/gitcodestar.png" alt="tvt webgl tvt.js">
 		</td>
 	</tr>
 </table>
 <br/>
 
 ## 面向国产化 / 信创环境 Web三维可视化框架 🇨🇳 🚩
-具体 国产化 描述文档部分，[点击详情](https://docs.icegl.cn/docs/three-vue-tres/guide/localization.html)
-```shell
-1️⃣ 国产化硬件支持
-2️⃣ 国产操作系统 & 浏览器支持
-3️⃣ 国产化开发 / 部署环境
-- 您完全可以把tvt.js作为国产化三维可视化项目、数字孪生平台的前端技术底座。
+
+[查看国产化说明文档](https://docs.icegl.cn/docs/three-vue-tres/guide/localization.html)
+
+- 国产化硬件支持
+- 国产操作系统 & 浏览器支持
+- 国产化开发 / 部署环境
+- 您完全可以把 tvt.js 作为国产化三维可视化项目、数字孪生平台的前端技术底座。
 - 我们在所有依赖完全开源的基础上，拥有自主软件知识产权和软件著作权，开源且免费商用。
-```
 
 <a style="display:block;width:800px;max-width:100%;" href="https://www.bilibili.com/video/BV1JHqRB7ERB"><img src="./preview/bilibili.gif" alt="tres.js webgl three.js"></a>
 
-# 生态 `@ThreeJS @Vue3.x @TresJS`
+# 技术生态 `@ThreeJS @Vue3.x @TresJS`
 
 > icegl 出品，永久开源且免费商用，持续更新 ing，请点击右上角 start⭐ 关注
 
 本项目融合于三大生态系统中：
 
--   🎲 ThreeJS \* [点击详情](https://threejs.org)
-		<a href="https://www.npmjs.com/package/three">
-		<img src="https://img.shields.io/npm/v/three?label=three">
-		</a>
-		ThreeJS 大名鼎鼎的基于浏览器渲染，JavaScript 语言的 3D 库。<br/><br/>
+| 生态 | 说明 |
+| --- | --- |
+| 🎲 [ThreeJS](https://threejs.org)<br><a href="https://www.npmjs.com/package/three"><img src="https://img.shields.io/npm/v/three?label=three" alt="three npm"></a> | 大名鼎鼎的基于浏览器渲染、使用 JavaScript 语言的 3D 库。 |
+| 🍀 [Vue3.x](https://cn.vuejs.org)<br><a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue?label=vue&color=%2342b883" alt="vue npm"></a> | 易学易用，性能出色，适用场景丰富的 Web 前端框架。 |
+| ⚡ [TresJS](https://tresjs.org)<br><a href="https://www.npmjs.com/package/@tresjs/core"><img src="https://img.shields.io/npm/v/@tresjs/core?color=%2382DBCA&label=%40tresjs%2Fcore&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjY4NTQgMy40MjkxNkMxMi4wNzM4IDIuNzgxODIgMTMuMDEyIDIuNzgxODIgMTMuNDAwNCAzLjQyOTE1TDE5LjE3NzEgMTMuMDU2OUMxOS41NzcgMTMuNzIzNSAxOS4wOTY5IDE0LjU3MTQgMTguMzE5NiAxNC41NzE0SDYuNzY2MjRDNS45ODg5NCAxNC41NzE0IDUuNTA4ODMgMTMuNzIzNSA1LjkwODc1IDEzLjA1NjlMMTEuNjg1NCAzLjQyOTE2WiIgZmlsbD0iIzgyREJDNSIvPgo8cGF0aCBkPSJNMTUuNjg1NyAxMC41NDI5QzE1LjY4NTcgOS45OTA1OSAxNi4xMzM0IDkuNTQyODggMTYuNjg1NyA5LjU0Mjg4SDI2QzI2LjU1MjIgOS41NDI4OCAyNyA5Ljk5MDU5IDI3IDEwLjU0MjlWMTkuODU3MkMyNyAyMC40MDk0IDI2LjU1MjIgMjAuODU3MiAyNiAyMC44NTcySDE2LjY4NTdDMTYuMTMzNCAyMC44NTcyIDE1LjY4NTcgMjAuNDA5NCAxNS42ODU3IDE5Ljg1NzJWMTAuNTQyOVoiIGZpbGw9IiM0RjRGNEYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIyMiIgcj0iNiIgZmlsbD0iI0VGQUMzNSIvPgo8L3N2Zz4K" alt="tresjs npm"></a> | 使用 Vue3.x 组件实现声明式 ThreeJS，做属于前端的三维项目。 |
 
--   🍀 Vue3.x \* [点击详情](https://cn.vuejs.org)
-		<a href="https://www.npmjs.com/package/vue">
-		<img src="https://img.shields.io/npm/v/vue?label=vue&color=%2342b883">
-		</a>
-		易学易用，性能出色，适用场景丰富的 Web 前端框架。<br/><br/>
-
--   ⚡ TresJS \* [点击详情](https://tresjs.org)
-		<a href="https://www.npmjs.com/package/@tresjs/core">
-		<img src="https://img.shields.io/npm/v/@tresjs/core?color=%2382DBCA&label=%40tresjs%2Fcore&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjY4NTQgMy40MjkxNkMxMi4wNzM4IDIuNzgxODIgMTMuMDEyIDIuNzgxODIgMTMuNDAwNCAzLjQyOTE1TDE5LjE3NzEgMTMuMDU2OUMxOS41NzcgMTMuNzIzNSAxOS4wOTY5IDE0LjU3MTQgMTguMzE5NiAxNC41NzE0SDYuNzY2MjRDNS45ODg5NCAxNC41NzE0IDUuNTA4ODMgMTMuNzIzNSA1LjkwODc1IDEzLjA1NjlMMTEuNjg1NCAzLjQyOTE2WiIgZmlsbD0iIzgyREJDNSIvPgo8cGF0aCBkPSJNMTUuNjg1NyAxMC41NDI5QzE1LjY4NTcgOS45OTA1OSAxNi4xMzM0IDkuNTQyODggMTYuNjg1NyA5LjU0Mjg4SDI2QzI2LjU1MjIgOS41NDI4OCAyNyA5Ljk5MDU5IDI3IDEwLjU0MjlWMTkuODU3MkMyNyAyMC40MDk0IDI2LjU1MjIgMjAuODU3MiAyNiAyMC44NTcySDE2LjY4NTdDMTYuMTMzNCAyMC44NTcyIDE1LjY4NTcgMjAuNDA5NCAxNS42ODU3IDE5Ljg1NzJWMTAuNTQyOVoiIGZpbGw9IiM0RjRGNEYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIyMiIgcj0iNiIgZmlsbD0iI0VGQUMzNSIvPgo8L3N2Zz4K" alt="npm package">
-		</a>
-		使用 Vue3.x 组件实现声明式的 ThreeJS，做属于前端的三维项目。<br/><br/>
 ## ✨ 动态组件发布与加载服务：[🌏 dcser.icegl.cn](https://dcser.icegl.cn/)
 > 基于 tvt.js 生态的动态组件发布与加载服务，用于构建更灵活的模块化应用体系。 
 <a style="display:block;width:800px;max-width:100%;" href="https://dcser.icegl.cn"><img src="./preview/dcser.gif" alt="tres.js webgl three.js"></a>
 
-## 🏕 点击预览：[🌏 opensource.icegl.cn](https://opensource.icegl.cn)
+## 🏕 在线预览：[🌏 opensource.icegl.cn](https://opensource.icegl.cn)
 
 -   如果有条件，也可直接访问 github 的镜像站:[🌏 https://hawk86104.github.io](https://hawk86104.github.io/)
 -   全案例微信小程序生态：[🌏 微信内打开](#小程序://三维开源/456pgpJZBiTctdK)
 -   全案例微信小程序扫码：<img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
-<table style="border: none; width: 100%; text-align: center;">
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index">
-				在线三维场景编辑器：[🪅免费导出源码+二次开发 ]
-			</a>
-		</td>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom">
-				智慧机房：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" style="display:block;max-width:100%;">
-				<img src="./public/plugins/zone3Deditor/preview/index.png" alt="tres.js webgl">
-			</a>
-		</td>
-    <td style="padding: 10px;">
-			<a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
-			</a>
-		</td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack">
-				技术栈拓扑图：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeHYworld">
-				混元世界：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl">
-			</a>
-		</td>
-    <td style="padding: 10px;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeHYworld" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeHYworld.png" alt="tres.js webgl">
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zoneRefiningIndustry">
-				炼化智能工厂可视化：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-			  <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zoneOfficeFloor">
-				智能办公空间：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
+### 精选在线案例
 
+<table width="100%" align="center">
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index"><strong>在线三维场景编辑器</strong></a><br>
+      <sub>免费导出源码 + 二次开发</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="./public/plugins/zone3Deditor/preview/index.png" alt="在线三维场景编辑器">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom"><strong>智慧机房</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="智慧机房">
+      </a>
+    </td>
   </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneRefiningIndustry/preview/index.png" alt="tres.js webgl">
-			</a>
-		</td>
-				<td style="padding: 10px;">
-			<a href="https://oss.icegl.cn/p/zoneOfficeFloor/#/plugins/zoneOfficeFloor/index" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneOfficeFloor/preview/index.png" alt="tres.js webgl">
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><strong>技术栈拓扑图</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="技术栈拓扑图">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeHYworld"><strong>混元世界</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeHYworld" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeHYworld.png" alt="混元世界">
+      </a>
+    </td>
   </tr>
-		<tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html">
-				无人机组可视化：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-		<td style="padding:10px;font-size:1.2em;">
-			<a href="https://opensource.icegl.cn/#/#zoneFreeScene">
-				低像素炼油厂：[ 免费 ]
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneRefiningIndustry"><strong>炼化智能工厂可视化</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneRefiningIndustry/preview/index.png" alt="炼化智能工厂可视化">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneOfficeFloor"><strong>智能办公空间</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneOfficeFloor/#/plugins/zoneOfficeFloor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneOfficeFloor/preview/index.png" alt="智能办公空间">
+      </a>
+    </td>
   </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-			</a>
-		</td>
-		<td style="padding: 10px;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeRefiningIndustry" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeRefiningIndustry.png" alt="tres.js webgl">
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html"><strong>无人机组可视化</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="无人机组可视化">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/#zoneFreeScene"><strong>低像素炼油厂</strong></a><br>
+      <sub>免费案例</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeRefiningIndustry" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeRefiningIndustry.png" alt="低像素炼油厂">
+      </a>
+    </td>
   </tr>
-	<tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zonePixelLowMachinRoom">
-				低像素风格机房：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-		<td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zonePlasticProducts">
-				塑料制品厂三维：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zonePixelLowMachinRoom"><strong>低像素风格机房</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zonePixelLowMachinRoom/#/plugins/zonePixelLowMachinRoom/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251106/ac894bb3033344fe9ca7534d64a9885d.png?imageMogr2/thumbnail/600x" alt="低像素风格机房">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zonePlasticProducts"><strong>塑料制品厂三维</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zonePlasticProducts/#/plugins/zonePlasticProducts/secondaryCoding" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251119/09534134fd018fe09c18bad0c4565e1d.png?imageMogr2/thumbnail/600x" alt="塑料制品厂三维">
+      </a>
+    </td>
   </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://oss.icegl.cn/p/zonePixelLowMachinRoom/#/plugins/zonePixelLowMachinRoom/index" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20251106/ac894bb3033344fe9ca7534d64a9885d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-			</a>
-		</td>
-		<td style="padding: 10px;">
-			<a href="https://oss.icegl.cn/p/zonePlasticProducts/#/plugins/zonePlasticProducts/secondaryCoding" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20251119/09534134fd018fe09c18bad0c4565e1d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneSmartWarehouse"><strong>智能仓储管理</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneSmartWarehouse/#/plugins/zoneSmartWarehouse/secondaryCoding" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251202/a92bcc26c186fbf65d9851a0c87b05ca.png?imageMogr2/thumbnail/600x" alt="智能仓储管理">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/#zoneFreeScene"><strong>海洋船运可视化</strong></a><br>
+      <sub>免费案例</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeShipSea" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeShipSea.png?imageMogr2/thumbnail/600x" alt="海洋船运可视化">
+      </a>
+    </td>
   </tr>
-		<tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/zoneSmartWarehouse">
-				智能仓储管理：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-		<td style="padding:10px;font-size:1.2em;">
-			<a href="https://opensource.icegl.cn/#/#zoneFreeScene">
-				海洋船运可视化：[ 免费 ]
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://oss.icegl.cn/p/zoneSmartWarehouse/#/plugins/zoneSmartWarehouse/secondaryCoding" style="display:block;max-width:100%;">
-				<img src="https://cdn.index.icegl.cn/uploads/20251202/a92bcc26c186fbf65d9851a0c87b05ca.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-			</a>
-		</td>
-		<td style="padding: 10px;">
-			<a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeShipSea" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeShipSea.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://www.icegl.cn/tvtstore/gisPlaneEditor">
-				地图空间编辑器：[ 面向投影地图场景的 GIS 编辑器 ]
-			</a>
-		</td>
-    <td style="padding:10px;font-size:1.2em;">
-			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index?sceneConfig=多套倾斜摄影3D">
-				多套倾斜摄影3D：[ 编辑器直接落地项目 ]
-			</a>
-		</td>
-  </tr>
-	<tr>
-    <td style="padding: 10px;">
-			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;max-width:100%;">
-				<img src="https://opensource.icegl.cn/plugins/gisPlaneEditor/preview/index.png" alt="tres.js webgl">
-			</a>
-		</td>
-    <td style="padding: 10px;">
-			<a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/preview?sceneConfig=多套倾斜摄影3D" style="display:block;max-width:100%;">
-				<img src="https://gisplaneeditor.icegl.cn/plugins/gisPlaneEditor/preview/多套倾斜摄影3D.png" alt="tres.js webgl">
-			</a>
-		</td>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/gisPlaneEditor"><strong>地图空间编辑器</strong></a><br>
+      <sub>面向投影地图场景的 GIS 编辑器</sub><br><br>
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/gisPlaneEditor/preview/index.png" alt="地图空间编辑器">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index?sceneConfig=多套倾斜摄影3D"><strong>多套倾斜摄影3D</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/preview?sceneConfig=多套倾斜摄影3D" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://gisplaneeditor.icegl.cn/plugins/gisPlaneEditor/preview/多套倾斜摄影3D.png" alt="多套倾斜摄影3D">
+      </a>
+    </td>
   </tr>
 </table>
 
-```shell
-因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
-```
+> 因项目经常更新编译，如发现访问错误，请清空浏览器缓存。
 
 <a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" alt="three.js tres.js webgl tvt.js"></a>
@@ -274,27 +210,20 @@
 
 # ✅ 快速开始
 
-```js
-1、git clone 或者 直接下载 本项目
+> 推荐使用 Node.js >= 20.18。
 
-2、cd 到项目根目录
-
-3、yarn	// 安装依赖 [node版本>=20.18]
-
-4、yarn pre.dev	// 预览 下的调试模式
-
-5、yarn dev	// 自己项目 下的调试模式
-
-6、yarn pre.build	// 预览 下的编译打包
-
-7、yarn build	// 自己项目 下的编译打包
-
-8、yarn pre.dev.one	// 只展示某一个案例/插件
-
-9、yarn pre.build.one // 针对某一个案例/插件打包，会根据配置下的依赖插件项保留资源，其余资源删除
-
-10、yarn both  // 同时启动 dev 和 pre.dev 可以边调试自己得项目，边对照移植样例和插件
-```
+| 步骤 | 命令 / 操作 | 说明 |
+| --- | --- | --- |
+| 1 | `git clone` 或直接下载本项目 | 获取项目源码 |
+| 2 | `cd` 到项目根目录 | 进入项目目录 |
+| 3 | `yarn` | 安装依赖 |
+| 4 | `yarn pre.dev` | 预览目录下的调试模式 |
+| 5 | `yarn dev` | 自己项目下的调试模式 |
+| 6 | `yarn pre.build` | 预览目录下的编译打包 |
+| 7 | `yarn build` | 自己项目下的编译打包 |
+| 8 | `yarn pre.dev.one` | 只展示某一个案例 / 插件 |
+| 9 | `yarn pre.build.one` | 针对某一个案例 / 插件打包，会根据配置下的依赖插件项保留资源，其余资源删除 |
+| 10 | `yarn both` | 同时启动 `dev` 和 `pre.dev`，可以边调试自己的项目，边对照移植样例和插件 |
 
 ![展示](./preview/compileMode.png)
 
