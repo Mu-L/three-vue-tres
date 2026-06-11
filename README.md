@@ -1,9 +1,10 @@
-# 🧊🧊🧊 TvT.js 🧊🧊🧊
-An open-source framework for building and shipping Web-based 3D visualization projects faster with Vue 3, Three.js, and TresJS.
+# 🧊 TvT.js
 
 English | [简体中文](./README_zh.md)
 
-## 🎉🎉🎊 An Open-Source Framework for Rapid 3D Visualization Delivery 🎊🎉🎉
+## An Open-Source Framework for Rapid 3D Visualization Delivery
+
+TvT.js brings ThreeJS, Vue 3, and TresJS together for digital twins, industrial visualization, online 3D editors, and plugin-based project delivery. It is permanently open-source and free for commercial use.
 
 <p align="center">
   <a href="https://github.com/hawk86104/three-vue-tres" target="_blank">
@@ -25,9 +26,9 @@ English | [简体中文](./README_zh.md)
   </a>
 </p>
 
-```shell
-If this project helps you, please click the "Star⭐" button in the upper-right corner. Your support is what keeps this project moving forward. Thank you!
-```
+## Project Info
+
+> If this project helps you, please click the "Star⭐" button in the upper-right corner. Your support is what keeps this project moving forward. Thank you!
 
 > Since mid-October 2025, the project has fully upgraded its core dependencies, including Vue 3, Tres V5, Fes V4, Cientos V4, and Three.js (r17x → r18x).
 
@@ -35,13 +36,13 @@ If this project helps you, please click the "Star⭐" button in the upper-right 
 
 > Legacy V4 branch: [tres-v4_fes-v3](https://gitee.com/ice-gl/icegl-three-vue-tres/tree/tres-v4_fes-v3/)
 
-<table style="border: none; width: 100%; text-align: center;">
+<table width="100%" align="center">
   <tr>
-    <td style="padding:10px;">
-      <img style="display:block;width:500px;max-width:100%;" src="./preview/gitee2k.png" alt="tvt webgl tvt.js">
+    <td width="50%" align="center" valign="top" style="padding:10px;">
+      <img width="500" src="./preview/gitee2k.png" alt="tvt webgl tvt.js">
     </td>
-    <td style="padding:10px;">
-      <img style="display:block;width:500px;max-width:100%;" src="./preview/gitcodestar.png" alt="tvt webgl tvt.js">
+    <td width="50%" align="center" valign="top" style="padding:10px;">
+      <img width="500" src="./preview/gitcodestar.png" alt="tvt webgl tvt.js">
     </td>
   </tr>
 </table>
@@ -51,39 +52,25 @@ If this project helps you, please click the "Star⭐" button in the upper-right 
 
 For full localization and compatibility details, see the documentation: [Details](https://docs.icegl.cn/docs/three-vue-tres/guide/localization.html)
 
-```shell
-1️⃣ Support for domestic hardware platforms
-2️⃣ Support for domestic operating systems and browsers
-3️⃣ Domestic-friendly development and deployment environments
+- Support for domestic hardware platforms
+- Support for domestic operating systems and browsers
+- Domestic-friendly development and deployment environments
 - You can confidently use tvt.js as the frontend foundation for localized 3D visualization projects and digital twin platforms.
 - Built on a fully open-source dependency stack, with independent software intellectual property and software copyright registration, open-source and free for commercial use.
-```
 
 <a style="display:block;width:800px;max-width:100%;" href="https://www.bilibili.com/video/BV1JHqRB7ERB"><img src="./preview/bilibili.gif" alt="tres.js webgl three.js"></a>
 
-# Ecosystem `@ThreeJS @Vue3.x @TresJS`
+# Technical Ecosystem `@ThreeJS @Vue3.x @TresJS`
 
 > Built by icegl. Permanently open-source, free for commercial use, and continuously updated. Please click the Star button in the upper-right corner to follow the project.
 
 This project sits at the intersection of three major ecosystems:
 
-- 🎲 ThreeJS · [Learn more](https://threejs.org)
-  <a href="https://www.npmjs.com/package/three">
-    <img src="https://img.shields.io/npm/v/three?label=three" alt="three npm version">
-  </a>
-  A widely used JavaScript 3D library for browser rendering.
-
-- 🍀 Vue3.x · [Learn more](https://cn.vuejs.org)
-  <a href="https://www.npmjs.com/package/vue">
-    <img src="https://img.shields.io/npm/v/vue?label=vue&color=%2342b883" alt="vue npm version">
-  </a>
-  A modern frontend framework that is approachable, high-performance, and flexible across many Web use cases.
-
-- ⚡ TresJS · [Learn more](https://tresjs.org)
-  <a href="https://www.npmjs.com/package/@tresjs/core">
-    <img src="https://img.shields.io/npm/v/@tresjs/core?color=%2382DBCA&label=%40tresjs%2Fcore&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjY4NTQgMy40MjkxNkMxMi4wNzM4IDIuNzgxODIgMTMuMDEyIDIuNzgxODIgMTMuNDAwNCAzLjQyOTE1TDE5LjE3NzEgMTMuMDU2OUMxOS41NzcgMTMuNzIzNSAxOS4wOTY5IDE0LjU3MTQgMTguMzE5NiAxNC41NzE0SDYuNzY2MjRDNS45ODg5NCAxNC41NzE0IDUuNTA4ODMgMTMuNzIzNSA1LjkwODc1IDEzLjA1NjlMMTEuNjg1NCAzLjQyOTE2WiIgZmlsbD0iIzgyREJDNSIvPgo8cGF0aCBkPSJNMTUuNjg1NyAxMC41NDI5QzE1LjY4NTcgOS45OTA1OSAxNi4xMzM0IDkuNTQyODggMTYuNjg1NyA5LjU0Mjg4SDI2QzI2LjU1MjIgOS41NDI4OCAyNyA5Ljk5MDU5IDI3IDEwLjU0MjlWMTkuODU3MkMyNyAyMC40MDk0IDI2LjU1MjIgMjAuODU3MiAyNiAyMC44NTcySDE2LjY4NTdDMTYuMTMzNCAyMC44NTcyIDE1LjY4NTcgMjAuNDA5NCAxNS42ODU3IDE5Ljg1NzJWMTAuNTQyOVoiIGZpbGw9IiM0RjRGNEYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIyMiIgcj0iNiIgZmlsbD0iI0VGQUMzNSIvPgo8L3N2Zz4K" alt="tres npm version">
-  </a>
-  A declarative Vue 3 way to build Three.js-powered 3D applications on the frontend.
+| Ecosystem | Description |
+| --- | --- |
+| 🎲 [ThreeJS](https://threejs.org)<br><a href="https://www.npmjs.com/package/three"><img src="https://img.shields.io/npm/v/three?label=three" alt="three npm version"></a> | A widely used JavaScript 3D library for browser rendering. |
+| 🍀 [Vue3.x](https://cn.vuejs.org)<br><a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue?label=vue&color=%2342b883" alt="vue npm version"></a> | A modern frontend framework that is approachable, high-performance, and flexible across many Web use cases. |
+| ⚡ [TresJS](https://tresjs.org)<br><a href="https://www.npmjs.com/package/@tresjs/core"><img src="https://img.shields.io/npm/v/@tresjs/core?color=%2382DBCA&label=%40tresjs%2Fcore&logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjY4NTQgMy40MjkxNkMxMi4wNzM4IDIuNzgxODIgMTMuMDEyIDIuNzgxODIgMTMuNDAwNCAzLjQyOTE1TDE5LjE3NzEgMTMuMDU2OUMxOS41NzcgMTMuNzIzNSAxOS4wOTY5IDE0LjU3MTQgMTguMzE5NiAxNC41NzE0SDYuNzY2MjRDNS45ODg5NCAxNC41NzE0IDUuNTA4ODMgMTMuNzIzNSA1LjkwODc1IDEzLjA1NjlMMTEuNjg1NCAzLjQyOTE2WiIgZmlsbD0iIzgyREJDNSIvPgo8cGF0aCBkPSJNMTUuNjg1NyAxMC41NDI5QzE1LjY4NTcgOS45OTA1OSAxNi4xMzM0IDkuNTQyODggMTYuNjg1NyA5LjU0Mjg4SDI2QzI2LjU1MjIgOS41NDI4OCAyNyA5Ljk5MDU5IDI3IDEwLjU0MjlWMTkuODU3MkMyNyAyMC40MDk0IDI2LjU1MjIgMjAuODU3MiAyNiAyMC44NTcySDE2LjY4NTdDMTYuMTMzNCAyMC44NTcyIDE1LjY4NTcgMjAuNDA5NCAxNS42ODU3IDE5Ljg1NzJWMTAuNTQyOVoiIGZpbGw9IiM0RjRGNEYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIyMiIgcj0iNiIgZmlsbD0iI0VGQUMzNSIvPgo8L3N2Zz4K" alt="tres npm version"></a> | A declarative Vue 3 way to build Three.js-powered 3D applications on the frontend. |
 
 ## ✨ Dynamic Component Publishing & Loading Service: [🌏 dcser.icegl.cn](https://dcser.icegl.cn/)
 
@@ -98,172 +85,134 @@ This project sits at the intersection of three major ecosystems:
 - Scan the QR code to browse the full Mini Program demo set:
   <img src="./preview/miniqr.jpg" width="166" alt="tres.js webgl three.js">
 
-<table style="border: none; width: 100%; text-align: center;">
+### Featured Online Cases
+
+<table width="100%" align="center">
   <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index">
-        Online 3D Scene Editor: [🪅 Free source export + secondary development]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index"><strong>Online 3D Scene Editor</strong></a><br>
+      <sub>Free source export + secondary development</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="./public/plugins/zone3Deditor/preview/index.png" alt="Online 3D Scene Editor">
       </a>
     </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom">
-        Smart Server Room: [Project-ready output from the editor]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom"><strong>Smart Server Room</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="Smart Server Room">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index" style="display:block;max-width:100%;">
-        <img src="./public/plugins/zone3Deditor/preview/index.png" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><strong>Tech Stack Topology</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="Tech Stack Topology">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://www.icegl.cn/tvtstore/zoneMachinRoom" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneMachinRoom/preview/index.png" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack">
-        Tech Stack Topology: [Project-ready output from the editor]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeHYworld">
-        Hunyuan World: [Project-ready output from the editor]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeHYworld"><strong>Hunyuan World</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeHYworld" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeHYworld.png" alt="Hunyuan World">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeTvtStack" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneRefiningIndustry"><strong>Refining Smart Factory Visualization</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneRefiningIndustry/preview/index.png" alt="Refining Smart Factory Visualization">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeHYworld" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeHYworld.png" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zoneRefiningIndustry">
-        Refining Smart Factory Visualization: [Project-ready output from the editor]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zoneOfficeFloor">
-        Smart Office Space: [Project-ready output from the editor]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneOfficeFloor"><strong>Smart Office Space</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneOfficeFloor/#/plugins/zoneOfficeFloor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneOfficeFloor/preview/index.png" alt="Smart Office Space">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://oss.icegl.cn/p/zoneRefiningIndustry/#/plugins/zoneRefiningIndustry/index" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneRefiningIndustry/preview/index.png" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html"><strong>UAV Fleet Visualization</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="UAV Fleet Visualization">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://oss.icegl.cn/p/zoneOfficeFloor/#/plugins/zoneOfficeFloor/index" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneOfficeFloor/preview/index.png" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html">
-        UAV Fleet Visualization: [Project-ready output from the editor]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://opensource.icegl.cn/#/#zoneFreeScene">
-        Low-Poly Refinery: [Free]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/#zoneFreeScene"><strong>Low-Poly Refinery</strong></a><br>
+      <sub>Free case</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeRefiningIndustry" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeRefiningIndustry.png" alt="Low-Poly Refinery">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://www.icegl.cn/tvtstore/zoneLowAltitudeUAV.html" style="display:block;max-width:100%;">
-        <img src="https://cdn.index.icegl.cn/uploads/20250813/010ead9fa5b3e69f00ad337b039784eb.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zonePixelLowMachinRoom"><strong>Low-Poly Server Room</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zonePixelLowMachinRoom/#/plugins/zonePixelLowMachinRoom/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251106/ac894bb3033344fe9ca7534d64a9885d.png?imageMogr2/thumbnail/600x" alt="Low-Poly Server Room">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeRefiningIndustry" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeRefiningIndustry.png" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zonePixelLowMachinRoom">
-        Low-Poly Server Room: [Project-ready output from the editor]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zonePlasticProducts">
-        Plastic Products Factory 3D: [Project-ready output from the editor]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zonePlasticProducts"><strong>Plastic Products Factory 3D</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zonePlasticProducts/#/plugins/zonePlasticProducts/secondaryCoding" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251119/09534134fd018fe09c18bad0c4565e1d.png?imageMogr2/thumbnail/600x" alt="Plastic Products Factory 3D">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://oss.icegl.cn/p/zonePixelLowMachinRoom/#/plugins/zonePixelLowMachinRoom/index" style="display:block;max-width:100%;">
-        <img src="https://cdn.index.icegl.cn/uploads/20251106/ac894bb3033344fe9ca7534d64a9885d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/zoneSmartWarehouse"><strong>Smart Warehouse Management</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://oss.icegl.cn/p/zoneSmartWarehouse/#/plugins/zoneSmartWarehouse/secondaryCoding" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20251202/a92bcc26c186fbf65d9851a0c87b05ca.png?imageMogr2/thumbnail/600x" alt="Smart Warehouse Management">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://oss.icegl.cn/p/zonePlasticProducts/#/plugins/zonePlasticProducts/secondaryCoding" style="display:block;max-width:100%;">
-        <img src="https://cdn.index.icegl.cn/uploads/20251119/09534134fd018fe09c18bad0c4565e1d.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/zoneSmartWarehouse">
-        Smart Warehouse Management: [Project-ready output from the editor]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://opensource.icegl.cn/#/#zoneFreeScene">
-        Ocean Shipping Visualization: [Free]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://opensource.icegl.cn/#/#zoneFreeScene"><strong>Ocean Shipping Visualization</strong></a><br>
+      <sub>Free case</sub><br><br>
+      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeShipSea" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeShipSea.png?imageMogr2/thumbnail/600x" alt="Ocean Shipping Visualization">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://oss.icegl.cn/p/zoneSmartWarehouse/#/plugins/zoneSmartWarehouse/secondaryCoding" style="display:block;max-width:100%;">
-        <img src="https://cdn.index.icegl.cn/uploads/20251202/a92bcc26c186fbf65d9851a0c87b05ca.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://txwikichart.icegl.cn/#/plugins/txWikiChart/columnar"><strong>Financial Report Analysis 3D Chart</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://txwikichart.icegl.cn/#/plugins/txWikiChart/columnar" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20260610/3170626e1a2e670fb0ee4c6af936c236.png" alt="Financial Report Analysis 3D Chart">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://zone3deditor.icegl.cn/#/plugins/zone3Deditor/index?sceneConfig=freeShipSea" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeShipSea.png?imageMogr2/thumbnail/600x" alt="tres.js webgl">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://www.icegl.cn/tvtstore/gisPlaneEditor">
-        Map Space Editor: [A GIS editor for projected-map scenes]
-      </a>
-    </td>
-    <td style="padding:10px;font-size:1.2em;">
-      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index?sceneConfig=多套倾斜摄影3D">
-        Multi-Set Oblique Photography 3D: [Project-ready output from the editor]
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://animationeditor.icegl.cn/#/plugins/animationEditor/index"><strong>Paramecium Animation Editor</strong></a><br>
+      <sub>Online animation editor</sub><br><br>
+      <a href="https://animationeditor.icegl.cn/#/plugins/animationEditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20260601/a1ed44a8d6573fdb2db8bb44ded6a397.jpg" alt="Paramecium Animation Editor">
       </a>
     </td>
   </tr>
   <tr>
-    <td style="padding: 10px;">
-      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;max-width:100%;">
-        <img src="https://opensource.icegl.cn/plugins/gisPlaneEditor/preview/index.png" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://www.icegl.cn/tvtstore/gisPlaneEditor"><strong>Map Space Editor</strong></a><br>
+      <sub>A GIS editor for projected-map scenes</sub><br><br>
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://opensource.icegl.cn/plugins/gisPlaneEditor/preview/index.png" alt="Map Space Editor">
       </a>
     </td>
-    <td style="padding: 10px;">
-      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/preview?sceneConfig=多套倾斜摄影3D" style="display:block;max-width:100%;">
-        <img src="https://gisplaneeditor.icegl.cn/plugins/gisPlaneEditor/preview/多套倾斜摄影3D.png" alt="tres.js webgl">
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index?sceneConfig=多套倾斜摄影3D"><strong>Multi-Set Oblique Photography 3D</strong></a><br>
+      <sub>Project-ready output from the editor</sub><br><br>
+      <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/preview?sceneConfig=多套倾斜摄影3D" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://gisplaneeditor.icegl.cn/plugins/gisPlaneEditor/preview/多套倾斜摄影3D.png" alt="Multi-Set Oblique Photography 3D">
       </a>
     </td>
   </tr>
@@ -277,9 +226,7 @@ This project sits at the intersection of three major ecosystems:
 
 <a style="display:block;width:800px;max-width:100%;" href="https://opensource.icegl.cn/#/plugins/zoneFreeScene/freeTvtStack"><img src="https://opensource.icegl.cn/plugins/zoneFreeScene/preview/freeTvtStack.png" alt="tres.js webgl three.js"></a>
 
-```shell
-Because the project is updated and rebuilt frequently, please clear your browser cache if you encounter access or asset-loading issues.
-```
+> Because the project is updated and rebuilt frequently, please clear your browser cache if you encounter access or asset-loading issues.
 
 <a href="https://opensource.icegl.cn"><img src="./preview/p2.gif" alt="three.js tres.js webgl tvt.js"></a>
 <a href="https://opensource.icegl.cn"><img src="./preview/p3.gif" alt="three.js tres.js webgl tvt.js"></a>
@@ -290,27 +237,20 @@ More demos are available on the preview site.
 
 # ✅ Quick Start
 
-```js
-1. git clone this repository, or download it directly
+> Node.js >= 20.18 is recommended.
 
-2. cd into the project root
-
-3. yarn // install dependencies [Node.js >= 20.18]
-
-4. yarn pre.dev // debug the preview workspace
-
-5. yarn dev // debug your own project workspace
-
-6. yarn pre.build // build the preview workspace
-
-7. yarn build // build your own project workspace
-
-8. yarn pre.dev.one // preview only one specific example or plugin
-
-9. yarn pre.build.one // build one specific example or plugin; keep only configured dependency plugin assets and remove the rest
-
-10. yarn both // run dev and pre.dev at the same time so you can develop your project while comparing against examples and plugins
-```
+| Step | Command / Action | Description |
+| --- | --- | --- |
+| 1 | `git clone` this repository, or download it directly | Get the project source code |
+| 2 | `cd` into the project root | Enter the project directory |
+| 3 | `yarn` | Install dependencies |
+| 4 | `yarn pre.dev` | Debug the preview workspace |
+| 5 | `yarn dev` | Debug your own project workspace |
+| 6 | `yarn pre.build` | Build the preview workspace |
+| 7 | `yarn build` | Build your own project workspace |
+| 8 | `yarn pre.dev.one` | Preview only one specific example or plugin |
+| 9 | `yarn pre.build.one` | Build one specific example or plugin, keeping only configured dependency plugin assets and removing the rest |
+| 10 | `yarn both` | Run `dev` and `pre.dev` at the same time so you can develop your project while comparing against examples and plugins |
 
 ![Compile Mode](./preview/compileMode.png)
 

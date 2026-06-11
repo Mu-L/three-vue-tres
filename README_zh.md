@@ -183,6 +183,22 @@ TvT.js 融合 ThreeJS、Vue 3 与 TresJS 生态，面向数字孪生、工业可
   </tr>
   <tr>
     <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://txwikichart.icegl.cn/#/plugins/txWikiChart/columnar"><strong>财报分析之三维图</strong></a><br>
+      <sub>编辑器直接落地项目</sub><br><br>
+      <a href="https://txwikichart.icegl.cn/#/plugins/txWikiChart/columnar" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20260610/3170626e1a2e670fb0ee4c6af936c236.png" alt="财报分析之三维图">
+      </a>
+    </td>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
+      <a href="https://animationeditor.icegl.cn/#/plugins/animationEditor/index"><strong>草履虫动画编辑器</strong></a><br>
+      <sub>在线动画编辑器</sub><br><br>
+      <a href="https://animationeditor.icegl.cn/#/plugins/animationEditor/index" style="display:block;">
+        <img width="480" height="270" style="width:100%;max-width:480px;height:270px;object-fit:cover;" src="https://cdn.index.icegl.cn/uploads/20260601/a1ed44a8d6573fdb2db8bb44ded6a397.jpg" alt="草履虫动画编辑器">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top" style="padding:12px;width:50%;vertical-align:top;">
       <a href="https://www.icegl.cn/tvtstore/gisPlaneEditor"><strong>地图空间编辑器</strong></a><br>
       <sub>面向投影地图场景的 GIS 编辑器</sub><br><br>
       <a href="https://gisplaneeditor.icegl.cn/#/plugins/gisPlaneEditor/index" style="display:block;">
