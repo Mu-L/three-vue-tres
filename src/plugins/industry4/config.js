@@ -89,6 +89,13 @@ export default {
             name: 'tslGearsForkedPage',
             title: 'TSL齿轮分叉',
             referenceSource: { title: 'react-three/fiber', url: 'https://codesandbox.io/p/sandbox/webgpu-tsl-gears-forked-v3d959' },
+        },
+        {
+            src: 'plugins/industry4/bikeConfigurator/bike-poster.jpg',
+            type: 'img',
+            name: 'bikeConfigurator',
+            title: 'Bike Configurator',
+            referenceSource: { title: 'Needle Engine', url: 'https://engine.needle.tools/projects/bike/' },
         }
     ],
 }
