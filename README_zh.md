@@ -389,8 +389,6 @@ TvT.js 融合 ThreeJS、Vue 3 与 TresJS 生态，面向数字孪生、工业可
 
 本项目遵循 **Apache License 2.0** 协议开源，永久免费使用，允许商业化。
 
-如需移除 TvT.js 自有版权标识，可购买 [TvT.js 商业授权（版权完全豁免版）](https://www.icegl.cn/tvtstore/tvtJsLicense.html)。
-
 > 如将本项目用于商业用途，请严格遵守 Apache License 2.0 协议，并保留作者署名及技术支持声明。
 
 1. **二次开发与版权声明**
