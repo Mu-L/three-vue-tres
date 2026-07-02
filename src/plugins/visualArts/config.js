@@ -4,7 +4,7 @@
  * @Autor: 地虎降天龙
  * @Date: 2024-04-30 08:18:21
  * @LastEditors: 地虎降天龙
- * @LastEditTime: 2025-01-10 11:28:57
+ * @LastEditTime: 2026-07-02 15:21:33
  */
 export default {
     name: 'visualArts',
@@ -18,6 +18,13 @@ export default {
     updateTime: '2024-04-30',
     require: [],
     preview: [
+        {
+            src: 'plugins/visualArts/preview/biineBee.png',
+            type: 'img',
+            name: 'biineBee',
+            title: 'Biine Bee',
+            referenceSource: { title: 'Patrick Heintzmann Lab', url: 'https://lab.patrickheintzmann.com/demo/demoBee' },
+        },
         {
             src: 'plugins/visualArts/preview/volumetricLightGodray.png',
             type: 'img',

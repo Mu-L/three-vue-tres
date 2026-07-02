@@ -1,0 +1,22 @@
+{
+  "sourcePage": "https://lab.patrickheintzmann.com/demo/demoBee",
+  "downloadedAt": "2026-07-02",
+  "assets": [
+    {
+      "local": "models/bee.glb",
+      "source": "https://assets.patrickheintzmann.com/demos/demoBee/models/bee/bee.glb"
+    },
+    {
+      "local": "textures/bee_normal.webp",
+      "source": "https://assets.patrickheintzmann.com/demos/demoBee/textures/bee_normal.webp"
+    },
+    {
+      "local": "textures/bee_orm.webp",
+      "source": "https://assets.patrickheintzmann.com/demos/demoBee/textures/bee_orm.webp"
+    },
+    {
+      "local": "textures/bluenoise128.png",
+      "source": "https://assets.patrickheintzmann.com/demos/demoBee/textures/bluenoise128.png"
+    }
+  ]
+}
