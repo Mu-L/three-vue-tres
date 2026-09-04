@@ -1,4 +1,5 @@
 import { GLTFLoader, DRACOLoader } from 'three-stdlib'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import type { TresObject3D } from '@tresjs/core'
 import { useLoader } from '../useLoader'
 import * as THREE from 'three'
@@ -41,6 +42,7 @@ function setExtensions(options: GLTFLoaderOptions, extendLoader?: (loader: GLTFL
     if (extendLoader) {
       extendLoader(loader as GLTFLoader)
     }
+    loader.setMeshoptDecoder(MeshoptDecoder)
     if (options.draco) {
       if (!dracoLoader) {
         dracoLoader = new DRACOLoader()
