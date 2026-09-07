@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
@@ -74,20 +75,21 @@ class Resource {
             return Promise.reject(`找不到对应的loader：${functionName}`)
         }
 
-        let initDraco = null as any
+        let initGLTFLoader = null as any
         if (functionName === 'GLTFLoader') {
-            initDraco = (loader: any) => {
+            initGLTFLoader = (loader: GLTFLoader) => {
                 const dracoLoader = new DRACOLoader()
                 dracoLoader.setDecoderPath(this.decoderPath)
                 dracoLoader.preload()
                 loader.setDRACOLoader(dracoLoader)
+                loader.setMeshoptDecoder(MeshoptDecoder)
             }
         }
 
         this.curIndex++
         this.lenth++
 
-        const promise = useLoader(loaderFunction, url, initDraco).then((data: any) => {
+        const promise = useLoader(loaderFunction, url, initGLTFLoader).then((data: any) => {
             this.items[resourceID] = data
             this.reactiveItems[resourceID] = data
 
