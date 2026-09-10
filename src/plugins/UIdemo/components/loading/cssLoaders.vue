@@ -42,6 +42,8 @@ const props = withDefaults(
         isDemo: false,
         showProgress: true,
         useResourceManager: false,
+        // 保留未传入状态，避免 Boolean 默认 false 被误判为外部控制模式。
+        finished: undefined,
     },
 )
 
